@@ -1,0 +1,21 @@
+RewriteEngine On
+
+# Handle SEO-friendly URLs for Ghost Admin
+# Redirect all requests to url-handler.cfm unless they're actual files
+
+# Skip rewriting for actual files and directories
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Skip rewriting for specific file extensions
+RewriteCond %{REQUEST_URI} !\.(cfm|css|js|png|jpg|jpeg|gif|ico|pdf|zip|rar|svg|woff|woff2|ttf|eot)$ [NC]
+
+# Skip rewriting for AJAX endpoints
+RewriteCond %{REQUEST_URI} !^/ghost/admin/ajax/ [NC]
+
+# Skip rewriting for includes and assets
+RewriteCond %{REQUEST_URI} !^/ghost/admin/includes/ [NC]
+RewriteCond %{REQUEST_URI} !^/ghost/admin/assets/ [NC]
+
+# Rewrite everything else to url-handler-tags.cfm
+RewriteRule ^(.*)$ url-handler-tags.cfm [L,QSA]

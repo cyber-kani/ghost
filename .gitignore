@@ -1,0 +1,43 @@
+# ColdFusion
+*.class
+WEB-INF/cfclasses/
+
+# Database
+config/database-local.cfm
+config/database-production.cfm
+
+# Logs
+logs/
+*.log
+
+# Cache
+cache/
+tmp/
+
+# IDE
+.vscode/
+.idea/
+*.sublime-*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Claude Code settings (optional - remove if you want to include)
+.claude/
+
+# Uploads (if large)
+assets/images/uploads/*.jpg
+assets/images/uploads/*.png
+assets/images/uploads/*.gif
+assets/images/uploads/*.svg
+
+# Environment specific
+local.cfm
+production.cfm
+development.cfm
+
+# Backup files
+*.bak
+*~
+*.tmp

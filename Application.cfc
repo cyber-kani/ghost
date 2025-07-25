@@ -52,7 +52,7 @@ component {
         );
     }
     
-    // Request processing
+    // Request processing with URL routing
     function onRequestStart(requestName) {
         // Development: Reload application on every request if needed
         if (structKeyExists(url, "reinit") && application.debugMode) {
@@ -63,9 +63,17 @@ component {
         request.startTime = getTickCount();
         request.requestId = createUUID();
         
-        // Basic URL routing will be enhanced later
+        // Get current URL path for routing
         request.pathInfo = cgi.path_info ?: "";
         request.scriptName = cgi.script_name;
+        request.requestURI = cgi.request_uri ?: "";
+        
+        // Handle Ghost URL routing - check if this is a Ghost request
+        if (findNoCase("/ghost", request.requestURI)) {
+            // Include router for all ghost requests
+            include "/var/www/sites/clitools.app/wwwroot/ghost/router.cfm";
+            return false; // Stop processing, route was handled
+        }
         
         // Set default page title if not set
         param name="pageTitle" default="Ghost Admin";

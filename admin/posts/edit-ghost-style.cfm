@@ -3857,6 +3857,7 @@ allTags = tagsResult.success ? tagsResult.data : [];
                         </div>
                     </div>
                 `;
+            }
         } else {
             return `
                 <div class="card-content bookmark-card-content">

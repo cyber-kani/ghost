@@ -32,13 +32,13 @@
         </tr>
         <cfloop query="qAllPosts">
             <tr>
-                <td>#id#</td>
-                <td>#title#</td>
-                <td>#slug#</td>
-                <td>#status#</td>
-                <td>#type#</td>
-                <td><cfif isDate(published_at)>#dateFormat(published_at, "yyyy-mm-dd")#<cfelse>NULL</cfif></td>
-                <td><cfif isDate(created_at)>#dateFormat(created_at, "yyyy-mm-dd")#<cfelse>NULL</cfif></td>
+                <td><cfoutput>#id#</cfoutput></td>
+                <td><cfoutput>#title#</cfoutput></td>
+                <td><cfoutput>#slug#</cfoutput></td>
+                <td><cfoutput>#status#</cfoutput></td>
+                <td><cfoutput>#type#</cfoutput></td>
+                <td><cfoutput><cfif isDate(published_at)>#dateFormat(published_at, "yyyy-mm-dd")#<cfelse>NULL</cfif></cfoutput></td>
+                <td><cfoutput><cfif isDate(created_at)>#dateFormat(created_at, "yyyy-mm-dd")#<cfelse>NULL</cfif></cfoutput></td>
             </tr>
         </cfloop>
     </table>
@@ -49,7 +49,7 @@
         FROM posts
         WHERE status = 'published'
     </cfquery>
-    <p>Total published posts: #qPublishedCount.total#</p>
+    <p>Total published posts: <cfoutput>#qPublishedCount.total#</cfoutput></p>
     
     <h2>Testing AJAX endpoint:</h2>
     <button onclick="testAjax()">Test AJAX</button>

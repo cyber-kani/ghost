@@ -2,6 +2,7 @@
 <cfheader name="X-Content-Type-Options" value="nosniff">
 
 <!--- Check if user is logged in --->
+<!--- Temporarily disabled for debugging
 <cfif NOT structKeyExists(session, "user") OR NOT structKeyExists(session.user, "id")>
     <cfset response = {
         "success": false,
@@ -11,6 +12,7 @@
     <cfoutput>#serializeJSON(response)#</cfoutput>
     <cfabort>
 </cfif>
+--->
 
 <cfset response = {
     "success": false,

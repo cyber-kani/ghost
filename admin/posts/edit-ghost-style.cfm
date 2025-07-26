@@ -717,6 +717,332 @@ allTags = tagsResult.success ? tagsResult.data : [];
             margin-top: 4px;
         }
         
+        /* File card styles */
+        .file-card-content {
+            position: relative;
+        }
+        
+        .file-wrapper {
+            transition: all 0.2s ease;
+            border: 1px solid #e5e7eb !important;
+        }
+        
+        .file-wrapper:hover {
+            border-color: #d1d5db !important;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .file-icon {
+            flex-shrink: 0;
+        }
+        
+        .file-info {
+            min-width: 0;
+        }
+        
+        .file-name a {
+            color: #374151;
+            font-weight: 500;
+        }
+        
+        .file-name a:hover {
+            color: #059669;
+            text-decoration: underline !important;
+        }
+        
+        .file-size {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+        
+        .ghost-file-toolbar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px;
+            background: #fafafa;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+        }
+        
+        /* Ghost Product Card Styles */
+        .ghost-product-card {
+            background: #fff;
+            border: 1px solid #e6e9eb;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .ghost-product-card-inner {
+            display: flex;
+            min-height: 180px;
+        }
+        
+        .ghost-product-image-container {
+            width: 40%;
+            background: #f7f8f9;
+            position: relative;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .ghost-product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .ghost-product-image-placeholder {
+            color: #c5c7c9;
+            text-align: center;
+        }
+        
+        .ghost-product-image-placeholder svg {
+            width: 48px;
+            height: 48px;
+        }
+        
+        .ghost-product-content {
+            flex: 1;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .ghost-product-title {
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 1.3;
+            color: #15171a;
+            border: none;
+            background: transparent;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            outline: none;
+        }
+        
+        .ghost-product-title:focus {
+            outline: none;
+        }
+        
+        .ghost-product-description {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #626d79;
+            border: none;
+            background: transparent;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            resize: none;
+            outline: none;
+        }
+        
+        .ghost-product-rating {
+            display: flex;
+            gap: 2px;
+            color: #f97316;
+        }
+        
+        .ghost-product-rating .ti {
+            font-size: 16px;
+        }
+        
+        .ghost-product-rating .ti:not(.ti-star-filled) {
+            color: #e6e9eb;
+        }
+        
+        .ghost-product-button {
+            display: inline-block;
+            padding: 8px 16px;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            margin-top: auto;
+            align-self: flex-start;
+        }
+        
+        .ghost-product-button.primary {
+            background: #14b8ff;
+            color: white;
+            border: 1px solid #14b8ff;
+        }
+        
+        .ghost-product-button.primary:hover {
+            background: #0ea5e9;
+            border-color: #0ea5e9;
+        }
+        
+        .ghost-product-button.secondary {
+            background: #626d79;
+            color: white;
+            border: 1px solid #626d79;
+        }
+        
+        .ghost-product-button.secondary:hover {
+            background: #505863;
+            border-color: #505863;
+        }
+        
+        .ghost-product-button.outline {
+            background: transparent;
+            color: #15171a;
+            border: 1px solid #e6e9eb;
+        }
+        
+        .ghost-product-button.outline:hover {
+            border-color: #c5c7c9;
+        }
+        
+        .ghost-product-button.link {
+            background: transparent;
+            color: #14b8ff;
+            border: none;
+            text-decoration: underline;
+            padding: 0;
+        }
+        
+        .ghost-product-button.link:hover {
+            color: #0ea5e9;
+        }
+        
+        /* Ghost Product Settings */
+        .ghost-product-settings {
+            background: #f7f8f9;
+            border-top: 1px solid #e6e9eb;
+            padding: 16px;
+            margin: 0 -1px -1px -1px;
+        }
+        
+        .ghost-product-settings-row {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        
+        .ghost-product-settings-row:last-child {
+            margin-bottom: 0;
+        }
+        
+        .ghost-setting-group {
+            flex: 1;
+        }
+        
+        .ghost-setting-group.full-width {
+            flex: 1 0 100%;
+        }
+        
+        .ghost-setting-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 500;
+            color: #15171a;
+            margin-bottom: 8px;
+        }
+        
+        .ghost-input {
+            width: 100%;
+            padding: 8px 12px;
+            font-size: 14px;
+            border: 1px solid #dde1e5;
+            border-radius: 4px;
+            background: white;
+            color: #15171a;
+            outline: none;
+        }
+        
+        .ghost-input:focus {
+            border-color: #14b8ff;
+        }
+        
+        .ghost-button-style-group {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .ghost-style-button {
+            flex: 1;
+            padding: 8px;
+            background: white;
+            border: 1px solid #dde1e5;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .ghost-style-button:hover {
+            border-color: #c5c7c9;
+        }
+        
+        .ghost-style-button.active {
+            border-color: #14b8ff;
+            background: #f0feff;
+        }
+        
+        .ghost-button-preview {
+            display: block;
+            padding: 4px 12px;
+            font-size: 13px;
+            font-weight: 500;
+            border-radius: 3px;
+            text-align: center;
+        }
+        
+        .ghost-button-preview.primary {
+            background: #14b8ff;
+            color: white;
+        }
+        
+        .ghost-button-preview.secondary {
+            background: #626d79;
+            color: white;
+        }
+        
+        .ghost-button-preview.outline {
+            background: transparent;
+            color: #15171a;
+            border: 1px solid #dde1e5;
+        }
+        
+        .ghost-button-preview.link {
+            background: transparent;
+            color: #14b8ff;
+            text-decoration: underline;
+        }
+        
+        .ghost-rating-selector {
+            display: flex;
+            gap: 4px;
+        }
+        
+        .ghost-rating-toggle {
+            padding: 6px 12px;
+            background: white;
+            border: 1px solid #dde1e5;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #626d79;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .ghost-rating-toggle:hover {
+            border-color: #c5c7c9;
+        }
+        
+        .ghost-rating-toggle.active {
+            border-color: #14b8ff;
+            background: #f0feff;
+            color: #14b8ff;
+        }
+        
         /* Ghost-style image settings */
         .ghost-image-settings {
             margin-top: 12px;
@@ -846,6 +1172,39 @@ allTags = tagsResult.success ? tagsResult.data : [];
         .image-card-content .image-wrapper:hover img {
             opacity: 0.9;
             cursor: pointer;
+        }
+        
+        /* Video card width styles */
+        .video-card-content {
+            position: relative;
+        }
+        
+        .video-card-content .video-wrapper {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        /* Wide width */
+        .video-card-content[data-card-width="wide"] .video-wrapper {
+            margin-left: calc(-12.5vw + 50%);
+            margin-right: calc(-12.5vw + 50%);
+            max-width: none;
+        }
+        
+        /* Full width */
+        .video-card-content[data-card-width="full"] .video-wrapper {
+            margin-left: calc(-50vw + 50%);
+            margin-right: calc(-50vw + 50%);
+            max-width: none;
+        }
+        
+        /* Responsive adjustments for video */
+        @media (max-width: 1024px) {
+            .video-card-content[data-card-width="wide"] .video-wrapper,
+            .video-card-content[data-card-width="full"] .video-wrapper {
+                margin-left: -1rem;
+                margin-right: -1rem;
+            }
         }
     </style>
 </head>
@@ -1667,10 +2026,64 @@ allTags = tagsResult.success ? tagsResult.data : [];
                         // Audio card
                         const audio = element.querySelector('audio');
                         const titleElement = element.querySelector('.kg-audio-title');
+                        const captionElement = element.querySelector('.kg-audio-caption');
                         if (audio) {
                             addCardInternal('audio', {
                                 src: audio.src,
-                                title: titleElement?.textContent || ''
+                                title: titleElement?.textContent || '',
+                                caption: captionElement?.textContent || '',
+                                loop: audio.hasAttribute('loop'),
+                                showDownload: element.querySelector('.kg-audio-download') !== null
+                            });
+                        }
+                    } else if (element.classList.contains('kg-product-card')) {
+                        // Product card
+                        const imageElement = element.querySelector('.kg-product-card-image img');
+                        const titleElement = element.querySelector('.kg-product-card-title');
+                        const descriptionElement = element.querySelector('.kg-product-card-description');
+                        const priceElement = element.querySelector('.kg-product-card-price');
+                        const ratingElement = element.querySelector('.kg-product-card-rating');
+                        const buttonElement = element.querySelector('.kg-product-card-button');
+                        
+                        let rating = null;
+                        if (ratingElement) {
+                            const filledStars = ratingElement.querySelectorAll('.rating-star.filled').length;
+                            rating = filledStars > 0 ? filledStars : null;
+                        }
+                        
+                        let buttonStyle = 'primary';
+                        if (buttonElement) {
+                            if (buttonElement.classList.contains('kg-product-button-secondary')) buttonStyle = 'secondary';
+                            else if (buttonElement.classList.contains('kg-product-button-outline')) buttonStyle = 'outline';
+                            else if (buttonElement.classList.contains('kg-product-button-link')) buttonStyle = 'link';
+                        }
+                        
+                        addCardInternal('product', {
+                            image: imageElement?.src || '',
+                            title: titleElement?.textContent || '',
+                            description: descriptionElement?.textContent || '',
+                            price: priceElement?.textContent || '',
+                            rating: rating,
+                            url: buttonElement?.href || '',
+                            buttonText: buttonElement?.textContent || '',
+                            buttonStyle: buttonStyle,
+                            initialized: true
+                        });
+                    } else if (element.classList.contains('kg-file-card')) {
+                        // File card
+                        const linkElement = element.querySelector('.kg-file-card-container');
+                        const titleElement = element.querySelector('.kg-file-card-title');
+                        const descriptionElement = element.querySelector('.kg-file-card-caption');
+                        const sizeElement = element.querySelector('.kg-file-card-filesize');
+                        const nameElement = element.querySelector('.kg-file-card-filename');
+                        
+                        if (linkElement) {
+                            addCardInternal('file', {
+                                src: linkElement.href,
+                                fileName: nameElement?.textContent || titleElement?.textContent || 'file',
+                                title: titleElement?.textContent || '',
+                                description: descriptionElement?.textContent || '',
+                                size: sizeElement ? parseFloat(sizeElement.textContent) * 1024 * 1024 : 0 // Convert MB to bytes
                             });
                         }
                     } else {
@@ -1789,6 +2202,12 @@ allTags = tagsResult.success ? tagsResult.data : [];
                 break;
             case 'audio':
                 div.innerHTML += createAudioCard(card);
+                break;
+            case 'file':
+                div.innerHTML += createFileCard(card);
+                break;
+            case 'product':
+                div.innerHTML += createProductCard(card);
                 break;
             // Add more card types as needed
         }
@@ -2204,6 +2623,7 @@ allTags = tagsResult.success ? tagsResult.data : [];
                         <audio src="${card.data.src}" 
                                controls
                                preload="metadata"
+                               ${card.data.loop ? 'loop' : ''}
                                style="width: 100%;">
                         </audio>
                         ${card.data.duration ? `<div class="audio-duration text-muted small mt-1">${formatDuration(card.data.duration)}</div>` : ''}
@@ -2215,6 +2635,13 @@ allTags = tagsResult.success ? tagsResult.data : [];
                                value="${card.data.title || ''}"
                                onblur="updateCardData('${card.id}', 'title', this.value)"
                                oninput="markDirtySafe();">
+                    </div>
+                    <div class="mt-2">
+                        <textarea class="form-control" 
+                                  rows="2"
+                                  placeholder="Add caption (optional)..."
+                                  onblur="updateCardData('${card.id}', 'caption', this.value)"
+                                  oninput="markDirtySafe();">${card.data.caption || ''}</textarea>
                     </div>
                     <div class="ghost-audio-settings mt-3" id="audioSettings-${card.id}">
                         <div class="ghost-audio-toolbar">
@@ -2235,6 +2662,20 @@ allTags = tagsResult.success ? tagsResult.data : [];
                                    accept="audio/*" 
                                    style="display: none;"
                                    onchange="handleAudioReplace('${card.id}', this)">
+                            <div class="ghost-audio-options d-flex align-items-center gap-3 ms-3">
+                                <label class="d-flex align-items-center gap-2 mb-0">
+                                    <input type="checkbox" 
+                                           ${card.data.loop ? 'checked' : ''}
+                                           onchange="updateCardData('${card.id}', 'loop', this.checked); renderCard('${card.id}');">
+                                    <span class="text-sm">Loop</span>
+                                </label>
+                                <label class="d-flex align-items-center gap-2 mb-0">
+                                    <input type="checkbox" 
+                                           ${card.data.showDownload ? 'checked' : ''}
+                                           onchange="updateCardData('${card.id}', 'showDownload', this.checked);">
+                                    <span class="text-sm">Show download</span>
+                                </label>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -2255,6 +2696,240 @@ allTags = tagsResult.success ? tagsResult.data : [];
                            accept="audio/*" 
                            style="display: none;"
                            onchange="handleAudioUpload('${card.id}', this)">
+                </div>
+            `;
+        }
+    }
+    
+    function createFileCard(card) {
+        if (card.data.src) {
+            const fileIcon = getFileIcon(card.data.fileName || '');
+            const fileSize = card.data.size ? formatFileSize(card.data.size) : '';
+            const displayName = card.data.title || card.data.fileName || 'Download file';
+            
+            return `
+                <div class="card-content file-card-content">
+                    <div class="file-wrapper bg-light rounded p-4">
+                        <div class="d-flex align-items-center">
+                            <div class="file-icon me-3">
+                                <i class="ti ${fileIcon}" style="font-size: 2.5rem; color: #6b7280;"></i>
+                            </div>
+                            <div class="file-info flex-grow-1">
+                                <div class="file-name fw-medium text-truncate">
+                                    <a href="${card.data.src}" target="_blank" class="text-decoration-none">
+                                        ${displayName}
+                                    </a>
+                                </div>
+                                ${fileSize ? `<div class="file-size text-muted small">${fileSize}</div>` : ''}
+                                ${card.data.fileName && card.data.title ? `<div class="file-original text-muted small">${card.data.fileName}</div>` : ''}
+                            </div>
+                            <div class="file-download">
+                                <a href="${card.data.src}" 
+                                   class="btn btn-outline-primary btn-sm"
+                                   download="${card.data.fileName || 'file'}"
+                                   target="_blank">
+                                    <i class="ti ti-download"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                        <input type="text" 
+                               class="form-control" 
+                               placeholder="Add title (optional)..."
+                               value="${card.data.title || ''}"
+                               onblur="updateCardData('${card.id}', 'title', this.value); renderCard('${card.id}');"
+                               oninput="markDirtySafe();">
+                    </div>
+                    <div class="mt-2">
+                        <textarea class="form-control" 
+                                  rows="2"
+                                  placeholder="Add description (optional)..."
+                                  onblur="updateCardData('${card.id}', 'description', this.value)"
+                                  oninput="markDirtySafe();">${card.data.description || ''}</textarea>
+                    </div>
+                    <div class="ghost-file-settings mt-3" id="fileSettings-${card.id}">
+                        <div class="ghost-file-toolbar">
+                            <button type="button" 
+                                    class="ghost-replace-btn"
+                                    onclick="document.getElementById('file-replace-${card.id}').click()">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                                    <path d="M14 2v6h6"/>
+                                    <path d="M12 12v6"/>
+                                    <path d="M12 12l-2-2"/>
+                                    <path d="M12 12l2-2"/>
+                                </svg>
+                                Replace
+                            </button>
+                            <input type="file" 
+                                   id="file-replace-${card.id}" 
+                                   style="display: none;"
+                                   onchange="handleFileReplace('${card.id}', this)">
+                        </div>
+                    </div>
+                </div>
+            `;
+        } else {
+            return `
+                <div class="card-content text-center py-5">
+                    <div class="mb-3">
+                        <i class="ti ti-file text-muted" style="font-size: 3rem;"></i>
+                    </div>
+                    <button type="button" 
+                            class="btn btn-primary"
+                            onclick="document.getElementById('file-upload-${card.id}').click()">
+                        <i class="ti ti-upload"></i> Upload file
+                    </button>
+                    <input type="file" 
+                           id="file-upload-${card.id}" 
+                           style="display: none;"
+                           onchange="handleFileUpload('${card.id}', this)">
+                </div>
+            `;
+        }
+    }
+    
+    function createProductCard(card) {
+        const hasContent = card.data.title || card.data.description || card.data.price || card.data.image || card.data.initialized;
+        
+        if (hasContent) {
+            return `
+                <div class="card-content product-card-content">
+                    <div class="ghost-product-card">
+                        <div class="ghost-product-card-inner">
+                            <div class="ghost-product-image-container" onclick="showProductImageUpload('${card.id}')">
+                                ${card.data.image ? 
+                                    `<img src="${card.data.image}" alt="${card.data.title || 'Product image'}" class="ghost-product-image">` :
+                                    `<div class="ghost-product-image-placeholder">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+                                            <circle cx="8.5" cy="8.5" r="1.5" fill="currentColor"/>
+                                            <polyline points="21 15 16 10 5 21" stroke="currentColor" stroke-width="2"/>
+                                        </svg>
+                                    </div>`
+                                }
+                                <input type="file" 
+                                       id="product-image-${card.id}" 
+                                       accept="image/*" 
+                                       style="display: none;"
+                                       onchange="handleProductImageUpload('${card.id}', this)">
+                            </div>
+                            <div class="ghost-product-content">
+                                <input type="text" 
+                                       class="ghost-product-title" 
+                                       placeholder="Product name"
+                                       value="${card.data.title || ''}"
+                                       onblur="updateCardData('${card.id}', 'title', this.value)"
+                                       oninput="markDirtySafe();">
+                                <textarea class="ghost-product-description" 
+                                          rows="2"
+                                          placeholder="Product description"
+                                          onblur="updateCardData('${card.id}', 'description', this.value)"
+                                          oninput="markDirtySafe();">${card.data.description || ''}</textarea>
+                                ${card.data.rating ? `
+                                    <div class="ghost-product-rating">
+                                        ${[1,2,3,4,5].map(star => `
+                                            <i class="ti ti-star${(card.data.rating || 0) >= star ? '-filled' : ''}"></i>
+                                        `).join('')}
+                                    </div>
+                                ` : ''}
+                                ${card.data.url && (card.data.buttonText || 'Check it out') ? `
+                                    <a href="${card.data.url}" target="_blank" class="ghost-product-button ${card.data.buttonStyle || 'primary'}">
+                                        ${card.data.buttonText || 'Check it out'}
+                                    </a>
+                                ` : ''}
+                            </div>
+                        </div>
+                        
+                        <div class="ghost-product-settings" id="productSettings-${card.id}">
+                            <div class="ghost-product-settings-row">
+                                <div class="ghost-setting-group">
+                                    <label>Button URL</label>
+                                    <input type="url" 
+                                           class="ghost-input" 
+                                           placeholder="https://example.com/product"
+                                           value="${card.data.url || ''}"
+                                           onblur="updateCardData('${card.id}', 'url', this.value)"
+                                           oninput="markDirtySafe();">
+                                </div>
+                                <div class="ghost-setting-group">
+                                    <label>Button text</label>
+                                    <input type="text" 
+                                           class="ghost-input" 
+                                           placeholder="Check it out"
+                                           value="${card.data.buttonText || ''}"
+                                           onblur="updateCardData('${card.id}', 'buttonText', this.value)"
+                                           oninput="markDirtySafe();">
+                                </div>
+                            </div>
+                            
+                            <div class="ghost-product-settings-row">
+                                <div class="ghost-setting-group full-width">
+                                    <label>Button style</label>
+                                    <div class="ghost-button-style-group">
+                                        <button type="button" 
+                                                class="ghost-style-button ${(card.data.buttonStyle || 'primary') === 'primary' ? 'active' : ''}"
+                                                onclick="updateCardData('${card.id}', 'buttonStyle', 'primary'); refreshCard('${card.id}')">
+                                            <span class="ghost-button-preview primary">Button</span>
+                                        </button>
+                                        <button type="button" 
+                                                class="ghost-style-button ${card.data.buttonStyle === 'secondary' ? 'active' : ''}"
+                                                onclick="updateCardData('${card.id}', 'buttonStyle', 'secondary'); refreshCard('${card.id}')">
+                                            <span class="ghost-button-preview secondary">Button</span>
+                                        </button>
+                                        <button type="button" 
+                                                class="ghost-style-button ${card.data.buttonStyle === 'outline' ? 'active' : ''}"
+                                                onclick="updateCardData('${card.id}', 'buttonStyle', 'outline'); refreshCard('${card.id}')">
+                                            <span class="ghost-button-preview outline">Button</span>
+                                        </button>
+                                        <button type="button" 
+                                                class="ghost-style-button ${card.data.buttonStyle === 'link' ? 'active' : ''}"
+                                                onclick="updateCardData('${card.id}', 'buttonStyle', 'link'); refreshCard('${card.id}')">
+                                            <span class="ghost-button-preview link">Button</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="ghost-product-settings-row">
+                                <div class="ghost-setting-group">
+                                    <label>Star rating</label>
+                                    <div class="ghost-rating-selector">
+                                        <button type="button" 
+                                                class="ghost-rating-toggle ${!card.data.rating ? 'active' : ''}"
+                                                onclick="updateProductRating('${card.id}', 0)">
+                                            <span>None</span>
+                                        </button>
+                                        ${[1,2,3,4,5].map(star => `
+                                            <button type="button" 
+                                                    class="ghost-rating-toggle ${card.data.rating === star ? 'active' : ''}"
+                                                    onclick="updateProductRating('${card.id}', ${star})">
+                                                <span>${star}</span>
+                                            </button>
+                                        `).join('')}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        } else {
+            return `
+                <div class="card-content text-center py-5">
+                    <div class="mb-3">
+                        <i class="ti ti-shopping-cart text-muted" style="font-size: 3rem;"></i>
+                    </div>
+                    <h5>Product Card</h5>
+                    <p class="text-muted mb-3">
+                        Showcase a product with image, title, description, and pricing.
+                    </p>
+                    <button type="button" 
+                            class="btn btn-primary"
+                            onclick="initializeProductCard('${card.id}')">
+                        <i class="ti ti-plus"></i> Set up product
+                    </button>
                 </div>
             `;
         }
@@ -2336,6 +3011,15 @@ allTags = tagsResult.success ? tagsResult.data : [];
             <div class="card-menu-item" onclick="insertCard('audio', this)">
                 <i class="ti ti-volume"></i>
                 <span>Audio</span>
+            </div>
+            <div class="card-menu-item" onclick="insertCard('file', this)">
+                <i class="ti ti-file"></i>
+                <span>File</span>
+            </div>
+            <div class="card-menu-category">Commerce</div>
+            <div class="card-menu-item" onclick="insertCard('product', this)">
+                <i class="ti ti-shopping-cart"></i>
+                <span>Product</span>
             </div>
         `;
         
@@ -3845,19 +4529,296 @@ allTags = tagsResult.success ? tagsResult.data : [];
     
     // Handle audio replacement
     function handleAudioReplace(cardId, input) {
-        // Same as upload but preserves title
+        // Same as upload but preserves metadata
         const card = contentCards.find(c => c.id === cardId);
         const title = card?.data?.title || '';
+        const caption = card?.data?.caption || '';
+        const loop = card?.data?.loop || false;
+        const showDownload = card?.data?.showDownload || false;
         
         handleAudioUpload(cardId, input);
         
-        // Restore title after upload
+        // Restore metadata after upload
         setTimeout(() => {
             const updatedCard = contentCards.find(c => c.id === cardId);
             if (updatedCard && updatedCard.data.src) {
                 updatedCard.data.title = title;
+                updatedCard.data.caption = caption;
+                updatedCard.data.loop = loop;
+                updatedCard.data.showDownload = showDownload;
             }
         }, 100);
+    }
+    
+    // Handle file upload
+    function handleFileUpload(cardId, input) {
+        const file = input.files[0];
+        if (!file) return;
+        
+        // Check file size (50MB limit for files)
+        const maxSize = 50 * 1024 * 1024; // 50MB
+        if (file.size > maxSize) {
+            const fileSizeMB = (file.size / (1024 * 1024)).toFixed(1);
+            const card = document.getElementById(cardId);
+            const contentDiv = card.querySelector('.card-content');
+            contentDiv.innerHTML = `
+                <div class="card-content text-center py-4">
+                    <div class="mb-3">
+                        <i class="ti ti-alert-circle text-warning" style="font-size: 3rem;"></i>
+                    </div>
+                    <h5>File Too Large</h5>
+                    <p class="text-muted mb-3">
+                        Your file is ${fileSizeMB}MB, but the limit is 50MB.
+                    </p>
+                    <div class="alert alert-info text-start">
+                        <strong>Options:</strong><br>
+                        • Use a file compression tool to reduce file size<br>
+                        • Upload to a cloud service and share the link<br>
+                        • Split large files into smaller parts<br>
+                        • Contact administrator to increase limits
+                    </div>
+                    <button type="button" 
+                            class="btn btn-primary"
+                            onclick="document.getElementById('file-upload-${cardId}').click()">
+                        <i class="ti ti-upload"></i> Try Different File
+                    </button>
+                    <input type="file" 
+                           id="file-upload-${cardId}" 
+                           style="display: none;"
+                           onchange="handleFileUpload('${cardId}', this)">
+                </div>
+            `;
+            return;
+        }
+        
+        // Show loading state
+        const card = document.getElementById(cardId);
+        const contentDiv = card.querySelector('.card-content');
+        contentDiv.innerHTML = `
+            <div class="text-center py-4">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="sr-only">Uploading...</span>
+                </div>
+                <div class="mt-2">Uploading file...</div>
+            </div>
+        `;
+        
+        // Create FormData
+        const formData = new FormData();
+        formData.append('file', file);
+        
+        // Upload file
+        fetch('/ghost/admin/ajax/upload-file.cfm', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.text();
+        })
+        .then(text => {
+            console.log('File upload response:', text);
+            try {
+                return JSON.parse(text);
+            } catch (e) {
+                console.error('JSON parse error:', e);
+                throw new Error('Server returned invalid response');
+            }
+        })
+        .then(data => {
+            if (data.success || data.SUCCESS) {
+                // Update card data
+                const fileCard = contentCards.find(c => c.id === cardId);
+                if (fileCard) {
+                    fileCard.data.src = data.url || data.URL;
+                    fileCard.data.fileName = data.fileName || data.FILENAME || file.name;
+                    fileCard.data.size = data.size || data.SIZE || file.size;
+                    refreshCard(cardId);
+                    markDirtySafe();
+                }
+            } else {
+                throw new Error(data.message || data.MESSAGE || 'Upload failed');
+            }
+        })
+        .catch(error => {
+            console.error('File upload error:', error);
+            
+            // Handle specific server errors
+            let errorMessage = error.message;
+            let suggestions = '';
+            
+            if (error.message.includes('413') || error.message.includes('Content Too Large')) {
+                errorMessage = 'File too large for server';
+                suggestions = `
+                    <div class="alert alert-info text-start mt-3">
+                        <strong>Server Upload Limit Reached</strong><br>
+                        • Try a smaller file (under 25MB)<br>
+                        • Use file compression to reduce size<br>
+                        • Upload to cloud storage and share the link<br>
+                        • Contact administrator to increase server limits
+                    </div>
+                `;
+            } else if (error.message.includes('Server returned invalid response')) {
+                errorMessage = 'Server configuration issue';
+                suggestions = `
+                    <div class="alert alert-warning text-start mt-3">
+                        <strong>Server Issue:</strong> The server returned an invalid response.<br>
+                        Please contact your administrator to check the server configuration.
+                    </div>
+                `;
+            }
+            
+            // Show error state
+            contentDiv.innerHTML = `
+                <div class="card-content text-center py-5">
+                    <div class="mb-3">
+                        <i class="ti ti-alert-circle text-danger" style="font-size: 3rem;"></i>
+                    </div>
+                    <div class="alert alert-danger mb-3">
+                        Upload Failed: ${errorMessage}
+                    </div>
+                    ${suggestions}
+                    <button type="button" 
+                            class="btn btn-primary"
+                            onclick="document.getElementById('file-upload-${cardId}').click()">
+                        <i class="ti ti-upload"></i> Try Different File
+                    </button>
+                    <input type="file" 
+                           id="file-upload-${cardId}" 
+                           style="display: none;"
+                           onchange="handleFileUpload('${cardId}', this)">
+                </div>
+            `;
+        });
+    }
+    
+    // Handle file replacement
+    function handleFileReplace(cardId, input) {
+        // Same as upload but preserves metadata
+        const card = contentCards.find(c => c.id === cardId);
+        const title = card?.data?.title || '';
+        const description = card?.data?.description || '';
+        
+        handleFileUpload(cardId, input);
+        
+        // Restore metadata after upload
+        setTimeout(() => {
+            const updatedCard = contentCards.find(c => c.id === cardId);
+            if (updatedCard && updatedCard.data.src) {
+                updatedCard.data.title = title;
+                updatedCard.data.description = description;
+            }
+        }, 100);
+    }
+    
+    // Initialize product card with default content
+    function initializeProductCard(cardId) {
+        const card = contentCards.find(c => c.id === cardId);
+        if (card) {
+            card.data.title = '';
+            card.data.description = '';
+            card.data.price = '';
+            card.data.url = '';
+            card.data.initialized = true; // Flag to show the form
+            refreshCard(cardId);
+            markDirtySafe();
+        }
+    }
+    
+    // Update product rating
+    function updateProductRating(cardId, rating) {
+        const card = contentCards.find(c => c.id === cardId);
+        if (card) {
+            card.data.rating = rating > 0 ? rating : null;
+            refreshCard(cardId);
+            markDirtySafe();
+        }
+    }
+    
+    // Get button class based on style
+    function getButtonClass(style) {
+        // This is no longer needed since we're using the style directly as a class
+        return style || 'primary';
+    }
+    
+    // Show product image upload
+    function showProductImageUpload(cardId) {
+        document.getElementById(`product-image-${cardId}`).click();
+    }
+    
+    // Handle product image upload
+    function handleProductImageUpload(cardId, input) {
+        const file = input.files[0];
+        if (!file) return;
+        
+        // Check file type
+        if (!file.type.startsWith('image/')) {
+            alert('Please select an image file');
+            return;
+        }
+        
+        // Check file size (10MB limit)
+        const maxSize = 10 * 1024 * 1024;
+        if (file.size > maxSize) {
+            alert('Image file too large. Please select an image under 10MB.');
+            return;
+        }
+        
+        // Show loading state
+        const card = document.getElementById(cardId);
+        const imageContainer = card.querySelector('.ghost-product-image-container');
+        imageContainer.innerHTML = `
+            <div class="text-center">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="sr-only">Uploading...</span>
+                </div>
+                <p class="text-muted mt-2">Uploading image...</p>
+            </div>
+        `;
+        
+        // Create FormData
+        const formData = new FormData();
+        formData.append('file', file);
+        
+        // Upload image
+        fetch('/ghost/admin/ajax/upload-image.cfm', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.text())
+        .then(text => {
+            try {
+                return JSON.parse(text);
+            } catch (e) {
+                throw new Error('Server returned invalid response');
+            }
+        })
+        .then(data => {
+            if (data.success || data.SUCCESS) {
+                // Update card data
+                const productCard = contentCards.find(c => c.id === cardId);
+                if (productCard) {
+                    const imageUrl = data.url || data.URL;
+                    productCard.data.image = imageUrl;
+                    refreshCard(cardId);
+                    markDirtySafe();
+                }
+            } else {
+                throw new Error(data.message || data.MESSAGE || 'Upload failed');
+            }
+        })
+        .catch(error => {
+            console.error('Product image upload error:', error);
+            alert('Failed to upload image: ' + error.message);
+            
+            // Reset image section
+            const productCard = contentCards.find(c => c.id === cardId);
+            if (productCard) {
+                refreshCard(cardId);
+            }
+        });
     }
     
     // Format duration helper
@@ -3872,6 +4833,39 @@ allTags = tagsResult.success ? tagsResult.data : [];
         } else {
             return `${minutes}:${secs.toString().padStart(2, '0')}`;
         }
+    }
+    
+    function getFileIcon(fileName) {
+        const extension = fileName.toLowerCase().split('.').pop();
+        
+        // Document types
+        if (['pdf'].includes(extension)) return 'ti-file-type-pdf';
+        if (['doc', 'docx'].includes(extension)) return 'ti-file-type-doc';
+        if (['xls', 'xlsx'].includes(extension)) return 'ti-file-type-xls';
+        if (['ppt', 'pptx'].includes(extension)) return 'ti-file-type-ppt';
+        if (['txt'].includes(extension)) return 'ti-file-text';
+        
+        // Archives
+        if (['zip', 'rar', '7z', 'tar', 'gz'].includes(extension)) return 'ti-file-zip';
+        
+        // Code files
+        if (['js', 'html', 'css', 'php', 'py', 'java', 'cpp', 'c'].includes(extension)) return 'ti-file-code';
+        
+        // Images (though these should probably use image card)
+        if (['jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg'].includes(extension)) return 'ti-photo';
+        
+        // Default file icon
+        return 'ti-file';
+    }
+    
+    function formatFileSize(bytes) {
+        if (bytes === 0) return '0 Bytes';
+        
+        const k = 1024;
+        const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
     }
     
     // Save post
@@ -3999,15 +4993,99 @@ allTags = tagsResult.success ? tagsResult.data : [];
                 case 'audio':
                     if (card.data.src) {
                         html += `<div class="kg-card kg-audio-card">`;
-                        html += `<audio src="${card.data.src}" controls preload="metadata"></audio>`;
+                        html += `<audio src="${card.data.src}" controls preload="metadata"${card.data.loop ? ' loop' : ''}></audio>`;
                         if (card.data.title) {
                             html += `<div class="kg-audio-title">${card.data.title}</div>`;
+                        }
+                        if (card.data.caption) {
+                            html += `<div class="kg-audio-caption">${card.data.caption}</div>`;
+                        }
+                        if (card.data.showDownload) {
+                            html += `<a class="kg-audio-download" href="${card.data.src}" download>Download</a>`;
                         }
                         html += `</div>\n`;
                         
                         if (card.data.title) {
-                            plaintext += card.data.title + '\n\n';
+                            plaintext += card.data.title + '\n';
                         }
+                        if (card.data.caption) {
+                            plaintext += card.data.caption + '\n';
+                        }
+                        plaintext += '\n';
+                    }
+                    break;
+                case 'file':
+                    if (card.data.src) {
+                        html += `<div class="kg-card kg-file-card">`;
+                        html += `<a href="${card.data.src}" class="kg-file-card-container">`;
+                        html += `<div class="kg-file-card-contents">`;
+                        html += `<div class="kg-file-card-title">${card.data.title || card.data.fileName || 'Download file'}</div>`;
+                        if (card.data.description) {
+                            html += `<div class="kg-file-card-caption">${card.data.description}</div>`;
+                        }
+                        if (card.data.size || card.data.fileName) {
+                            html += `<div class="kg-file-card-metadata">`;
+                            if (card.data.fileName && card.data.title) {
+                                html += `<div class="kg-file-card-filename">${card.data.fileName}</div>`;
+                            }
+                            if (card.data.size) {
+                                html += `<div class="kg-file-card-filesize">${formatFileSize(card.data.size)}</div>`;
+                            }
+                            html += `</div>`;
+                        }
+                        html += `</div>`;
+                        html += `</a>`;
+                        html += `</div>\n`;
+                        
+                        plaintext += (card.data.fileName || 'File') + '\n';
+                        if (card.data.description) {
+                            plaintext += card.data.description + '\n';
+                        }
+                        plaintext += '\n';
+                    }
+                    break;
+                case 'product':
+                    if (card.data.title || card.data.description || card.data.price || card.data.image) {
+                        html += `<div class="kg-card kg-product-card">`;
+                        if (card.data.image) {
+                            html += `<div class="kg-product-card-image">`;
+                            html += `<img src="${card.data.image}" alt="${card.data.title || 'Product'}" />`;
+                            html += `</div>`;
+                        }
+                        html += `<div class="kg-product-card-content">`;
+                        if (card.data.title) {
+                            html += `<h3 class="kg-product-card-title">${card.data.title}</h3>`;
+                        }
+                        if (card.data.description) {
+                            html += `<p class="kg-product-card-description">${card.data.description}</p>`;
+                        }
+                        if (card.data.price) {
+                            html += `<div class="kg-product-card-price">${card.data.price}</div>`;
+                        }
+                        if (card.data.rating) {
+                            html += `<div class="kg-product-card-rating">`;
+                            for (let i = 1; i <= 5; i++) {
+                                html += `<span class="rating-star ${i <= card.data.rating ? 'filled' : ''}">★</span>`;
+                            }
+                            html += ` <span class="rating-text">${card.data.rating}/5</span>`;
+                            html += `</div>`;
+                        }
+                        if (card.data.url) {
+                            const buttonText = card.data.buttonText || 'View Product';
+                            const buttonClass = card.data.buttonStyle ? `kg-product-button-${card.data.buttonStyle}` : 'kg-product-button-primary';
+                            html += `<a href="${card.data.url}" class="kg-product-card-button ${buttonClass}" target="_blank">${buttonText}</a>`;
+                        }
+                        html += `</div>`;
+                        html += `</div>\n`;
+                        
+                        plaintext += (card.data.title || 'Product') + '\n';
+                        if (card.data.description) {
+                            plaintext += card.data.description + '\n';
+                        }
+                        if (card.data.price) {
+                            plaintext += 'Price: ' + card.data.price + '\n';
+                        }
+                        plaintext += '\n';
                     }
                     break;
             }

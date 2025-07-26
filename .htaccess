@@ -1,0 +1,98 @@
+# Increase upload limits for large files (100MB)
+<IfModule mod_php7.c>
+    php_value upload_max_filesize 100M
+    php_value post_max_size 110M
+    php_value max_execution_time 600
+    php_value max_input_time 600
+    php_value memory_limit 256M
+    php_value max_file_uploads 20
+</IfModule>
+
+<IfModule mod_php8.c>
+    php_value upload_max_filesize 100M
+    php_value post_max_size 110M
+    php_value max_execution_time 600
+    php_value max_input_time 600
+    php_value memory_limit 256M
+    php_value max_file_uploads 20
+</IfModule>
+
+# For Apache 2.4+ mod_security
+<IfModule mod_security.c>
+    SecRequestBodyLimit 115343360
+    SecRequestBodyNoFilesLimit 115343360
+    SecRequestBodyInMemoryLimit 131072
+    SecRequestBodyAccess On
+    SecResponseBodyAccess Off
+</IfModule>
+
+# Core Apache limits
+LimitRequestBody 115343360
+LimitXMLRequestBody 115343360
+
+# Timeout settings
+TimeOut 600
+KeepAliveTimeout 600
+
+# Directory permissions
+<Directory "/var/www/sites/clitools.app/wwwroot/ghost">
+    Options Indexes FollowSymLinks
+    AllowOverride All
+    Require all granted
+    
+    # Specific upload directory permissions
+    <Directory "content">
+        Options -Indexes +FollowSymLinks
+        AllowOverride None
+        Require all granted
+    </Directory>
+</Directory>
+
+# File upload specific limits for Ghost admin
+<LocationMatch "^/ghost/admin/ajax/(upload-image|upload-video|upload-audio|upload-file)\.cfm$">
+    LimitRequestBody 115343360
+    SecRequestBodyLimit 115343360
+</LocationMatch>
+
+# Enable compression for text files
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json application/xml
+    DeflateCompressionLevel 6
+    DeflateWindowSize 15
+    DeflateMemLevel 9
+</IfModule>
+
+# Cache static assets
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType video/mp4 "access plus 1 month"
+    ExpiresByType video/webm "access plus 1 month"
+    ExpiresByType audio/mpeg "access plus 1 month"
+    ExpiresByType audio/mp3 "access plus 1 month"
+    ExpiresByType audio/wav "access plus 1 month"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+</IfModule>
+
+# Security headers
+<IfModule mod_headers.c>
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "no-referrer-when-downgrade"
+    
+    # CORS for uploads
+    Header always set Access-Control-Allow-Origin "*"
+    Header always set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+    Header always set Access-Control-Allow-Headers "Content-Type, Authorization, X-Requested-With"
+</IfModule>
+
+# Error handling for large uploads
+ErrorDocument 413 "File too large. Maximum size is 100MB."
+ErrorDocument 403 "Access forbidden. Check file permissions."
+ErrorDocument 500 "Server error during file upload."

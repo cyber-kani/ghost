@@ -6,6 +6,22 @@
 <cfset response = {success: false, message: "", url: ""}>
 
 <cftry>
+    <!--- Get upload type (profile, cover, or feature) --->
+    <cfset uploadType = structKeyExists(form, "type") ? form.type : "profile">
+    
+    <!--- Get user ID from session --->
+    <cfif structKeyExists(session, "USERID") and len(session.USERID)>
+        <cfset userId = session.USERID>
+    <cfelseif structKeyExists(session, "userId") and len(session.userId)>
+        <cfset userId = session.userId>
+    <cfelse>
+        <cfset response.message = "User not logged in">
+        <cfset response.MESSAGE = response.message>
+        <cflog file="ghost-upload" text="Upload failed: User not logged in">
+        <cfoutput>#serializeJSON(response)#</cfoutput>
+        <cfabort>
+    </cfif>
+    
     <!--- Debug: Log what we received --->
     <cflog file="ghost-upload" text="Upload request received. Form fields: #structKeyList(form)#">
     
@@ -20,9 +36,14 @@
         <!--- We have a file, proceed with upload logic --->
         <cflog file="ghost-upload" text="File field found: #form.file#">
         
-        <!--- Define upload directory - use main site images directory for public access --->
-        <cfset uploadDir = "/var/www/sites/cloudcoder.dev/wwwroot/assets/images/">
-        <cfset webPath = "/assets/images/">
+        <!--- Define upload directory based on upload type --->
+        <cfif uploadType eq "feature">
+            <cfset uploadDir = "/var/www/sites/clitools.app/wwwroot/ghost/content/images/posts/">
+            <cfset webPath = "/ghost/content/images/posts/">
+        <cfelse>
+            <cfset uploadDir = "/var/www/sites/clitools.app/wwwroot/ghost/content/images/profile/">
+            <cfset webPath = "/ghost/content/images/profile/">
+        </cfif>
         
         <!--- Create directory if it doesn't exist --->
         <cfif not directoryExists(uploadDir)>
@@ -66,7 +87,7 @@
                 </cfcatch>
             </cftry>
             
-            <!--- Resize image if width exceeds 2000px --->
+            <!--- Always resize image if width exceeds 2000px to ensure consistency --->
             <cftry>
                 <cfimage action="info" source="#uploadedFilePath#" structName="imageInfo">
                 <cflog file="ghost-upload" text="Image info: width=#imageInfo.width#, height=#imageInfo.height#">
@@ -96,6 +117,31 @@
             <!--- Generate web-accessible URL --->
             <cfset imageUrl = webPath & uploadResult.serverFile>
             
+            <!--- Update user's profile image in database --->
+            <cftry>
+                <cfif uploadType eq "profile">
+                    <cfquery datasource="blog">
+                        UPDATE users 
+                        SET profile_image = <cfqueryparam value="#imageUrl#" cfsqltype="cf_sql_varchar">,
+                            updated_at = <cfqueryparam value="#now()#" cfsqltype="cf_sql_timestamp">,
+                            updated_by = <cfqueryparam value="#userId#" cfsqltype="cf_sql_varchar">
+                        WHERE id = <cfqueryparam value="#userId#" cfsqltype="cf_sql_varchar">
+                    </cfquery>
+                <cfelseif uploadType eq "cover">
+                    <cfquery datasource="blog">
+                        UPDATE users 
+                        SET cover_image = <cfqueryparam value="#imageUrl#" cfsqltype="cf_sql_varchar">,
+                            updated_at = <cfqueryparam value="#now()#" cfsqltype="cf_sql_timestamp">,
+                            updated_by = <cfqueryparam value="#userId#" cfsqltype="cf_sql_varchar">
+                        WHERE id = <cfqueryparam value="#userId#" cfsqltype="cf_sql_varchar">
+                    </cfquery>
+                </cfif>
+                <cflog file="ghost-upload" text="Database updated for #uploadType# image">
+                <cfcatch>
+                    <cflog file="ghost-upload" text="Failed to update database: #cfcatch.message#">
+                </cfcatch>
+            </cftry>
+            
             <cfset response.success = true>
             <cfset response.message = "Image uploaded successfully">
             <cfset response.url = imageUrl>
@@ -114,8 +160,10 @@
     </cfif>
     
     <cfcatch any>
-        <cfset response.message = "Error uploading image: " & cfcatch.message>
-        <cflog file="ghost-upload" text="Upload error: #cfcatch.message#">
+        <cfset response.message = "Error uploading image: " & cfcatch.message & " - " & cfcatch.detail>
+        <cfset response.detail = cfcatch.detail>
+        <cfset response.type = cfcatch.type>
+        <cflog file="ghost-upload" text="Upload error: #cfcatch.message# - #cfcatch.detail#">
     </cfcatch>
 </cftry>
 

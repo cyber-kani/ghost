@@ -6,7 +6,19 @@
 <cfparam name="url.originalPath" default="">
 <cfparam name="cgi.request_uri" default="">
 
-<!--- Initialize routing variables --->
+<!--- Clean up duplicate query parameters from nginx rewrite --->
+<cfif structKeyExists(url, "type") and find(",", url.type)>
+    <cfset url.type = listFirst(url.type, ",")>
+</cfif>
+<cfif structKeyExists(url, "page") and find(",", url.page)>
+    <cfset url.page = listFirst(url.page, ",")>
+</cfif>
+<cfif structKeyExists(url, "author") and find(",", url.author)>
+    <cfset url.author = listFirst(url.author, ",")>
+</cfif>
+<cfif structKeyExists(url, "search") and find(",", url.search)>
+    <cfset url.search = listFirst(url.search, ",")>
+</cfif>
 <cfset requestPath = "">
 <cfset templateFile = "">
 <cfset routeFound = false>
@@ -55,6 +67,25 @@
 
 <cfelseif requestPath eq "admin/posts">
     <cfset templateFile = "admin/posts.cfm">
+    <!--- Check for type parameter in URL scope (from query string) --->
+    <cfif structKeyExists(url, "type") and len(trim(url.type)) gt 0>
+        <!--- Type parameter already exists from query string, keep it --->
+    </cfif>
+    <cfset routeFound = true>
+
+<cfelseif requestPath eq "admin/posts/drafts">
+    <cfset templateFile = "admin/posts.cfm">
+    <cfset url.type = "draft">
+    <cfset routeFound = true>
+
+<cfelseif requestPath eq "admin/posts/published">
+    <cfset templateFile = "admin/posts.cfm">
+    <cfset url.type = "published">
+    <cfset routeFound = true>
+
+<cfelseif requestPath eq "admin/posts/scheduled">
+    <cfset templateFile = "admin/posts.cfm">
+    <cfset url.type = "scheduled">
     <cfset routeFound = true>
 
 <cfelseif requestPath eq "admin/posts/new">
@@ -65,7 +96,7 @@
 <cfelseif reFindNoCase("^admin/posts/edit/([a-zA-Z0-9-]+)/?$", requestPath)>
     <cfset postId = reReplaceNoCase(requestPath, "^admin/posts/edit/([a-zA-Z0-9-]+)/?$", "\1")>
     <cfset url.id = postId>
-    <cfset templateFile = "admin/posts/edit.cfm">
+    <cfset templateFile = "admin/posts/edit-ghost-style.cfm">
     <cfset routeFound = true>
 
 <cfelseif requestPath eq "admin/pages">
@@ -82,6 +113,22 @@
 
 <cfelseif requestPath eq "admin/settings">
     <cfset templateFile = "admin/settings.cfm">
+    <cfset routeFound = true>
+
+<cfelseif requestPath eq "admin/profile">
+    <cfset templateFile = "admin/profile.cfm">
+    <cfset routeFound = true>
+
+<cfelseif requestPath eq "admin/login">
+    <cfset templateFile = "admin/login.cfm">
+    <cfset routeFound = true>
+    
+<cfelseif requestPath eq "admin/logout">
+    <cfset templateFile = "admin/logout.cfm">
+    <cfset routeFound = true>
+
+<cfelseif requestPath eq "admin/setup-test-user">
+    <cfset templateFile = "admin/setup-test-user.cfm">
     <cfset routeFound = true>
 
 <!--- Settings with section parameter --->
@@ -172,9 +219,11 @@
         <!-- Debug Router Info:
         Original URI: #cgi.request_uri#
         Path Info: #url.path#  
+        Original Path: #url.originalPath#
         Parsed Path: #requestPath#
         Template File: #templateFile#
         Route Found: #routeFound#
+        URL Scope: #serializeJSON(url)#
         -->
     </cfoutput>
 </cfif>

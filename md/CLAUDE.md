@@ -4,40 +4,46 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This directory contains a CFML-based blog system built with ColdFusion, MySQL, and modern web technologies. The project follows object-oriented programming principles and is optimized for performance, SEO, and mobile responsiveness.
+This is CFGhost - a Ghost CMS-inspired content management system built using CFML (ColdFusion), designed to replicate Ghost's functionality and user experience. The project uses the Spike Tailwind Pro admin template for the UI.
 
 ## Technology Stack
 
-- **Server-Side**: CFML (ColdFusion) with CFC components
-- **Database**: MySQL (cc_prob database, "blog" datasource)
-- **Frontend Framework**: Fomantic-UI (https://fomantic-ui.com/)
-- **Design System**: Google Material3 + Apple UX Guidelines
-- **Animations**: GSAP (primary choice)
+- **Server-Side**: CFML (ColdFusion) on Lucee
+- **Database**: MySQL (cc_prod database, "blog" datasource)
+- **Frontend Framework**: TailwindCSS 3.4.3 with Spike Tailwind Pro template
+- **Design System**: Spike Admin Dashboard + CFGhost CMS patterns
+- **JavaScript**: Modern ES6+ with AJAX
 - **Web Server**: Nginx with Lucee on Tomcat
 
 ## Database Configuration
 
-- **Database**: `cc_prob` (MySQL)
+- **Database**: `cc_prod` (MySQL)
 - **Datasource Name**: `blog`
 - **Connection**: Configured in Lucee Administrator
+- **Important**: Always use datasource "blog" not "ghost_prod"
 
 ## Project Structure
 
 ```
-/var/www/sites/cloudcoder.dev/wwwroot/ghost/
-├── assets/                     # Frontend assets
-│   ├── css/                    # Stylesheets
-│   ├── js/                     # JavaScript files
-│   ├── images/                 # Image files (max 2000px width)
-│   └── videos/                 # Video assets
+/var/www/sites/clitools.app/wwwroot/ghost/    # CFGhost root directory
 ├── admin/                      # Admin interface
-│   └── assets/                 # Separate admin assets
-├── components/                 # CFC components
-├── includes/                   # Common includes (header/footer)
-├── logs/                       # Error and debug logs
-├── src/                        # References and downloaded sources
-├── testing/                    # All testing files
-└── config/                     # Configuration files
+│   ├── posts.cfm              # Posts management
+│   ├── profile.cfm            # User profile management
+│   ├── ajax/                  # AJAX handlers
+│   ├── includes/              # Common includes (header/footer)
+│   └── assets/                # Admin-specific assets
+├── content/                    # User-generated content
+│   └── images/
+│       └── profile/           # Profile images
+├── assets/                     # Frontend assets
+│   ├── css/                   # Stylesheets (TailwindCSS)
+│   ├── js/                    # JavaScript files
+│   └── images/                # Static images
+├── md/                        # Documentation
+├── src/                       # Source materials
+│   ├── ghost-source/          # Ghost CMS source code
+│   └── spike-tailwind-pro/    # Template files
+└── router.cfm                 # Main routing logic
 ```
 
 ## Development Guidelines
@@ -50,11 +56,13 @@ This directory contains a CFML-based blog system built with ColdFusion, MySQL, a
 - Enable/disable debug mode for development
 
 ### Frontend Standards
-- **Responsive Design**: Mobile-first approach
-- **Mobile Navigation**: Hamburger menu implementation
-- **Image Optimization**: Lazy loading, max 2000px width
-- **Button Consistency**: Same size regardless of text content
-- **Layout Consistency**: Single UI/UX pattern throughout
+- **CSS Framework**: TailwindCSS with Spike theme classes
+- **Component Library**: Spike Tailwind Pro components
+- **Icons**: Tabler Icons (ti ti-*) 
+- **Message Notifications**: Floating toast-style alerts
+- **Form Handling**: AJAX with real-time feedback
+- **Image Upload**: Automatic resizing for profiles
+- **Error Styling**: Consistent error messages with Tailwind classes
 
 ### SEO Optimization
 - SEO-optimized URLs without file extensions
@@ -70,9 +78,12 @@ This directory contains a CFML-based blog system built with ColdFusion, MySQL, a
 
 ## URL Structure
 
-- Clean URLs without file extensions
-- SEO-friendly routing
-- Examples: `/blog/post-title`, `/admin/dashboard`
+- Clean URLs without file extensions via router.cfm
+- SEO-friendly routing with single entry point
+- Examples: 
+  - `/ghost/admin/posts` - Posts listing
+  - `/ghost/admin/profile` - User profile
+  - `/ghost/admin/posts?type=published` - Filtered views
 
 ## Debug Configuration
 
@@ -84,10 +95,26 @@ This directory contains a CFML-based blog system built with ColdFusion, MySQL, a
 ## Design System
 
 ### UI Framework
-- **Primary**: Fomantic-UI components
-- **Design Language**: Google Material3
-- **UX Guidelines**: Apple Human Interface Guidelines
-- **Responsive**: Mobile-first breakpoints
+- **Primary**: Spike Tailwind Pro admin template
+- **CSS**: TailwindCSS 3.4.3
+- **Design Pattern**: CFGhost CMS interface
+- **Responsive**: Mobile-first with lg: breakpoints
+
+### Alert/Error Message Patterns
+Use consistent styling for all alert messages:
+```html
+<!-- Error -->
+<div class="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-6 flex items-center">
+    <i class="ti ti-alert-circle text-red-500 mr-2"></i>
+    <span class="text-sm font-medium">Error message</span>
+</div>
+
+<!-- Success -->
+<div class="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg mb-6 flex items-center">
+    <i class="ti ti-check-circle text-green-500 mr-2"></i>
+    <span class="text-sm font-medium">Success message</span>
+</div>
+```
 
 ### Layout Standards
 - Common header and footer across all pages
@@ -130,7 +157,23 @@ tail -f /var/www/sites/cloudcoder.dev/wwwroot/ghost/logs/error.log
 
 ## Security Considerations
 
-- No try-catch error handling (transparent error reporting)
-- Proper CSP headers via Nginx configuration
+- Parameterized queries with cfqueryparam
+- Input validation on all form submissions
+- File upload validation and size limits
+- Image resizing to prevent oversized uploads
 - Secure database connections
-- Input validation in CFC components
+
+## Recent Updates
+
+1. **Profile System**: Complete user profile management with image upload
+2. **Database Fix**: Updated datasource from "ghost_prod" to "blog"
+3. **UI Enhancements**: Floating notifications, Quick Stats dashboard
+4. **Header Integration**: Dynamic user data display with profile images
+5. **Form Features**: Auto-slug generation, character counters, live previews
+
+## Common Issues & Solutions
+
+1. **Datasource Error**: Always use datasource="blog" not "ghost_prod"
+2. **Form Submission**: Check for form fields, not just URL parameters
+3. **Image Upload**: Ensure /content/images/profile/ has write permissions
+4. **Message Display**: Use showMessage() function for consistent notifications

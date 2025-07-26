@@ -14,6 +14,14 @@ component {
     this.debuggingEnabled = true; // Will be configurable later
     this.enableRobustException = true;
     
+    // File upload settings - increased for large media files
+    this.requestTimeOut = 600; // 10 minutes for large file uploads
+    this.postParametersLimit = 100; // Allow more form fields
+    this.requestSize = 115343360; // 110MB in bytes (slightly larger than upload limit)
+    
+    // Set post size limits in onRequestStart
+    this.customTagPaths = "";
+    
     // Application mappings
     this.mappings["/components"] = expandPath("./components");
     this.mappings["/includes"] = expandPath("./includes");

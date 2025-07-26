@@ -221,10 +221,15 @@ allTags = tagsResult.success ? tagsResult.data : [];
             border-radius: 0.375rem;
             padding: 0.25rem;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            gap: 0.25rem;
         }
         
         .content-card:hover .content-card-toolbar {
             display: flex;
+        }
+        
+        .content-card-toolbar button {
+            margin: 0;
         }
         
         .add-card-button {

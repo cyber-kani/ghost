@@ -1096,6 +1096,7 @@ allTags = tagsResult.success ? tagsResult.data : [];
             border: 1px solid rgb(124 139 154 / 25%);
             overflow: hidden;
             color: #222;
+            min-height: 148px;
         }
         
         .kg-bookmark-content {
@@ -1199,8 +1200,19 @@ allTags = tagsResult.success ? tagsResult.data : [];
         
         .kg-bookmark-thumbnail {
             position: relative;
+            flex-basis: 24rem;
             flex-grow: 1;
             min-width: 33%;
+        }
+        
+        .kg-bookmark-thumbnail::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: block;
         }
         
         .kg-bookmark-thumbnail img {
@@ -1210,7 +1222,7 @@ allTags = tagsResult.success ? tagsResult.data : [];
             position: absolute;
             top: 0;
             left: 0;
-            border-radius: 0 2px 2px 0;
+            border-radius: 0 4px 4px 0;
         }
         
         .bookmark-card-content {
@@ -2698,7 +2710,35 @@ allTags = tagsResult.success ? tagsResult.data : [];
                     break;
                     
                 case 'figure':
-                    // Check if it's an image figure
+                    // Check for bookmark card first
+                    if (element.classList.contains('kg-bookmark-card')) {
+                        console.log('Found bookmark card in figure element');
+                        // Bookmark card
+                        const linkElement = element.querySelector('.kg-bookmark-container');
+                        const titleElement = element.querySelector('.kg-bookmark-title');
+                        const descriptionElement = element.querySelector('.kg-bookmark-description');
+                        const authorElement = element.querySelector('.kg-bookmark-author');
+                        const publisherElement = element.querySelector('.kg-bookmark-publisher');
+                        const thumbnailElement = element.querySelector('.kg-bookmark-thumbnail img');
+                        const iconElement = element.querySelector('.kg-bookmark-icon');
+                        
+                        if (linkElement) {
+                            const bookmarkData = {
+                                url: linkElement.href,
+                                title: titleElement?.textContent || '',
+                                description: descriptionElement?.textContent || '',
+                                author: authorElement?.textContent || '',
+                                publisher: publisherElement?.textContent || '',
+                                thumbnail: thumbnailElement?.src || '',
+                                icon: iconElement?.src || ''
+                            };
+                            console.log('Bookmark data:', bookmarkData);
+                            addCardInternal('bookmark', bookmarkData);
+                        }
+                        break;
+                    }
+                    
+                    // Check if it's an image or video figure
                     const img = element.querySelector('img');
                     const video = element.querySelector('video');
                     
@@ -2897,27 +2937,6 @@ allTags = tagsResult.success ? tagsResult.data : [];
                                 title: titleElement?.textContent || '',
                                 description: descriptionElement?.textContent || '',
                                 size: sizeElement ? parseFloat(sizeElement.textContent) * 1024 * 1024 : 0 // Convert MB to bytes
-                            });
-                        }
-                    } else if (element.classList.contains('kg-bookmark-card')) {
-                        // Bookmark card
-                        const linkElement = element.querySelector('.kg-bookmark-container');
-                        const titleElement = element.querySelector('.kg-bookmark-title');
-                        const descriptionElement = element.querySelector('.kg-bookmark-description');
-                        const authorElement = element.querySelector('.kg-bookmark-author');
-                        const publisherElement = element.querySelector('.kg-bookmark-publisher');
-                        const thumbnailElement = element.querySelector('.kg-bookmark-thumbnail img');
-                        const iconElement = element.querySelector('.kg-bookmark-icon');
-                        
-                        if (linkElement) {
-                            addCardInternal('bookmark', {
-                                url: linkElement.href,
-                                title: titleElement?.textContent || '',
-                                description: descriptionElement?.textContent || '',
-                                author: authorElement?.textContent || '',
-                                publisher: publisherElement?.textContent || '',
-                                thumbnail: thumbnailElement?.src || '',
-                                icon: iconElement?.src || ''
                             });
                         }
                     } else if (element.classList.contains('kg-embed-card')) {
@@ -3919,21 +3938,44 @@ allTags = tagsResult.success ? tagsResult.data : [];
                 return `
                     <div class="card-content bookmark-card-content">
                         <figure class="kg-card kg-bookmark-card">
-                            <a class="kg-bookmark-container" href="${card.data.url}" target="_blank">
+                            <a class="kg-bookmark-container" href="${escapeHtml(card.data.url)}" target="_blank">
                                 <div class="kg-bookmark-content">
-                                    <div class="kg-bookmark-title">${card.data.title || 'Untitled'}</div>
-                                    ${card.data.description ? `<div class="kg-bookmark-description">${card.data.description}</div>` : ''}
+                                    <div class="kg-bookmark-title">${escapeHtml(card.data.title || 'Untitled')}</div>
+                                    ${card.data.description ? `<div class="kg-bookmark-description">${escapeHtml(card.data.description)}</div>` : ''}
                                     <div class="kg-bookmark-metadata">
-                                        ${card.data.icon ? `<img class="kg-bookmark-icon" src="${card.data.icon}" alt="">` : ''}
-                                        ${card.data.publisher ? `<span class="kg-bookmark-author">${card.data.publisher}</span>` : ''}
-                                        ${card.data.author ? `<span class="kg-bookmark-publisher">${card.data.author}</span>` : ''}
+                                        ${card.data.icon ? `<img class="kg-bookmark-icon" src="${escapeHtml(card.data.icon)}" alt="" onerror="this.style.display='none'">` : ''}
+                                        ${card.data.publisher ? `<span class="kg-bookmark-author">${escapeHtml(card.data.publisher)}</span>` : ''}
+                                        ${card.data.author ? `<span class="kg-bookmark-publisher">${escapeHtml(card.data.author)}</span>` : ''}
                                     </div>
                                 </div>
                                 ${card.data.thumbnail ? `
                                     <div class="kg-bookmark-thumbnail">
-                                        <img src="${card.data.thumbnail}" alt="" onerror="this.style.display='none'">
+                                        <img src="${escapeHtml(card.data.thumbnail)}" alt="" onerror="this.style.display='none'">
                                     </div>
                                 ` : ''}
+                            </a>
+                        </figure>
+                        <div class="ghost-bookmark-settings" id="bookmarkSettings-${card.id}">
+                            <div class="text-center py-3">
+                                <button type="button" class="btn btn-sm btn-primary" onclick="showPostSelector('${card.id}')">
+                                    <i class="ti ti-file-text me-2"></i>Change published post
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                // If we have a URL but no metadata, still show the bookmark
+                return `
+                    <div class="card-content bookmark-card-content">
+                        <figure class="kg-card kg-bookmark-card">
+                            <a class="kg-bookmark-container" href="${card.data.url}" target="_blank">
+                                <div class="kg-bookmark-content">
+                                    <div class="kg-bookmark-title">${card.data.url}</div>
+                                    <div class="kg-bookmark-metadata">
+                                        <span class="kg-bookmark-author">Loading...</span>
+                                    </div>
+                                </div>
                             </a>
                         </figure>
                         <div class="ghost-bookmark-settings" id="bookmarkSettings-${card.id}">
@@ -6266,9 +6308,11 @@ allTags = tagsResult.success ? tagsResult.data : [];
         // Update card data
         updateCardData(cardId, 'url', url);
         updateCardData(cardId, 'title', title);
-        updateCardData(cardId, 'description', excerpt);
-        updateCardData(cardId, 'thumbnail', thumbnail);
+        updateCardData(cardId, 'description', excerpt || '');
+        updateCardData(cardId, 'thumbnail', thumbnail || '');
+        // For internal bookmarks, set the site name as publisher
         updateCardData(cardId, 'publisher', window.location.hostname);
+        updateCardData(cardId, 'author', '');
         updateCardData(cardId, 'icon', '/favicon.ico');
         
         // Re-render card

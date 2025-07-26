@@ -2,8 +2,7 @@
 <cfheader name="X-Content-Type-Options" value="nosniff">
 
 <!--- Check if user is logged in --->
-<!--- Temporarily disabled for debugging
-<cfif NOT structKeyExists(session, "user") OR NOT structKeyExists(session.user, "id")>
+<cfif NOT structKeyExists(session, "ISLOGGEDIN") OR NOT session.ISLOGGEDIN>
     <cfset response = {
         "success": false,
         "message": "Unauthorized access",
@@ -12,7 +11,6 @@
     <cfoutput>#serializeJSON(response)#</cfoutput>
     <cfabort>
 </cfif>
---->
 
 <cfset response = {
     "success": false,
@@ -44,12 +42,18 @@
             <cfset publishedDate = dateFormat(qPosts.published_at, "yyyy-mm-dd") & " " & timeFormat(qPosts.published_at, "HH:mm:ss")>
         </cfif>
         
+        <!--- Fix feature image URL --->
+        <cfset featureImage = qPosts.feature_image ?: "">
+        <cfif len(featureImage) AND featureImage CONTAINS "__GHOST_URL__">
+            <cfset featureImage = replace(featureImage, "__GHOST_URL__", "", "all")>
+        </cfif>
+        
         <cfset post = {
             "id": qPosts.id,
             "slug": qPosts.slug ?: "",
             "title": qPosts.title ?: "Untitled",
             "excerpt": "",
-            "feature_image": qPosts.feature_image ?: "",
+            "feature_image": featureImage,
             "published_at": publishedDate,
             "author": ""
         }>

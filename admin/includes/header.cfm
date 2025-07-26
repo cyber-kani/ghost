@@ -154,6 +154,10 @@
             outline: none !important;
         }
     </style>
+    
+    <!-- Ghost Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/ghost/favicon.svg">
+    <link rel="alternate icon" href="/ghost/favicon.ico">
 </head>
 
 <body class="DEFAULT_THEME bg-lightprimary dark:bg-darkbody">

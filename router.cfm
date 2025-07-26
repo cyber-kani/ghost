@@ -211,6 +211,13 @@
     <cfset templateFile = "blog/post.cfm">
     <cfset routeFound = true>
 
+<!--- Preview route --->
+<cfelseif reFindNoCase("^preview/([a-zA-Z0-9-]+)$", requestPath)>
+    <cfset postId = reReplaceNoCase(requestPath, "^preview/([a-zA-Z0-9-]+)$", "\1")>
+    <cfset url.id = postId>
+    <cfset templateFile = "admin/preview.cfm">
+    <cfset routeFound = true>
+
 </cfif>
 
 <!--- Debug output if debug mode is enabled --->

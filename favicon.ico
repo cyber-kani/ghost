@@ -1,0 +1,52 @@
+<!--- Creating a simple HTML file that will generate the favicon --->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generate Ghost Favicon</title>
+</head>
+<body>
+    <canvas id="canvas" width="32" height="32"></canvas>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Background circle
+        ctx.fillStyle = '#15171a';
+        ctx.beginPath();
+        ctx.arc(16, 16, 15, 0, Math.PI * 2);
+        ctx.fill();
+        
+        // Ghost shape
+        ctx.fillStyle = '#ffffff';
+        ctx.beginPath();
+        // Head
+        ctx.arc(16, 12, 8, Math.PI, 0);
+        // Body
+        ctx.rect(8, 12, 16, 10);
+        // Bottom waves
+        ctx.moveTo(8, 22);
+        ctx.quadraticCurveTo(10, 24, 12, 22);
+        ctx.quadraticCurveTo(14, 20, 16, 22);
+        ctx.quadraticCurveTo(18, 24, 20, 22);
+        ctx.quadraticCurveTo(22, 20, 24, 22);
+        ctx.lineTo(24, 12);
+        ctx.fill();
+        
+        // Eyes
+        ctx.fillStyle = '#15171a';
+        ctx.beginPath();
+        ctx.arc(12, 12, 1.5, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(20, 12, 1.5, 0, Math.PI * 2);
+        ctx.fill();
+        
+        // Convert to favicon
+        const link = document.createElement('a');
+        link.download = 'favicon.png';
+        link.href = canvas.toDataURL();
+        document.body.appendChild(link);
+        link.click();
+    </script>
+</body>
+</html>

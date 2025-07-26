@@ -37,6 +37,9 @@ component {
         application.version = "1.0.0";
         application.startTime = now();
         
+        // Load site configuration
+        include "/config/site.cfm";
+        
         // Log application start
         writeLog(
             file = "application", 

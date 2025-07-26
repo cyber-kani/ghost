@@ -2048,19 +2048,26 @@ allTags = tagsResult.success ? tagsResult.data : [];
                     </div>
                     
                     <div class="flex items-center gap-3">
-                        <!-- Preview button -->
-                        <button type="button" class="btn btn-outline-secondary" onclick="previewPost()">
-                            <i class="ti ti-eye me-2"></i>
-                            Preview
-                        </button>
-                        
-                        <!-- Publish/Update button -->
                         <cfif postData.status eq "published">
+                            <!-- Unpublish button for published posts -->
+                            <button type="button" class="btn btn-outline-secondary" onclick="unpublishPost()">
+                                <i class="ti ti-eye-off me-2"></i>
+                                Unpublish
+                            </button>
+                            
+                            <!-- Update button -->
                             <button type="button" class="btn btn-primary" onclick="updatePost()">
                                 <i class="ti ti-refresh me-2"></i>
                                 Update
                             </button>
                         <cfelse>
+                            <!-- Preview button for non-published posts -->
+                            <button type="button" class="btn btn-outline-secondary" onclick="previewPost()">
+                                <i class="ti ti-eye me-2"></i>
+                                Preview
+                            </button>
+                            
+                            <!-- Publish button -->
                             <button type="button" class="btn btn-primary" onclick="publishPost()">
                                 <i class="ti ti-send me-2"></i>
                                 Publish
@@ -2428,7 +2435,7 @@ allTags = tagsResult.success ? tagsResult.data : [];
     
     // Store original status
     let originalStatus = postData.status || postData.STATUS || 'draft';
-    console.log('Original status:', originalStatus, 'PostData:', postData);
+    // console.log('Original status:', originalStatus, 'PostData:', postData);
     
     // Fix feature image URL if it contains __GHOST_URL__
     const featureImage = postData.feature_image || postData.FEATURE_IMAGE;
@@ -2495,9 +2502,9 @@ allTags = tagsResult.success ? tagsResult.data : [];
         });
         
         // Parse existing HTML content into cards
-        console.log('PostData:', postData);
-        console.log('PostData.html:', postData.html);
-        console.log('PostData.HTML:', postData.HTML);
+        // console.log('PostData:', postData);
+        // console.log('PostData.html:', postData.html);
+        // console.log('PostData.HTML:', postData.HTML);
         
         // ColdFusion returns uppercase keys, so check both
         const htmlContent = postData.html || postData.HTML;
@@ -2526,10 +2533,10 @@ allTags = tagsResult.success ? tagsResult.data : [];
         
         // Clear dirty flag after initial load
         setTimeout(() => {
-            console.log('Clearing initialization flags - isDirty was:', isDirty);
+            // console.log('Clearing initialization flags - isDirty was:', isDirty);
             isDirty = false;
             isInitializing = false; // Allow marking dirty from now on
-            console.log('Initialization complete - isDirty:', isDirty, 'isInitializing:', isInitializing);
+            // console.log('Initialization complete - isDirty:', isDirty, 'isInitializing:', isInitializing);
             
             // Update save status based on original post status
             const saveStatus = document.getElementById('saveStatus');
@@ -2555,9 +2562,9 @@ allTags = tagsResult.success ? tagsResult.data : [];
             // If values are the same, ensure isDirty is false
             if (JSON.stringify(initialValues) === JSON.stringify(currentValues)) {
                 isDirty = false;
-                console.log('Values unchanged after init, ensuring isDirty is false');
+                // console.log('Values unchanged after init, ensuring isDirty is false');
             } else {
-                console.log('Values changed during init:', initialValues, 'vs', currentValues);
+                // console.log('Values changed during init:', initialValues, 'vs', currentValues);
             }
             
         }, 2000); // Increased timeout to ensure all initialization is complete including blur events
@@ -2601,7 +2608,7 @@ allTags = tagsResult.success ? tagsResult.data : [];
             if (cardElement) {
                 const editableElement = cardElement.querySelector('[contenteditable="true"]');
                 if (editableElement) {
-                    console.log('Focusing card element:', editableElement.id);
+                    // console.log('Focusing card element:', editableElement.id);
                     editableElement.focus();
                 }
             }
@@ -2610,7 +2617,7 @@ allTags = tagsResult.success ? tagsResult.data : [];
     
     // Parse HTML content into cards
     function parseHtmlToCards(html, isInitialLoad = false) {
-        console.log('parseHtmlToCards called with:', html);
+        // console.log('parseHtmlToCards called with:', html);
         
         // Set flag when creating cards initially
         if (isInitialLoad) {
@@ -2636,7 +2643,7 @@ allTags = tagsResult.success ? tagsResult.data : [];
         
         // Get all top-level elements
         const elements = tempDiv.children;
-        console.log('Found elements:', elements.length);
+        // console.log('Found elements:', elements.length);
         
         if (elements.length === 0) {
             // If no elements, treat as plain text
@@ -2712,7 +2719,7 @@ allTags = tagsResult.success ? tagsResult.data : [];
                 case 'figure':
                     // Check for bookmark card first
                     if (element.classList.contains('kg-bookmark-card')) {
-                        console.log('Found bookmark card in figure element');
+                        // console.log('Found bookmark card in figure element');
                         // Bookmark card
                         const linkElement = element.querySelector('.kg-bookmark-container');
                         const titleElement = element.querySelector('.kg-bookmark-title');
@@ -2732,7 +2739,7 @@ allTags = tagsResult.success ? tagsResult.data : [];
                                 thumbnail: thumbnailElement?.src || '',
                                 icon: iconElement?.src || ''
                             };
-                            console.log('Bookmark data:', bookmarkData);
+                            // console.log('Bookmark data:', bookmarkData);
                             addCardInternal('bookmark', bookmarkData);
                         }
                         break;
@@ -4382,29 +4389,29 @@ allTags = tagsResult.success ? tagsResult.data : [];
     
     // Delete card directly without confirmation (for keyboard shortcuts)
     function deleteCardDirectly(cardId) {
-        console.log('deleteCardDirectly called with cardId:', cardId);
-        console.log('Current contentCards length:', contentCards.length);
-        console.log('Current state - isDirty:', isDirty, 'isInitializing:', isInitializing);
+        // console.log('deleteCardDirectly called with cardId:', cardId);
+        // console.log('Current contentCards length:', contentCards.length);
+        // console.log('Current state - isDirty:', isDirty, 'isInitializing:', isInitializing);
         
         // Don't delete if it's the only card
         if (contentCards.length <= 1) {
-            console.log('Not deleting - only one card left');
+            // console.log('Not deleting - only one card left');
             return;
         }
         
         const element = document.getElementById(cardId);
         const cardIndex = contentCards.findIndex(c => c.id === cardId);
         
-        console.log('Card element found:', element);
-        console.log('Card index in array:', cardIndex);
+        // console.log('Card element found:', element);
+        // console.log('Card index in array:', cardIndex);
         
         if (!element) {
-            console.log('Card element not found in DOM, aborting deletion');
+            // console.log('Card element not found in DOM, aborting deletion');
             return;
         }
         
         if (cardIndex === -1) {
-            console.log('Card not found in contentCards array, aborting deletion');
+            // console.log('Card not found in contentCards array, aborting deletion');
             return;
         }
         
@@ -4493,29 +4500,29 @@ allTags = tagsResult.success ? tagsResult.data : [];
     function markDirty() {
         // Don't mark dirty during initialization
         if (isInitializing) {
-            console.log('markDirty called during initialization - ignoring');
+            // console.log('markDirty called during initialization - ignoring');
             return;
         }
         
         // Don't mark dirty during programmatic changes
         if (isProgrammaticChange) {
-            console.log('markDirty called during programmatic change - ignoring');
+            // console.log('markDirty called during programmatic change - ignoring');
             return;
         }
         
         // Don't mark dirty when creating cards initially
         if (isCreatingCards) {
-            console.log('markDirty called during card creation - ignoring');
+            // console.log('markDirty called during card creation - ignoring');
             return;
         }
         
         // Don't mark dirty if content hasn't been initialized yet
         if (contentCards.length === 0 && !document.getElementById('postTitle').value.trim()) {
-            console.log('markDirty called with no content - ignoring');
+            // console.log('markDirty called with no content - ignoring');
             return;
         }
         
-        console.log('markDirty called - setting isDirty to true', new Error().stack);
+        // console.log('markDirty called - setting isDirty to true', new Error().stack);
         isDirty = true;
         
         // Show unsaved changes for all posts
@@ -4561,7 +4568,7 @@ allTags = tagsResult.success ? tagsResult.data : [];
         document.addEventListener('click', function(e) {
             const link = e.target.closest('a');
             if (link && !link.target) {
-                console.log('Link clicked:', link.href, 'isDirty:', isDirty, 'isInitializing:', isInitializing);
+                // console.log('Link clicked:', link.href, 'isDirty:', isDirty, 'isInitializing:', isInitializing);
                 if (isDirty && !isInitializing) {
                     e.preventDefault();
                     pendingNavigation = link.href;
@@ -4859,7 +4866,7 @@ allTags = tagsResult.success ? tagsResult.data : [];
                 return response.text();
             })
             .then(text => {
-                console.log('Upload response:', text);
+                // console.log('Upload response:', text);
                 try {
                     return JSON.parse(text);
                 } catch (e) {
@@ -5136,7 +5143,7 @@ allTags = tagsResult.success ? tagsResult.data : [];
                             stream.addTrack(destination.stream.getAudioTracks()[0]);
                         }
                     } catch (e) {
-                        console.log('No audio track or audio processing failed');
+                        // console.log('No audio track or audio processing failed');
                     }
                 }
                 
@@ -5606,7 +5613,7 @@ allTags = tagsResult.success ? tagsResult.data : [];
                 return response.text();
             })
             .then(text => {
-                console.log('Upload response:', text);
+                // console.log('Upload response:', text);
                 try {
                     return JSON.parse(text);
                 } catch (e) {
@@ -5711,7 +5718,7 @@ allTags = tagsResult.success ? tagsResult.data : [];
             return response.text();
         })
         .then(text => {
-            console.log('Audio upload response:', text);
+            // console.log('Audio upload response:', text);
             try {
                 return JSON.parse(text);
             } catch (e) {
@@ -5878,7 +5885,7 @@ allTags = tagsResult.success ? tagsResult.data : [];
             return response.text();
         })
         .then(text => {
-            console.log('File upload response:', text);
+            // console.log('File upload response:', text);
             try {
                 return JSON.parse(text);
             } catch (e) {
@@ -6153,7 +6160,7 @@ allTags = tagsResult.success ? tagsResult.data : [];
                 }
             })
             .then(data => {
-                console.log('Posts response:', data);
+                // console.log('Posts response:', data);
                 if (data.success && data.posts && data.posts.length > 0) {
                     let modalHtml = `
                         <div class="modal fade" id="postSelectorModal" tabindex="-1">
@@ -6266,7 +6273,7 @@ allTags = tagsResult.success ? tagsResult.data : [];
                     });
                 } else {
                     alert('No published posts found. Please publish some posts first.');
-                    console.log('Response data:', data);
+                    // console.log('Response data:', data);
                 }
             })
             .catch(error => {
@@ -6521,7 +6528,7 @@ allTags = tagsResult.success ? tagsResult.data : [];
     }
     
     // Save post
-    function savePost(status, isAutosave = false) {
+    function savePost(status, isAutosave = false, callback = null) {
         return new Promise((resolve, reject) => {
             saveResolve = resolve;
             saveReject = reject;
@@ -6893,6 +6900,11 @@ allTags = tagsResult.success ? tagsResult.data : [];
                     saveResolve = null;
                     saveReject = null;
                 }
+                
+                // Call callback if provided
+                if (callback && typeof callback === 'function') {
+                    callback(data);
+                }
             } else {
                 showMessage(data.message || data.MESSAGE || 'Save failed', 'error');
                 
@@ -6991,10 +7003,113 @@ allTags = tagsResult.success ? tagsResult.data : [];
     // Update post
     function updatePost() {
         // Keep the original status for published posts
-        console.log('updatePost called, originalStatus:', originalStatus);
+        // console.log('updatePost called, originalStatus:', originalStatus);
         const statusToSave = originalStatus === 'published' ? 'published' : 'draft';
-        console.log('Saving with status:', statusToSave);
+        // console.log('Saving with status:', statusToSave);
         savePost(statusToSave);
+    }
+    
+    // Unpublish post
+    function unpublishPost() {
+        showUnpublishModal();
+    }
+    
+    // Show unpublish confirmation modal
+    function showUnpublishModal() {
+        // Create modal backdrop
+        const backdrop = document.createElement('div');
+        backdrop.className = 'fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center';
+        backdrop.id = 'unpublishModalBackdrop';
+        
+        // Create modal
+        const modal = document.createElement('div');
+        modal.className = 'bg-white rounded-lg shadow-xl max-w-sm w-full mx-4 transform transition-all border-2 border-gray-200';
+        modal.innerHTML = `
+            <div class="p-5">
+                <div class="flex items-center justify-center w-10 h-10 mx-auto bg-red-100 rounded-full mb-3">
+                    <i class="ti ti-eye-off text-red-600 text-lg"></i>
+                </div>
+                <h3 class="text-base font-semibold text-center text-gray-900 mb-2">Unpublish this post?</h3>
+                <p class="text-sm text-gray-600 text-center mb-4">
+                    This will revert the post to draft status and remove it from your site.
+                </p>
+                <div class="flex gap-2">
+                    <button type="button" 
+                            class="flex-1 btn btn-sm btn-outline-secondary" 
+                            onclick="closeUnpublishModal()">
+                        Cancel
+                    </button>
+                    <button type="button" 
+                            class="flex-1 btn btn-sm btn-danger" 
+                            onclick="executeUnpublish()">
+                        <i class="ti ti-eye-off me-1"></i>
+                        Unpublish
+                    </button>
+                </div>
+            </div>
+        `;
+        
+        backdrop.appendChild(modal);
+        document.body.appendChild(backdrop);
+        
+        // Animate in
+        setTimeout(() => {
+            modal.style.transform = 'scale(1)';
+            modal.style.opacity = '1';
+        }, 10);
+        
+        // Close on backdrop click
+        backdrop.addEventListener('click', function(e) {
+            if (e.target === backdrop) {
+                closeUnpublishModal();
+            }
+        });
+    }
+    
+    // Close unpublish modal
+    function closeUnpublishModal() {
+        const backdrop = document.getElementById('unpublishModalBackdrop');
+        if (backdrop) {
+            backdrop.remove();
+        }
+    }
+    
+    // Execute unpublish
+    function executeUnpublish() {
+        closeUnpublishModal();
+        
+        // Save as draft
+        savePost('draft', false, function() {
+            // Update the original status
+            originalStatus = 'draft';
+            
+            // Update UI to show draft buttons
+            const buttonContainer = document.querySelector('.flex.items-center.gap-3');
+            if (buttonContainer) {
+                buttonContainer.innerHTML = `
+                    <!-- Preview button for non-published posts -->
+                    <button type="button" class="btn btn-outline-secondary" onclick="previewPost()">
+                        <i class="ti ti-eye me-2"></i>
+                        Preview
+                    </button>
+                    
+                    <!-- Publish button -->
+                    <button type="button" class="btn btn-primary" onclick="publishPost()">
+                        <i class="ti ti-send me-2"></i>
+                        Publish
+                    </button>
+                `;
+            }
+            
+            // Update status badge
+            const statusBadge = document.querySelector('.badge');
+            if (statusBadge) {
+                statusBadge.className = 'badge bg-secondary text-white';
+                statusBadge.textContent = 'Draft';
+            }
+            
+            showMessage('Post unpublished successfully', 'success');
+        });
     }
     
     // Preview post
@@ -7002,8 +7117,269 @@ allTags = tagsResult.success ? tagsResult.data : [];
         // Save draft first
         savePost('draft', true);
         
-        // Open preview in new window
-        window.open('/ghost/preview/' + postData.id, '_blank');
+        // Show preview modal with options
+        showPreviewModal();
+    }
+    
+    // Show preview modal - Ghost style
+    function showPreviewModal() {
+        // Create full-screen preview modal like Ghost
+        const modal = document.createElement('div');
+        modal.id = 'previewModal';
+        modal.className = 'ghost-preview-modal';
+        modal.innerHTML = `
+            <div class="ghost-preview-header">
+                <div class="ghost-preview-header-content">
+                    <div class="ghost-preview-title">
+                        <h2>Preview</h2>
+                    </div>
+                    
+                    <div class="ghost-preview-controls">
+                        <!-- Format selector -->
+                        <div class="ghost-preview-format">
+                            <button type="button" class="ghost-preview-btn active" data-format="web" onclick="changePreviewFormat('web')">
+                                Web
+                            </button>
+                            ${postData.status !== 'published' ? `
+                            <button type="button" class="ghost-preview-btn" data-format="email" onclick="changePreviewFormat('email')">
+                                Email
+                            </button>` : ''}
+                        </div>
+                        
+                        <div class="ghost-preview-divider"></div>
+                        
+                        <!-- Device selector -->
+                        <div class="ghost-preview-device">
+                            <button type="button" class="ghost-preview-btn active" data-device="desktop" onclick="changePreviewDevice('desktop')">
+                                <i class="ti ti-device-desktop"></i>
+                            </button>
+                            <button type="button" class="ghost-preview-btn" data-device="mobile" onclick="changePreviewDevice('mobile')">
+                                <i class="ti ti-device-mobile"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="ghost-preview-divider"></div>
+                        
+                        <!-- Member status selector -->
+                        <select class="ghost-preview-select" id="previewMemberStatus" onchange="updatePreview()">
+                            <option value="public">Public visitor</option>
+                            <option value="free">Free member</option>
+                            <option value="paid">Paid member</option>
+                        </select>
+                    </div>
+                    
+                    <div class="ghost-preview-actions">
+                        <button type="button" class="btn btn-secondary" onclick="closePreviewModal()">
+                            Close
+                        </button>
+                        ${postData.status !== 'published' ? `
+                        <button type="button" class="btn btn-primary" onclick="closePreviewModal(); publishPost()">
+                            Publish
+                        </button>` : ''}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="ghost-preview-content">
+                <div class="ghost-preview-container" id="previewContainer">
+                    <iframe id="previewFrame" class="ghost-preview-iframe"></iframe>
+                </div>
+            </div>
+        `;
+        
+        document.body.appendChild(modal);
+        document.body.style.overflow = 'hidden';
+        
+        // Add styles for Ghost-like preview
+        if (!document.getElementById('ghostPreviewStyles')) {
+            const style = document.createElement('style');
+            style.id = 'ghostPreviewStyles';
+            style.innerHTML = `
+                .ghost-preview-modal {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: #f5f5f5;
+                    z-index: 9999;
+                    display: flex;
+                    flex-direction: column;
+                }
+                
+                .ghost-preview-header {
+                    background: #fff;
+                    border-bottom: 1px solid #e5e7eb;
+                    height: 64px;
+                    flex-shrink: 0;
+                }
+                
+                .ghost-preview-header-content {
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding: 0 24px;
+                }
+                
+                .ghost-preview-title h2 {
+                    margin: 0;
+                    font-size: 18px;
+                    font-weight: 600;
+                }
+                
+                .ghost-preview-controls {
+                    display: flex;
+                    align-items: center;
+                    gap: 16px;
+                }
+                
+                .ghost-preview-format,
+                .ghost-preview-device {
+                    display: flex;
+                    background: #f5f5f5;
+                    border-radius: 4px;
+                    padding: 2px;
+                }
+                
+                .ghost-preview-btn {
+                    background: transparent;
+                    border: none;
+                    padding: 6px 12px;
+                    font-size: 14px;
+                    cursor: pointer;
+                    border-radius: 3px;
+                    transition: all 0.2s;
+                }
+                
+                .ghost-preview-btn:hover {
+                    background: rgba(0,0,0,0.05);
+                }
+                
+                .ghost-preview-btn.active {
+                    background: #fff;
+                    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+                }
+                
+                .ghost-preview-divider {
+                    width: 1px;
+                    height: 24px;
+                    background: #e5e7eb;
+                }
+                
+                .ghost-preview-select {
+                    padding: 6px 12px;
+                    border: 1px solid #e5e7eb;
+                    border-radius: 4px;
+                    font-size: 14px;
+                    background: #fff;
+                }
+                
+                .ghost-preview-actions {
+                    display: flex;
+                    gap: 12px;
+                }
+                
+                .ghost-preview-content {
+                    flex: 1;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 40px;
+                    overflow: auto;
+                }
+                
+                .ghost-preview-container {
+                    width: 100%;
+                    height: 100%;
+                    max-width: 1200px;
+                    background: #fff;
+                    border-radius: 8px;
+                    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                    overflow: hidden;
+                    transition: all 0.3s ease;
+                }
+                
+                .ghost-preview-container.mobile {
+                    max-width: 375px;
+                    max-height: 812px;
+                    border: 12px solid #333;
+                    border-radius: 36px;
+                }
+                
+                .ghost-preview-iframe {
+                    width: 100%;
+                    height: 100%;
+                    border: none;
+                }
+                
+                .ghost-preview-loading {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 100%;
+                    font-size: 18px;
+                    color: #666;
+                }
+            `;
+            document.head.appendChild(style);
+        }
+        
+        // Load initial preview
+        updatePreview();
+    }
+    
+    // Update preview
+    function updatePreview() {
+        const memberStatus = document.getElementById('previewMemberStatus').value;
+        const iframe = document.getElementById('previewFrame');
+        const container = document.getElementById('previewContainer');
+        
+        // Show loading
+        iframe.style.display = 'none';
+        container.innerHTML = '<div class="ghost-preview-loading">Loading preview...</div>';
+        
+        // Load preview
+        setTimeout(() => {
+            container.innerHTML = '<iframe id="previewFrame" class="ghost-preview-iframe"></iframe>';
+            const newIframe = document.getElementById('previewFrame');
+            newIframe.src = `/ghost/preview-public.cfm?id=${postData.id}&member_status=${memberStatus}`;
+            newIframe.onload = () => {
+                newIframe.style.display = 'block';
+            };
+        }, 100);
+    }
+    
+    // Change preview format
+    function changePreviewFormat(format) {
+        document.querySelectorAll('.ghost-preview-format .ghost-preview-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.format === format);
+        });
+        
+        if (format === 'email') {
+            showMessage('Email preview coming soon', 'info');
+        }
+    }
+    
+    // Change preview device
+    function changePreviewDevice(device) {
+        document.querySelectorAll('.ghost-preview-device .ghost-preview-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.device === device);
+        });
+        
+        const container = document.getElementById('previewContainer');
+        container.classList.toggle('mobile', device === 'mobile');
+        
+        updatePreview();
+    }
+    
+    // Close preview modal
+    function closePreviewModal() {
+        const modal = document.getElementById('previewModal');
+        if (modal) {
+            modal.remove();
+            document.body.style.overflow = '';
+        }
     }
     
     // Delete post
@@ -7354,8 +7730,8 @@ allTags = tagsResult.success ? tagsResult.data : [];
     
     // Handle keyboard shortcuts
     document.addEventListener('keydown', function(e) {
-        console.log('Keydown event:', e.key, 'Active element:', document.activeElement);
-        console.log('Current state - isDirty:', isDirty, 'isInitializing:', isInitializing);
+        // console.log('Keydown event:', e.key, 'Active element:', document.activeElement);
+        // console.log('Current state - isDirty:', isDirty, 'isInitializing:', isInitializing);
         
         const activeElement = document.activeElement;
         
@@ -7367,7 +7743,7 @@ allTags = tagsResult.success ? tagsResult.data : [];
         if (activeElement && activeElement.classList.contains('card-content') && activeElement.id.startsWith('content-')) {
             cardElement = activeElement;
             cardId = activeElement.id.replace('content-', '');
-            console.log('Found contenteditable card:', cardId);
+            // console.log('Found contenteditable card:', cardId);
         }
         // Check if activeElement is inside a card (look for card with id starting with 'card-')
         else if (activeElement) {
@@ -7375,16 +7751,16 @@ allTags = tagsResult.success ? tagsResult.data : [];
             if (parentCard) {
                 cardElement = parentCard;
                 cardId = parentCard.id;
-                console.log('Found parent card:', cardId);
+                // console.log('Found parent card:', cardId);
             }
         }
         
-        console.log('Card detection result:', { cardElement, cardId });
+        // console.log('Card detection result:', { cardElement, cardId });
         
         // Special case: if no card is focused but we pressed delete/backspace, 
         // try to find and delete empty cards more aggressively
         if (!cardElement && (e.key === 'Backspace' || e.key === 'Delete')) {
-            console.log('No card focused, looking for empty cards to delete');
+            // console.log('No card focused, looking for empty cards to delete');
             
             // Find all truly empty cards
             const emptyCards = contentCards.filter(card => {
@@ -7396,16 +7772,16 @@ allTags = tagsResult.success ? tagsResult.data : [];
                 const cleanContent = content.replace(/\s/g, '').replace(/\u00A0/g, '');
                 const cleanHTML = innerHTML.replace(/<br\s*\/?>/gi, '').replace(/&nbsp;/g, '').trim();
                 
-                console.log(`Card ${card.id}: content="${content}", cleanContent="${cleanContent}", cleanHTML="${cleanHTML}"`);
+                // console.log(`Card ${card.id}: content="${content}", cleanContent="${cleanContent}", cleanHTML="${cleanHTML}"`);
                 
                 return cleanContent === '' && (cleanHTML === '' || cleanHTML === '<br>' || cleanHTML === '<br/>' || cleanHTML === '<br />');
             });
             
-            console.log('Found empty cards:', emptyCards.length);
+            // console.log('Found empty cards:', emptyCards.length);
             
             // If we have empty cards and more than one card total, delete the first empty one
             if (emptyCards.length > 0 && contentCards.length > 1) {
-                console.log('Deleting first empty card:', emptyCards[0].id);
+                // console.log('Deleting first empty card:', emptyCards[0].id);
                 e.preventDefault();
                 deleteCardDirectly(emptyCards[0].id);
                 return;
@@ -7423,22 +7799,22 @@ allTags = tagsResult.success ? tagsResult.data : [];
                     const selection = window.getSelection();
                     
                     // Debug logging
-                    console.log('Delete key pressed on contenteditable:', e.key);
-                    console.log('CardId:', cardId);
-                    console.log('Content:', content);
-                    console.log('Content trimmed:', content.trim());
-                    console.log('InnerHTML:', innerHTML);
+                    // console.log('Delete key pressed on contenteditable:', e.key);
+                    // console.log('CardId:', cardId);
+                    // console.log('Content:', content);
+                    // console.log('Content trimmed:', content.trim());
+                    // console.log('InnerHTML:', innerHTML);
                     
                     // Check if content is effectively empty (including <br> tags and &nbsp;)
                     const cleanContent = content.replace(/\s/g, '').replace(/\u00A0/g, ''); // Remove all whitespace and &nbsp;
                     const cleanHTML = innerHTML.replace(/<br\s*\/?>/gi, '').replace(/&nbsp;/g, '').trim();
                     
-                    console.log('Clean content:', cleanContent);
-                    console.log('Clean HTML:', cleanHTML);
+                    // console.log('Clean content:', cleanContent);
+                    // console.log('Clean HTML:', cleanHTML);
                     
                     // Case 1: Delete if content is empty
                     if (cleanContent === '' || cleanHTML === '' || content.trim() === '') {
-                        console.log('Deleting empty card:', cardId);
+                        // console.log('Deleting empty card:', cardId);
                         e.preventDefault();
                         deleteCardDirectly(cardId);
                         return;
@@ -7446,7 +7822,7 @@ allTags = tagsResult.success ? tagsResult.data : [];
                     
                     // Also check for common empty content patterns
                     if (innerHTML === '<br>' || innerHTML === '<br/>' || innerHTML === '<br />') {
-                        console.log('Deleting card with only br tag:', cardId);
+                        // console.log('Deleting card with only br tag:', cardId);
                         e.preventDefault();
                         deleteCardDirectly(cardId);
                         return;
@@ -7454,7 +7830,7 @@ allTags = tagsResult.success ? tagsResult.data : [];
                     
                     // Case 2: For Ctrl/Cmd + Backspace or Ctrl/Cmd + Delete - show confirmation for card with content
                     if ((e.ctrlKey || e.metaKey) && (e.key === 'Backspace' || e.key === 'Delete')) {
-                        console.log('Ctrl/Cmd + Delete pressed on card with content:', cardId);
+                        // console.log('Ctrl/Cmd + Delete pressed on card with content:', cardId);
                         e.preventDefault();
                         deleteCard(cardId); // Use the regular delete function with confirmation
                         return;
@@ -7466,7 +7842,7 @@ allTags = tagsResult.success ? tagsResult.data : [];
                         if (range.collapsed && range.startOffset === 0) {
                             // We're at the very beginning - delete empty card or merge with previous
                             if (content.trim() === '') {
-                                console.log('Deleting empty card at beginning:', cardId);
+                                // console.log('Deleting empty card at beginning:', cardId);
                                 e.preventDefault();
                                 deleteCardDirectly(cardId);
                                 return;
@@ -7480,7 +7856,7 @@ allTags = tagsResult.success ? tagsResult.data : [];
                         if (range.collapsed && range.startOffset >= content.length) {
                             // We're at the very end - delete empty card or merge with next
                             if (content.trim() === '') {
-                                console.log('Deleting empty card at end:', cardId);
+                                // console.log('Deleting empty card at end:', cardId);
                                 e.preventDefault();
                                 deleteCardDirectly(cardId);
                                 return;
@@ -7493,13 +7869,13 @@ allTags = tagsResult.success ? tagsResult.data : [];
                     // Check if it's an empty media card or similar
                     const card = contentCards.find(c => c.id === cardId);
                     if (card) {
-                        console.log('Delete key pressed on non-editable card:', cardId, card.type);
+                        // console.log('Delete key pressed on non-editable card:', cardId, card.type);
                         // For image/video/audio cards without content, allow deletion
                         if ((card.type === 'image' && !card.data.src) || 
                             (card.type === 'video' && !card.data.src) || 
                             (card.type === 'audio' && !card.data.src) ||
                             card.type === 'divider') {
-                            console.log('Deleting empty media card:', cardId);
+                            // console.log('Deleting empty media card:', cardId);
                             e.preventDefault();
                             deleteCardDirectly(cardId);
                             return;

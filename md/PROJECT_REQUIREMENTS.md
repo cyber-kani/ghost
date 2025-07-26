@@ -1,20 +1,21 @@
-# CFML Blog System - Project Requirements
+# CFGhost - Ghost CMS CFML Implementation Requirements
 
 ## Database Specifications
 
 ### Primary Database
-- **Database Name**: `cc_prob` (MySQL)
+- **Database Name**: `cc_prod` (MySQL)
 - **CFML Datasource**: `blog`
 - **Configuration**: Must be configured in Lucee Administrator
-- **Exclusive Use**: Only use MySQL cc_prob database for this project
+- **Exclusive Use**: Only use MySQL cc_prod database for this project
 
 ## Frontend Framework & Design
 
 ### UI Framework
-- **Primary Framework**: [Fomantic-UI](https://fomantic-ui.com/)
-- **Design System**: Google Material3 design principles
-- **UX Guidelines**: Apple User Experience Guidelines
-- **Responsive**: Mobile-first approach with hamburger menu
+- **Primary Framework**: TailwindCSS 3.4.3 with Spike Tailwind Pro template
+- **Secondary Framework**: Bootstrap 5 (for modals and components)
+- **Design System**: Ghost CMS-inspired interface with card-based editor
+- **UX Guidelines**: Modern content management best practices
+- **Responsive**: Mobile-first approach with responsive breakpoints
 
 ### Visual Standards
 - **Button Consistency**: All buttons same size regardless of text content - do not change button size depending on text
@@ -38,26 +39,41 @@
 ## Project Directory Structure
 
 ### Working Directory
-- **Base Path**: `/var/www/sites/cloudcoder.dev/wwwroot/ghost/`
+- **Base Path**: `/var/www/sites/clitools.app/wwwroot/ghost/`
+- **Domain**: `https://clitools.app/ghost/`
 - **Constraint**: Work ONLY within this directory
 
 ### Folder Organization
 ```
-/var/www/sites/cloudcoder.dev/wwwroot/ghost/
+/var/www/sites/clitools.app/wwwroot/ghost/
 ├── assets/                     # Main frontend assets
 │   ├── css/                    # Stylesheets
 │   ├── js/                     # JavaScript files
 │   ├── images/                 # Images (max 2000px width)
 │   └── videos/                 # Video files
 ├── admin/                      # Admin interface
+│   ├── posts/                  # Posts management
+│   │   └── edit-ghost-style.cfm # Ghost-style editor
+│   ├── ajax/                   # AJAX handlers
+│   ├── includes/               # Common includes
 │   └── assets/                 # Separate admin assets folder
+├── content/                    # User-generated content
+│   └── images/                 # Uploaded images
+│       ├── profile/            # Profile images
+│       └── 2025/               # Year-based organization
 ├── components/                 # CFC components
-├── includes/                   # Header/footer includes
 ├── logs/                       # Error and debug logs
 ├── src/                        # References & downloaded sources
+│   ├── ghost-source/           # Ghost CMS source code
+│   └── spike-tailwind-pro/     # Design template
 ├── testing/                    # All testing files
 ├── config/                     # Configuration files
-└── md/                         # All markdown files
+│   ├── firebase.cfm            # Firebase config
+│   └── oauth.cfm               # OAuth settings
+├── md/                         # All markdown files
+├── router.cfm                  # URL routing
+├── index.cfm                   # Entry point
+└── Application.cfc             # Application config
 ```
 
 ## Image & Media Standards
@@ -88,8 +104,9 @@
 ## Animation & Interaction
 
 ### Animation Framework
-- **Primary Choice**: GSAP (GreenSock Animation Platform) - use GSAP first before checking other options
-- **Fallback**: Only consider other options after GSAP evaluation
+- **Primary Choice**: CSS transitions and animations
+- **JavaScript**: Modern ES6+ for interactive components
+- **Editor Features**: Drag & drop, inline toolbars, card interactions
 - **Performance**: Ensure smooth animations on all devices
 
 ### Mobile Interactions
@@ -110,6 +127,14 @@
 - **Log Files**: Keep logs inside logs folder
 - **Error Logging**: Always log errors to files in `logs/` folder
 
+## Authentication & Session Management
+
+### Authentication Methods
+- **Primary**: Firebase Google OAuth
+- **Secondary**: Email/password with SHA-256 hashing
+- **Session Variables**: Use uppercase (ISLOGGEDIN, USERID)
+- **User Roles**: Owner, Administrator, Editor, Author, Contributor
+
 ## Security & Server Configuration
 
 ### Content Security Policy (CSP)
@@ -127,6 +152,32 @@
 - **Testing Location**: All testing MUST be done inside testing folder
 - **Clean Folders**: Keep main folders clean
 - **Separation**: Separate test environments from production code
+
+## Ghost-Style Editor Implementation
+
+### Content Card Types (15 Implemented)
+1. **Paragraph Card**: Rich text with inline formatting toolbar
+2. **Heading Card**: H1-H6 support with size selector
+3. **Image Card**: Upload, captions, alt text, width settings
+4. **Video Card**: YouTube/Vimeo embeds, width and loop settings
+5. **Audio Card**: Audio file upload with custom player
+6. **File Card**: Document uploads with download interface
+7. **Product Card**: E-commerce cards with ratings and CTAs
+8. **Bookmark Card**: Internal post links with preview
+9. **Callout Card**: Highlighted content with emoji icons
+10. **Toggle Card**: Expandable/collapsible content
+11. **Embed Card**: Social media and third-party embeds
+12. **Markdown Card**: Markdown editor with preview
+13. **HTML Card**: Raw HTML input
+14. **Divider Card**: Section separators
+15. **Button Card**: CTA buttons with styles
+
+### Editor Features
+- **Drag & Drop**: Card reordering and file uploads
+- **Autosave**: Automatic saving with visual feedback
+- **Unsaved Changes Detection**: Prevents data loss
+- **Real-time Preview**: Live content preview
+- **Post Settings**: SEO, scheduling, tags, excerpts
 
 ### Code Organization
 - **Source Files**: Keep all reference and downloaded source in src folder
@@ -169,3 +220,29 @@
 - **Cross-Browser**: Ensure compatibility across browsers
 - **Performance Testing**: Regular performance optimization checks
 - **SEO Validation**: Regular SEO optimization validation
+
+## Recent Implementation Status
+
+### ✅ Completed Features
+- Ghost-style post editor with all 15 card types
+- Authentication system (Google OAuth + email/password)
+- User profile management with image upload
+- Clean URL routing system
+- Posts management with filtering
+- Autosave and unsaved changes detection
+- SEO meta settings
+- Drag & drop functionality
+- Real-time preview
+
+### 🚧 In Progress
+- Preview page improvements
+- Header card implementation
+- Gallery card implementation
+- Call to Action card implementation
+
+### ❌ Not Started
+- Social media preview cards
+- Newsletter functionality
+- Membership system
+- API endpoints
+- Analytics integration

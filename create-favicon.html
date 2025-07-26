@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ghost Favicon Generator</title>
+</head>
+<body>
+    <h1>Ghost Favicon Preview</h1>
+    <canvas id="canvas" width="64" height="64" style="border: 1px solid #ccc; image-rendering: pixelated; width: 256px; height: 256px;"></canvas>
+    <br><br>
+    <canvas id="canvas32" width="32" height="32" style="border: 1px solid #ccc; image-rendering: pixelated; width: 128px; height: 128px;"></canvas>
+    <br><br>
+    <canvas id="canvas16" width="16" height="16" style="border: 1px solid #ccc; image-rendering: pixelated; width: 64px; height: 64px;"></canvas>
+    <br><br>
+    <button onclick="downloadPNG()">Download PNG</button>
+    
+    <script>
+        function drawGhost(canvas) {
+            const ctx = canvas.getContext('2d');
+            const size = canvas.width;
+            const scale = size / 32;
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, size, size);
+            
+            // Background circle
+            ctx.fillStyle = '#15171a';
+            ctx.beginPath();
+            ctx.arc(size/2, size/2, size/2 - scale, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Ghost shape
+            ctx.fillStyle = '#ffffff';
+            ctx.beginPath();
+            
+            // Head (dome)
+            ctx.arc(size/2, size/2 - 2*scale, 7*scale, Math.PI, 0);
+            
+            // Body
+            ctx.lineTo(size/2 + 7*scale, size/2 + 6*scale);
+            
+            // Bottom waves
+            const waveBottom = size/2 + 8*scale;
+            const waveHeight = 2*scale;
+            const waveCount = 3;
+            const waveWidth = 14*scale / waveCount;
+            
+            for (let i = waveCount; i >= 0; i--) {
+                const x = size/2 - 7*scale + i * waveWidth;
+                if (i === waveCount) {
+                    ctx.lineTo(x, waveBottom - waveHeight);
+                } else {
+                    ctx.quadraticCurveTo(
+                        x + waveWidth/2, 
+                        waveBottom + (i % 2 === 0 ? -waveHeight : 0),
+                        x, 
+                        waveBottom - waveHeight
+                    );
+                }
+            }
+            
+            ctx.closePath();
+            ctx.fill();
+            
+            // Eyes
+            ctx.fillStyle = '#15171a';
+            // Left eye
+            ctx.beginPath();
+            ctx.arc(size/2 - 3*scale, size/2 - 2*scale, 1.2*scale, 0, Math.PI * 2);
+            ctx.fill();
+            // Right eye
+            ctx.beginPath();
+            ctx.arc(size/2 + 3*scale, size/2 - 2*scale, 1.2*scale, 0, Math.PI * 2);
+            ctx.fill();
+        }
+        
+        // Draw on all canvases
+        drawGhost(document.getElementById('canvas'));
+        drawGhost(document.getElementById('canvas32'));
+        drawGhost(document.getElementById('canvas16'));
+        
+        function downloadPNG() {
+            const canvas = document.getElementById('canvas32');
+            const link = document.createElement('a');
+            link.download = 'ghost-favicon.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+    </script>
+</body>
+</html>

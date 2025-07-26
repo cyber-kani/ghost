@@ -40,6 +40,12 @@
         <cfif uploadType eq "feature">
             <cfset uploadDir = "/var/www/sites/clitools.app/wwwroot/ghost/content/images/posts/">
             <cfset webPath = "/ghost/content/images/posts/">
+        <cfelseif uploadType eq "content">
+            <!--- Content images (from image cards) go to year/month folders --->
+            <cfset currentYear = year(now())>
+            <cfset currentMonth = numberFormat(month(now()), "00")>
+            <cfset uploadDir = "/var/www/sites/clitools.app/wwwroot/ghost/content/images/#currentYear#/#currentMonth#/">
+            <cfset webPath = "/ghost/content/images/#currentYear#/#currentMonth#/">
         <cfelse>
             <cfset uploadDir = "/var/www/sites/clitools.app/wwwroot/ghost/content/images/profile/">
             <cfset webPath = "/ghost/content/images/profile/">

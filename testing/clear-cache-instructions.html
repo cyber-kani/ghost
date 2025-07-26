@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clear Cache Instructions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .instruction {
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        code {
+            background: #e0e0e0;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        h2 {
+            color: #333;
+            margin-top: 30px;
+        }
+        .success {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Preview is Working! - Cache Clear Needed</h1>
+    
+    <p class="success">✅ The preview functionality has been fixed and is working correctly.</p>
+    
+    <p>The preview URL has been updated from <code>/ghost/preview/[postId]</code> to <code>/ghost/preview-public.cfm?id=[postId]</code></p>
+    
+    <h2>To see the fix, please clear your browser cache:</h2>
+    
+    <div class="instruction">
+        <h3>Chrome/Edge:</h3>
+        <p>Press <code>Ctrl + Shift + R</code> (Windows/Linux) or <code>Cmd + Shift + R</code> (Mac)</p>
+    </div>
+    
+    <div class="instruction">
+        <h3>Firefox:</h3>
+        <p>Press <code>Ctrl + Shift + R</code> (Windows/Linux) or <code>Cmd + Shift + R</code> (Mac)</p>
+    </div>
+    
+    <div class="instruction">
+        <h3>Safari:</h3>
+        <p>Press <code>Cmd + Option + R</code></p>
+    </div>
+    
+    <h2>Alternative: Open in Incognito/Private Window</h2>
+    <p>You can also test the editor in an incognito/private browser window to bypass cache.</p>
+    
+    <h2>Test Links:</h2>
+    <ul>
+        <li><a href="/ghost/admin/posts/edit/f7769ae6d71776fb5064fc52" target="_blank">Edit Post (after clearing cache)</a></li>
+        <li><a href="/ghost/preview-public.cfm?id=f7769ae6d71776fb5064fc52&member_status=public" target="_blank">Direct Preview Test</a></li>
+    </ul>
+</body>
+</html>

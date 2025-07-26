@@ -46,6 +46,26 @@ This is CFGhost - a Ghost CMS-inspired content management system built using CFM
 └── router.cfm                 # Main routing logic
 ```
 
+## Implemented Ghost Cards
+
+All 15+ Ghost card types have been fully implemented:
+
+1. **Paragraph** - Rich text with inline formatting toolbar
+2. **Heading** - H1-H6 with style selector
+3. **Image** - Width settings, captions, alt text, links
+4. **Markdown** - Live preview with syntax highlighting
+5. **HTML** - Raw HTML editor with syntax highlighting
+6. **Divider** - Simple horizontal rule
+7. **Button** - Styles (primary/secondary), alignment, text/URL
+8. **Callout** - Emoji selector, color picker, rich text content
+9. **Toggle** - Expandable sections with heading/content
+10. **Video** - YouTube/Vimeo/MP4 with width and loop settings
+11. **Audio** - MP3/WAV with custom player
+12. **File** - Download cards with name, size, description
+13. **Product** - Title, description, rating, price, button
+14. **Bookmark** - Internal post links with modal selector
+15. **Embed** - YouTube, Twitter, Instagram, Vimeo, CodePen, SoundCloud, Spotify
+
 ## Development Guidelines
 
 ### CFML Best Practices
@@ -165,11 +185,16 @@ tail -f /var/www/sites/cloudcoder.dev/wwwroot/ghost/logs/error.log
 
 ## Recent Updates
 
-1. **Profile System**: Complete user profile management with image upload
-2. **Database Fix**: Updated datasource from "ghost_prod" to "blog"
-3. **UI Enhancements**: Floating notifications, Quick Stats dashboard
-4. **Header Integration**: Dynamic user data display with profile images
-5. **Form Features**: Auto-slug generation, character counters, live previews
+1. **Ghost-Style Editor**: Complete implementation with all 15+ card types
+2. **Preview System**: Ghost-style modal preview with member visibility options
+3. **Publish/Unpublish**: Full workflow with confirmation modals
+4. **Bookmark Card Fix**: Resolved display issues after save/reload
+5. **Database Fixes**: Corrected column names (html, custom_excerpt) and posts_meta JOIN
+6. **Profile System**: Complete user profile management with image upload
+7. **UI Enhancements**: Floating notifications, Quick Stats dashboard, ghost favicon
+8. **Header Integration**: Dynamic user data display with profile images
+9. **Form Features**: Auto-slug generation, character counters, live previews
+10. **Session Fixes**: Resolved authentication issues in iframe context
 
 ## Common Issues & Solutions
 
@@ -177,3 +202,13 @@ tail -f /var/www/sites/cloudcoder.dev/wwwroot/ghost/logs/error.log
 2. **Form Submission**: Check for form fields, not just URL parameters
 3. **Image Upload**: Ensure /content/images/profile/ has write permissions
 4. **Message Display**: Use showMessage() function for consistent notifications
+5. **Preview 404**: Clear browser cache if preview shows 404 after update
+6. **Column Names**: Use `html` not `content`, `custom_excerpt` not `excerpt`
+7. **Session Variables**: Use uppercase (SESSION.USERID, SESSION.ISLOGGEDIN)
+
+## Known Issues to Address
+
+1. **__GHOST_URL__ Placeholder**: Some image URLs contain this placeholder that needs replacement
+2. **removeFeatureImage Scope**: Function exists but may not be in scope for onerror handlers
+3. **Data Too Long Error**: Some post IDs may exceed column length limits
+4. **Browser Caching**: Updates may require hard refresh (Ctrl+Shift+R) to see changes

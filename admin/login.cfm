@@ -68,6 +68,10 @@
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    
+    <!-- Ghost Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/ghost/favicon.svg">
+    <link rel="alternate icon" href="/ghost/favicon.ico">
 </head>
 <body class="DEFAULT_THEME">
     <main>

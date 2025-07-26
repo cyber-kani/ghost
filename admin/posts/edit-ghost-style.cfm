@@ -6080,8 +6080,36 @@ allTags = tagsResult.success ? tagsResult.data : [];
                     document.body.insertAdjacentHTML('beforeend', modalHtml);
                     
                     // Show modal
-                    const modal = new bootstrap.Modal(document.getElementById('postSelectorModal'));
-                    modal.show();
+                    try {
+                        if (typeof bootstrap === 'undefined') {
+                            console.error('Bootstrap is not loaded');
+                            // Use basic modal display
+                            const modalElement = document.getElementById('postSelectorModal');
+                            modalElement.style.display = 'block';
+                            modalElement.classList.add('show');
+                            document.body.classList.add('modal-open');
+                            
+                            // Add backdrop
+                            const backdrop = document.createElement('div');
+                            backdrop.className = 'modal-backdrop fade show';
+                            document.body.appendChild(backdrop);
+                            
+                            // Close button handler
+                            modalElement.querySelector('.btn-close').addEventListener('click', function() {
+                                modalElement.style.display = 'none';
+                                modalElement.classList.remove('show');
+                                document.body.classList.remove('modal-open');
+                                backdrop.remove();
+                            });
+                        } else {
+                            const modal = new bootstrap.Modal(document.getElementById('postSelectorModal'));
+                            modal.show();
+                        }
+                    } catch (e) {
+                        console.error('Error showing modal:', e);
+                        // Fallback to simple display
+                        document.getElementById('postSelectorModal').style.display = 'block';
+                    }
                     
                     // Add click and hover handlers
                     document.querySelectorAll('.post-selector-item').forEach(item => {
@@ -6105,15 +6133,39 @@ allTags = tagsResult.success ? tagsResult.data : [];
             })
             .catch(error => {
                 console.error('Error fetching posts:', error);
-                alert('Failed to load published posts');
+                console.error('Error stack:', error.stack);
+                alert('Failed to load published posts: ' + error.message);
             });
     }
     
     // Select a post for bookmark
     function selectPostForBookmark(cardId, url, title, excerpt, thumbnail) {
         // Close modal
-        const modal = bootstrap.Modal.getInstance(document.getElementById('postSelectorModal'));
-        modal.hide();
+        try {
+            if (typeof bootstrap !== 'undefined') {
+                const modal = bootstrap.Modal.getInstance(document.getElementById('postSelectorModal'));
+                if (modal) {
+                    modal.hide();
+                }
+            } else {
+                // Manual close
+                const modalElement = document.getElementById('postSelectorModal');
+                modalElement.style.display = 'none';
+                modalElement.classList.remove('show');
+                document.body.classList.remove('modal-open');
+                const backdrop = document.querySelector('.modal-backdrop');
+                if (backdrop) backdrop.remove();
+                modalElement.remove();
+            }
+        } catch (e) {
+            console.error('Error closing modal:', e);
+            // Force remove
+            const modalElement = document.getElementById('postSelectorModal');
+            if (modalElement) modalElement.remove();
+            const backdrop = document.querySelector('.modal-backdrop');
+            if (backdrop) backdrop.remove();
+            document.body.classList.remove('modal-open');
+        }
         
         // Update card data
         updateCardData(cardId, 'url', url);

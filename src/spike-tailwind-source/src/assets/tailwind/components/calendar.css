@@ -1,0 +1,212 @@
+.app-calendar .fc-event-title {
+    font-weight: 500;
+}
+.app-calendar .fc .fc-toolbar-title{
+    color:var(--color-dark);
+    font-weight: 500;
+}
+.fc .fc-timegrid-axis-cushion, .fc .fc-timegrid-slot-label-cushion{
+    color:var(--color-darkgray);
+}
+.app-calendar .fc .fc-col-header-cell-cushion, .app-calendar .fc .fc-daygrid-day-number {
+    color: var(--color-darkgray);
+    text-decoration: none;
+    font-weight: 600;
+}
+.app-calendar .fc .fc-button-primary {
+    background-color: var(--color-white);
+    border-color: var(--color-primary);
+    letter-spacing: 1px;
+    font-size: 14px;
+    color: var(--color-white);
+}
+.app-calendar .fc .fc-button-primary:not(:disabled).fc-button-active {
+    background-color: var(--color-primary);
+    font-weight: 400;
+    border-color: var(--color-primary);
+}
+.app-calendar .fc .fc-button-primary:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-color: var(--color-primary);
+}
+.app-calendar .fc .fc-button-primary:not(:disabled):active {
+    background-color: var(--color-primary);
+    border-color: var(--color-border);
+}
+
+
+.app-calendar .fc .fc-button-primary:focus {
+    box-shadow: none !important;
+}
+.app-calendar .fc .fc-button-primary:active:focus {
+    box-shadow: none !important;
+}
+.app-calendar .fc .fc-list-sticky .fc-list-day > * {
+    background-color: var(--color-white);
+}
+.app-calendar .fc .fc-daygrid-body {
+    width: 100% !important;
+}
+.app-calendar .fc .fc-scrollgrid-section table {
+    width: 100% !important;
+}
+.app-calendar .fc .fc-scrollgrid-section-body table {
+    width: 100% !important;
+}
+.app-calendar .fc .fc-button {
+    border-radius: 20px;
+    padding: 7px 20px;
+    text-transform: capitalize;
+    color: var(--color-primary);
+}
+.app-calendar .fc .fc-button:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-color: var(--color-primary);
+}
+.app-calendar .fc .fc-button.fc-next-button:hover, .app-calendar .fc .fc-button.fc-prev-button:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-color: var(--color-primary);
+}
+.app-calendar .fc .fc-addEventButton-button {
+    background-color: var(--color-primary) !important;
+    border-color: var(--color-primary);
+    color: var(--color-white);
+    font-weight: 500;
+}
+.app-calendar .fc .fc-addEventButton-button:hover {
+    background-color: var(--color-primary-emphasis) !important;
+    border-color: var(--color-primary);
+    box-shadow: none;
+    color: var(--color-white);
+}
+.app-calendar .fc .fc-addEventButton-button:not(:disabled):active {
+    background-color: var(--color-primary-emphasis)  !important;
+    box-shadow: none;
+    color: var(--color-white);
+}
+.app-calendar .fc .fc-daygrid-day.fc-day-today {
+    background-color: var(--color-white);
+    padding: 3px;
+    border-radius: 23px;
+}
+.app-calendar .fc .fc-daygrid-day.fc-day-today .fc-daygrid-day-frame {
+    background-color: var(--color-lightwarning);
+    border-radius: 8px;
+}
+.app-calendar .fc .fc-daygrid-day.fc-day-today .fc-daygrid-day-frame .fc-daygrid-day-number {
+    font-size: 15px;
+    font-weight: 800;
+}
+.app-calendar .fc .fc-list-event:hover td {
+    background-color: var(--color-lightwarning);
+}
+.app-calendar .fc-theme-standard .fc-list-day-cushion {
+    background-color: var(--color-white);
+}
+.app-calendar .fc-theme-standard .fc-list {
+    border: 1px solid var(--color-border);
+}
+.app-calendar .fc-theme-standard .fc-scrollgrid {
+    border: 0px solid var(--color-border);
+    border-width: 0px;
+}
+.app-calendar .fc-theme-standard td {
+    border: 1px solid var(--color-border);
+}
+.app-calendar .fc-theme-standard th {
+    border: 1px solid var(--color-border);
+    border-bottom: 0;
+    border-width: 0px;
+}
+.app-calendar .fc-timegrid-event-harness-inset .fc-timegrid-event {
+    box-shadow: none;
+}
+.app-calendar .fc-timegrid-event.fc-event-mirror {
+    box-shadow: none;
+}
+.app-calendar .fc-timegrid-more-link {
+    box-shadow: none;
+}
+.app-calendar .event-fc-color {
+    background-color: var(--color-lightsecondary);
+    border: none;
+    padding: 4px 10px;
+    margin-bottom: 1px;
+    font-size: 13px;
+    letter-spacing: 1px;
+    font-weight: 300;
+    cursor: pointer;
+}
+.app-calendar .event-fc-color:hover {
+    background-color: var(--color-lightwarning);
+}
+.app-calendar .fc-daygrid-event-dot {
+    margin: 0 6px 0 0;
+}
+.fc .fc-daygrid-event{
+    border-radius: 20px;
+}
+.app-calendar .fc-bg-primary {
+    color: var(--color-primary);
+    background-color: var(--color-lightprimary);
+}
+.app-calendar .fc-bg-primary .fc-daygrid-event-dot {
+    border-color: var(--color-primary);
+}
+.app-calendar .fc-bg-primary.fc-h-event .fc-event-main {
+    color: var(--color-primary);
+}
+.app-calendar .fc-bg-success {
+    color: var(--color-success);
+    background-color: var(--color-lightsuccess);
+}
+.app-calendar .fc-bg-success .fc-daygrid-event-dot {
+    border-color: var(--color-success);
+}
+.app-calendar .fc-bg-success.fc-h-event .fc-event-main {
+    color: var(--color-success);
+}
+.app-calendar .fc-bg-warning {
+    color: var(--color-warning);
+    background-color: var(--color-lightwarning);
+}
+.app-calendar .fc-bg-warning .fc-daygrid-event-dot {
+    border-color: var(--color-warning);
+}
+.app-calendar .fc-bg-warning.fc-h-event .fc-event-main {
+    color: var(--color-warning);
+}
+.app-calendar .fc-bg-danger {
+    color: var(--color-error);
+    background-color: var(--color-lighterror);
+}
+.app-calendar .fc-bg-danger .fc-daygrid-event-dot {
+    border-color: var(--color-error);
+}
+.app-calendar .fc-bg-danger.fc-h-event .fc-event-main {
+    color: var(--color-error);
+}
+.app-calendar .btn-update-event {
+    display: none;
+}
+@media (max-width: 1199px) {
+    .app-calendar .calendar-container {
+        padding: 30px 0 0 0;
+   }
+    .app-calendar .fc-theme-standard .fc-list {
+        border: none;
+   }
+    .app-calendar .fc .fc-toolbar {
+        align-items: center;
+        flex-direction: column;
+   }
+    .app-calendar .fc .fc-toolbar.fc-header-toolbar {
+        margin-bottom: 50px;
+   }
+    .app-calendar .fc-toolbar-chunk:not(:first-child) {
+        margin-top: 35px;
+   }
+}

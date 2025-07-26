@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-color-theme="Blue_Theme" class="light selected" data-layout="vertical"
+    data-boxed-layout="boxed" data-card="shadow">
+
+<head>
+    @@include("partials/head.html")
+    <title>Spike TailwindCSS HTML Admin Template</title>
+</head>
+
+<body class="DEFAULT_THEME bg-lightprimary dark:bg-darkbody">
+    <main>
+        <!--start the project-->
+        <div id="main-wrapper" class="flex p-5">
+
+            <aside id="application-sidebar-brand"
+                class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full xl:rtl:-translate-x-0 rtl:translate-x-full  left-0 rtl:left-auto xl:rtl:right-5 rtl:right-0 transform hidden xl:block xl:translate-x-0 xl:end-auto xl:bottom-0 fixed top-0 with-vertical  left-sidebar transition-all duration-300 h-screen z-[2] flex-shrink-0  w-[270px] border-border dark:border-darkborder bg-white dark:bg-dark xl:top-5 xl:start-5 shadow-md xl:rounded-md">
+                @@include("partials/sidebar.html",{ "page": "form-input-grid","page_group": "form" })
+            </aside>
+            <div class="page-wrapper w-full" role="main">
+
+                <!-- Main Content -->
+                <main class="h-full ">
+                    <div class="container full-container py-5 xl:ps-6 ps-0 pt-0 pe-0 remove-ps">
+
+                        <!--  Header Start -->
+                        <header
+                            class="sticky top-0 inset-x-0 z-[1] flex flex-wrap md:justify-start md:flex-nowrap text-fs_15 py-3 lg:py-0 mb-6 bg-white dark:bg-dark rounded-md shadow-md">
+                            <div class="with-vertical w-full">@@include("partials/header.html")</div>
+                            <div class="with-horizontal w-full">
+                                <div class="bg-white dark:bg-dark">
+                                    <div class="container">
+                                        @@include("partials/horizontal-header.html")
+                                    </div>
+                                </div>
+                            </div>
+                        </header>
+                        <!--  Header End -->
+
+                        <!-- Horizontal Sidebar Menu -->
+                        <aside
+                            class="with-horizontal lg:flex hidden left-sidebar bg-white dark:bg-dark border-t border-border dark:border-darkborder">
+                            @@include("partials/horizontal-sidebar.html", { "page": "form-input-grid","page_group":
+                            "form"})
+                        </aside>
+                        <!-- Horizontal Sidebar Menu End -->
+
+                        <!-- Main Content -->
+                        <div class="max-w-full">
+                            <div class="container full-container ">
+                                <!----Breadcrumb Start---->
+                                @@include("partials/breadcrumb.html", {"title": "Form Input Grid", "subtitle": 'Home'})
+                                <!----Breadcrumb End---->
+            <div class="grid grid-cols-12 gap-6">
+                <div class="col-span-12">
+                    <div class="card">
+                      <div class="card-body">                                                
+                        <h5 class="card-title mb-6">Horizontal Grid</h5>
+                        <form action="#">
+                            <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                                 <div class="md:col-span-1 col-span-12">
+                                  <input type="text" id="form_InputText1" class="py-2.5 px-4 block w-full form-control  " placeholder="1"/>
+                                 </div>
+                                 <div class="md:col-span-11 col-span-12">
+                                  <input type="text" id="form_InputText2" class="py-2.5 px-4 block w-full form-control  " placeholder="col-span-11"/>
+                                 </div>
+                                 <div class="md:col-span-2 col-span-12">
+                                  <input type="text" id="form_InputText3" class="py-2.5 px-4 block w-full form-control  " placeholder="col-span-2"/>
+                                 </div>
+                                 <div class="md:col-span-10 col-span-12">
+                                  <input type="text" id="form_InputText4" class="py-2.5 px-4 block w-full form-control  " placeholder="col-span-10"/>
+                                 </div>
+                                 <div class="md:col-span-3 col-span-12">
+                                  <input type="text" id="form_InputText5" class="py-2.5 px-4 block w-full form-control  " placeholder="col-span-3"/>
+                                 </div>
+                                 <div class="md:col-span-9 col-span-12">
+                                  <input type="text" id="form_InputText6" class="py-2.5 px-4 block w-full form-control  " placeholder="col-span-9"/>
+                                 </div>
+                                 <div class="md:col-span-4 col-span-12">
+                                  <input type="text" id="form_InputText7" class="py-2.5 px-4 block w-full form-control  " placeholder="col-span-4"/>
+                                 </div>
+                                 <div class="md:col-span-8 col-span-12">
+                                  <input type="text" id="form_InputText8" class="py-2.5 px-4 block w-full form-control  " placeholder="col-span-8"/>
+                                 </div>
+                                 <div class="md:col-span-5 col-span-12">
+                                  <input type="text" id="form_InputText9" class="py-2.5 px-4 block w-full form-control  " placeholder="col-span-5"/>
+                                 </div>
+                                 <div class="md:col-span-7 col-span-12">
+                                  <input type="text" id="form_InputText10" class="py-2.5 px-4 block w-full form-control  " placeholder="col-span-7"/>
+                                 </div>
+                                 <div class="md:col-span-6 col-span-12">
+                                  <input type="text" id="form_InputText11" class="py-2.5 px-4 block w-full form-control  " placeholder="col-span-6"/>
+                                 </div>
+                                 <div class="md:col-span-6 col-span-12">
+                                  <input type="text" id="form_InputText12" class="py-2.5 px-4 block w-full form-control  " placeholder="col-span-6"/>
+                                 </div>
+                            </div>
+                            <div class="flex gap-3 justify-end mt-6">
+                              <button class="btn px-6" type="submit">Submit</button>
+                              <button class="btn btn-light-error" type="reset">Reset</button>
+                             </div>
+                          </form>
+                      </div>
+                    </div>
+                </div>
+                <div class=" col-span-12">
+                    <div class="card">
+                      <div class="card-body">                                                
+                        <h5 class="card-title mb-6">Grid With Row Label</h5>
+                        <form action="#" class="flex flex-col md:gap-6 gap-y-6">
+                            <div>
+                              <label for="form_InputText13" class="text-dark dark:text-darklink font-semibold mb-2 block ">Row Label</label>
+                            <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                                    <div class="md:col-span-1 col-span-12">
+                                            <input type="text" id="form_InputText13" placeholder="1" class="py-2.5 px-4 block w-full form-control  " />
+                                    </div>
+                                    <div class="md:col-span-11 col-span-12">
+                                        <input type="text" id="form_InputText14" placeholder="col-span-11" class="py-2.5 px-4 block w-full form-control  " />
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                           <label for="form_InputText15" class="text-dark dark:text-darklink font-semibold mb-2 block ">Row Label</label>
+                            <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                                    <div class="md:col-span-2 col-span-12">
+                                            <input type="text" id="form_InputText15" placeholder="col-span-2" class="py-2.5 px-4 block w-full form-control  " />
+                                    </div>
+                                    <div class="md:col-span-10 col-span-12">
+                                        <input type="text" id="form_InputText16" placeholder="col-span-10" class="py-2.5 px-4 block w-full form-control  " />
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                           <label for="form_InputText17" class="text-dark dark:text-darklink font-semibold mb-2 block ">Row Label</label>
+                            <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                                    <div class="md:col-span-3 col-span-12">
+                                            <input type="text" id="form_InputText17" placeholder="col-span-3" class="py-2.5 px-4 block w-full form-control  " />
+                                    </div>
+                                    <div class="md:col-span-9 col-span-12">
+                                        <input type="text" id="form_InputText18" placeholder="col-span-9" class="py-2.5 px-4 block w-full form-control  " />
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                           <label for="form_InputText19" class="text-dark dark:text-darklink font-semibold mb-2 block ">Row Label</label>
+                            <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                                    <div class="md:col-span-4 col-span-12">
+                                            <input type="text" id="form_InputText19" placeholder="col-span-4" class="py-2.5 px-4 block w-full form-control  " />
+                                    </div>
+                                    <div class="md:col-span-8 col-span-12">
+                                        <input type="text" id="form_InputText20" placeholder="col-span-8" class="py-2.5 px-4 block w-full form-control  " />
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                           <label for="form_InputText21" class="text-dark dark:text-darklink font-semibold mb-2 block ">Row Label</label>
+                            <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                                    <div class="md:col-span-5 col-span-12">
+                                            <input type="text" id="form_InputText21" placeholder="col-span-5" class="py-2.5 px-4 block w-full form-control  " />
+                                    </div>
+                                    <div class="md:col-span-7 col-span-12">
+                                        <input type="text" id="form_InputText22" placeholder="col-span-7" class="py-2.5 px-4 block w-full form-control  " />
+                                    </div>
+                                </div>
+                            </div>
+                        <div>
+                          <label for="form_InputText13" class="text-dark dark:text-darklink font-semibold mb-2 block ">Row Label</label>
+                        <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                                <div class="md:col-span-6 col-span-12">
+                                        <input type="text" id="form_InputText23" placeholder="col-span-6" class="py-2.5 px-4 block w-full form-control  " />
+                                </div>
+                                <div class="md:col-span-6 col-span-12">
+                                    <input type="text" id="form_InputText24" placeholder="col-span-6" class="py-2.5 px-4 block w-full form-control  " />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-3 justify-end">
+                              <button class="btn px-6" type="submit">Submit</button>
+                              <button class="btn btn-light-error" type="reset">Reset</button>
+                        </div>
+                        
+                        </form>
+                      </div>
+                    </div>
+                </div>
+                <div class=" col-span-12">
+                    <div class="card">
+                      <div class="card-body">                                                
+                        <h5 class="card-title mb-6">Grid With Label</h5>
+                        <form action="#">
+                          <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                               <div class="md:col-span-1 col-span-12">
+                                <label for="form_InputText25" class="text-dark dark:text-darklink font-semibold mb-2 block">Label</label>
+                                <input type="text" id="form_InputText25" placeholder="1" class="py-2.5 px-4 block w-full form-control " />
+                               </div>
+                               <div class="md:col-span-11 col-span-12">
+                                <label for="form_InputText26" class="text-dark dark:text-darklink font-semibold mb-2 block">Label</label>
+                                <input type="text" id="form_InputText26" placeholder="col-span-1" class="py-2.5 px-4 block w-full form-control " />
+                               </div>
+                               <div class="md:col-span-2 col-span-12">
+                                <label for="form_InputText27" class="text-dark dark:text-darklink font-semibold mb-2 block">Label</label>
+                                <input type="text" id="form_InputText27" placeholder="col-span-2" class="py-2.5 px-4 block w-full form-control " />
+                               </div>
+                               <div class="md:col-span-10 col-span-12">
+                                <label for="form_InputText28" class="text-dark dark:text-darklink font-semibold mb-2 block">Label</label>
+                                <input type="text" id="form_InputText28" placeholder="col-span-10" class="py-2.5 px-4 block w-full form-control " />
+                               </div>
+                               <div class="md:col-span-3 col-span-12">
+                                <label for="form_InputText29" class="text-dark dark:text-darklink font-semibold mb-2 block">Label</label>
+                                <input type="text" id="form_InputText29" placeholder="col-span-3" class="py-2.5 px-4 block w-full form-control " />
+                               </div>
+                               <div class="md:col-span-9 col-span-12">
+                                <label for="form_InputText30" class="text-dark dark:text-darklink font-semibold mb-2 block">Label</label>
+                                <input type="text" id="form_InputText30" placeholder="col-span-9" class="py-2.5 px-4 block w-full form-control " />
+                               </div>
+                               <div class="md:col-span-4 col-span-12">
+                                <label for="form_InputText31" class="text-dark dark:text-darklink font-semibold mb-2 block">Label</label>
+                                <input type="text" id="form_InputText31" placeholder="col-span-4" class="py-2.5 px-4 block w-full form-control " />
+                               </div>
+                               <div class="md:col-span-8 col-span-12">
+                                <label for="form_InputText32" class="text-dark dark:text-darklink font-semibold mb-2 block">Label</label>
+                                <input type="text" id="form_InputText32" placeholder="col-span-8" class="py-2.5 px-4 block w-full form-control " />
+                               </div>
+                               <div class="md:col-span-5 col-span-12">
+                                <label for="form_InputText33" class="text-dark dark:text-darklink font-semibold mb-2 block">Label</label>
+                                <input type="text" id="form_InputText33" placeholder="col-span-5" class="py-2.5 px-4 block w-full form-control " />
+                               </div>
+                               <div class="md:col-span-7 col-span-12">
+                                <label for="form_InputText34" class="text-dark dark:text-darklink font-semibold mb-2 block">Label</label>
+                                    <input type="text" id="form_InputText34" placeholder="col-span-7" class="py-2.5 px-4 block w-full form-control " />
+                               </div>
+                               <div class="md:col-span-6 col-span-12">
+                                <label for="form_InputText35" class="text-dark dark:text-darklink font-semibold mb-2 block">Label</label>
+                                <input type="text" id="form_InputText35" placeholder="col-span-6" class="py-2.5 px-4 block w-full form-control " />
+                               </div>
+                               <div class="md:col-span-6 col-span-12">
+                                <label for="form_InputText36" class="text-dark dark:text-darklink font-semibold mb-2 block">Label</label>
+                                <input type="text" id="form_InputText36" placeholder="col-span-6" class="py-2.5 px-4 block w-full form-control " />
+                               </div>
+                          </div>
+                          <div class="flex gap-3 justify-end mt-6">
+                              <button class="btn px-6" type="submit">Submit</button>
+                              <button class="btn btn-light-error" type="reset">Reset</button>
+                           </div>
+                        </form>
+                      </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">                                                
+                        <h5 class="card-title mb-6">Right Offset</h5>
+                        <form action="#">
+                          <div class="flex flex-col md:gap-6 gap-y-6">
+                           <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                               <div class="col-span-12">
+                                <input type="text" id="form_InputText37" class="py-2.5 px-4 block w-full form-control " placeholder="col-span-12"/>
+                               </div>
+                          </div>
+                          <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                               <div class="md:col-span-11 col-span-12 ">
+                                <input type="text" id="form_InputText38" class="py-2.5 px-4 block w-full form-control " placeholder="col-span-11"/>
+                               </div>
+                          </div>
+                          <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                               <div class="md:col-span-10 col-span-12">
+                                <input type="text" id="form_InputText39" class="py-2.5 px-4 block w-full form-control " placeholder="col-span-10"/>
+                               </div>
+                          </div>
+                          <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                               <div class="md:col-span-9 col-span-12">
+                                <input type="text" id="form_InputText40" class="py-2.5 px-4 block w-full form-control " placeholder="col-span-9"/>
+                               </div>
+                          </div>
+                          <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                               <div class="md:col-span-8 col-span-12">
+                                <input type="text" id="form_InputText41" class="py-2.5 px-4 block w-full form-control " placeholder="col-span-8"/>
+                               </div>
+                          </div>
+                          <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                               <div class="md:col-span-7 col-span-12">
+                                <input type="text" id="form_InputText42" class="py-2.5 px-4 block w-full form-control " placeholder="col-span-7"/>
+                               </div>
+                          </div>
+                          <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                               <div class="md:col-span-6 col-span-12">
+                                <input type="text" id="form_InputText43" class="py-2.5 px-4 block w-full form-control " placeholder="col-span-6"/>
+                               </div>
+                          </div>
+                          <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                               <div class="md:col-span-5 col-span-12">
+                                <input type="text" id="form_InputText44" class="py-2.5 px-4 block w-full form-control " placeholder="col-span-5"/>
+                               </div>
+                          </div>
+                          <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                               <div class="md:col-span-4 col-span-12">
+                                <input type="text" id="form_InputText45" class="py-2.5 px-4 block w-full form-control " placeholder="col-span-4"/>
+                               </div>
+                          </div>
+                          <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                               <div class="md:col-span-3 col-span-12">
+                                <input type="text" id="form_InputText46" class="py-2.5 px-4 block w-full form-control " placeholder="col-span-3"/>
+                               </div>
+                          </div>
+                          <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                               <div class="md:col-span-2 col-span-12">
+                                <input type="text" id="form_InputText47" class="py-2.5 px-4 block w-full form-control " placeholder="2"/>
+                               </div>
+                          </div>
+                          <div class="grid grid-cols-12">
+                               <div class="md:col-span-1 col-span-12">
+                                <input type="text" id="form_InputText48" class="py-2.5 px-4 block w-full form-control " placeholder="1"/>
+                               </div>
+                          </div>
+                          </div>
+                           <div class="flex gap-3 justify-start mt-6">
+                              <button class="btn px-6" type="submit">Submit</button>
+                              <button class="btn btn-light-error" type="reset">Reset</button>
+                            </div>
+                         </form>
+                      </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">                                                
+                        <h5 class="card-title mb-6">Left Offset</h5>
+                        <form action="#">
+                          <div class="flex flex-col md:gap-6 gap-y-6">
+                           <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                               <div class="col-span-12">
+                                <input type="text" id="form_InputText112" class="py-2.5 px-4 block w-full form-control " placeholder="col-span-12"/>
+                               </div>
+                          </div>
+                          <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                               <div class="md:col-start-2 col-start-0 md:col-span-11 col-span-12 ">
+                                <input type="text" id="form_InputTextform_InputText113" class="py-2.5 px-4 block w-full form-control " placeholder="col-span-11"/>
+                               </div>
+                          </div>
+                          <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                               <div class="md:col-start-3 col-start-0 md:col-span-10 col-span-12">
+                                <input type="text" id="form_InputTextform_InputText114" class="py-2.5 px-4 block w-full form-control " placeholder="col-span-10"/>
+                               </div>
+                          </div>
+                          <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                               <div class="md:col-start-4 col-start-0 md:col-span-9 col-span-12">
+                                <input type="text" id="form_InputTextform_InputText115" class="py-2.5 px-4 block w-full form-control " placeholder="col-span-9"/>
+                               </div>
+                          </div>
+                          <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                               <div class="md:col-start-5 col-start-0 md:col-span-8 col-span-12">
+                                <input type="text" id="form_InputTextform_InputText116" class="py-2.5 px-4 block w-full form-control " placeholder="col-span-8"/>
+                               </div>
+                          </div>
+                          <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                               <div class="md:col-start-6 col-start-0 md:col-span-7 col-span-12">
+                                <input type="text" id="form_InputTextform_InputText117" class="py-2.5 px-4 block w-full form-control " placeholder="col-span-7"/>
+                               </div>
+                          </div>
+                          <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                               <div class="md:col-start-7 col-start-0 md:col-span-6 col-span-12">
+                                <input type="text" id="form_InputTextform_InputText118" class="py-2.5 px-4 block w-full form-control " placeholder="col-span-6"/>
+                               </div>
+                          </div>
+                          <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                               <div class="md:col-start-8 col-start-0 md:col-span-5 col-span-12">
+                                <input type="text" id="form_InputTextform_InputText119" class="py-2.5 px-4 block w-full form-control " placeholder="col-span-5"/>
+                               </div>
+                          </div>
+                          <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                               <div class="md:col-start-9 col-start-0 md:col-span-4 col-span-12">
+                                <input type="text" id="form_InputTextform_InputText120" class="py-2.5 px-4 block w-full form-control " placeholder="col-span-4"/>
+                               </div>
+                          </div>
+                          <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                               <div class="md:col-start-10 col-start-0 md:col-span-3 col-span-12">
+                                <input type="text" id="form_InputTextform_InputText121" class="py-2.5 px-4 block w-full form-control " placeholder="col-span-3"/>
+                               </div>
+                          </div>
+                          <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                               <div class="md:col-start-11 col-start-0 md:col-span-2 col-span-12">
+                                <input type="text" id="form_InputTextform_InputText122" class="py-2.5 px-4 block w-full form-control " placeholder="2"/>
+                               </div>
+                          </div>
+                          <div class="grid grid-cols-12">
+                               <div class="md:col-start-12 col-start-0 md:col-span-1 col-span-12">
+                                <input type="text" id="form_InputTextform_InputText123" class="py-2.5 px-4 block w-full form-control " placeholder="1"/>
+                               </div>
+                          </div>
+                          </div>
+                           <div class="flex gap-3 justify-end mt-6">
+                              <button class="btn px-6" type="submit">Submit</button>
+                              <button class="btn btn-light-error" type="reset">Reset</button>
+                            </div>
+                         </form>
+                      </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">                                                
+                        <h5 class="card-title mb-6">Centered Input</h5>
+                        <form action="#">
+                          <div class="flex flex-col md:gap-6 gap-y-6">
+                           <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                               <div class="col-span-12">
+                                <input type="text" id="form_InputText50" class="py-2.5 px-4 block w-full form-control " placeholder="col-span-12"/>
+                               </div>
+                          </div>
+                          <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                               <div class="md:col-start-2 col-start-0 md:col-span-10 col-span-12 ">
+                                <input type="text" id="form_InputText51" class="py-2.5 px-4 block w-full form-control " placeholder="col-span-10"/>
+                               </div>
+                          </div>
+                          <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                               <div class="md:col-start-3 col-start-0 md:col-span-8 col-span-12">
+                                <input type="text" id="form_InputText52" class="py-2.5 px-4 block w-full form-control " placeholder="col-span-8"/>
+                               </div>
+                          </div>
+                          <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                               <div class="md:col-start-4 col-start-0 md:col-span-6 col-span-12">
+                                <input type="text" id="form_InputText53" class="py-2.5 px-4 block w-full form-control " placeholder="col-span-6"/>
+                               </div>
+                          </div>
+                          <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                               <div class="md:col-start-5 col-start-0 md:col-span-4 col-span-12">
+                                <input type="text" id="form_InputText54" class="py-2.5 px-4 block w-full form-control " placeholder="col-span-4"/>
+                               </div>
+                          </div>
+                          <div class="flex justify-center">
+                             <div class="md:w-1/12 w-full">
+                               <input type="text" id="form_InputText55" class="py-2.5 px-4 block w-full form-control " placeholder="1"/>
+                              </div>
+                          </div>
+                          <div class="grid grid-cols-12 md:gap-6 ">
+                           <div class="col-span-4 text-end">
+                            <label for="form_InputText56" class="text-dark dark:text-darklink font-semibold mb-2 block">Label</label>
+                           </div>
+                           <div class="md:col-start-5 col-start-0 md:col-span-4 col-span-12">
+                            <input type="text" id="form_InputText56" class="py-2.5 px-4 block w-full form-control " placeholder="col-span-4"/>
+                           </div>
+                         </div>
+                         <div class="grid grid-cols-12 md:gap-6">
+                           <div class="col-span-3 text-end">
+                            <label for="form_InputText57" class="text-dark dark:text-darklink font-semibold mb-2 block">Label</label>
+                           </div>
+                           <div class="md:col-start-4 col-start-0 md:col-span-6 col-span-12">
+                            <input type="text" id="form_InputText57" class="py-2.5 px-4 block w-full form-control " placeholder="col-span-6"/>
+                           </div>
+                        </div>
+                        <div class="grid grid-cols-12 md:gap-6 ">
+                           <div class="col-span-2 text-end">
+                            <label for="form_InputText58" class="text-dark dark:text-darklink font-semibold mb-2 block">Label</label>
+                           </div>
+                           <div class="md:col-start-3 col-start-0 md:col-span-8 col-span-12">
+                            <input type="text" id="form_InputText58" class="py-2.5 px-4 block w-full form-control " placeholder="col-span-8"/>
+                           </div>
+                       </div>
+                       <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                           <div class="md:col-start-2 col-start-0 md:col-span-10 col-span-12 ">
+                            <input type="text" id="form_InputText59" class="py-2.5 px-4 block w-full form-control " placeholder="col-span-10"/>
+                           </div>
+                      </div>
+                          </div>
+                           <div class="flex gap-3 justify-center mt-6">
+                              <button class="btn px-6" type="submit">Submit</button>
+                              <button class="btn btn-light-error" type="reset">Reset</button>
+                            </div>
+                          </form>
+                            </div>
+                      </div>
+                </div>
+                <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">                                                
+                        <h5 class="card-title mb-6">Centered Input with Default label</h5>
+                        <form action="#">
+                          <div class="flex flex-col md:gap-6 gap-y-6">
+                           <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                               <div class="col-span-12">
+                                <label for="form_InputText60" class="text-dark dark:text-darklink font-semibold mb-2 block">Label</label>
+                                <input type="text" id="form_InputText60" placeholder="col-span-12" class="py-2.5 px-4 block w-full form-control " />
+                               </div>
+                          </div>
+                          <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                               <div class="md:col-start-2 col-start-0 md:col-span-10 col-span-12 ">
+                                <label for="form_InputText61" class="text-dark dark:text-darklink font-semibold mb-2 block">Label</label>
+                                <input type="text" id="form_InputText61" placeholder="col-span-10" class="py-2.5 px-4 block w-full form-control " />
+                               </div>
+                          </div>
+                          <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                               <div class="md:col-start-3 col-start-0 md:col-span-8 col-span-12">
+                                <label for="form_InputText62" class="text-dark dark:text-darklink font-semibold mb-2 block">Label</label>
+                                <input type="text" id="form_InputText62" placeholder="col-span-8" class="py-2.5 px-4 block w-full form-control " />
+                               </div>
+                          </div>
+                          <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                               <div class="md:col-start-4 col-start-0 md:col-span-6 col-span-12">
+                                <label for="form_InputText63" class="text-dark dark:text-darklink font-semibold mb-2 block">Label</label>
+                                <input type="text" id="form_InputText63" placeholder="col-span-6" class="py-2.5 px-4 block w-full form-control " />
+                               </div>
+                          </div>
+                          <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                               <div class="md:col-start-5 col-start-0 md:col-span-4 col-span-12">
+                                <label for="form_InputText64" class="text-dark dark:text-darklink font-semibold mb-2 block">Label</label>
+                                <input type="text" id="form_InputText64" placeholder="col-span-4" class="py-2.5 px-4 block w-full form-control " />
+                               </div>
+                          </div>
+                          <div class="flex justify-center">
+                             <div class="md:w-1/12 w-full">
+                              <label for="form_InputText65" class="text-dark dark:text-darklink font-semibold mb-2 block">Label</label>
+                              <input type="text" id="form_InputText65" placeholder="1" class="py-2.5 px-4 block w-full form-control " />
+                              </div>
+                          </div>
+                          </div>
+                           <div class="flex gap-3 justify-center mt-10">
+                              <button class="btn px-6" type="submit">Submit</button>
+                              <button class="btn btn-light-error" type="reset">Reset</button>
+                            </div>
+                         </form>
+                            </div>
+                      </div>
+                </div>
+                <div class="col-span-12">
+                    <div class="card">
+                      <div class="card-body">                                                
+                        <h5 class="card-title mb-6">Grid With Row Label</h5>
+                        <form action="#">
+                          <div class="grid grid-cols-12 md:gap-6">
+                              <div class="md:col-span-1 col-span-12">
+                               <label for="form_InputText66" class="text-dark dark:text-darklink font-semibold mb-2 block">Label</label>
+                              </div>
+                              <div class="md:col-span-11 col-span-12">
+                                  <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                                      <div class="md:col-span-1 col-span-12">
+                                          <input type="text" id="form_InputText66" class="py-2.5 px-4 block w-full form-control " placeholder="1"/>
+                                         </div>
+                                         <div class="md:col-span-11 col-span-12">
+                                          <input type="text" id="form_InputText67" class="py-2.5 px-4 block w-full form-control " placeholder="col-span-11"/>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="md:col-span-1 col-span-12">
+                               <label for="form_InputText68" class="text-dark dark:text-darklink font-semibold mb-2 block">Label</label>
+                              </div>
+                              <div class="md:col-span-11 col-span-12">
+                                  <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                                      <div class="md:col-span-2 col-span-12">
+                                          <input type="text" id="form_InputText68" class="py-2.5 px-4 block w-full form-control " placeholder="col-span-2"/>
+                                         </div>
+                                         <div class="md:col-span-10 col-span-12">
+                                          <input type="text" id="form_InputText69" class="py-2.5 px-4 block w-full form-control " placeholder="col-span-10"/>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="md:col-span-1 col-span-12">
+                               <label for="form_InputText70" class="text-dark dark:text-darklink font-semibold mb-2 block">Label</label>
+                              </div>
+                              <div class="md:col-span-11 col-span-12">
+                                  <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                                         <div class="md:col-span-3 col-span-12">
+                                          <input type="text" id="form_InputText70" class="py-2.5 px-4 block w-full form-control " placeholder="col-span-3"/>
+                                         </div>
+                                         <div class="md:col-span-9 col-span-12">
+                                          <input type="text" id="form_InputText71" class="py-2.5 px-4 block w-full form-control " placeholder="col-span-9"/>
+                                         </div>
+                                  </div>
+                              </div>
+                              <div class="md:col-span-1 col-span-12">
+                               <label for="form_InputText72" class="text-dark dark:text-darklink font-semibold mb-2 block">Label</label>
+                              </div>
+                              <div class="md:col-span-11 col-span-12">
+                                  <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                                         <div class="md:col-span-4 col-span-12">
+                                          <input type="text" id="form_InputText72" class="py-2.5 px-4 block w-full form-control " placeholder="col-span-4"/>
+                                         </div>
+                                         <div class="md:col-span-8 col-span-12">
+                                          <input type="text" id="form_InputText73" class="py-2.5 px-4 block w-full form-control " placeholder="col-span-8"/>
+                                         </div>
+                                  </div>
+                              </div>
+                              <div class="md:col-span-1 col-span-12">
+                               <label for="form_InputText74" class="text-dark dark:text-darklink font-semibold mb-2 block">Label</label>
+                              </div>
+                              <div class="md:col-span-11 col-span-12">
+                                  <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                                         <div class="md:col-span-5 col-span-12">
+                                          <input type="text" id="form_InputText74" class="py-2.5 px-4 block w-full form-control " placeholder="col-span-5"/>
+                                         </div>
+                                         <div class="md:col-span-7 col-span-12">
+                                          <input type="text" id="form_InputText75" class="py-2.5 px-4 block w-full form-control " placeholder="col-span-7"/>
+                                         </div>
+                                  </div>
+                              </div>
+                              <div class="md:col-span-1 col-span-12">
+                               <label for="form_InputText76" class="text-dark dark:text-darklink font-semibold mb-2 block">Label</label>
+                              </div>
+                              <div class="md:col-span-11 col-span-12">
+                                  <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                                         <div class="md:col-span-6 col-span-12">
+                                          <input type="text" id="form_InputText76" class="py-2.5 px-4 block w-full form-control " placeholder="col-span-6"/>
+                                         </div>
+                                         <div class="md:col-span-6 col-span-12">
+                                          <input type="text" id="form_InputText77" class="py-2.5 px-4 block w-full form-control " placeholder="col-span-6"/>
+                                         </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="flex gap-3 justify-end mt-6">
+                              <button class="btn px-6" type="submit">Submit</button>
+                              <button class="btn btn-light-error" type="reset">Reset</button>
+                           </div>
+                        </form>
+                            </div>
+                      </div>
+                </div>
+                <div class="col-span-12">
+                    <div class="card">
+                      <div class="card-body">                                                
+                        <h5 class="card-title mb-6">Grid With Inline Input Label</h5>
+                        <form action="#" >
+                          <div class="flex flex-col md:gap-6 gap-y-6">
+                          <div class="grid grid-cols-12 md:gap-6">
+                              <div class="md:col-span-2 col-span-12">
+                                  <div class="grid grid-cols-12">
+                                         <div class="md:col-span-7 col-span-12">
+                                          <input type="text" id="form_InputText78" class="py-2.5 px-4 block w-full form-control " placeholder="col-2"/>
+                                         </div>
+                                         <div class="md:col-span-5 col-span-12">
+                                          <label for="form_InputText78" class="text-dark dark:text-darklink font-semibold mb-2 block ps-6">Label</label>
+                                         </div>
+                                  </div>
+                              </div>
+                              <div class="md:col-span-10 col-span-12">
+                                  <div class="grid grid-cols-12 md:gap-6">
+                                      <div class="md:col-span-4 col-span-12 flex justify-end">
+                                          <label for="form_InputText79" class="text-dark dark:text-darklink font-semibold mb-2 block ps-6">Label</label>
+                                      </div>
+                                         <div class="md:col-span-8 col-span-12">
+                                          <input type="text" id="form_InputText79" class="py-2.5 px-4 block w-full form-control " placeholder="col-span-10"/>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="grid grid-cols-12 md:gap-6">
+                              <div class="md:col-span-3 col-span-12">
+                                  <div class="grid grid-cols-12">
+                                         <div class="md:col-span-7 col-span-12">
+                                          <input type="text" id="form_InputText80" class="py-2.5 px-4 block w-full form-control " placeholder="col-span-3"/>
+                                         </div>
+                                         <div class="md:col-span-5 col-span-12">
+                                          <label for="form_InputText80" class="text-dark dark:text-darklink font-semibold mb-2 block ps-6">Label</label>
+                                         </div>
+                                  </div>
+                              </div>
+                              <div class="md:col-span-9 col-span-12">
+                                  <div class="grid grid-cols-12 md:gap-6">
+                                      <div class="md:col-span-4 col-span-12 flex justify-end">
+                                          <label for="form_InputText81" class="text-dark dark:text-darklink font-semibold mb-2 block ps-6">Label</label>
+                                      </div>
+                                         <div class="md:col-span-8 col-span-12">
+                                          <input type="text" id="form_InputText81" class="py-2.5 px-4 block w-full form-control " placeholder="col-span-9"/>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="grid grid-cols-12 md:gap-6">
+                              <div class="md:col-span-4 col-span-12">
+                                  <div class="grid grid-cols-12">
+                                         <div class="md:col-span-7 col-span-12">
+                                          <input type="text" id="form_InputText82" class="py-2.5 px-4 block w-full form-control " placeholder="col-span-4"/>
+                                         </div>
+                                         <div class="md:col-span-5 col-span-12">
+                                          <label for="form_InputText82" class="text-dark dark:text-darklink font-semibold mb-2 block ps-6">Label</label>
+                                         </div>
+                                  </div>
+                              </div>
+                              <div class="md:col-span-8 col-span-12">
+                                  <div class="grid grid-cols-12 md:gap-6">
+                                      <div class="md:col-span-4 col-span-12 flex justify-end">
+                                          <label for="form_InputText83" class="text-dark dark:text-darklink font-semibold mb-2 block ps-6">Label</label>
+                                      </div>
+                                         <div class="md:col-span-8 col-span-12">
+                                          <input type="text" id="form_InputText83" class="py-2.5 px-4 block w-full form-control " placeholder="col-span-8"/>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="grid grid-cols-12 md:gap-6">
+                              <div class="md:col-span-5 col-span-12">
+                                  <div class="grid grid-cols-12">
+                                         <div class="md:col-span-7 col-span-12">
+                                          <input type="text" id="form_InputText84" class="py-2.5 px-4 block w-full form-control " placeholder="col-span-5"/>
+                                         </div>
+                                         <div class="md:col-span-5 col-span-12">
+                                          <label for="form_InputText84" class="text-dark dark:text-darklink font-semibold mb-2 block ps-6">Label</label>
+                                         </div>
+                                  </div>
+                              </div>
+                              <div class="md:col-span-7 col-span-12">
+                                  <div class="grid grid-cols-12 md:gap-6">
+                                      <div class="md:col-span-4 col-span-12 flex justify-end">
+                                          <label for="form_InputText85" class="text-dark dark:text-darklink font-semibold mb-2 block ps-6">Label</label>
+                                      </div>
+                                         <div class="md:col-span-8 col-span-12">
+                                          <input type="text" id="form_InputText85" class="py-2.5 px-4 block w-full form-control " placeholder="col-span-7"/>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="grid grid-cols-12 md:gap-6">
+                              <div class="md:col-span-6 col-span-12">
+                                  <div class="grid grid-cols-12">
+                                         <div class="md:col-span-7 col-span-12">
+                                          <input type="text" id="form_InputText86" class="py-2.5 px-4 block w-full form-control " placeholder="col-span-6"/>
+                                         </div>
+                                         <div class="md:col-span-5 col-span-12">
+                                          <label for="form_InputText86" class="text-dark dark:text-darklink font-semibold mb-2 block ps-6">Label</label>
+                                         </div>
+                                  </div>
+                              </div>
+                              <div class="md:col-span-6 col-span-12">
+                                  <div class="grid grid-cols-12 md:gap-6">
+                                      <div class="md:col-span-4 col-span-12 flex justify-end">
+                                          <label for="form_InputText87" class="text-dark dark:text-darklink font-semibold mb-2 block ps-6">Label</label>
+                                      </div>
+                                         <div class="md:col-span-8 col-span-12">
+                                          <input type="text" id="form_InputText87" class="py-2.5 px-4 block w-full form-control " placeholder="col-span-6"/>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                            </div>
+                            <div class="flex gap-3 justify-end mt-6">
+                                <button class="btn px-6" type="submit">Submit</button>
+                                <button class="btn btn-light-error" type="reset">Reset</button>
+                             </div>
+                          </form>
+
+                            </div>
+                      </div>
+                </div>
+                <div class="col-span-12">
+                    <div class="card">
+                      <div class="card-body">                                                
+                        <h5 class="card-title mb-6">Multiple Input With Default Label</h5>
+                        <form action="#" >
+                          <label for="form_InputText104" class="text-dark dark:text-darklink font-semibold mb-2 block mt-6">Label</label>
+                          <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                            <div class="md:col-span-4 col-span-12">
+                              <input type="text" id="form_InputText104" placeholder="First Input & First Row" class="py-2.5 px-4 block w-full form-control " />
+                            </div>
+                            <div class="md:col-span-8 col-span-12">
+                              <input type="text" id="form_InputText105" placeholder="Second Input & First Row" class="py-2.5 px-4 block w-full form-control " />
+                            </div>
+                            <div class="md:col-span-4 col-span-12">
+                              <input type="text" id="form_InputText106" placeholder="First Input & Second Row" class="py-2.5 px-4 block w-full form-control " />
+                            </div>
+                            <div class="md:col-span-8 col-span-12">
+                              <input type="text" id="form_InputText107" placeholder="Second Input & Second Row" class="py-2.5 px-4 block w-full form-control " />
+                            </div>
+                          </div>
+                          <label for="form_InputText108" class="text-dark dark:text-darklink font-semibold mb-2 block mt-6">Multiple width Input Label</label>
+                          <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                            <div class="md:col-span-7 col-span-12">
+                              <input type="text" id="form_InputText108" placeholder="First Input & First Row" class="py-2.5 px-4 block w-full form-control " />
+                            </div>
+                            <div class="md:col-span-5 col-span-12">
+                              <input type="text" id="form_InputText109" placeholder="Second Input & First Row" class="py-2.5 px-4 block w-full form-control " />
+                            </div>
+                            <div class="md:col-span-8 col-span-12">
+                              <input type="text" id="form_InputText110" placeholder="First Input & Second Row" class="py-2.5 px-4 block w-full form-control " />
+                            </div>
+                            <div class="md:col-span-4 col-span-12">
+                              <input type="text" id="form_InputText111" placeholder="Second Input & Second Row" class="py-2.5 px-4 block w-full form-control " />
+                            </div>
+                          </div>
+                          <div class="flex gap-3 justify-end mt-6">
+                              <button class="btn px-6" type="submit">Submit</button>
+                              <button class="btn btn-light-error" type="reset">Reset</button>
+                             </div>
+                        </form>
+
+                            </div>
+                      </div>
+                </div>
+                <div class="col-span-12">
+                    <div class="card">
+                      <div class="card-body">                                                
+                        <h5 class="card-title mb-6">Multiple Input With Default Label</h5>
+                        <form action="#" >
+                          <label for="form_InputText88" class="text-dark dark:text-darklink font-semibold mb-2 block mt-6">Label</label>
+                          <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                            <div class="md:col-span-4 col-span-12">
+                              <input type="text" id="form_InputText88" placeholder="First Input & First Row" class="py-2.5 px-4 block w-full form-control " />
+                            </div>
+                            <div class="md:col-span-8 col-span-12">
+                              <input type="text" id="form_InputText89" placeholder="Second Input & First Row" class="py-2.5 px-4 block w-full form-control " />
+                            </div>
+                            <div class="md:col-span-4 col-span-12">
+                              <input type="text" id="form_InputText90" placeholder="First Input & Second Row" class="py-2.5 px-4 block w-full form-control " />
+                            </div>
+                            <div class="md:col-span-8 col-span-12">
+                              <input type="text" id="form_InputText91" placeholder="Second Input & Second Row" class="py-2.5 px-4 block w-full form-control " />
+                            </div>
+                          </div>
+                          <label for="form_InputText92" class="text-dark dark:text-darklink font-semibold mb-2 block mt-6">Multiple width Input Label</label>
+                          <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                            <div class="md:col-span-7 col-span-12">
+                              <input type="text" id="form_InputText92" placeholder="First Input & First Row" class="py-2.5 px-4 block w-full form-control " />
+                            </div>
+                            <div class="md:col-span-5 col-span-12">
+                              <input type="text" id="form_InputText93" placeholder="Second Input & First Row" class="py-2.5 px-4 block w-full form-control " />
+                            </div>
+                            <div class="md:col-span-8 col-span-12">
+                              <input type="text" id="form_InputText94" placeholder="First Input & Second Row" class="py-2.5 px-4 block w-full form-control " />
+                            </div>
+                            <div class="md:col-span-4 col-span-12">
+                              <input type="text" id="form_InputText95" placeholder="Second Input & Second Row" class="py-2.5 px-4 block w-full form-control " />
+                            </div>
+                          </div>
+                          <div class="flex gap-3 justify-end mt-6">
+                              <button class="btn px-6" type="submit">Submit</button>
+                              <button class="btn btn-light-error" type="reset">Reset</button>
+                             </div>
+                        </form>
+
+                            </div>
+                      </div>
+                </div>
+                <div class="col-span-12">
+                    <div class="card">
+                      <div class="card-body">                                                
+                        <h5 class="card-title mb-6">Multiple Input With Default Label</h5>
+                        <form action="#" >
+                          <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                              <div class="md:col-span-2 col-span-12">
+                                <label for="form_InputText96" class="text-dark dark:text-darklink font-semibold mb-2 block ">Label</label>
+                              </div>
+                              <div class="md:col-span-10 col-span-12">
+                                  <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                                      <div class="md:col-span-4 col-span-12">
+                                        <input type="text" id="form_InputText96" placeholder="First Input & First Row" class="py-2.5 px-4 block w-full form-control " />
+                                      </div>
+                                      <div class="md:col-span-8 col-span-12">
+                                        <input type="text" id="form_InputText97" placeholder="Second Input & First Row" class="py-2.5 px-4 block w-full form-control " />
+                                      </div>
+                                      <div class="md:col-span-4 col-span-12">
+                                        <input type="text" id="form_InputText98" placeholder="First Input & Second Row" class="py-2.5 px-4 block w-full form-control " />
+                                      </div>
+                                      <div class="md:col-span-8 col-span-12">
+                                        <input type="text" id="form_InputText99" placeholder="Second Input & Second Row" class="py-2.5 px-4 block w-full form-control " />
+                                      </div>
+                                    </div>
+                              </div>
+                              <div class="md:col-span-2 col-span-12">
+                                <label for="form_InputText100" class="text-dark dark:text-darklink font-semibold mb-2 block ">Multiple width Input Label</label>
+                              </div>
+                              <div class="md:col-span-10 col-span-12">
+                                  <div class="grid grid-cols-12 md:gap-6 gap-y-6">
+                                      <div class="md:col-span-7 col-span-12">
+                                        <input type="text" id="form_InputText100" placeholder="First Input & First Row" class="py-2.5 px-4 block w-full form-control " />
+                                      </div>
+                                      <div class="md:col-span-5 col-span-12">
+                                        <input type="text" id="form_InputText101" placeholder="Second Input & First Row" class="py-2.5 px-4 block w-full form-control " />
+                                      </div>
+                                      <div class="md:col-span-8 col-span-12">
+                                        <input type="text" id="form_InputText102" placeholder="First Input & Second Row" class="py-2.5 px-4 block w-full form-control " />
+                                      </div>
+                                      <div class="md:col-span-4 col-span-12">
+                                        <input type="text" id="form_InputText103" placeholder="Second Input & Second Row" class="py-2.5 px-4 block w-full form-control " />
+                                      </div>
+                                    </div>
+                              </div>
+
+                          </div>
+                          <div class="flex gap-3 justify-end mt-6">
+                              <button class="btn px-6" type="submit">Submit</button>
+                              <button class="btn btn-light-error" type="reset">Reset</button>
+                             </div>
+                        </form>
+                            </div>
+                      </div>
+                </div>
+            </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                <!-- Main Content End -->
+
+            </div>
+        </div>
+        <!--end of project-->
+    </main>
+    @@include("partials/header-components/mobile-menu.html")
+    @@include("partials/customizer.html")
+    @@include("partials/scripts.html")
+</body>
+
+</html>

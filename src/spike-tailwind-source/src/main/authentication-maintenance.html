@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html  lang="en" dir="ltr" data-color-theme="Blue_Theme" class="light selected"
+    data-layout="vertical" data-boxed-layout="boxed" data-card="shadow">
+
+    <head>
+		@@include("partials/head.html")
+		<title>Spike TailwindCSS HTML Admin Template</title>
+	</head>
+    
+	<body class="DEFAULT_THEME bg-lightprimary dark:bg-darkbody">
+    <main>
+         <!--start the project-->
+         <div id="main-wrapper" class="flex">
+            <!-- Main Content -->
+            <main class="h-screen w-full">
+                <div class="h-full w-full flex justify-center items-center">
+                    <div class="flex justify-center w-full">
+                        <div class="sm:w-2/6 w-full">
+                            <div class="text-center ">
+                                <img src="@@webRoot/assets/images/backgrounds/maintenance.svg" alt="" class="mx-auto"
+                                    width="500">
+                                <h1 class="mb-7 text-4xl">Maintenance Mode!!!</h1>
+                                <h4 class="text-xl  mb-7">Website is Under Construction. Check back later!
+                                </h4>
+                                <a class="btn" href="@@webRoot/main/index.html" role="button">Go Back
+                                    to Home</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <!-- Main Content End -->
+        </div>
+        <!--end of project-->
+    </main>
+    <div class="hidden">
+        @@include("partials/customizer.html")
+    </div>
+    @@include("partials/scripts.html")
+</body>
+</html>

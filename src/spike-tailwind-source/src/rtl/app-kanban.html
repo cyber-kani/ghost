@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-color-theme="Blue_Theme" class="light selected" data-layout="vertical"
+    data-boxed-layout="boxed" data-card="shadow">
+
+<head>
+    @@include("partials/head.html")
+    <title>Spike TailwindCSS HTML Admin Template</title>
+</head>
+
+<body class="DEFAULT_THEME bg-lightprimary dark:bg-darkbody">
+    <main>
+        <!--start the project-->
+        <div id="main-wrapper" class="flex p-5">
+
+            <aside id="application-sidebar-brand"
+                class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full xl:rtl:-translate-x-0 rtl:translate-x-full  left-0 rtl:left-auto xl:rtl:right-5 rtl:right-0 transform hidden xl:block xl:translate-x-0 xl:end-auto xl:bottom-0 fixed top-0 with-vertical  left-sidebar transition-all duration-300 h-screen z-[2] flex-shrink-0  w-[270px] border-border dark:border-darkborder bg-white dark:bg-dark xl:top-5 xl:start-5 shadow-md xl:rounded-md">
+                @@include("partials/sidebar.html",{ "page": "kanban","page_group": "apps" })
+            </aside>
+            <div class="page-wrapper w-full" role="main">
+
+                <!-- Main Content -->
+                <main class="h-full ">
+                    <div class="container full-container py-5 xl:ps-6 ps-0 pt-0 pe-0 remove-ps">
+
+                        <!--  Header Start -->
+                        <header
+                            class="sticky top-0 inset-x-0 z-[1] flex flex-wrap md:justify-start md:flex-nowrap text-fs_15 py-3 lg:py-0 mb-6 bg-white dark:bg-dark rounded-md shadow-md">
+                            <div class="with-vertical w-full">@@include("partials/header.html")</div>
+                            <div class="with-horizontal w-full">
+                                <div class="bg-white dark:bg-dark">
+                                    <div class="container">
+                                        @@include("partials/horizontal-header.html")
+                                    </div>
+                                </div>
+                            </div>
+                        </header>
+                        <!--  Header End -->
+
+                        <!-- Horizontal Sidebar Menu -->
+                        <aside
+                            class="with-horizontal lg:flex hidden left-sidebar bg-white dark:bg-dark border-t border-border dark:border-darkborder">
+                            @@include("partials/horizontal-sidebar.html", { "page": "kanban","page_group":
+                            "apps"})
+                        </aside>
+                        <!-- Horizontal Sidebar Menu End -->
+
+                        <!-- Main Content -->
+                        <div class="max-w-full">
+                            <div class="container full-container ">
+                                <!----Breadcrumb Start---->
+                                @@include("partials/breadcrumb.html", {"title": "Kanban", "subtitle": 'Home'})
+                                <!----Breadcrumb End---->
+                        <!---Kanban Card--->
+                        <div class="action-btn my-7 flex items-center justify-between">
+                            <h5 class=" text-lg">Improving Work Processes</h5>
+                            <button id="add-list" class="btn" data-hs-overlay="#addListModal">Add List</button>
+                        </div>
+
+                        <!------Add List Modals-------->
+                        <div id="addListModal"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                                class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto min-h-[calc(100%-3.5rem)] flex items-center">
+                                <div
+                                    class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto w-full overflow-hidden"  id="addListModalTitle">
+
+                                    <div class="py-4 px-4 flex justify-between items-center">
+                                        <h5 class="text-base add-list-title"
+                                            id="addListModalTitleLabel1">Add List</h5>
+                                        <h5 class="text-base edit-list-title"
+                                            id="addListModalTitleLabel2">Edit List</h5>
+                                        
+                                            <button type="button"
+                                                    class="flex justify-center items-center size-7 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                                                    data-hs-overlay="#addListModal">
+                                                    <span class="sr-only">Close</span>
+                                                    <i class="ti ti-x text-xl text-bodytext dark:text-darklink"></i>
+                                                </button>
+
+                                    </div>
+
+                                    <div class="items-center gap-x-2 py-3 px-4">
+
+                                        <form action="javascript:void(0);">
+                                            <div class="list-title d-flex align-items-center">
+                                                <input id="item-name" type="text" placeholder="List Name"
+                                                    class="form-control" name="task">
+                                            </div>
+                                        </form>
+
+                                        <div class="modal-footer flex  gap-3 mt-6 mb-3">
+                                            <button class="btn btn-light-error"
+                                            data-hs-overlay="#addListModal">Cancel</button>
+                                            <button class="btn add-list">Add List</button>
+                                            <button class="edit-list btn bg-success hover:bg-successemphasis text-white
+                                            "
+                                                style="display: none;">Save</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!------------------------------>
+
+                        <!------Add Task Modals-------->
+                        <div id="addItemModal"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                                class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto min-h-[calc(100%-3.5rem)] flex items-center">
+                                <div
+                                    class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto w-full overflow-hidden">
+
+                                    <div class="py-4 px-4 flex justify-between items-center">
+                                        <h5 class="text-base add-task-title"
+                                            id="addTaskModalTitleLabel1">Add Task</h5>
+                                        <h5 class="text-base edit-task-title"
+                                            id="addTaskModalTitleLabel2">Edit Task</h5>
+                              
+                                            
+                                        <button type="button"
+                                                    class="flex justify-center items-center size-7 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                                                    data-hs-overlay="#addItemModal">
+                                                    <span class="sr-only">Close</span>
+                                                    <i class="ti ti-x text-xl text-bodytext dark:text-darklink"></i>
+                                                </button>
+                                    </div>
+
+                                    <div class="compose-box">
+                                        <div class="compose-content" id="addTaskModalTitle">
+                                            <div class="addTaskAccordion" id="add_task_accordion">
+                                                <div class="task-content task-text-progress">
+                                                    <div class="task-content-body  gap-x-2 py-3 px-4">
+                                                        <form action="javascript:void(0);">
+                                                            <div class="grid grid-cols-12 gap-6">
+                                                                <div class="col-span-12">
+                                                                    <div class="task-title mb-4 d-flex">
+                                                                        <input id="kanban-title" type="text"
+                                                                            placeholder="Task" class="form-control"
+                                                                            name="task">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="grid grid-cols-12 gap-6">
+                                                                <div class="col-span-12">
+                                                                    <div class="task-badge d-flex">
+                                                                        <textarea id="kanban-text"
+                                                                            placeholder="Task Text" class="form-control"
+                                                                            name="taskText"></textarea>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <!-- </div> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="justify-start flex gap-3 py-3 px-4 mb-3">
+                                        <button data-btn-action="addTask" class="btn add-tsk ">Add Task</button>
+                                        <button data-btn-action="editTask" class="btn edit-tsk"
+                                            style="display: none;">Save</button>
+                                        <button class="btn btn-light-error"  data-hs-overlay="#addItemModal">Cancel</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!------------------------------>
+
+                        <!----------Delete Task Modal------------->
+                        <div id="deleteConformation"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                                class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto min-h-[calc(100%-3.5rem)] flex items-center">
+                                <div
+                                    class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto w-full overflow-hidden">
+                                    <div class="py-4 px-4 flex justify-between items-center">
+                                        <h5 class="text-base add-list-title"
+                                            ><i class="ti ti-trash text-error text-lg me-2"></i>Delete the task?</h5>
+                                            <button type="button"
+                                            class="flex justify-center items-center size-7 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                                            data-hs-overlay="#deleteConformation">
+                                            <span class="sr-only">Close</span>
+                                            <i class="ti ti-x text-xl text-bodytext dark:text-darklink"></i>
+                                        </button>
+                                    </div>
+                                    <div class="p-4 overflow-y-auto">
+                                            <p class="mb-0 px-2">If you delete the task it will be gone forever. Are you sure you
+                                                want to
+                                                proceed?</p>
+                                        <div class="justify-end flex gap-3 mt-5">
+                                            <button class="btn btn-light-error"  data-hs-overlay="#deleteConformation">Cancel</button>
+                                            <button class="btn btn-error"
+                                                data-remove="task">Delete</button>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <!----------Delete Task Modal End------------->
+
+
+                        <div class="grid grid-cols-12 scrumboard" id="cancel-row">
+                            <div class="layout-spacing pb-3 col-span-12" data-simplebar="">
+                                <div class="task-list-section flex gap-6">
+                                    <div data-item="item-todo" class="task-list-container w-[302px] shrink-0" data-action="sorting"
+                                        data-action="sorting">
+                                        <div class="p-5 bg-gray-200 dark:bg-darkgray rounded-md">
+                                            <div class="flex items-center justify-between pb-4">
+                                                <h5 class="item-head text-base" data-item-title="Todo">Todo</h5>
+                                                <div class="flex items-center gap-2">
+                                                    <a id="add-task" data-hs-overlay="#addItemModal"
+                                                        class="relative hs-tooltip hs-tooltip-toggle addTask flex items-center justify-center gap-1">
+                                                        <i class="ti ti-plus text-dark dark:text-white text-sm"></i>
+                                                        <span
+                                                            class="rounded-md hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0  absolute invisible z-10 text-fs_12 py-1 px-2 bg-dark dark:bg-darkgray  text-white dark:text-gray-300"
+                                                            role="tooltip">
+                                                            Add Task
+                                                        </span>
+                                                    </a>
+
+
+
+                                                    <div class="hs-dropdown relative inline-flex">
+                                                        <button id="hs-dropdown-task" type="button"
+                                                            class="hs-dropdown-toggle flex justify-center items-center bg-white dark:bg-dark rounded-full h-6 w-6 ">
+                                                            <i
+                                                                class="ti ti-dots-vertical text-bodytext dark:text-darklink "></i>
+                                                        </button>
+
+                                                        <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-40 z-[1]"
+                                                            aria-labelledby="hs-dropdown-task">
+                                                            <div class="flex flex-col">
+                                                                <div
+                                                                    class="py-2 px-4 light-dark-hoverbg ">
+                                                                    <a class="flex gap-2 items-center list-edit"
+                                                                        href="javascript:void(0);">
+                                                                        Edit </a>
+                                                                </div>
+                                                                <div
+                                                                    class="py-2 px-4 light-dark-hoverbg ">
+                                                                    <a class="flex gap-2 items-center list-delete"
+                                                                        href="javascript:void(0);">
+                                                                        Delete
+                                                                    </a>
+                                                                </div>
+                                                                <div
+                                                                    class="py-2 px-4 light-dark-hoverbg ">
+                                                                    <a class="flex gap-2 items-center list-clear-all"
+                                                                        href="javascript:void(0);">
+                                                                        Clear All
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Dragable -->
+                                            <div class="connect-sorting-content flex flex-col gap-4 pb-3"
+                                                data-sortable="true">
+                                                <!----------->
+                                                <div data-draggable="true" class="card img-task">
+                                                    <div class="card-body p-0 ">
+                                                        <div class="flex items-baseline justify-between py-3 px-3">
+                                                            <h4 class=" text-sm cursor-move"
+                                                                data-item-title="This is first task">
+                                                                This is first task</h4>
+
+                                                            <div class="hs-dropdown relative inline-flex">
+                                                                <button id="hs-dropdown-task" type="button"
+                                                                    class="hs-dropdown-toggle flex justify-center items-center ">
+                                                                    <i
+                                                                        class="ti ti-dots-vertical text-bodytext dark:text-darklink "></i>
+                                                                </button>
+
+                                                                <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-40 z-[1]"
+                                                                    aria-labelledby="hs-dropdown-task">
+                                                                    <div class="flex flex-col">
+                                                                        <div
+                                                                            class="py-2 px-4 light-dark-hoverbg ">
+                                                                            <a class="flex gap-2 items-center kanban-item-edit cursor-pointer"
+                                                                                href="javascript:void(0);">
+                                                                                <i
+                                                                                    class="ti ti-pencil text-dark dark:text-white text-base"></i>Edit
+                                                                            </a>
+                                                                        </div>
+                                                                        <div
+                                                                            class="py-2 px-4 light-dark-hoverbg ">
+                                                                            <a class="flex gap-2 items-center kanban-item-delete cursor-pointer"
+                                                                                href="javascript:void(0);">
+                                                                                <i
+                                                                                    class="ti ti-trash text-dark dark:text-white text-base"></i>Delete
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="task-content">
+                                                            <img src="@@webRoot/assets/images/backgrounds/kanban-img-1.jpg"
+                                                                class="w-full max-w-full" alt="scrumboard">
+                                                        </div>
+                                                        <div class="flex items-center justify-between p-3">
+                                                            <a href="javascript:void(0);"
+                                                                class="flex items-center gap-2 text-xs hover:text-primary dark:hover:text-primary"
+                                                                data-item-date="24 July"><i
+                                                                    class="ti ti-calendar text-base"></i> 24 July
+                                                            </a>
+                                                            <span
+                                                                class="badge border-0 text-white bg-success text-fs_10">Design</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!---------->
+
+                                                <!---------->
+                                                <div data-draggable="true" class="card img-task">
+                                                    <div class="card-body p-0">
+                                                        <div class="flex items-baseline justify-between py-3 px-3">
+                                                            <h4 class=" text-sm cursor-move"
+                                                                data-item-title="Lets do some task on pd">
+                                                                Lets do some task on pd</h4>
+
+                                                            <div class="hs-dropdown relative inline-flex">
+                                                                <button id="hs-dropdown-task1" type="button"
+                                                                    class="hs-dropdown-toggle flex justify-center items-center ">
+                                                                    <i
+                                                                        class="ti ti-dots-vertical text-bodytext dark:text-darklink "></i>
+                                                                </button>
+
+                                                                <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-40 z-[1]"
+                                                                    aria-labelledby="hs-dropdown-task1">
+                                                                    <div class="flex flex-col">
+                                                                        <div
+                                                                            class="py-2 px-4 light-dark-hoverbg ">
+                                                                            <a class="flex gap-2 items-center kanban-item-edit cursor-pointer"
+                                                                                href="javascript:void(0);">
+                                                                                <i
+                                                                                    class="ti ti-pencil text-dark dark:text-white text-base"></i>Edit
+                                                                            </a>
+                                                                        </div>
+                                                                        <div
+                                                                            class="py-2 px-4 light-dark-hoverbg ">
+                                                                            <a class="flex gap-2 items-center kanban-item-delete cursor-pointer"
+                                                                                href="javascript:void(0);">
+                                                                                <i
+                                                                                    class="ti ti-trash text-dark dark:text-white text-base"></i>Delete
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="task-content px-3 pb-2">
+                                                            <p class="mb-0 font-medium"
+                                                                data-item-text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, o eiusmod tempor incid.">
+                                                                Lorem ipsum dolor sit amet, consectetur adipisicing
+                                                                elit, o eiusmod tempor incid.
+                                                            </p>
+                                                        </div>
+                                                        <div class="flex items-center justify-between p-3">
+                                                            <a href="javascript:void(0);"
+                                                                class="flex items-center gap-2 text-xs hover:text-primary dark:hover:text-primary"
+                                                                data-item-date="24 July"><i
+                                                                    class="ti ti-calendar text-base"></i> 24 July
+                                                            </a>
+                                                            <span
+                                                                class="badge border-0 text-white bg-warning text-fs_10">Development</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!---------->
+
+                                                <!---------->
+                                                <div data-draggable="true" class="card img-task">
+                                                    <div class="card-body p-0">
+                                                        <div class="flex items-baseline justify-between py-3 px-3">
+                                                            <h4 class=" text-sm cursor-move"
+                                                                data-item-title="Do some projects on React Native with Flutter">
+                                                                Do some projects on React Native with Flutter</h4>
+
+                                                            <div class="hs-dropdown relative inline-flex">
+                                                                <button id="hs-dropdown-task1" type="button"
+                                                                    class="hs-dropdown-toggle flex justify-center items-center ">
+                                                                    <i
+                                                                        class="ti ti-dots-vertical text-bodytext dark:text-darklink "></i>
+                                                                </button>
+
+                                                                <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-40 z-[1]"
+                                                                    aria-labelledby="hs-dropdown-task1">
+                                                                    <div class="flex flex-col">
+                                                                        <div
+                                                                            class="py-2 px-4 light-dark-hoverbg ">
+                                                                            <a class="flex gap-2 items-center kanban-item-edit cursor-pointer"
+                                                                                href="javascript:void(0);">
+                                                                                <i
+                                                                                    class="ti ti-pencil text-dark dark:text-white text-base"></i>Edit
+                                                                            </a>
+                                                                        </div>
+                                                                        <div
+                                                                            class="py-2 px-4 light-dark-hoverbg ">
+                                                                            <a class="flex gap-2 items-center kanban-item-delete cursor-pointer"
+                                                                                href="javascript:void(0);">
+                                                                                <i
+                                                                                    class="ti ti-trash text-dark dark:text-white text-base"></i>Delete
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="flex items-center justify-between p-3">
+                                                            <a href="javascript:void(0);"
+                                                                class="flex items-center gap-2 text-xs hover:text-primary dark:hover:text-primary"
+                                                                data-item-date="24 July"><i
+                                                                    class="ti ti-calendar text-base"></i> 24 July
+                                                            </a>
+                                                            <span
+                                                                class="badge border-0 text-white bg-primary text-fs_10">Mobile</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!---------->
+
+                                            </div>
+                                            <!-- Dragable end -->
+                                        </div>
+                                    </div>
+                                    <div data-item="item-inprogress" class="task-list-container w-[302px] shrink-0" data-action="sorting"
+                                        data-action="sorting">
+                                        <div class="p-5 bg-lightsecondary dark:bg-darksecondary rounded-md">
+                                            <div class="flex items-center justify-between pb-4">
+                                                <h5 class="item-head text-base " data-item-title="In Progress">In
+                                                    Progress</h5>
+                                                <div class="flex items-center gap-2">
+                                                    <div class="hs-dropdown relative inline-flex">
+                                                        <button id="hs-dropdown-task" type="button"
+                                                            class="hs-dropdown-toggle flex justify-center items-center bg-white dark:bg-dark rounded-full h-6 w-6 ">
+                                                            <i
+                                                                class="ti ti-dots-vertical text-bodytext dark:text-darklink "></i>
+                                                        </button>
+
+                                                        <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-40 z-[1]"
+                                                            aria-labelledby="hs-dropdown-task">
+                                                            <div class="flex flex-col">
+                                                                <div
+                                                                    class="py-2 px-4 light-dark-hoverbg ">
+                                                                    <a class="flex gap-2 items-center list-edit"
+                                                                        href="javascript:void(0);">
+                                                                        Edit </a>
+                                                                </div>
+                                                                <div
+                                                                    class="py-2 px-4 light-dark-hoverbg ">
+                                                                    <a class="flex gap-2 items-center list-delete"
+                                                                        href="javascript:void(0);">
+                                                                        Delete
+                                                                    </a>
+                                                                </div>
+                                                                <div
+                                                                    class="py-2 px-4 light-dark-hoverbg ">
+                                                                    <a class="flex gap-2 items-center list-clear-all"
+                                                                        href="javascript:void(0);">
+                                                                        Clear All
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Dragable -->
+                                            <div class="connect-sorting-content flex flex-col gap-4 pb-3"
+                                                data-sortable="true">
+                                                <!------>
+                                                <div data-draggable="true" class="card img-task">
+                                                    <div class="card-body p-0">
+                                                        <div class="flex items-baseline justify-between py-3 px-3">
+                                                            <h4 class=" text-sm cursor-move"
+                                                                data-item-title="Design navigation changes">
+                                                                Design navigation changes</h4>
+
+                                                            <div class="hs-dropdown relative inline-flex">
+                                                                <button id="hs-dropdown-task1" type="button"
+                                                                    class="hs-dropdown-toggle flex justify-center items-center ">
+                                                                    <i
+                                                                        class="ti ti-dots-vertical text-bodytext dark:text-darklink "></i>
+                                                                </button>
+
+                                                                <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-40 z-[1]"
+                                                                    aria-labelledby="hs-dropdown-task1">
+                                                                    <div class="flex flex-col">
+                                                                        <div
+                                                                            class="py-2 px-4 light-dark-hoverbg ">
+                                                                            <a class="flex gap-2 items-center kanban-item-edit cursor-pointer"
+                                                                                href="javascript:void(0);">
+                                                                                <i
+                                                                                    class="ti ti-pencil text-dark dark:text-white text-base"></i>Edit
+                                                                            </a>
+                                                                        </div>
+                                                                        <div
+                                                                            class="py-2 px-4 light-dark-hoverbg ">
+                                                                            <a class="flex gap-2 items-center kanban-item-delete cursor-pointer"
+                                                                                href="javascript:void(0);">
+                                                                                <i
+                                                                                    class="ti ti-trash text-dark dark:text-white text-base"></i>Delete
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="flex items-center justify-between p-3">
+                                                            <a href="javascript:void(0);"
+                                                                class="flex items-center gap-2 text-xs hover:text-primary dark:hover:text-primary"
+                                                                data-item-date="24 July"><i
+                                                                    class="ti ti-calendar text-base"></i> 24 July
+                                                            </a>
+                                                            <span
+                                                                class="badge border-0 text-white bg-primary text-fs_10">Mobile</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!------>
+
+                                                <!----------->
+                                                <div data-draggable="true" class="card img-task ">
+                                                    <div class="card-body p-0 ">
+                                                        <div class="flex items-baseline justify-between py-3 px-3">
+                                                            <h4 class=" text-sm cursor-move"
+                                                                data-item-title="Battle with fire">
+                                                                Battle with fire</h4>
+
+                                                            <div class="hs-dropdown relative inline-flex">
+                                                                <button id="hs-dropdown-task" type="button"
+                                                                    class="hs-dropdown-toggle flex justify-center items-center ">
+                                                                    <i
+                                                                        class="ti ti-dots-vertical text-bodytext dark:text-darklink "></i>
+                                                                </button>
+
+                                                                <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-40 z-[1]"
+                                                                    aria-labelledby="hs-dropdown-task">
+                                                                    <div class="flex flex-col">
+                                                                        <div
+                                                                            class="py-2 px-4 light-dark-hoverbg ">
+                                                                            <a class="flex gap-2 items-center kanban-item-edit cursor-pointer"
+                                                                                href="javascript:void(0);">
+                                                                                <i
+                                                                                    class="ti ti-pencil text-dark dark:text-white text-base"></i>Edit
+                                                                            </a>
+                                                                        </div>
+                                                                        <div
+                                                                            class="py-2 px-4 light-dark-hoverbg ">
+                                                                            <a class="flex gap-2 items-center kanban-item-delete cursor-pointer"
+                                                                                href="javascript:void(0);">
+                                                                                <i
+                                                                                    class="ti ti-trash text-dark dark:text-white text-base"></i>Delete
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="task-content">
+                                                            <img src="@@webRoot/assets/images/backgrounds/kanban-img-2.jpg"
+                                                                class="w-full max-w-full" alt="scrumboard">
+                                                        </div>
+                                                        <div class="flex items-center justify-between p-3">
+                                                            <a href="javascript:void(0);"
+                                                                class="flex items-center gap-2 text-xs hover:text-primary dark:hover:text-primary"
+                                                                data-item-date="24 July"><i
+                                                                    class="ti ti-calendar text-base"></i> 24 July
+                                                            </a>
+                                                            <span
+                                                                class="badge border-0 text-white bg-success text-fs_10">Design</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!---------->
+
+                                                <!------>
+                                                <div data-draggable="true" class="card img-task">
+                                                    <div class="card-body p-0">
+                                                        <div class="flex items-baseline justify-between py-3 px-3">
+                                                            <h4 class=" text-sm cursor-move"
+                                                                data-item-title="First design concept">
+                                                                First design concept</h4>
+
+                                                            <div class="hs-dropdown relative inline-flex">
+                                                                <button id="hs-dropdown-task1" type="button"
+                                                                    class="hs-dropdown-toggle flex justify-center items-center ">
+                                                                    <i
+                                                                        class="ti ti-dots-vertical text-bodytext dark:text-darklink "></i>
+                                                                </button>
+
+                                                                <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-40 z-[1]"
+                                                                    aria-labelledby="hs-dropdown-task1">
+                                                                    <div class="flex flex-col">
+                                                                        <div
+                                                                            class="py-2 px-4 light-dark-hoverbg ">
+                                                                            <a class="flex gap-2 items-center kanban-item-edit cursor-pointer"
+                                                                                href="javascript:void(0);">
+                                                                                <i
+                                                                                    class="ti ti-pencil text-dark dark:text-white text-base"></i>Edit
+                                                                            </a>
+                                                                        </div>
+                                                                        <div
+                                                                            class="py-2 px-4 light-dark-hoverbg ">
+                                                                            <a class="flex gap-2 items-center kanban-item-delete cursor-pointer"
+                                                                                href="javascript:void(0);">
+                                                                                <i
+                                                                                    class="ti ti-trash text-dark dark:text-white text-base"></i>Delete
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="flex items-center justify-between p-3">
+                                                            <a href="javascript:void(0);"
+                                                                class="flex items-center gap-2 text-xs hover:text-primary dark:hover:text-primary"
+                                                                data-item-date="24 July"><i
+                                                                    class="ti ti-calendar text-base"></i> 24 July
+                                                            </a>
+                                                            <span
+                                                                class="badge border-0 text-white bg-primary text-fs_10">Mobile</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!------>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div data-item="item-pending" class="task-list-container w-[302px] shrink-0" data-action="sorting"
+                                        data-action="sorting">
+                                        <div class="p-5 bg-lightinfo dark:bg-darkinfo rounded-md">
+                                            <div class="flex items-center justify-between pb-4">
+                                                <h5 class="item-head text-base" data-item-title="Pending">
+                                                    Pending</h5>
+                                                <div class="flex items-center gap-2">
+                                                    <div class="hs-dropdown relative inline-flex">
+                                                        <button id="hs-dropdown-task" type="button"
+                                                            class="hs-dropdown-toggle flex justify-center items-center bg-white dark:bg-dark rounded-full h-6 w-6 ">
+                                                            <i
+                                                                class="ti ti-dots-vertical text-bodytext dark:text-darklink "></i>
+                                                        </button>
+
+                                                        <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-40 z-[1]"
+                                                            aria-labelledby="hs-dropdown-task">
+                                                            <div class="flex flex-col">
+                                                                <div
+                                                                    class="py-2 px-4 light-dark-hoverbg ">
+                                                                    <a class="flex gap-2 items-center list-edit"
+                                                                        href="javascript:void(0);">
+                                                                        Edit </a>
+                                                                </div>
+                                                                <div
+                                                                    class="py-2 px-4 light-dark-hoverbg ">
+                                                                    <a class="flex gap-2 items-center list-delete"
+                                                                        href="javascript:void(0);">
+                                                                        Delete
+                                                                    </a>
+                                                                </div>
+                                                                <div
+                                                                    class="py-2 px-4 light-dark-hoverbg ">
+                                                                    <a class="flex gap-2 items-center list-clear-all"
+                                                                        href="javascript:void(0);">
+                                                                        Clear All
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Dragable -->
+                                            <div class="connect-sorting-content flex flex-col gap-4 pb-3"
+                                                data-sortable="true">
+                                                <!---------->
+                                                <div data-draggable="true" class="card img-task">
+                                                    <div class="card-body p-0">
+                                                        <div class="flex items-baseline justify-between py-3 px-3">
+                                                            <h4 class=" text-sm cursor-move"
+                                                                data-item-title="Personal development">
+                                                                Personal development</h4>
+
+                                                            <div class="hs-dropdown relative inline-flex">
+                                                                <button id="hs-dropdown-task1" type="button"
+                                                                    class="hs-dropdown-toggle flex justify-center items-center ">
+                                                                    <i
+                                                                        class="ti ti-dots-vertical text-bodytext dark:text-darklink "></i>
+                                                                </button>
+
+                                                                <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-40 z-[1]"
+                                                                    aria-labelledby="hs-dropdown-task1">
+                                                                    <div class="flex flex-col">
+                                                                        <div
+                                                                            class="py-2 px-4 light-dark-hoverbg ">
+                                                                            <a class="flex gap-2 items-center kanban-item-edit cursor-pointer"
+                                                                                href="javascript:void(0);">
+                                                                                <i
+                                                                                    class="ti ti-pencil text-dark dark:text-white text-base"></i>Edit
+                                                                            </a>
+                                                                        </div>
+                                                                        <div
+                                                                            class="py-2 px-4 light-dark-hoverbg ">
+                                                                            <a class="flex gap-2 items-center kanban-item-delete cursor-pointer"
+                                                                                href="javascript:void(0);">
+                                                                                <i
+                                                                                    class="ti ti-trash text-dark dark:text-white text-base"></i>Delete
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="task-content px-3 pb-2">
+                                                            <p class="mb-0 font-medium"
+                                                                data-item-text="Create user personas based on the research data to represent different user groups and their characteristics, gols, and behaviors..">
+                                                                Create user personas based on the research data to
+                                                                represent different user groups and
+                                                                their
+                                                                characteristics, gols, and behaviors..
+                                                            </p>
+                                                        </div>
+                                                        <div class="flex items-center justify-between p-3">
+                                                            <a href="javascript:void(0);"
+                                                                class="flex items-center gap-2 text-xs hover:text-primary dark:hover:text-primary"
+                                                                data-item-date="24 July"><i
+                                                                    class="ti ti-calendar text-base"></i> 24 July
+                                                            </a>
+                                                            <span
+                                                                class="badge border-0 text-white bg-warning text-fs_10">UX
+                                                                stage</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!---------->
+
+                                                <!----------->
+                                                <div data-draggable="true" class="card img-task ">
+                                                    <div class="card-body p-0 ">
+                                                        <div class="flex items-baseline justify-between py-3 px-3">
+                                                            <h4 class=" text-sm cursor-move"
+                                                                data-item-title="Redesign overview">
+                                                                Redesign overview</h4>
+
+                                                            <div class="hs-dropdown relative inline-flex">
+                                                                <button id="hs-dropdown-task" type="button"
+                                                                    class="hs-dropdown-toggle flex justify-center items-center ">
+                                                                    <i
+                                                                        class="ti ti-dots-vertical text-bodytext dark:text-darklink "></i>
+                                                                </button>
+
+                                                                <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-40 z-[1]"
+                                                                    aria-labelledby="hs-dropdown-task">
+                                                                    <div class="flex flex-col">
+                                                                        <div
+                                                                            class="py-2 px-4 light-dark-hoverbg ">
+                                                                            <a class="flex gap-2 items-center kanban-item-edit cursor-pointer"
+                                                                                href="javascript:void(0);">
+                                                                                <i
+                                                                                    class="ti ti-pencil text-dark dark:text-white text-base"></i>Edit
+                                                                            </a>
+                                                                        </div>
+                                                                        <div
+                                                                            class="py-2 px-4 light-dark-hoverbg ">
+                                                                            <a class="flex gap-2 items-center kanban-item-delete cursor-pointer"
+                                                                                href="javascript:void(0);">
+                                                                                <i
+                                                                                    class="ti ti-trash text-dark dark:text-white text-base"></i>Delete
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="task-content">
+                                                            <img src="@@webRoot/assets/images/backgrounds/my-card.jpg"
+                                                                class="w-full max-w-full h-28" alt="scrumboard">
+                                                        </div>
+                                                        <div class="flex items-center justify-between p-3">
+                                                            <a href="javascript:void(0);"
+                                                                class="flex items-center gap-2 text-xs hover:text-primary dark:hover:text-primary"
+                                                                data-item-date="24 July"><i
+                                                                    class="ti ti-calendar text-base"></i> 24 July
+                                                            </a>
+                                                            <span
+                                                                class="badge border-0 text-white bg-success text-fs_10">Design</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!---------->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div data-item="item-pending" class="task-list-container w-[302px] shrink-0" data-action="sorting"
+                                        data-action="sorting">
+                                        <div class="p-5 bg-lightsuccess dark:bg-darksuccess rounded-md">
+                                            <div class="flex items-center justify-between pb-4">
+                                                <h5 class="item-head text-base" data-item-title="Done">In
+                                                    Done</h5>
+                                                <div class="flex items-center gap-2">
+                                                    <div class="hs-dropdown relative inline-flex">
+                                                        <button id="hs-dropdown-task" type="button"
+                                                            class="hs-dropdown-toggle flex justify-center items-center bg-white dark:bg-dark rounded-full h-6 w-6 ">
+                                                            <i
+                                                                class="ti ti-dots-vertical text-bodytext dark:text-darklink "></i>
+                                                        </button>
+
+                                                        <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-40 z-[1]"
+                                                            aria-labelledby="hs-dropdown-task">
+                                                            <div class="flex flex-col">
+                                                                <div
+                                                                    class="py-2 px-4 light-dark-hoverbg ">
+                                                                    <a class="flex gap-2 items-center list-edit"
+                                                                        href="javascript:void(0);">
+                                                                        Edit </a>
+                                                                </div>
+                                                                <div
+                                                                    class="py-2 px-4 light-dark-hoverbg ">
+                                                                    <a class="flex gap-2 items-center list-delete"
+                                                                        href="javascript:void(0);">
+                                                                        Delete
+                                                                    </a>
+                                                                </div>
+                                                                <div
+                                                                    class="py-2 px-4 light-dark-hoverbg ">
+                                                                    <a class="flex gap-2 items-center list-clear-all"
+                                                                        href="javascript:void(0);">
+                                                                        Clear All
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Dragable -->
+                                            <div class="connect-sorting-content flex flex-col gap-4 pb-3"
+                                                data-sortable="true">
+                                                <!----------->
+                                                <div data-draggable="true" class="card img-task ">
+                                                    <div class="card-body p-0 ">
+                                                        <div class="flex items-baseline justify-between py-3 px-3">
+                                                            <h4 class=" text-sm cursor-move"
+                                                                data-item-title="Usability testing">
+                                                                Usability testing</h4>
+
+                                                            <div class="hs-dropdown relative inline-flex">
+                                                                <button id="hs-dropdown-task" type="button"
+                                                                    class="hs-dropdown-toggle flex justify-center items-center ">
+                                                                    <i
+                                                                        class="ti ti-dots-vertical text-bodytext dark:text-darklink "></i>
+                                                                </button>
+
+                                                                <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-40 z-[1]"
+                                                                    aria-labelledby="hs-dropdown-task">
+                                                                    <div class="flex flex-col">
+                                                                        <div
+                                                                            class="py-2 px-4 light-dark-hoverbg ">
+                                                                            <a class="flex gap-2 items-center kanban-item-edit cursor-pointer"
+                                                                                href="javascript:void(0);">
+                                                                                <i
+                                                                                    class="ti ti-pencil text-dark dark:text-white text-base"></i>Edit
+                                                                            </a>
+                                                                        </div>
+                                                                        <div
+                                                                            class="py-2 px-4 light-dark-hoverbg ">
+                                                                            <a class="flex gap-2 items-center kanban-item-delete cursor-pointer"
+                                                                                href="javascript:void(0);">
+                                                                                <i
+                                                                                    class="ti ti-trash text-dark dark:text-white text-base"></i>Delete
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="task-content">
+                                                            <img src="@@webRoot/assets/images/backgrounds/weatherbg.jpg"
+                                                                class="w-full max-w-full h-28" alt="scrumboard">
+                                                        </div>
+                                                        <div class="flex items-center justify-between p-3">
+                                                            <a href="javascript:void(0);"
+                                                                class="flex items-center gap-2 text-xs hover:text-primary dark:hover:text-primary"
+                                                                data-item-date="24 July"><i
+                                                                    class="ti ti-calendar text-base"></i> 24 July
+                                                            </a>
+                                                            <span
+                                                                class="badge border-0 text-white bg-info text-fs_10">Research</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!---------->
+
+                                                <!------>
+                                                <div data-draggable="true" class="card img-task">
+                                                    <div class="card-body p-0">
+                                                        <div class="flex items-baseline justify-between py-3 px-3">
+                                                            <h4 class=" text-sm cursor-move"
+                                                                data-item-title="Introduce new navigation">
+                                                                Introduce new navigation</h4>
+
+                                                            <div class="hs-dropdown relative inline-flex">
+                                                                <button id="hs-dropdown-task1" type="button"
+                                                                    class="hs-dropdown-toggle flex justify-center items-center ">
+                                                                    <i
+                                                                        class="ti ti-dots-vertical text-bodytext dark:text-darklink "></i>
+                                                                </button>
+
+                                                                <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-40 z-[1]"
+                                                                    aria-labelledby="hs-dropdown-task1">
+                                                                    <div class="flex flex-col">
+                                                                        <div
+                                                                            class="py-2 px-4 light-dark-hoverbg ">
+                                                                            <a class="flex gap-2 items-center kanban-item-edit cursor-pointer"
+                                                                                href="javascript:void(0);">
+                                                                                <i
+                                                                                    class="ti ti-pencil text-dark dark:text-white text-base"></i>Edit
+                                                                            </a>
+                                                                        </div>
+                                                                        <div
+                                                                            class="py-2 px-4 light-dark-hoverbg ">
+                                                                            <a class="flex gap-2 items-center kanban-item-delete cursor-pointer"
+                                                                                href="javascript:void(0);">
+                                                                                <i
+                                                                                    class="ti ti-trash text-dark dark:text-white text-base"></i>Delete
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="flex items-center justify-between p-3">
+                                                            <a href="javascript:void(0);"
+                                                                class="flex items-center gap-2 text-xs hover:text-primary dark:hover:text-primary"
+                                                                data-item-date="24 July"><i
+                                                                    class="ti ti-calendar text-base"></i> 24 July
+                                                            </a>
+                                                            <span
+                                                                class="badge border-0 text-white bg-error text-fs_10">Data
+                                                                science</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!------>
+
+                                                <!------>
+                                                <div data-draggable="true" class="card img-task">
+                                                    <div class="card-body p-0">
+                                                        <div class="flex items-baseline justify-between py-3 px-3">
+                                                            <h4 class=" text-sm cursor-move"
+                                                                data-item-title=" Branding visual identity">
+                                                                Branding visual identity</h4>
+
+                                                            <div class="hs-dropdown relative inline-flex">
+                                                                <button id="hs-dropdown-task1" type="button"
+                                                                    class="hs-dropdown-toggle flex justify-center items-center ">
+                                                                    <i
+                                                                        class="ti ti-dots-vertical text-bodytext dark:text-darklink "></i>
+                                                                </button>
+
+                                                                <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-40 z-[1]"
+                                                                    aria-labelledby="hs-dropdown-task1">
+                                                                    <div class="flex flex-col">
+                                                                        <div
+                                                                            class="py-2 px-4 light-dark-hoverbg ">
+                                                                            <a class="flex gap-2 items-center kanban-item-edit cursor-pointer"
+                                                                                href="javascript:void(0);">
+                                                                                <i
+                                                                                    class="ti ti-pencil text-dark dark:text-white text-base"></i>Edit
+                                                                            </a>
+                                                                        </div>
+                                                                        <div
+                                                                            class="py-2 px-4 light-dark-hoverbg ">
+                                                                            <a class="flex gap-2 items-center kanban-item-delete cursor-pointer"
+                                                                                href="javascript:void(0);">
+                                                                                <i
+                                                                                    class="ti ti-trash text-dark dark:text-white text-base"></i>Delete
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="flex items-center justify-between p-3">
+                                                            <a href="javascript:void(0);"
+                                                                class="flex items-center gap-2 text-xs hover:text-primary dark:hover:text-primary"
+                                                                data-item-date="24 July"><i
+                                                                    class="ti ti-calendar text-base"></i> 24 July
+                                                            </a>
+                                                            <span
+                                                                class="badge border-0 text-white bg-primary text-fs_10">Branding</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!------>
+
+                                                <!---------->
+                                                <div data-draggable="true" class="card img-task">
+                                                    <div class="card-body p-0">
+                                                        <div class="flex items-baseline justify-between py-3 px-3">
+                                                            <h4 class=" text-sm cursor-move"
+                                                                data-item-title="Competitor research">
+                                                                Competitor research</h4>
+
+                                                            <div class="hs-dropdown relative inline-flex">
+                                                                <button id="hs-dropdown-task1" type="button"
+                                                                    class="hs-dropdown-toggle flex justify-center items-center ">
+                                                                    <i
+                                                                        class="ti ti-dots-vertical text-bodytext dark:text-darklink "></i>
+                                                                </button>
+
+                                                                <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-40 z-[1]"
+                                                                    aria-labelledby="hs-dropdown-task1">
+                                                                    <div class="flex flex-col">
+                                                                        <div
+                                                                            class="py-2 px-4 light-dark-hoverbg ">
+                                                                            <a class="flex gap-2 items-center kanban-item-edit cursor-pointer"
+                                                                                href="javascript:void(0);">
+                                                                                <i
+                                                                                    class="ti ti-pencil text-dark dark:text-white text-base"></i>Edit
+                                                                            </a>
+                                                                        </div>
+                                                                        <div
+                                                                            class="py-2 px-4 light-dark-hoverbg ">
+                                                                            <a class="flex gap-2 items-center kanban-item-delete cursor-pointer"
+                                                                                href="javascript:void(0);">
+                                                                                <i
+                                                                                    class="ti ti-trash text-dark dark:text-white text-base"></i>Delete
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="task-content px-3 pb-2">
+                                                            <p class="mb-0 font-medium"
+                                                                data-item-text="research competitors and identify weakness and strengths each of them. comparing their product features, quelity...">
+                                                                research competitors and identify weakness and strengths
+                                                                each of them. comparing their
+                                                                product features, quelity...
+                                                            </p>
+                                                        </div>
+                                                        <div class="flex items-center justify-between p-3">
+                                                            <a href="javascript:void(0);"
+                                                                class="flex items-center gap-2 text-xs hover:text-primary dark:hover:text-primary"
+                                                                data-item-date="24 July"><i
+                                                                    class="ti ti-calendar text-base"></i> 24 July
+                                                            </a>
+                                                            <span
+                                                                class="badge border-0 text-white bg-warning text-fs_10">UX
+                                                                stage</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!---------->
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!---Kanban Card End--->
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </main>
+    <!-- Main Content End -->
+
+    </div>
+    </div>
+    <!--end of project-->
+    </main>
+    @@include("partials/header-components/mobile-menu.html")
+    @@include("partials/customizer.html")
+    <script src="@@webRoot/assets/js/vendor.min.js"></script>
+    @@include("partials/scripts.html")
+    <script src="@@webRoot/node_modules/jquery-ui/dist/jquery-ui.min.js"></script>
+    <script src="@@webRoot/assets/js/apps/kanban.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,865 @@
+<nav class="relative py-4">
+    <div class="container">
+        <div class="flex gap-6 items-center relative">
+            <!-- Dashboard -->
+            <div
+                class="hs-dropdown  [--strategy:static] lg:[--strategy:absolute] md:[--trigger:hover] [--adaptive:none] relative">
+                <button type="button"
+                    class="single-link-horizontal font-medium item-horizontal before:bg-lightprimary hover:text-primary
+                @@if (context.page_group == 'dashboards') { hs-accordion-active before:bg-lightprimary active text-primary dark:text-primary}    
+                ">
+                    <iconify-icon icon="solar:atom-line-duotone"
+                        class="text-xl p-2"></iconify-icon>
+                    Dashboard<i
+                        class="ti ti-chevron-down  ms-auto  text-md"></i>
+                </button>
+                <div
+                    class="py-4 px-3 hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] sm:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 left-0 hidden z-10 sm:mt-4 top-full start-0 min-w-64  before:absolute lg:bg-white bg-transparent dark:bg-dark lg:shadow-md shadow-none">
+                    <a class="dropdown-link-horizontal
+                @@if (context.page === 'dashboard 1') { active text-primary dark:text-primary}"
+                        href="@@webRoot/dark/index.html">
+                        <i class="ti ti-circle text-sm"></i>Dashboard
+                    </a>
+                    <a
+                        class="dropdown-link-horizontal  @@if (context.page === 'dashboard 2') { active text-primary dark:text-primary}"
+                        href="@@webRoot/dark/index2.html">
+                        <i class="ti ti-circle text-sm"></i>Dashboard 2
+                    </a>
+                </div>
+            </div>
+
+            <!-- Apps -->
+            <div
+                class="hs-dropdown  [--strategy:static] lg:[--strategy:absolute] md:[--trigger:hover] [--adaptive:none] relative">
+                <button type="button"
+                    class="single-link-horizontal font-medium item-horizontal before:bg-lightindigo hover:text-indigo
+            @@if (context.page_group == 'apps' || context.page_group == 'blog' || context.page_group == 'ecomm' ) { hs-accordion-active before:bg-lightindigo active text-indigo dark:text-indigo}    
+                ">
+                    <iconify-icon icon="solar:archive-broken"
+                        class="text-xl p-2"></iconify-icon>
+                    Apps<i class="ti ti-chevron-down  ms-auto  text-md"></i>
+                </button>
+                <div
+                    class="py-4 px-3 hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] sm:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 left-0 hidden z-10 sm:mt-4 top-full start-0 min-w-96  before:absolute lg:bg-white bg-transparent dark:bg-dark lg:shadow-md shadow-none">
+                    <div class="grid grid-cols-12">
+
+                        <div class="col-span-6">
+                            <a class="dropdown-link-horizontal  
+                                @@if (context.page === 'calendar') {active text-primary dark:text-primary}"
+                                href="@@webRoot/dark/app-calendar.html">
+                                <i
+                                    class="ti ti-calendar text-base flex-shrink-0"></i>
+                                <span
+                                    class="hide-menu flex-shrink-0 text-sm leading-tight">Calendar</span>
+                            </a>
+                        </div>
+                        <div class="col-span-6">
+                            <a class="dropdown-link-horizontal  
+                                @@if (context.page === 'kanban') {active text-primary dark:text-primary}"
+                                href="@@webRoot/dark/app-kanban.html">
+                                <i
+                                    class="ti ti-layout-kanban text-base flex-shrink-0"></i>
+                                <span
+                                    class="hide-menu flex-shrink-0 text-sm leading-tight">Kanban</span>
+                            </a>
+                        </div>
+                        <div class="col-span-6">
+                            <a class="dropdown-link-horizontal  
+                                @@if (context.page === 'chat') {active text-primary dark:text-primary}"
+                                href="@@webRoot/dark/app-chat.html">
+                                <i
+                                    class="ti ti-message-dots text-base flex-shrink-0"></i>
+                                <span
+                                    class="hide-menu flex-shrink-0 text-sm leading-tight">Chat</span>
+                            </a>
+                        </div>
+                        <div class="col-span-6">
+                            <a class="dropdown-link-horizontal  
+                                @@if (context.page === 'email') {active text-primary dark:text-primary}"
+                                href="@@webRoot/dark/app-email.html">
+                                <i
+                                    class="ti ti-mail text-base flex-shrink-0"></i>
+                                <span
+                                    class="hide-menu flex-shrink-0 text-sm leading-tight">Email</span>
+                            </a>
+                        </div>
+                        <div class="col-span-6">
+                            <a class="dropdown-link-horizontal  
+                                @@if (context.page === 'contact') {active text-primary dark:text-primary}"
+                                href="@@webRoot/dark/app-contact.html">
+                                <i
+                                    class="ti ti-phone text-base flex-shrink-0"></i>
+                                <span
+                                    class="hide-menu flex-shrink-0 text-sm leading-tight">Contact
+                                    Table</span>
+                            </a>
+                        </div>
+                        <div class="col-span-6">
+                            <a class="dropdown-link-horizontal  
+                                @@if (context.page === 'contact-application') {active text-primary dark:text-primary}"
+                                href="@@webRoot/dark/app-contact2.html">
+                                <i
+                                    class="ti ti-list-details text-base flex-shrink-0"></i>
+                                <span
+                                    class="hide-menu flex-shrink-0 text-sm leading-tight">Contact
+                                    List</span>
+                            </a>
+                        </div>
+                        <div class="col-span-6">
+                            <a class="dropdown-link-horizontal  
+                                @@if (context.page === 'notes') {active text-primary dark:text-primary}"
+                                href="@@webRoot/dark/app-notes.html">
+                                <i
+                                    class="ti ti-notes text-base flex-shrink-0"></i>
+                                <span
+                                    class="hide-menu flex-shrink-0 text-sm leading-tight">Notes</span>
+                            </a>
+                        </div>
+                        <div class="col-span-6">
+                            <a class="dropdown-link-horizontal  
+                                @@if (context.page === 'invoice') {active text-primary dark:text-primary}"
+                                href="@@webRoot/dark/app-invoice.html">
+                                <i
+                                    class="ti ti-file-text text-base flex-shrink-0"></i>
+                                <span
+                                    class="hide-menu flex-shrink-0 text-sm leading-tight">Invoice</span>
+                            </a>
+                        </div>
+                        <div class="col-span-6">
+                            <a class="dropdown-link-horizontal  
+                                @@if (context.page === 'user-profile') {active text-primary dark:text-primary}"
+                                href="@@webRoot/dark/page-user-profile.html">
+                                <i
+                                    class="ti ti-user-circle text-base flex-shrink-0"></i>
+                                <span
+                                    class="hide-menu flex-shrink-0 text-sm leading-tight">User
+                                    Profile</span>
+                            </a>
+                        </div>
+                        <div class="col-span-6">
+                            <a class="dropdown-link-horizontal  
+                                @@if (context.page === 'blog-posts') {active text-primary dark:text-primary}"
+                                href="@@webRoot/dark/blog-posts.html">
+                                <i
+                                    class="ti ti-article text-base flex-shrink-0"></i>
+                                <span
+                                    class="hide-menu flex-shrink-0 text-sm leading-tight">Posts</span>
+                            </a>
+                        </div>
+                        <div class="col-span-6">
+                            <a class="dropdown-link-horizontal  
+                                @@if (context.page === 'blog-detail') {active text-primary dark:text-primary}"
+                                href="@@webRoot/dark/blog-detail.html">
+                                <i
+                                    class="ti ti-article text-base flex-shrink-0"></i>
+                                <span
+                                    class="hide-menu flex-shrink-0 text-sm leading-tight">Details</span>
+                            </a>
+                        </div>
+                        <div class="col-span-6">
+                            <a class="dropdown-link-horizontal  
+                                @@if (context.page === 'eco-shop') {active text-primary dark:text-primary}"
+                                href="@@webRoot/dark/eco-shop.html">
+                                <i
+                                    class="ti ti-shopping-cart text-base flex-shrink-0"></i>
+                                <span
+                                    class="hide-menu flex-shrink-0 text-sm leading-tight">Shop</span>
+                            </a>
+                        </div>
+                        <div class="col-span-6">
+                            <a class="dropdown-link-horizontal  
+                                @@if (context.page === 'eco-shop-detail') {active text-primary dark:text-primary}"
+                                href="@@webRoot/dark/eco-shop-detail.html">
+                                <i
+                                    class="ti ti-basket text-base flex-shrink-0"></i>
+                                <span
+                                    class="hide-menu flex-shrink-0 text-sm leading-tight">Shop
+                                    Detail</span>
+                            </a>
+                        </div>
+                        <div class="col-span-6">
+                            <a class="dropdown-link-horizontal  
+                                @@if (context.page === 'eco-product-list') {active text-primary dark:text-primary}"
+                                href="@@webRoot/dark/eco-product-list.html">
+                                <i
+                                    class="ti ti-list-check text-base flex-shrink-0"></i>
+                                <span
+                                    class="hide-menu flex-shrink-0 text-sm leading-tight">List</span>
+                            </a>
+                        </div>
+                        <div class="col-span-6">
+                            <a class="dropdown-link-horizontal  
+                                @@if (context.page === 'eco-checkout') {active text-primary dark:text-primary}"
+                                href="@@webRoot/dark/eco-checkout.html">
+                                <i
+                                    class="ti ti-brand-shopee text-base flex-shrink-0"></i>
+                                <span
+                                    class="hide-menu flex-shrink-0 text-sm leading-tight">Checkout</span>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pages -->
+            <div
+                class="hs-dropdown  [--strategy:static] lg:[--strategy:absolute] md:[--trigger:hover] [--adaptive:none] relative">
+                <button type="button"
+                    class="single-link-horizontal font-medium item-horizontal before:bg-lighterror hover:text-error
+                    @@if (context.page_group == 'widgets' || context.page_group == 'page' ) { hs-accordion-active before:bg-lighterror active text-error dark:text-error}    
+                ">
+                    <iconify-icon icon="solar:file-text-line-duotone"
+                        class="text-xl p-2"></iconify-icon>
+                    Pages<i class="ti ti-chevron-down  ms-auto  text-md"></i>
+                </button>
+                <div
+                    class="py-4 px-3 hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] sm:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 left-0 hidden z-10 sm:mt-4 top-full start-0 min-w-64  before:absolute lg:bg-white bg-transparent dark:bg-dark lg:shadow-md shadow-none">
+                    <a class="dropdown-link-horizontal
+                    @@if (context.page === 'faq') {active text-primary dark:text-primary}"
+                        href="@@webRoot/dark/page-faq.html">
+                        <i class="ti ti-help text-base flex-shrink-0"></i> <span
+                            class="hide-menu flex-shrink-0 text-sm leading-tight">FAQ</span>
+                    </a>
+                    <a class="dropdown-link-horizontal
+                    @@if (context.page === 'account-settings') {active text-primary dark:text-primary}"
+                        href="@@webRoot/dark/page-account-settings.html">
+                        <i
+                            class="ti ti-user-circle text-base flex-shrink-0"></i>
+                        <span
+                            class="hide-menu flex-shrink-0 text-sm leading-tight">Account
+                            Setting</span>
+                    </a>
+                    <a class="dropdown-link-horizontal
+                    @@if (context.page === 'pricing') {active text-primary dark:text-primary}"
+                        href="@@webRoot/dark/page-pricing.html">
+                        <i
+                            class="ti ti-currency-dollar text-base flex-shrink-0"></i>
+                        <span
+                            class="hide-menu flex-shrink-0 text-sm leading-tight">Pricing</span>
+                    </a>
+                    <a class="dropdown-link-horizontal
+                    @@if (context.page === 'widget-cards') {active text-primary dark:text-primary}"
+                        href="@@webRoot/dark/widgets-cards.html">
+                        <i class="ti ti-cards text-base flex-shrink-0"></i>
+                        <span
+                            class="hide-menu flex-shrink-0 text-sm leading-tight">Cards</span>
+                    </a>
+                    <a class="dropdown-link-horizontal
+                    @@if (context.page === 'widget-banners') {active text-primary dark:text-primary}"
+                        href="@@webRoot/dark/widgets-banners.html">
+                        <i class="ti ti-ad text-base flex-shrink-0"></i> <span
+                            class="hide-menu flex-shrink-0 text-sm leading-tight">Banner</span>
+                    </a>
+                    <a class="dropdown-link-horizontal
+                    @@if (context.page === 'widget-charts') {active text-primary dark:text-primary}"
+                        href="@@webRoot/dark/widgets-charts.html">
+                        <i class="ti ti-chart-bar text-base flex-shrink-0"></i>
+                        <span
+                            class="hide-menu flex-shrink-0 text-sm leading-tight">Charts</span>
+                    </a>
+                    <a class="dropdown-link-horizontal
+                    @@if (context.page === 'lp') {active text-primary dark:text-primary}"
+                        href="@@webRoot/landingpage/index.html">
+                        <i class="ti ti-app-window text-base flex-shrink-0"></i>
+                        <span
+                            class="hide-menu flex-shrink-0 text-sm leading-tight">Landing
+                            Page</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- UI -->
+            <div
+                class="hs-dropdown  [--strategy:static] lg:[--strategy:absolute] [--adaptive:none] sm:[--trigger:hover] ">
+                <button type="button"
+                    class="single-link-horizontal font-medium item-horizontal before:bg-lightwarning hover:text-warning
+                    @@if (context.page_group == 'ui') { hs-accordion-active before:bg-lightwarning active text-warning dark:text-warning}    
+                ">
+                    <iconify-icon icon="solar:cpu-bolt-line-duotone"
+                        class="text-xl p-2"></iconify-icon>
+                    UI<i class="ti ti-chevron-down  ms-auto  text-md"></i>
+                </button>
+                <div
+                    class="py-4 px-3 hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] sm:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 left-0 hidden z-10 sm:mt-4 top-full start-0 w-full  before:absolute lg:bg-white bg-transparent dark:bg-dark lg:shadow-md shadow-none">
+                    <div class="grid grid-cols-12">
+                        <div class="col-span-3">
+                            <a class="dropdown-link-horizontal
+                            @@if (context.page === 'ui-accordion') {active text-primary dark:text-primary}"
+                                href="@@webRoot/dark/ui-accordion.html">
+                                <i
+                                    class="ti ti-circle text-base flex-shrink-0"></i>
+                                <span
+                                    class="hide-menu flex-shrink-0 text-sm leading-tight">Accordion</span>
+                            </a>
+                        </div>
+                        <div class="col-span-3">
+                            <a class="dropdown-link-horizontal
+                            @@if (context.page === 'ui-badge') {active text-primary dark:text-primary}"
+                                href="@@webRoot/dark/ui-badge.html">
+                                <i
+                                    class="ti ti-circle text-base flex-shrink-0"></i>
+                                <span
+                                    class="hide-menu flex-shrink-0 text-sm leading-tight">Badge</span>
+                            </a>
+                        </div>
+                        <div class="col-span-3">
+                            <a class="dropdown-link-horizontal
+                            @@if (context.page === 'ui-button') {active text-primary dark:text-primary}"
+                                href="@@webRoot/dark/ui-button.html">
+                                <i
+                                    class="ti ti-circle text-base flex-shrink-0"></i>
+                                <span
+                                    class="hide-menu flex-shrink-0 text-sm leading-tight">Button</span>
+                            </a>
+                        </div>
+                        <div class="col-span-3">
+                            <a class="dropdown-link-horizontal
+                            @@if (context.page === 'ui-dropdowns') {active text-primary dark:text-primary}"
+                                href="@@webRoot/dark/ui-dropdowns.html">
+                                <i
+                                    class="ti ti-circle text-base flex-shrink-0"></i>
+                                <span
+                                    class="hide-menu flex-shrink-0 text-sm leading-tight">Dropdowns</span>
+                            </a>
+                        </div>
+                        <div class="col-span-3">
+                            <a class="dropdown-link-horizontal
+                            @@if (context.page === 'ui-modals') {active text-primary dark:text-primary}"
+                                href="@@webRoot/dark/ui-modals.html">
+                                <i
+                                    class="ti ti-circle text-base flex-shrink-0"></i>
+                                <span
+                                    class="hide-menu flex-shrink-0 text-sm leading-tight">Modals</span>
+                            </a>
+                        </div>
+                        <div class="col-span-3">
+                            <a class="dropdown-link-horizontal
+                            @@if (context.page === 'ui-tab') {active text-primary dark:text-primary}"
+                                href="@@webRoot/dark/ui-tab.html">
+                                <i
+                                    class="ti ti-circle text-base flex-shrink-0"></i>
+                                <span
+                                    class="hide-menu flex-shrink-0 text-sm leading-tight">Tab</span>
+                            </a>
+                        </div>
+                        <div class="col-span-3">
+                            <a class="dropdown-link-horizontal
+                            @@if (context.page === 'ui-tooltip-popover') {active text-primary dark:text-primary}"
+                                href="@@webRoot/dark/ui-tooltip-popover.html">
+                                <i
+                                    class="ti ti-circle text-base flex-shrink-0"></i>
+                                <span
+                                    class="hide-menu flex-shrink-0 text-sm leading-tight">Tooltip
+                                    & Popover</span>
+                            </a>
+                        </div>
+                        <div class="col-span-3">
+                            <a class="dropdown-link-horizontal
+                            @@if (context.page === 'ui-notification') {active text-primary dark:text-primary}"
+                                href="@@webRoot/dark/ui-notification.html">
+                                <i
+                                    class="ti ti-circle text-base flex-shrink-0"></i>
+                                <span
+                                    class="hide-menu flex-shrink-0 text-sm leading-tight">Notification</span>
+                            </a>
+                        </div>
+                        <div class="col-span-3">
+                            <a class="dropdown-link-horizontal
+                            @@if (context.page === 'ui-progressbar') {active text-primary dark:text-primary}"
+                                href="@@webRoot/dark/ui-progressbar.html">
+                                <i
+                                    class="ti ti-circle text-base flex-shrink-0"></i>
+                                <span
+                                    class="hide-menu flex-shrink-0 text-sm leading-tight">Progressbar</span>
+                            </a>
+                        </div>
+                        <div class="col-span-3">
+                            <a class="dropdown-link-horizontal
+                            @@if (context.page === 'ui-pagination') {active text-primary dark:text-primary}"
+                                href="@@webRoot/dark/ui-pagination.html">
+                                <i
+                                    class="ti ti-circle text-base flex-shrink-0"></i>
+                                <span
+                                    class="hide-menu flex-shrink-0 text-sm leading-tight">Pagination</span>
+                            </a>
+                        </div>
+                        <div class="col-span-3">
+                            <a class="dropdown-link-horizontal
+                            @@if (context.page === 'ui-typography') {active text-primary dark:text-primary}"
+                                href="@@webRoot/dark/ui-typography.html">
+                                <i
+                                    class="ti ti-circle text-base flex-shrink-0"></i>
+                                <span
+                                    class="hide-menu flex-shrink-0 text-sm leading-tight">Typography</span>
+                            </a>
+                        </div>
+                        <div class="col-span-3">
+                            <a class="dropdown-link-horizontal
+                            @@if (context.page === 'ui-breadcrumb') {active text-primary dark:text-primary}"
+                                href="@@webRoot/dark/ui-breadcrumb.html">
+                                <i
+                                    class="ti ti-circle text-base flex-shrink-0"></i>
+                                <span
+                                    class="hide-menu flex-shrink-0 text-sm leading-tight">Breadcrumb</span>
+                            </a>
+                        </div>
+                        <div class="col-span-3">
+                            <a class="dropdown-link-horizontal
+                            @@if (context.page === 'ui-offcanvas') {active text-primary dark:text-primary}"
+                                href="@@webRoot/dark/ui-offcanvas.html">
+                                <i
+                                    class="ti ti-circle text-base flex-shrink-0"></i>
+                                <span
+                                    class="hide-menu flex-shrink-0 text-sm leading-tight">Offcanvas</span>
+                            </a>
+                        </div>
+
+                        <div class="col-span-3">
+                            <a class="dropdown-link-horizontal
+                            @@if (context.page === 'ui-lists') {active text-primary dark:text-primary}"
+                                href="@@webRoot/dark/ui-lists.html">
+                                <i
+                                    class="ti ti-circle text-base flex-shrink-0"></i>
+                                <span
+                                    class="hide-menu flex-shrink-0 text-sm leading-tight">Lists</span>
+                            </a>
+                        </div>
+                        <div class="col-span-3">
+                            <a class="dropdown-link-horizontal
+                            @@if (context.page === 'ui-grid') {active text-primary dark:text-primary}"
+                                href="@@webRoot/dark/ui-grid.html">
+                                <i
+                                    class="ti ti-circle text-base flex-shrink-0"></i>
+                                <span
+                                    class="hide-menu flex-shrink-0 text-sm leading-tight">Grid</span>
+                            </a>
+                        </div>
+                        <div class="col-span-3">
+                            <a class="dropdown-link-horizontal
+                            @@if (context.page === 'ui-carousel') {active text-primary dark:text-primary}"
+                                href="@@webRoot/dark/ui-carousel.html">
+                                <i
+                                    class="ti ti-circle text-base flex-shrink-0"></i>
+                                <span
+                                    class="hide-menu flex-shrink-0 text-sm leading-tight">Carousel</span>
+                            </a>
+                        </div>
+                        <div class="col-span-3">
+                            <a class="dropdown-link-horizontal
+                            @@if (context.page === 'ui-scrollspy') {active text-primary dark:text-primary}"
+                                href="@@webRoot/dark/ui-scrollspy.html">
+                                <i
+                                    class="ti ti-circle text-base flex-shrink-0"></i>
+                                <span
+                                    class="hide-menu flex-shrink-0 text-sm leading-tight">Scrollspy</span>
+                            </a>
+                        </div>
+                        <div class="col-span-3">
+                            <a class="dropdown-link-horizontal
+                            @@if (context.page === 'ui-spinner') {active text-primary dark:text-primary}"
+                                href="@@webRoot/dark/ui-spinner.html">
+                                <i
+                                    class="ti ti-circle text-base flex-shrink-0"></i>
+                                <span
+                                    class="hide-menu flex-shrink-0 text-sm leading-tight">Spinner</span>
+                            </a>
+                        </div>
+                        <div class="col-span-3">
+                            <a class="dropdown-link-horizontal
+                            @@if (context.page === 'ui-link') {active text-primary dark:text-primary}"
+                                href="@@webRoot/dark/ui-link.html">
+                                <i
+                                    class="ti ti-circle text-base flex-shrink-0"></i>
+                                <span
+                                    class="hide-menu flex-shrink-0 text-sm leading-tight">Link</span>
+                            </a>
+                        </div>
+                        <div class="col-span-3">
+                            <a class="dropdown-link-horizontal
+                            @@if (context.page === 'ui-chat-bubbles') {active text-primary dark:text-primary}"
+                                href="@@webRoot/dark/ui-chat-bubbles.html">
+                                <i
+                                    class="ti ti-circle text-base flex-shrink-0"></i>
+                                <span
+                                    class="hide-menu flex-shrink-0 text-sm leading-tight">Chat
+                                    Bubbles</span>
+                            </a>
+                        </div>
+                        <div class="col-span-3">
+                            <a class="dropdown-link-horizontal
+                            @@if (context.page === 'ui-datepicker') {active text-primary dark:text-primary}"
+                                href="@@webRoot/dark/ui-datepicker.html">
+                                <i
+                                    class="ti ti-circle text-base flex-shrink-0"></i>
+                                <span
+                                    class="hide-menu flex-shrink-0 text-sm leading-tight">Datepicker</span>
+                            </a>
+                        </div>
+                        <div class="col-span-3">
+                            <a class="dropdown-link-horizontal
+                            @@if (context.page === 'ui-devices') {active text-primary dark:text-primary}"
+                                href="@@webRoot/dark/ui-devices.html">
+                                <i
+                                    class="ti ti-circle text-base flex-shrink-0"></i>
+                                <span
+                                    class="hide-menu flex-shrink-0 text-sm leading-tight">Devices</span>
+                            </a>
+                        </div>
+                        <div class="col-span-3">
+                            <a class="dropdown-link-horizontal
+                            @@if (context.page === 'ui-ratings') {active text-primary dark:text-primary}"
+                                href="@@webRoot/dark/ui-ratings.html">
+                                <i
+                                    class="ti ti-circle text-base flex-shrink-0"></i>
+                                <span
+                                    class="hide-menu flex-shrink-0 text-sm leading-tight">Ratings</span>
+                            </a>
+                        </div>
+                        <div class="col-span-3">
+                            <a class="dropdown-link-horizontal
+                            @@if (context.page === 'ui-stepper') {active text-primary dark:text-primary}"
+                                href="@@webRoot/dark/ui-stepper.html">
+                                <i
+                                    class="ti ti-circle text-base flex-shrink-0"></i>
+                                <span
+                                    class="hide-menu flex-shrink-0 text-sm leading-tight">Stepper</span>
+                            </a>
+                        </div>
+                        <div class="col-span-3">
+                            <a class="dropdown-link-horizontal
+                            @@if (context.page === 'ui-timeline') {active text-primary dark:text-primary}"
+                                href="@@webRoot/dark/ui-timeline.html">
+                                <i
+                                    class="ti ti-circle text-base flex-shrink-0"></i>
+                                <span
+                                    class="hide-menu flex-shrink-0 text-sm leading-tight">Timeline</span>
+                            </a>
+                        </div>
+                        <div class="col-span-3">
+                            <a class="dropdown-link-horizontal
+                            @@if (context.page === 'ui-toasts') {active text-primary dark:text-primary}"
+                                href="@@webRoot/dark/ui-toasts.html">
+                                <i
+                                    class="ti ti-circle text-base flex-shrink-0"></i>
+                                <span
+                                    class="hide-menu flex-shrink-0 text-sm leading-tight">Toasts</span>
+                            </a>
+                        </div>
+                        <div class="col-span-3">
+                            <a class="dropdown-link-horizontal
+                            @@if (context.page === 'ui-skeleton') {active text-primary dark:text-primary}"
+                                href="@@webRoot/dark/ui-skeleton.html">
+                                <i
+                                    class="ti ti-circle text-base flex-shrink-0"></i>
+                                <span
+                                    class="hide-menu flex-shrink-0 text-sm leading-tight">Skeleton</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Forms -->
+            <div
+                class="hs-dropdown  [--strategy:static] lg:[--strategy:absolute] md:[--trigger:hover] [--adaptive:none] relative">
+                <button type="button"
+                    class="single-link-horizontal font-medium item-horizontal before:bg-lightsuccess hover:text-success
+                    @@if (context.page_group == 'form') { hs-accordion-active before:bg-lightsuccess active text-success dark:text-success}    
+                ">
+                    <iconify-icon icon="solar:book-2-line-duotone"
+                        class="text-xl p-2"></iconify-icon>
+                    Forms<i class="ti ti-chevron-down  ms-auto  text-md"></i>
+                </button>
+                <div
+                    class="py-4 px-3 hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] sm:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 left-0 hidden z-10 sm:mt-4 top-full start-0 min-w-96  before:absolute lg:bg-white bg-transparent dark:bg-dark lg:shadow-md shadow-none">
+                    <div class="grid grid-cols-12">
+                        <div class="col-span-6">
+                            <a class="dropdown-link-horizontal
+                            @@if (context.page === 'form-inputs') {active text-primary dark:text-primary}"
+                                href="@@webRoot/dark/form-inputs.html">
+                                <i
+                                    class="ti ti-circle text-base flex-shrink-0"></i>
+                                <span
+                                    class="hide-menu flex-shrink-0 text-sm leading-tight">Forms
+                                    Input</span>
+                            </a>
+                        </div>
+                        <div class="col-span-6">
+                            <a class="dropdown-link-horizontal
+                            @@if (context.page === 'form-input-groups') {active text-primary dark:text-primary}"
+                                href="@@webRoot/dark/form-input-groups.html">
+                                <i
+                                    class="ti ti-circle text-base flex-shrink-0"></i>
+                                <span
+                                    class="hide-menu flex-shrink-0 text-sm leading-tight">Input
+                                    Groups</span>
+                            </a>
+                        </div>
+                        <div class="col-span-6">
+                            <a class="dropdown-link-horizontal
+                            @@if (context.page === 'form-checkbox-radio') {active text-primary dark:text-primary}"
+                                href="@@webRoot/dark/form-checkbox-radio.html">
+                                <i
+                                    class="ti ti-circle text-base flex-shrink-0"></i>
+                                <span
+                                    class="hide-menu flex-shrink-0 text-sm leading-tight">Checkbox
+                                    & Radios</span>
+                            </a>
+                        </div>
+                        <div class="col-span-6">
+                            <a class="dropdown-link-horizontal
+                            @@if (context.page === 'form-input-grid') {active text-primary dark:text-primary}"
+                                href="@@webRoot/dark/form-input-grid.html">
+                                <i
+                                    class="ti ti-circle text-base flex-shrink-0"></i>
+                                <span
+                                    class="hide-menu flex-shrink-0 text-sm leading-tight">Input
+                                    Grid</span>
+                            </a>
+                        </div>
+                        <div class="col-span-6">
+                            <a class="dropdown-link-horizontal
+                            @@if (context.page === 'form-input-number') {active text-primary dark:text-primary}"
+                                href="@@webRoot/dark/form-input-number.html">
+                                <i
+                                    class="ti ti-circle text-base flex-shrink-0"></i>
+                                <span
+                                    class="hide-menu flex-shrink-0 text-sm leading-tight">Input
+                                    Number</span>
+                            </a>
+                        </div>
+                        <div class="col-span-6">
+                            <a class="dropdown-link-horizontal
+                            @@if (context.page === 'form-advanced-password') {active text-primary dark:text-primary}"
+                                href="@@webRoot/dark/form-advanced-password.html">
+                                <i
+                                    class="ti ti-circle text-base flex-shrink-0"></i>
+                                <span
+                                    class="hide-menu flex-shrink-0 text-sm leading-tight">Advanced
+                                    Password</span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Tables -->
+            <div
+                class="hs-dropdown  [--strategy:static] lg:[--strategy:absolute] md:[--trigger:hover] [--adaptive:none] relative">
+                <button type="button"
+                    class="single-link-horizontal font-medium item-horizontal before:bg-lightsuccess hover:text-success
+                    @@if (context.page_group == 'table') { hs-accordion-active before:bg-lightsuccess active text-success dark:text-success}    
+                ">
+                    <iconify-icon icon="solar:bedside-table-2-line-duotone"
+                        class="text-xl p-2"></iconify-icon>
+                    Tables<i class="ti ti-chevron-down  ms-auto  text-md"></i>
+                </button>
+                <div
+                    class="py-4 px-3 hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] sm:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 left-0 hidden z-10 sm:mt-4 top-full start-0 min-w-64  before:absolute lg:bg-white bg-transparent dark:bg-dark lg:shadow-md shadow-none">
+                    <a class="dropdown-link-horizontal
+             @@if (context.page === 'table-basic') {active text-primary dark:text-primary}"
+                        href="@@webRoot/dark/table-basic.html">
+                        <i class="ti ti-circle text-base flex-shrink-0"></i>
+                        <span
+                            class="hide-menu flex-shrink-0 text-sm leading-tight">Basic
+                            Table</span>
+                    </a>
+                    <a class="dropdown-link-horizontal
+             @@if (context.page === 'table-layout-highlighted') {active text-primary dark:text-primary}"
+                        href="@@webRoot/dark/table-layout-highlighted.html">
+                        <i class="ti ti-circle text-base flex-shrink-0"></i>
+                        <span
+                            class="hide-menu flex-shrink-0 text-sm leading-tight">Highlighted
+                            Table</span>
+                    </a>
+                    <a class="dropdown-link-horizontal
+             @@if (context.page === 'table-miscellaneous') {active text-primary dark:text-primary}"
+                        href="@@webRoot/dark/table-miscellaneous.html">
+                        <i class="ti ti-circle text-base flex-shrink-0"></i>
+                        <span
+                            class="hide-menu flex-shrink-0 text-sm leading-tight">Miscellaneous
+                            Table</span>
+                    </a>
+                    <a class="dropdown-link-horizontal
+             @@if (context.page === 'table-editable') {active text-primary dark:text-primary}"
+                        href="@@webRoot/dark/table-editable.html">
+                        <i class="ti ti-circle text-base flex-shrink-0"></i>
+                        <span
+                            class="hide-menu flex-shrink-0 text-sm leading-tight">Editable
+                            Table</span>
+                    </a>
+                    <a class="dropdown-link-horizontal
+             @@if (context.page === 'table-dt-basic') {active text-primary dark:text-primary}"
+                        href="@@webRoot/dark/table-datatabel-basic.html">
+                        <i class="ti ti-circle text-base flex-shrink-0"></i>
+                        <span
+                            class="hide-menu flex-shrink-0 text-sm leading-tight">Basic DataTable</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Charts -->
+            <div
+                class="hs-dropdown  [--strategy:static] lg:[--strategy:absolute] md:[--trigger:hover] [--adaptive:none] relative">
+                <button type="button"
+                    class="single-link-horizontal font-medium item-horizontal before:bg-lightsecondary hover:text-secondary
+                    @@if (context.page_group == 'charts') { hs-accordion-active before:bg-lightsecondary active text-secondary dark:text-secondary}    
+            ">
+                    <iconify-icon
+                        icon="solar:dropper-minimalistic-2-line-duotone"
+                        class="text-xl p-2"></iconify-icon>
+                    Charts<i class="ti ti-chevron-down  ms-auto  text-md"></i>
+                </button>
+                <div
+                    class="py-4 px-3 hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] sm:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 left-0 hidden z-10 sm:mt-4 top-full start-0 min-w-64  before:absolute lg:bg-white bg-transparent dark:bg-dark lg:shadow-md shadow-none">
+                    <a class="dropdown-link-horizontal
+                     @@if (context.page === 'line-chart') {active text-primary dark:text-primary}"
+                        href="@@webRoot/dark/chart-apex-line.html">
+                        <i class="ti ti-circle text-base flex-shrink-0"></i>
+                        <span
+                            class="hide-menu flex-shrink-0 text-sm leading-tight">Line
+                            Chart</span>
+                    </a>
+                    <a class="dropdown-link-horizontal
+                     @@if (context.page === 'area-chart') {active text-primary dark:text-primary}"
+                        href="@@webRoot/dark/chart-apex-area.html">
+                        <i class="ti ti-circle text-base flex-shrink-0"></i>
+                        <span
+                            class="hide-menu flex-shrink-0 text-sm leading-tight">Area
+                            Chart</span>
+                    </a>
+                    <a class="dropdown-link-horizontal
+                     @@if (context.page === 'bar-chart') {active text-primary dark:text-primary}"
+                        href="@@webRoot/dark/chart-apex-bar.html">
+                        <i class="ti ti-circle text-base flex-shrink-0"></i>
+                        <span
+                            class="hide-menu flex-shrink-0 text-sm leading-tight">Bar
+                            Chart</span>
+                    </a>
+                    <a class="dropdown-link-horizontal
+                     @@if (context.page === 'pie-chart') {active text-primary dark:text-primary}"
+                        href="@@webRoot/dark/chart-apex-pie.html">
+                        <i class="ti ti-circle text-base flex-shrink-0"></i>
+                        <span
+                            class="hide-menu flex-shrink-0 text-sm leading-tight">Pie
+                            Chart</span>
+                    </a>
+                    <a class="dropdown-link-horizontal
+                     @@if (context.page === 'radial-chart') {active text-primary dark:text-primary}"
+                        href="@@webRoot/dark/chart-apex-radial.html">
+                        <i class="ti ti-circle text-base flex-shrink-0"></i>
+                        <span
+                            class="hide-menu flex-shrink-0 text-sm leading-tight">Radial
+                            Chart</span>
+                    </a>
+                    <a class="dropdown-link-horizontal
+                     @@if (context.page === 'radar-chart') {active text-primary dark:text-primary}"
+                        href="@@webRoot/dark/chart-apex-radar.html">
+                        <i class="ti ti-circle text-base flex-shrink-0"></i>
+                        <span
+                            class="hide-menu flex-shrink-0 text-sm leading-tight">Radar
+                            Chart</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Auth -->
+            <div
+                class="hs-dropdown  [--strategy:static] lg:[--strategy:absolute] md:[--trigger:hover] [--adaptive:none] relative">
+                <button type="button"
+                    class="single-link-horizontal font-medium item-horizontal before:bg-lightsuccess hover:text-success
+                    @@if (context.page_group == 'auth') { hs-accordion-active before:bg-lightsuccess active text-success dark:text-success}    
+            ">
+                    <iconify-icon
+                        icon="solar:lock-keyhole-line-duotone"
+                        class="text-xl p-2"></iconify-icon>
+                    Auth<i class="ti ti-chevron-down  ms-auto  text-md"></i>
+                </button>
+                <div
+                    class="py-4 px-3 hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] sm:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 left-0 hidden z-10 sm:mt-4 top-full start-0 min-w-64  before:absolute lg:bg-white bg-transparent dark:bg-dark lg:shadow-md shadow-none">
+                    <a class="dropdown-link-horizontal
+                     @@if (context.page === 'error') {active text-primary dark:text-primary}"
+                        href="@@webRoot/dark/authentication-error.html">
+                        <i class="ti ti-circle text-base flex-shrink-0"></i>
+                        <span
+                            class="hide-menu flex-shrink-0 text-sm leading-tight">Error</span>
+                    </a>
+                    <a class="dropdown-link-horizontal
+                     @@if (context.page === 'side-login') {active text-primary dark:text-primary}"
+                        href="@@webRoot/dark/authentication-login2.html">
+                        <i class="ti ti-circle text-base flex-shrink-0"></i>
+                        <span
+                            class="hide-menu flex-shrink-0 text-sm leading-tight">Boxed
+                            Login</span>
+                    </a>
+                    <a class="dropdown-link-horizontal
+                     @@if (context.page === 'box-login') {active text-primary dark:text-primary}"
+                        href="@@webRoot/dark/authentication-login2.html">
+                        <i class="ti ti-circle text-base flex-shrink-0"></i>
+                        <span
+                            class="hide-menu flex-shrink-0 text-sm leading-tight">Boxed
+                            Login</span>
+                    </a>
+                    <a class="dropdown-link-horizontal
+                     @@if (context.page === 'side-reg') {active text-primary dark:text-primary}"
+                        href="@@webRoot/dark/authentication-register.html">
+                        <i class="ti ti-circle text-base flex-shrink-0"></i>
+                        <span
+                            class="hide-menu flex-shrink-0 text-sm leading-tight">Side
+                            Register</span>
+                    </a>
+                    <a class="dropdown-link-horizontal
+                    @@if (context.page === 'box-reg') {active text-primary dark:text-primary}"
+                        href="@@webRoot/dark/authentication-register2.html">
+                        <i class="ti ti-circle text-base flex-shrink-0"></i>
+                        <span
+                            class="hide-menu flex-shrink-0 text-sm leading-tight">Boxed
+                            Register</span>
+                    </a>
+                    <a class="dropdown-link-horizontal
+                    @@if (context.page === 'side-forgotpwd') {active text-primary dark:text-primary}"
+                        href="@@webRoot/dark/authentication-forgot-password.html">
+                        <i class="ti ti-circle text-base flex-shrink-0"></i>
+                        <span
+                            class="hide-menu flex-shrink-0 text-sm leading-tight">Side
+                            Forgot Password</span>
+                    </a>
+                    <a class="dropdown-link-horizontal
+                   @@if (context.page === 'box-forgotpwd') {active text-primary dark:text-primary}"
+                        href="@@webRoot/dark/authentication-forgot-password2.html">
+                        <i class="ti ti-circle text-base flex-shrink-0"></i>
+                        <span
+                            class="hide-menu flex-shrink-0 text-sm leading-tight">Boxed
+                            Forgot Password</span>
+                    </a>
+                    <a class="dropdown-link-horizontal
+                  @@if (context.page === 'side-twostep') {active text-primary dark:text-primary}"
+                        href="@@webRoot/dark/authentication-two-steps.html">
+                        <i class="ti ti-circle text-base flex-shrink-0"></i>
+                        <span
+                            class="hide-menu flex-shrink-0 text-sm leading-tight">Side
+                            Two Steps</span>
+                    </a>
+                    <a class="dropdown-link-horizontal
+                 @@if (context.page === 'box-twostep') {active text-primary dark:text-primary}"
+                        href="@@webRoot/dark/authentication-two-steps2.html">
+                        <i class="ti ti-circle text-base flex-shrink-0"></i>
+                        <span
+                            class="hide-menu flex-shrink-0 text-sm leading-tight">Boxed
+                            Two Steps</span>
+                    </a>
+                    <a class="dropdown-link-horizontal
+                    @@if (context.page === 'maintenance') {active text-primary dark:text-primary}"
+                           href="@@webRoot/dark/authentication-maintenance.html">
+                           <i class="ti ti-circle text-base flex-shrink-0"></i>
+                           <span
+                               class="hide-menu flex-shrink-0 text-sm leading-tight">Maintenance</span>
+                       </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</nav>

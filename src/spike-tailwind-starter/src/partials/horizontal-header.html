@@ -1,0 +1,50 @@
+<div class="w-full mx-auto">
+  <div class="relative md:flex md:items-center md:justify-between">
+    <div class="hs-collapse  grow md:block">
+      <div class="flex justify-between items-center">
+        <div class="flex items-center gap-2">
+          <div
+            class="flex h-[70px] justify-center items-center w-10 md:w-full overflow-hidden">@@include("./logo-sidebar.html")
+          </div>
+        </div>
+        <div class="icon-nav items-center gap-2  lg:flex hidden">
+          <div class="hs-dropdown relative inline-flex [--auto-close:inside]">
+            <a href="#" class="relative block hs-dropdown-toggle"
+              id="hs-dropdown-default">
+              <input type="text"
+                class="form-control rounded-full py-[9px]  ps-12 border-bordergray  text-dark dark:text-darklink text-fs_15  placeholder:text-dark dark:placeholder:text-darklink placeholder:opacity-100 font-medium"
+                placeholder="Try to searching ...">
+              <iconify-icon icon="solar:magnifer-linear"
+                class="text-dark dark:text-darklink absolute top-3  start-1 text-fs_15  ms-3"></iconify-icon>
+            </a>
+            @@include("./header-components/dd-searchbar.html")
+          </div>
+
+          <!-- Theme Toggle  -->
+          <!-- Theme Toggle  -->
+          <button type="button"
+            class="hs-dark-mode-active:hidden icon-hover block hs-dark-mode group items-center font-medium hover:text-primary text-link dark:text-darklink h-10 w-10 hover:bg-lightprimary dark:hover:bg-darkprimary  justify-center rounded-full"
+            data-hs-theme-click-value="dark" id="dark-layout">
+            <iconify-icon icon="solar:moon-line-duotone"
+              class=" text-2xl  text-link dark:text-darklink relative  hover:text-primary"></iconify-icon>
+
+          </button>
+          <button type="button"
+            class="hs-dark-mode-active:block icon-hover hidden hs-dark-mode group  items-center  font-medium hover:text-primary text-link dark:text-darklink h-10 w-10 hover:bg-lightprimary dark:hover:bg-darkprimary  justify-center rounded-full"
+            data-hs-theme-click-value="light" id="light-layout">
+            <iconify-icon icon="solar:sun-2-line-duotone"
+              class=" text-2xl  text-link dark:text-darklink relative  hover:text-primary"></iconify-icon>
+
+          </button>
+          @@include("./header-components/dd-messages.html")
+
+          <!-- Notifications DD -->
+          @@include("./header-components/dd-notification.html")
+          <!-- Profile DD -->
+          @@include("./header-components/dd-profile.html")
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

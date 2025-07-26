@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-color-theme="Blue_Theme" class="light selected" data-layout="vertical"
+    data-boxed-layout="boxed" data-card="shadow">
+
+<head>
+    @@include("partials/head.html")
+    <title>Spike TailwindCSS HTML Admin Template</title>
+</head>
+
+<body class="DEFAULT_THEME bg-lightprimary dark:bg-darkbody">
+    <main>
+        <!--start the project-->
+        <div id="main-wrapper" class="flex p-5">
+
+            <aside id="application-sidebar-brand"
+                class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full xl:rtl:-translate-x-0 rtl:translate-x-full  left-0 rtl:left-auto xl:rtl:right-5 rtl:right-0 transform hidden xl:block xl:translate-x-0 xl:end-auto xl:bottom-0 fixed top-0 with-vertical  left-sidebar transition-all duration-300 h-screen z-[2] flex-shrink-0  w-[270px] border-border dark:border-darkborder bg-white dark:bg-dark xl:top-5 xl:start-5 shadow-md xl:rounded-md">
+                @@include("partials/sidebar.html",{ "page": "table-miscellaneous","page_group": "table" })
+            </aside>
+            <div class="page-wrapper w-full" role="main">
+
+                <!-- Main Content -->
+                <main class="h-full ">
+                    <div class="container full-container py-5 xl:ps-6 ps-0 pt-0 pe-0 remove-ps">
+
+                        <!--  Header Start -->
+                        <header
+                            class="sticky top-0 inset-x-0 z-[1] flex flex-wrap md:justify-start md:flex-nowrap text-fs_15 py-3 lg:py-0 mb-6 bg-white dark:bg-dark rounded-md shadow-md">
+                            <div class="with-vertical w-full">@@include("partials/header.html")</div>
+                            <div class="with-horizontal w-full">
+                                <div class="bg-white dark:bg-dark">
+                                    <div class="container">
+                                        @@include("partials/horizontal-header.html")
+                                    </div>
+                                </div>
+                            </div>
+                        </header>
+                        <!--  Header End -->
+
+                        <!-- Horizontal Sidebar Menu -->
+                        <aside
+                            class="with-horizontal lg:flex hidden left-sidebar bg-white dark:bg-dark border-t border-border dark:border-darkborder">
+                            @@include("partials/horizontal-sidebar.html", { "page": "table-miscellaneous","page_group":
+                            "table"})
+                        </aside>
+                        <!-- Horizontal Sidebar Menu End -->
+
+                        <!-- Main Content -->
+                        <div class="max-w-full">
+                            <div class="container full-container ">
+                                <!----Breadcrumb Start---->
+                                @@include("partials/breadcrumb.html", {"title": "Table Highlighted", "subtitle": 'Home'})
+                                <!----Breadcrumb End---->
+                            <div class="grid grid-cols-12 gap-6">
+                                <div class="col-span-12">
+                                    <div class="card">
+                                    <div class="card-body">                                                
+                                        <h5 class="card-title mb-0">Selection table</h5>
+                                        <p class="card-subtitle  mb-6">Rows can be <code class="text-error bg-lightwarning dark:bg-darkwarning">'selectable'</code> by making first column as a <code class="text-error bg-lightwarning dark:bg-darkwarning">'selectable'</code> column.</p>
+                                        <div class="flex flex-col">
+                                            <div class="-m-1.5 overflow-x-auto">
+                                            <div class="p-1.5 min-w-full inline-block align-middle">
+                                                <div class="border border-border rounded-md overflow-hidden dark:border-darkborder">
+                                                <table class="min-w-full divide-y divide-border dark:divide-darkborder">
+                                                    <thead class="bg-gray-50 dark:bg-gray-700">
+                                                    <tr>
+                                                        <th scope="col" class="py-3 ps-4">
+                                                        <div class="flex items-center h-5">
+                                                            <input id="hs-table-checkbox-all" type="checkbox" class="border-gray-200 w-4 h-4 rounded text-primary focus:ring-primary dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-primary dark:checked:border-primary dark:focus:ring-offset-gray-800">
+                                                            <label for="hs-table-checkbox-all" class="sr-only">Checkbox</label>
+                                                        </div>
+                                                        </th>
+                                                        <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Name</th>
+                                                        <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Age</th>
+                                                        <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Address</th>
+                                                        <th scope="col" class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase">Action</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody class="divide-y divide-border dark:divide-darkborder">
+                                                    <tr>
+                                                        <td class="py-3 ps-4">
+                                                        <div class="flex items-center h-5">
+                                                            <input id="hs-table-checkbox-1" type="checkbox" class="border-gray-200 w-4 h-4 rounded text-primary focus:ring-primary dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-primary dark:checked:border-primary dark:focus:ring-offset-gray-800">
+                                                            <label for="hs-table-checkbox-1" class="sr-only">Checkbox</label>
+                                                        </div>
+                                                        </td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-800 dark:text-gray-200">John Brown</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">45</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">New York No. 1 Lake Park</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
+                                                        <button type="button" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-error hover:text-erroremphasis disabled:opacity-50 disabled:pointer-events-none dark:text-erroremphasis dark:hover:text-error dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"><i class="ti ti-trash text-xl"></i></button>
+                                                        </td>
+                                                    </tr>
+                                        
+                                                    <tr>
+                                                        <td class="py-3 ps-4">
+                                                        <div class="flex items-center h-5">
+                                                            <input id="hs-table-checkbox-2" type="checkbox" class="border-gray-200 w-4 h-4 rounded text-primary focus:ring-primary dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-primary dark:checked:border-primary dark:focus:ring-offset-gray-800">
+                                                            <label for="hs-table-checkbox-2" class="sr-only">Checkbox</label>
+                                                        </div>
+                                                        </td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-800 dark:text-gray-200">Jim Green</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">27</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">London No. 1 Lake Park</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
+                                                        <button type="button" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-error hover:text-erroremphasis disabled:opacity-50 disabled:pointer-events-none dark:text-erroremphasis dark:hover:text-error dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"><i class="ti ti-trash text-xl"></i></button>
+                                                        </td>
+                                                    </tr>
+                                        
+                                                    <tr>
+                                                        <td class="py-3 ps-4">
+                                                        <div class="flex items-center h-5">
+                                                            <input id="hs-table-checkbox-3" type="checkbox" class="border-gray-200 w-4 h-4 rounded text-primary focus:ring-primary dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-primary dark:checked:border-primary dark:focus:ring-offset-gray-800">
+                                                            <label for="hs-table-checkbox-3" class="sr-only">Checkbox</label>
+                                                        </div>
+                                                        </td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-800 dark:text-gray-200">Joe Black</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">31</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">Sidney No. 1 Lake Park</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
+                                                        <button type="button" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-error hover:text-erroremphasis disabled:opacity-50 disabled:pointer-events-none dark:text-erroremphasis dark:hover:text-error dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"><i class="ti ti-trash text-xl"></i></button>
+                                                        </td>
+                                                    </tr>
+                                        
+                                                    <tr>
+                                                        <td class="py-3 ps-4">
+                                                        <div class="flex items-center h-5">
+                                                            <input id="hs-table-checkbox-4" type="checkbox" class="border-gray-200 w-4 h-4 rounded text-primary focus:ring-primary dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-primary dark:checked:border-primary dark:focus:ring-offset-gray-800">
+                                                            <label for="hs-table-checkbox-4" class="sr-only">Checkbox</label>
+                                                        </div>
+                                                        </td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-800 dark:text-gray-200">Edward King</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">16</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">LA No. 1 Lake Park</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
+                                                        <button type="button" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-error hover:text-erroremphasis disabled:opacity-50 disabled:pointer-events-none dark:text-erroremphasis dark:hover:text-error dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"><i class="ti ti-trash text-xl"></i></button>
+                                                        </td>
+                                                    </tr>
+                                        
+                                                    <tr>
+                                                        <td class="py-3 ps-4">
+                                                        <div class="flex items-center h-5">
+                                                            <input id="hs-table-checkbox-5" type="checkbox" class="border-gray-200 w-4 h-4 rounded text-primary focus:ring-primary dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-primary dark:checked:border-primary dark:focus:ring-offset-gray-800">
+                                                            <label for="hs-table-checkbox-5" class="sr-only">Checkbox</label>
+                                                        </div>
+                                                        </td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-800 dark:text-gray-200">Jim Red</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">45</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">Melbourne No. 1 Lake Park</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
+                                                        <button type="button" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-error hover:text-erroremphasis disabled:opacity-50 disabled:pointer-events-none dark:text-erroremphasis dark:hover:text-error dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"><i class="ti ti-trash text-xl"></i></button>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                                <div class="col-span-12">
+                                    <div class="card">
+                                    <div class="card-body">                                                
+                                        <h5 class="card-title mb-0">Search input Table</h5>
+                                        <p class="card-subtitle  mb-6">Search is used for making dropdown items <code class="text-error bg-lightwarning dark:bg-darkwarning">'searchable'</code>.</p>
+                                        <div class="flex flex-col">
+                                            <div class="-m-1.5 overflow-x-auto">
+                                            <div class="p-1.5 min-w-full inline-block align-middle">
+                                                <div class="border border-border dark:border-darkborder rounded-md">
+                                                <div class="py-3 px-4">
+                                                    <div class="relative max-w-xs">
+                                                    <label for="hs-table-search" class="sr-only">Search</label>
+                                                    <input type="text" name="hs-table-search" id="hs-table-search" class="py-2 px-3 ps-9 form-control" placeholder="Search for items">
+                                                    <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-3">
+                                                        <i class="ti ti-search text-xl text-gray-400"></i>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                                <div class="overflow-hidden">
+                                                    <table class="min-w-full divide-y divide-border dark:divide-darkborder ">
+                                                    <thead class="bg-gray-50 dark:bg-gray-700">
+                                                        <tr>
+                                                        <th scope="col" class="py-3 px-4 pe-0">
+                                                            <div class="flex items-center h-5">
+                                                            <input id="hs-table-search-checkbox-all" type="checkbox" class="border-gray-200 w-4 h-4 rounded text-primary focus:ring-primary dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-primary dark:checked:border-primary dark:focus:ring-offset-gray-800">
+                                                            <label for="hs-table-search-checkbox-all" class="sr-only">Checkbox</label>
+                                                            </div>
+                                                        </th>
+                                                        <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Name</th>
+                                                        <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Age</th>
+                                                        <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Address</th>
+                                                        <th scope="col" class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase">Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="divide-y divide-border dark:divide-darkborder">
+                                                        <tr>
+                                                        <td class="py-3 ps-4">
+                                                            <div class="flex items-center h-5">
+                                                            <input id="hs-table-search-checkbox-1" type="checkbox" class="border-gray-200 w-4 h-4 rounded text-primary focus:ring-primary dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-primary dark:checked:border-primary dark:focus:ring-offset-gray-800">
+                                                            <label for="hs-table-search-checkbox-1" class="sr-only">Checkbox</label>
+                                                            </div>
+                                                        </td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-800 dark:text-gray-200">John Brown</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">45</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">New York No. 1 Lake Park</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
+                                                            <button type="button" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-error hover:text-erroremphasis disabled:opacity-50 disabled:pointer-events-none dark:text-erroremphasis dark:hover:text-error dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"><i class="ti ti-trash text-xl"></i></button>
+                                                        </td>
+                                                        </tr>
+                                        
+                                                        <tr>
+                                                        <td class="py-3 ps-4">
+                                                            <div class="flex items-center h-5">
+                                                            <input id="hs-table-search-checkbox-2" type="checkbox" class="border-gray-200 w-4 h-4 rounded text-primary focus:ring-primary dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-primary dark:checked:border-primary dark:focus:ring-offset-gray-800">
+                                                            <label for="hs-table-search-checkbox-2" class="sr-only">Checkbox</label>
+                                                            </div>
+                                                        </td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-800 dark:text-gray-200">Jim Green</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">27</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">London No. 1 Lake Park</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
+                                                            <button type="button" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-error hover:text-erroremphasis disabled:opacity-50 disabled:pointer-events-none dark:text-erroremphasis dark:hover:text-error dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"><i class="ti ti-trash text-xl"></i></button>
+                                                        </td>
+                                                        </tr>
+                                        
+                                                        <tr>
+                                                        <td class="py-3 ps-4">
+                                                            <div class="flex items-center h-5">
+                                                            <input id="hs-table-search-checkbox-3" type="checkbox" class="border-gray-200 w-4 h-4 rounded text-primary focus:ring-primary dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-primary dark:checked:border-primary dark:focus:ring-offset-gray-800">
+                                                            <label for="hs-table-search-checkbox-3" class="sr-only">Checkbox</label>
+                                                            </div>
+                                                        </td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-800 dark:text-gray-200">Joe Black</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">31</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">Sidney No. 1 Lake Park</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
+                                                            <button type="button" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-error hover:text-erroremphasis disabled:opacity-50 disabled:pointer-events-none dark:text-erroremphasis dark:hover:text-error dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"><i class="ti ti-trash text-xl"></i></button>
+                                                        </td>
+                                                        </tr>
+                                        
+                                                        <tr>
+                                                        <td class="py-3 ps-4">
+                                                            <div class="flex items-center h-5">
+                                                            <input id="hs-table-search-checkbox-4" type="checkbox" class="border-gray-200 w-4 h-4 rounded text-primary focus:ring-primary dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-primary dark:checked:border-primary dark:focus:ring-offset-gray-800">
+                                                            <label for="hs-table-search-checkbox-4" class="sr-only">Checkbox</label>
+                                                            </div>
+                                                        </td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-800 dark:text-gray-200">Edward King</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">16</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">LA No. 1 Lake Park</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
+                                                            <button type="button" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-error hover:text-erroremphasis disabled:opacity-50 disabled:pointer-events-none dark:text-erroremphasis dark:hover:text-error dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"><i class="ti ti-trash text-xl"></i></button>
+                                                        </td>
+                                                        </tr>
+                                        
+                                                        <tr>
+                                                        <td class="py-3 ps-4">
+                                                            <div class="flex items-center h-5">
+                                                            <input id="hs-table-search-checkbox-5" type="checkbox" class="border-gray-200 w-4 h-4 rounded text-primary focus:ring-primary dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-primary dark:checked:border-primary dark:focus:ring-offset-gray-800">
+                                                            <label for="hs-table-search-checkbox-5" class="sr-only">Checkbox</label>
+                                                            </div>
+                                                        </td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-800 dark:text-gray-200">Jim Red</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">45</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">Melbourne No. 1 Lake Park</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
+                                                            <button type="button" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-error hover:text-erroremphasis disabled:opacity-50 disabled:pointer-events-none dark:text-erroremphasis dark:hover:text-error dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"><i class="ti ti-trash text-xl"></i></button>
+                                                        </td>
+                                                        </tr>
+                                                    </tbody>
+                                                    </table>
+                                                </div>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                                <div class="col-span-12">
+                                    <div class="card">
+                                    <div class="card-body">                                                
+                                        <h5 class="card-title mb-0">Table with Pagination</h5>
+                                        <p class="card-subtitle  mb-6">Example with <code class="text-error bg-lightwarning dark:bg-darkwarning">'pagination'</code>.</p>
+                                        <div class="flex flex-col">
+                                            <div class="-m-1.5 overflow-x-auto">
+                                            <div class="p-1.5 min-w-full inline-block align-middle">
+                                                <div class="border border-border dark:border-darkborder rounded-md">
+                                                <div class="py-3 px-4">
+                                                    <div class="relative max-w-xs">
+                                                    <label for="hs-table-with-pagination-search" class="sr-only">Search</label>
+                                                    <input type="text" name="hs-table-with-pagination-search" id="hs-table-with-pagination-search" class="py-2 px-3 ps-9 block form-control" placeholder="Search for items">
+                                                    <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-3">
+                                                        <i class="ti ti-search text-xl text-gray-400"></i>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                                <div class="overflow-hidden">
+                                                    <table class="min-w-full divide-y divide-border dark:divide-darkborder">
+                                                    <thead class="bg-gray-50 dark:bg-gray-700">
+                                                        <tr>
+                                                        <th scope="col" class="py-3 px-4 pe-0">
+                                                            <div class="flex items-center h-5">
+                                                            <input id="hs-table-pagination-checkbox-all" type="checkbox" class="border-gray-200 w-4 h-4 rounded text-primary focus:ring-primary dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-primary dark:checked:border-primary dark:focus:ring-offset-gray-800">
+                                                            <label for="hs-table-pagination-checkbox-all" class="sr-only">Checkbox</label>
+                                                            </div>
+                                                        </th>
+                                                        <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Name</th>
+                                                        <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Age</th>
+                                                        <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Address</th>
+                                                        <th scope="col" class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase">Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="divide-y divide-border dark:divide-darkborder">
+                                                        <tr>
+                                                        <td class="py-3 ps-4">
+                                                            <div class="flex items-center h-5">
+                                                            <input id="hs-table-pagination-checkbox-1" type="checkbox" class="border-gray-200 w-4 h-4 rounded text-primary focus:ring-primary dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-primary dark:checked:border-primary dark:focus:ring-offset-gray-800">
+                                                            <label for="hs-table-pagination-checkbox-1" class="sr-only">Checkbox</label>
+                                                            </div>
+                                                        </td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">John Brown</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">45</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">New York No. 1 Lake Park</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
+                                                            <button type="button" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-error hover:text-erroremphasis disabled:opacity-50 disabled:pointer-events-none dark:text-erroremphasis dark:hover:text-error dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"><i class="ti ti-trash text-xl"></i></button>
+                                                        </td>
+                                                        </tr>
+                                        
+                                                        <tr>
+                                                        <td class="py-3 ps-4">
+                                                            <div class="flex items-center h-5">
+                                                            <input id="hs-table-pagination-checkbox-2" type="checkbox" class="border-gray-200 w-4 h-4 rounded text-primary focus:ring-primary dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-primary dark:checked:border-primary dark:focus:ring-offset-gray-800">
+                                                            <label for="hs-table-pagination-checkbox-2" class="sr-only">Checkbox</label>
+                                                            </div>
+                                                        </td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">Jim Green</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">27</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">London No. 1 Lake Park</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
+                                                            <button type="button" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-error hover:text-erroremphasis disabled:opacity-50 disabled:pointer-events-none dark:text-erroremphasis dark:hover:text-error dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"><i class="ti ti-trash text-xl"></i></button>
+                                                        </td>
+                                                        </tr>
+                                        
+                                                        <tr>
+                                                        <td class="py-3 ps-4">
+                                                            <div class="flex items-center h-5">
+                                                            <input id="hs-table-pagination-checkbox-3" type="checkbox" class="border-gray-200 w-4 h-4 rounded text-primary focus:ring-primary dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-primary dark:checked:border-primary dark:focus:ring-offset-gray-800">
+                                                            <label for="hs-table-pagination-checkbox-3" class="sr-only">Checkbox</label>
+                                                            </div>
+                                                        </td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">Joe Black</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">31</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">Sidney No. 1 Lake Park</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
+                                                            <button type="button" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-error hover:text-erroremphasis disabled:opacity-50 disabled:pointer-events-none dark:text-erroremphasis dark:hover:text-error dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"><i class="ti ti-trash text-xl"></i></button>
+                                                        </td>
+                                                        </tr>
+                                        
+                                                        <tr>
+                                                        <td class="py-3 ps-4">
+                                                            <div class="flex items-center h-5">
+                                                            <input id="hs-table-pagination-checkbox-4" type="checkbox" class="border-gray-200 w-4 h-4 rounded text-primary focus:ring-primary dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-primary dark:checked:border-primary dark:focus:ring-offset-gray-800">
+                                                            <label for="hs-table-pagination-checkbox-4" class="sr-only">Checkbox</label>
+                                                            </div>
+                                                        </td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">Edward King</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">16</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">LA No. 1 Lake Park</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
+                                                            <button type="button" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-error hover:text-erroremphasis disabled:opacity-50 disabled:pointer-events-none dark:text-erroremphasis dark:hover:text-error dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"><i class="ti ti-trash text-xl"></i></button>
+                                                        </td>
+                                                        </tr>
+                                        
+                                                        <tr>
+                                                        <td class="py-3 ps-4">
+                                                            <div class="flex items-center h-5">
+                                                            <input id="hs-table-pagination-checkbox-5" type="checkbox" class="border-gray-200 w-4 h-4 rounded text-primary focus:ring-primary dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-primary dark:checked:border-primary dark:focus:ring-offset-gray-800">
+                                                            <label for="hs-table-pagination-checkbox-5" class="sr-only">Checkbox</label>
+                                                            </div>
+                                                        </td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">Jim Red</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">45</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">Melbourne No. 1 Lake Park</td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
+                                                            <button type="button" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-error hover:text-erroremphasis disabled:opacity-50 disabled:pointer-events-none dark:text-erroremphasis dark:hover:text-error dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"><i class="ti ti-trash text-xl"></i></button>
+                                                        </td>
+                                                        </tr>
+                                                    </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="py-1 px-4">
+                                                    <nav class="flex items-center space-x-1">
+                                                    <button type="button" class="p-2.5 inline-flex items-center gap-x-2 text-sm rounded-full text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-white/10 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                                        <span aria-hidden="true">«</span>
+                                                        <span class="sr-only">Previous</span>
+                                                    </button>
+                                                    <button type="button" class="min-w-[40px] flex justify-center items-center text-gray-800 hover:bg-gray-100 py-2.5 text-sm rounded-full disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-white/10" aria-current="page">1</button>
+                                                    <button type="button" class="min-w-[40px] flex justify-center items-center text-gray-800 hover:bg-gray-100 py-2.5 text-sm rounded-full disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-white/10">2</button>
+                                                    <button type="button" class="min-w-[40px] flex justify-center items-center text-gray-800 hover:bg-gray-100 py-2.5 text-sm rounded-full disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-white/10">3</button>
+                                                    <button type="button" class="p-2.5 inline-flex items-center gap-x-2 text-sm rounded-full text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-white/10 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                                        <span class="sr-only">Next</span>
+                                                        <span aria-hidden="true">»</span>
+                                                    </button>
+                                                    </nav>
+                                                </div>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                <!-- Main Content End -->
+
+            </div>
+        </div>
+        <!--end of project-->
+    </main>
+    @@include("partials/header-components/mobile-menu.html")
+    @@include("partials/customizer.html")
+    @@include("partials/scripts.html")
+</body>
+
+</html>

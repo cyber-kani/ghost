@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-color-theme="Blue_Theme" class="light selected" data-layout="vertical"
+  data-boxed-layout="boxed" data-card="shadow">
+
+<head>
+  @@include("partials/head.html")
+  <title>Spike TailwindCSS HTML Admin Template</title>
+  <link rel="stylesheet" href="@@webRoot/node_modules/prismjs/themes/prism-okaidia.min.css">
+</head>
+
+<body class="DEFAULT_THEME bg-lightprimary dark:bg-darkbody">
+  <main>
+    <!--start the project-->
+    <div id="main-wrapper" class="flex p-5">
+
+      <aside id="application-sidebar-brand"
+        class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full xl:rtl:-translate-x-0 rtl:translate-x-full  left-0 rtl:left-auto xl:rtl:right-5 rtl:right-0 transform hidden xl:block xl:translate-x-0 xl:end-auto xl:bottom-0 fixed top-0 with-vertical  left-sidebar transition-all duration-300 h-screen z-[2] flex-shrink-0  w-[270px] border-border dark:border-darkborder bg-white dark:bg-dark xl:top-5 xl:start-5 shadow-md xl:rounded-md">
+        @@include("partials/sidebar.html",{ "page": "ui-lists","page_group": "ui" })
+      </aside>
+      <div class="page-wrapper w-full" role="main">
+
+        <!-- Main Content -->
+        <main class="h-full ">
+          <div class="container full-container py-5 xl:ps-6 ps-0 pt-0 pe-0 remove-ps">
+
+            <!--  Header Start -->
+            <header
+              class="sticky top-0 inset-x-0 z-[1] flex flex-wrap md:justify-start md:flex-nowrap text-fs_15 py-3 lg:py-0 mb-6 bg-white dark:bg-dark rounded-md shadow-md">
+              <div class="with-vertical w-full">@@include("partials/header.html")</div>
+              <div class="with-horizontal w-full">
+                <div class="bg-white dark:bg-dark">
+                  <div class="container">
+                    @@include("partials/horizontal-header.html")
+                  </div>
+                </div>
+              </div>
+            </header>
+            <!--  Header End -->
+
+            <!-- Horizontal Sidebar Menu -->
+            <aside
+              class="with-horizontal lg:flex hidden left-sidebar bg-white dark:bg-dark border-t border-border dark:border-darkborder">
+              @@include("partials/horizontal-sidebar.html", { "page": "ui-lists","page_group": "ui"})
+            </aside>
+            <!-- Horizontal Sidebar Menu End -->
+
+            <!-- Main Content -->
+            <div class="max-w-full">
+              <div class="container full-container ">
+                <!----Breadcrumb Start---->
+                @@include("partials/breadcrumb.html", {"title": "List", "subtitle": 'Home'})
+                <!----Breadcrumb End---->
+                <div class="grid grid-cols-12 gap-6">
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-0">
+                          <h5 class="card-title">Basic List</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal4">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal4"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Basic List -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal4">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+       <code class="language-html">  
+  &#x3C;ul class=&#x22;max-w-xs flex flex-col&#x22;&#x3E;
+     &#x3C;li class=&#x22;inline-flex items-center gap-x-2 py-3 px-4 text-sm font-medium bg-white border border-gray-200 text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:bg-transparent dark:border-gray-700 dark:text-white&#x22;&#x3E;
+        Profile
+     &#x3C;/li&#x3E;
+     &#x3C;li class=&#x22;inline-flex items-center gap-x-2 py-3 px-4 text-sm font-medium bg-white border border-gray-200 text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:bg-transparent dark:border-gray-700 dark:text-white&#x22;&#x3E;
+        Settings
+     &#x3C;/li&#x3E;
+     &#x3C;li class=&#x22;inline-flex items-center gap-x-2 py-3 px-4 text-sm font-medium bg-white border border-gray-200 text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:bg-transparent dark:border-gray-700 dark:text-white&#x22;&#x3E;
+        Newsletter
+     &#x3C;/li&#x3E;
+  &#x3C;/ul&#x3E;
+                  </code>
+                                                          </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <p class="card-subtitle  mb-6">The most basic list group is an unordered list.</p>
+                        <ul class="max-w-xs flex flex-col">
+                          <li
+                            class="inline-flex items-center gap-x-2 py-3 px-4 text-sm font-medium bg-white border border-gray-200 text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:bg-transparent dark:border-gray-700 dark:text-white">
+                            Profile
+                          </li>
+                          <li
+                            class="inline-flex items-center gap-x-2 py-3 px-4 text-sm font-medium bg-white border border-gray-200 text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:bg-transparent dark:border-gray-700 dark:text-white">
+                            Settings
+                          </li>
+                          <li
+                            class="inline-flex items-center gap-x-2 py-3 px-4 text-sm font-medium bg-white border border-gray-200 text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:bg-transparent dark:border-gray-700 dark:text-white">
+                            Newsletter
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-0">
+                          <h5 class="card-title">List with Icon</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal5">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal5"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">List with
+                                        Icon -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal5">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+       <code class="language-html">  
+  &#x3C;ul class=&#x22;max-w-xs flex flex-col&#x22;&#x3E;
+     &#x3C;li class=&#x22;inline-flex items-center gap-x-3.5 py-3 px-4 text-sm font-medium bg-white border border-gray-200 text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:bg-transparent dark:border-gray-700 dark:text-white&#x22;&#x3E;
+        &#x3C;i class=&#x22;ti ti-bell text-lg leading-tight font-medium&#x22;&#x3E;&#x3C;/i&#x3E;
+        Newsletter
+     &#x3C;/li&#x3E;
+     &#x3C;li class=&#x22;inline-flex items-center gap-x-3.5 py-3 px-4 text-sm font-medium bg-white border border-gray-200 text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:bg-transparent dark:border-gray-700 dark:text-white&#x22;&#x3E;
+        &#x3C;i class=&#x22;ti ti-cloud-download text-lg leading-tight font-medium&#x22;&#x3E;&#x3C;/i&#x3E;
+        Downloads
+     &#x3C;/li&#x3E;
+     &#x3C;li class=&#x22;inline-flex items-center gap-x-3.5 py-3 px-4 text-sm font-medium bg-white border border-gray-200 text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:bg-transparent dark:border-gray-700 dark:text-white&#x22;&#x3E;
+        &#x3C;i class=&#x22;ti ti-users text-lg leading-tight font-medium&#x22;&#x3E;&#x3C;/i&#x3E;
+        Team Account
+     &#x3C;/li&#x3E;
+  &#x3C;/ul&#x3E;
+                  </code>
+                                                          </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <p class="card-subtitle  mb-6">The default list group with icons.</p>
+                        <ul class="max-w-xs flex flex-col">
+                          <li
+                            class="inline-flex items-center gap-x-3.5 py-3 px-4 text-sm font-medium bg-white border border-gray-200 text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:bg-transparent dark:border-gray-700 dark:text-white">
+                            <i class="ti ti-bell text-lg leading-tight font-medium"></i>
+                            Newsletter
+                          </li>
+                          <li
+                            class="inline-flex items-center gap-x-3.5 py-3 px-4 text-sm font-medium bg-white border border-gray-200 text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:bg-transparent dark:border-gray-700 dark:text-white">
+                            <i class="ti ti-cloud-download text-lg leading-tight font-medium"></i>
+                            Downloads
+                          </li>
+                          <li
+                            class="inline-flex items-center gap-x-3.5 py-3 px-4 text-sm font-medium bg-white border border-gray-200 text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:bg-transparent dark:border-gray-700 dark:text-white">
+                            <i class="ti ti-users text-lg leading-tight font-medium"></i>
+                            Team Account
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-0">
+                          <h5 class="card-title">Links</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal6">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal6"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Links -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal6">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+       <code class="language-html">  
+  &#x3C;div class=&#x22;max-w-xs flex flex-col&#x22;&#x3E;
+     &#x3C;a class=&#x22;inline-flex items-center gap-x-3.5 py-3 px-4 text-sm font-medium border border-gray-200 text-primary -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg focus:z-10 focus:outline-none focus:ring-2 focus:ring-primary dark:border-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600&#x22; href=&#x22;#&#x22;&#x3E;
+     &#x3C;i class=&#x22;ti ti-bell text-lg leading-tight font-medium&#x22;&#x3E;&#x3C;/i&#x3E;
+     Active
+     &#x3C;/a&#x3E;
+     &#x3C;a class=&#x22;inline-flex items-center gap-x-3.5 py-3 px-4 text-sm font-medium bg-white border border-gray-200 text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg hover:text-primary focus:z-10 focus:outline-none focus:ring-2 focus:ring-primary dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:text-primary dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600&#x22; href=&#x22;#&#x22;&#x3E;
+     &#x3C;i class=&#x22;ti ti-cloud-download text-lg leading-tight font-medium&#x22;&#x3E;&#x3C;/i&#x3E;
+     Link
+     &#x3C;/a&#x3E;
+     &#x3C;a class=&#x22;inline-flex items-center gap-x-3.5 py-3 px-4 text-sm font-medium border text-gray-400 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg cursor-not-allowed focus:z-10 focus:outline-none focus:ring-2 focus:ring-primary dark:border-gray-700 dark:text-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600&#x22; href=&#x22;#&#x22;&#x3E;
+     &#x3C;i class=&#x22;ti ti-users text-lg leading-tight font-medium&#x22;&#x3E;&#x3C;/i&#x3E;
+     Disabled
+     &#x3C;/a&#x3E;
+  &#x3C;/div&#x3E;
+                  </code>
+                                                          </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <p class="card-subtitle  mb-6">Use the <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">'&#60;a&#62;'</code> to create
+                          actionable list group.</p>
+                        <div class="max-w-xs flex flex-col">
+                          <a class="inline-flex items-center gap-x-3.5 py-3 px-4 text-sm font-medium border border-gray-200 text-primary -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg focus:z-10 focus:outline-none focus:ring-2 focus:ring-primary dark:border-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                            href="#">
+                            <i class="ti ti-bell text-lg leading-tight font-medium"></i>
+                            Active
+                          </a>
+                          <a class="inline-flex items-center gap-x-3.5 py-3 px-4 text-sm font-medium bg-white border border-gray-200 text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg hover:text-primary focus:z-10 focus:outline-none focus:ring-2 focus:ring-primary dark:bg-slate-700 dark:border-gray-700 dark:text-white dark:hover:text-primary dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                            href="#">
+                            <i class="ti ti-cloud-download text-lg leading-tight font-medium"></i>
+                            Link
+                          </a>
+                          <a class="inline-flex items-center gap-x-3.5 py-3 px-4 text-sm font-medium border text-gray-400 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg cursor-not-allowed focus:z-10 focus:outline-none focus:ring-2 focus:ring-primary dark:border-gray-700 dark:text-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                            href="#">
+                            <i class="ti ti-users text-lg leading-tight font-medium"></i>
+                            Disabled
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-0">
+                          <h5 class="card-title">Flush</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal7">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal7"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Flush -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal7">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+       <code class="language-html">  
+  &#x3C;ul class=&#x22;max-w-xs flex flex-col divide-y divide-gray-200 dark:divide-gray-700&#x22;&#x3E;
+     &#x3C;li class=&#x22;inline-flex items-center gap-x-2 py-3 px-4 text-sm font-medium text-gray-800 dark:text-white&#x22;&#x3E;
+        Profile
+     &#x3C;/li&#x3E;
+     &#x3C;li class=&#x22;inline-flex items-center gap-x-2 py-3 px-4 text-sm font-medium text-gray-800 dark:text-white&#x22;&#x3E;
+        Settings
+     &#x3C;/li&#x3E;
+     &#x3C;li class=&#x22;inline-flex items-center gap-x-2 py-3 px-4 text-sm font-medium text-gray-800 dark:text-white&#x22;&#x3E;
+        Newsletter
+     &#x3C;/li&#x3E;
+  &#x3C;/ul&#x3E;
+                  </code>
+                                                          </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <p class="card-subtitle  mb-6">Remove some borders and rounded corners to render list group
+                          items edge-to-edge.</p>
+                        <ul class="max-w-xs flex flex-col divide-y divide-gray-200 dark:divide-gray-700">
+                          <li
+                            class="inline-flex items-center gap-x-2 py-3 px-4 text-sm font-medium text-gray-800 dark:text-white">
+                            Profile
+                          </li>
+                          <li
+                            class="inline-flex items-center gap-x-2 py-3 px-4 text-sm font-medium text-gray-800 dark:text-white">
+                            Settings
+                          </li>
+                          <li
+                            class="inline-flex items-center gap-x-2 py-3 px-4 text-sm font-medium text-gray-800 dark:text-white">
+                            Newsletter
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-0">
+                          <h5 class="card-title">Badges</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal8">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal8"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Badges -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal8">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+       <code class="language-html">  
+  &#x3C;ul class=&#x22;max-w-xs flex flex-col&#x22;&#x3E;
+     &#x3C;li class=&#x22;inline-flex items-center gap-x-2 py-3 px-4 text-sm font-medium bg-white border border-gray-200 text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:bg-transparent dark:border-gray-700 dark:text-white&#x22;&#x3E;
+        &#x3C;div class=&#x22;flex justify-between w-full&#x22;&#x3E;
+           Profile
+           &#x3C;span class=&#x22;inline-flex items-center py-1 px-2 rounded-full text-xs font-medium bg-primary text-white&#x22;&#x3E;New&#x3C;/span&#x3E;
+        &#x3C;/div&#x3E;
+     &#x3C;/li&#x3E;
+     &#x3C;li class=&#x22;inline-flex items-center gap-x-2 py-3 px-4 text-sm font-medium bg-white border border-gray-200 text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:bg-transparent dark:border-gray-700 dark:text-white&#x22;&#x3E;
+        &#x3C;div class=&#x22;flex justify-between w-full&#x22;&#x3E;
+           Settings
+           &#x3C;span class=&#x22;inline-flex items-center py-1 px-2 rounded-full text-xs font-medium bg-primary text-white&#x22;&#x3E;2&#x3C;/span&#x3E;
+        &#x3C;/div&#x3E;
+     &#x3C;/li&#x3E;
+     &#x3C;li class=&#x22;inline-flex items-center gap-x-2 py-3 px-4 text-sm font-medium bg-white border border-gray-200 text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:bg-transparent dark:border-gray-700 dark:text-white&#x22;&#x3E;
+        &#x3C;div class=&#x22;flex justify-between w-full&#x22;&#x3E;
+           Newsletter
+           &#x3C;span class=&#x22;inline-flex items-center py-1 px-2 rounded-full text-xs font-medium bg-primary text-white&#x22;&#x3E;99+&#x3C;/span&#x3E;
+        &#x3C;/div&#x3E;
+     &#x3C;/li&#x3E;
+  &#x3C;/ul&#x3E;
+                  </code>
+                                                          </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <p class="card-subtitle  mb-6">Add badges to any list group item to show unread counts,
+                          activity, and more.</p>
+                        <ul class="max-w-xs flex flex-col">
+                          <li
+                            class="inline-flex items-center gap-x-2 py-3 px-4 text-sm font-medium bg-white border border-gray-200 text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:bg-transparent dark:border-gray-700 dark:text-white">
+                            <div class="flex justify-between w-full">
+                              Profile
+                              <span
+                                class="inline-flex items-center py-1 px-2 rounded-full text-xs font-medium bg-primary text-white">New</span>
+                            </div>
+                          </li>
+                          <li
+                            class="inline-flex items-center gap-x-2 py-3 px-4 text-sm font-medium bg-white border border-gray-200 text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:bg-transparent dark:border-gray-700 dark:text-white">
+                            <div class="flex justify-between w-full">
+                              Settings
+                              <span
+                                class="inline-flex items-center py-1 px-2 rounded-full text-xs font-medium bg-primary text-white">2</span>
+                            </div>
+                          </li>
+                          <li
+                            class="inline-flex items-center gap-x-2 py-3 px-4 text-sm font-medium bg-white border border-gray-200 text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:bg-transparent dark:border-gray-700 dark:text-white">
+                            <div class="flex justify-between w-full">
+                              Newsletter
+                              <span
+                                class="inline-flex items-center py-1 px-2 rounded-full text-xs font-medium bg-primary text-white">99+</span>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-0">
+                          <h5 class="card-title">List group invoice</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal9">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal9"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">List group
+                                        invoice -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal9">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+       <code class="language-html">  
+  &#x3C;!-- List Group --&#x3E;
+  &#x3C;ul class=&#x22;mt-3 flex flex-col&#x22;&#x3E;
+     &#x3C;li class=&#x22;inline-flex items-center gap-x-2 py-3 px-4 text-sm border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:border-gray-700 dark:text-gray-200&#x22;&#x3E;
+        &#x3C;div class=&#x22;flex items-center justify-between w-full&#x22;&#x3E;
+           &#x3C;span&#x3E;Payment to Front&#x3C;/span&#x3E;
+           &#x3C;span&#x3E;$264.00&#x3C;/span&#x3E;
+        &#x3C;/div&#x3E;
+     &#x3C;/li&#x3E;
+     &#x3C;li class=&#x22;inline-flex items-center gap-x-2 py-3 px-4 text-sm border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:border-gray-700 dark:text-gray-200&#x22;&#x3E;
+        &#x3C;div class=&#x22;flex items-center justify-between w-full&#x22;&#x3E;
+           &#x3C;span&#x3E;Tax fee&#x3C;/span&#x3E;
+           &#x3C;span&#x3E;$52.8&#x3C;/span&#x3E;
+        &#x3C;/div&#x3E;
+     &#x3C;/li&#x3E;
+     &#x3C;li class=&#x22;inline-flex items-center gap-x-2 py-3 px-4 text-sm font-semibold bg-gray-50 border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:bg-slate-800 dark:border-gray-700 dark:text-gray-200&#x22;&#x3E;
+        &#x3C;div class=&#x22;flex items-center justify-between w-full&#x22;&#x3E;
+           &#x3C;span&#x3E;Amount paid&#x3C;/span&#x3E;
+           &#x3C;span&#x3E;$316.8&#x3C;/span&#x3E;
+        &#x3C;/div&#x3E;
+     &#x3C;/li&#x3E;
+  &#x3C;/ul&#x3E;
+  &#x3C;!-- End List Group --&#x3E;
+                  </code>
+                                                          </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <p class="card-subtitle  mb-6">A simple list group example with a highlighted footer.</p>
+                        <!-- List Group -->
+                        <ul class="mt-3 flex flex-col">
+                          <li
+                            class="inline-flex items-center gap-x-2 py-3 px-4 text-sm border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:border-gray-700 dark:text-gray-200">
+                            <div class="flex items-center justify-between w-full">
+                              <span>Payment to Front</span>
+                              <span>$264.00</span>
+                            </div>
+                          </li>
+                          <li
+                            class="inline-flex items-center gap-x-2 py-3 px-4 text-sm border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:border-gray-700 dark:text-gray-200">
+                            <div class="flex items-center justify-between w-full">
+                              <span>Tax fee</span>
+                              <span>$52.8</span>
+                            </div>
+                          </li>
+                          <li
+                            class="inline-flex items-center gap-x-2 py-3 px-4 text-sm font-semibold bg-gray-50 border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:bg-slate-800 dark:border-gray-700 dark:text-gray-200">
+                            <div class="flex items-center justify-between w-full">
+                              <span>Amount paid</span>
+                              <span>$316.8</span>
+                            </div>
+                          </li>
+                        </ul>
+                        <!-- End List Group -->
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-0">
+                          <h5 class="card-title">List marker</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal2">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal2"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">List marker
+                                        -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal2">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+   <code class="language-html">  
+  &#x3C;ul role=&#x22;list&#x22; class=&#x22;marker:text-primary list-disc ps-5 space-y-2 text-sm text-gray-600 dark:text-gray-400&#x22;&#x3E;
+     &#x3C;li&#x3E;
+        FAQ
+     &#x3C;/li&#x3E;
+     &#x3C;li&#x3E;
+        License
+     &#x3C;/li&#x3E;
+     &#x3C;li&#x3E;
+        Terms &#x26; Conditions
+     &#x3C;/li&#x3E;
+  &#x3C;/ul&#x3E;
+              </code>
+                                                      </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <p class="card-subtitle  mb-6">Style the counters or bullets in lists using the <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">'marker'</code> modifier:</p>
+                        <ul role="list"
+                          class="marker:text-primary list-disc ps-5 space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                          <li>
+                            FAQ
+                          </li>
+                          <li>
+                            License
+                          </li>
+                          <li>
+                            Terms & Conditions
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-0">
+                          <h5 class="card-title">Checked style</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal3">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal3"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Checked
+                                        style -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal3">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+   <code class="language-html">  
+  &#x3C;div class=&#x22;flex flex-wrap  justify-between &#x22;&#x3E;
+     &#x3C;ul class=&#x22;space-y-3 text-sm&#x22;&#x3E;
+        &#x3C;li class=&#x22;flex space-x-3&#x22;&#x3E;
+           &#x3C;i class=&#x22;ti ti-check text-base leading-tight font-medium text-primary&#x22;&#x3E;&#x3C;/i&#x3E;
+           &#x3C;span class=&#x22;text-gray-800 dark:text-gray-400&#x22;&#x3E;
+           FAQ
+           &#x3C;/span&#x3E;
+        &#x3C;/li&#x3E;
+        &#x3C;li class=&#x22;flex space-x-3&#x22;&#x3E;
+           &#x3C;i class=&#x22;ti ti-check text-base leading-tight font-medium text-primary&#x22;&#x3E;&#x3C;/i&#x3E;
+           &#x3C;span class=&#x22;text-gray-800 dark:text-gray-400&#x22;&#x3E;
+           License
+           &#x3C;/span&#x3E;
+        &#x3C;/li&#x3E;
+        &#x3C;li class=&#x22;flex space-x-3&#x22;&#x3E;
+           &#x3C;i class=&#x22;ti ti-check text-base leading-tight font-medium text-primary&#x22;&#x3E;&#x3C;/i&#x3E;
+           &#x3C;span class=&#x22;text-gray-800 dark:text-gray-400&#x22;&#x3E;
+           Terms &#x26; Conditions
+           &#x3C;/span&#x3E;
+        &#x3C;/li&#x3E;
+     &#x3C;/ul&#x3E;
+     &#x3C;ul class=&#x22;space-y-3 text-sm&#x22;&#x3E;
+        &#x3C;li class=&#x22;flex space-x-3&#x22;&#x3E;
+           &#x3C;span class=&#x22;size-5 flex justify-center items-center rounded-full bg-lightprimary text-primary dark:bg-darkprimary dark:text-primary&#x22;&#x3E;
+           &#x3C;i class=&#x22;ti ti-check text-base leading-tight font-medium&#x22;&#x3E;&#x3C;/i&#x3E;
+           &#x3C;/span&#x3E;
+           &#x3C;span class=&#x22;text-gray-800 dark:text-gray-400&#x22;&#x3E;
+           FAQ
+           &#x3C;/span&#x3E;
+        &#x3C;/li&#x3E;
+        &#x3C;li class=&#x22;flex space-x-3&#x22;&#x3E;
+           &#x3C;span class=&#x22;size-5 flex justify-center items-center rounded-full bg-lightprimary text-primary dark:bg-darkprimary dark:text-primary&#x22;&#x3E;
+           &#x3C;i class=&#x22;ti ti-check text-base leading-tight font-medium&#x22;&#x3E;&#x3C;/i&#x3E;
+           &#x3C;/span&#x3E;
+           &#x3C;span class=&#x22;text-gray-800 dark:text-gray-400&#x22;&#x3E;
+           License
+           &#x3C;/span&#x3E;
+        &#x3C;/li&#x3E;
+        &#x3C;li class=&#x22;flex space-x-3&#x22;&#x3E;
+           &#x3C;span class=&#x22;size-5 flex justify-center items-center rounded-full bg-lightprimary text-primary dark:bg-darkprimary dark:text-primary&#x22;&#x3E;
+           &#x3C;i class=&#x22;ti ti-check text-base leading-tight font-medium&#x22;&#x3E;&#x3C;/i&#x3E;
+           &#x3C;/span&#x3E;
+           &#x3C;span class=&#x22;text-gray-800 dark:text-gray-400&#x22;&#x3E;
+           Terms &#x26; Conditions
+           &#x3C;/span&#x3E;
+        &#x3C;/li&#x3E;
+     &#x3C;/ul&#x3E;
+     &#x3C;ul class=&#x22;space-y-3 text-sm&#x22;&#x3E;
+        &#x3C;li class=&#x22;flex space-x-3&#x22;&#x3E;
+           &#x3C;span class=&#x22;size-5 flex justify-center items-center rounded-full bg-primary text-white dark:bg-primary&#x22;&#x3E;
+           &#x3C;i class=&#x22;ti ti-check text-base leading-tight font-medium&#x22;&#x3E;&#x3C;/i&#x3E;
+           &#x3C;/span&#x3E;
+           &#x3C;span class=&#x22;text-gray-800 dark:text-gray-400&#x22;&#x3E;
+           FAQ
+           &#x3C;/span&#x3E;
+        &#x3C;/li&#x3E;
+        &#x3C;li class=&#x22;flex space-x-3&#x22;&#x3E;
+           &#x3C;span class=&#x22;size-5 flex justify-center items-center rounded-full bg-primary text-white dark:bg-primary&#x22;&#x3E;
+           &#x3C;i class=&#x22;ti ti-check text-base leading-tight font-medium&#x22;&#x3E;&#x3C;/i&#x3E;
+           &#x3C;/span&#x3E;
+           &#x3C;span class=&#x22;text-gray-800 dark:text-gray-400&#x22;&#x3E;
+           License
+           &#x3C;/span&#x3E;
+        &#x3C;/li&#x3E;
+        &#x3C;li class=&#x22;flex space-x-3&#x22;&#x3E;
+           &#x3C;span class=&#x22;size-5 flex justify-center items-center rounded-full bg-primary text-white dark:bg-primary&#x22;&#x3E;
+           &#x3C;i class=&#x22;ti ti-check text-base leading-tight font-medium&#x22;&#x3E;&#x3C;/i&#x3E;
+           &#x3C;/span&#x3E;
+           &#x3C;span class=&#x22;text-gray-800 dark:text-gray-400&#x22;&#x3E;
+           Terms &#x26; Conditions
+           &#x3C;/span&#x3E;
+        &#x3C;/li&#x3E;
+     &#x3C;/ul&#x3E;
+  &#x3C;/div&#x3E;
+              </code>
+                                                      </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <p class="card-subtitle  mb-6">Replacing the default list style check style icons.</p>
+                        <div class="flex flex-wrap  justify-between ">
+                          <ul class="space-y-3 text-sm">
+                            <li class="flex space-x-3">
+                              <i class="ti ti-check text-base leading-tight font-medium text-primary"></i>
+                              <span class="text-gray-800 dark:text-gray-400">
+                                FAQ
+                              </span>
+                            </li>
+
+                            <li class="flex space-x-3">
+                              <i class="ti ti-check text-base leading-tight font-medium text-primary"></i>
+                              <span class="text-gray-800 dark:text-gray-400">
+                                License
+                              </span>
+                            </li>
+
+                            <li class="flex space-x-3">
+                              <i class="ti ti-check text-base leading-tight font-medium text-primary"></i>
+                              <span class="text-gray-800 dark:text-gray-400">
+                                Terms & Conditions
+                              </span>
+                            </li>
+                          </ul>
+
+                          <ul class="space-y-3 text-sm">
+                            <li class="flex space-x-3">
+                              <span
+                                class="size-5 flex justify-center items-center rounded-full bg-lightprimary text-primary dark:bg-darkprimary dark:text-primary">
+                                <i class="ti ti-check text-base leading-tight font-medium"></i>
+                              </span>
+                              <span class="text-gray-800 dark:text-gray-400">
+                                FAQ
+                              </span>
+                            </li>
+
+                            <li class="flex space-x-3">
+                              <span
+                                class="size-5 flex justify-center items-center rounded-full bg-lightprimary text-primary dark:bg-darkprimary dark:text-primary">
+                                <i class="ti ti-check text-base leading-tight font-medium"></i>
+                              </span>
+                              <span class="text-gray-800 dark:text-gray-400">
+                                License
+                              </span>
+                            </li>
+
+                            <li class="flex space-x-3">
+                              <span
+                                class="size-5 flex justify-center items-center rounded-full bg-lightprimary text-primary dark:bg-darkprimary dark:text-primary">
+                                <i class="ti ti-check text-base leading-tight font-medium"></i>
+                              </span>
+                              <span class="text-gray-800 dark:text-gray-400">
+                                Terms & Conditions
+                              </span>
+                            </li>
+                          </ul>
+
+                          <ul class="space-y-3 text-sm">
+                            <li class="flex space-x-3">
+                              <span
+                                class="size-5 flex justify-center items-center rounded-full bg-primary text-white dark:bg-primary">
+                                <i class="ti ti-check text-base leading-tight font-medium"></i>
+                              </span>
+                              <span class="text-gray-800 dark:text-gray-400">
+                                FAQ
+                              </span>
+                            </li>
+
+                            <li class="flex space-x-3">
+                              <span
+                                class="size-5 flex justify-center items-center rounded-full bg-primary text-white dark:bg-primary">
+                                <i class="ti ti-check text-base leading-tight font-medium"></i>
+                              </span>
+                              <span class="text-gray-800 dark:text-gray-400">
+                                License
+                              </span>
+                            </li>
+
+                            <li class="flex space-x-3">
+                              <span
+                                class="size-5 flex justify-center items-center rounded-full bg-primary text-white dark:bg-primary">
+                                <i class="ti ti-check text-base leading-tight font-medium"></i>
+                              </span>
+                              <span class="text-gray-800 dark:text-gray-400">
+                                Terms & Conditions
+                              </span>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-0">
+                          <h5 class="card-title">Horizontal</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal10">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal10"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Horizontal -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal10">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+   <code class="language-html">  
+  &#x3C;ul class=&#x22;flex flex-col sm:flex-row&#x22;&#x3E;
+     &#x3C;li class=&#x22;inline-flex items-center gap-x-2.5 py-3 px-4 text-sm font-medium bg-white border border-gray-200 text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg sm:-ms-px sm:mt-0 sm:first:rounded-se-none sm:first:rounded-es-lg sm:last:rounded-es-none sm:last:rounded-se-lg dark:bg-transparent dark:border-gray-700 dark:text-white&#x22;&#x3E;
+        &#x3C;i class=&#x22;ti ti-bell text-lg leading-tight font-medium&#x22;&#x3E;&#x3C;/i&#x3E;
+        Newsletter
+     &#x3C;/li&#x3E;
+     &#x3C;li class=&#x22;inline-flex items-center gap-x-2.5 py-3 px-4 text-sm font-medium bg-white border border-gray-200 text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg sm:-ms-px sm:mt-0 sm:first:rounded-se-none sm:first:rounded-es-lg sm:last:rounded-es-none sm:last:rounded-se-lg dark:bg-transparent dark:border-gray-700 dark:text-white&#x22;&#x3E;
+        &#x3C;i class=&#x22;ti ti-cloud-download text-lg leading-tight font-medium&#x22;&#x3E;&#x3C;/i&#x3E;
+        Downloads
+     &#x3C;/li&#x3E;
+     &#x3C;li class=&#x22;inline-flex items-center gap-x-2.5 py-3 px-4 text-sm font-medium bg-white border border-gray-200 text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg sm:-ms-px sm:mt-0 sm:first:rounded-se-none sm:first:rounded-es-lg sm:last:rounded-es-none sm:last:rounded-se-lg dark:bg-transparent dark:border-gray-700 dark:text-white&#x22;&#x3E;
+        &#x3C;i class=&#x22;ti ti-users text-lg leading-tight font-medium&#x22;&#x3E;&#x3C;/i&#x3E;
+        Team Account
+     &#x3C;/li&#x3E;
+  &#x3C;/ul&#x3E;
+              </code>
+                                                      </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <p class="card-subtitle  mb-6">The default horizontal list group.</p>
+                        <ul class="flex flex-col sm:flex-row">
+                          <li
+                            class="inline-flex items-center gap-x-2.5 py-3 px-4 text-sm font-medium bg-white border border-gray-200 text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg sm:-ms-px sm:mt-0 sm:first:rounded-se-none sm:first:rounded-es-lg sm:last:rounded-es-none sm:last:rounded-se-lg dark:bg-transparent dark:border-gray-700 dark:text-white">
+                            <i class="ti ti-bell text-lg leading-tight font-medium"></i>
+                            Newsletter
+                          </li>
+                          <li
+                            class="inline-flex items-center gap-x-2.5 py-3 px-4 text-sm font-medium bg-white border border-gray-200 text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg sm:-ms-px sm:mt-0 sm:first:rounded-se-none sm:first:rounded-es-lg sm:last:rounded-es-none sm:last:rounded-se-lg dark:bg-transparent dark:border-gray-700 dark:text-white">
+                            <i class="ti ti-cloud-download text-lg leading-tight font-medium"></i>
+                            Downloads
+                          </li>
+                          <li
+                            class="inline-flex items-center gap-x-2.5 py-3 px-4 text-sm font-medium bg-white border border-gray-200 text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg sm:-ms-px sm:mt-0 sm:first:rounded-se-none sm:first:rounded-es-lg sm:last:rounded-es-none sm:last:rounded-se-lg dark:bg-transparent dark:border-gray-700 dark:text-white">
+                            <i class="ti ti-users text-lg leading-tight font-medium"></i>
+                            Team Account
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-0">
+                          <h5 class="card-title">List group examples</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal11">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal11"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">List group
+                                        examples -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal11">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+   <code class="language-html">  
+  &#x3C;!-- List Group --&#x3E;
+  &#x3C;ul class=&#x22;flex flex-col justify-end text-start -space-y-px&#x22;&#x3E;
+     &#x3C;li class=&#x22;flex items-center gap-x-2 p-3 text-sm bg-white border text-gray-800 first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:bg-transparent dark:border-gray-700 dark:text-gray-200&#x22;&#x3E;
+        &#x3C;div class=&#x22;w-full flex justify-between truncate&#x22;&#x3E;
+           &#x3C;span class=&#x22;me-3 flex-1 w-0 truncate&#x22;&#x3E;
+           resume_web_ui_developer.csv
+           &#x3C;/span&#x3E;
+           &#x3C;button type=&#x22;button&#x22; class=&#x22;flex items-center gap-x-2 text-gray-500 hover:text-blue-500 whitespace-nowrap dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600&#x22;&#x3E;
+           &#x3C;i class=&#x22;ti ti-download text-lg leading-tight font-medium&#x22;&#x3E;&#x3C;/i&#x3E;
+           Download
+           &#x3C;/button&#x3E;
+        &#x3C;/div&#x3E;
+     &#x3C;/li&#x3E;
+     &#x3C;li class=&#x22;flex items-center gap-x-2 p-3 text-sm bg-white border text-gray-800 first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:bg-transparent dark:border-gray-700 dark:text-gray-200&#x22;&#x3E;
+        &#x3C;div class=&#x22;w-full flex justify-between truncate&#x22;&#x3E;
+           &#x3C;span class=&#x22;me-3 flex-1 w-0 truncate&#x22;&#x3E;
+           coverletter_web_ui_developer.pdf
+           &#x3C;/span&#x3E;
+           &#x3C;button type=&#x22;button&#x22; class=&#x22;flex items-center gap-x-2 text-gray-500 hover:text-blue-500 whitespace-nowrap dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600&#x22;&#x3E;
+           &#x3C;i class=&#x22;ti ti-download text-lg leading-tight font-medium&#x22;&#x3E;&#x3C;/i&#x3E;
+           Download
+           &#x3C;/button&#x3E;
+        &#x3C;/div&#x3E;
+     &#x3C;/li&#x3E;
+  &#x3C;/ul&#x3E;
+  &#x3C;!-- End List Group --&#x3E;
+              </code>
+                                                      </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <p class="card-subtitle  mb-6">This can be useful for a large number of invoices.</p>
+                        <!-- List Group -->
+                        <ul class="flex flex-col justify-end text-start -space-y-px">
+                          <li
+                            class="flex items-center gap-x-2 p-3 text-sm bg-white border text-gray-800 first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:bg-transparent dark:border-gray-700 dark:text-gray-200">
+                            <div class="w-full flex justify-between truncate">
+                              <span class="me-3 flex-1 w-0 truncate">
+                                resume_web_ui_developer.csv
+                              </span>
+                              <button type="button"
+                                class="flex items-center gap-x-2 text-gray-500 hover:text-blue-500 whitespace-nowrap dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                <i class="ti ti-download text-lg leading-tight font-medium"></i>
+                                Download
+                              </button>
+                            </div>
+                          </li>
+                          <li
+                            class="flex items-center gap-x-2 p-3 text-sm bg-white border text-gray-800 first:rounded-t-lg first:mt-0 last:rounded-b-lg dark:bg-transparent dark:border-gray-700 dark:text-gray-200">
+                            <div class="w-full flex justify-between truncate">
+                              <span class="me-3 flex-1 w-0 truncate">
+                                coverletter_web_ui_developer.pdf
+                              </span>
+                              <button type="button"
+                                class="flex items-center gap-x-2 text-gray-500 hover:text-blue-500 whitespace-nowrap dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                <i class="ti ti-download text-lg leading-tight font-medium"></i>
+                                Download
+                              </button>
+                            </div>
+                          </li>
+                        </ul>
+                        <!-- End List Group -->
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-0">
+                          <h5 class="card-title">List checked color variations</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal12">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal12"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">List checked
+                                        color variations -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal12">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+   <code class="language-html">  
+  &#x3C;div class=&#x22;flex justify-between&#x22;&#x3E;
+     &#x3C;ul class=&#x22;space-y-3 text-sm&#x22;&#x3E;
+        &#x3C;li class=&#x22;flex space-x-3&#x22;&#x3E;
+           &#x3C;i class=&#x22;ti ti-check text-base leading-tight text-gray-800 dark:text-white font-medium&#x22;&#x3E;&#x3C;/i&#x3E;
+           &#x3C;span class=&#x22;text-gray-600 dark:text-white&#x22;&#x3E;
+           Dark
+           &#x3C;/span&#x3E;
+        &#x3C;/li&#x3E;
+        &#x3C;li class=&#x22;flex space-x-3&#x22;&#x3E;
+           &#x3C;i class=&#x22;ti ti-check text-base text-gray-500 leading-tight font-medium&#x22;&#x3E;&#x3C;/i&#x3E;
+           &#x3C;span class=&#x22;text-gray-600 dark:text-white&#x22;&#x3E;
+           Gray
+           &#x3C;/span&#x3E;
+        &#x3C;/li&#x3E;
+        &#x3C;li class=&#x22;flex space-x-3&#x22;&#x3E;
+           &#x3C;i class=&#x22;ti ti-check text-base leading-tight text-success font-medium&#x22;&#x3E;&#x3C;/i&#x3E;
+           &#x3C;span class=&#x22;text-gray-600 dark:text-white&#x22;&#x3E;
+           Green
+           &#x3C;/span&#x3E;
+        &#x3C;/li&#x3E;
+        &#x3C;li class=&#x22;flex space-x-3&#x22;&#x3E;
+           &#x3C;i class=&#x22;ti ti-check text-base leading-tight text-primary font-medium&#x22;&#x3E;&#x3C;/i&#x3E;
+           &#x3C;span class=&#x22;text-gray-600 dark:text-white&#x22;&#x3E;
+           Blue
+           &#x3C;/span&#x3E;
+        &#x3C;/li&#x3E;
+        &#x3C;li class=&#x22;flex space-x-3&#x22;&#x3E;
+           &#x3C;i class=&#x22;ti ti-check text-base leading-tight text-error font-medium&#x22;&#x3E;&#x3C;/i&#x3E;
+           &#x3C;span class=&#x22;text-gray-600 dark:text-white&#x22;&#x3E;
+           Red
+           &#x3C;/span&#x3E;
+        &#x3C;/li&#x3E;
+        &#x3C;li class=&#x22;flex space-x-3&#x22;&#x3E;
+           &#x3C;i class=&#x22;ti ti-check text-base leading-tight text-warning font-medium&#x22;&#x3E;&#x3C;/i&#x3E;
+           &#x3C;span class=&#x22;text-gray-600 dark:text-white&#x22;&#x3E;
+           Yellow
+           &#x3C;/span&#x3E;
+        &#x3C;/li&#x3E;
+        &#x3C;li class=&#x22;flex space-x-3&#x22;&#x3E;
+           &#x3C;i class=&#x22;ti ti-check text-base leading-tight text-white font-medium&#x22;&#x3E;&#x3C;/i&#x3E;
+           &#x3C;span class=&#x22;text-gray-600 dark:text-white&#x22;&#x3E;
+           Light
+           &#x3C;/span&#x3E;
+        &#x3C;/li&#x3E;
+     &#x3C;/ul&#x3E;
+     &#x3C;ul class=&#x22;space-y-3 text-sm&#x22;&#x3E;
+        &#x3C;li class=&#x22;flex space-x-3&#x22;&#x3E;
+           &#x3C;span class=&#x22;size-5 flex justify-center items-center rounded-full bg-gray-50 text-gray-600 dark:bg-gray-700 dark:text-gray-200&#x22;&#x3E;
+           &#x3C;i class=&#x22;ti ti-check text-base leading-tight font-medium relative right-[1px]&#x22;&#x3E;&#x3C;/i&#x3E;
+           &#x3C;/span&#x3E;
+           &#x3C;span class=&#x22;text-gray-600 dark:text-white&#x22;&#x3E;
+           Dark
+           &#x3C;/span&#x3E;
+        &#x3C;/li&#x3E;
+        &#x3C;li class=&#x22;flex space-x-3&#x22;&#x3E;
+           &#x3C;span class=&#x22;size-5 flex justify-center items-center rounded-full bg-gray-50 text-gray-500 dark:bg-gray-700 dark:text-gray-400&#x22;&#x3E;
+           &#x3C;i class=&#x22;ti ti-check text-base leading-tight font-medium relative right-[1px]&#x22;&#x3E;&#x3C;/i&#x3E;
+           &#x3C;/span&#x3E;
+           &#x3C;span class=&#x22;text-gray-600 dark:text-white&#x22;&#x3E;
+           Gray
+           &#x3C;/span&#x3E;
+        &#x3C;/li&#x3E;
+        &#x3C;li class=&#x22;flex space-x-3&#x22;&#x3E;
+           &#x3C;span class=&#x22;size-5 flex justify-center items-center rounded-full bg-lightsuccess text-success dark:bg-darksuccess dark:text-success&#x22;&#x3E;
+           &#x3C;i class=&#x22;ti ti-check text-base leading-tight font-medium relative right-[1px]&#x22;&#x3E;&#x3C;/i&#x3E;
+           &#x3C;/span&#x3E;
+           &#x3C;span class=&#x22;text-gray-600 dark:text-white&#x22;&#x3E;
+           Green
+           &#x3C;/span&#x3E;
+        &#x3C;/li&#x3E;
+        &#x3C;li class=&#x22;flex space-x-3&#x22;&#x3E;
+           &#x3C;span class=&#x22;size-5 flex justify-center items-center rounded-full bg-lightprimary text-primary dark:bg-darkprimary dark:text-primary&#x22;&#x3E;
+           &#x3C;i class=&#x22;ti ti-check text-base leading-tight font-medium relative right-[1px]&#x22;&#x3E;&#x3C;/i&#x3E;
+           &#x3C;/span&#x3E;
+           &#x3C;span class=&#x22;text-gray-600 dark:text-white&#x22;&#x3E;
+           Blue
+           &#x3C;/span&#x3E;
+        &#x3C;/li&#x3E;
+        &#x3C;li class=&#x22;flex space-x-3&#x22;&#x3E;
+           &#x3C;span class=&#x22;size-5 flex justify-center items-center rounded-full bg-lighterror text-error dark:bg-darkerror dark:text-error&#x22;&#x3E;
+           &#x3C;i class=&#x22;ti ti-check text-base leading-tight font-medium relative right-[1px]&#x22;&#x3E;&#x3C;/i&#x3E;
+           &#x3C;/span&#x3E;
+           &#x3C;span class=&#x22;text-gray-600 dark:text-white&#x22;&#x3E;
+           Red
+           &#x3C;/span&#x3E;
+        &#x3C;/li&#x3E;
+        &#x3C;li class=&#x22;flex space-x-3&#x22;&#x3E;
+           &#x3C;span class=&#x22;size-5 flex justify-center items-center rounded-full bg-lightwarning text-warning dark:bg-darkwarning dark:text-warning&#x22;&#x3E;
+           &#x3C;i class=&#x22;ti ti-check text-base leading-tight font-medium relative right-[1px]&#x22;&#x3E;&#x3C;/i&#x3E;
+           &#x3C;/span&#x3E;
+           &#x3C;span class=&#x22;text-gray-600 dark:text-white&#x22;&#x3E;
+           Yellow
+           &#x3C;/span&#x3E;
+        &#x3C;/li&#x3E;
+        &#x3C;li class=&#x22;flex space-x-3&#x22;&#x3E;
+           &#x3C;span class=&#x22;size-5 flex justify-center items-center rounded-full bg-white/10 text-white&#x22;&#x3E;
+           &#x3C;i class=&#x22;ti ti-check text-base leading-tight font-medium relative right-[1px]&#x22;&#x3E;&#x3C;/i&#x3E;
+           &#x3C;/span&#x3E;
+           &#x3C;span class=&#x22;text-gray-600 dark:text-white&#x22;&#x3E;
+           Light
+           &#x3C;/span&#x3E;
+        &#x3C;/li&#x3E;
+     &#x3C;/ul&#x3E;
+     &#x3C;ul class=&#x22;space-y-3 text-sm&#x22;&#x3E;
+        &#x3C;li class=&#x22;flex space-x-3&#x22;&#x3E;
+           &#x3C;span class=&#x22;size-5 flex justify-center items-center rounded-full bg-gray-800 text-gray-200 dark:bg-gray-200 dark:text-gray-800&#x22;&#x3E;
+           &#x3C;i class=&#x22;ti ti-check text-base leading-tight font-medium&#x22;&#x3E;&#x3C;/i&#x3E;
+           &#x3C;/span&#x3E;
+           &#x3C;span class=&#x22;text-gray-600 dark:text-white&#x22;&#x3E;
+           Dark
+           &#x3C;/span&#x3E;
+        &#x3C;/li&#x3E;
+        &#x3C;li class=&#x22;flex space-x-3&#x22;&#x3E;
+           &#x3C;span class=&#x22;size-5 flex justify-center items-center rounded-full bg-gray-500 text-white&#x22;&#x3E;
+           &#x3C;i class=&#x22;ti ti-check text-base leading-tight font-medium&#x22;&#x3E;&#x3C;/i&#x3E;
+           &#x3C;/span&#x3E;
+           &#x3C;span class=&#x22;text-gray-600 dark:text-white&#x22;&#x3E;
+           Gray
+           &#x3C;/span&#x3E;
+        &#x3C;/li&#x3E;
+        &#x3C;li class=&#x22;flex space-x-3&#x22;&#x3E;
+           &#x3C;span class=&#x22;size-5 flex justify-center items-center rounded-full bg-success text-white&#x22;&#x3E;
+           &#x3C;i class=&#x22;ti ti-check text-base leading-tight font-medium&#x22;&#x3E;&#x3C;/i&#x3E;
+           &#x3C;/span&#x3E;
+           &#x3C;span class=&#x22;text-gray-600 dark:text-white&#x22;&#x3E;
+           Green
+           &#x3C;/span&#x3E;
+        &#x3C;/li&#x3E;
+        &#x3C;li class=&#x22;flex space-x-3&#x22;&#x3E;
+           &#x3C;span class=&#x22;size-5 flex justify-center items-center rounded-full bg-primary text-white dark:bg-primary&#x22;&#x3E;
+           &#x3C;i class=&#x22;ti ti-check text-base leading-tight font-medium&#x22;&#x3E;&#x3C;/i&#x3E;
+           &#x3C;/span&#x3E;
+           &#x3C;span class=&#x22;text-gray-600 dark:text-white&#x22;&#x3E;
+           Blue
+           &#x3C;/span&#x3E;
+        &#x3C;/li&#x3E;
+        &#x3C;li class=&#x22;flex space-x-3&#x22;&#x3E;
+           &#x3C;span class=&#x22;size-5 flex justify-center items-center rounded-full bg-error text-white&#x22;&#x3E;
+           &#x3C;i class=&#x22;ti ti-check text-base leading-tight font-medium&#x22;&#x3E;&#x3C;/i&#x3E;
+           &#x3C;/span&#x3E;
+           &#x3C;span class=&#x22;text-gray-600 dark:text-white&#x22;&#x3E;
+           Red
+           &#x3C;/span&#x3E;
+        &#x3C;/li&#x3E;
+        &#x3C;li class=&#x22;flex space-x-3&#x22;&#x3E;
+           &#x3C;span class=&#x22;size-5 flex justify-center items-center rounded-full bg-warning text-white&#x22;&#x3E;
+           &#x3C;i class=&#x22;ti ti-check text-base leading-tight font-medium&#x22;&#x3E;&#x3C;/i&#x3E;
+           &#x3C;/span&#x3E;
+           &#x3C;span class=&#x22;text-gray-600 dark:text-white&#x22;&#x3E;
+           Yellow
+           &#x3C;/span&#x3E;
+        &#x3C;/li&#x3E;
+        &#x3C;li class=&#x22;flex space-x-3&#x22;&#x3E;
+           &#x3C;span class=&#x22;size-5 flex justify-center items-center rounded-full bg-white text-gray-800&#x22;&#x3E;
+           &#x3C;i class=&#x22;ti ti-check text-base leading-tight font-medium&#x22;&#x3E;&#x3C;/i&#x3E;
+           &#x3C;/span&#x3E;
+           &#x3C;span class=&#x22;text-gray-600 dark:text-white&#x22;&#x3E;
+           Light
+           &#x3C;/span&#x3E;
+        &#x3C;/li&#x3E;
+     &#x3C;/ul&#x3E;
+  &#x3C;/div&#x3E;
+              </code>
+                                                      </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <p class="card-subtitle  mb-6">Predefined list checked color styles.</p>
+                        <div class="flex justify-between">
+                          <ul class="space-y-3 text-sm">
+                            <li class="flex space-x-3">
+                              <i
+                                class="ti ti-check text-base leading-tight text-gray-800 dark:text-white font-medium"></i>
+                              <span class="text-gray-600 dark:text-white">
+                                Dark
+                              </span>
+                            </li>
+
+                            <li class="flex space-x-3">
+                              <i class="ti ti-check text-base text-gray-500 leading-tight font-medium"></i>
+                              <span class="text-gray-600 dark:text-white">
+                                Gray
+                              </span>
+                            </li>
+
+                            <li class="flex space-x-3">
+                              <i class="ti ti-check text-base leading-tight text-success font-medium"></i>
+                              <span class="text-gray-600 dark:text-white">
+                                Green
+                              </span>
+                            </li>
+
+                            <li class="flex space-x-3">
+                              <i class="ti ti-check text-base leading-tight text-primary font-medium"></i>
+                              <span class="text-gray-600 dark:text-white">
+                                Blue
+                              </span>
+                            </li>
+
+                            <li class="flex space-x-3">
+                              <i class="ti ti-check text-base leading-tight text-error font-medium"></i>
+                              <span class="text-gray-600 dark:text-white">
+                                Red
+                              </span>
+                            </li>
+
+                            <li class="flex space-x-3">
+                              <i class="ti ti-check text-base leading-tight text-warning font-medium"></i>
+                              <span class="text-gray-600 dark:text-white">
+                                Yellow
+                              </span>
+                            </li>
+
+                            <li class="flex space-x-3">
+                              <i class="ti ti-check text-base leading-tight text-white font-medium"></i>
+                              <span class="text-gray-600 dark:text-white">
+                                Light
+                              </span>
+                            </li>
+                          </ul>
+
+                          <ul class="space-y-3 text-sm">
+                            <li class="flex space-x-3">
+                              <span
+                                class="size-5 flex justify-center items-center rounded-full bg-gray-50 text-gray-600 dark:bg-gray-700 dark:text-gray-200">
+                                <i class="ti ti-check text-base leading-tight font-medium relative right-[1px]"></i>
+                              </span>
+                              <span class="text-gray-600 dark:text-white">
+                                Dark
+                              </span>
+                            </li>
+
+                            <li class="flex space-x-3">
+                              <span
+                                class="size-5 flex justify-center items-center rounded-full bg-gray-50 text-gray-500 dark:bg-gray-700 dark:text-gray-400">
+                                <i class="ti ti-check text-base leading-tight font-medium relative right-[1px]"></i>
+                              </span>
+                              <span class="text-gray-600 dark:text-white">
+                                Gray
+                              </span>
+                            </li>
+
+                            <li class="flex space-x-3">
+                              <span
+                                class="size-5 flex justify-center items-center rounded-full bg-lightsuccess text-success dark:bg-darksuccess dark:text-success">
+                                <i class="ti ti-check text-base leading-tight font-medium relative right-[1px]"></i>
+                              </span>
+                              <span class="text-gray-600 dark:text-white">
+                                Green
+                              </span>
+                            </li>
+
+                            <li class="flex space-x-3">
+                              <span
+                                class="size-5 flex justify-center items-center rounded-full bg-lightprimary text-primary dark:bg-darkprimary dark:text-primary">
+                                <i class="ti ti-check text-base leading-tight font-medium relative right-[1px]"></i>
+                              </span>
+                              <span class="text-gray-600 dark:text-white">
+                                Blue
+                              </span>
+                            </li>
+
+                            <li class="flex space-x-3">
+                              <span
+                                class="size-5 flex justify-center items-center rounded-full bg-lighterror text-error dark:bg-darkerror dark:text-error">
+                                <i class="ti ti-check text-base leading-tight font-medium relative right-[1px]"></i>
+                              </span>
+                              <span class="text-gray-600 dark:text-white">
+                                Red
+                              </span>
+                            </li>
+
+                            <li class="flex space-x-3">
+                              <span
+                                class="size-5 flex justify-center items-center rounded-full bg-lightwarning text-warning dark:bg-darkwarning dark:text-warning">
+                                <i class="ti ti-check text-base leading-tight font-medium relative right-[1px]"></i>
+                              </span>
+                              <span class="text-gray-600 dark:text-white">
+                                Yellow
+                              </span>
+                            </li>
+
+                            <li class="flex space-x-3">
+                              <span class="size-5 flex justify-center items-center rounded-full bg-white/10 text-white">
+                                <i class="ti ti-check text-base leading-tight font-medium relative right-[1px]"></i>
+                              </span>
+                              <span class="text-gray-600 dark:text-white">
+                                Light
+                              </span>
+                            </li>
+                          </ul>
+
+                          <ul class="space-y-3 text-sm">
+                            <li class="flex space-x-3">
+                              <span
+                                class="size-5 flex justify-center items-center rounded-full bg-gray-800 text-gray-200 dark:bg-gray-200 dark:text-gray-800">
+                                <i class="ti ti-check text-base leading-tight font-medium"></i>
+                              </span>
+                              <span class="text-gray-600 dark:text-white">
+                                Dark
+                              </span>
+                            </li>
+
+                            <li class="flex space-x-3">
+                              <span class="size-5 flex justify-center items-center rounded-full bg-gray-500 text-white">
+                                <i class="ti ti-check text-base leading-tight font-medium"></i>
+                              </span>
+                              <span class="text-gray-600 dark:text-white">
+                                Gray
+                              </span>
+                            </li>
+
+                            <li class="flex space-x-3">
+                              <span class="size-5 flex justify-center items-center rounded-full bg-success text-white">
+                                <i class="ti ti-check text-base leading-tight font-medium"></i>
+                              </span>
+                              <span class="text-gray-600 dark:text-white">
+                                Green
+                              </span>
+                            </li>
+
+                            <li class="flex space-x-3">
+                              <span
+                                class="size-5 flex justify-center items-center rounded-full bg-primary text-white dark:bg-primary">
+                                <i class="ti ti-check text-base leading-tight font-medium"></i>
+                              </span>
+                              <span class="text-gray-600 dark:text-white">
+                                Blue
+                              </span>
+                            </li>
+
+                            <li class="flex space-x-3">
+                              <span class="size-5 flex justify-center items-center rounded-full bg-error text-white">
+                                <i class="ti ti-check text-base leading-tight font-medium"></i>
+                              </span>
+                              <span class="text-gray-600 dark:text-white">
+                                Red
+                              </span>
+                            </li>
+
+                            <li class="flex space-x-3">
+                              <span class="size-5 flex justify-center items-center rounded-full bg-warning text-white">
+                                <i class="ti ti-check text-base leading-tight font-medium"></i>
+                              </span>
+                              <span class="text-gray-600 dark:text-white">
+                                Yellow
+                              </span>
+                            </li>
+
+                            <li class="flex space-x-3">
+                              <span class="size-5 flex justify-center items-center rounded-full bg-white text-gray-800">
+                                <i class="ti ti-check text-base leading-tight font-medium"></i>
+                              </span>
+                              <span class="text-gray-600 dark:text-white">
+                                Light
+                              </span>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+        <!-- Main Content End -->
+
+      </div>
+    </div>
+    <!--end of project-->
+  </main>
+  @@include("partials/header-components/mobile-menu.html")
+  @@include("partials/customizer.html")
+  @@include("partials/scripts.html")
+  <script src="@@webRoot/node_modules/prismjs/prism.js"></script>
+</body>
+
+</html>

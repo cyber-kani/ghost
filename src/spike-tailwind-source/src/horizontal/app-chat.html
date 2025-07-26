@@ -1,0 +1,1479 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-color-theme="Blue_Theme" class="light selected" data-layout="vertical"
+    data-boxed-layout="boxed" data-card="shadow">
+
+<head>
+    @@include("partials/head.html")
+    <title>Spike TailwindCSS HTML Admin Template</title>
+    <!-- Owl Carousel  -->
+    <link rel="stylesheet" href="@@webRoot/node_modules/owl.carousel/dist/assets/owl.carousel.min.css">
+</head>
+
+<body class="DEFAULT_THEME bg-lightprimary dark:bg-darkbody">
+    <main>
+        <!--start the project-->
+        <div id="main-wrapper" class="flex p-5">
+
+            <aside id="application-sidebar-brand"
+                class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full xl:rtl:-translate-x-0 rtl:translate-x-full  left-0 rtl:left-auto xl:rtl:right-5 rtl:right-0 transform hidden xl:block xl:translate-x-0 xl:end-auto xl:bottom-0 fixed top-0 with-vertical  left-sidebar transition-all duration-300 h-screen z-[2] flex-shrink-0  w-[270px] border-border dark:border-darkborder bg-white dark:bg-dark xl:top-5 xl:start-5 shadow-md xl:rounded-md">
+                @@include("partials/sidebar.html",{ "page": "chat","page_group": "apps" })
+            </aside>
+            <div class="page-wrapper w-full" role="main">
+
+                <!-- Main Content -->
+                <main class="h-full ">
+                    <div class="container full-container py-5 xl:ps-6 ps-0 pt-0 pe-0 remove-ps">
+
+                        <!--  Header Start -->
+                        <header
+                            class="sticky top-0 inset-x-0 z-[1] flex flex-wrap md:justify-start md:flex-nowrap text-fs_15 py-3 lg:py-0 mb-6 bg-white dark:bg-dark rounded-md shadow-md">
+                            <div class="with-vertical w-full">@@include("partials/header.html")</div>
+                            <div class="with-horizontal w-full">
+                                <div class="bg-white dark:bg-dark">
+                                    <div class="container">
+                                        @@include("partials/horizontal-header.html")
+                                    </div>
+                                </div>
+                            </div>
+                        </header>
+                        <!--  Header End -->
+
+                        <!-- Horizontal Sidebar Menu -->
+                        <aside
+                            class="with-horizontal lg:flex hidden left-sidebar bg-white dark:bg-dark border-t border-border dark:border-darkborder">
+                            @@include("partials/horizontal-sidebar.html", { "page": "chat","page_group":
+                            "apps"})
+                        </aside>
+                        <!-- Horizontal Sidebar Menu End -->
+
+                        <!-- Main Content -->
+                        <div class="max-w-full">
+                            <div class="container full-container ">
+                                <!----Breadcrumb Start---->
+                                @@include("partials/breadcrumb.html", {"title": "Chat", "subtitle": 'Home'})
+                                <!----Breadcrumb End---->
+                                <!---Chat Card Start--->
+                                <div class="card overflow-hidden chat-application">
+                                    <div class="flex items-center justify-between gap-3 m-3 lg:hidden">
+                                        <button class="btn btn-primary flex" type="button" data-hs-overlay="#chat-sidebar"
+                                            aria-controls="chat-sidebar" aria-label="Toggle navigation">
+                                            <i class="ti ti-menu-2 fs-5"></i>
+                                        </button>
+                                        <form class="relative w-full">
+                                            <input type="text" class="form-control search-chat py-2 ps-10" id="text-srh"
+                                                placeholder="Search Contact">
+                                            <i
+                                                class="ti ti-search absolute top-1.5 start-0 translate-middle-y text-lg text-dark ms-3 dark:text-dark-link"></i>
+                                        </form>
+                                    </div>
+                                    <div class="flex">
+                                        <div
+                                            class="left-part border-e border-border dark:border-darkborder w-[30%] flex-shrink-0 hidden lg:block user-chat-box">
+                                            <div class="py-3">
+                                                <div class="flex items-center justify-between mb-3 px-5">
+                                                    <div class="flex items-center gap-4">
+                                                        <div class="relative">
+                                                            <img src="@@webRoot/assets/images/profile/user-1.jpg" alt="user1"
+                                                                width="54" height="54" class="rounded-full" />
+                                                            <span
+                                                                class="absolute right-0 bottom-0.5 p-1 rounded-full bg-success">
+                                                            </span>
+                                                        </div>
+                                                        <div class="">
+                                                            <h6 class="text-sm font-semibold text-dark dark:text-white mb-2">
+                                                                Mathew Anderson</h6>
+                                                            <p class="text-xs text-bodytext dark:text-darklink
+                                                            ">Marketing Director</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="hs-dropdown relative inline-flex ">
+                                                        <button id="hs-dropdown-custom-icon-trigger"
+                                                            class="hs-dropdown-toggle h-10 w-10 text-bodytext dark:text-darklink hover:text-primary bg-hover  justify-center items-center rounded-full">
+                                                            <i class="ti ti-dots-vertical text-lg"></i>
+                                                        </button>
+        
+                                                        <div class="hs-dropdown-menu z-[1] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-40"
+                                                            aria-labelledby="hs-dropdown-custom-icon-trigger">
+                                                            <div class="flex flex-col">
+                                                                <div
+                                                                    class="py-2 px-4 bg-hover border-b border-border dark:border-darkborder">
+                                                                    <a class="card-subtitle flex gap-2 items-center leading-none"
+                                                                        href="javascript:void(0)">
+                                                                        <i class="ti ti-settings text-base"></i>Setting </a>
+                                                                </div>
+                                                                <div
+                                                                    class="py-2 px-4 bg-hover ">
+                                                                    <a class="card-subtitle flex gap-2 items-center "
+                                                                        href="javascript:void(0)">
+                                                                        <i class="ti ti-help text-base"></i>Help
+                                                                        and feadbacks
+                                                                    </a>
+                                                                </div>
+                                                                <div
+                                                                    class="py-2 px-4 bg-hover ">
+                                                                    <a class="card-subtitle flex gap-2 items-center "
+                                                                        href="javascript:void(0)">
+                                                                        <i class="ti ti-layout-board-split text-base"></i>Enable
+                                                                        split View mode
+                                                                    </a>
+                                                                </div>
+                                                                <div
+                                                                    class="py-2 px-4 bg-hover ">
+                                                                    <a class="card-subtitle flex gap-2 items-center "
+                                                                        href="javascript:void(0)">
+                                                                        <i class="ti ti-table-shortcut text-base"></i>Keyboard
+                                                                        shortcut
+                                                                    </a>
+                                                                </div>
+                                                                <div
+                                                                    class="py-2 px-4 bg-hover border-t border-border dark:border-darkborder">
+                                                                    <a class="card-subtitle flex gap-2 items-center "
+                                                                        href="javascript:void(0)">
+                                                                        <i class="ti ti-login  text-base"></i>Sign
+                                                                        Out
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="px-5">
+                                                    <form class="relative w-full mt-4 mb-5 ">
+                                                        <input type="text" class="form-control search-chat py-2 ps-10"
+                                                            id="text-srh" placeholder="Search Contact">
+                                                        <i
+                                                            class="ti ti-search absolute top-1.5 start-0 translate-middle-y text-lg text-dark ms-3"></i>
+                                                    </form>
+                                                    <div class="hs-dropdown relative inline-flex ">
+                                                        <button id="hs-dropdown-custom-icon-trigger"
+                                                            class="hs-dropdown-toggle  text-bodytext dark:text-darklink justify-center items-center rounded-full font-semibold">
+                                                            Recent Chats<i class="ti ti-chevron-down ms-1 fs-5"></i>
+                                                        </button>
+        
+                                                        <div class="hs-dropdown-menu z-[1] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-40"
+                                                            aria-labelledby="hs-dropdown-custom-icon-trigger">
+                                                            <div class="flex flex-col">
+                                                                <div
+                                                                    class="py-2 px-4 bg-hover ">
+                                                                    <a class="card-subtitle flex gap-2 items-center "
+                                                                        href="javascript:void(0)">
+                                                                        Sort by time
+                                                                    </a>
+                                                                </div>
+                                                                <div
+                                                                    class="py-2 px-4 bg-hover ">
+                                                                    <a class="card-subtitle flex gap-2 items-center "
+                                                                        href="javascript:void(0)">
+                                                                        Sort by Unread
+                                                                    </a>
+                                                                </div>
+                                                                <div
+                                                                    class="py-2 px-4 bg-hover ">
+                                                                    <a class="card-subtitle flex gap-2 items-center "
+                                                                        href="javascript:void(0)">
+                                                                        Hide favourites
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+        
+        
+                                                <!----Left side users---->
+                                                <div class="app-chat mt-3">
+                                                    <ul class="chat-users mh-n100" data-simplebar>
+                                                        <li>
+                                                            <a href="javascript:void(0)"
+                                                                class="px-5 py-3 bg-lightgray dark:bg-darkprimary flex items-start justify-between chat-user"
+                                                                id="chat_user_1" data-user-id="1">
+                                                                <div class="flex items-center gap-3">
+                                                                    <span class="relative">
+                                                                        <img src="@@webRoot/assets/images/profile/user-7.jpg"
+                                                                            alt="user-4" class="rounded-full h-12 w-12">
+                                                                        <span
+                                                                            class="absolute right-0 bottom-0.5 p-1 rounded-full bg-success">
+                                                                        </span>
+                                                                    </span>
+                                                                    <div class="inline-block ">
+        
+                                                                        <h6 class="mb-1 text-sm  chat-title"
+                                                                            data-username="Bianca Anderson">Michell Flintoffs
+                                                                        </h6>
+        
+                                                                        <span
+                                                                            class="block text-dark font-medium dark:text-darklink">You:
+                                                                            Yesterdy was great...</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="text-xs text-bodytext dark:text-darklink pt-1">
+                                                                    15 minutes
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="javascript:void(0)"
+                                                                class="px-5 py-3 bg-hover flex items-start justify-between chat-user"
+                                                                id="chat_user_2" data-user-id="2">
+                                                                <div class="flex items-center gap-3">
+                                                                    <span class="relative">
+                                                                        <img src="@@webRoot/assets/images/profile/user-2.jpg"
+                                                                            alt="user-4" class="rounded-full h-12 w-12">
+                                                                        <span
+                                                                            class="absolute right-0 bottom-0.5 p-1 rounded-full bg-error">
+                                                                        </span>
+                                                                    </span>
+                                                                    <div class="inline-block ">
+        
+                                                                        <h6 class="mb-1 text-sm  chat-title"
+                                                                            data-username="Bianca Anderson">Bianca Anderson
+                                                                        </h6>
+        
+                                                                        <span
+                                                                            class="block text-dark font-medium dark:text-darklink">Nice
+                                                                            looking dress you...</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="text-xs text-bodytext dark:text-darklink pt-1">
+                                                                    30 minutes
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="javascript:void(0)"
+                                                                class="px-5 py-3 bg-hover flex items-start justify-between chat-user"
+                                                                id="chat_user_3" data-user-id="3">
+                                                                <div class="flex items-center gap-3">
+                                                                    <span class="relative">
+                                                                        <img src="@@webRoot/assets/images/profile/user-8.jpg"
+                                                                            alt="user-4" class="rounded-full h-12 w-12">
+                                                                        <span
+                                                                            class="absolute right-0 bottom-0.5 p-1 rounded-full bg-warning">
+                                                                        </span>
+                                                                    </span>
+                                                                    <div class="inline-block ">
+        
+                                                                        <h6 class="mb-1 text-sm  chat-title"
+                                                                            data-username="Andrew Johnson">Andrew Johnson
+                                                                        </h6>
+        
+                                                                        <span
+                                                                            class="block text-dark font-medium dark:text-darklink">Sent
+                                                                            a photo</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="text-xs text-bodytext dark:text-darklink pt-1">
+                                                                    2 hours
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="javascript:void(0)"
+                                                                class="px-5 py-3 bg-hover flex items-start justify-between chat-user"
+                                                                id="chat_user_4" data-user-id="4">
+                                                                <div class="flex items-center gap-3">
+                                                                    <span class="relative">
+                                                                        <img src="@@webRoot/assets/images/profile/user-5.jpg"
+                                                                            alt="user-4" class="rounded-full h-12 w-12">
+                                                                        <span
+                                                                            class="absolute right-0 bottom-0.5 p-1 rounded-full bg-success">
+                                                                        </span>
+                                                                    </span>
+                                                                    <div class="inline-block ">
+        
+                                                                        <h6 class="mb-1 text-sm  chat-title"
+                                                                            data-username="Mark Strokes">Mark Strokes
+                                                                        </h6>
+        
+                                                                        <span
+                                                                            class="block text-dark font-medium dark:text-darklink">Lorem
+                                                                            ispusm text sud...</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="text-xs text-bodytext dark:text-darklink pt-1">
+                                                                    5 days
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="javascript:void(0)"
+                                                                class="px-5 py-3 bg-hover flex items-start justify-between chat-user"
+                                                                id="chat_user_5" data-user-id="5">
+                                                                <div class="flex items-center gap-3">
+                                                                    <span class="relative">
+                                                                        <img src="@@webRoot/assets/images/profile/user-4.jpg"
+                                                                            alt="user-4" class="rounded-full h-12 w-12">
+                                                                        <span
+                                                                            class="absolute right-0 bottom-0.5 p-1 rounded-full bg-success">
+                                                                        </span>
+                                                                    </span>
+                                                                    <div class="inline-block ">
+        
+                                                                        <h6 class="mb-1 text-sm  chat-title"
+                                                                            data-username="Mark Strokes">Mark, Stoinus &
+                                                                            Rishvi..
+                                                                        </h6>
+        
+                                                                        <span
+                                                                            class="block text-dark font-medium dark:text-darklink">Lorem
+                                                                            ispusm text sud...</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="text-xs text-bodytext dark:text-darklink pt-1">
+                                                                    5 days
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="javascript:void(0)"
+                                                                class="px-5 py-3 bg-hover flex items-start justify-between chat-user"
+                                                                id="chat_user_2" data-user-id="2">
+                                                                <div class="flex items-center gap-3">
+                                                                    <span class="relative">
+                                                                        <img src="@@webRoot/assets/images/profile/user-2.jpg"
+                                                                            alt="user-4" class="rounded-full h-12 w-12">
+                                                                        <span
+                                                                            class="absolute right-0 bottom-0.5 p-1 rounded-full bg-error">
+                                                                        </span>
+                                                                    </span>
+                                                                    <div class="inline-block ">
+        
+                                                                        <h6 class="mb-1 text-sm  chat-title"
+                                                                            data-username="Bianca Anderson">Bianca Anderson
+                                                                        </h6>
+        
+                                                                        <span
+                                                                            class="block text-dark font-medium dark:text-darklink">Nice
+                                                                            looking dress you...</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="text-xs text-bodytext dark:text-darklink pt-1">
+                                                                    30 minutes
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="javascript:void(0)"
+                                                                class="px-5 py-3 bg-hover flex items-start justify-between chat-user"
+                                                                id="chat_user_3" data-user-id="3">
+                                                                <div class="flex items-center gap-3">
+                                                                    <span class="relative">
+                                                                        <img src="@@webRoot/assets/images/profile/user-8.jpg"
+                                                                            alt="user-4" class="rounded-full h-12 w-12">
+                                                                        <span
+                                                                            class="absolute right-0 bottom-0.5 p-1 rounded-full bg-warning">
+                                                                        </span>
+                                                                    </span>
+                                                                    <div class="inline-block ">
+        
+                                                                        <h6 class="mb-1 text-sm  chat-title"
+                                                                            data-username="Andrew Johnson">Andrew Johnson
+                                                                        </h6>
+        
+                                                                        <span
+                                                                            class="block text-dark font-medium dark:text-darklink">Nice
+                                                                            looking dress you...</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="text-xs text-bodytext dark:text-darklink pt-1">
+                                                                    2 hours
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!----Left side users wnd---->
+                                            </div>
+                                        </div>
+                                        <div class="lg:w-[70%] w-full chat-container">
+                                            <div class="chat-box-inner-part h-full">
+                                                <div class="chat-not-selected h-100 hidden">
+                                                    <div class="flex items-center justify-content-center h-100 p-5">
+                                                        <div class="text-center">
+                                                            <span class="text-primary">
+                                                                <i class="ti ti-message-dots fs-10"></i>
+                                                            </span>
+                                                            <h6 class="mt-2">Open chat from the list</h6>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="chatting-box block">
+                                                    <div
+                                                        class="py-3 px-5 border-b border-border dark:border-darkborder chat-meta-user flex items-center justify-between">
+                                                        <div class="flex items-center gap-3 current-chat-user-name">
+                                                            <span class="relative">
+                                                                <img src="@@webRoot/assets/images/profile/user-1.jpg"
+                                                                    alt="user-4" class="rounded-full h-12 w-12">
+                                                                <span
+                                                                    class="absolute right-0 bottom-0.5 p-1 rounded-full bg-success">
+                                                                </span>
+                                                            </span>
+                                                            <div class="inline-block ">
+                                                                <h6
+                                                                    class="mb-1 text-sm font-semibold text-bodytext dark:text-darklink name">
+                                                                </h6>
+                                                                <p class="card-subtitle">Away</p>
+                                                            </div>
+                                                        </div>
+        
+                                                        <ul class="flex items-center">
+                                                            <li>
+                                                                <a class="text-bodytext dark:text-darklink
+                                                                            text-base flex items-center justify-center h-10 w-10 rounded-full hover:bg-lightprimary hover:text-primary hover:dark:bg-darkprimary  "
+                                                                    href="javascript:void(0)">
+                                                                    <i class="ti ti-phone text-2xl"></i>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="text-bodytext dark:text-darklink
+                                                                            text-base flex items-center justify-center h-10 w-10 rounded-full hover:bg-lightprimary hover:text-primary hover:dark:bg-darkprimary  "
+                                                                    href="javascript:void(0)">
+                                                                    <i class="ti ti-video  text-2xl"></i>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="chat-menu text-bodytext dark:text-darklink
+                                                                            text-base flex items-center justify-center h-10 w-10 rounded-full hover:bg-lightprimary hover:text-primary hover:dark:bg-darkprimary  "
+                                                                    href="javascript:void(0)">
+                                                                    <i class="ti ti-menu-2 text-2xl"></i>
+                                                                </a>
+        
+                                                            </li>
+                                                        </ul>
+        
+                                                    </div>
+                                                    <div class="flex relative overflow-hidden parent-chat-box">
+                                                        <div class="chat-box sm:full relative flex flex-grow flex-col">
+                                                            <div class="">
+                                                                <div class="p-5"
+                                                                    data-simplebar>
+                                                                    <!---1-->
+                                                                    <div class="chat-list chat active-chat" data-user-id="1">
+                                                                        <div class="flex gap-3 items-start mb-7 justify-start">
+                                                                            <img src="@@webRoot/assets/images/profile/user-7.jpg"
+                                                                                alt="user8" class="rounded-full h-10 w-10" />
+                                                                            <div>
+                                                                                <h6
+                                                                                    class="text-xs text-bodytext dark:text-darklink mb-2">
+                                                                                    Andrew, 2 hours ago
+                                                                                </h6>
+                                                                                <div
+                                                                                    class="py-1.5 px-2 bg-lightgray dark:bg-darkgray rounded-md inline-block text-dark dark:text-white text-sm font-medium">
+                                                                                    If I don’t like something, I’ll stay away
+                                                                                    from it.
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div
+                                                                            class="flex gap-3 align-items-start mb-7 justify-end">
+                                                                            <div class="text-end">
+                                                                                <h6
+                                                                                    class="text-xs text-bodytext dark:text-darklink mb-2">
+                                                                                    2 hours ago</h6>
+                                                                                <div
+                                                                                    class="py-1.5 px-2 bg-lightinfo dark:bg-darkinfo rounded-md inline-block text-dark dark:text-white text-sm font-medium">
+                                                                                    If I don’t like something, I’ll stay away
+                                                                                    from it.
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="flex gap-3 items-start mb-7 justify-start">
+                                                                            <img src="@@webRoot/assets/images/profile/user-8.jpg"
+                                                                                alt="user8" class="rounded-full h-10 w-10" />
+                                                                            <div>
+                                                                                <h6
+                                                                                    class="text-xs text-bodytext dark:text-darklink mb-2">
+                                                                                    Andrew, 2 hours ago
+                                                                                </h6>
+                                                                                <div
+                                                                                    class="py-1.5 px-2 bg-lightgray dark:bg-darkgray rounded-md inline-block text-dark dark:text-white text-sm font-medium">
+                                                                                    I want more detailed information.
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div
+                                                                            class="flex gap-3 align-items-start mb-7 justify-end">
+                                                                            <div class="text-end">
+                                                                                <h6
+                                                                                    class="text-xs text-bodytext dark:text-darklink mb-2">
+                                                                                    2 hours ago</h6>
+                                                                                <div
+                                                                                    class="mb-1 py-1.5 px-2 bg-lightinfo dark:bg-darkinfo rounded-md text-dark dark:text-white text-sm font-medium">
+                                                                                    If I don’t like something, I’ll stay away
+                                                                                    from it.
+                                                                                </div>
+                                                                                <div
+                                                                                    class="py-1.5 px-2 bg-lightinfo dark:bg-darkinfo rounded-md inline-block text-dark dark:text-white text-sm font-medium">
+                                                                                    They got there early, and they got really
+                                                                                    good seats.
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="flex gap-3 items-start mb-7 justify-start">
+                                                                            <img src="@@webRoot/assets/images/profile/user-8.jpg"
+                                                                                alt="user8" class="rounded-full h-10 w-10" />
+                                                                            <div>
+                                                                                <h6
+                                                                                    class="text-xs text-bodytext dark:text-darklink mb-2">
+                                                                                    Andrew, 2 hours ago
+                                                                                </h6>
+                                                                                <div class="overflow-hidden">
+                                                                                    <img src="@@webRoot/assets/images/products/product-1.jpg"
+                                                                                        alt="" class="w-full rounded-sm" />
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!---2-->
+                                                                    <div class="chat-list chat" data-user-id="2">
+                                                                        <div class="flex gap-3 items-start mb-7 justify-start">
+                                                                            <img src="@@webRoot/assets/images/profile/user-8.jpg"
+                                                                                alt="user8" class="rounded-full h-10 w-10" />
+                                                                            <div>
+                                                                                <h6
+                                                                                    class="text-xs text-bodytext dark:text-darklink mb-2">
+                                                                                    Andrew, 2 hours ago
+                                                                                </h6>
+                                                                                <div
+                                                                                    class="py-1.5 px-2 bg-lightgray dark:bg-darkgray rounded-md inline-block text-dark dark:text-white text-sm">
+                                                                                    If I don’t like something, I’ll stay away
+                                                                                    from it.
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div
+                                                                            class="flex gap-3 align-items-start mb-7 justify-end">
+                                                                            <div class="text-end">
+                                                                                <h6
+                                                                                    class="text-xs text-bodytext dark:text-darklink mb-2">
+                                                                                    2 hours ago</h6>
+                                                                                <div
+                                                                                    class="py-1.5 px-2 bg-lightinfo dark:bg-darkinfo rounded-md inline-block text-dark dark:text-white text-sm">
+                                                                                    If I don’t like something, I’ll stay away
+                                                                                    from it.
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="flex gap-3 items-start mb-7 justify-start">
+                                                                            <img src="@@webRoot/assets/images/profile/user-8.jpg"
+                                                                                alt="user8" class="rounded-full h-10 w-10" />
+                                                                            <div>
+                                                                                <h6
+                                                                                    class="text-xs text-bodytext dark:text-darklink mb-2">
+                                                                                    Andrew, 2 hours ago
+                                                                                </h6>
+                                                                                <div
+                                                                                    class="py-1.5 px-2 bg-lightgray dark:bg-darkgray rounded-md inline-block text-dark dark:text-white text-sm">
+                                                                                    I want more detailed information.
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div
+                                                                            class="flex gap-3 align-items-start mb-7 justify-end">
+                                                                            <div class="text-end">
+                                                                                <h6
+                                                                                    class="text-xs text-bodytext dark:text-darklink mb-2">
+                                                                                    2 hours ago</h6>
+                                                                                <div
+                                                                                    class="mb-1 py-1.5 px-2 bg-lightinfo dark:bg-darkinfo rounded-md text-dark dark:text-white text-sm">
+                                                                                    If I don’t like something, I’ll stay away
+                                                                                    from it.
+                                                                                </div>
+                                                                                <div
+                                                                                    class="py-1.5 px-2 bg-lightinfo dark:bg-darkinfo rounded-md inline-block text-dark dark:text-white text-sm">
+                                                                                    They got there early, and they got really
+                                                                                    good seats.
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="flex gap-3 items-start mb-7 justify-start">
+                                                                            <img src="@@webRoot/assets/images/profile/user-8.jpg"
+                                                                                alt="user8" class="rounded-full h-10 w-10" />
+                                                                            <div>
+                                                                                <h6
+                                                                                    class="text-xs text-bodytext dark:text-darklink mb-2">
+                                                                                    Andrew, 2 hours ago
+                                                                                </h6>
+                                                                                <div class="overflow-hidden">
+                                                                                    <img src="@@webRoot/assets/images/products/product-1.jpg"
+                                                                                        alt="" class="w-full rounded-sm" />
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!---3-->
+                                                                    <div class="chat-list chat" data-user-id="3">
+                                                                        <div class="flex gap-3 items-start mb-7 justify-start">
+                                                                            <img src="@@webRoot/assets/images/profile/user-8.jpg"
+                                                                                alt="user8" class="rounded-full h-10 w-10" />
+                                                                            <div>
+                                                                                <h6
+                                                                                    class="text-xs text-bodytext dark:text-darklink mb-2">
+                                                                                    Andrew, 2 hours ago
+                                                                                </h6>
+                                                                                <div
+                                                                                    class="py-1.5 px-2 bg-lightgray dark:bg-darkgray rounded-md inline-block text-dark dark:text-white text-sm">
+                                                                                    If I don’t like something, I’ll stay away
+                                                                                    from it.
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div
+                                                                            class="flex gap-3 align-items-start mb-7 justify-end">
+                                                                            <div class="text-end">
+                                                                                <h6
+                                                                                    class="text-xs text-bodytext dark:text-darklink mb-2">
+                                                                                    2 hours ago</h6>
+                                                                                <div
+                                                                                    class="py-1.5 px-2 bg-lightinfo dark:bg-darkinfo rounded-md inline-block text-dark dark:text-white text-sm">
+                                                                                    If I don’t like something, I’ll stay away
+                                                                                    from it.
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="flex gap-3 items-start mb-7 justify-start">
+                                                                            <img src="@@webRoot/assets/images/profile/user-8.jpg"
+                                                                                alt="user8" class="rounded-full h-10 w-10" />
+                                                                            <div>
+                                                                                <h6
+                                                                                    class="text-xs text-bodytext dark:text-darklink mb-2">
+                                                                                    Andrew, 2 hours ago
+                                                                                </h6>
+                                                                                <div
+                                                                                    class="py-1.5 px-2 bg-lightgray dark:bg-darkgray rounded-md inline-block text-dark dark:text-white text-sm">
+                                                                                    I want more detailed information.
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div
+                                                                            class="flex gap-3 align-items-start mb-7 justify-end">
+                                                                            <div class="text-end">
+                                                                                <h6
+                                                                                    class="text-xs text-bodytext dark:text-darklink mb-2">
+                                                                                    2 hours ago</h6>
+                                                                                <div
+                                                                                    class="mb-1 py-1.5 px-2 bg-lightinfo dark:bg-darkinfo rounded-md text-dark dark:text-white text-sm">
+                                                                                    If I don’t like something, I’ll stay away
+                                                                                    from it.
+                                                                                </div>
+                                                                                <div
+                                                                                    class="py-1.5 px-2 bg-lightinfo dark:bg-darkinfo rounded-md inline-block text-dark dark:text-white text-sm">
+                                                                                    They got there early, and they got really
+                                                                                    good seats.
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="flex gap-3 items-start mb-7 justify-start">
+                                                                            <img src="@@webRoot/assets/images/profile/user-8.jpg"
+                                                                                alt="user8" class="rounded-full h-10 w-10" />
+                                                                            <div>
+                                                                                <h6
+                                                                                    class="text-xs text-bodytext dark:text-darklink mb-2">
+                                                                                    Andrew, 2 hours ago
+                                                                                </h6>
+                                                                                <div class="overflow-hidden">
+                                                                                    <img src="@@webRoot/assets/images/products/product-1.jpg"
+                                                                                        alt="" class="w-full rounded-sm" />
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!---4-->
+                                                                    <div class="chat-list chat" data-user-id="4">
+                                                                        <div class="flex gap-3 items-start mb-7 justify-start">
+                                                                            <img src="@@webRoot/assets/images/profile/user-5.jpg"
+                                                                                alt="user8" class="rounded-full h-10 w-10" />
+                                                                            <div>
+                                                                                <h6
+                                                                                    class="text-xs text-bodytext dark:text-darklink mb-2">
+                                                                                    Andrew, 2 hours ago
+                                                                                </h6>
+                                                                                <div
+                                                                                    class="py-1.5 px-2 bg-lightgray dark:bg-darkgray rounded-md inline-block text-dark dark:text-white text-sm">
+                                                                                    If I don’t like something, I’ll stay away
+                                                                                    from it.
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div
+                                                                            class="flex gap-3 align-items-start mb-7 justify-end">
+                                                                            <div class="text-end">
+                                                                                <h6
+                                                                                    class="text-xs text-bodytext dark:text-darklink mb-2">
+                                                                                    2 hours ago</h6>
+                                                                                <div
+                                                                                    class="py-1.5 px-2 bg-lightinfo dark:bg-darkinfo rounded-md inline-block text-dark dark:text-white text-sm">
+                                                                                    If I don’t like something, I’ll stay away
+                                                                                    from it.
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="flex gap-3 items-start mb-7 justify-start">
+                                                                            <img src="@@webRoot/assets/images/profile/user-8.jpg"
+                                                                                alt="user8" class="rounded-full h-10 w-10" />
+                                                                            <div>
+                                                                                <h6
+                                                                                    class="text-xs text-bodytext dark:text-darklink mb-2">
+                                                                                    Andrew, 2 hours ago
+                                                                                </h6>
+                                                                                <div
+                                                                                    class="py-1.5 px-2 bg-lightgray dark:bg-darkgray rounded-md inline-block text-dark dark:text-white text-sm">
+                                                                                    I want more detailed information.
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div
+                                                                            class="flex gap-3 align-items-start mb-7 justify-end">
+                                                                            <div class="text-end">
+                                                                                <h6
+                                                                                    class="text-xs text-bodytext dark:text-darklink mb-2">
+                                                                                    2 hours ago</h6>
+                                                                                <div
+                                                                                    class="mb-1 py-1.5 px-2 bg-lightinfo dark:bg-darkinfo rounded-md text-dark dark:text-white text-sm">
+                                                                                    If I don’t like something, I’ll stay away
+                                                                                    from it.
+                                                                                </div>
+                                                                                <div
+                                                                                    class="py-1.5 px-2 bg-lightinfo dark:bg-darkinfo rounded-md inline-block text-dark dark:text-white text-sm">
+                                                                                    They got there early, and they got really
+                                                                                    good seats.
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="flex gap-3 items-start mb-7 justify-start">
+                                                                            <img src="@@webRoot/assets/images/profile/user-8.jpg"
+                                                                                alt="user8" class="rounded-full h-10 w-10" />
+                                                                            <div>
+                                                                                <h6
+                                                                                    class="text-xs text-bodytext dark:text-darklink mb-2">
+                                                                                    Andrew, 2 hours ago
+                                                                                </h6>
+                                                                                <div class="overflow-hidden">
+                                                                                    <img src="@@webRoot/assets/images/products/product-1.jpg"
+                                                                                        alt="" class="w-full rounded-sm" />
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!---5-->
+                                                                    <div class="chat-list chat" data-user-id="5">
+                                                                        <div class="flex gap-3 items-start mb-7 justify-start">
+                                                                            <img src="@@webRoot/assets/images/profile/user-8.jpg"
+                                                                                alt="user8" class="rounded-full h-10 w-10" />
+                                                                            <div>
+                                                                                <h6
+                                                                                    class="text-xs text-bodytext dark:text-darklink mb-2">
+                                                                                    Andrew, 2 hours ago
+                                                                                </h6>
+                                                                                <div
+                                                                                    class="py-1.5 px-2 bg-lightgray dark:bg-darkgray rounded-md inline-block text-dark dark:text-white text-sm">
+                                                                                    If I don’t like something, I’ll stay away
+                                                                                    from it.
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div
+                                                                            class="flex gap-3 align-items-start mb-7 justify-end">
+                                                                            <div class="text-end">
+                                                                                <h6
+                                                                                    class="text-xs text-bodytext dark:text-darklink mb-2">
+                                                                                    2 hours ago</h6>
+                                                                                <div
+                                                                                    class="py-1.5 px-2 bg-lightinfo dark:bg-darkinfo rounded-md inline-block text-dark dark:text-white text-sm">
+                                                                                    If I don’t like something, I’ll stay away
+                                                                                    from it.
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="flex gap-3 items-start mb-7 justify-start">
+                                                                            <img src="@@webRoot/assets/images/profile/user-8.jpg"
+                                                                                alt="user8" class="rounded-full h-10 w-10" />
+                                                                            <div>
+                                                                                <h6
+                                                                                    class="text-xs text-bodytext dark:text-darklink mb-2">
+                                                                                    Andrew, 2 hours ago
+                                                                                </h6>
+                                                                                <div
+                                                                                    class="py-1.5 px-2 bg-lightgray dark:bg-darkgray rounded-md inline-block text-dark dark:text-white text-sm">
+                                                                                    I want more detailed information.
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div
+                                                                            class="flex gap-3 align-items-start mb-7 justify-end">
+                                                                            <div class="text-end">
+                                                                                <h6
+                                                                                    class="text-xs text-bodytext dark:text-darklink mb-2">
+                                                                                    2 hours ago</h6>
+                                                                                <div
+                                                                                    class="mb-1 py-1.5 px-2 bg-lightinfo dark:bg-darkinfo rounded-md text-dark dark:text-white text-sm">
+                                                                                    If I don’t like something, I’ll stay away
+                                                                                    from it.
+                                                                                </div>
+                                                                                <div
+                                                                                    class="py-1.5 px-2 bg-lightinfo dark:bg-darkinfo rounded-md inline-block text-dark dark:text-white text-sm">
+                                                                                    They got there early, and they got really
+                                                                                    good seats.
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="flex gap-3 items-start mb-7 justify-start">
+                                                                            <img src="@@webRoot/assets/images/profile/user-8.jpg"
+                                                                                alt="user8" class="rounded-full h-10 w-10" />
+                                                                            <div>
+                                                                                <h6
+                                                                                    class="text-xs text-bodytext dark:text-darklink mb-2">
+                                                                                    Andrew, 2 hours ago
+                                                                                </h6>
+                                                                                <div class="overflow-hidden">
+                                                                                    <img src="@@webRoot/assets/images/products/product-1.jpg"
+                                                                                        alt="" class="w-full rounded-sm" />
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+        
+                                                                </div>
+        
+                                                            </div>
+                                                            <div
+                                                                class="px-5 py-3 border-t border-border dark:border-darkborder chat-send-message-footer">
+                                                                <!---Chat input-->
+                                                                <div class="flex items-center justify-between">
+                                                                    <div class="flex items-center gap-2 w-full">
+                                                                        <a class="relative text-bodytext dark:text-darklink
+                                                                        text-base flex items-center justify-center h-10 w-10 rounded-full hover:bg-lightprimary hover:text-primary hover:dark:bg-darkprimary"
+                                                                            href="javascript:void(0)">
+                                                                            <i class="ti ti-mood-smile text-2xl"></i>
+                                                                        </a>
+                                                                        <input type="text"
+                                                                            class="message-type-box no-focus bg-transparent text-dark dark:text-white border-0 w-full text-sm form-control"
+                                                                            placeholder="Type a Message"
+                                                                            fdprocessedid="0p3op" />
+                                                                    </div>
+                                                                    <ul class="list-unstyledn mb-0 flex items-center">
+                                                                        <li>
+                                                                            <a class="text-bodytext dark:text-darklink
+                                                                            text-base flex items-center justify-center h-10 w-10 rounded-full hover:bg-lightprimary hover:text-primary hover:dark:bg-darkprimary  "
+                                                                                href="javascript:void(0)">
+                                                                                <i class="ti ti-photo-plus text-2xl"></i>
+                                                                            </a>
+        
+                                                                        </li>
+                                                                        <li>
+                                                                            <a class="text-bodytext dark:text-darklink
+                                                                            text-base flex items-center justify-center h-10 w-10 rounded-full hover:bg-lightprimary hover:text-primary hover:dark:bg-darkprimary  "
+                                                                                href="javascript:void(0)">
+                                                                                <i class="ti ti-paperclip text-2xl"></i>
+                                                                            </a>
+                                                                        </li>   
+                                                                        <li>
+                                                                            <a class="text-bodytext dark:text-darklink
+                                                                            text-base flex items-center justify-center h-10 w-10 rounded-full hover:bg-lightprimary hover:text-primary hover:dark:bg-darkprimary  "
+                                                                                href="javascript:void(0)">
+                                                                                <i class="ti ti-microphone text-2xl"></i>
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                                <!---Chat input end-->
+        
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            class="app-chat-offcanvas border-s bg-white dark:bg-dark  border-border dark:border-darkborder w-full">
+                                                            <div class="mh-n100" data-simplebar>
+        
+                                                                <div class="p-3">
+                                                                    <div class="flex items-center justify-between mb-8 ">
+                                                                        <h6
+                                                                            class="font-semibold text-dark dark:text-white text-sm ">
+                                                                            Media <span
+                                                                                class="card-subtitle opacity-50">(36)</span>
+                                                                        </h6>
+                                                                        <a class="chat-menu lg:hidden text-bodytext dark:text-darklink
+                                                                    text-base flex items-center justify-center h-10 w-10 rounded-full hover:bg-lightprimary hover:text-primary hover:dark:bg-darkprimary  "
+                                                                            href="javascript:void(0)">
+                                                                            <i class="ti ti-x"></i>
+                                                                        </a>
+                                                                    </div>
+        
+                                                                    <div class="offcanvas-body">
+                                                                        <div class="media-chat mb-7">
+                                                                            <div class="grid grid-cols-12 gap-2">
+                                                                                <div class="col-span-4">
+                                                                                    <div class="rounded-sm overflow-hidden ">
+                                                                                        <img src="@@webRoot/assets/images/products/product-1.jpg"
+                                                                                            alt="" class="w-full" />
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-span-4">
+                                                                                    <div class="rounded-sm overflow-hidden ">
+                                                                                        <img src="@@webRoot/assets/images/products/product-2.jpg"
+                                                                                            alt="" class="w-full" />
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-span-4">
+                                                                                    <div class="rounded-sm overflow-hidden ">
+                                                                                        <img src="@@webRoot/assets/images/products/product-3.jpg"
+                                                                                            alt="" class="w-full" />
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-span-4">
+                                                                                    <div class="rounded-sm overflow-hidden ">
+                                                                                        <img src="@@webRoot/assets/images/products/product-4.jpg"
+                                                                                            alt="" class="w-full" />
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-span-4">
+                                                                                    <div class="rounded-sm overflow-hidden ">
+                                                                                        <img src="@@webRoot/assets/images/products/product-1.jpg"
+                                                                                            alt="" class="w-full" />
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-span-4">
+                                                                                    <div class="rounded-sm overflow-hidden ">
+                                                                                        <img src="@@webRoot/assets/images/products/product-2.jpg"
+                                                                                            alt="" class="w-full" />
+                                                                                    </div>
+                                                                                </div>
+        
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="files-chat">
+                                                                            <h6
+                                                                                class="font-semibold text-dark dark:text-white text-sm mb-8 ">
+                                                                                Files <span
+                                                                                    class="card-subtitle opacity-50">(36)</span>
+                                                                            </h6>
+                                                                            <a href="javascript:void(0)"
+                                                                                class=" gap-3 flex items-center file-chat-hover justify-between mb-4">
+                                                                                <div class="flex items-center gap-3">
+                                                                                    <div
+                                                                                        class="rounded-sm bg-lightgray dark:bg-darkprimary p-3">
+                                                                                        <img src="@@webRoot/assets/images/chat/icon-adobe.svg"
+                                                                                            alt="" width="24" height="24" />
+                                                                                    </div>
+                                                                                    <div>
+                                                                                        <h6
+                                                                                            class="mb-1 hover:text-primary">
+                                                                                            service-task.pdf
+                                                                                        </h6>
+                                                                                        <div
+                                                                                            class="flex gap-3 text-xs text-bodytext dark:text-darklink">
+                                                                                            <span>2 MB</span><span>2 Dec
+                                                                                                2023</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+        
+                                                                                <div
+                                                                                    class="download-file text-bodytext dark:text-darklink
+                                                                            text-base flex items-center justify-center h-10 w-10 rounded-full hover:bg-lightprimary hover:text-primary hover:dark:bg-darkprimary  ">
+                                                                                    <i class="ti ti-download text-lg"></i>
+                                                                                </div>
+                                                                            </a>
+                                                                            <a href="javascript:void(0)"
+                                                                                class=" gap-3 flex items-center file-chat-hover justify-between mb-4">
+                                                                                <div class="flex items-center gap-3">
+                                                                                    <div
+                                                                                        class="rounded-sm bg-lightgray dark:bg-darkprimary p-3">
+                                                                                        <img src="@@webRoot/assets/images/chat/icon-figma.svg"
+                                                                                            alt="" width="24" height="24" />
+                                                                                    </div>
+                                                                                    <div>
+                                                                                        <h6
+                                                                                            class="mb-1 hover:text-primary">
+                                                                                            homepage-design.fig
+                                                                                        </h6>
+                                                                                        <div
+                                                                                            class="flex gap-3 text-xs text-bodytext dark:text-darklink">
+                                                                                            <span>2 MB</span><span>2 Dec
+                                                                                                2023</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+        
+                                                                                <div
+                                                                                    class="download-file text-bodytext dark:text-darklink
+                                                                            text-base flex items-center justify-center h-10 w-10 rounded-full hover:bg-lightprimary hover:text-primary hover:dark:bg-darkprimary  ">
+                                                                                    <i class="ti ti-download text-lg"></i>
+                                                                                </div>
+                                                                            </a>
+                                                                            <a href="javascript:void(0)"
+                                                                                class=" gap-3 flex items-center file-chat-hover justify-between mb-4">
+                                                                                <div class="flex items-center gap-3">
+                                                                                    <div
+                                                                                        class="rounded-sm bg-lightgray dark:bg-darkprimary p-3">
+                                                                                        <img src="@@webRoot/assets/images/chat/icon-chrome.svg"
+                                                                                            alt="" width="24" height="24" />
+                                                                                    </div>
+                                                                                    <div>
+                                                                                        <h6
+                                                                                            class="mb-1 hover:text-primary">
+                                                                                            about-us.html
+                                                                                        </h6>
+                                                                                        <div
+                                                                                            class="flex gap-3 text-xs text-bodytext dark:text-darklink">
+                                                                                            <span>2 MB</span><span>2 Dec
+                                                                                                2023</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+        
+                                                                                <div
+                                                                                    class="download-file text-bodytext dark:text-darklink
+                                                                            text-base flex items-center justify-center h-10 w-10 rounded-full hover:bg-lightprimary hover:text-primary hover:dark:bg-darkprimary  ">
+                                                                                    <i class="ti ti-download text-lg"></i>
+                                                                                </div>
+                                                                            </a>
+                                                                            <a href="javascript:void(0)"
+                                                                                class=" gap-3 flex items-center file-chat-hover justify-between mb-4">
+                                                                                <div class="flex items-center gap-3">
+                                                                                    <div
+                                                                                        class="rounded-sm bg-lightgray dark:bg-darkprimary p-3">
+                                                                                        <img src="@@webRoot/assets/images/chat/icon-zip-folder.svg"
+                                                                                            alt="" width="24" height="24" />
+                                                                                    </div>
+                                                                                    <div>
+                                                                                        <h6
+                                                                                            class="mb-1 hover:text-primary">
+                                                                                            work-project.zips
+                                                                                        </h6>
+                                                                                        <div
+                                                                                            class="flex gap-3 text-xs text-bodytext dark:text-darklink">
+                                                                                            <span>2 MB</span><span>2 Dec
+                                                                                                2023</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+        
+                                                                                <div
+                                                                                    class="download-file text-bodytext dark:text-darklink
+                                                                            text-base flex items-center justify-center h-10 w-10 rounded-full hover:bg-lightprimary hover:text-primary hover:dark:bg-darkprimary  ">
+                                                                                    <i class="ti ti-download text-lg"></i>
+                                                                                </div>
+                                                                            </a>
+                                                                            <a href="javascript:void(0)"
+                                                                                class=" gap-3 flex items-center file-chat-hover justify-between mb-4">
+                                                                                <div class="flex items-center gap-3">
+                                                                                    <div
+                                                                                        class="rounded-sm bg-lightgray dark:bg-darkprimary p-3">
+                                                                                        <img src="@@webRoot/assets/images/chat/icon-javascript.svg"
+                                                                                            alt="" width="24" height="24" />
+                                                                                    </div>
+                                                                                    <div>
+                                                                                        <h6
+                                                                                            class="mb-1 hover:text-primary">
+                                                                                            custom.js
+                                                                                        </h6>
+                                                                                        <div
+                                                                                            class="flex gap-3 text-xs text-bodytext dark:text-darklink">
+                                                                                            <span>2 MB</span><span>2 Dec
+                                                                                                2023</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+        
+                                                                                <div
+                                                                                    class="download-file text-bodytext dark:text-darklink
+                                                                        text-base flex items-center justify-center h-10 w-10 rounded-full hover:bg-lightprimary hover:text-primary hover:dark:bg-darkprimary  ">
+                                                                                    <i class="ti ti-download text-lg"></i>
+                                                                                </div>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+        
+                                        <!----Mobile Sidebar----->
+                                        <div id="chat-sidebar"
+                                            class="lg:hidden bg-white hs-overlay  dark:bg-dark hs-overlay-open:translate-x-0  translate-x-full rtl:hs-overlay-open:translate-x-0  rtl:-translate-x-full  fixed top-0 right-0 rtl:left-0 rtl:right-auto transition-all duration-300 transform h-full max-w-xs  w-full z-[60] hidden"
+                                            tabindex="-1" data-hs-overlay-close-on-resize>
+        
+                                            <div class="py-5 px-5">
+                                                <div class="flex items-center justify-between ">
+                                                    <h5 class="font-semibold text-dark dark:text-white text-lg">Chats</h5>
+                                                    <button type="button"
+                                                        class="inline-flex flex-shrink-0 justify-center items-center h-8 w-8 rounded-md text-gray-500 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white text-sm "
+                                                        data-hs-overlay="#chat-sidebar">
+                                                        <span class="sr-only">Close modal</span>
+                                                        <i class="ti ti-x text-xl text-dark dark:text-white"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+        
+                                            <div
+                                                class="left-part border-e border-border dark:border-darkborder  flex-shrink-0  user-chat-box">
+                                                <div class="py-3">
+                                                    <div class="flex items-center justify-between mb-3 px-5">
+                                                        <div class="flex items-center gap-4">
+                                                            <div class="relative">
+                                                                <img src="@@webRoot/assets/images/profile/user-1.jpg"
+                                                                    alt="user1" width="54" height="54" class="rounded-full" />
+                                                                <span
+                                                                    class="absolute right-0 bottom-0.5 p-1 rounded-full bg-success">
+                                                                </span>
+                                                            </div>
+                                                            <div class="">
+                                                                <h6
+                                                                    class="text-sm font-semibold text-dark dark:text-white mb-2">
+                                                                    Mathew Anderson</h6>
+                                                                <p class="text-xs text-bodytext dark:text-darklink
+                                                            ">Marketing Director</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="hs-dropdown relative inline-flex ">
+                                                            <button id="hs-dropdown-custom-icon-trigger"
+                                                                class="hs-dropdown-toggle h-10 w-10 text-bodytext dark:text-darklink hover:text-primary bg-hover  justify-center items-center rounded-full">
+                                                                <i class="ti ti-dots-vertical text-lg"></i>
+                                                            </button>
+        
+                                                            <div class="hs-dropdown-menu z-[1] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-40"
+                                                                aria-labelledby="hs-dropdown-custom-icon-trigger">
+                                                                <div class="flex flex-col">
+                                                                    <div
+                                                                        class="py-2 px-4 bg-hover border-b border-border dark:border-darkborder">
+                                                                        <a class="card-subtitle flex gap-2 items-center leading-none"
+                                                                            href="javascript:void(0)">
+                                                                            <i class="ti ti-settings text-base"></i>Setting </a>
+                                                                    </div>
+                                                                    <div
+                                                                        class="py-2 px-4 bg-hover ">
+                                                                        <a class="card-subtitle flex gap-2 items-center "
+                                                                            href="javascript:void(0)">
+                                                                            <i class="ti ti-help text-base"></i>Help
+                                                                            and feadbacks
+                                                                        </a>
+                                                                    </div>
+                                                                    <div
+                                                                        class="py-2 px-4 bg-hover ">
+                                                                        <a class="card-subtitle flex gap-2 items-center "
+                                                                            href="javascript:void(0)">
+                                                                            <i
+                                                                                class="ti ti-layout-board-split text-base"></i>Enable
+                                                                            split View mode
+                                                                        </a>
+                                                                    </div>
+                                                                    <div
+                                                                        class="py-2 px-4 bg-hover ">
+                                                                        <a class="card-subtitle flex gap-2 items-center "
+                                                                            href="javascript:void(0)">
+                                                                            <i
+                                                                                class="ti ti-table-shortcut text-base"></i>Keyboard
+                                                                            shortcut
+                                                                        </a>
+                                                                    </div>
+                                                                    <div
+                                                                        class="py-2 px-4 bg-hover ">
+                                                                        <a class="card-subtitle flex gap-2 items-center "
+                                                                            href="javascript:void(0)">
+                                                                            <i class="ti ti-login  text-base"></i>Sign
+                                                                            Out
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="px-5">
+                                                        <form class="relative w-full mt-4 mb-5 ">
+                                                            <input type="text" class="form-control search-chat py-2 ps-10"
+                                                                id="text-srh" placeholder="Search Contact">
+                                                            <i
+                                                                class="ti ti-search absolute top-1.5 start-0 translate-middle-y text-lg text-dark dark:text-darklink ms-3"></i>
+                                                        </form>
+                                                        <div class="hs-dropdown relative inline-flex ">
+                                                            <button id="hs-dropdown-custom-icon-trigger"
+                                                                class="hs-dropdown-toggle  text-bodytext dark:text-darklink justify-center items-center rounded-full font-semibold">
+                                                                Recent Chats<i class="ti ti-chevron-down ms-1 fs-5"></i>
+                                                            </button>
+        
+                                                            <div class="hs-dropdown-menu z-[1] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-40"
+                                                                aria-labelledby="hs-dropdown-custom-icon-trigger">
+                                                                <div class="flex flex-col">
+                                                                    <div
+                                                                        class="py-2 px-4 bg-hover ">
+                                                                        <a class="card-subtitle flex gap-2 items-center "
+                                                                            href="javascript:void(0)">
+                                                                            Sort by time
+                                                                        </a>
+                                                                    </div>
+                                                                    <div
+                                                                        class="py-2 px-4 bg-hover ">
+                                                                        <a class="card-subtitle flex gap-2 items-center "
+                                                                            href="javascript:void(0)">
+                                                                            Sort by Unread
+                                                                        </a>
+                                                                    </div>
+                                                                    <div
+                                                                        class="py-2 px-4 bg-hover ">
+                                                                        <a class="card-subtitle flex gap-2 items-center "
+                                                                            href="javascript:void(0)">
+                                                                            Hide favourites
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+        
+        
+                                                    <!----Left side users---->
+                                                    <div class="app-chat mt-3">
+                                                        <ul class="chat-users" style="height: calc(100vh - 280px)"
+                                                            data-simplebar>
+                                                            <li>
+                                                                <a href="javascript:void(0)"
+                                                                    class="px-5 py-3 bg-lightgray dark:bg-darkprimary flex items-start justify-between chat-user"
+                                                                    id="chat_user_1" data-user-id="1">
+                                                                    <div class="flex items-center gap-3">
+                                                                        <span class="relative">
+                                                                            <img src="@@webRoot/assets/images/profile/user-1.jpg"
+                                                                                alt="user-4" class="rounded-full h-12 w-12">
+                                                                            <span
+                                                                                class="absolute right-0 bottom-0.5 p-1 rounded-full bg-success">
+                                                                            </span>
+                                                                        </span>
+                                                                        <div class="inline-block ">
+        
+                                                                            <h6 class="text-sm font-semibold text-dark dark:text-white chat-title"
+                                                                                data-username="Bianca Anderson">Michell
+                                                                                Flintoffs
+                                                                            </h6>
+        
+                                                                            <span
+                                                                                class="block truncate text-dark dark:text-darklink">You:
+                                                                                Yesterdy was great...</span>
+                                                                            <div
+                                                                                class="text-xs text-bodytext dark:text-darklink pt-1">
+                                                                                15 minutes
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+        
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="javascript:void(0)"
+                                                                    class="px-5 py-3 bg-hover flex items-start justify-between chat-user"
+                                                                    id="chat_user_2" data-user-id="2">
+                                                                    <div class="flex items-center gap-3">
+                                                                        <span class="relative">
+                                                                            <img src="@@webRoot/assets/images/profile/user-2.jpg"
+                                                                                alt="user-4" class="rounded-full h-12 w-12">
+                                                                            <span
+                                                                                class="absolute right-0 bottom-0.5 p-1 rounded-full bg-error">
+                                                                            </span>
+                                                                        </span>
+                                                                        <div class="inline-block ">
+        
+                                                                            <h6 class="text-sm font-semibold text-dark dark:text-white chat-title"
+                                                                                data-username="Bianca Anderson">Bianca Anderson
+                                                                            </h6>
+        
+                                                                            <span
+                                                                                class="block truncate text-dark dark:text-darklink">Nice
+                                                                                looking dress you...</span>
+                                                                            <div
+                                                                                class="text-xs text-bodytext dark:text-darklink pt-1">
+                                                                                30 minutes
+                                                                            </div>
+                                                                        </div>
+        
+                                                                    </div>
+        
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="javascript:void(0)"
+                                                                    class="px-5 py-3 bg-hover flex items-start justify-between chat-user"
+                                                                    id="chat_user_3" data-user-id="3">
+                                                                    <div class="flex items-center gap-3">
+                                                                        <span class="relative">
+                                                                            <img src="@@webRoot/assets/images/profile/user-8.jpg"
+                                                                                alt="user-4" class="rounded-full h-12 w-12">
+                                                                            <span
+                                                                                class="absolute right-0 bottom-0.5 p-1 rounded-full bg-warning">
+                                                                            </span>
+                                                                        </span>
+                                                                        <div class="inline-block ">
+        
+                                                                            <h6 class="text-sm font-semibold text-dark dark:text-white chat-title"
+                                                                                data-username="Andrew Johnson">Andrew Johnson
+                                                                            </h6>
+        
+                                                                            <span
+                                                                                class="block truncate text-dark dark:text-darklink">Sent
+                                                                                a photo</span>
+                                                                            <div
+                                                                                class="text-xs text-bodytext dark:text-darklink pt-1">
+                                                                                2 hours
+                                                                            </div>
+                                                                        </div>
+        
+                                                                    </div>
+        
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="javascript:void(0)"
+                                                                    class="px-5 py-3 bg-hover flex items-start justify-between chat-user"
+                                                                    id="chat_user_4" data-user-id="4">
+                                                                    <div class="flex items-center gap-3">
+                                                                        <span class="relative">
+                                                                            <img src="@@webRoot/assets/images/profile/user-4.jpg"
+                                                                                alt="user-4" class="rounded-full h-12 w-12">
+                                                                            <span
+                                                                                class="absolute right-0 bottom-0.5 p-1 rounded-full bg-success">
+                                                                            </span>
+                                                                        </span>
+                                                                        <div class="inline-block ">
+        
+                                                                            <h6 class="text-sm font-semibold text-dark dark:text-white chat-title"
+                                                                                data-username="Mark Strokes">Mark Strokes
+                                                                            </h6>
+        
+                                                                            <span
+                                                                                class="block truncate text-dark dark:text-darklink">Lorem
+                                                                                ispusm text sud...</span>
+                                                                            <div
+                                                                                class="text-xs text-bodytext dark:text-darklink pt-1">
+                                                                                5 days
+                                                                            </div>
+                                                                        </div>
+        
+                                                                    </div>
+        
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="javascript:void(0)"
+                                                                    class="px-5 py-3 bg-hover flex items-start justify-between chat-user"
+                                                                    id="chat_user_5" data-user-id="5">
+                                                                    <div class="flex items-center gap-3">
+                                                                        <span class="relative">
+                                                                            <img src="@@webRoot/assets/images/profile/user-4.jpg"
+                                                                                alt="user-4" class="rounded-full h-12 w-12">
+                                                                            <span
+                                                                                class="absolute right-0 bottom-0.5 p-1 rounded-full bg-success">
+                                                                            </span>
+                                                                        </span>
+                                                                        <div class="inline-block ">
+        
+                                                                            <h6 class="text-sm font-semibold text-dark dark:text-white chat-title"
+                                                                                data-username="Mark Strokes">Mark, Stoinus &
+                                                                                Rishvi..
+                                                                            </h6>
+        
+                                                                            <span
+                                                                                class="block truncate text-dark dark:text-darklink">Lorem
+                                                                                ispusm text sud...</span>
+                                                                            <div
+                                                                                class="text-xs text-bodytext dark:text-darklink pt-1">
+                                                                                5 days
+                                                                            </div>
+                                                                        </div>
+        
+                                                                    </div>
+        
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="javascript:void(0)"
+                                                                    class="px-5 py-3 bg-hover flex items-start justify-between chat-user"
+                                                                    id="chat_user_2" data-user-id="2">
+                                                                    <div class="flex items-center gap-3">
+                                                                        <span class="relative">
+                                                                            <img src="@@webRoot/assets/images/profile/user-2.jpg"
+                                                                                alt="user-4" class="rounded-full h-12 w-12">
+                                                                            <span
+                                                                                class="absolute right-0 bottom-0.5 p-1 rounded-full bg-error">
+                                                                            </span>
+                                                                        </span>
+                                                                        <div class="inline-block ">
+        
+                                                                            <h6 class=" text-sm font-semibold text-dark dark:text-white chat-title"
+                                                                                data-username="Bianca Anderson">Bianca Anderson
+                                                                            </h6>
+        
+                                                                            <span
+                                                                                class="block truncate text-dark dark:text-darklink">Nice
+                                                                                looking dress you...</span>
+                                                                            <div
+                                                                                class="text-xs text-bodytext dark:text-darklink pt-1">
+                                                                                30 minutes
+                                                                            </div>
+                                                                        </div>
+        
+                                                                    </div>
+        
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="javascript:void(0)"
+                                                                    class="px-5 py-3 bg-hover flex items-start justify-between chat-user"
+                                                                    id="chat_user_3" data-user-id="3">
+                                                                    <div class="flex items-center gap-3">
+                                                                        <span class="relative">
+                                                                            <img src="@@webRoot/assets/images/profile/user-8.jpg"
+                                                                                alt="user-4" class="rounded-full h-12 w-12">
+                                                                            <span
+                                                                                class="absolute right-0 bottom-0.5 p-1 rounded-full bg-warning">
+                                                                            </span>
+                                                                        </span>
+                                                                        <div class="inline-block ">
+        
+                                                                            <h6 class=" text-sm font-semibold text-dark dark:text-white chat-title"
+                                                                                data-username="Andrew Johnson">Andrew Johnson
+                                                                            </h6>
+        
+                                                                            <span
+                                                                                class="block truncate text-dark dark:text-darklink">Nice
+                                                                                looking dress you...</span>
+                                                                            <div
+                                                                                class="text-xs text-bodytext dark:text-darklink pt-1">
+                                                                                2 hours
+                                                                            </div>
+                                                                        </div>
+        
+                                                                    </div>
+        
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <!----Left side users wnd---->
+                                                </div>
+                                            </div>
+        
+                                        </div>
+                                        <!----Mobile Sidebar End----->
+                                    </div>
+                                </div>
+                                <!---Chat Card End--->
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </main>
+    <!-- Main Content End -->
+
+    </div>
+    </div>
+    <!--end of project-->
+    </main>
+    @@include("partials/header-components/mobile-menu.html")
+    @@include("partials/customizer.html")
+    @@include("partials/scripts.html")
+    <script src="@@webRoot/assets/js/vendor.min.js"></script>
+    <script src="@@webRoot/assets/js/apps/chat.js"></script>
+</body>
+
+</html>

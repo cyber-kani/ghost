@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-color-theme="Blue_Theme" class="light selected" data-layout="vertical"
+    data-boxed-layout="boxed" data-card="shadow">
+
+<head>
+    @@include("partials/head.html")
+    <title>Spike TailwindCSS HTML Admin Template</title>
+</head>
+
+<body class="DEFAULT_THEME bg-lightprimary dark:bg-darkbody">
+    <main>
+        <!--start the project-->
+        <div id="main-wrapper" class="flex p-5">
+
+            <aside id="application-sidebar-brand"
+                class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full xl:rtl:-translate-x-0 rtl:translate-x-full  left-0 rtl:left-auto xl:rtl:right-5 rtl:right-0 transform hidden xl:block xl:translate-x-0 xl:end-auto xl:bottom-0 fixed top-0 with-vertical  left-sidebar transition-all duration-300 h-screen z-[2] flex-shrink-0  w-[270px] border-border dark:border-darkborder bg-white dark:bg-dark xl:top-5 xl:start-5 shadow-md xl:rounded-md">
+                @@include("partials/sidebar.html",{ "page": "eco-checkout","page_group": "ecomm" })
+            </aside>
+            <div class="page-wrapper w-full" role="main">
+
+                <!-- Main Content -->
+                <main class="h-full ">
+                    <div class="container full-container py-5 xl:ps-6 ps-0 pt-0 pe-0 remove-ps">
+
+                        <!--  Header Start -->
+                        <header
+                            class="sticky top-0 inset-x-0 z-[1] flex flex-wrap md:justify-start md:flex-nowrap text-fs_15 py-3 lg:py-0 mb-6 bg-white dark:bg-dark rounded-md shadow-md">
+                            <div class="with-vertical w-full">@@include("partials/header.html")</div>
+                            <div class="with-horizontal w-full">
+                                <div class="bg-white dark:bg-dark">
+                                    <div class="container">
+                                        @@include("partials/horizontal-header.html")
+                                    </div>
+                                </div>
+                            </div>
+                        </header>
+                        <!--  Header End -->
+
+                        <!-- Horizontal Sidebar Menu -->
+                        <aside
+                            class="with-horizontal lg:flex hidden left-sidebar bg-white dark:bg-dark border-t border-border dark:border-darkborder">
+                            @@include("partials/horizontal-sidebar.html", { "page": "eco-checkout","page_group":
+                            "ecomm"})
+                        </aside>
+                        <!-- Horizontal Sidebar Menu End -->
+
+                        <!-- Main Content -->
+                        <div class="max-w-full">
+                            <div class="container full-container ">
+                                <!----Breadcrumb Start---->
+                                @@include("partials/breadcrumb.html", {"title": "Checkout", "subtitle": 'Home'})
+                                <!----Breadcrumb End---->
+                                <div class="card shadow-none  border border-border dark:border-darkborder ">
+                                    <div class="card-body lg:px-12">
+                      
+                      
+                                      <!-- Stepper -->
+                                      <div data-hs-stepper class="checkout mt-5">
+                                        <!-- Stepper Nav -->
+                                        <ul class="relative flex lg:px-32">
+                                          <li class="flex relative items-center gap-x-2 shrink basis-0 flex-1  group"
+                                            data-hs-stepper-nav-item='{
+                                                            "index": 1
+                                                          }'>
+                                            <span class="h-6 w-6 group inline-flex items-center text-xs align-middle">
+                                              <span
+                                                class="w-6 h-6 flex justify-center items-center flex-shrink-0 bg-primary font-medium text-white rounded-full  hs-stepper-active:bg-primary hs-stepper-active:text-white   hs-stepper-completed:bg-primary hs-stepper-completed:group-focus:bg-primary">
+                                               1
+                                              </span>
+                                            </span>
+                                            <div
+                                              class="w-full h-px flex-1 bg-border dark:bg-darkborder group-last:hidden hs-stepper-success:bg-primary hs-stepper-completed:bg-primary dark:hs-stepper-success:bg-primary dark:hs-stepper-completed:bg-primary me-2">
+                                            </div>
+                                            <div class="text-xs absolute top-8">Cart</div>
+                                          </li>
+                      
+                                          <li class="flex relative items-center gap-x-2 shrink basis-0 flex-1 group" data-hs-stepper-nav-item='{
+                                                            "index": 2
+                                                          }'>
+                                            <span class="h-6 w-6 group inline-flex items-center text-xs align-middle">
+                                              <span
+                                                class="w-6 h-6 flex justify-center items-center flex-shrink-0 bg-[rgba(0,0,0,0.3)] text-white font-medium  rounded-full hs-stepper-active:bg-primary hs-stepper-active:text-white  hs-stepper-success:bg-primary hs-stepper-success:text-white  hs-stepper-completed:bg-primary hs-stepper-completed:group-focus:bg-primary">
+                                                2
+                                              </span>
+                      
+                                            </span>
+                                            <div
+                                              class="w-full h-px flex-1 bg-border dark:bg-darkborder group-last:hidden hs-stepper-success:bg-primary hs-stepper-completed:bg-primary dark:hs-stepper-success:bg-primary dark:hs-stepper-completed:bg-primary me-2">
+                                            </div>
+                                            <div class="text-xs absolute top-8 -start-7">
+                                              Billing & address
+                                              </span>
+                                          </li>
+                      
+                                          <li class="flex relative items-center gap-x-2 shrink basis-0  group" data-hs-stepper-nav-item='{
+                                                              "index": 3
+                                                            }'>
+                                            <span class="h-6 w-6 group inline-flex items-center text-xs align-middle">
+                                              <span
+                                                class="w-6 h-6 flex justify-center items-center flex-shrink-0 bg-[rgba(0,0,0,0.3)] text-white font-medium  rounded-full hs-stepper-active:bg-primary hs-stepper-active:text-white  hs-stepper-success:bg-primary hs-stepper-success:text-white  hs-stepper-completed:bg-primary hs-stepper-completed:group-focus:bg-primary">
+                                                3
+                                              </span>
+                                              <div class="text-xs absolute top-8 -start-3">
+                                                Payment
+                                            </span>
+                                            </span>
+                                            <div
+                                              class="w-full h-px flex-1 bg-border dark:bg-darkborder group-last:hidden hs-stepper-success:bg-primary hs-stepper-completed:bg-primary dark:hs-stepper-success:bg-primary dark:hs-stepper-completed:bg-primary">
+                                            </div>
+                                          </li>
+                                          <!-- End Item -->
+                                        </ul>
+                                        <!-- End Stepper Nav -->
+                      
+                                        <!-- Stepper Content -->
+                                        <div class="mt-14">
+                                          <!-- First Contnet -->
+                                          <div data-hs-stepper-content-item='{
+                                                            "index": 1
+                                                          }'>
+                      
+                                            <!---Cart Items--->
+                                            <div class="flex flex-col">
+                                              <div class="-m-1.5 overflow-x-auto">
+                                                <div class="p-1.5 min-w-full inline-block align-middle">
+                                                  <div class="overflow-hidden">
+                                                    <table class="min-w-full divide-y divide-border dark:divide-darkborder">
+                                                      <thead>
+                                                        <tr>
+                                                          <th scope="col"
+                                                            class="text-left rtl:text-right  p-4 ps-0  font-semibold text-dark dark:text-white text-sm">
+                                                            Product</th>
+                                                          <th scope="col"
+                                                            class="text-left rtl:text-right  p-4 font-semibold text-dark dark:text-white  text-sm">
+                                                            Quantity</th>
+                                                          <th scope="col"
+                                                            class="text-right rtl:text-left  p-4 font-semibold text-dark dark:text-white  text-sm">
+                                                            Price</th>
+                                                        </tr>
+                                                      </thead>
+                                                      <tbody class="divide-y divide-border dark:divide-darkborder">
+                                                        <tr>
+                                                          <td class="p-4 ps-0 whitespace-nowrap">
+                                                            <div class="flex gap-3 items-center">
+                                                              <div class="">
+                                                                <img src="@@webRoot/assets/images/products/s11.jpg"
+                                                                  class="rounded-circle h-20 w-20 rounded-md" alt="user " />
+                                                              </div>
+                                                              <div>
+                                                                <h6 class="text-base ">
+                                                                  Cute Soft Teddybear</h6>
+                                                                <p class="text-fs_15 font-medium text-dark dark:text-darklink">
+                                                                  toys
+                                                                </p>
+                                                                <a href="javascript:void(0)" class="text-error text-lg"><i
+                                                                    class="ti ti-trash"></i>
+                                                                </a>
+                                                              </div>
+                                                            </div>
+                                                          </td>
+                                                          <td class="text-sm whitespace-nowrap text-bodytext dark:text-darklink p-4">
+                      
+                                                            <!----Input Quantity----->
+                                                            <div class="flex" data-hs-input-number>
+                                                              <div class="flex items-center">
+                                                                <button type="button"
+                                                                  class="h-8 w-10 inline-flex justify-center items-center  text-sm border border-light-dark rounded-s-sm"
+                                                                  data-hs-input-number-decrement>
+                                                                  <i class="ti ti-minus text-sm"></i>
+                                                                </button>
+                                                                <input
+                                                                  class="p-0 h-8 w-10 bg-transparent text-sm font-semibold border-y border-x-0 border-light-dark text-center"
+                                                                  type="text" value="1" data-hs-input-number-input>
+                                                                <button type="button"
+                                                                  class="h-8 w-10 inline-flex justify-center items-center  text-sm border border-light-dark rounded-e-sm"
+                                                                  data-hs-input-number-increment>
+                                                                  <i class="ti ti-plus text-sm"></i>
+                                                                </button>
+                                                              </div>
+                                                            </div>
+                                                            <!-- End Input Quantity Number -->
+                                                          </td>
+                                                          <td
+                                                            class="text-base font-semibold whitespace-nowrap text-dark dark:text-white p-4 text-right rtl:text-left">
+                                                            $285
+                                                          </td>
+                                                        </tr>
+                                                      </tbody>
+                                                    </table>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <!---------------->
+                      
+                                            <!------Total---------->
+                                            <div class="card shadow-none border border-border dark:border-darkborder my-6">
+                                              <div class="card-body">
+                                                <h5 class="text-lg mb-4  ">Order Summary</h5>
+                                                <div class="flex justify-between mb-5">
+                                                  <p class="mb-0 text-base font-medium">Sub Total</p>
+                                                  <h6 class="text-base">$285</h6>
+                                                </div>
+                                                <div class="flex justify-between mb-5">
+                                                  <p class="mb-0 text-base font-medium">Discount 5%</p>
+                                                  <h6 class="text-base font-semibold text-error dark:text-error">-$14</h6>
+                                                </div>
+                                                <div class="flex justify-between mb-5">
+                                                  <p class="mb-0 text-base font-medium">Shipping</p>
+                                                  <h6 class="text-base">Free</h6>
+                                                </div>
+                                                <div class="flex justify-between">
+                                                  <h6 class="text-base">Total</h6>
+                                                  <h6 class="text-lg">$271</h6>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <!---------------->
+                      
+                                          </div>
+                                          <!-- End First Contnet -->
+                      
+                                          <!-- Second Contnet -->
+                                          <div data-hs-stepper-content-item='{
+                                                            "index": 2
+                                                          }' style="display: none;">
+                      
+                                            <!-- Step 2 -->
+                                            <div class="billing-address-content">
+                                              <div class="grid grid-cols-12 gap-6">
+                                                <div class="lg:col-span-4 col-span-12">
+                                                  <div class="card shadow-none border border-border dark:border-darkborder">
+                                                    <div class="card-body">
+                                                      <h6 class="text-base mb-3">Johnathan Doe</h6>
+                                                      <p class="mb-1 text-xs">E601 Vrundavan Heights, godrej garden city - 382481</p>
+                                                      <h6
+                                                        class="flex items-center gap-2 my-4   text-base">
+                                                        <i class="ti ti-device-mobile text-dark dark:text-white  text-2xl"></i>
+                                                        9999501050
+                                                      </h6>
+                                                      <a href="javascript:void(0)"
+                                                        class="font-semibold rounded-md border border-primary text-primary hover:bg-primary hover:text-white  billing-address mt-3  py-2 px-3">Deliver To
+                                                        this address</a>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <div class="lg:col-span-4 col-span-12">
+                                                  <div class="card shadow-none border border-border dark:border-darkborder">
+                                                    <div class="card-body ">
+                                                      <h6 class="text-base mb-3">ParleG Doe</h6>
+                                                      <p class="mb-1 text-xs">D201 Galexy Heights, godrej garden city - 382481</p>
+                                                      <h6
+                                                        class="flex items-center gap-2 my-4   text-base">
+                                                        <i class="ti ti-device-mobile text-dark dark:text-white  text-2xl"></i>
+                                                        9999501050
+                                                      </h6>
+                                                      <a href="javascript:void(0)"
+                                                        class="font-semibold rounded-md border border-primary text-primary hover:bg-primary hover:text-white  billing-address mt-3  py-2 px-3">Deliver To
+                                                        this address</a>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <div class="lg:col-span-4 col-span-12">
+                                                  <div class="card shadow-none border border-border dark:border-darkborder">
+                                                    <div class="card-body ">
+                                                      <h6 class="text-base mb-3">Guddu Bhaiya</h6>
+                                                      <p class="mb-1 text-xs">Mumbai khao gali, Behind shukan, godrej garden city - 382481</p>
+                                                      <h6
+                                                        class="flex items-center gap-2 my-4   text-base">
+                                                        <i class="ti ti-device-mobile text-dark dark:text-white  text-2xl"></i>
+                                                        9999501050
+                                                      </h6>
+                                                      <a href="javascript:void(0)"
+                                                        class="font-semibold rounded-md border border-primary text-primary hover:bg-primary hover:text-white  billing-address mt-3  py-2 px-3 ">Deliver To
+                                                        this address</a>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                      
+                                              <!------Total---------->
+                                              <div class="card shadow-none border border-border dark:border-darkborder my-6">
+                                                <div class="card-body">
+                                                  <h5 class="text-lg mb-4  ">Order Summary</h5>
+                                                  <div class="flex justify-between mb-5">
+                                                    <p class="mb-0 text-base">Sub Total</p>
+                                                    <h6 class="text-base">$285</h6>
+                                                  </div>
+                                                  <div class="flex justify-between mb-5">
+                                                    <p class="mb-0 text-base">Discount 5%</p>
+                                                    <h6 class="text-base font-semibold text-error">-$14</h6>
+                                                  </div>
+                                                  <div class="flex justify-between mb-5">
+                                                    <p class="mb-0 text-base">Shipping</p>
+                                                    <h6 class="text-base">Free</h6>
+                                                  </div>
+                                                  <div class="flex justify-between">
+                                                    <h6 class="text-base">Total</h6>
+                                                    <h6 class="text-lg">$271</h6>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <!---------------->
+                                            </div>
+                      
+                                            <!----Delivery Option---->
+                                            <div class="payment-method-list payment-method">
+                                              <div
+                                                class="card delivery-option btn-group-active  shadow-none border border-border dark:border-darkborder my-6">
+                                                <div class="card-body">
+                                                  <h6 class="text-base mb-4  ">Delivery Option</h6>
+                                                  <div class="grid grid-cols-12 gap-6 btn-group">
+                                                    <div class="lg:col-span-6 col-span-12">
+                                                      <div class="relative flex justify-center items-center h-full">
+                                                        <input type="radio" name="hs-radio-vertical-group"
+                                                          class="ms-6 absolute start-0 z-[2] bg-transparent shrink-0 rounded-full text-primary focus:ring-0 focus:ring-offset-0 disabled:opacity-50 disabled:pointer-events-none dark:checked:bg-primary dark:checked:border-primary hover:bg-lightprimary"
+                                                          id="btnradio1" checked>
+                                                        <label class=" btn-outline-primary hover:bg-lightprimary mb-0 p-4 rounded-md ps-12 w-full inline-block cursor-pointer"
+                                                          for="btnradio1">
+                                                          <div class="text-start ps-2">
+                                                            <h6 class="text-base">Free delivery</h6>
+                                                            <p class="text-bodytext opacity-80 font-normal dark:text-darklink text-sm">
+                                                              Delivered on Firday, May 10</p>
+                                                          </div>
+                                                        </label>
+                                                      </div>
+                                                    </div>
+                                                    <div class="lg:col-span-6 col-span-12">
+                                                      <div class="relative flex justify-center items-center h-full">
+                                                        <input type="radio" name="hs-radio-vertical-group"
+                                                          class="ms-6 absolute start-0 z-[2] bg-transparent shrink-0 rounded-full text-primary focus:ring-0 focus:ring-offset-0 disabled:opacity-50 disabled:pointer-events-none dark:checked:bg-primary dark:checked:border-primary"
+                                                          id="btnradio2">
+                                                        <label class=" btn-outline-primary hover:bg-lightprimary mb-0 p-4 rounded-md ps-12 w-full inline-block cursor-pointer"
+                                                          for="btnradio2">
+                                                          <div class="text-start ps-2">
+                                                            <h6 class="text-base">Fast delivery
+                                                              ($2,00)</h6>
+                                                            <p class="text-bodytext opacity-80 font-normal dark:text-darklink text-sm">
+                                                              Delivered on Wednesday, May 8</p>
+                                                          </div>
+                                                        </label>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                      
+                                              <div
+                                                class="card payment-option btn-group-active  shadow-none border border-border dark:border-darkborder">
+                                                <div class="card-body">
+                                                  <h6 class="text-base mb-4  ">Payment Option</h6>
+                                                  <div class="grid grid-cols-12 gap-6 btn-group">
+                                                    <div class="lg:col-span-8 md:col-span-12 sm:col-span-12 col-span-12">
+                                                      <div class="relative flex justify-center items-center  mb-6">
+                                                        <input type="radio" name="hs-radio-vertical-group-payment"
+                                                          class="ms-6 absolute start-0 z-[2] bg-transparent shrink-0 rounded-full text-primary focus:ring-0 focus:ring-offset-0 disabled:opacity-50 disabled:pointer-events-none dark:checked:bg-primary dark:checked:border-primary"
+                                                          id="btnradio3" checked>
+                                                        <label class=" btn-outline-primary hover:bg-lightprimary mb-0 p-4 rounded-md ps-12 w-full inline-block cursor-pointer"
+                                                          for="btnradio3">
+                                                          <div class="flex items-center">
+                                                            <div class="text-start ps-2">
+                                                              <h6 class="text-base">Pay with Paypal
+                                                              </h6>
+                                                              <p class="text-bodytext opacity-80 font-normal dark:text-darklink text-sm">
+                                                                You will be redirected to PayPal website to
+                                                                complete your purchase securely.</p>
+                                                            </div>
+                                                            <img src="@@webRoot/assets/images/svgs/paypal.svg" alt=""
+                                                              class="h-10 w-10 ms-auto">
+                                                          </div>
+                                                        </label>
+                                                      </div>
+                                                      <div class="relative flex justify-center items-center  mb-6">
+                                                        <input type="radio" name="hs-radio-vertical-group-payment"
+                                                          class="ms-6 absolute start-0 z-[2] bg-transparent shrink-0 rounded-full text-primary focus:ring-0 focus:ring-offset-0 disabled:opacity-50 disabled:pointer-events-none dark:checked:bg-primary dark:checked:border-primary"
+                                                          id="btnradio4">
+                                                        <label class=" btn-outline-primary hover:bg-lightprimary mb-0 p-4 rounded-md ps-12 w-full inline-block cursor-pointer"
+                                                          for="btnradio4">
+                                                          <div class="flex items-center">
+                                                            <div class="text-start ps-2">
+                                                              <h6 class="text-base">Credit / Debit
+                                                                Card
+                                                              </h6>
+                                                              <p class="text-bodytext opacity-80 font-normal dark:text-darklink text-sm">
+                                                                We support Mastercard, Visa, Discover and Stripe.</p>
+                                                            </div>
+                                                            <img src="@@webRoot/assets/images/svgs/mastercard.svg" alt=""
+                                                              class="h-10 w-10 ms-auto">
+                                                          </div>
+                                                        </label>
+                                                      </div>
+                                                      <div class="relative flex justify-center items-center ">
+                                                        <input type="radio" name="hs-radio-vertical-group-payment"
+                                                          class="ms-6 absolute start-0 z-[2] bg-transparent shrink-0 rounded-full text-primary focus:ring-0 focus:ring-offset-0 disabled:opacity-50 disabled:pointer-events-none dark:checked:bg-primary dark:checked:border-primary"
+                                                          id="btnradio5">
+                                                        <label class=" btn-outline-primary hover:bg-lightprimary mb-0 p-4 rounded-md ps-12 w-full inline-block cursor-pointer"
+                                                          for="btnradio5">
+                                                          <div class="flex items-center">
+                                                            <div class="text-start ps-2">
+                                                              <h6 class="text-base">Cash on Delivery
+                                                              </h6>
+                                                              <p class="text-bodytext opacity-80 font-normal dark:text-darklink text-sm">
+                                                                Pay with cash when your order is delivered.</p>
+                                                            </div>
+                                                          </div>
+                                                        </label>
+                                                      </div>
+                                                    </div>
+                                                    <div class="lg:col-span-4 md:col-span-12 sm:col-span-12 col-span-12">
+                                                      <img src="@@webRoot/assets/images/products/payment.svg" alt=""
+                                                        class="w-full max-w-full">
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                      
+                                              <!------Total---------->
+                                              <div class="card shadow-none border border-border dark:border-darkborder my-6">
+                                                <div class="card-body">
+                                                  <h5 class="text-lg mb-4  ">Order Summary</h5>
+                                                  <div class="flex justify-between mb-5">
+                                                    <p class="mb-0 text-base">Sub Total</p>
+                                                    <h6 class="text-base">$285</h6>
+                                                  </div>
+                                                  <div class="flex justify-between mb-5">
+                                                    <p class="mb-0 text-base">Discount 5%</p>
+                                                    <h6 class="text-base font-semibold text-error">-$14</h6>
+                                                  </div>
+                                                  <div class="flex justify-between mb-5">
+                                                    <p class="mb-0 text-base">Shipping</p>
+                                                    <h6 class="text-base">Free</h6>
+                                                  </div>
+                                                  <div class="flex justify-between">
+                                                    <h6 class="text-base">Total</h6>
+                                                    <h6 class="text-lg">$271</h6>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <!---------------->
+                      
+                                            </div>
+                                            <!---------------->
+                      
+                                          </div>
+                                          <!-- End First Contnet -->
+                      
+                                          <!-- Third Contnet -->
+                                          <div data-hs-stepper-content-item='{
+                                                            "index": 3,
+                                                            "isFinal": true
+                                                          }' style="display: none;">
+                      
+                                            <div class="flex justify-center mt-5">
+                                              <div class="text-center">
+                                                <h5 class="card-title ">Thank you for your purchase!
+                                                </h5>
+                                                <h6 class="font-semibold text-primary mb-7 text-sm">Your order id: 3fa7-69e1-79b4-dbe0d35f5f5d
+                                                </h6>
+                                                <img src="@@webRoot/assets/images/products/payment.svg" alt=""
+                                                  class="w-full max-w-80 mb-4">
+                                                <p class="mb-0 text-xs">We will send you a notification<br>within 2 days when it ships.</p>
+                                              </div>
+                                            </div>
+                      
+                                            <div class="sm:flex items-center justify-between my-4">
+                                              <a href="@@webRoot/dark/eco-shop.html" class="btn bg-success hover:bg-successemphasis text-white block mb-2 sm:mb-0">Continue Shopping</a>
+                                              <a href="javascript:void(0)" class="btn block">Download Receipt</a>
+                                            </div>
+                                          </div>
+                                          <!-- End Third Contnet -->
+                      
+                                          <!-- Button Group -->
+                                          <div class="mt-5 flex justify-end items-center gap-x-3">
+                                            <button type="button" class="btn rounded-full border border-border dark:border-darkborder text-darklink leading-tight bg-gray-400 text-white hover:bg-gray-500 dark:text-white dark:bg-darkborder disabled:opacity-80 disabled:dark:text-darklink disabled:pointer-events-none disabled:bg-lightgray disabled:text-dark hover:text-white dark:hover:bg-gray-500"
+                                              data-hs-stepper-back-btn>
+                                              Previous
+                                            </button>
+                                            <button type="button" class="btn leading-tight" data-hs-stepper-next-btn>
+                                              Next
+                                            </button>
+                                            <button type="button" class="btn leading-tight" data-hs-stepper-finish-btn style="display: none;">
+                                              Submit
+                                            </button>
+                                            <button class="btn leading-tight" data-hs-stepper-reset-btn style="display: none;">
+                                              Reset
+                                            </button>
+                                          </div>
+                                          <!-- End Button Group -->
+                                        </div>
+                                        <!-- End Stepper Content -->
+                                      </div>
+                                      <!-- End Stepper -->
+                                    </div>
+                                  </div>
+
+                                    </div>
+                                  </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                <!-- Main Content End -->
+
+            </div>
+        </div>
+        <!--end of project-->
+    </main>
+    @@include("partials/header-components/mobile-menu.html")
+    @@include("partials/customizer.html")
+    @@include("partials/scripts.html")
+    <script src="@@webRoot/assets/js/vendor.min.js"></script> 
+    <script src="@@webRoot/assets/js/apps/ecommerce.js"></script>
+</body>
+
+</html>

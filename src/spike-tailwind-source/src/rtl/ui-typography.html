@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-color-theme="Blue_Theme" class="light selected" data-layout="vertical"
+  data-boxed-layout="boxed" data-card="shadow">
+
+<head>
+  @@include("partials/head.html")
+  <title>Spike TailwindCSS HTML Admin Template</title>
+  <link rel="stylesheet" href="@@webRoot/node_modules/prismjs/themes/prism-okaidia.min.css">
+</head>
+
+<body class="DEFAULT_THEME bg-lightprimary dark:bg-darkbody">
+  <main>
+    <!--start the project-->
+    <div id="main-wrapper" class="flex p-5">
+
+      <aside id="application-sidebar-brand"
+        class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full xl:rtl:-translate-x-0 rtl:translate-x-full  left-0 rtl:left-auto xl:rtl:right-5 rtl:right-0 transform hidden xl:block xl:translate-x-0 xl:end-auto xl:bottom-0 fixed top-0 with-vertical  left-sidebar transition-all duration-300 h-screen z-[2] flex-shrink-0  w-[270px] border-border dark:border-darkborder bg-white dark:bg-dark xl:top-5 xl:start-5 shadow-md xl:rounded-md">
+        @@include("partials/sidebar.html",{ "page": "ui-typography","page_group": "ui" })
+      </aside>
+      <div class="page-wrapper w-full" role="main">
+
+        <!-- Main Content -->
+        <main class="h-full ">
+          <div class="container full-container py-5 xl:ps-6 ps-0 pt-0 pe-0 remove-ps">
+
+            <!--  Header Start -->
+            <header
+              class="sticky top-0 inset-x-0 z-[1] flex flex-wrap md:justify-start md:flex-nowrap text-fs_15 py-3 lg:py-0 mb-6 bg-white dark:bg-dark rounded-md shadow-md">
+              <div class="with-vertical w-full">@@include("partials/header.html")</div>
+              <div class="with-horizontal w-full">
+                <div class="bg-white dark:bg-dark">
+                  <div class="container">
+                    @@include("partials/horizontal-header.html")
+                  </div>
+                </div>
+              </div>
+            </header>
+            <!--  Header End -->
+
+            <!-- Horizontal Sidebar Menu -->
+            <aside
+              class="with-horizontal lg:flex hidden left-sidebar bg-white dark:bg-dark border-t border-border dark:border-darkborder">
+              @@include("partials/horizontal-sidebar.html", { "page": "ui-typography","page_group": "ui"})
+            </aside>
+            <!-- Horizontal Sidebar Menu End -->
+
+            <!-- Main Content -->
+            <div class="max-w-full">
+              <div class="container full-container ">
+                <!----Breadcrumb Start---->
+                @@include("partials/breadcrumb.html", {"title": "Typography", "subtitle": 'Home'})
+                <!----Breadcrumb End---->
+                <div class="grid grid-cols-12 gap-6">
+                  <div class=" lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-0">
+                          <h5 class="card-title">Headings</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal1">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal1"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Headings -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal1">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+       <code class="language-html">  
+      &#x3C;h1 class=&#x22;text-4xl text-dark dark:text-white&#x22;&#x3E;h1. Preline heading&#x3C;/h1&#x3E;
+      &#x3C;h2 class=&#x22;text-3xl text-dark dark:text-white&#x22;&#x3E;h2. Preline heading&#x3C;/h2&#x3E;
+      &#x3C;h3 class=&#x22;text-2xl text-dark dark:text-white&#x22;&#x3E;h3. Preline heading&#x3C;/h3&#x3E;
+      &#x3C;h4 class=&#x22;text-xl text-dark dark:text-white&#x22;&#x3E;h4. Preline heading&#x3C;/h4&#x3E;
+      &#x3C;h5 class=&#x22;text-lg text-dark dark:text-white&#x22;&#x3E;h5. Preline heading&#x3C;/h5&#x3E;
+      &#x3C;h6 class=&#x22;text-base text-dark dark:text-white&#x22;&#x3E;h6. Preline heading&#x3C;/h6&#x3E;
+                  </code>
+                                                          </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <p class="card-subtitle  mb-6">Use <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">'h1 to h6'</code> to get desire
+                          heading.</p>
+                        <div class="flex flex-col gap-2">
+                          <h1 class="text-4xl text-dark dark:text-white">h1. Preline heading</h1>
+                          <h2 class="text-3xl text-dark dark:text-white">h2. Preline heading</h2>
+                          <h3 class="text-2xl text-dark dark:text-white">h3. Preline heading</h3>
+                          <h4 class="text-xl text-dark dark:text-white">h4. Preline heading</h4>
+                          <h5 class="text-lg text-dark dark:text-white">h5. Preline heading</h5>
+                          <h6 class="text-base text-dark dark:text-white">h6. Preline heading</h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class=" lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-0">
+                          <h5 class="card-title">Inline text elements</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal2">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal2"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Inline text
+                                        elements -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal2">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+       <code class="language-html">  
+      &#x3C;p class=&#x22;text-dark text-base dark:text-white&#x22;&#x3E;You can use the mark tag to &#x3C;mark&#x3E;highlight&#x3C;/mark&#x3E; text.&#x3C;/p&#x3E;
+      &#x3C;p class=&#x22;text-dark text-base dark:text-white&#x22;&#x3E;&#x3C;del&#x3E;This line of text is meant to be treated as deleted text.&#x3C;/del&#x3E;&#x3C;/p&#x3E;
+      &#x3C;p class=&#x22;text-dark text-base dark:text-white&#x22;&#x3E;&#x3C;s&#x3E;This line of text is meant to be treated as no longer accurate.&#x3C;/s&#x3E;&#x3C;/p&#x3E;
+      &#x3C;p class=&#x22;text-dark text-base dark:text-white&#x22;&#x3E;&#x3C;ins&#x3E;This line of text is meant to be treated as an addition to the document.&#x3C;/ins&#x3E;&#x3C;/p&#x3E;
+      &#x3C;p class=&#x22;text-dark text-base dark:text-white&#x22;&#x3E;&#x3C;u&#x3E;This line of text will render as underlined.&#x3C;/u&#x3E;&#x3C;/p&#x3E;
+      &#x3C;p class=&#x22;text-dark text-base dark:text-white&#x22;&#x3E;&#x3C;small&#x3E;This line of text is meant to be treated as fine print.&#x3C;/small&#x3E;&#x3C;/p&#x3E;
+      &#x3C;p class=&#x22;text-dark text-base dark:text-white&#x22;&#x3E;&#x3C;strong&#x3E;This line rendered as bold text.&#x3C;/strong&#x3E;&#x3C;/p&#x3E;
+      &#x3C;p class=&#x22;text-dark text-base dark:text-white&#x22;&#x3E;&#x3C;em&#x3E;This line rendered as italicized text.&#x3C;/em&#x3E;&#x3C;/p&#x3E;
+                  </code>
+                                                          </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <p class="card-subtitle  mb-6">Styling for common inline <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">'HTML5'</code>elements.</p>
+                        <div class="flex flex-col gap-2">
+                          <p class="text-dark text-base dark:text-white">You can use the mark tag to
+                            <mark>highlight</mark> text.</p>
+                          <p class="text-dark text-base dark:text-white"><del>This line of text is meant to be treated
+                              as deleted text.</del></p>
+                          <p class="text-dark text-base dark:text-white"><s>This line of text is meant to be treated as
+                              no longer accurate.</s></p>
+                          <p class="text-dark text-base dark:text-white"><ins>This line of text is meant to be treated
+                              as an addition to the document.</ins></p>
+                          <p class="text-dark text-base dark:text-white"><u>This line of text will render as
+                              underlined.</u></p>
+                          <p class="text-dark text-base dark:text-white"><small>This line of text is meant to be treated
+                              as fine print.</small></p>
+                          <p class="text-dark text-base dark:text-white"><strong>This line rendered as bold
+                              text.</strong></p>
+                          <p class="text-dark text-base dark:text-white"><em>This line rendered as italicized text.</em>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class=" lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-0">
+                          <h5 class="card-title">Gradient text</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal3">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal3"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Gradient
+                                        text -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal3">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+       <code class="language-html">  
+      &#x3C;p class=&#x22;bg-clip-text text-base bg-gradient-to-tl from-primary to-violet-500 text-transparent&#x22;&#x3E;
+         This is a gradient text
+      &#x3C;/p&#x3E;
+                  </code>
+                                                          </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <p class="card-subtitle  mb-6">Styling for common inline <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">'bg-clip-text'</code>, <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">'color-transparent'</code> and <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">'bg-gradient-*'</code> classes to the
+                          text to add a gradient overlay to a text element.</p>
+                        <p class="bg-clip-text text-base bg-gradient-to-tl from-primary to-violet-500 text-transparent">
+                          This is a gradient text
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class=" lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-0">
+                          <h5 class="card-title">Blockquote</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal4">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal4"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Blockquote -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal4">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+       <code class="language-html">  
+      &#x3C;blockquote class=&#x22;relative&#x22;&#x3E;
+         &#x3C;i class=&#x22;ti ti-quote absolute -top-7 start-3.5 size-16 text-gray-200 dark:text-gray-700 rotate-180 text-[40px] leading-tight font-medium origin-left&#x22;&#x3E;&#x3C;/i&#x3E;
+         &#x3C;div class=&#x22;relative z-10&#x22;&#x3E;
+            &#x3C;p class=&#x22;text-gray-800 dark:text-white text-base&#x22;&#x3E;&#x3C;em&#x3E;
+               I just wanted to say that I&#x27;m very happy with my purchase so far. The documentation is outstanding - clear and detailed.
+               &#x3C;/em&#x3E;
+            &#x3C;/p&#x3E;
+         &#x3C;/div&#x3E;
+      &#x3C;/blockquote&#x3E;
+                  </code>
+                                                          </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <p class="card-subtitle  mb-6">Styling for common inline <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">'bg-clip-text'</code>, <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">'color-transparent'</code> and <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">'bg-gradient-*'</code> classes to the
+                          text to add a gradient overlay to a text element.</p>
+                        <blockquote class="relative">
+                          <i
+                            class="ti ti-quote absolute -top-7 start-3.5 size-16 text-gray-200 dark:text-gray-700 rotate-180 text-[40px] leading-tight font-medium origin-left"></i>
+                          <div class="relative z-10">
+                            <p class="text-gray-800 dark:text-white text-base"><em>
+                                I just wanted to say that I'm very happy with my purchase so far. The documentation is
+                                outstanding - clear and detailed.
+                              </em></p>
+                          </div>
+                        </blockquote>
+                      </div>
+                    </div>
+                  </div>
+                  <div class=" lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-0">
+                          <h5 class="card-title">Blockquote Alignment - Center</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal6">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal6"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Blockquote
+                                        Alignment - Center -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal6">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+       <code class="language-html">  
+      &#x3C;blockquote class=&#x22;relative text-center max-w-lg mx-autos&#x22;&#x3E;
+         &#x3C;i class=&#x22;ti ti-quote absolute -top-7 start-8 size-16 text-gray-200 dark:text-gray-700 rotate-180 text-[40px] leading-tight font-medium origin-left&#x22;&#x3E;&#x3C;/i&#x3E;
+         &#x3C;div class=&#x22;relative z-10&#x22;&#x3E;
+            &#x3C;p class=&#x22;text-gray-800 dark:text-white text-base&#x22;&#x3E;&#x3C;em&#x3E;
+               I just wanted to say that I&#x27;m very happy with my purchase so far. The documentation is outstanding - clear and detailed.
+               &#x3C;/em&#x3E;
+            &#x3C;/p&#x3E;
+         &#x3C;/div&#x3E;
+      &#x3C;/blockquote&#x3E;
+                  </code>
+                                                          </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <p class="card-subtitle  mb-6">Use text utilities as needed to change the alignment of your
+                          blockquote.</p>
+                        <blockquote class="relative text-center max-w-lg mx-autos">
+                          <i
+                            class="ti ti-quote absolute -top-7 start-8 size-16 text-gray-200 dark:text-gray-700 rotate-180 text-[40px] leading-tight font-medium origin-left"></i>
+                          <div class="relative z-10">
+                            <p class="text-gray-800 dark:text-white text-base"><em>
+                                I just wanted to say that I'm very happy with my purchase so far. The documentation is
+                                outstanding - clear and detailed.
+                              </em></p>
+                          </div>
+                        </blockquote>
+                      </div>
+                    </div>
+                  </div>
+                  <div class=" lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-0">
+                          <h5 class="card-title">Blockquote Alignment - Right</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal7">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal7"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Blockquote
+                                        Alignment - Right -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal7">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+       <code class="language-html">  
+      &#x3C;blockquote class=&#x22;relative text-end max-w-lg mx-autos&#x22;&#x3E;
+         &#x3C;i class=&#x22;ti ti-quote absolute -top-7 start-12 size-16 text-gray-200 dark:text-gray-700 rotate-180 text-[40px] leading-tight font-medium origin-left&#x22;&#x3E;&#x3C;/i&#x3E;
+         &#x3C;div class=&#x22;relative z-10&#x22;&#x3E;
+            &#x3C;p class=&#x22;text-gray-800 dark:text-white text-base&#x22;&#x3E;&#x3C;em&#x3E;
+               I just wanted to say that I&#x27;m very happy with my purchase so far. The documentation is outstanding - clear and detailed.
+               &#x3C;/em&#x3E;
+            &#x3C;/p&#x3E;
+         &#x3C;/div&#x3E;
+      &#x3C;/blockquote&#x3E;
+                  </code>
+                                                          </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <p class="card-subtitle  mb-6">Use text utilities as needed to change the alignment of your
+                          blockquote.</p>
+                        <blockquote class="relative text-end max-w-lg mx-autos">
+                          <i
+                            class="ti ti-quote absolute -top-7 start-12 size-16 text-gray-200 dark:text-gray-700 rotate-180 text-[40px] leading-tight font-medium origin-left"></i>
+                          <div class="relative z-10">
+                            <p class="text-gray-800 dark:text-white text-base"><em>
+                                I just wanted to say that I'm very happy with my purchase so far. The documentation is
+                                outstanding - clear and detailed.
+                              </em></p>
+                          </div>
+                        </blockquote>
+                      </div>
+                    </div>
+                  </div>
+                  <div class=" lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-0">
+                          <h5 class="card-title">Naming a source</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal8">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal8"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Naming a
+                                        source -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal8">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+       <code class="language-html">  
+      &#x3C;blockquote class=&#x22;relative&#x22;&#x3E;
+         &#x3C;i class=&#x22;ti ti-quote absolute -top-7 start-3.5 size-16 text-gray-200 dark:text-gray-700 rotate-180 text-[40px] leading-tight font-medium origin-left&#x22;&#x3E;&#x3C;/i&#x3E;
+         &#x3C;div class=&#x22;relative z-10&#x22;&#x3E;
+            &#x3C;p class=&#x22;text-gray-800 dark:text-white text-base&#x22;&#x3E;&#x3C;em&#x3E;
+               I just wanted to say that I&#x27;m very happy with my purchase so far. The documentation is outstanding - clear and detailed.
+               &#x3C;/em&#x3E;
+            &#x3C;/p&#x3E;
+         &#x3C;/div&#x3E;
+         &#x3C;footer class=&#x22;mt-6&#x22;&#x3E;
+            &#x3C;div class=&#x22;text-base font-semibold text-gray-800 dark:text-gray-400&#x22;&#x3E;Josh Grazioso&#x3C;/div&#x3E;
+         &#x3C;/footer&#x3E;
+      &#x3C;/blockquote&#x3E;
+                  </code>
+                                                          </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <p class="card-subtitle  mb-6">Identify the work.</p>
+                        <blockquote class="relative">
+                          <i
+                            class="ti ti-quote absolute -top-7 start-3.5 size-16 text-gray-200 dark:text-gray-700 rotate-180 text-[40px] leading-tight font-medium origin-left"></i>
+                          <div class="relative z-10">
+                            <p class="text-gray-800 dark:text-white text-base"><em>
+                                I just wanted to say that I'm very happy with my purchase so far. The documentation is
+                                outstanding - clear and detailed.
+                              </em></p>
+                          </div>
+                          <footer class="mt-6">
+                            <div class="text-base font-semibold text-gray-800 dark:text-gray-400">Josh Grazioso</div>
+                          </footer>
+                        </blockquote>
+                      </div>
+                    </div>
+                  </div>
+                  <div class=" lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-0">
+                          <h5 class="card-title">Blockquote with avatar</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal5">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal5"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Blockquote
+                                        with avatar -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal5">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+       <code class="language-html">  
+      &#x3C;blockquote class=&#x22;relative border-s-4 ps-4 sm:ps-6 dark:border-gray-700&#x22;&#x3E;
+         &#x3C;p class=&#x22;text-gray-800 sm:text-lg dark:text-white&#x22;&#x3E;&#x3C;em&#x3E;
+            I just wanted to say that I&#x27;m very happy with my purchase so far. The documentation is outstanding - clear and detailed.
+            &#x3C;/em&#x3E;
+         &#x3C;/p&#x3E;
+         &#x3C;footer class=&#x22;mt-4&#x22;&#x3E;
+            &#x3C;div class=&#x22;flex items-center&#x22;&#x3E;
+               &#x3C;div class=&#x22;flex-shrink-0&#x22;&#x3E;
+                  &#x3C;img class=&#x22;size-10 rounded-full&#x22; src=&#x22;@@webRoot/assets/images/profile/user-1.jpg&#x22; alt=&#x22;Image Description&#x22;&#x3E;
+               &#x3C;/div&#x3E;
+               &#x3C;div class=&#x22;ms-4&#x22;&#x3E;
+                  &#x3C;div class=&#x22;text-base font-semibold text-gray-800 dark:text-gray-400&#x22;&#x3E;Josh Grazioso&#x3C;/div&#x3E;
+                  &#x3C;div class=&#x22;text-xs text-gray-500&#x22;&#x3E;Source title&#x3C;/div&#x3E;
+               &#x3C;/div&#x3E;
+            &#x3C;/div&#x3E;
+         &#x3C;/footer&#x3E;
+      &#x3C;/blockquote&#x3E;
+                  </code>
+                                                          </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <p class="card-subtitle  mb-6">A blockquote option with avatar and border on the left side.</p>
+                        <blockquote class="relative border-s-4 ps-4 sm:ps-6 dark:border-gray-700">
+                          <p class="text-gray-800 sm:text-lg dark:text-white"><em>
+                              I just wanted to say that I'm very happy with my purchase so far. The documentation is
+                              outstanding - clear and detailed.
+                            </em></p>
+
+                          <footer class="mt-4">
+                            <div class="flex items-center">
+                              <div class="flex-shrink-0">
+                                <img class="size-10 rounded-full" src="@@webRoot/assets/images/profile/user-7.jpg"
+                                  alt="Image Description">
+                              </div>
+                              <div class="ms-4">
+                                <div class="text-base font-semibold text-gray-800 dark:text-gray-400">Josh Grazioso
+                                </div>
+                                <div class="text-xs text-gray-500">Source title</div>
+                              </div>
+                            </div>
+                          </footer>
+                        </blockquote>
+                      </div>
+                    </div>
+                  </div>
+                  <div class=" lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-0">
+                          <h5 class="card-title">Lists: Ol listing</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal9">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal9"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">OL Listing -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal9">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+       <code class="language-html">  
+      &#x3C;ol class=&#x22;list-decimal list-inside text-gray-800 dark:text-white text-sm&#x22;&#x3E;
+         &#x3C;li&#x3E;Lorem ipsum dolor sit . &#x3C;/li&#x3E;
+         &#x3C;li&#x3E;amet consectetur, adipisicing elit&#x3C;/li&#x3E;
+         &#x3C;li&#x3E;Ullam aliquam sint quasi.&#x3C;/li&#x3E;
+      &#x3C;/ol&#x3E;
+                  </code>
+                                                          </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <p class="card-subtitle  mb-6">Ordered list item in bullet points.</p>
+                        <ol class="list-decimal list-inside text-gray-800 dark:text-white text-sm">
+                          <li>Lorem ipsum dolor sit . </li>
+                          <li>amet consectetur, adipisicing elit</li>
+                          <li>Ullam aliquam sint quasi.</li>
+                        </ol>
+                      </div>
+                    </div>
+                  </div>
+                  <div class=" lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-0">
+                          <h5 class="card-title">Lists: Ul listing</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal10">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal10"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">UL Listing -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal10">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+       <code class="language-html">  
+      &#x3C;ul class=&#x22;list-disc list-inside text-gray-800 dark:text-white text-sm&#x22;&#x3E;
+         &#x3C;li&#x3E;Lorem ipsum dolor sit . &#x3C;/li&#x3E;
+         &#x3C;li&#x3E;amet consectetur, adipisicing elit&#x3C;/li&#x3E;
+         &#x3C;li&#x3E;Ullam aliquam sint quasi.&#x3C;/li&#x3E;
+      &#x3C;/ul&#x3E;
+                  </code>
+                                                          </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <p class="card-subtitle  mb-6">Unordered list item in bullet points.</p>
+                        <ul class="list-disc list-inside text-gray-800 dark:text-white text-sm">
+                          <li>Lorem ipsum dolor sit . </li>
+                          <li>amet consectetur, adipisicing elit</li>
+                          <li>Ullam aliquam sint quasi.</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class=" lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-0">
+                          <h5 class="card-title">Description list alignment</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal11">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal11"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Description
+                                        list alignment -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal11">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+       <code class="language-html">  
+      &#x3C;dl class=&#x22;grid sm:grid-cols-3 gap-1 sm:gap-3&#x22;&#x3E;
+         &#x3C;dt class=&#x22;sm:col-span-1 font-semibold dark:text-white&#x22;&#x3E;Description lists&#x3C;/dt&#x3E;
+         &#x3C;dd class=&#x22;sm:col-span-2 mb-3 sm:mb-0 dark:text-white&#x22;&#x3E;A description list is perfect for defining terms.&#x3C;/dd&#x3E;
+         &#x3C;dt class=&#x22;sm:col-span-1 font-semibold dark:text-white&#x22;&#x3E;Term&#x3C;/dt&#x3E;
+         &#x3C;dd class=&#x22;sm:col-span-2 mb-3 sm:mb-0 dark:text-white&#x22;&#x3E;
+            &#x3C;p&#x3E;Definition for the term.&#x3C;/p&#x3E;
+            &#x3C;p&#x3E;And some more placeholder definition text.&#x3C;/p&#x3E;
+         &#x3C;/dd&#x3E;
+         &#x3C;dt class=&#x22;sm:col-span-1 font-semibold dark:text-white&#x22;&#x3E;Another term&#x3C;/dt&#x3E;
+         &#x3C;dd class=&#x22;sm:col-span-2 mb-3 sm:mb-0 dark:text-white&#x22;&#x3E;This definition is short, so no extra paragraphs or anything.&#x3C;/dd&#x3E;
+         &#x3C;dt class=&#x22;sm:col-span-1 font-semibold truncate dark:text-white&#x22;&#x3E;Truncated term is truncated&#x3C;/dt&#x3E;
+         &#x3C;dd class=&#x22;sm:col-span-2 mb-3 sm:mb-0 dark:text-white&#x22;&#x3E;This can be useful when space is tight. Adds an ellipsis at the end.&#x3C;/dd&#x3E;
+         &#x3C;dt class=&#x22;sm:col-span-1 font-semibold dark:text-white&#x22;&#x3E;Nesting&#x3C;/dt&#x3E;
+         &#x3C;dd class=&#x22;sm:col-span-2 mb-3 sm:mb-0 dark:text-white&#x22;&#x3E;
+            &#x3C;dl class=&#x22;grid sm:grid-cols-5 gap-1 sm:gap-3 dark:text-white&#x22;&#x3E;
+               &#x3C;dt class=&#x22;sm:col-span-2 font-semibold dark:text-white&#x22;&#x3E;Nested definition list&#x3C;/dt&#x3E;
+               &#x3C;dd class=&#x22;sm:col-span-3 mb-3 sm:mb-0 dark:text-white&#x22;&#x3E;I heard you like definition lists. Let me put a definition list inside your definition list.&#x3C;/dd&#x3E;
+            &#x3C;/dl&#x3E;
+         &#x3C;/dd&#x3E;
+      &#x3C;/dl&#x3E;
+                  </code>
+                                                          </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <p class="card-subtitle  mb-6">Align terms and descriptions horizontally by using utility
+                          classes. For longer terms, you can optionally add a <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">'.truncate'</code> class to truncate
+                          the text with an ellipsis.</p>
+                        <dl class="grid sm:grid-cols-3 gap-1 sm:gap-3">
+                          <dt class="sm:col-span-1 font-semibold dark:text-white">Description lists</dt>
+                          <dd class="sm:col-span-2 mb-3 sm:mb-0 dark:text-white">A description list is perfect for
+                            defining terms.</dd>
+
+                          <dt class="sm:col-span-1 font-semibold dark:text-white">Term</dt>
+                          <dd class="sm:col-span-2 mb-3 sm:mb-0 dark:text-white">
+                            <p>Definition for the term.</p>
+                            <p>And some more placeholder definition text.</p>
+                          </dd>
+
+                          <dt class="sm:col-span-1 font-semibold dark:text-white">Another term</dt>
+                          <dd class="sm:col-span-2 mb-3 sm:mb-0 dark:text-white">This definition is short, so no extra
+                            paragraphs or anything.</dd>
+
+                          <dt class="sm:col-span-1 font-semibold truncate dark:text-white">Truncated term is truncated
+                          </dt>
+                          <dd class="sm:col-span-2 mb-3 sm:mb-0 dark:text-white">This can be useful when space is tight.
+                            Adds an ellipsis at the end.</dd>
+
+                          <dt class="sm:col-span-1 font-semibold dark:text-white">Nesting</dt>
+                          <dd class="sm:col-span-2 mb-3 sm:mb-0 dark:text-white">
+                            <dl class="grid sm:grid-cols-5 gap-1 sm:gap-3 dark:text-white">
+                              <dt class="sm:col-span-2 font-semibold dark:text-white">Nested definition list</dt>
+                              <dd class="sm:col-span-3 mb-3 sm:mb-0 dark:text-white">I heard you like definition lists.
+                                Let me put a definition list inside your definition list.</dd>
+                            </dl>
+                          </dd>
+                        </dl>
+                      </div>
+                    </div>
+                  </div>
+                  <div class=" lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-0">
+                          <h5 class="card-title">First-line and first-letter</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal12">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal12"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">First-line
+                                        and first-letter -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal12">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+       <code class="language-html">  
+      &#x3C;p class=&#x22;first-line:uppercase first-line:tracking-widest
+         first-letter:text-7xl first-letter:font-bold first-letter:text-slate-900
+         first-letter:mr-3 first-letter:float-left text-base
+         &#x22;&#x3E;
+         Well, let me tell you something, funny boy. Y&#x27;know that little stamp, the one
+         that says &#x22;New York Public Library&#x22;? Well that may not mean anything to you,
+         but that means a lot to me. One whole hell of a lot.
+      &#x3C;/p&#x3E;
+      &#x3C;p class=&#x22;text-base mt-4&#x22;&#x3E;Sure, go ahead, laugh if you want to. I&#x27;ve seen your type before: Flashy, making the scene, flaunting convention. Yeah, I know what you&#x27;re thinking. What&#x27;s this guy making such a big stink about old library books? Well, let me give you a hint, junior.&#x3C;/p&#x3E;
+                  </code>
+                                                          </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <p class="card-subtitle  mb-6">Style the first line in a block of content using the <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">'first-line'</code> modifier, and the
+                          first letter using the <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">'first-letter'</code> modifier:</p>
+                        <p class="first-line:uppercase first-line:tracking-widest
+                          first-letter:text-7xl first-letter:font-bold first-letter:text-slate-900 dark:first-letter:text-white
+                          first-letter:mr-3 first-letter:float-left text-base
+                        ">
+                          Well, let me tell you something, funny boy. Y'know that little stamp, the one
+                          that says "New York Public Library"? Well that may not mean anything to you,
+                          but that means a lot to me. One whole hell of a lot.
+                        </p>
+                        <p class="text-base mt-4">Sure, go ahead, laugh if you want to. I've seen your type before:
+                          Flashy, making the scene, flaunting convention. Yeah, I know what you're thinking. What's this
+                          guy making such a big stink about old library books? Well, let me give you a hint, junior.</p>
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class=" lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-0">
+                          <h5 class="card-title">Open/closed state</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal13">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal13"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Open/closed
+                                        state -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal13">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+       <code class="language-html">  
+      &#x3C;div class=&#x22;max-w-lg mx-auto p-8&#x22;&#x3E;
+         &#x3C;details class=&#x22;open:bg-white dark:open:bg-transparent open:ring-1 open:ring-black/5 dark:open:ring-white/10 open:shadow-lg p-6 rounded-md&#x22; open&#x3E;
+            &#x3C;summary class=&#x22;text-sm leading-6 text-slate-900 dark:text-white font-semibold select-none&#x22;&#x3E;
+               Why do they call it Ovaltine?
+            &#x3C;/summary&#x3E;
+            &#x3C;div class=&#x22;mt-3 text-sm leading-6 text-slate-600 dark:text-slate-400&#x22;&#x3E;
+               &#x3C;p&#x3E;The mug is round. The jar is round. They should call it Roundtine.&#x3C;/p&#x3E;
+            &#x3C;/div&#x3E;
+         &#x3C;/details&#x3E;
+      &#x3C;/div&#x3E;
+                  </code>
+                                                          </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <p class="card-subtitle  mb-6">Use the open modifier to conditionally add styles when a <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning"> '&#60;details&#62;'</code> or <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning"> '&#60;dialog&#62;'</code> element is
+                          in an open state:</p>
+                        <div class="max-w-lg mx-auto p-8">
+                          <details
+                            class="open:bg-white dark:open:bg-transparent open:ring-1 open:ring-black/5 dark:open:ring-white/10 open:shadow-none p-6 rounded-md shadow-none"
+                            open>
+                            <summary class="text-sm leading-6 text-slate-900 dark:text-white font-semibold select-none">
+                              Why do they call it Ovaltine?
+                            </summary>
+                            <div class="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-400">
+                              <p>The mug is round. The jar is round. They should call it Roundtine.</p>
+                            </div>
+                          </details>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+        <!-- Main Content End -->
+
+      </div>
+    </div>
+    <!--end of project-->
+  </main>
+  @@include("partials/header-components/mobile-menu.html")
+  @@include("partials/customizer.html")
+  @@include("partials/scripts.html")
+  <script src="@@webRoot/node_modules/prismjs/prism.js"></script>
+</body>
+
+</html>

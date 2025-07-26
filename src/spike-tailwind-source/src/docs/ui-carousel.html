@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-color-theme="Blue_Theme" class="light selected" data-layout="vertical"
+    data-boxed-layout="boxed" data-card="shadow">
+
+<head>
+    @@include("partials/head.html")
+    <title>Spike TailwindCSS HTML Admin Template</title>
+    <link rel="stylesheet" href="@@webRoot/node_modules/prismjs/themes/prism-okaidia.min.css">
+</head>
+
+<body class="DEFAULT_THEME bg-lightprimary dark:bg-darkbody">
+    <main>
+        <!--start the project-->
+        <div id="main-wrapper" class="flex p-5">
+
+            <aside id="application-sidebar-brand"
+                class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full xl:rtl:-translate-x-0 rtl:translate-x-full  left-0 rtl:left-auto xl:rtl:right-5 rtl:right-0 transform hidden xl:block xl:translate-x-0 xl:end-auto xl:bottom-0 fixed top-0 with-vertical  docs-left-sidebar transition-all duration-300 h-screen z-[2] flex-shrink-0  w-[270px] border-border dark:border-darkborder bg-white dark:bg-dark xl:top-5 xl:start-5 shadow-md xl:rounded-md">
+                @@include("partials/sidebar.html",{ "page": "ui-carousel","page_group": "ui" })
+            </aside>
+            <div class="page-wrapper w-full" role="main">
+
+                <!-- Main Content -->
+                <main class="h-full ">
+                    <div class="container full-container py-5 xl:ps-6 ps-0 pt-0 pe-0">
+
+                        <!--  Header Start -->
+                        <header
+                            class="sticky top-0 inset-x-0 z-[1] flex flex-wrap md:justify-start md:flex-nowrap text-sm py-0 mb-6 bg-white dark:bg-dark rounded-md shadow-md">
+                            <div class="with-vertical w-full">@@include("partials/header.html")</div>
+                        </header>
+                        <!--  Header End -->
+
+                        <!-- ============================================================== -->
+                        <!-- Start Page Content -->
+                        <!-- ============================================================== -->
+                        <div class="max-w-full">
+                            <div class="d-sm-flex align-items-center justify-content-between">
+                                <h4 class="mb-8 text-lg  ">Carousel</h4>
+                            </div>
+
+                            <div class="grid grid-cols-12 gap-6">
+                                <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                                  <div class="card">
+                                    <div class="card-body">
+                                      <div class="flex justify-between items-center mb-0">
+                                        <h5 class="card-title mb-0">Slides only</h5>
+                                        <button
+                                          class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                                          data-hs-overlay="#hs-focus-management-modal1">
+                                          <i class="ti ti-code text-xl"></i>
+                                        </button>
+                                        <div id="hs-focus-management-modal1"
+                                          class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                                          <div
+                                            class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                                            <div
+                                              class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                              <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+              
+                                                <div class="overflow-hidden">
+                                                  <div class="flex justify-between">
+                                                    <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Slides only
+                                                      -
+                                                      View Code</h5>
+                                                    <button type="button"
+                                                      class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                                      data-hs-overlay="#hs-focus-management-modal1">
+                                                      <span class="sr-only">Close</span>
+                                                      <i class="ti ti-x text-xl"></i>
+                                                    </button>
+                                                  </div>
+              
+                                                  <div class="message-body max-h-[300px] " data-simplebar="">
+                                                    <pre class="mt-0">
+                     <code class="language-html">  
+                &#x3C;!-- Slider --&#x3E;
+                &#x3C;div data-hs-carousel=&#x27;{
+                   &#x22;loadingClasses&#x22;: &#x22;opacity-0&#x22;,
+                   &#x22;isAutoPlay&#x22;: true
+                   }&#x27; class=&#x22;relative&#x22;&#x3E;
+                   &#x3C;div class=&#x22;hs-carousel relative overflow-hidden w-full min-h-[350px] bg-white rounded-md&#x22;&#x3E;
+                      &#x3C;div class=&#x22;hs-carousel-body absolute top-0 bottom-0 start-0 flex flex-nowrap transition-transform duration-700 opacity-0&#x22;&#x3E;
+                         &#x3C;div class=&#x22;hs-carousel-slide&#x22;&#x3E;
+                            &#x3C;div class=&#x22;flex justify-center h-full bg-gray-100&#x22;&#x3E;
+                               &#x3C;img src=&#x22;../assets/images/blog/blog-img1.jpg&#x22; alt=&#x22;&#x22; class=&#x22;w-full max-w-full&#x22;&#x3E;
+                            &#x3C;/div&#x3E;
+                         &#x3C;/div&#x3E;
+                         &#x3C;div class=&#x22;hs-carousel-slide&#x22;&#x3E;
+                            &#x3C;div class=&#x22;flex justify-center h-full bg-gray-200&#x22;&#x3E;
+                               &#x3C;img src=&#x22;../assets/images/blog/blog-img2.jpg&#x22; alt=&#x22;&#x22; class=&#x22;w-full max-w-full&#x22;&#x3E;
+                            &#x3C;/div&#x3E;
+                         &#x3C;/div&#x3E;
+                         &#x3C;div class=&#x22;hs-carousel-slide&#x22;&#x3E;
+                            &#x3C;div class=&#x22;flex justify-center h-full bg-gray-300&#x22;&#x3E;
+                               &#x3C;img src=&#x22;../assets/images/blog/blog-img3.jpg&#x22; alt=&#x22;&#x22; class=&#x22;w-full max-w-full&#x22;&#x3E;
+                            &#x3C;/div&#x3E;
+                         &#x3C;/div&#x3E;
+                      &#x3C;/div&#x3E;
+                   &#x3C;/div&#x3E;
+                &#x3C;/div&#x3E;
+                &#x3C;!-- End Slider --&#x3E;
+                                </code>
+                                                                        </pre>
+                                                  </div>
+                                                </div>
+              
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <!-- end -->
+                                      </div>
+                                      <p class="card-subtitle  mb-6">Carousel with only slides. </p>
+                                      <!-- Slider -->
+                                      <div data-hs-carousel='{
+                                            "loadingClasses": "opacity-0",
+                                            "isAutoPlay": true
+                                        }' class="relative">
+                                        <div class="hs-carousel relative overflow-hidden w-full min-h-[350px] bg-white rounded-md">
+                                          <div
+                                            class="hs-carousel-body absolute top-0 bottom-0 start-0 flex flex-nowrap transition-transform duration-700 opacity-0">
+                                            <div class="hs-carousel-slide">
+                                              <div class="flex justify-center h-full bg-gray-100">
+                                                <img src="@@webRoot/assets/images/blog/blog-img1.jpg" alt="" class="w-full max-w-full">
+                                              </div>
+                                            </div>
+                                            <div class="hs-carousel-slide">
+                                              <div class="flex justify-center h-full bg-gray-200">
+                                                <img src="@@webRoot/assets/images/blog/blog-img2.jpg" alt="" class="w-full max-w-full">
+                                              </div>
+                                            </div>
+                                            <div class="hs-carousel-slide">
+                                              <div class="flex justify-center h-full bg-gray-300">
+                                                <img src="@@webRoot/assets/images/blog/blog-img3.jpg" alt="" class="w-full max-w-full">
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <!-- End Slider -->
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                                  <div class="card">
+                                    <div class="card-body">
+                                      <div class="flex justify-between items-center mb-0">
+                                        <h5 class="card-title mb-0">Carousel With Controls</h5>
+                                        <button
+                                          class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                                          data-hs-overlay="#hs-focus-management-modal2">
+                                          <i class="ti ti-code text-xl"></i>
+                                        </button>
+                                        <div id="hs-focus-management-modal2"
+                                          class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                                          <div
+                                            class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                                            <div
+                                              class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                              <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+              
+                                                <div class="overflow-hidden">
+                                                  <div class="flex justify-between">
+                                                    <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Carousel
+                                                      With Controls -
+                                                      View Code</h5>
+                                                    <button type="button"
+                                                      class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                                      data-hs-overlay="#hs-focus-management-modal2">
+                                                      <span class="sr-only">Close</span>
+                                                      <i class="ti ti-x text-xl"></i>
+                                                    </button>
+                                                  </div>
+              
+                                                  <div class="message-body max-h-[300px] " data-simplebar="">
+                                                    <pre class="mt-0">
+                     <code class="language-html">  
+                &#x3C;!-- Slider --&#x3E;
+                &#x3C;div data-hs-carousel=&#x27;{
+                   &#x22;loadingClasses&#x22;: &#x22;opacity-0&#x22;,
+                   &#x22;isAutoPlay&#x22;: true
+                   }&#x27; class=&#x22;relative&#x22;&#x3E;
+                   &#x3C;div class=&#x22;hs-carousel relative overflow-hidden w-full min-h-[350px] bg-white rounded-md&#x22;&#x3E;
+                      &#x3C;div class=&#x22;hs-carousel-body absolute top-0 bottom-0 start-0 flex flex-nowrap transition-transform duration-700 opacity-0&#x22;&#x3E;
+                         &#x3C;div class=&#x22;hs-carousel-slide&#x22;&#x3E;
+                            &#x3C;div class=&#x22;flex justify-center h-full bg-gray-100&#x22;&#x3E;
+                               &#x3C;img src=&#x22;@@webRoot/assets/images/blog/blog-img4.jpg&#x22; alt=&#x22;&#x22; class=&#x22;w-full max-w-full&#x22;&#x3E;
+                            &#x3C;/div&#x3E;
+                         &#x3C;/div&#x3E;
+                         &#x3C;div class=&#x22;hs-carousel-slide&#x22;&#x3E;
+                            &#x3C;div class=&#x22;flex justify-center h-full bg-gray-200&#x22;&#x3E;
+                               &#x3C;img src=&#x22;@@webRoot/assets/images/blog/blog-img5.jpg&#x22; alt=&#x22;&#x22; class=&#x22;w-full max-w-full&#x22;&#x3E;
+                            &#x3C;/div&#x3E;
+                         &#x3C;/div&#x3E;
+                         &#x3C;div class=&#x22;hs-carousel-slide&#x22;&#x3E;
+                            &#x3C;div class=&#x22;flex justify-center h-full bg-gray-300&#x22;&#x3E;
+                               &#x3C;img src=&#x22;@@webRoot/assets/images/blog/blog-img6.jpg&#x22; alt=&#x22;&#x22; class=&#x22;w-full max-w-full&#x22;&#x3E;
+                            &#x3C;/div&#x3E;
+                         &#x3C;/div&#x3E;
+                      &#x3C;/div&#x3E;
+                   &#x3C;/div&#x3E;
+                   &#x3C;button type=&#x22;button&#x22; class=&#x22;hs-carousel-prev hs-carousel:disabled:opacity-50 disabled:pointer-events-none absolute inset-y-0 start-0 inline-flex justify-center items-center w-[46px] h-full text-gray-800 hover:bg-gray-800/[.1]&#x22;&#x3E;
+                   &#x3C;span class=&#x22;text-2xl&#x22; aria-hidden=&#x22;true&#x22;&#x3E;
+                   &#x3C;i class=&#x22;ti ti-chevron-left text-2xl leading-tight font-medium text-gray-800&#x22;&#x3E;&#x3C;/i&#x3E;
+                   &#x3C;/span&#x3E;
+                   &#x3C;span class=&#x22;sr-only&#x22;&#x3E;Previous&#x3C;/span&#x3E;
+                   &#x3C;/button&#x3E;
+                   &#x3C;button type=&#x22;button&#x22; class=&#x22;hs-carousel-next hs-carousel:disabled:opacity-50 disabled:pointer-events-none absolute inset-y-0 end-0 inline-flex justify-center items-center w-[46px] h-full text-gray-800 hover:bg-gray-800/[.1]&#x22;&#x3E;
+                   &#x3C;span class=&#x22;sr-only&#x22;&#x3E;Next&#x3C;/span&#x3E;
+                   &#x3C;span class=&#x22;text-2xl&#x22; aria-hidden=&#x22;true&#x22;&#x3E;
+                   &#x3C;i class=&#x22;ti ti-chevron-right text-2xl leading-tight font-medium text-gray-800&#x22;&#x3E;&#x3C;/i&#x3E;
+                   &#x3C;/span&#x3E;
+                   &#x3C;/button&#x3E;
+                &#x3C;/div&#x3E;
+                &#x3C;!-- End Slider --&#x3E;
+                                </code>
+                                                                        </pre>
+                                                  </div>
+                                                </div>
+              
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <!-- end -->
+                                      </div>
+                                      <p class="card-subtitle  mb-6">Use with indicators.</p>
+                                      <!-- Slider -->
+                                      <div data-hs-carousel='{
+                                            "loadingClasses": "opacity-0",
+                                            "isAutoPlay": true
+                                        }' class="relative">
+                                        <div class="hs-carousel relative overflow-hidden w-full min-h-[350px] bg-white rounded-md">
+                                          <div
+                                            class="hs-carousel-body absolute top-0 bottom-0 start-0 flex flex-nowrap transition-transform duration-700 opacity-0">
+                                            <div class="hs-carousel-slide">
+                                              <div class="flex justify-center h-full bg-gray-100">
+                                                <img src="@@webRoot/assets/images/blog/blog-img4.jpg" alt="" class="w-full max-w-full">
+                                              </div>
+                                            </div>
+                                            <div class="hs-carousel-slide">
+                                              <div class="flex justify-center h-full bg-gray-200">
+                                                <img src="@@webRoot/assets/images/blog/blog-img5.jpg" alt="" class="w-full max-w-full">
+                                              </div>
+                                            </div>
+                                            <div class="hs-carousel-slide">
+                                              <div class="flex justify-center h-full bg-gray-300">
+                                                <img src="@@webRoot/assets/images/blog/blog-img6.jpg" alt="" class="w-full max-w-full">
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <button type="button"
+                                          class="hs-carousel-prev hs-carousel:disabled:opacity-50 disabled:pointer-events-none absolute inset-y-0 start-0 inline-flex justify-center items-center w-[46px] h-full text-gray-800 hover:bg-gray-800/[.1]">
+                                          <span class="text-2xl" aria-hidden="true">
+                                            <i class="ti ti-chevron-left text-2xl leading-tight font-medium text-gray-800"></i>
+                                          </span>
+                                          <span class="sr-only">Previous</span>
+                                        </button>
+                                        <button type="button"
+                                          class="hs-carousel-next hs-carousel:disabled:opacity-50 disabled:pointer-events-none absolute inset-y-0 end-0 inline-flex justify-center items-center w-[46px] h-full text-gray-800 hover:bg-gray-800/[.1]">
+                                          <span class="sr-only">Next</span>
+                                          <span class="text-2xl" aria-hidden="true">
+                                            <i class="ti ti-chevron-right text-2xl leading-tight font-medium text-gray-800"></i>
+                                          </span>
+                                        </button>
+                                      </div>
+                                      <!-- End Slider -->
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                                  <div class="card">
+                                    <div class="card-body">
+                                      <div class="flex justify-between items-center mb-0">
+                                        <h5 class="card-title mb-0">Pagination</h5>
+                                        <button
+                                          class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                                          data-hs-overlay="#hs-focus-management-modal3">
+                                          <i class="ti ti-code text-xl"></i>
+                                        </button>
+                                        <div id="hs-focus-management-modal3"
+                                          class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                                          <div
+                                            class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                                            <div
+                                              class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                              <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+              
+                                                <div class="overflow-hidden">
+                                                  <div class="flex justify-between">
+                                                    <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Pagination -
+                                                      View Code</h5>
+                                                    <button type="button"
+                                                      class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                                      data-hs-overlay="#hs-focus-management-modal3">
+                                                      <span class="sr-only">Close</span>
+                                                      <i class="ti ti-x text-xl"></i>
+                                                    </button>
+                                                  </div>
+              
+                                                  <div class="message-body max-h-[300px] " data-simplebar="">
+                                                    <pre class="mt-0">
+                     <code class="language-html">  
+                &#x3C;!-- Slider --&#x3E;
+                &#x3C;div data-hs-carousel=&#x27;{
+                   &#x22;loadingClasses&#x22;: &#x22;opacity-0&#x22;
+                   }&#x27; class=&#x22;relative&#x22;&#x3E;
+                   &#x3C;div class=&#x22;hs-carousel relative overflow-hidden w-full min-h-[350px] bg-white rounded-md&#x22;&#x3E;
+                      &#x3C;div class=&#x22;hs-carousel-body absolute top-0 bottom-0 start-0 flex flex-nowrap transition-transform duration-700 opacity-0&#x22;&#x3E;
+                         &#x3C;div class=&#x22;hs-carousel-slide&#x22;&#x3E;
+                            &#x3C;div class=&#x22;flex justify-center h-full &#x22;&#x3E;
+                               &#x3C;img src=&#x22;@@webRoot/assets/images/blog/blog-img10.jpg&#x22; alt=&#x22;&#x22; class=&#x22;w-full max-w-full&#x22;&#x3E;
+                            &#x3C;/div&#x3E;
+                         &#x3C;/div&#x3E;
+                         &#x3C;div class=&#x22;hs-carousel-slide&#x22;&#x3E;
+                            &#x3C;div class=&#x22;flex justify-center h-full&#x22;&#x3E;
+                               &#x3C;img src=&#x22;@@webRoot/assets/images/blog/blog-img8.jpg&#x22; alt=&#x22;&#x22; class=&#x22;w-full max-w-full&#x22;&#x3E;
+                            &#x3C;/div&#x3E;
+                         &#x3C;/div&#x3E;
+                         &#x3C;div class=&#x22;hs-carousel-slide&#x22;&#x3E;
+                            &#x3C;div class=&#x22;flex justify-center h-full&#x22;&#x3E;
+                               &#x3C;img src=&#x22;@@webRoot/assets/images/blog/blog-img9.jpg&#x22; alt=&#x22;&#x22; class=&#x22;w-full max-w-full&#x22;&#x3E;
+                            &#x3C;/div&#x3E;
+                         &#x3C;/div&#x3E;
+                      &#x3C;/div&#x3E;
+                   &#x3C;/div&#x3E;
+                   &#x3C;div class=&#x22;hs-carousel-pagination flex justify-center absolute bottom-3 start-0 end-0 space-x-2&#x22;&#x3E;
+                      &#x3C;span class=&#x22;hs-carousel-active:bg-primaryemphasis hs-carousel-active:border-primarybg-primaryemphasis size-3 border border-gray-400 rounded-full cursor-pointer&#x22;&#x3E;&#x3C;/span&#x3E;
+                      &#x3C;span class=&#x22;hs-carousel-active:bg-primaryemphasis hs-carousel-active:border-primarybg-primaryemphasis size-3 border border-gray-400 rounded-full cursor-pointer&#x22;&#x3E;&#x3C;/span&#x3E;
+                      &#x3C;span class=&#x22;hs-carousel-active:bg-primaryemphasis hs-carousel-active:border-primarybg-primaryemphasis size-3 border border-gray-400 rounded-full cursor-pointer&#x22;&#x3E;&#x3C;/span&#x3E;
+                   &#x3C;/div&#x3E;
+                &#x3C;/div&#x3E;
+                &#x3C;!-- End Slider --&#x3E;
+                                </code>
+                                                                        </pre>
+                                                  </div>
+                                                </div>
+              
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <!-- end -->
+                                      </div>
+                                      <p class="card-subtitle  mb-6">Use with pagination.</p>
+                                      <!-- Slider -->
+                                      <div data-hs-carousel='{
+                                            "loadingClasses": "opacity-0"
+                                        }' class="relative">
+                                        <div class="hs-carousel relative overflow-hidden w-full min-h-[350px] bg-white rounded-md">
+                                          <div
+                                            class="hs-carousel-body absolute top-0 bottom-0 start-0 flex flex-nowrap transition-transform duration-700 opacity-0">
+                                            <div class="hs-carousel-slide">
+                                              <div class="flex justify-center h-full ">
+                                                <img src="@@webRoot/assets/images/blog/blog-img10.jpg" alt="" class="w-full max-w-full">
+                                              </div>
+                                            </div>
+                                            <div class="hs-carousel-slide">
+                                              <div class="flex justify-center h-full">
+                                                <img src="@@webRoot/assets/images/blog/blog-img8.jpg" alt="" class="w-full max-w-full">
+                                              </div>
+                                            </div>
+                                            <div class="hs-carousel-slide">
+                                              <div class="flex justify-center h-full">
+                                                <img src="@@webRoot/assets/images/blog/blog-img9.jpg" alt="" class="w-full max-w-full">
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+              
+                                        <div
+                                          class="hs-carousel-pagination flex justify-center absolute bottom-3 start-0 end-0 space-x-2">
+                                          <span
+                                            class="hs-carousel-active:bg-primaryemphasis hs-carousel-active:border-primarybg-primaryemphasis size-3 border border-gray-400 rounded-full cursor-pointer"></span>
+                                          <span
+                                            class="hs-carousel-active:bg-primaryemphasis hs-carousel-active:border-primarybg-primaryemphasis size-3 border border-gray-400 rounded-full cursor-pointer"></span>
+                                          <span
+                                            class="hs-carousel-active:bg-primaryemphasis hs-carousel-active:border-primarybg-primaryemphasis size-3 border border-gray-400 rounded-full cursor-pointer"></span>
+                                        </div>
+                                      </div>
+                                      <!-- End Slider -->
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                                  <div class="card">
+                                    <div class="card-body">
+                                      <div class="flex justify-between items-center mb-0">
+                                        <h5 class="card-title mb-0">Autoplay</h5>
+                                        <button
+                                          class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                                          data-hs-overlay="#hs-focus-management-modal5">
+                                          <i class="ti ti-code text-xl"></i>
+                                        </button>
+                                        <div id="hs-focus-management-modal5"
+                                          class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                                          <div
+                                            class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                                            <div
+                                              class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                              <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+              
+                                                <div class="overflow-hidden">
+                                                  <div class="flex justify-between">
+                                                    <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Autoplay -
+                                                      View Code</h5>
+                                                    <button type="button"
+                                                      class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                                      data-hs-overlay="#hs-focus-management-modal5">
+                                                      <span class="sr-only">Close</span>
+                                                      <i class="ti ti-x text-xl"></i>
+                                                    </button>
+                                                  </div>
+              
+                                                  <div class="message-body max-h-[300px] " data-simplebar="">
+                                                    <pre class="mt-0">
+                     <code class="language-html">  
+                &#x3C;!-- Slider --&#x3E;
+                &#x3C;div data-hs-carousel=&#x27;{
+                   &#x22;loadingClasses&#x22;: &#x22;opacity-0&#x22;,
+                   &#x22;isAutoPlay&#x22;: true
+                   }&#x27; class=&#x22;relative&#x22;&#x3E;
+                   &#x3C;div class=&#x22;hs-carousel relative overflow-hidden w-full min-h-[350px] bg-white rounded-md&#x22;&#x3E;
+                      &#x3C;div class=&#x22;hs-carousel-body absolute top-0 bottom-0 start-0 flex flex-nowrap transition-transform duration-700 opacity-0&#x22;&#x3E;
+                         &#x3C;div class=&#x22;hs-carousel-slide&#x22;&#x3E;
+                            &#x3C;div class=&#x22;flex justify-center h-full &#x22;&#x3E;
+                               &#x3C;img src=&#x22;@@webRoot/assets/images/blog/blog-img1.jpg&#x22; alt=&#x22;&#x22; class=&#x22;w-full max-w-full&#x22;&#x3E;
+                            &#x3C;/div&#x3E;
+                         &#x3C;/div&#x3E;
+                         &#x3C;div class=&#x22;hs-carousel-slide&#x22;&#x3E;
+                            &#x3C;div class=&#x22;flex justify-center h-full&#x22;&#x3E;
+                               &#x3C;img src=&#x22;@@webRoot/assets/images/blog/blog-img2.jpg&#x22; alt=&#x22;&#x22; class=&#x22;w-full max-w-full&#x22;&#x3E;
+                            &#x3C;/div&#x3E;
+                         &#x3C;/div&#x3E;
+                         &#x3C;div class=&#x22;hs-carousel-slide&#x22;&#x3E;
+                            &#x3C;div class=&#x22;flex justify-center h-full&#x22;&#x3E;
+                               &#x3C;img src=&#x22;@@webRoot/assets/images/blog/blog-img3.jpg&#x22; alt=&#x22;&#x22; class=&#x22;w-full max-w-full&#x22;&#x3E;
+                            &#x3C;/div&#x3E;
+                         &#x3C;/div&#x3E;
+                      &#x3C;/div&#x3E;
+                   &#x3C;/div&#x3E;
+                   &#x3C;button type=&#x22;button&#x22; class=&#x22;hs-carousel-prev hs-carousel:disabled:opacity-50 disabled:pointer-events-none absolute inset-y-0 start-0 inline-flex justify-center items-center w-[46px] h-full text-gray-800 hover:bg-gray-800/[.1]&#x22;&#x3E;
+                   &#x3C;span class=&#x22;text-2xl&#x22; aria-hidden=&#x22;true&#x22;&#x3E;
+                   &#x3C;i class=&#x22;ti ti-chevron-left text-2xl leading-tight font-medium text-gray-800&#x22;&#x3E;&#x3C;/i&#x3E;
+                   &#x3C;/span&#x3E;
+                   &#x3C;span class=&#x22;sr-only&#x22;&#x3E;Previous&#x3C;/span&#x3E;
+                   &#x3C;/button&#x3E;
+                   &#x3C;button type=&#x22;button&#x22; class=&#x22;hs-carousel-next hs-carousel:disabled:opacity-50 disabled:pointer-events-none absolute inset-y-0 end-0 inline-flex justify-center items-center w-[46px] h-full text-gray-800 hover:bg-gray-800/[.1]&#x22;&#x3E;
+                   &#x3C;span class=&#x22;sr-only&#x22;&#x3E;Next&#x3C;/span&#x3E;
+                   &#x3C;span class=&#x22;text-2xl&#x22; aria-hidden=&#x22;true&#x22;&#x3E;
+                   &#x3C;i class=&#x22;ti ti-chevron-right text-2xl leading-tight font-medium text-gray-800&#x22;&#x3E;&#x3C;/i&#x3E;
+                   &#x3C;/span&#x3E;
+                   &#x3C;/button&#x3E;
+                   &#x3C;div class=&#x22;hs-carousel-pagination flex justify-center absolute bottom-3 start-0 end-0 space-x-2&#x22;&#x3E;
+                      &#x3C;span class=&#x22;hs-carousel-active:bg-primaryemphasis hs-carousel-active:border-primarybg-primaryemphasis size-3 border border-gray-400 rounded-full cursor-pointer&#x22;&#x3E;&#x3C;/span&#x3E;
+                      &#x3C;span class=&#x22;hs-carousel-active:bg-primaryemphasis hs-carousel-active:border-primarybg-primaryemphasis size-3 border border-gray-400 rounded-full cursor-pointer&#x22;&#x3E;&#x3C;/span&#x3E;
+                      &#x3C;span class=&#x22;hs-carousel-active:bg-primaryemphasis hs-carousel-active:border-primarybg-primaryemphasis size-3 border border-gray-400 rounded-full cursor-pointer&#x22;&#x3E;&#x3C;/span&#x3E;
+                   &#x3C;/div&#x3E;
+                &#x3C;/div&#x3E;
+                &#x3C;!-- End Slider --&#x3E;
+                                </code>
+                                                                        </pre>
+                                                  </div>
+                                                </div>
+              
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <!-- end -->
+                                      </div>
+                                      <p class="card-subtitle  mb-6">Use <code
+                                          class="text-error bg-lightwarning dark:bg-darkwarning">'"isAutoPlay": true'</code> to enable
+                                        the autoplay feature.</p>
+                                      <!-- Slider -->
+                                      <div data-hs-carousel='{
+                                            "loadingClasses": "opacity-0",
+                                            "isAutoPlay": true
+                                        }' class="relative">
+                                        <div class="hs-carousel relative overflow-hidden w-full min-h-[350px] bg-white rounded-md">
+                                          <div
+                                            class="hs-carousel-body absolute top-0 bottom-0 start-0 flex flex-nowrap transition-transform duration-700 opacity-0">
+                                            <div class="hs-carousel-slide">
+                                              <div class="flex justify-center h-full ">
+                                                <img src="@@webRoot/assets/images/blog/blog-img1.jpg" alt="" class="w-full max-w-full">
+                                              </div>
+                                            </div>
+                                            <div class="hs-carousel-slide">
+                                              <div class="flex justify-center h-full">
+                                                <img src="@@webRoot/assets/images/blog/blog-img2.jpg" alt="" class="w-full max-w-full">
+                                              </div>
+                                            </div>
+                                            <div class="hs-carousel-slide">
+                                              <div class="flex justify-center h-full">
+                                                <img src="@@webRoot/assets/images/blog/blog-img3.jpg" alt="" class="w-full max-w-full">
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+              
+                                        <button type="button"
+                                          class="hs-carousel-prev hs-carousel:disabled:opacity-50 disabled:pointer-events-none absolute inset-y-0 start-0 inline-flex justify-center items-center w-[46px] h-full text-gray-800 hover:bg-gray-800/[.1]">
+                                          <span class="text-2xl" aria-hidden="true">
+                                            <i class="ti ti-chevron-left text-2xl leading-tight font-medium text-gray-800"></i>
+                                          </span>
+                                          <span class="sr-only">Previous</span>
+                                        </button>
+                                        <button type="button"
+                                          class="hs-carousel-next hs-carousel:disabled:opacity-50 disabled:pointer-events-none absolute inset-y-0 end-0 inline-flex justify-center items-center w-[46px] h-full text-gray-800 hover:bg-gray-800/[.1]">
+                                          <span class="sr-only">Next</span>
+                                          <span class="text-2xl" aria-hidden="true">
+                                            <i class="ti ti-chevron-right text-2xl leading-tight font-medium text-gray-800"></i>
+                                          </span>
+                                        </button>
+              
+                                        <div
+                                          class="hs-carousel-pagination flex justify-center absolute bottom-3 start-0 end-0 space-x-2">
+                                          <span
+                                            class="hs-carousel-active:bg-primaryemphasis hs-carousel-active:border-primarybg-primaryemphasis size-3 border border-gray-400 rounded-full cursor-pointer"></span>
+                                          <span
+                                            class="hs-carousel-active:bg-primaryemphasis hs-carousel-active:border-primarybg-primaryemphasis size-3 border border-gray-400 rounded-full cursor-pointer"></span>
+                                          <span
+                                            class="hs-carousel-active:bg-primaryemphasis hs-carousel-active:border-primarybg-primaryemphasis size-3 border border-gray-400 rounded-full cursor-pointer"></span>
+                                        </div>
+                                      </div>
+                                      <!-- End Slider -->
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                        </div>
+                        <!-------------->
+
+                    </div>
+                </main>
+                <!-- Main Content End -->
+
+            </div>
+        </div>
+        <!--end of project-->
+    </main>
+    @@include("partials/scripts.html")
+    <script src="@@webRoot/node_modules/prismjs/prism.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,2734 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-color-theme="Blue_Theme" class="light selected" data-layout="vertical"
+    data-boxed-layout="boxed" data-card="shadow">
+
+<head>
+    @@include("partials/head.html")
+    <title>Spike TailwindCSS HTML Admin Template</title>
+</head>
+
+<body class="DEFAULT_THEME bg-lightprimary dark:bg-darkbody">
+    <main>
+        <!--start the project-->
+        <div id="main-wrapper" class="flex p-5">
+
+            <aside id="application-sidebar-brand"
+                class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full xl:rtl:-translate-x-0 rtl:translate-x-full  left-0 rtl:left-auto xl:rtl:right-5 rtl:right-0 transform hidden xl:block xl:translate-x-0 xl:end-auto xl:bottom-0 fixed top-0 with-vertical  left-sidebar transition-all duration-300 h-screen z-[2] flex-shrink-0  w-[270px] border-border dark:border-darkborder bg-white dark:bg-dark xl:top-5 xl:start-5 shadow-md xl:rounded-md">
+                @@include("partials/sidebar.html",{ "page": "custom-cards","page_group": "cards" })
+            </aside>
+            <div class="page-wrapper w-full" role="main">
+
+                <!-- Main Content -->
+                <main class="h-full ">
+                    <div class="container full-container py-5 xl:ps-6 ps-0 pt-0 pe-0 remove-ps">
+
+                        <!--  Header Start -->
+                        <header
+                            class="sticky top-0 inset-x-0 z-[1] flex flex-wrap md:justify-start md:flex-nowrap text-fs_15 py-3 lg:py-0 mb-6 bg-white dark:bg-dark rounded-md shadow-md">
+                            <div class="with-vertical w-full">@@include("partials/header.html")</div>
+                            <div class="with-horizontal w-full">
+                                <div class="bg-white dark:bg-dark">
+                                    <div class="container">
+                                        @@include("partials/horizontal-header.html")
+                                    </div>
+                                </div>
+                            </div>
+                        </header>
+                        <!--  Header End -->
+
+                        <!-- Horizontal Sidebar Menu -->
+                        <aside
+                            class="with-horizontal lg:flex hidden left-sidebar bg-white dark:bg-dark border-t border-border dark:border-darkborder">
+                            @@include("partials/horizontal-sidebar.html", { "page": "custom-cards","page_group":
+                            "cards"})
+                        </aside>
+                        <!-- Horizontal Sidebar Menu End -->
+
+                        <!-- Main Content -->
+                        <div class="max-w-full">
+                            <div class="container full-container ">
+                                <!----Breadcrumb Start---->
+                                @@include("partials/breadcrumb.html", {"title": "UI Card", "subtitle": 'Home'})
+                                <!----Breadcrumb End---->
+                            <!----Card With Image---->
+                            <!----Custom Card With Image---->
+                            <div class="grid grid-cols-12 gap-6 mt-6">
+                                <div
+                                    class="lg:col-span-2 md:col-span-4 col-span-6">
+                                    <div id="dismiss-alert1"
+                                        class="card hs-removing:translate-x-5 hs-removing:opacity-0 transition duration-300 "
+                                        role="alert">
+                                        <div class="card-body text-center">
+                                            <button type="button"
+                                                class="absolute right-5 top-2"
+                                                data-hs-remove-element="#dismiss-alert1">
+                                                <i
+                                                    class="ti ti-x text-xl text-bodytext dark:text-darklink"></i>
+                                            </button>
+                                            <img
+                                                src="@@webRoot/assets/images/profile/user-5.jpg"
+                                                width="75"
+                                                class="rounded-full mx-auto my-3" />
+                                            <h5
+                                                class="font-medium text-lg mb-1">John
+                                                Deo</h5>
+                                            <div
+                                                class="bg-lightsuccess dark:bg-darksuccess text-success px-3 text-sm py-1 w-fit rounded-full mx-auto">active
+                                            </div>
+                                            <button
+                                                class="btn bg-lightsuccess dark:bg-darksuccess text-success w-full px-4 hover:bg-success hover:text-white  dark:hover:bg-success dark:hover:text-white  mx-auto mt-4">Message</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-2 md:col-span-4 col-span-6">
+                                    <div id="dismiss-alert2"
+                                        class="card hs-removing:translate-x-5 hs-removing:opacity-0 transition duration-300 "
+                                        role="alert">
+                                        <div class="card-body text-center">
+                                            <button type="button"
+                                                class="absolute right-5 top-2"
+                                                data-hs-remove-element="#dismiss-alert2">
+                                                <i
+                                                    class="ti ti-x text-xl text-bodytext dark:text-darklink"></i>
+                                            </button>
+                                            <img
+                                                src="@@webRoot/assets/images/profile/user-3.jpg"
+                                                width="75"
+                                                class="rounded-full mx-auto my-3" />
+                                            <h5
+                                                class="font-medium text-lg mb-1">John
+                                                Deo</h5>
+                                            <div
+                                                class="bg-lightwarning dark:bg-darkwarning text-warning px-3 text-sm py-1 w-fit rounded-full mx-auto">away
+                                            </div>
+                                            <button
+                                                class="btn bg-lightwarning dark:bg-darkwarning text-warning w-full px-4 hover:bg-warning hover:text-white  dark:hover:bg-warning dark:hover:text-white  mx-auto mt-4">Message</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-2 md:col-span-4 col-span-6">
+                                    <div id="dismiss-alert3"
+                                        class="card hs-removing:translate-x-5 hs-removing:opacity-0 transition duration-300 "
+                                        role="alert">
+                                        <div class="card-body text-center">
+                                            <button type="button"
+                                                class="absolute right-5 top-2"
+                                                data-hs-remove-element="#dismiss-alert3">
+                                                <i
+                                                    class="ti ti-x text-xl text-bodytext dark:text-darklink"></i>
+                                            </button>
+                                            <img
+                                                src="@@webRoot/assets/images/profile/user-1.jpg"
+                                                width="75"
+                                                class="rounded-full mx-auto my-3" />
+                                            <h5
+                                                class="font-medium text-lg mb-1">John
+                                                Deo</h5>
+                                            <div
+                                                class="bg-lightsuccess dark:bg-darksuccess text-success px-3 text-sm py-1 w-fit rounded-full mx-auto">active
+                                            </div>
+                                            <button
+                                                class="btn bg-lightsuccess dark:bg-darksuccess text-success w-full px-4 hover:bg-success hover:text-white  dark:hover:bg-success dark:hover:text-white  mx-auto mt-4">Message</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-2 md:col-span-4 col-span-6">
+                                    <div id="dismiss-alert4"
+                                        class="card hs-removing:translate-x-5 hs-removing:opacity-0 transition duration-300 "
+                                        role="alert">
+                                        <div class="card-body text-center">
+                                            <button type="button"
+                                                class="absolute right-5 top-2"
+                                                data-hs-remove-element="#dismiss-alert4">
+                                                <i
+                                                    class="ti ti-x text-xl text-bodytext dark:text-darklink"></i>
+                                            </button>
+                                            <img
+                                                src="@@webRoot/assets/images/profile/user-5.jpg"
+                                                width="75"
+                                                class="rounded-full mx-auto my-3" />
+                                            <h5
+                                                class="font-medium text-lg mb-1">John
+                                                Deo</h5>
+                                            <div
+                                                class="bg-lightsecondary dark:bg-darksecondary text-secondary px-3 text-sm py-1 w-fit rounded-full mx-auto">offline
+                                            </div>
+                                            <button
+                                                class="btn bg-lightsecondary dark:bg-darksecondary text-secondary w-full px-4 hover:bg-secondary hover:text-white  dark:hover:bg-secondary dark:hover:text-white  mx-auto mt-4">Message</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-2 md:col-span-4 col-span-6">
+                                    <div id="dismiss-alert5"
+                                        class="card hs-removing:translate-x-5 hs-removing:opacity-0 transition duration-300 "
+                                        role="alert">
+                                        <div class="card-body text-center">
+                                            <button type="button"
+                                                class="absolute right-5 top-2"
+                                                data-hs-remove-element="#dismiss-alert5">
+                                                <i
+                                                    class="ti ti-x text-xl text-bodytext dark:text-darklink"></i>
+                                            </button>
+                                            <img
+                                                src="@@webRoot/assets/images/profile/user-3.jpg"
+                                                width="75"
+                                                class="rounded-full mx-auto my-3" />
+                                            <h5
+                                                class="font-medium text-lg mb-1">John
+                                                Deo</h5>
+                                            <div
+                                                class="bg-lightwarning dark:bg-darkwarning text-warning px-3 text-sm py-1 w-fit rounded-full mx-auto">away
+                                            </div>
+                                            <button
+                                                class="btn bg-lightwarning dark:bg-darkwarning text-warning w-full px-4 hover:bg-warning hover:text-white  dark:hover:bg-warning dark:hover:text-white  mx-auto mt-4">Message</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-2 md:col-span-4 col-span-6">
+                                    <div id="dismiss-alert6"
+                                        class="card hs-removing:translate-x-5 hs-removing:opacity-0 transition duration-300 "
+                                        role="alert">
+                                        <div class="card-body text-center">
+                                            <button type="button"
+                                                class="absolute right-5 top-2"
+                                                data-hs-remove-element="#dismiss-alert6">
+                                                <i
+                                                    class="ti ti-x text-xl text-bodytext dark:text-darklink"></i>
+                                            </button>
+                                            <img
+                                                src="@@webRoot/assets/images/profile/user-7.jpg"
+                                                width="75"
+                                                class="rounded-full mx-auto my-3" />
+                                            <h5
+                                                class="font-medium text-lg mb-1">John
+                                                Deo</h5>
+                                            <div
+                                                class="bg-lightsecondary dark:bg-darksecondary text-secondary px-3 text-sm py-1 w-fit rounded-full mx-auto">offline
+                                            </div>
+                                            <button
+                                                class="btn bg-lightsecondary dark:bg-darksecondary text-secondary w-full px-4 hover:bg-secondary hover:text-white  dark:hover:bg-secondary dark:hover:text-white  mx-auto mt-4">Message</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!----------->
+
+                            <!------------->
+                            <div class="grid grid-cols-12 gap-6 mt-6">
+                                <div
+                                    class="lg:col-span-4 md:col-span-6 col-span-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <img
+                                                src="@@webRoot/assets/images/profile/user-1.jpg"
+                                                class="rounded-md mx-auto"
+                                                width="90" />
+                                            <div class="-mt-2 text-center">
+                                                <span
+                                                    class="bg-primary text-white px-3 text-sm py-1 w-fit rounded-sm">Editor</span>
+                                                <h3
+                                                    class="text-lg font-medium mt-3 ">Matt
+                                                    Carlson</h3>
+                                                <h6 class=" font-medium">San
+                                                    Francisco, CA</h6>
+                                            </div>
+                                            <div
+                                                class="grid md:grid-cols-2 grid-cols-2 mt-4 gap-5">
+                                                <div
+                                                    class="bg-lightgray dark:bg-darkprimary rounded-full flex items-center gap-2 px-4 py-2">
+                                                    <i
+                                                        class="ti ti-star text-3xl text-warning"></i>
+                                                    <div>
+                                                        <h6
+                                                            class="font-light">Reviews</h6>
+                                                        <h4
+                                                            class="text-lg font-medium leading-tight">368</h4>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="bg-lightgray dark:bg-darkprimary rounded-full flex items-center gap-2 px-4 py-2">
+                                                    <i
+                                                        class="ti ti-brand-google-photos text-3xl text-primary"></i>
+                                                    <div>
+                                                        <h6
+                                                            class="font-light">Photos</h6>
+                                                        <h4
+                                                            class="text-lg font-medium leading-tight">1200</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-4 md:col-span-6 col-span-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <img
+                                                src="@@webRoot/assets/images/profile/user-2.jpg"
+                                                class="rounded-md mx-auto"
+                                                width="90" />
+                                            <div class="-mt-2 text-center">
+                                                <span
+                                                    class="bg-error text-white px-3 text-sm py-1 w-fit rounded-sm">Developer</span>
+                                                <h3
+                                                    class="text-lg font-medium mt-3 ">Matt
+                                                    Carlson</h3>
+                                                <h6 class=" font-medium">San
+                                                    Francisco, CA</h6>
+                                            </div>
+                                            <div
+                                                class="grid md:grid-cols-2 grid-cols-2 mt-4 gap-5">
+                                                <div
+                                                    class="bg-lightgray dark:bg-darkprimary rounded-full flex items-center gap-2 px-4 py-2">
+                                                    <i
+                                                        class="ti ti-star text-3xl text-warning"></i>
+                                                    <div>
+                                                        <h6
+                                                            class="font-light">Reviews</h6>
+                                                        <h4
+                                                            class="text-lg font-medium leading-tight">368</h4>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="bg-lightgray dark:bg-darkprimary rounded-full flex items-center gap-2 px-4 py-2">
+                                                    <i
+                                                        class="ti ti-brand-google-photos text-3xl text-primary"></i>
+                                                    <div>
+                                                        <h6
+                                                            class="font-light">Photos</h6>
+                                                        <h4
+                                                            class="text-lg font-medium leading-tight">1200</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-4 md:col-span-6 col-span-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <img
+                                                src="@@webRoot/assets/images/profile/user-3.jpg"
+                                                class="rounded-md mx-auto"
+                                                width="90" />
+                                            <div class="-mt-2 text-center">
+                                                <span
+                                                    class="bg-warning text-white px-3 text-sm py-1 w-fit rounded-sm">Desinger</span>
+                                                <h3
+                                                    class="text-lg font-medium mt-3 ">Matt
+                                                    Carlson</h3>
+                                                <h6 class=" font-medium">San
+                                                    Francisco, CA</h6>
+                                            </div>
+                                            <div
+                                                class="grid md:grid-cols-2 grid-cols-2 mt-4 gap-5">
+                                                <div
+                                                    class="bg-lightgray dark:bg-darkprimary rounded-full flex items-center gap-2 px-4 py-2">
+                                                    <i
+                                                        class="ti ti-star text-3xl text-warning"></i>
+                                                    <div>
+                                                        <h6
+                                                            class="font-light">Reviews</h6>
+                                                        <h4
+                                                            class="text-lg font-medium leading-tight">368</h4>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="bg-lightgray dark:bg-darkprimary rounded-full flex items-center gap-2 px-4 py-2">
+                                                    <i
+                                                        class="ti ti-brand-google-photos text-3xl text-primary"></i>
+                                                    <div>
+                                                        <h6
+                                                            class="font-light">Photos</h6>
+                                                        <h4
+                                                            class="text-lg font-medium leading-tight">1200</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!------------->
+
+                            <!---Chart Cards-->
+                            <div class="grid grid-cols-12 gap-6 mt-6">
+                                <div
+                                    class="lg:col-span-4 md:col-span-6 col-span-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div
+                                                class="flex justify-between items-center">
+                                                <div>
+                                                    <h5
+                                                        class="text-lg font-medium text-dark dark:text-white">Social
+                                                        Marketing</h5>
+                                                    <p class="text-sm ">65,450
+                                                        sales</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="earnings-month mt-1"></div>
+                                        <div class="card-body">
+                                            <div class="flex gap-4">
+                                                <div
+                                                    class="flex justify-center items-center w-14 h-[50px] bg-lightprimary dark:bg-darkprimary rounded-sm">
+                                                    <i
+                                                        class="ti ti-brand-dribbble  text-3xl text-primary"></i>
+                                                </div>
+                                                <div>
+                                                    <h5
+                                                        class="text-lg font-medium text-dark dark:text-white">Dribble</h5>
+                                                    <p
+                                                        class="text-sm ">Ecommerce
+                                                        Design, App Design</p>
+                                                </div>
+                                            </div>
+                                            <hr
+                                                class="border-t border-border dark:border-darkborder
+ my-4" />
+                                            <div class="flex gap-4">
+                                                <div
+                                                    class="flex justify-center items-center w-14 h-[50px] bg-lighterror dark:bg-darkerror rounded-sm">
+                                                    <i
+                                                        class="ti ti-brand-youtube  text-3xl text-error"></i>
+                                                </div>
+                                                <div>
+                                                    <h5
+                                                        class="text-lg font-medium text-dark dark:text-white">Youtube</h5>
+                                                    <p class="text-sm ">Waiting
+                                                        for new videos</p>
+                                                </div>
+                                            </div>
+                                            <hr
+                                                class="border-t border-border dark:border-darkborder
+ my-4" />
+                                            <div class="flex gap-4">
+                                                <div
+                                                    class="flex justify-center items-center w-14 h-[50px] bg-lightinfo dark:bg-darkinfo rounded-sm">
+                                                    <i
+                                                        class="ti ti-brand-messenger text-3xl text-info"></i>
+                                                </div>
+                                                <div>
+                                                    <h5
+                                                        class="text-lg font-medium text-dark dark:text-white">Messanger</h5>
+                                                    <p class="text-sm ">4 new
+                                                        notifcations</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="lg:col-span-4 md:col-span-6 col-span-12">
+                                    <div class="card">
+                                        <div
+                                            class="flex justify-between items-center">
+                                            <div class="card-body">
+                                                <div
+                                                    class="flex justify-between items-center">
+                                                    <div>
+                                                        <h5
+                                                            class="text-lg font-medium text-dark dark:text-white">Storage
+                                                            Clouds</h5>
+                                                        <p
+                                                            class="text-sm ">5,450
+                                                            sales</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="earnings-month2 mt-1"></div>
+                                        <div class="card-body">
+                                            <div class="flex gap-4">
+                                                <div
+                                                    class="flex justify-center items-center w-14 h-[50px] bg-lightinfo dark:bg-darkinfo rounded-sm">
+                                                    <i
+                                                        class="ti ti-brand-drops  text-3xl text-info"></i>
+                                                </div>
+                                                <div>
+                                                    <h5
+                                                        class="text-lg font-medium text-dark dark:text-white">Dropbox</h5>
+                                                    <p class="text-sm ">wainting
+                                                        for 2 new uploads</p>
+                                                </div>
+                                            </div>
+                                            <hr
+                                                class="border-t border-border dark:border-darkborder
+ my-4" />
+                                            <div class="flex gap-4">
+                                                <div
+                                                    class="flex justify-center items-center w-14 h-[50px] bg-lightwarning dark:bg-darkwarning rounded-sm">
+                                                    <i
+                                                        class="ti ti-brand-google-drive  text-3xl text-warning"></i>
+                                                </div>
+                                                <div>
+                                                    <h5
+                                                        class="text-lg font-medium text-dark dark:text-white">Drive</h5>
+                                                    <p class="text-sm ">Waiting
+                                                        for new videos</p>
+                                                </div>
+                                            </div>
+                                            <hr
+                                                class="border-t border-border dark:border-darkborder
+ my-4" />
+                                            <div class="flex gap-4">
+                                                <div
+                                                    class="flex justify-center items-center w-14 h-[50px] bg-lightsecondary dark:bg-darksecondary rounded-sm">
+                                                    <i
+                                                        class="ti ti-brand-soundcloud text-3xl text-secondary"></i>
+                                                </div>
+                                                <div>
+                                                    <h5
+                                                        class="text-lg font-medium text-dark dark:text-white">One
+                                                        Drive</h5>
+                                                    <p class="text-sm ">Add new
+                                                        photos, videos</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="lg:col-span-4 md:col-span-6 col-span-12">
+                                    <div class="card">
+
+                                        <div class="card-body">
+                                            <div
+                                                class="flex justify-between items-center">
+                                                <div>
+                                                    <h5
+                                                        class="text-lg font-medium text-dark dark:text-white">Yearly
+                                                        Sales</h5>
+                                                    <p class="text-sm ">50,050
+                                                        sales</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="earnings-month3 mt-1"></div>
+                                        <div class="card-body">
+                                            <div class="flex gap-4">
+                                                <div
+                                                    class="flex justify-center items-center w-14 h-[50px] bg-lightprimary dark:bg-darkprimary rounded-sm">
+                                                    <i
+                                                        class="ti ti-users  text-3xl text-primary"></i>
+                                                </div>
+                                                <div>
+                                                    <h5
+                                                        class="text-lg font-medium text-dark dark:text-white">Top
+                                                        Designers</h5>
+                                                    <p class="text-sm ">John
+                                                        Smith, Nancy Deo</p>
+                                                </div>
+                                            </div>
+                                            <hr
+                                                class="border-t border-border dark:border-darkborder
+ my-4" />
+                                            <div class="flex gap-4">
+                                                <div
+                                                    class="flex justify-center items-center w-14 h-[50px] bg-lightinfo dark:bg-darkinfo rounded-sm">
+                                                    <i
+                                                        class="ti ti-chart-pie text-3xl text-info"></i>
+                                                </div>
+                                                <div>
+                                                    <h5
+                                                        class="text-lg font-medium text-dark dark:text-white">Top
+                                                        sales</h5>
+                                                    <p class="text-sm ">January,
+                                                        March, December</p>
+                                                </div>
+                                            </div>
+                                            <hr
+                                                class="border-t border-border dark:border-darkborder
+ my-4" />
+                                            <div class="flex gap-4">
+                                                <div
+                                                    class="flex justify-center items-center w-14 h-[50px] bg-lightsuccess dark:bg-darksuccess rounded-sm">
+                                                    <i
+                                                        class="ti ti-message  text-3xl text-success"></i>
+                                                </div>
+                                                <div>
+                                                    <h5
+                                                        class="text-lg font-medium text-dark dark:text-white">Best
+                                                        sellers</h5>
+                                                    <p class="text-sm ">Maria
+                                                        Rodriguez, Maria
+                                                        Garcia</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!---Charts card end-->
+
+                            <!---Card With Progressbar-->
+                            <h5
+                                class="text-lg font-medium mt-6 text-dark dark:text-white">Card
+                                With Progreesbar</h5>
+                            <div class="grid grid-cols-12 gap-6 mt-3">
+                                <div
+                                    class="lg:col-span-4 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card ">
+                                        <div class="card-body">
+                                            <div class="flex justify-between">
+                                                <div
+                                                    class="flex justify-center items-center w-14 h-[50px] bg-lightwarning dark:bg-darkwarning rounded-sm">
+                                                    <i
+                                                        class="ti ti-basket text-3xl text-warning"></i>
+                                                </div>
+                                                <div class="text-end">
+                                                    <h5
+                                                        class="text-lg font-medium text-dark dark:text-white">+259</h5>
+                                                    <p class="font-medium">Sales
+                                                        Change</p>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="flex w-full h-1.5 bg-lightwarning dark:bg-darkwarning rounded-md overflow-hidden mt-4"
+                                                role="progressbar"
+                                                aria-valuenow="25"
+                                                aria-valuemin="0"
+                                                aria-valuemax="100">
+                                                <div
+                                                    class="flex flex-col justify-center overflow-hidden bg-warning text-xs text-white text-center whitespace-nowrap transition duration-500 "
+                                                    style="width: 25%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-4 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card ">
+                                        <div class="card-body">
+                                            <div class="flex justify-between">
+                                                <div
+                                                    class="flex justify-center items-center w-14 h-[50px] bg-lightprimary dark:bg-darkprimary rounded-sm">
+                                                    <i
+                                                        class="ti ti-chart-pie text-3xl text-primary"></i>
+                                                </div>
+                                                <div class="text-end">
+                                                    <h5
+                                                        class="text-lg font-medium text-dark dark:text-white">750$</h5>
+                                                    <p
+                                                        class="font-medium">Weekly
+                                                        Income</p>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="flex w-full h-1.5 bg-lightprimary dark:bg-darkprimary rounded-md overflow-hidden mt-4"
+                                                role="progressbar"
+                                                aria-valuenow="25"
+                                                aria-valuemin="0"
+                                                aria-valuemax="100">
+                                                <div
+                                                    class="flex flex-col justify-center overflow-hidden bg-primary text-xs text-white text-center whitespace-nowrap transition duration-500 "
+                                                    style="width: 25%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-4 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card ">
+                                        <div class="card-body">
+                                            <div class="flex justify-between">
+                                                <div
+                                                    class="flex justify-center items-center w-14 h-[50px] bg-lighterror dark:bg-darkerror rounded-sm">
+                                                    <i
+                                                        class="ti ti-user-plus text-3xl text-error"></i>
+                                                </div>
+                                                <div class="text-end">
+                                                    <h5
+                                                        class="text-lg font-medium text-dark dark:text-white">+6.5K</h5>
+                                                    <p class="font-medium">New
+                                                        Users</p>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="flex w-full h-1.5 bg-lighterror dark:bg-darkerror rounded-md overflow-hidden mt-4"
+                                                role="progressbar"
+                                                aria-valuenow="25"
+                                                aria-valuemin="0"
+                                                aria-valuemax="100">
+                                                <div
+                                                    class="flex flex-col justify-center overflow-hidden bg-error text-xs text-white text-center whitespace-nowrap transition duration-500 "
+                                                    style="width: 25%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-4 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card ">
+                                        <div class="card-body">
+                                            <div class="flex justify-between">
+                                                <div
+                                                    class="flex justify-center items-center w-14 h-[50px] bg-lightsuccess dark:bg-darksuccess rounded-sm">
+                                                    <i
+                                                        class="ti ti-bell text-3xl text-success"></i>
+                                                </div>
+                                                <div class="text-end">
+                                                    <h5
+                                                        class="text-lg font-medium text-dark dark:text-white">156</h5>
+                                                    <p class="font-medium">New
+                                                        Notifications</p>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="flex w-full h-1.5 bg-lightsuccess dark:bg-darksuccess rounded-md overflow-hidden mt-4"
+                                                role="progressbar"
+                                                aria-valuenow="25"
+                                                aria-valuemin="0"
+                                                aria-valuemax="100">
+                                                <div
+                                                    class="flex flex-col justify-center overflow-hidden bg-success text-xs text-white text-center whitespace-nowrap transition duration-500 "
+                                                    style="width: 25%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-4 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card ">
+                                        <div class="card-body">
+                                            <div class="flex justify-between">
+                                                <div
+                                                    class="flex justify-center items-center w-14 h-[50px] bg-lightinfo dark:bg-darkinfo rounded-sm">
+                                                    <i
+                                                        class="ti ti-brand-messenger text-3xl text-info"></i>
+                                                </div>
+                                                <div class="text-end">
+                                                    <h5
+                                                        class="text-lg font-medium text-dark dark:text-white">15+</h5>
+                                                    <p
+                                                        class="font-medium">Latest
+                                                        Messages</p>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="flex w-full h-1.5 bg-lightinfo dark:bg-darkinfo rounded-md overflow-hidden mt-4"
+                                                role="progressbar"
+                                                aria-valuenow="25"
+                                                aria-valuemin="0"
+                                                aria-valuemax="100">
+                                                <div
+                                                    class="flex flex-col justify-center overflow-hidden bg-info text-xs text-white text-center whitespace-nowrap transition duration-500 "
+                                                    style="width: 25%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-4 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card ">
+                                        <div class="card-body">
+                                            <div class="flex justify-between">
+                                                <div
+                                                    class="flex justify-center items-center w-14 h-[50px] bg-lightsecondary dark:bg-darksecondary rounded-sm">
+                                                    <i
+                                                        class="ti ti-brand-drops text-3xl text-secondary"></i>
+                                                </div>
+                                                <div class="text-end">
+                                                    <h5
+                                                        class="text-lg font-medium text-dark dark:text-white">1500</h5>
+                                                    <p
+                                                        class="font-medium">Wainting
+                                                        for downloads</p>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="flex w-full h-1.5 bg-lightsecondary dark:bg-darksecondary rounded-md overflow-hidden mt-4"
+                                                role="progressbar"
+                                                aria-valuenow="25"
+                                                aria-valuemin="0"
+                                                aria-valuemax="100">
+                                                <div
+                                                    class="flex flex-col justify-center overflow-hidden bg-secondary text-xs text-white text-center whitespace-nowrap transition duration-500 "
+                                                    style="width: 25%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!---Card With Progressbar End-->
+
+                            <!---Card With Circle Progressbar-->
+                            <div class="grid grid-cols-12 gap-6 mt-6">
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card ">
+                                        <div class="card-body">
+                                            <div
+                                                class="flex justify-between items-center">
+                                                <div>
+                                                    <h4
+                                                        class="font-light text-4xl ">86</h4>
+                                                    <p class="mt-1">New
+                                                        Clients</p>
+                                                </div>
+                                                <!-- Circular Progress -->
+                                                <div class="relative size-20">
+                                                    <svg class="size-full"
+                                                        width="36" height="36"
+                                                        viewBox="0 0 36 36"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <!-- Background Circle -->
+                                                        <circle cx="18" cy="18"
+                                                            r="16" fill="none"
+                                                            class="stroke-current text-lightprimary dark:text-darkprimary"
+                                                            stroke-width="2"></circle>
+                                                        <!-- Progress Circle inside a group with rotation -->
+                                                        <g
+                                                            class="origin-center -rotate-90 transform">
+                                                            <circle cx="18"
+                                                                cy="18" r="16"
+                                                                fill="none"
+                                                                class="stroke-current text-primary"
+                                                                stroke-width="2"
+                                                                stroke-dasharray="100"
+                                                                stroke-dashoffset="75"></circle>
+                                                        </g>
+                                                    </svg>
+                                                    <!-- Percentage Text -->
+                                                    <div
+                                                        class="absolute top-1/2 start-1/2 transform -translate-y-1/2 -translate-x-1/2">
+                                                        <span
+                                                            class="text-center text-2xl text-primary">
+                                                            <i
+                                                                class="ti ti-user-circle text-2xl"></i></span>
+                                                    </div>
+                                                </div>
+                                                <!-- End Circular Progress -->
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card ">
+                                        <div class="card-body">
+                                            <div
+                                                class="flex justify-between items-center">
+                                                <div>
+                                                    <h4
+                                                        class="font-light text-4xl ">248</h4>
+                                                    <p class="mt-1">All
+                                                        Projects</p>
+                                                </div>
+                                                <!-- Circular Progress -->
+                                                <div class="relative size-20">
+                                                    <svg class="size-full"
+                                                        width="36" height="36"
+                                                        viewBox="0 0 36 36"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <!-- Background Circle -->
+                                                        <circle cx="18" cy="18"
+                                                            r="16" fill="none"
+                                                            class="stroke-current text-lighterror dark:text-darkerror"
+                                                            stroke-width="2"></circle>
+                                                        <!-- Progress Circle inside a group with rotation -->
+                                                        <g
+                                                            class="origin-center -rotate-90 transform">
+                                                            <circle cx="18"
+                                                                cy="18" r="16"
+                                                                fill="none"
+                                                                class="stroke-current text-error"
+                                                                stroke-width="2"
+                                                                stroke-dasharray="100"
+                                                                stroke-dashoffset="75"></circle>
+                                                        </g>
+                                                    </svg>
+                                                    <!-- Percentage Text -->
+                                                    <div
+                                                        class="absolute top-1/2 start-1/2 transform -translate-y-1/2 -translate-x-1/2">
+                                                        <span
+                                                            class="text-center text-2xl text-error">
+                                                            <i
+                                                                class="ti ti-briefcase text-2xl"></i></span>
+                                                    </div>
+                                                </div>
+                                                <!-- End Circular Progress -->
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card ">
+                                        <div class="card-body">
+                                            <div
+                                                class="flex justify-between items-center">
+                                                <div>
+                                                    <h4
+                                                        class="font-light text-4xl ">352</h4>
+                                                    <p class="mt-1"> New
+                                                        Items</p>
+                                                </div>
+                                                <!-- Circular Progress -->
+                                                <div class="relative size-20">
+                                                    <svg class="size-full"
+                                                        width="36" height="36"
+                                                        viewBox="0 0 36 36"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <!-- Background Circle -->
+                                                        <circle cx="18" cy="18"
+                                                            r="16" fill="none"
+                                                            class="stroke-current text-lightwarning dark:text-darkwarning"
+                                                            stroke-width="2"></circle>
+                                                        <!-- Progress Circle inside a group with rotation -->
+                                                        <g
+                                                            class="origin-center -rotate-90 transform">
+                                                            <circle cx="18"
+                                                                cy="18" r="16"
+                                                                fill="none"
+                                                                class="stroke-current text-warning"
+                                                                stroke-width="2"
+                                                                stroke-dasharray="100"
+                                                                stroke-dashoffset="50    "></circle>
+                                                        </g>
+                                                    </svg>
+                                                    <!-- Percentage Text -->
+                                                    <div
+                                                        class="absolute top-1/2 start-1/2 transform -translate-y-1/2 -translate-x-1/2">
+                                                        <span
+                                                            class="text-center text-2xl text-warning">
+                                                            <i
+                                                                class="ti ti-star text-2xl"></i></span>
+                                                    </div>
+                                                </div>
+                                                <!-- End Circular Progress -->
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card ">
+                                        <div class="card-body">
+                                            <div
+                                                class="flex justify-between items-center">
+                                                <div>
+                                                    <h4
+                                                        class="font-light text-4xl ">159</h4>
+                                                    <p class="mt-1">
+                                                        Invoices</p>
+                                                </div>
+                                                <!-- Circular Progress -->
+                                                <div class="relative size-20">
+                                                    <svg class="size-full"
+                                                        width="36" height="36"
+                                                        viewBox="0 0 36 36"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <!-- Background Circle -->
+                                                        <circle cx="18" cy="18"
+                                                            r="16" fill="none"
+                                                            class="stroke-current text-lightinfo dark:text-darkinfo"
+                                                            stroke-width="2"></circle>
+                                                        <!-- Progress Circle inside a group with rotation -->
+                                                        <g
+                                                            class="origin-center -rotate-90 transform">
+                                                            <circle cx="18"
+                                                                cy="18" r="16"
+                                                                fill="none"
+                                                                class="stroke-current text-info"
+                                                                stroke-width="2"
+                                                                stroke-dasharray="100"
+                                                                stroke-dashoffset="45"></circle>
+                                                        </g>
+                                                    </svg>
+                                                    <!-- Percentage Text -->
+                                                    <div
+                                                        class="absolute top-1/2 start-1/2 transform -translate-y-1/2 -translate-x-1/2">
+                                                        <span
+                                                            class="text-center text-2xl text-info">
+                                                            <i
+                                                                class="ti ti-receipt text-2xl"></i></span>
+                                                    </div>
+                                                </div>
+                                                <!-- End Circular Progress -->
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!---Card With Circle Progressbar End-->
+
+                            <!---Blog Cards--->
+                            <div class="grid grid-cols-12 gap-6 mt-6">
+                                <div class="lg:col-span-4 col-span-12">
+                                    <div class="card ">
+                                        <img
+                                            src="@@webRoot/assets/images/blog/blog-img4.jpg"
+                                            class="w-full max-w-full rounded-t-md"
+                                            alt="...">
+                                        <div class="card-body">
+                                            <div class="flex items-center mb-3">
+                                                <span class="flex items-center">
+                                                    <i
+                                                        class="ti ti-calendar text-lg me-1"></i>
+                                                    20 May 2023</span>
+                                                <div class="ms-auto">
+                                                    <a href="javascript:void(0)"
+                                                        class="flex items-center text-hover">
+                                                        <i
+                                                            class="ti ti-message-circle text-lg me-1"></i>
+                                                        3 Comments</a>
+                                                </div>
+                                            </div>
+                                            <h4
+                                                class="text-xl font-medium">Featured
+                                                Hydroflora Pots Garden &
+                                                Outdoors</h4>
+                                            <p class="mt-2">Titudin venenatis
+                                                ipsum ac feugiat. Vestibulum
+                                                ullamcorper quam.
+                                            </p>
+                                            <div class="text-end mt-4"><a
+                                                    href="javascript:void(0)"
+                                                    class="btn
+rounded-full px-4">Read more</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="lg:col-span-4 col-span-12">
+                                    <div class="card ">
+                                        <img
+                                            src="@@webRoot/assets/images/blog/blog-img5.jpg"
+                                            class="w-full max-w-full rounded-t-md"
+                                            alt="...">
+                                        <div class="card-body">
+                                            <div class="flex items-center mb-3">
+                                                <span class="flex items-center">
+                                                    <i
+                                                        class="ti ti-calendar text-lg me-1"></i>
+                                                    19 May 2023</span>
+                                                <div class="ms-auto">
+                                                    <a href="javascript:void(0)"
+                                                        class="flex items-center text-hover">
+                                                        <i
+                                                            class="ti ti-message-circle text-lg me-1"></i>
+                                                        16 Comments</a>
+                                                </div>
+                                            </div>
+                                            <h4
+                                                class="text-xl font-medium">Featured
+                                                Hydroflora Pots Garden &
+                                                Outdoors</h4>
+                                            <p class="mt-2">Titudin venenatis
+                                                ipsum ac feugiat. Vestibulum
+                                                ullamcorper quam.
+                                            </p>
+                                            <div class="text-end mt-4"><a
+                                                    href="javascript:void(0)"
+                                                    class="btn
+rounded-full px-4">Read more</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="lg:col-span-4 col-span-12">
+                                    <div class="card ">
+                                        <img
+                                            src="@@webRoot/assets/images/blog/blog-img6.jpg"
+                                            class="w-full max-w-full rounded-t-md"
+                                            alt="...">
+                                        <div class="card-body">
+                                            <div class="flex items-center mb-3">
+                                                <span class="flex items-center">
+                                                    <i
+                                                        class="ti ti-calendar text-lg me-1"></i>
+                                                    23 May 2023</span>
+                                                <div class="ms-auto">
+                                                    <a href="javascript:void(0)"
+                                                        class="flex items-center text-hover">
+                                                        <i
+                                                            class="ti ti-message-circle text-lg me-1"></i>
+                                                        23 Comments</a>
+                                                </div>
+                                            </div>
+                                            <h4
+                                                class="text-xl font-medium">Featured
+                                                Hydroflora Pots Garden &
+                                                Outdoors</h4>
+                                            <p class="mt-2">Titudin venenatis
+                                                ipsum ac feugiat. Vestibulum
+                                                ullamcorper quam.
+                                            </p>
+                                            <div class="text-end mt-4"><a
+                                                    href="javascript:void(0)"
+                                                    class="btn
+rounded-full px-4">Read more</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!---Blog Cards Ends--->
+
+                            <!---Progress  with text Cards--->
+                            <div class="grid grid-cols-12 gap-6 mt-6">
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card ">
+                                        <div class="card-body">
+                                            <h5
+                                                class="text-xl font-medium">26%</h5>
+                                            <p>Total Product</p>
+                                            <div
+                                                class="flex w-full h-1.5 bg-lightsuccess dark:bg-darksuccess rounded-md overflow-hidden mt-1"
+                                                role="progressbar"
+                                                aria-valuenow="80"
+                                                aria-valuemin="0"
+                                                aria-valuemax="100">
+                                                <div
+                                                    class="flex flex-col justify-center overflow-hidden bg-success text-xs text-white text-center whitespace-nowrap transition duration-500 "
+                                                    style="width: 80%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card ">
+                                        <div class="card-body">
+                                            <h5
+                                                class="text-xl font-medium">60%</h5>
+                                            <p>Pending Product</p>
+                                            <div
+                                                class="flex w-full h-1.5 bg-lightprimary dark:bg-darkprimary rounded-md overflow-hidden mt-1"
+                                                role="progressbar"
+                                                aria-valuenow="60"
+                                                aria-valuemin="0"
+                                                aria-valuemax="100">
+                                                <div
+                                                    class="flex flex-col justify-center overflow-hidden bg-primary text-xs text-white text-center whitespace-nowrap transition duration-500 "
+                                                    style="width: 60%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card ">
+                                        <div class="card-body">
+                                            <h5
+                                                class="text-xl font-medium">63%</h5>
+                                            <p>Selling Products</p>
+                                            <div
+                                                class="flex w-full h-1.5 bg-lighterror dark:bg-darkerror rounded-md overflow-hidden mt-1"
+                                                role="progressbar"
+                                                aria-valuenow="63"
+                                                aria-valuemin="0"
+                                                aria-valuemax="100">
+                                                <div
+                                                    class="flex flex-col justify-center overflow-hidden bg-error text-xs text-white text-center whitespace-nowrap transition duration-500 "
+                                                    style="width: 63%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card ">
+                                        <div class="card-body">
+                                            <h5
+                                                class="text-xl font-medium">29%</h5>
+                                            <p>Buying Products</p>
+                                            <div
+                                                class="flex w-full h-1.5 bg-lightwarning dark:bg-darkwarning rounded-md overflow-hidden mt-1"
+                                                role="progressbar"
+                                                aria-valuenow="29"
+                                                aria-valuemin="0"
+                                                aria-valuemax="100">
+                                                <div
+                                                    class="flex flex-col justify-center overflow-hidden bg-warning text-xs text-white text-center whitespace-nowrap transition duration-500 "
+                                                    style="width: 29%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!---Progress Icon with text Cards End--->
+
+                            <!---Icon with text Cards--->
+                            <div class="grid grid-cols-12 gap-6 mt-6">
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card ">
+                                        <div class="card-body">
+                                            <div
+                                                class="flex gap-4 items-center">
+                                                <div
+                                                    class="h-10 w-10 rounded-full bg-success flex items-center justify-center">
+                                                    <i
+                                                        class="ti ti-credit-card text-xl text-white"></i>
+                                                </div>
+                                                <div>
+                                                    <h5
+                                                        class="text-xl font-medium">$18090</h5>
+                                                    <p>Income</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card ">
+                                        <div class="card-body">
+                                            <div
+                                                class="flex gap-4 items-center">
+                                                <div
+                                                    class="h-10 w-10 rounded-full bg-info flex items-center justify-center">
+                                                    <i
+                                                        class="ti ti-users text-xl text-white"></i>
+                                                </div>
+                                                <div>
+                                                    <h5
+                                                        class="text-xl font-medium">2690</h5>
+                                                    <p>Users</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card ">
+                                        <div class="card-body">
+                                            <div
+                                                class="flex gap-4 items-center">
+                                                <div
+                                                    class="h-10 w-10 rounded-full bg-error flex items-center justify-center">
+                                                    <i
+                                                        class="ti ti-calendar text-xl text-white"></i>
+                                                </div>
+                                                <div>
+                                                    <h5
+                                                        class="text-xl font-medium">20
+                                                        march</h5>
+                                                    <p>My birthday</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card ">
+                                        <div class="card-body">
+                                            <div
+                                                class="flex gap-4 items-center">
+                                                <div
+                                                    class="h-10 w-10 rounded-full bg-success flex items-center justify-center">
+                                                    <i
+                                                        class="ti ti-settings text-xl text-white"></i>
+                                                </div>
+                                                <div>
+                                                    <h5
+                                                        class="text-xl font-medium">6540</h5>
+                                                    <p>Manage notifications</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!---Icon with text Cards End--->
+
+                            <!---Social Icon with text Cards--->
+                            <div class="grid grid-cols-12 gap-6 mt-6">
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card overflow-hidden">
+                                        <div
+                                            class="card-body py-5.5 bg-info text-center rounded-b-none text-white">
+                                            <i
+                                                class="ti ti-settings text-4xl"></i>
+                                        </div>
+                                        <div class="card-body">
+                                            <div
+                                                class="flex items-center justify-between">
+                                                <div>
+                                                    <h3
+                                                        class="text-xl font-medium">456</h3>
+                                                    <h5
+                                                        class="text-info text-base">Following</h5>
+                                                </div>
+                                                <div>
+                                                    <h3
+                                                        class="text-xl font-medium">1,456</h3>
+                                                    <h5
+                                                        class="text-info text-base font-medium">Friends</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card overflow-hidden">
+                                        <div
+                                            class="card-body py-5.5 bg-primary text-center rounded-b-none text-white">
+                                            <i
+                                                class="ti ti-brand-twitter text-4xl"></i>
+                                        </div>
+                                        <div class="card-body">
+                                            <div
+                                                class="flex items-center justify-between">
+                                                <div>
+                                                    <h3
+                                                        class="text-xl font-medium">456</h3>
+                                                    <h5
+                                                        class="text-primary text-base">Twittes</h5>
+                                                </div>
+                                                <div>
+                                                    <h3
+                                                        class="text-xl font-medium">1,456</h3>
+                                                    <h5
+                                                        class="text-primary text-base font-medium">Followers</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card overflow-hidden">
+                                        <div
+                                            class="card-body py-5.5 bg-success text-center rounded-b-none text-white">
+                                            <i
+                                                class="ti ti-brand-instagram text-4xl"></i>
+                                        </div>
+                                        <div class="card-body">
+                                            <div
+                                                class="flex items-center justify-between">
+                                                <div>
+                                                    <h3
+                                                        class="text-xl font-medium">456</h3>
+                                                    <h5
+                                                        class="text-success text-base">Following</h5>
+                                                </div>
+                                                <div>
+                                                    <h3
+                                                        class="text-xl font-medium">1,456</h3>
+                                                    <h5
+                                                        class="text-success text-base font-medium">Followers</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card overflow-hidden">
+                                        <div
+                                            class="card-body py-5.5 bg-dark dark:bg-darkgray text-center rounded-b-none text-white">
+                                            <i
+                                                class="ti ti-brand-skype text-4xl"></i>
+                                        </div>
+                                        <div class="card-body">
+                                            <div
+                                                class="flex items-center justify-between">
+                                                <div>
+                                                    <h3
+                                                        class="text-xl font-medium">456</h3>
+                                                    <h5
+                                                        class="text-base-400 text-base">Contacts</h5>
+                                                </div>
+                                                <div>
+                                                    <h3
+                                                        class="text-xl font-medium">1,456</h3>
+                                                    <h5
+                                                        class="text-base-400 text-base font-medium">Followers</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!---Social Icon with text Cards end--->
+
+                            <!---Border Cards------>
+                            <h5
+                                class="text-lg font-medium mt-10 text-dark dark:text-white">Cards
+                                With Icon</h5>
+                            <div class="grid grid-cols-12 gap-6 mt-6">
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card border-b border-info">
+                                        <div class="card-body">
+                                            <div
+                                                class="flex justify-between items-center">
+                                                <div>
+                                                    <h5
+                                                        class="font-medium text-2xl text-dark dark:text-white">120</h5>
+                                                    <p
+                                                        class="text-info font-medium">News
+                                                        Feed</p>
+                                                </div>
+                                                <i
+                                                    class="ti ti-file-text text-info text-4xl"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card border-b border-primary">
+                                        <div class="card-body">
+                                            <div
+                                                class="flex justify-between items-center">
+                                                <div>
+                                                    <h5
+                                                        class="font-medium text-2xl text-dark dark:text-white">150</h5>
+                                                    <p
+                                                        class="text-primary font-medium">Invoices</p>
+                                                </div>
+                                                <i
+                                                    class="ti ti-clipboard text-primary text-4xl"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card border-b border-success">
+                                        <div class="card-body">
+                                            <div
+                                                class="flex justify-between items-center">
+                                                <div>
+                                                    <h5
+                                                        class="font-medium text-2xl text-dark dark:text-white">450</h5>
+                                                    <p
+                                                        class="text-success font-medium">Revenue</p>
+                                                </div>
+                                                <i
+                                                    class="ti ti-credit-card text-success text-4xl"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card border-b border-error">
+                                        <div class="card-body">
+                                            <div
+                                                class="flex justify-between items-center">
+                                                <div>
+                                                    <h5
+                                                        class="font-medium text-2xl text-dark dark:text-white">100</h5>
+                                                    <p
+                                                        class="text-error font-medium">Sales</p>
+                                                </div>
+                                                <i
+                                                    class="ti ti-chart-pie text-error text-4xl"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card border-s border-error">
+                                        <div class="card-body">
+                                            <div
+                                                class="flex justify-between items-center">
+                                                <i
+                                                    class="ti ti-users text-error text-4xl"></i>
+                                                <div
+                                                    class="ms-auto sm:text-start text-end">
+                                                    <h5
+                                                        class="font-medium text-2xl text-dark dark:text-white">290</h5>
+                                                    <p
+                                                        class="text-error font-medium">New
+                                                        Customers</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card border-s border-info">
+                                        <div class="card-body">
+                                            <div
+                                                class="flex justify-between items-center">
+                                                <i
+                                                    class="ti ti-message-circle text-info text-4xl"></i>
+                                                <div
+                                                    class="ms-auto sm:text-start text-end">
+                                                    <h5
+                                                        class="font-medium text-2xl text-dark dark:text-white">120</h5>
+                                                    <p
+                                                        class="text-info font-medium">New
+                                                        Messages </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card border-s border-primary">
+                                        <div class="card-body">
+                                            <div
+                                                class="flex justify-between items-center">
+                                                <i
+                                                    class="ti ti-bell text-primary text-4xl"></i>
+                                                <div
+                                                    class="ms-auto sm:text-start text-end">
+                                                    <h5
+                                                        class="font-medium text-2xl text-dark dark:text-white">600</h5>
+                                                    <p
+                                                        class="text-primary font-medium">New
+                                                        Notification </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card border-s border-success">
+                                        <div class="card-body">
+                                            <div
+                                                class="flex justify-between items-center">
+                                                <i
+                                                    class="ti ti-briefcase text-success text-4xl"></i>
+                                                <div
+                                                    class="ms-auto sm:text-start text-end">
+                                                    <h5
+                                                        class="font-medium text-2xl text-dark dark:text-white">270</h5>
+                                                    <p
+                                                        class="text-success font-medium">New
+                                                        Projects </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card border-t border-success">
+                                        <div class="card-body">
+                                            <div
+                                                class="flex justify-between items-center">
+                                                <div>
+                                                    <h5
+                                                        class="font-medium text-2xl text-dark dark:text-white">120</h5>
+                                                    <p
+                                                        class="text-success font-medium">Top
+                                                        Locations</p>
+                                                </div>
+                                                <i
+                                                    class="ti ti-map text-success text-4xl"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card border-t border-base-400">
+                                        <div class="card-body">
+                                            <div
+                                                class="flex justify-between items-center">
+                                                <div>
+                                                    <h5
+                                                        class="font-medium text-2xl text-dark dark:text-white">201</h5>
+                                                    <p
+                                                        class="text-base-400 font-medium">Top
+                                                        Activity Pages</p>
+                                                </div>
+                                                <i
+                                                    class="ti ti-archive text-base-400 text-4xl"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card border-t border-info">
+                                        <div class="card-body">
+                                            <div
+                                                class="flex justify-between items-center">
+                                                <div>
+                                                    <h5
+                                                        class="font-medium text-2xl text-dark dark:text-white">140</h5>
+                                                    <p
+                                                        class="text-info font-medium">Top
+                                                        Sales</p>
+                                                </div>
+                                                <i
+                                                    class="ti ti-chart-bar text-info text-4xl"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card border-t border-primary">
+                                        <div class="card-body">
+                                            <div
+                                                class="flex justify-between items-center">
+                                                <div>
+                                                    <h5
+                                                        class="font-medium text-2xl text-dark dark:text-white">160</h5>
+                                                    <p
+                                                        class="text-primary font-medium">Top
+                                                        Feeds</p>
+                                                </div>
+                                                <i
+                                                    class="ti ti-rss text-primary text-4xl"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card border-e border-base-400">
+                                        <div class="card-body">
+                                            <div
+                                                class="flex justify-between items-center">
+                                                <i
+                                                    class="ti ti-cast text-base-400 text-4xl"></i>
+                                                <div
+                                                    class="ms-auto sm:text-start text-end">
+                                                    <h5
+                                                        class="font-medium text-2xl text-dark dark:text-white">360</h5>
+                                                    <p
+                                                        class="text-base-400 font-medium">Device
+                                                        Variations</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card border-e border-info">
+                                        <div class="card-body">
+                                            <div
+                                                class="flex justify-between items-center">
+                                                <i
+                                                    class="ti ti-currency-dollar text-info text-4xl"></i>
+                                                <div
+                                                    class="ms-auto sm:text-start text-end">
+                                                    <h5
+                                                        class="font-medium text-2xl text-dark dark:text-white">120</h5>
+                                                    <p
+                                                        class="text-info font-medium">Net
+                                                        Income</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card border-e border-primary">
+                                        <div class="card-body">
+                                            <div
+                                                class="flex justify-between items-center">
+                                                <i
+                                                    class="ti ti-clock-hour-4 text-primary text-4xl"></i>
+                                                <div
+                                                    class="ms-auto sm:text-start text-end">
+                                                    <h5
+                                                        class="font-medium text-2xl text-dark dark:text-white">471</h5>
+                                                    <p
+                                                        class="text-primary font-medium">Sales
+                                                        Performance</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card border-e border-success">
+                                        <div class="card-body">
+                                            <div
+                                                class="flex justify-between items-center">
+                                                <i
+                                                    class="ti ti-box-multiple text-success text-4xl"></i>
+                                                <div
+                                                    class="ms-auto sm:text-start text-end">
+                                                    <h5
+                                                        class="font-medium text-2xl text-dark dark:text-white">150</h5>
+                                                    <p
+                                                        class="text-success font-medium">Monthly
+                                                        Sales</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!----Border Cards End--------->
+
+                            <!---Cards With Propgressbar & Icon------>
+                            <h5
+                                class="text-lg font-medium mt-10 text-dark dark:text-white">Cards
+                                With Propgressbar & Icon</h5>
+
+                            <div class="grid grid-cols-12 gap-6 mt-6">
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card ">
+                                        <div class="card-body">
+                                            <div class="flex justify-between">
+                                                <div>
+                                                    <h5
+                                                        class="text-xl font-medium">86%</h5>
+                                                    <p>Total
+                                                        Product</p>
+                                                </div>
+                                                <i
+                                                    class="ti ti-box text-success text-4xl"></i>
+                                            </div>
+                                            <div
+                                                class="flex w-full mt-4 h-1.5 bg-lightsuccess dark:bg-darksuccess rounded-md overflow-hidden"
+                                                role="progressbar"
+                                                aria-valuenow="85"
+                                                aria-valuemin="0"
+                                                aria-valuemax="100">
+                                                <div
+                                                    class="flex flex-col justify-center overflow-hidden bg-success text-xs text-white text-center whitespace-nowrap transition duration-500 "
+                                                    style="width: 85%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card ">
+                                        <div class="card-body">
+                                            <div class="flex justify-between">
+                                                <div>
+                                                    <h5
+                                                        class="text-xl font-medium">40%</h5>
+                                                    <p>Pending
+                                                        Product</p>
+                                                </div>
+                                                <i
+                                                    class="ti ti-cast text-info text-4xl"></i>
+                                            </div>
+                                            <div
+                                                class="flex w-full mt-4 h-1.5 bg-lightinfo dark:bg-darkinfo rounded-md overflow-hidden"
+                                                role="progressbar"
+                                                aria-valuenow="40"
+                                                aria-valuemin="0"
+                                                aria-valuemax="100">
+                                                <div
+                                                    class="flex flex-col justify-center overflow-hidden bg-info text-xs text-white text-center whitespace-nowrap transition duration-500 "
+                                                    style="width: 40%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card ">
+                                        <div class="card-body">
+                                            <div class="flex justify-between">
+                                                <div>
+                                                    <h5
+                                                        class="text-xl font-medium">56%</h5>
+                                                    <p>Selling</p>
+                                                </div>
+                                                <i
+                                                    class="ti ti-clipboard text-primary text-4xl"></i>
+                                            </div>
+                                            <div
+                                                class="flex w-full mt-4 h-1.5 bg-lightprimary dark:bg-darkprimary rounded-md overflow-hidden"
+                                                role="progressbar"
+                                                aria-valuenow="56"
+                                                aria-valuemin="0"
+                                                aria-valuemax="100">
+                                                <div
+                                                    class="flex flex-col justify-center overflow-hidden bg-primary text-xs text-white text-center whitespace-nowrap transition duration-500 "
+                                                    style="width: 56%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card ">
+                                        <div class="card-body">
+                                            <div class="flex justify-between">
+                                                <div>
+                                                    <h5
+                                                        class="text-xl font-medium">26%</h5>
+                                                    <p>Buying</p>
+                                                </div>
+                                                <i
+                                                    class="ti ti-copy text-error text-4xl"></i>
+                                            </div>
+                                            <div
+                                                class="flex w-full mt-4 h-1.5 bg-lighterror dark:bg-darkerror rounded-md overflow-hidden"
+                                                role="progressbar"
+                                                aria-valuenow="26"
+                                                aria-valuemin="0"
+                                                aria-valuemax="100">
+                                                <div
+                                                    class="flex flex-col justify-center overflow-hidden bg-error text-xs text-white text-center whitespace-nowrap transition duration-500 "
+                                                    style="width: 26%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!---Cards With Propgressbar & Icon End------>
+
+                            <!---Crypto Cards------>
+                            <h5
+                                class="text-lg font-medium mt-10 text-dark dark:text-white">Crypto
+                                Cards</h5>
+                            <div class="grid grid-cols-12 gap-6 mt-6">
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card overflow-hidden">
+                                        <div
+                                            class="card-body bg-dark dark:bg-darkgray">
+                                            <div
+                                                class="flex gap-4 items-center">
+                                                <i
+                                                    class="ti ti-currency-ethereum text-white text-4xl"></i>
+                                                <div>
+                                                    <h5
+                                                        class="font-medium text-xl text-white">Ethereum</h5>
+                                                    <p
+                                                        class="font-medium text-xl text-white">$3589.00k
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card overflow-hidden">
+                                        <div class="card-body bg-primary">
+                                            <div
+                                                class="flex gap-4 items-center">
+                                                <i
+                                                    class="ti ti-currency-dogecoin text-white text-4xl"></i>
+                                                <div>
+                                                    <h5
+                                                        class="font-medium text-xl text-white">Dash</h5>
+                                                    <p
+                                                        class="font-medium text-xl text-white">$900.00k
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card overflow-hidden">
+                                        <div class="card-body bg-error">
+                                            <div
+                                                class="flex gap-4 items-center">
+                                                <i
+                                                    class="ti ti-currency-bitcoin text-white text-4xl"></i>
+                                                <div>
+                                                    <h5
+                                                        class="font-medium text-xl text-white">Bitcoin</h5>
+                                                    <p
+                                                        class="font-medium text-xl text-white">$284.50k
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card overflow-hidden">
+                                        <div class="card-body bg-info">
+                                            <div
+                                                class="flex gap-4 items-center">
+                                                <i
+                                                    class="ti ti-currency-ripple text-white text-4xl"></i>
+                                                <div>
+                                                    <h5
+                                                        class="font-medium text-xl text-white">Ripple</h5>
+                                                    <p
+                                                        class="font-medium text-xl text-white">$650.80k
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="lg:col-span-4 col-span-12">
+                                    <div class="card overflow-hidden">
+                                        <div class="card-body bg-error">
+                                            <div
+                                                class="flex gap-4 items-center">
+                                                <i
+                                                    class="ti ti-currency-bitcoin text-white text-4xl"></i>
+                                                <div>
+                                                    <h5
+                                                        class="font-medium text-xl text-white">Bitcoin</h5>
+                                                    <p
+                                                        class="font-medium text-white">Realestate
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="grid grid-cols-3 text-center mt-7">
+                                                <div class="text-white">
+                                                    <span>% 1h</span>
+                                                    <p class><i
+                                                            class="ti ti-arrow-up text-lg"></i>
+                                                        0.12</p>
+                                                </div>
+                                                <div class="text-white">
+                                                    <span>% 24h</span>
+                                                    <p class><i
+                                                            class="ti ti-arrow-down text-lg"></i>-1.06</p>
+                                                </div>
+                                                <div class="text-white">
+                                                    <span>% 7d</span>
+                                                    <p class><i
+                                                            class="ti ti-arrow-up text-lg"></i>-20.10</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="lg:col-span-4 col-span-12">
+                                    <div class="card overflow-hidden">
+                                        <div class="card-body bg-success">
+                                            <div
+                                                class="flex gap-4 items-center">
+                                                <i
+                                                    class="ti ti-currency-euro text-white text-4xl"></i>
+                                                <div>
+                                                    <h5
+                                                        class="font-medium text-xl text-white">EOS</h5>
+                                                    <p
+                                                        class="font-medium text-white">Banking
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="grid grid-cols-3 text-center mt-7">
+                                                <div class="text-white">
+                                                    <span>% 1h</span>
+                                                    <p class><i
+                                                            class="ti ti-arrow-up text-lg"></i>
+                                                        2.16</p>
+                                                </div>
+                                                <div class="text-white">
+                                                    <span>% 24h</span>
+                                                    <p class><i
+                                                            class="ti ti-arrow-down text-lg"></i>-1.00</p>
+                                                </div>
+                                                <div class="text-white">
+                                                    <span>% 7d</span>
+                                                    <p class><i
+                                                            class="ti ti-arrow-up text-lg"></i>-2.08</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="lg:col-span-4 col-span-12">
+                                    <div class="card overflow-hidden">
+                                        <div
+                                            class="card-body bg-dark dark:bg-darkgray">
+                                            <div
+                                                class="flex gap-4 items-center">
+                                                <i
+                                                    class="ti ti-currency-ethereum text-white text-4xl"></i>
+                                                <div>
+                                                    <h5
+                                                        class="font-medium text-xl text-white">Ethereum</h5>
+                                                    <p
+                                                        class="font-medium text-white">Exchange
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="grid grid-cols-3 text-center mt-7">
+                                                <div class="text-white">
+                                                    <span>% 1h</span>
+                                                    <p class><i
+                                                            class="ti ti-arrow-up text-lg"></i>1.02</p>
+                                                </div>
+                                                <div class="text-white">
+                                                    <span>% 24h</span>
+                                                    <p class><i
+                                                            class="ti ti-arrow-down text-lg"></i>-3.16</p>
+                                                </div>
+                                                <div class="text-white">
+                                                    <span>% 7d</span>
+                                                    <p class><i
+                                                            class="ti ti-arrow-up text-lg"></i>-10.00</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="lg:col-span-4 col-span-12">
+                                    <div class="card overflow-hidden">
+                                        <div class="card-body bg-secondary">
+                                            <div
+                                                class="flex gap-4 items-center">
+                                                <i
+                                                    class="ti ti-currency-baht text-white text-4xl"></i>
+                                                <div>
+                                                    <h5
+                                                        class="font-medium text-xl text-white">Bitmark</h5>
+                                                    <p
+                                                        class="font-medium text-white">Advertising
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="grid grid-cols-3 text-center mt-7">
+                                                <div class="text-white">
+                                                    <span>% 1h</span>
+                                                    <p class><i
+                                                            class="ti ti-arrow-up text-lg"></i>0.12</p>
+                                                </div>
+                                                <div class="text-white">
+                                                    <span>% 24h</span>
+                                                    <p class><i
+                                                            class="ti ti-arrow-down text-lg"></i>-1.16</p>
+                                                </div>
+                                                <div class="text-white">
+                                                    <span>% 7d</span>
+                                                    <p class><i
+                                                            class="ti ti-arrow-up text-lg"></i>-1s.08</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="lg:col-span-4 col-span-12">
+                                    <div class="card overflow-hidden">
+                                        <div class="card-body bg-primary">
+                                            <div
+                                                class="flex gap-4 items-center">
+                                                <i
+                                                    class="ti ti-currency-dogecoin text-white text-4xl"></i>
+                                                <div>
+                                                    <h5
+                                                        class="font-medium text-xl text-white">Dash</h5>
+                                                    <p
+                                                        class="font-medium text-white">Trading
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="grid grid-cols-3 text-center mt-7">
+                                                <div class="text-white">
+                                                    <span>% 1h</span>
+                                                    <p class><i
+                                                            class="ti ti-arrow-up text-lg"></i>1.16</p>
+                                                </div>
+                                                <div class="text-white">
+                                                    <span>% 24h</span>
+                                                    <p class><i
+                                                            class="ti ti-arrow-down text-lg"></i>-1.10</p>
+                                                </div>
+                                                <div class="text-white">
+                                                    <span>% 7d</span>
+                                                    <p class><i
+                                                            class="ti ti-arrow-up text-lg"></i>-0.08</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="lg:col-span-4 col-span-12">
+                                    <div class="card overflow-hidden">
+                                        <div
+                                            class="card-body bg-lightgray dark:bg-darkprimary">
+                                            <div
+                                                class="flex gap-4 items-center">
+                                                <i
+                                                    class="ti ti-diamond  text-4xl"></i>
+                                                <div>
+                                                    <h5
+                                                        class="font-medium text-xl ">GetGems</h5>
+                                                    <p
+                                                        class="font-medium ">Exchange
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="grid grid-cols-3 text-center mt-7">
+                                                <div class>
+                                                    <span>% 1h</span>
+                                                    <p class><i
+                                                            class="ti ti-arrow-up text-lg"></i>12.16</p>
+                                                </div>
+                                                <div class>
+                                                    <span>% 24h</span>
+                                                    <p class><i
+                                                            class="ti ti-arrow-down text-lg"></i>-1.10</p>
+                                                </div>
+                                                <div class>
+                                                    <span>% 7d</span>
+                                                    <p class><i
+                                                            class="ti ti-arrow-up text-lg"></i>-2.18</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!---Crypto Cards End------>
+
+                            <!--- Cards Icons ------>
+                            <h5
+                                class="text-lg font-medium mt-10 text-dark dark:text-white">Card
+                                Icon Section</h5>
+                            <div class="grid grid-cols-12 gap-6 mt-3">
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card overflow-hidden">
+                                        <div class="flex items-center gap-4">
+                                            <div
+                                                class="py-5 px-4 rounded-e-none bg-lightinfo dark:bg-darkinfo">
+                                                <i
+                                                    class="ti ti-brand-messenger text-2xl text-info"></i>
+                                            </div>
+                                            <div>
+                                                <h5
+                                                    class="font-medium text-xl text-info">$980</h5>
+                                                <p>Free
+                                                    Messages</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card overflow-hidden">
+                                        <div class="flex items-center gap-4">
+                                            <div
+                                                class="py-5 px-4 rounded-e-none bg-lightsuccess dark:bg-darksuccess">
+                                                <i
+                                                    class="ti ti-building-broadcast-tower text-2xl text-success"></i>
+                                            </div>
+                                            <div>
+                                                <h5
+                                                    class="font-medium text-xl text-success">$18090</h5>
+                                                <p>Free
+                                                    Internet</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card overflow-hidden">
+                                        <div class="flex items-center gap-4">
+                                            <div
+                                                class="py-5 px-4 rounded-e-none bg-lightprimary dark:bg-darkprimary">
+                                                <i
+                                                    class="ti ti-clock-hour-3 text-2xl text-primary"></i>
+                                            </div>
+                                            <div>
+                                                <h5
+                                                    class="font-medium text-xl text-primary">$18090</h5>
+                                                <p>Unlimited
+                                                    Calls</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card overflow-hidden">
+                                        <div class="flex items-center gap-4">
+                                            <div
+                                                class="py-5 px-4 rounded-e-none bg-lightwarning dark:bg-darkwarning">
+                                                <i
+                                                    class="ti ti-database text-2xl text-warning"></i>
+                                            </div>
+                                            <div>
+                                                <h5
+                                                    class="font-medium text-xl text-warning">$18090</h5>
+                                                <p>Free
+                                                    Data Storage</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card overflow-hidden">
+                                        <div
+                                            class="flex items-center justify-between gap-4">
+                                            <div class="px-4">
+                                                <h5
+                                                    class="font-medium text-xl text-info">$980</h5>
+                                                <p>Free
+                                                    Messages</p>
+                                            </div>
+                                            <div
+                                                class="py-5 px-4 rounded-s-none bg-lightinfo dark:bg-darkinfo">
+                                                <i
+                                                    class="ti ti-brand-messenger text-2xl text-info"></i>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card overflow-hidden">
+                                        <div
+                                            class="flex items-center justify-between gap-4">
+                                            <div class="px-4">
+                                                <h5
+                                                    class="font-medium text-xl text-success">$18090</h5>
+                                                <p>Free
+                                                    Internet</p>
+                                            </div>
+                                            <div
+                                                class="py-5 px-4 rounded-e-none bg-lightsuccess dark:bg-darksuccess">
+                                                <i
+                                                    class="ti ti-building-broadcast-tower text-2xl text-success"></i>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card overflow-hidden">
+                                        <div
+                                            class="flex items-center justify-between gap-4">
+                                            <div class="px-4">
+                                                <h5
+                                                    class="font-medium text-xl text-primary">$18090</h5>
+                                                <p>Unlimited
+                                                    Calls</p>
+                                            </div>
+                                            <div
+                                                class="py-5 px-4 rounded-e-none bg-lightprimary dark:bg-darkprimary">
+                                                <i
+                                                    class="ti ti-clock-hour-3 text-2xl text-primary"></i>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card overflow-hidden">
+                                        <div
+                                            class="flex items-center justify-between gap-4">
+                                            <div class="px-4">
+                                                <h5
+                                                    class="font-medium text-xl text-warning">$18090</h5>
+                                                <p>Free
+                                                    Data Storage</p>
+                                            </div>
+                                            <div
+                                                class="py-5 px-4 rounded-e-none bg-lightwarning dark:bg-darkwarning">
+                                                <i
+                                                    class="ti ti-database text-2xl text-warning"></i>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--- Cards Icons end------>
+
+                            <!---Color icon Card --->
+                            <h5
+                                class="text-lg font-medium mt-10 text-dark dark:text-white">Title
+                                With Subtitles</h5>
+                            <div class="grid grid-cols-12 gap-6 mt-3">
+                                <div
+                                    class="md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div
+                                                class="flex items-center justify-between">
+                                                <div
+                                                    class="flex gap-4 items-center">
+                                                    <div
+                                                        class="h-10 w-10 rounded-full bg-success flex items-center justify-center">
+                                                        <i
+                                                            class="ti ti-credit-card text-xl text-white"></i>
+                                                    </div>
+                                                    <div>
+                                                        <h5
+                                                            class="text-xl font-medium">Total
+                                                            Income</h5>
+                                                        <p
+                                                            >Income</p>
+                                                    </div>
+                                                </div>
+                                                <h3
+                                                    class="text-2xl font-medium text-dark dark:text-white">$2900</h3>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div
+                                                class="flex items-center justify-between">
+                                                <div
+                                                    class="flex gap-4 items-center">
+                                                    <div
+                                                        class="h-10 w-10 rounded-full bg-info flex items-center justify-center">
+                                                        <i
+                                                            class="ti ti-credit-card text-xl text-white"></i>
+                                                    </div>
+                                                    <div>
+                                                        <h5
+                                                            class="text-xl font-medium">Total
+                                                            Products
+                                                        </h5>
+                                                        <p
+                                                            >Users</p>
+                                                    </div>
+                                                </div>
+                                                <h3
+                                                    class="text-2xl font-medium text-dark dark:text-white">$2690</h3>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div
+                                                class="flex items-center justify-between">
+                                                <div
+                                                    class="flex gap-4 items-center">
+                                                    <div
+                                                        class="h-10 w-10 rounded-full bg-error flex items-center justify-center">
+                                                        <i
+                                                            class="ti ti-credit-card text-xl text-white"></i>
+                                                    </div>
+                                                    <div>
+                                                        <h5
+                                                            class="text-xl font-medium">Total
+                                                            Members
+                                                        </h5>
+                                                        <p
+                                                            >My
+                                                            birthday
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <h3
+                                                    class="text-2xl font-medium text-dark dark:text-white">20
+                                                    March</h3>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div
+                                                class="flex items-center justify-between">
+                                                <div
+                                                    class="flex gap-4 items-center">
+                                                    <div
+                                                        class="h-10 w-10 rounded-full bg-warning flex items-center justify-center">
+                                                        <i
+                                                            class="ti ti-credit-card text-xl text-white"></i>
+                                                    </div>
+                                                    <div>
+                                                        <h5
+                                                            class="text-xl font-medium">Total
+                                                            Tasks</h5>
+                                                        <p
+                                                            >Pending
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <h3
+                                                    class="text-2xl font-medium text-dark dark:text-white">6540</h3>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card overflow-hidden">
+                                        <div class="card-body bg-success">
+                                            <div
+                                                class="flex items-center justify-between">
+                                                <div
+                                                    class="flex gap-4 items-center">
+                                                    <div
+                                                        class="h-10 w-10 rounded-full bg-white flex items-center justify-center">
+                                                        <i
+                                                            class="ti ti-credit-card text-xl text-success"></i>
+                                                    </div>
+                                                    <div>
+                                                        <h5
+                                                            class="text-xl font-medium text-white">Total
+                                                            Income</h5>
+                                                        <p
+                                                            class="text-white opacity-60">Income</p>
+                                                    </div>
+                                                </div>
+                                                <h3
+                                                    class="text-2xl font-medium text-white">$2900</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card overflow-hidden">
+                                        <div class="card-body bg-info">
+                                            <div
+                                                class="flex items-center justify-between">
+                                                <div
+                                                    class="flex gap-4 items-center">
+                                                    <div
+                                                        class="h-10 w-10 rounded-full bg-white flex items-center justify-center">
+                                                        <i
+                                                            class="ti ti-credit-card text-xl text-info"></i>
+                                                    </div>
+                                                    <div>
+                                                        <h5
+                                                            class="text-xl font-medium text-white">Total
+                                                            Products
+                                                        </h5>
+                                                        <p
+                                                            class="text-white opacity-60">Users</p>
+                                                    </div>
+                                                </div>
+                                                <h3
+                                                    class="text-2xl font-medium text-white">$2690</h3>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card overflow-hidden">
+                                        <div class="card-body bg-primary">
+                                            <div
+                                                class="flex items-center justify-between">
+                                                <div
+                                                    class="flex gap-4 items-center">
+                                                    <div
+                                                        class="h-10 w-10 rounded-full bg-white flex items-center justify-center">
+                                                        <i
+                                                            class="ti ti-credit-card text-xl text-primary"></i>
+                                                    </div>
+                                                    <div>
+                                                        <h5
+                                                            class="text-xl font-medium text-white">Total
+                                                            Members
+                                                        </h5>
+                                                        <p
+                                                            class="text-white opacity-60">My
+                                                            birthday
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <h3
+                                                    class="text-2xl font-medium text-white">20
+                                                    March</h3>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card overflow-hidden">
+                                        <div class="card-body bg-error">
+                                            <div
+                                                class="flex items-center justify-between">
+                                                <div
+                                                    class="flex gap-4 items-center">
+                                                    <div
+                                                        class="h-10 w-10 rounded-full bg-white flex items-center justify-center">
+                                                        <i
+                                                            class="ti ti-credit-card text-xl text-error"></i>
+                                                    </div>
+                                                    <div>
+                                                        <h5
+                                                            class="text-xl font-medium text-white">Total
+                                                            Tasks</h5>
+                                                        <p
+                                                            class="text-white opacity-60">Pending
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <h3
+                                                    class="text-2xl font-medium text-white">6540</h3>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card overflow-hidden">
+                                        <div class="flex items-center">
+                                            <div
+                                                class="p-6 rounded-e-none bg-info">
+                                                <i
+                                                    class="ti ti-brand-messenger text-2xl text-white"></i>
+                                            </div>
+                                            <div
+                                                class="flex justify-between items-center px-4 w-full">
+                                                <div>
+                                                    <h5
+                                                        class="font-medium text-xl text-info">$980</h5>
+                                                    <p
+                                                        >Free
+                                                        Messages</p>
+                                                </div>
+                                                <h3
+                                                    class="text-2xl font-medium ms-auto text-info">250</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card overflow-hidden">
+                                        <div class="flex items-center">
+                                            <div
+                                                class="p-6 rounded-e-none bg-primary">
+                                                <i
+                                                    class="ti ti-building-broadcast-tower text-2xl text-white"></i>
+                                            </div>
+                                            <div
+                                                class="flex justify-between items-center px-4 w-full">
+                                                <div>
+                                                    <h5
+                                                        class="font-medium text-xl text-primary">$18090</h5>
+                                                    <p
+                                                        >Free
+                                                        Internet</p>
+                                                </div>
+                                                <h3
+                                                    class="text-2xl font-medium ms-auto text-primary">125</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card overflow-hidden">
+                                        <div class="flex items-center">
+                                            <div
+                                                class="p-6 rounded-e-none bg-error">
+                                                <i
+                                                    class="ti ti-clock-hour-3 text-2xl text-white"></i>
+                                            </div>
+                                            <div
+                                                class="flex justify-between items-center px-4 w-full">
+                                                <div>
+                                                    <h5
+                                                        class="font-medium text-xl text-error">$18090</h5>
+                                                    <p
+                                                        >Unlimited
+                                                        Calls</p>
+                                                </div>
+                                                <h3
+                                                    class="text-2xl font-medium ms-auto text-error">450</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card overflow-hidden">
+                                        <div class="flex items-center">
+                                            <div
+                                                class="p-6 rounded-e-none bg-success">
+                                                <i
+                                                    class="ti ti-database text-2xl text-white"></i>
+                                            </div>
+                                            <div
+                                                class="flex justify-between items-center px-4 w-full">
+                                                <div>
+                                                    <h5
+                                                        class="font-medium text-xl text-success">$18090</h5>
+                                                    <p
+                                                        >Free
+                                                        Data Storage</p>
+                                                </div>
+                                                <h3
+                                                    class="text-2xl font-medium ms-auto text-success">750</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!---Color icon Card End--->
+
+                            <!---Group Card --->
+                        <h5 class="text-lg font-medium mt-10 text-dark dark:text-white">Group Cards</h5>
+                        <div class="grid grid-cols-12 gap-6 mt-3">
+                            <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="text-center">
+                                            <h5 class="text-primary text-lg font-medium">Unique Visit</h5>
+                                            <h3 class="font-medium text-2xl text-dark dark:text-white">1200</h3>
+                                            <div class="relative size-20 mx-auto mt-3 mb-5">
+                                                <svg class="size-full" width="36" height="36" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+                                                    <!-- Background Circle -->
+                                                    <circle cx="18" cy="18" r="16" fill="none" class="stroke-current text-lightprimary dark:text-darkprimary" stroke-width="2"></circle>
+                                                    <!-- Progress Circle inside a group with rotation -->
+                                                    <g class="origin-center -rotate-90 transform">
+                                                        <circle cx="18" cy="18" r="16" fill="none" class="stroke-current text-primary" stroke-width="2" stroke-dasharray="100" stroke-dashoffset="75"></circle>
+                                                    </g>
+                                                </svg>
+                                                <!-- Percentage Text -->
+                                                <div class="absolute top-1/2 start-1/2 transform -translate-y-1/2 -translate-x-1/2">
+                                                    <span class="text-center text-2xl text-primary">
+                                                        <i class="ti ti-user-circle text-2xl"></i></span>
+                                                </div>
+                                            </div>
+                                            <div class="grid grid-cols-2 text-center mt-3">
+                                                <div class="border-e border-border dark:border-darkborder">
+                                                    <i class="ti ti-chevron-up text-xl text-success"></i>
+                                                    <h6 class="font-medium text-lg text-dark dark:text-white">12056</h6>
+                                                </div>
+                                                <div>
+                                                    <i class="ti ti-chevron-down text-xl text-error"></i>
+                                                    <h6 class="font-medium text-lg text-dark dark:text-white">145</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="text-center">
+                                            <h5 class="text-error text-lg font-medium">Total Visit</h5>
+                                            <h3 class="font-medium text-2xl text-dark dark:text-white">1200</h3>
+                                            <div class="relative size-20 mx-auto mt-3 mb-5">
+                                                <svg class="size-full" width="36" height="36" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+                                                    <!-- Background Circle -->
+                                                    <circle cx="18" cy="18" r="16" fill="none" class="stroke-current text-lighterror dark:text-darkerror" stroke-width="2"></circle>
+                                                    <!-- Progress Circle inside a group with rotation -->
+                                                    <g class="origin-center -rotate-90 transform">
+                                                        <circle cx="18" cy="18" r="16" fill="none" class="stroke-current text-error" stroke-width="2" stroke-dasharray="100" stroke-dashoffset="75"></circle>
+                                                    </g>
+                                                </svg>
+                                                <!-- Percentage Text -->
+                                                <div class="absolute top-1/2 start-1/2 transform -translate-y-1/2 -translate-x-1/2">
+                                                    <span class="text-center text-2xl text-error">
+                                                        <i class="ti ti-star text-2xl"></i></span>
+                                                </div>
+                                            </div>
+                                            <div class="grid grid-cols-2 text-center mt-3">
+                                                <div class="border-e border-border dark:border-darkborder">
+                                                    <i class="ti ti-chevron-up text-xl text-base-300"></i>
+                                                    <h6 class="font-medium text-lg text-dark dark:text-white">21456</h6>
+                                                </div>
+                                                <div>
+                                                    <i class="ti ti-chevron-down text-xl text-error"></i>
+                                                    <h6 class="font-medium text-lg text-dark dark:text-white">145</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="text-center">
+                                            <h5 class=" text-lg font-medium">Bounce rate</h5>
+                                            <h3 class="font-medium text-2xl text-dark dark:text-white">1200</h3>
+                                            <div class="relative size-20 mx-auto mt-3 mb-5">
+                                                <svg class="size-full" width="36" height="36" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+                                                    <!-- Background Circle -->
+                                                    <circle cx="18" cy="18" r="16" fill="none" class="stroke-current text-lightsuccess dark:text-darksuccess" stroke-width="2"></circle>
+                                                    <!-- Progress Circle inside a group with rotation -->
+                                                    <g class="origin-center -rotate-90 transform">
+                                                        <circle cx="18" cy="18" r="16" fill="none" class="stroke-current text-success" stroke-width="2" stroke-dasharray="100" stroke-dashoffset="75"></circle>
+                                                    </g>
+                                                </svg>
+                                                <!-- Percentage Text -->
+                                                <div class="absolute top-1/2 start-1/2 transform -translate-y-1/2 -translate-x-1/2">
+                                                    <span class="text-center text-2xl text-success">
+                                                        <i class="ti ti-briefcase text-2xl"></i></span>
+                                                </div>
+                                            </div>
+                                            <div class="grid grid-cols-2 text-center mt-3">
+                                                <div class="border-e border-border dark:border-darkborder">
+                                                    <i class="ti ti-chevron-up text-xl text-base-300"></i>
+                                                    <h6 class="font-medium text-lg text-dark dark:text-white">21456</h6>
+                                                </div>
+                                                <div>
+                                                    <i class="ti ti-chevron-down text-xl text-error"></i>
+                                                    <h6 class="font-medium text-lg text-dark dark:text-white">145</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!---Group Card End --->
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                <!-- Main Content End -->
+
+            </div>
+        </div>
+        <!--end of project-->
+    </main>
+    @@include("partials/header-components/mobile-menu.html")
+    @@include("partials/customizer.html")
+    @@include("partials/scripts.html")
+</body>
+
+</html>

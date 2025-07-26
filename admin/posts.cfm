@@ -3,6 +3,9 @@
     <cfcase value="draft">
         <cfset pageTitle = "Drafts">
     </cfcase>
+    <cfcase value="published">
+        <cfset pageTitle = "Published">
+    </cfcase>
     <cfcase value="scheduled">
         <cfset pageTitle = "Scheduled">
     </cfcase>
@@ -23,8 +26,12 @@
     serviceErrorMessage = "";
     
     try {
-        // No components needed - functions are included directly
-        hasServiceError = false;
+        // Test database connection and function availability
+        testResult = getPosts(page = 1, limit = 1, status = "", author = "");
+        hasServiceError = !testResult.success;
+        if (hasServiceError) {
+            serviceErrorMessage = testResult.message ?: "Unknown database error";
+        }
     } catch (any e) {
         hasServiceError = true;
         serviceErrorMessage = e.message;
@@ -46,7 +53,13 @@
     else if (url.type == "published") statusFilter = "published";
     else if (url.type == "scheduled") statusFilter = "scheduled";
     
+    // Debug output (comment out for production)
+    // if (application.debugMode) {
+    //     writeOutput("<!-- DEBUG: url.type = '" & url.type & "', statusFilter = '" & statusFilter & "' -->");
+    // }
+    
     // Get posts with filters - use direct function calls
+    // writeOutput("<!-- DEBUG: hasServiceError = " & hasServiceError & ", statusFilter = '" & statusFilter & "' -->");
     if (!hasServiceError) {
         try {
             postsResult = getPosts(
@@ -60,6 +73,9 @@
             
             // Get post statistics
             statsResult = getPostStats();
+            
+            // Debug output for posts result (comment out for production)
+            // writeOutput("<!-- DEBUG: postsResult.success = " & postsResult.success & ", recordCount = " & postsResult.recordCount & " -->");
         } catch (any e) {
             hasServiceError = true;
             serviceErrorMessage = e.message;
@@ -307,7 +323,14 @@
                                     
                                     <cfif structKeyExists(post, 'feature_image') and len(trim(post.feature_image)) gt 0>
                                         <div class="ghost-feature-image">
-                                            <img src="#post.feature_image#" alt="#htmlEditFormat(post.title)#" loading="lazy">
+                                            <cfset imageUrl = post.feature_image>
+                                            <cfif findNoCase("__GHOST_URL__", imageUrl)>
+                                                <cfset imageUrl = replace(imageUrl, "__GHOST_URL__", "", "all")>
+                                            </cfif>
+                                            <cfif not findNoCase("/ghost/", imageUrl) and findNoCase("/content/", imageUrl)>
+                                                <cfset imageUrl = "/ghost" & imageUrl>
+                                            </cfif>
+                                            <img src="#imageUrl#" alt="#htmlEditFormat(post.title)#" loading="lazy" onerror="handleImageError(this)">
                                         </div>
                                     <cfelse>
                                         <div class="ghost-feature-image-placeholder">
@@ -382,88 +405,109 @@
                                     
                                     <!-- Meta Information -->
                                     <div class="ghost-post-meta">
-                                        <div class="ghost-post-author">
-                                            <cfset authorInfo = "">
-                                            <cfset authorAvatar = "">
-                                            
-                                            <!--- First try: check if post has author object --->
-                                            <cfif structKeyExists(post, "author") and structKeyExists(post.author, "name")>
-                                                <cfset authorInfo = post.author.name>
-                                                <cfset authorAvatar = post.author.avatar>
-                                            <!--- Second try: look up in authors array --->
-                                            <cfelseif isDefined("authors") and isArray(authors)>
-                                                <cfloop array="#authors#" index="author">
-                                                    <cfif author.id eq post.created_by>
-                                                        <cfset authorInfo = author.name>
-                                                        <cfset authorAvatar = author.avatar>
-                                                        <cfbreak>
-                                                    </cfif>
-                                                </cfloop>
-                                            </cfif>
-                                            
-                                            <!--- Fallback: generate author name from created_by --->
-                                            <cfif len(authorInfo) eq 0>
-                                                <cfif structKeyExists(post, "created_by") and len(post.created_by) gt 0>
-                                                    <cfset authorInfo = "Author " & post.created_by>
-                                                    <cfset authorAvatar = "https://ui-avatars.com/api/?name=Author+" & post.created_by & "&background=5D87FF&color=fff">
-                                                <cfelse>
-                                                    <cfset authorInfo = "Unknown Author">
-                                                    <cfset authorAvatar = "https://ui-avatars.com/api/?name=Unknown+Author&background=5D87FF&color=fff">
+                                        <div class="ghost-post-author-line">
+                                            <div class="ghost-post-author">
+                                                <cfset authorInfo = "">
+                                                <cfset authorAvatar = "">
+                                                
+                                                <!--- First try: check if post has author object --->
+                                                <cfif structKeyExists(post, "author") and structKeyExists(post.author, "name")>
+                                                    <cfset authorInfo = post.author.name>
+                                                    <cfset authorAvatar = post.author.avatar>
+                                                <!--- Second try: look up in authors array --->
+                                                <cfelseif isDefined("authors") and isArray(authors)>
+                                                    <cfloop array="#authors#" index="author">
+                                                        <cfif author.id eq post.created_by>
+                                                            <cfset authorInfo = author.name>
+                                                            <cfset authorAvatar = author.avatar>
+                                                            <cfbreak>
+                                                        </cfif>
+                                                    </cfloop>
                                                 </cfif>
-                                            </cfif>
+                                                
+                                                <!--- Fallback: generate author name from created_by --->
+                                                <cfif len(authorInfo) eq 0>
+                                                    <cfif structKeyExists(post, "created_by") and len(post.created_by) gt 0>
+                                                        <cfset authorInfo = "Author " & post.created_by>
+                                                        <cfset authorAvatar = "https://ui-avatars.com/api/?name=Author+" & post.created_by & "&background=5D87FF&color=fff">
+                                                    <cfelse>
+                                                        <cfset authorInfo = "Unknown Author">
+                                                        <cfset authorAvatar = "https://ui-avatars.com/api/?name=Unknown+Author&background=5D87FF&color=fff">
+                                                    </cfif>
+                                                </cfif>
+                                                
+                                                <cfif len(authorAvatar) gt 0>
+                                                    <img src="#authorAvatar#" alt="#authorInfo#" class="ghost-author-avatar">
+                                                </cfif>
+                                                <span class="ghost-author-name">#authorInfo#</span>
+                                            </div>
                                             
-                                            <cfif len(authorAvatar) gt 0>
-                                                <img src="#authorAvatar#" alt="#authorInfo#" class="ghost-author-avatar">
-                                            </cfif>
-                                            <span class="ghost-author-name">#authorInfo#</span>
+                                            <!-- Relative Time - Back to Original Position -->
+                                            <div class="ghost-post-date">
+                                                <cfset relativeDate = "">
+                                                <cfset useDate = "">
+                                                
+                                                <!--- Always use created_at for relative time calculation --->
+                                                <cfif isDate(post.created_at)>
+                                                    <cfset useDate = post.created_at>
+                                                <cfelseif isDate(post.updated_at)>
+                                                    <cfset useDate = post.updated_at>
+                                                </cfif>
+                                                
+                                                <!--- Calculate relative time since creation --->
+                                                <cfif isDate(useDate)>
+                                                    <cfset timeDiff = dateDiff("h", useDate, now())>
+                                                    <cfif timeDiff lt 24>
+                                                        <cfif timeDiff lt 1>
+                                                            <cfset minutes = dateDiff("n", useDate, now())>
+                                                            #minutes# min<cfif minutes neq 1>s</cfif> ago
+                                                        <cfelse>
+                                                            #timeDiff# hour<cfif timeDiff neq 1>s</cfif> ago
+                                                        </cfif>
+                                                    <cfelseif timeDiff lt 168>
+                                                        <cfset days = dateDiff("d", useDate, now())>
+                                                        #days# day<cfif days neq 1>s</cfif> ago
+                                                    <cfelse>
+                                                        #dateFormat(useDate, "mmm d, yyyy")#
+                                                    </cfif>
+                                                <cfelse>
+                                                    No date
+                                                </cfif>
+                                            </div>
                                         </div>
-                                        
-                                        <!-- Date Display -->
+                                    </div>
+                                    
+                                    <!-- Specific Date/Time Display Below Author -->
+                                    <div class="ghost-date-section">
                                         <cfif post.status eq "published" and isDate(post.published_at)>
                                             <div class="ghost-published-date">
-                                                Published #dateFormat(post.published_at, "mmm d, yyyy")#
+                                                Published #dateFormat(post.published_at, "mmm d, yyyy")# at #timeFormat(post.published_at, "h:mm tt")#
                                             </div>
                                         <cfelseif post.status eq "draft" and isDate(post.created_at)>
                                             <div class="ghost-created-date">
-                                                Created #dateFormat(post.created_at, "mmm d, yyyy")#
+                                                Created #dateFormat(post.created_at, "mmm d, yyyy")# at #timeFormat(post.created_at, "h:mm tt")#
                                             </div>
                                         <cfelseif post.status eq "scheduled" and isDate(post.published_at)>
+                                            <cfset scheduledTime = post.published_at>
+                                            <cfset timeUntilPublish = dateDiff("n", now(), scheduledTime)>
                                             <div class="ghost-scheduled-date">
-                                                Scheduled for #dateFormat(post.published_at, "mmm d, yyyy")#
+                                                <cfif timeUntilPublish gt 0>
+                                                    <i class="ti ti-clock me-1"></i>
+                                                    Scheduled for #dateFormat(scheduledTime, "mmm d, yyyy")# at #timeFormat(scheduledTime, "h:mm tt")#
+                                                    <cfif timeUntilPublish lt 1440> <!-- Less than 24 hours -->
+                                                        <cfif timeUntilPublish lt 60>
+                                                            <span class="ghost-countdown"> • Publishing in #timeUntilPublish# min<cfif timeUntilPublish neq 1>s</cfif></span>
+                                                        <cfelse>
+                                                            <cfset hoursUntil = int(timeUntilPublish / 60)>
+                                                            <span class="ghost-countdown"> • Publishing in #hoursUntil# hour<cfif hoursUntil neq 1>s</cfif></span>
+                                                        </cfif>
+                                                    </cfif>
+                                                <cfelse>
+                                                    <i class="ti ti-alert-triangle me-1"></i>
+                                                    <span class="ghost-overdue">Scheduled for #dateFormat(scheduledTime, "mmm d, yyyy")# at #timeFormat(scheduledTime, "h:mm tt")# (Overdue)</span>
+                                                </cfif>
                                             </div>
                                         </cfif>
-                                        
-                                        <div class="ghost-post-date">
-                                            <cfset relativeDate = "">
-                                            <cfset useDate = "">
-                                            
-                                            <!--- Always use created_at for relative time calculation --->
-                                            <cfif isDate(post.created_at)>
-                                                <cfset useDate = post.created_at>
-                                            <cfelseif isDate(post.updated_at)>
-                                                <cfset useDate = post.updated_at>
-                                            </cfif>
-                                            
-                                            <!--- Calculate relative time since creation --->
-                                            <cfif isDate(useDate)>
-                                                <cfset timeDiff = dateDiff("h", useDate, now())>
-                                                <cfif timeDiff lt 24>
-                                                    <cfif timeDiff lt 1>
-                                                        <cfset minutes = dateDiff("n", useDate, now())>
-                                                        #minutes# min<cfif minutes neq 1>s</cfif> ago
-                                                    <cfelse>
-                                                        #timeDiff# hour<cfif timeDiff neq 1>s</cfif> ago
-                                                    </cfif>
-                                                <cfelseif timeDiff lt 168>
-                                                    <cfset days = dateDiff("d", useDate, now())>
-                                                    #days# day<cfif days neq 1>s</cfif> ago
-                                                <cfelse>
-                                                    #dateFormat(useDate, "mmm d, yyyy")#
-                                                </cfif>
-                                            <cfelse>
-                                                No date
-                                            </cfif>
-                                        </div>
                                     </div>
                                     
                                     <!-- Quick Actions -->
@@ -796,11 +840,17 @@
 /* Meta Information */
 .ghost-post-meta {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    gap: 0.5rem;
     margin-bottom: 1rem;
     font-size: 0.75rem;
     color: #64748b;
+}
+
+.ghost-post-author-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .ghost-post-author {
@@ -818,6 +868,13 @@
 
 .ghost-author-name {
     font-weight: 500;
+}
+
+.ghost-date-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-left: 0; /* Align with author avatar */
 }
 
 .ghost-published-date {
@@ -839,6 +896,20 @@
     color: #2563eb;
     font-weight: 500;
     margin-bottom: 0.25rem;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.ghost-countdown {
+    color: #059669;
+    font-weight: 600;
+    font-size: 0.7rem;
+}
+
+.ghost-overdue {
+    color: #dc2626;
+    font-weight: 600;
 }
 
 .ghost-post-date {
@@ -1009,6 +1080,16 @@
     .ghost-post-title {
         margin-right: 0;
     }
+    
+    .ghost-date-section {
+        margin-left: 0; /* Remove alignment on mobile */
+    }
+    
+    .ghost-post-author-line {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
 }
 
 /* Bulk Actions */
@@ -1077,27 +1158,118 @@
 // Debug: Check if script is loading
 console.log('Posts page JavaScript loading...');
 
+// Handle image load errors - defined first since it's used in HTML
+function handleImageError(img) {
+    const container = img.parentElement;
+    container.innerHTML = '<div class="ghost-feature-image-placeholder"><i class="ti ti-photo text-4xl text-gray-400"></i></div>';
+}
+
+// Store post to delete
+let postToDelete = null;
+
 // Define deletePost function first to ensure it's available
 function deletePost(postId, postTitle) {
     console.log('deletePost called:', {postId: postId, postTitle: postTitle});
     
-    if (confirm('Are you sure you want to delete "' + postTitle + '"? This action cannot be undone.')) {
-        // Show loading state
-        const deleteButton = document.querySelector(`button[onclick*="${postId}"]`);
-        if (!deleteButton) {
-            console.error('Delete button not found for post:', postId);
-            return;
+    // Store post info for deletion
+    postToDelete = { id: postId, title: postTitle };
+    
+    // Show custom delete modal
+    showDeleteModal(postTitle);
+}
+
+// Show delete confirmation modal
+function showDeleteModal(postTitle) {
+    // Create modal backdrop
+    const backdrop = document.createElement('div');
+    backdrop.className = 'fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center';
+    backdrop.id = 'deleteModalBackdrop';
+    
+    // Create modal
+    const modal = document.createElement('div');
+    modal.className = 'bg-white rounded-lg shadow-xl max-w-sm w-full mx-4 transform transition-all border-2 border-gray-200';
+    modal.innerHTML = `
+        <div class="p-5">
+            <div class="flex items-center justify-center w-10 h-10 mx-auto bg-red-100 rounded-full mb-3">
+                <i class="ti ti-trash text-red-600 text-lg"></i>
+            </div>
+            <h3 class="text-base font-semibold text-center text-gray-900 mb-2">Delete Post</h3>
+            <p class="text-sm text-gray-600 text-center mb-1">
+                Are you sure you want to delete:
+            </p>
+            <p class="text-sm font-medium text-gray-900 text-center mb-3 px-2 truncate">
+                "${postTitle}"
+            </p>
+            <p class="text-xs text-gray-500 text-center mb-4">
+                This action cannot be undone.
+            </p>
+            <div class="flex gap-2">
+                <button type="button" 
+                        class="flex-1 btn btn-sm btn-outline-secondary" 
+                        onclick="closeDeleteModal()">
+                    Cancel
+                </button>
+                <button type="button" 
+                        class="flex-1 btn btn-sm btn-danger" 
+                        onclick="executeDelete()">
+                    <i class="ti ti-trash me-1"></i>
+                    Delete
+                </button>
+            </div>
+        </div>
+    `;
+    
+    backdrop.appendChild(modal);
+    document.body.appendChild(backdrop);
+    
+    // Animate in
+    setTimeout(() => {
+        modal.style.transform = 'scale(1)';
+        modal.style.opacity = '1';
+    }, 10);
+    
+    // Close on backdrop click
+    backdrop.addEventListener('click', function(e) {
+        if (e.target === backdrop) {
+            closeDeleteModal();
         }
-        
-        const originalContent = deleteButton.innerHTML;
-        deleteButton.innerHTML = '<i class="ti ti-loader animate-spin"></i>';
-        deleteButton.disabled = true;
-        
-        // Create form data
-        const formData = new FormData();
-        formData.append('postId', postId);
-        
-        console.log('Making AJAX request to delete post:', postId);
+    });
+}
+
+// Close delete modal
+function closeDeleteModal() {
+    const backdrop = document.getElementById('deleteModalBackdrop');
+    if (backdrop) {
+        backdrop.remove();
+    }
+    postToDelete = null;
+}
+
+// Execute the deletion
+function executeDelete() {
+    if (!postToDelete) return;
+    
+    const postId = postToDelete.id;
+    
+    // Close modal
+    closeDeleteModal();
+    
+    // Show loading state
+    const deleteButton = document.querySelector(`button[onclick*="${postId}"]`);
+    if (!deleteButton) {
+        console.error('Delete button not found for post:', postId);
+        return;
+    }
+    
+    const originalContent = deleteButton.innerHTML;
+    deleteButton.innerHTML = '<i class="ti ti-loader animate-spin"></i>';
+    deleteButton.disabled = true;
+    
+    // Create form data
+    const formData = new FormData();
+    formData.append('postId', postId);
+    
+    console.log('Making AJAX request to delete post:', postId);
         
         // Make AJAX request
         fetch('/ghost/admin/ajax/delete-post.cfm', {
@@ -1156,7 +1328,6 @@ function deletePost(postId, postTitle) {
             deleteButton.innerHTML = originalContent;
             deleteButton.disabled = false;
         });
-    }
 }
 
 console.log('deletePost function defined');
@@ -1398,9 +1569,34 @@ function showMessage(message, type) {
     }, 5000);
 }
 
+// Update scheduled post countdowns
+function updateScheduledCountdowns() {
+    const scheduledPosts = document.querySelectorAll('.ghost-scheduled-date');
+    scheduledPosts.forEach(element => {
+        const countdownSpan = element.querySelector('.ghost-countdown');
+        if (countdownSpan) {
+            // Refresh the page every 5 minutes to update all countdowns
+            // This is simpler than complex JavaScript date calculations
+        }
+    });
+}
+
 // Initialize DataTable if needed
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Posts page loaded');
+    
+    // Update countdowns every minute for scheduled posts
+    setInterval(function() {
+        // Only refresh if we have scheduled posts visible
+        const scheduledCountdowns = document.querySelectorAll('.ghost-countdown');
+        if (scheduledCountdowns.length > 0) {
+            // Refresh countdown displays every 5 minutes
+            const now = new Date();
+            if (now.getMinutes() % 5 === 0 && now.getSeconds() < 5) {
+                location.reload();
+            }
+        }
+    }, 60000); // Check every minute
     
     // Debug sidebar visibility
     const sidebar = document.getElementById('application-sidebar-brand');

@@ -1,0 +1,48 @@
+https://ghost.org/help/using-the-editor/
+
+https://ghost.org/help/cards/
+
+
+● Here are the URL rewrites for cloudcoder.dev/ghost from the Nginx configuration:
+
+  Admin URLs (Lines 253-271)
+
+  # Basic admin routes
+  rewrite ^/ghost/admin/?$ /ghost/admin/index.cfm last;
+  rewrite ^/ghost/admin/login/?$ /ghost/admin/login.cfm last;
+  rewrite ^/ghost/admin/logout/?$ /ghost/admin/logout.cfm last;
+  rewrite ^/ghost/admin/dashboard/?$ /ghost/admin/index.cfm last;
+
+  # Posts management
+  rewrite ^/ghost/admin/posts/?$ /ghost/admin/posts.cfm last;
+  rewrite ^/ghost/admin/posts-spike/?$ /ghost/admin/posts-spike.cfm last;
+  rewrite ^/ghost/admin/posts-spike-proper/?$ /ghost/admin/posts-spike-proper.cfm last;
+  rewrite ^/ghost/admin/posts/new/?$ /ghost/admin/posts/new.cfm last;
+  rewrite ^/ghost/admin/posts/edit/([a-zA-Z0-9-]+)/?$ /ghost/admin/posts/edit.cfm?id=$1 last;
+
+  # Other admin sections
+  rewrite ^/ghost/admin/pages/?$ /ghost/admin/pages.cfm last;
+  rewrite ^/ghost/admin/tags/?$ /ghost/admin/tags.cfm last;
+  rewrite ^/ghost/admin/members/?$ /ghost/admin/members.cfm last;
+  rewrite ^/ghost/admin/settings/?$ /ghost/admin/settings.cfm last;
+  rewrite ^/ghost/admin/settings/([a-zA-Z0-9-]+)/?$ /ghost/admin/settings.cfm?section=$1 last;
+
+  API URLs (Lines 264-265, 279-283)
+
+  # Admin API
+  rewrite ^/ghost/api/admin/posts/?$ /ghost/api/admin/posts.cfm last;
+  rewrite ^/ghost/api/admin/posts/([a-zA-Z0-9-]+)/?$ /ghost/api/admin/posts.cfm?id=$1 last;
+
+  # Content API
+  rewrite ^/ghost/api/content/posts/?$ /ghost/api/content/posts.cfm last;
+  rewrite ^/ghost/api/content/posts/([a-zA-Z0-9-]+)/?$ /ghost/api/content/posts.cfm?id=$1 last;
+  rewrite ^/ghost/api/content/tags/?$ /ghost/api/content/tags.cfm last;
+  rewrite ^/ghost/api/content/authors/?$ /ghost/api/content/authors.cfm last;
+
+  Blog Frontend URLs (Lines 273-277)
+
+  rewrite ^/ghost/blog/?$ /ghost/blog/index.cfm last;
+  rewrite ^/ghost/blog/page/([0-9]+)/?$ /ghost/blog/index.cfm?page=$1 last;
+  rewrite ^/ghost/blog/tag/([a-zA-Z0-9-]+)/?$ /ghost/blog/tag.cfm?slug=$1 last;
+  rewrite ^/ghost/blog/author/([a-zA-Z0-9-]+)/?$ /ghost/blog/author.cfm?slug=$1 last;
+  rewrite ^/ghost/blog/([a-zA-Z0-9-]+)/?$ /ghost/blog/post.cfm?slug=$1 last;

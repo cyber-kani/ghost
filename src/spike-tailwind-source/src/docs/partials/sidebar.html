@@ -1,0 +1,333 @@
+<!-- ---------------------------------- -->
+<!-- Start Vertical Layout Sidebar -->
+<!-- ---------------------------------- -->
+<div class="p-3.5 flex justify-between" >
+  @@include("./logo-sidebar.html")
+</div>
+<div class="scroll-sidebar" data-simplebar="">
+  <div class="px-4 mt-5 mini-layout" data-te-sidenav-menu-ref>
+    <nav class="hs-accordion-group w-full flex flex-col">
+      <ul data-te-sidenav-menu-ref id="sidebarnav">
+
+        <!-----Dashboard------->
+        <div class="caption">
+          <i class="ti ti-dots nav-small-cap-icon text-lg hidden text-center leading-[16px]"></i>
+          <span class="hide-menu">GETTING STARTED</span>
+        </div>
+
+        <li class="sidebar-item">
+          <a class="sidebar-link before:bg-lightprimary hover:text-primary
+          @@if (context.page === 'doc') { active before:bg-lightprimary  text-primary dark:text-primary}" href="@@webRoot/docs/index.html"
+            >
+            <iconify-icon icon="solar:home-line-duotone" class="text-xl p-2"></iconify-icon> <span class="hide-menu flex-shrink-0 ">Introduction</span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a class="sidebar-link before:bg-lightsuccess hover:text-success
+          @@if (context.page === 'structure') { active before:bg-lightsuccess text-success dark:text-success}" href="@@webRoot/docs/docs-structure.html"
+            >
+            <iconify-icon icon="solar:box-line-duotone" class="text-xl p-2"></iconify-icon> <span class="hide-menu flex-shrink-0 ">Package Structure</span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a class="sidebar-link before:bg-lightwarning hover:text-warning
+          @@if (context.page === 'start') { active before:bg-lightwarning text-warning dark:text-warning}" href="@@webRoot/docs/docs-start.html"
+            >
+            <iconify-icon icon="solar:branching-paths-down-line-duotone" class="text-xl p-2"></iconify-icon> <span class="hide-menu flex-shrink-0 ">Quick start</span>
+          </a>
+        </li>
+        <div class="caption">
+          <i class="ti ti-dots nav-small-cap-icon text-lg hidden text-center leading-[16px]"></i>
+          <span class="hide-menu">CUSTOMIZATION</span>
+         </div>
+         <li class="sidebar-item">
+          <a class="sidebar-link before:bg-lighterror hover:text-error
+          @@if (context.page === 'layout') { active before:bg-lighterror text-error dark:text-error}" href="@@webRoot/docs/docs-layout.html"
+            >
+            <iconify-icon icon="solar:tablet-line-duotone" class="text-xl p-2"></iconify-icon> <span class="hide-menu flex-shrink-0 ">Layout Option</span>
+          </a>
+        </li>         
+         <li class="sidebar-item">
+          <a class="sidebar-link before:bg-lightindigo hover:text-indigo
+          @@if (context.page === 'change-logo') { active before:bg-lightindigo text-indigo dark:text-indigo}" href="@@webRoot/docs/docs-change-logo.html"
+            >
+            <iconify-icon icon="solar:tuning-4-linear" class="text-xl p-2"></iconify-icon> <span class="hide-menu flex-shrink-0 ">Change Logo</span>
+          </a>
+        </li>         
+         <li class="sidebar-item">
+          <a class="sidebar-link before:bg-lightprimary hover:text-primary
+          @@if (context.page === 'changes-skin-color') { active before:bg-lightprimary text-primary dark:text-primary}" href="@@webRoot/docs/docs-changes-skin-color.html"
+            >
+            <iconify-icon icon="solar:pallete-2-line-duotone" class="text-xl p-2"></iconify-icon> <span class="hide-menu flex-shrink-0 ">Global Skin Color</span>
+          </a>
+        </li>         
+
+
+        <div class="caption">
+        <i class="ti ti-dots nav-small-cap-icon text-lg hidden text-center leading-[16px]"></i>
+        <span class="hide-menu">THEME UI</span>
+        </div>
+
+        <li class="hs-accordion sidebar-item @@if (context.page_group == 'themeUI') { active }" id="menulevel-form-accordion">
+          <a class="cursor-pointer hs-accordion-toggle sidebar-link  before:bg-lightsuccess hover:text-success dark:hover:text-success @@if (context.page_group == 'themeUI') { active sidebar-link before:bg-lightsuccess dark:before:bg-darksuccess text-success dark:text-success}"
+            >
+            <iconify-icon icon="solar:file-text-line-duotone" class="text-xl p-2"></iconify-icon><span class="hide-menu">Project Configuration</span>
+            <span class="hide-menu ms-auto">
+              <i class="ti ti-chevron-right text-lg me-4 leading-tight hs-accordion-active:hidden "></i>
+              <i
+                class="ti ti-chevron-up text-lg ms-auto hs-accordion-active:block hidden z-10 relative me-4"></i>
+            </span>
+          </a>
+          <div id="themui-block" 
+              class="hs-accordion-content @@if (context.page_group == 'themeUI') { active-menu h-full }">
+              <ul class="hs-accordion-group " >
+                <li class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  @@if (context.page === 'docs-color') { active font-semibold dark:opacity-100 }" href="@@webRoot/docs/docs-color.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary @@if (context.page === 'docs-color') { active bg-dark dark:bg-secondary }"></div>
+                    <span class="hide-menu">Color</span>
+                  </a>
+                </li>
+                <li class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  @@if (context.page === 'docs-typography') { active font-semibold dark:opacity-100 }" href="@@webRoot/docs/docs-typography.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary @@if (context.page === 'docs-typography') { active bg-dark dark:bg-secondary }"></div>
+                    <span class="hide-menu">Typography</span>
+                  </a>
+                </li>
+                <li class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  @@if (context.page === 'docs-icon') { active font-semibold dark:opacity-100 }" href="@@webRoot/docs/docs-icon.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary @@if (context.page === 'docs-icon') { active bg-dark dark:bg-secondary }"></div>
+                    <span class="hide-menu">Icons</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+        </li>
+
+        <div class="caption">
+          <i class="ti ti-dots nav-small-cap-icon text-lg hidden text-center leading-[16px]"></i>
+          <span class="hide-menu">UI COMPONENTS</span>
+          </div>   
+          
+          <li class="hs-accordion sidebar-item @@if (context.page_group == 'ui') { active }" id="menulevel-form-accordion">
+            <a class="cursor-pointer hs-accordion-toggle sidebar-link  before:bg-lightwarning hover:text-warning dark:hover:text-warning @@if (context.page_group == 'ui') { active sidebar-link before:bg-lightwarning dark:before:bg-darkwarning text-warning dark:text-warning}"
+              >
+              <iconify-icon icon="solar:widget-6-linear" class="text-xl p-2"></iconify-icon><span class="hide-menu">Tailwind</span>
+              <span class="hide-menu ms-auto">
+                <i class="ti ti-chevron-right text-lg me-4 leading-tight hs-accordion-active:hidden "></i>
+                <i
+                  class="ti ti-chevron-up text-lg ms-auto hs-accordion-active:block hidden z-10 relative me-4"></i>
+              </span>
+            </a>
+            <div id="ui-block" 
+                class="hs-accordion-content @@if (context.page_group == 'ui') { active-menu h-full }">
+                <ul class="hs-accordion-group " >
+                  <li
+                    class="dropdown-submenu">
+                    <a class="hs-accordion-toggle textlink dark:opacity-70  @@if (context.page === 'ui-accordion') { active font-semibold dark:opacity-100 }" href="@@webRoot/docs/ui-accordion.html">
+                      <div class="w-1.5 h-1.5 rounded-full bg-secondary @@if (context.page === 'ui-accordion') { active bg-dark dark:bg-secondary }"></div>
+                      <span class="hide-menu">Accordion</span>
+                    </a>
+                  </li>
+                  <li
+                    class="dropdown-submenu">
+                    <a class="hs-accordion-toggle textlink dark:opacity-70  @@if (context.page === 'ui-badge') { active font-semibold dark:opacity-100 }" href="@@webRoot/docs/ui-badge.html">
+                      <div class="w-1.5 h-1.5 rounded-full bg-secondary @@if (context.page === 'ui-badge') { active bg-dark dark:bg-secondary }"></div>
+                      <span class="hide-menu">Badge</span>
+                    </a>
+                  </li>
+                  <li
+                    class="dropdown-submenu">
+                    <a class="hs-accordion-toggle textlink dark:opacity-70  @@if (context.page === 'ui-button') { active font-semibold dark:opacity-100 }" href="@@webRoot/docs/ui-button.html">
+                      <div class="w-1.5 h-1.5 rounded-full bg-secondary @@if (context.page === 'ui-button') { active bg-dark dark:bg-secondary }"></div>
+                      <span class="hide-menu">Button</span>
+                    </a>
+                  </li>
+                  <li
+                    class="dropdown-submenu">
+                    <a class="hs-accordion-toggle textlink dark:opacity-70  @@if (context.page === 'ui-breadcrumb') { active font-semibold dark:opacity-100 }" href="@@webRoot/docs/ui-breadcrumb.html">
+                      <div class="w-1.5 h-1.5 rounded-full bg-secondary @@if (context.page === 'ui-breadcrumb') { active bg-dark dark:bg-secondary }"></div>
+                      <span class="hide-menu">Breadcrumb</span>
+                    </a>
+                  </li>
+                  <li
+                  class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  @@if (context.page === 'ui-carousel') { active font-semibold dark:opacity-100 }" href="@@webRoot/docs/ui-carousel.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary @@if (context.page === 'ui-carousel') { active bg-dark dark:bg-secondary }"></div>
+                    <span class="hide-menu">Carousel</span>
+                  </a>
+                </li>
+                  <li
+                    class="dropdown-submenu">
+                    <a class="hs-accordion-toggle textlink dark:opacity-70  @@if (context.page === 'ui-chat-bubbles') { active font-semibold dark:opacity-100 }" href="@@webRoot/docs/ui-chat-bubbles.html">
+                      <div class="w-1.5 h-1.5 rounded-full bg-secondary @@if (context.page === 'ui-chat-bubbles') { active bg-dark dark:bg-secondary }"></div>
+                      <span class="hide-menu">Chat Bubbles</span>
+                    </a>
+                  </li>
+                  <li
+                    class="dropdown-submenu">
+                    <a class="hs-accordion-toggle textlink dark:opacity-70  @@if (context.page === 'ui-dropdowns') { active font-semibold dark:opacity-100 }" href="@@webRoot/docs/ui-dropdowns.html">
+                      <div class="w-1.5 h-1.5 rounded-full bg-secondary @@if (context.page === 'ui-dropdowns') { active bg-dark dark:bg-secondary }"></div>
+                      <span class="hide-menu">Dropdowns</span>
+                    </a>
+                  </li>
+                  <li
+                    class="dropdown-submenu">
+                    <a class="hs-accordion-toggle textlink dark:opacity-70  @@if (context.page === 'ui-datepicker') { active font-semibold dark:opacity-100 }" href="@@webRoot/docs/ui-datepicker.html">
+                      <div class="w-1.5 h-1.5 rounded-full bg-secondary @@if (context.page === 'ui-datepicker') { active bg-dark dark:bg-secondary }"></div>
+                      <span class="hide-menu">DatePicker</span>
+                    </a>
+                  </li>
+                  <li
+                    class="dropdown-submenu">
+                    <a class="hs-accordion-toggle textlink dark:opacity-70  @@if (context.page === 'ui-devices') { active font-semibold dark:opacity-100 }" href="@@webRoot/docs/ui-devices.html">
+                      <div class="w-1.5 h-1.5 rounded-full bg-secondary @@if (context.page === 'ui-devices') { active bg-dark dark:bg-secondary }"></div>
+                      <span class="hide-menu">Devices</span>
+                    </a>
+                  </li>
+                  <li
+                    class="dropdown-submenu">
+                    <a class="hs-accordion-toggle textlink dark:opacity-70  @@if (context.page === 'ui-grid') { active font-semibold dark:opacity-100 }" href="@@webRoot/docs/ui-grid.html">
+                      <div class="w-1.5 h-1.5 rounded-full bg-secondary @@if (context.page === 'ui-grid') { active bg-dark dark:bg-secondary }"></div>
+                      <span class="hide-menu">Grid</span>
+                    </a>
+                  </li>
+                  <li
+                    class="dropdown-submenu">
+                    <a class="hs-accordion-toggle textlink dark:opacity-70  @@if (context.page === 'ui-link') { active font-semibold dark:opacity-100 }" href="@@webRoot/docs/ui-link.html">
+                      <div class="w-1.5 h-1.5 rounded-full bg-secondary @@if (context.page === 'ui-link') { active bg-dark dark:bg-secondary }"></div>
+                      <span class="hide-menu">Link</span>
+                    </a>
+                  </li>
+                  <li
+                    class="dropdown-submenu">
+                    <a class="hs-accordion-toggle textlink dark:opacity-70  @@if (context.page === 'ui-link') { active font-semibold dark:opacity-100 }" href="@@webRoot/docs/ui-link.html">
+                      <div class="w-1.5 h-1.5 rounded-full bg-secondary @@if (context.page === 'ui-link') { active bg-dark dark:bg-secondary }"></div>
+                      <span class="hide-menu">Link</span>
+                    </a>
+                  </li>
+                  <li
+                  class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  @@if (context.page === 'ui-modals') { active font-semibold dark:opacity-100 }" href="@@webRoot/docs/ui-modals.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary @@if (context.page === 'ui-modals') { active bg-dark dark:bg-secondary }"></div>
+                    <span class="hide-menu">Modals</span>
+                  </a>
+                </li>
+                <li
+                  class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  @@if (context.page === 'ui-notification') { active font-semibold dark:opacity-100 }" href="@@webRoot/docs/ui-notification.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary @@if (context.page === 'ui-notification') { active bg-dark dark:bg-secondary }"></div>
+                    <span class="hide-menu">Notification</span>
+                  </a>
+                </li>
+                <li
+                  class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  @@if (context.page === 'ui-offcanvas') { active font-semibold dark:opacity-100 }" href="@@webRoot/docs/ui-offcanvas.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary @@if (context.page === 'ui-offcanvas') { active bg-dark dark:bg-secondary }"></div>
+                    <span class="hide-menu">Offcanvas</span>
+                  </a>
+                </li>
+                <li
+                  class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  @@if (context.page === 'ui-progressbar') { active font-semibold dark:opacity-100 }" href="@@webRoot/docs/ui-progressbar.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary @@if (context.page === 'ui-progressbar') { active bg-dark dark:bg-secondary }"></div>
+                    <span class="hide-menu">Progress Bars</span>
+                  </a>
+                </li>
+                <li
+                  class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  @@if (context.page === 'ui-pagination') { active font-semibold dark:opacity-100 }" href="@@webRoot/docs/ui-pagination.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary @@if (context.page === 'ui-pagination') { active bg-dark dark:bg-secondary }"></div>
+                    <span class="hide-menu">Pagination</span>
+                  </a>
+                </li>
+                <li
+                  class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  @@if (context.page === 'ui-ratings') { active font-semibold dark:opacity-100 }" href="@@webRoot/docs/ui-ratings.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary @@if (context.page === 'ui-ratings') { active bg-dark dark:bg-secondary }"></div>
+                    <span class="hide-menu">Ratings</span>
+                  </a>
+                </li>
+                <li
+                  class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  @@if (context.page === 'ui-scrollspy') { active font-semibold dark:opacity-100 }" href="@@webRoot/docs/ui-scrollspy.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary @@if (context.page === 'ui-scrollspy') { active bg-dark dark:bg-secondary }"></div>
+                    <span class="hide-menu">Scrollspy</span>
+                  </a>
+                </li>
+                <li
+                  class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  @@if (context.page === 'ui-spinner') { active font-semibold dark:opacity-100 }" href="@@webRoot/docs/ui-spinner.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary @@if (context.page === 'ui-spinner') { active bg-dark dark:bg-secondary }"></div>
+                    <span class="hide-menu">Spinner</span>
+                  </a>
+                </li>
+                <li
+                  class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  @@if (context.page === 'ui-stepper') { active font-semibold dark:opacity-100 }" href="@@webRoot/docs/ui-stepper.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary @@if (context.page === 'ui-stepper') { active bg-dark dark:bg-secondary }"></div>
+                    <span class="hide-menu">Stepper</span>
+                  </a>
+                </li>
+                <li
+                  class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  @@if (context.page === 'ui-skeleton') { active font-semibold dark:opacity-100 }" href="@@webRoot/docs/ui-skeleton.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary @@if (context.page === 'ui-skeleton') { active bg-dark dark:bg-secondary }"></div>
+                    <span class="hide-menu">Skeleton</span>
+                  </a>
+                </li>
+                <li
+                  class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  @@if (context.page === 'ui-tab') { active font-semibold dark:opacity-100 }" href="@@webRoot/docs/ui-tab.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary @@if (context.page === 'ui-tab') { active bg-dark dark:bg-secondary }"></div>
+                    <span class="hide-menu">Tab</span>
+                  </a>
+                </li>
+                <li
+                  class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  @@if (context.page === 'ui-typography') { active font-semibold dark:opacity-100 }" href="@@webRoot/docs/ui-typography.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary @@if (context.page === 'ui-typography') { active bg-dark dark:bg-secondary }"></div>
+                    <span class="hide-menu">Typography</span>
+                  </a>
+                </li>
+                <li
+                  class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  @@if (context.page === 'ui-tooltip-popover') { active font-semibold dark:opacity-100 }" href="@@webRoot/docs/ui-tooltip-popover.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary @@if (context.page === 'ui-tooltip-popover') { active bg-dark dark:bg-secondary }"></div>
+                    <span class="hide-menu">Tooltip & Popover</span>
+                  </a>
+                </li>
+                <li
+                  class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  @@if (context.page === 'ui-timeline') { active font-semibold dark:opacity-100 }" href="@@webRoot/docs/ui-timeline.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary @@if (context.page === 'ui-timeline') { active bg-dark dark:bg-secondary }"></div>
+                    <span class="hide-menu">Timeline</span>
+                  </a>
+                </li>
+                <li
+                  class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  @@if (context.page === 'ui-toasts') { active font-semibold dark:opacity-100 }" href="@@webRoot/docs/ui-toasts.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary @@if (context.page === 'ui-toasts') { active bg-dark dark:bg-secondary }"></div>
+                    <span class="hide-menu">Toasts</span>
+                  </a>
+                </li>                  
+                </ul>
+              </div>
+          </li>
+
+        <div class="caption">
+          <i class="ti ti-dots nav-small-cap-icon text-lg hidden text-center leading-[16px]"></i>
+          <span class="hide-menu">SUPPORT</span>
+        </div>
+
+        <li class="sidebar-item">
+          <a class="sidebar-link before:bg-lighterror hover:text-error
+          @@if (context.page === 'change-log') { active before:bg-lighterror text-error dark:text-error}" href="@@webRoot/docs/docs-change-log.html"
+            >
+            <iconify-icon icon="solar:refresh-circle-line-duotone" class="text-xl p-2"></iconify-icon> <span class="hide-menu flex-shrink-0 ">Change log</span>
+          </a>
+        </li> 
+
+      </ul>
+    </nav>
+  </div>
+</div>

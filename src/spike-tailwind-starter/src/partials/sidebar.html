@@ -1,0 +1,157 @@
+<!-- ---------------------------------- -->
+<!-- Start Vertical Layout Sidebar -->
+<!-- ---------------------------------- -->
+<div class="p-3.5 flex justify-between" >
+  @@include("./logo-sidebar.html")
+</div>
+<div class="scroll-sidebar" data-simplebar="">
+  <div class="px-4 mt-5 mini-layout" data-te-sidenav-menu-ref>
+    <nav class="hs-accordion-group w-full flex flex-col">
+      <ul data-te-sidenav-menu-ref id="sidebarnav">
+        <div class="caption">
+          <i class="ti ti-dots nav-small-cap-icon text-lg hidden text-center leading-[16px]"></i>
+          <span class="hide-menu">HOME</span>
+        </div>
+
+        <li class="sidebar-item">
+          <a class="sidebar-link  before:bg-lightprimary hover:text-primary
+          @@if (context.page === 'sample page 1') { active before:bg-lightprimary dark:before:bg-darkprimary text-primary dark:text-primary}" href="@@webRoot/index.html"
+            >
+            <iconify-icon icon="solar:screencast-2-line-duotone" class="text-xl p-2"></iconify-icon> <span class="hide-menu flex-shrink-0 ">Sample Page</span>
+          </a>
+        </li>
+
+        <div class="caption">
+          <i class="ti ti-dots nav-small-cap-icon text-lg hidden text-center leading-[16px]"></i>
+          <span class="hide-menu">OTHERS</span>
+        </div>
+
+        <li class="hs-accordion sidebar-item @@if (context.page_group == 'dropdown') { active }" id="menulevel-accordion">
+          <a href="#" class="hs-accordion-toggle sidebar-link  before:bg-lightsecondary dark:before:bg-darksecondary hover:text-secondary dark:hover:text-secondary @@if (context.page_group == 'dropdown') { active sidebar-link before:bg-lightsecondary dark:before:bg-darksecondary}"
+            >
+            <iconify-icon icon="solar:layers-minimalistic-line-duotone" class="text-xl p-2"></iconify-icon><span class="hide-menu">Menu Level </span>
+            <span class="hide-menu ms-auto">
+              <i class="ti ti-chevron-right text-lg me-4 leading-tight hs-accordion-active:hidden "></i>
+              <i
+                class="ti ti-chevron-up text-lg ms-auto hs-accordion-active:block hidden z-10 relative me-4"></i>
+            </span>
+          </a>
+
+          <div id="users-accordion" 
+            class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 hidden @@if (context.page_group == 'dropdown') { active-menu h-full }">
+            <ul class="hs-accordion-group " data-hs-accordion-always-open>
+              <li
+                class="hs-accordion pl-4 pr-3 py-1 transition-colors duration-150 text-link dark:text-darklink"
+                id="users-accordion-sub-1">
+
+                <ul class="">
+                  <li class="">
+                    <a class="w-full py-3 flex gap-5 items-center text-fs_15 text-link dark:text-darklink  @@if (context.page === 'subpage') { active font-semibold }" href="@@webRoot/index2.html">
+                       <div class="w-1.5 h-1.5 rounded-full bg-secondary @@if (context.page === 'subpage') { active bg-dark dark:bg-secondary }"></div>
+                      <span class="hide-menu">Level 1</span>
+                    </a>
+                  </li>
+                </ul>
+
+                <a class="hs-accordion-toggle py-2 w-full gap-5 flex items-center text-fs_15 text-link dark:text-darklink hover:text-dark" href="#">
+                  <div class="w-1.5 h-1.5 rounded-full bg-secondary"></div>
+                  <span class="hide-menu">Level 2</span>
+                  <span class="hide-menu ms-auto">
+                    <i class="ti ti-chevron-down flex-shrink-0 text-lg ms-auto  hs-accordion-active:hidden"></i>
+                    <i
+                      class="ti ti-chevron-up flex-shrink-0 text-lg ms-auto hs-accordion-active:block ml-auto hidden z-10 relative "></i>
+                  </span>
+                </a>
+
+                <div id="users-accordion-sub-1"
+                  class="hs-accordion-content second-level w-full overflow-hidden transition-[height] duration-300 hidden">
+                  <ul class="">
+                    <li class="">
+                      <a class="w-full py-3 flex gap-5  items-center text-fs_15 text-link dark:text-darklink hover:text-dark" href="#">
+                        <div class="w-1.5 h-1.5 rounded-full bg-secondary"></div>
+                        <span class="hide-menu">Level 2.1</span>
+                      </a>
+                    </li>
+                    <li class="">
+                      <a class="w-full py-3 flex gap-5 items-center text-fs_15 text-link dark:text-darklink hover:text-dark" href="#">
+                        <div class="w-1.5 h-1.5 rounded-full bg-secondary"></div>
+                        <span class="hide-menu">Level 2.2</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="sidebar-item">
+          <a class="sidebar-link  before:bg-lightsuccess dark:before:bg-darksuccess dark:hover:text-success hover:text-success opacity-50"
+            href="#">
+            <iconify-icon icon="solar:forbidden-circle-line-duotone" class="text-xl p-2"></iconify-icon> <span class="hide-menu">Disabled</span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a class="sidebar-link  before:bg-lightwarning dark:before:bg-darkwarning hover:text-warning dark:hover:text-warning" href="#"
+            href="#">
+            <span class="flex items-center gap-2 leading-tight">
+              <iconify-icon icon="solar:star-line-duotone" class="text-xl p-2"></iconify-icon>
+              <span class="hide-menu">Sub Caption <br>
+                <p class="text-xs  opacity-80 pt-1">This is The subtitle</p>
+              </span>
+            </span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a class="sidebar-link  before:bg-lighterror dark:before:bg-darkerror hover:text-error dark:hover:text-error"
+            href="#">
+            <iconify-icon icon="solar:shield-check-line-duotone" class="text-xl p-2 "></iconify-icon> <span class="hide-menu">Chip</span>
+            <span class="ms-auto bg-error text-white h-5 w-5 rounded-full text-xs flex  items-center justify-center hide-menu-flex me-7">9</span>
+
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a class="sidebar-link  before:bg-lightindigo dark:before:bg-darkindigo hover:text-indigo dark:hover:text-indigo"
+            href="#">
+            <iconify-icon icon="solar:smile-circle-line-duotone" class="text-xl p-2"></iconify-icon> <span class="hide-menu">Outlined</span>
+            <span
+              class="ms-auto text-indigo outline outline-1 rounded-3xl outline-indigp text-center px-2 text-xs py-0.5 hide-menu me-7">outline</span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a class="sidebar-link  before:bg-lightinfo dark:before:bg-darkinfo hover:text-info dark:hover:text-info"
+            href="#">
+            <iconify-icon icon="solar:star-line-duotone" class="text-xl p-2"></iconify-icon> <span class="hide-menu">External</span>
+          </a>
+        </li>
+
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<!-- Bottom User Profile -->
+<div class="px-4 pt-4 relative hide-menu">
+  <div class="bg-lightprimary dark:bg-darkprimary
+   p-6 rounded-md">
+    <div class="">
+      <div class="flex items-center">
+        <img src="@@webRoot/assets/images/profile/user-1.jpg" class="h-11 w-11 rounded-full object-cover" alt="profile" />
+        <div class="ml-4 rtl:mr-4 rtl:ml-0">
+          <h5 class="text-lg font-semibold text-dark dark:text-white">Mike</h5>
+          <p class="text-sm font-normal text-link dark:text-darklink ">Admin</p>
+        </div>
+        <div class="ms-auto hs-tooltip hs-tooltip-toggle">
+          <a href="#" class="text-link hover:text-primary dark:text-primary"><iconify-icon icon="solar:logout-line-duotone" class="text-3xl"></iconify-icon></i> 
+            <span
+            class="tooltip hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible"
+            role="tooltip">
+            Logout
+          </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- </aside> -->

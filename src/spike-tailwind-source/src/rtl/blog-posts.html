@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-color-theme="Blue_Theme" class="light selected" data-layout="vertical"
+    data-boxed-layout="boxed" data-card="shadow">
+
+<head>
+    @@include("partials/head.html")
+    <title>Spike TailwindCSS HTML Admin Template</title>
+</head>
+
+<body class="DEFAULT_THEME bg-lightprimary dark:bg-darkbody">
+    <main>
+        <!--start the project-->
+        <div id="main-wrapper" class="flex p-5">
+
+            <aside id="application-sidebar-brand"
+                class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full xl:rtl:-translate-x-0 rtl:translate-x-full  left-0 rtl:left-auto xl:rtl:right-5 rtl:right-0 transform hidden xl:block xl:translate-x-0 xl:end-auto xl:bottom-0 fixed top-0 with-vertical  left-sidebar transition-all duration-300 h-screen z-[2] flex-shrink-0  w-[270px] border-border dark:border-darkborder bg-white dark:bg-dark xl:top-5 xl:start-5 shadow-md xl:rounded-md">
+                @@include("partials/sidebar.html",{ "page": "blog-posts","page_group": "blog" })
+            </aside>
+            <div class="page-wrapper w-full" role="main">
+
+                <!-- Main Content -->
+                <main class="h-full ">
+                    <div class="container full-container py-5 xl:ps-6 ps-0 pt-0 pe-0 remove-ps">
+
+                        <!--  Header Start -->
+                        <header
+                            class="sticky top-0 inset-x-0 z-[1] flex flex-wrap md:justify-start md:flex-nowrap text-fs_15 py-3 lg:py-0 mb-6 bg-white dark:bg-dark rounded-md shadow-md">
+                            <div class="with-vertical w-full">@@include("partials/header.html")</div>
+                            <div class="with-horizontal w-full">
+                                <div class="bg-white dark:bg-dark">
+                                    <div class="container">
+                                        @@include("partials/horizontal-header.html")
+                                    </div>
+                                </div>
+                            </div>
+                        </header>
+                        <!--  Header End -->
+
+                        <!-- Horizontal Sidebar Menu -->
+                        <aside
+                            class="with-horizontal lg:flex hidden left-sidebar bg-white dark:bg-dark border-t border-border dark:border-darkborder">
+                            @@include("partials/horizontal-sidebar.html", { "page": "blog-posts","page_group":
+                            "blog"})
+                        </aside>
+                        <!-- Horizontal Sidebar Menu End -->
+
+                        <!-- Main Content -->
+                        <div class="max-w-full">
+                            <div class="container full-container ">
+                                <!----Breadcrumb Start---->
+                                @@include("partials/breadcrumb.html", {"title": "Blog", "subtitle": 'Home'})
+                                <!----Breadcrumb End---->
+                        <div class="grid grid-cols-12 gap-6">
+                            <div class="lg:col-span-8 md:col-span-6 col-span-12">
+                                <div class="card animate-card overflow-hidden relative h-[400px] bg-cover bg-no-repeat before:block before:absolute before:bg-[#000] before:opacity-40 before:top-0 before:h-full before:w-full"
+                                    style="background-image: url(@@webRoot/assets/images/blog/blog-img9.jpg);">
+                                    <div class="card-body h-full relative">
+                                        <div class="flex flex-col justify-between h-full">
+                                            <div class="flex items-start justify-between">
+                                                <div class="relative hs-tooltip hs-tooltip-toggle">
+                                                    <img src="@@webRoot/assets/images/profile/user-4.jpg" alt=""
+                                                        class="rounded-full h-10 w-10">
+                                                    <span
+                                                        class="tooltip hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible "
+                                                        role="tooltip">
+                                                        Mollie Underwood
+                                                    </span>
+                                                </div>
+                                                <span
+                                                    class="bg-primary py-1 px-2 text-white  text-xs rounded-full">Gadget</span>
+                                            </div>
+                                            <div>
+                                                <a href="@@webRoot/rtl/blog-detail.html"
+                                                    class="text-white  font-semibold text-2xl my-6 block">Early Black
+                                                    Friday
+                                                    Amazon deals: cheap TVs, headphones, laptops</a>
+                                                <div class="flex items-center gap-4">
+                                                    <div class="flex items-center gap-2 text-white text-base">
+                                                        <i class="ti ti-eye text-lg text-body"></i>
+                                                        6006
+                                                    </div>
+                                                    <div class="flex items-center gap-2 text-white text-base">
+                                                        <i class="ti ti-message-2 text-lg text-body"></i>
+                                                        3
+                                                    </div>
+                                                    <div class="flex items-center gap-1 text-white fw-normal ms-auto">
+                                                        <i class="ti ti-point"></i>
+                                                        <small>Fri, Jan 13</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                                <div class="card animate-card overflow-hidden relative h-[400px] bg-cover bg-no-repeat before:block before:absolute before:bg-[#000] before:opacity-40 before:top-0 before:h-full before:w-full"
+                                    style="background-image: url(@@webRoot/assets/images/blog/blog-img10.jpg);">
+                                    <div class="card-body h-full relative">
+                                        <div class="flex flex-col justify-between h-full">
+                                            <div class="flex items-start justify-between">
+                                                <div class="relative hs-tooltip hs-tooltip-toggle">
+                                                    <img src="@@webRoot/assets/images/profile/user-5.jpg" alt=""
+                                                        class="rounded-full h-10 w-10">
+                                                    <span
+                                                        class="tooltip hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible "
+                                                        role="tooltip">
+                                                        Francisco Quinn
+                                                    </span>
+                                                </div>
+                                                <span
+                                                    class="bg-primary py-1 px-2 text-white text-xs rounded-full">Health</span>
+                                            </div>
+                                            <div>
+                                                <a href="@@webRoot/rtl/blog-detail.html"
+                                                    class="text-white font-semibold text-2xl my-6 block">Presented by Max
+                                                    Rushden with Barry Glendenning, Philippe Auclair</a>
+                                                <div class="flex items-center gap-4">
+                                                    <div class="flex items-center gap-2 text-white text-base">
+                                                        <i class="ti ti-eye text-lg text-body"></i>
+                                                        713
+                                                    </div>
+                                                    <div class="flex items-center gap-2 text-white text-base">
+                                                        <i class="ti ti-message-2 text-lg text-body"></i>
+                                                        3
+                                                    </div>
+                                                    <div class="flex items-center gap-1 text-white fw-normal ms-auto">
+                                                        <i class="ti ti-point"></i>
+                                                        <small>Wed, Jan 18</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                                <div class="card overflow-hidden group animate-card">
+                                    <div class=" relative ">
+                                        <a href="@@webRoot/rtl/blog-detail.html">
+                                            <img src="@@webRoot/assets/images/blog/blog-img6.jpg"
+                                                class="w-full max-w-full" alt="...">
+                                        </a>
+                                        <span
+                                            class="badge border-0  font-semibold leading-tight text-xs bg-white dark:bg-dark  text-dark dark:text-white  absolute right-4 rtl:right-auto rtl:left-4 bottom-4">
+                                            2 min Read</span>
+                                    </div>
+                                    <div class="card-body p-5">
+                                        <div class="relative hs-tooltip hs-tooltip-toggle w-fit">
+                                            <img src="@@webRoot/assets/images/profile/user-7.jpg" alt=""
+                                                class="rounded-full -mt-10  h-10 w-10 ">
+                                            <span
+                                                class="tooltip hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible "
+                                                role="tooltip">
+                                                Addie Keller
+                                            </span>
+                                        </div>
+                                        <span class="bg-lightgray dark:bg-darkgray text-dark dark:text-white 
+                                             text-xs badge border-0 leading-tight font-semibold mt-5 block w-fit">Gadget</span>
+                                        <a class="block my-4  font-semibold text-dark dark:text-darklink text-lg  group-hover:text-primary"
+                                            href="@@webRoot/rtl/blog-detail.html">As yen tumbles, gadget-loving Japan
+                                            goes
+                                            for secondhand iPhones</a>
+                                        <div class="flex items-center gap-4">
+                                            <div class="flex items-center gap-2 text-bodytext dark:text-darklink
+                                            "><i class="ti ti-eye text-dark dark:text-darklink text-lg"></i>9,125</div>
+                                            <div class="flex items-center gap-2 text-bodytext dark:text-darklink
+                                            "><i class="ti ti-message-2 text-dark dark:text-darklink text-lg"></i>3
+                                            </div>
+                                            <div class="flex items-center text-xs ms-auto text-bodytext dark:text-darklink 
+                                            "><i class="ti ti-point text-bodytext dark:text-darklink"></i>Mon, Jan 16
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                                <div class="card overflow-hidden group animate-card">
+                                    <div class=" relative ">
+                                        <a href="@@webRoot/rtl/blog-detail.html">
+                                            <img src="@@webRoot/assets/images/blog/blog-img11.jpg"
+                                                class="w-full max-w-full" alt="...">
+                                        </a>
+                                        <span
+                                            class="badge border-0  font-semibold leading-tight text-xs bg-white dark:bg-dark  text-dark dark:text-white  absolute right-4 rtl:right-auto rtl:left-4 bottom-4">
+                                            2 min Read</span>
+                                    </div>
+                                    <div class="card-body p-5">
+                                        <div class="relative hs-tooltip hs-tooltip-toggle w-fit">
+                                            <img src="@@webRoot/assets/images/profile/user-2.jpg" alt=""
+                                                class="rounded-full -mt-10  h-10 w-10 ">
+                                            <span
+                                                class="tooltip hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible "
+                                                role="tooltip">
+                                                Walter Palmer
+                                            </span>
+                                        </div>
+                                        <span class="bg-lightgray dark:bg-darkgray text-dark dark:text-white 
+                                             text-xs badge border-0 leading-tight font-semibold mt-5 block w-fit">Social</span>
+                                        <a class="block my-4  font-semibold text-dark dark:text-darklink text-lg  group-hover:text-primary"
+                                            href="@@webRoot/rtl/blog-detail.html">Intel loses bid to revive antitrust case
+                                            against patent foe Fortress</a>
+                                        <div class="flex items-center gap-4">
+                                            <div class="flex items-center gap-2 text-bodytext dark:text-darklink
+                                            "><i class="ti ti-eye text-dark dark:text-darklink text-lg"></i>4,150</div>
+                                            <div class="flex items-center gap-2 text-bodytext dark:text-darklink
+                                            "><i class="ti ti-message-2 text-dark dark:text-darklink text-lg"></i>38
+                                            </div>
+                                            <div class="flex items-center text-xs ms-auto text-bodytext dark:text-darklink 
+                                            "><i class="ti ti-point text-bodytext dark:text-darklink"></i>Sun, Jan 15
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                                <div class="card overflow-hidden group animate-card">
+                                    <div class=" relative ">
+                                        <a href="@@webRoot/rtl/blog-detail.html">
+                                            <img src="@@webRoot/assets/images/blog/blog-img8.jpg"
+                                                class="w-full max-w-full" alt="...">
+                                        </a>
+                                        <span
+                                            class="badge border-0  font-semibold leading-tight text-xs bg-white dark:bg-dark  text-dark dark:text-white  absolute right-4 rtl:right-auto rtl:left-4 bottom-4">
+                                            2 min Read</span>
+                                    </div>
+                                    <div class="card-body p-5">
+                                        <div class="relative hs-tooltip hs-tooltip-toggle w-fit">
+                                            <img src="@@webRoot/assets/images/profile/user-3.jpg" alt=""
+                                                class="rounded-full -mt-10  h-10 w-10 ">
+                                            <span
+                                                class="tooltip hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible "
+                                                role="tooltip">
+                                                Miguel Kennedy
+                                            </span>
+                                        </div>
+                                        <span class="bg-lightgray dark:bg-darkgray text-dark dark:text-white 
+                                             text-xs badge border-0 leading-tight font-semibold mt-5 block w-fit">Health</span>
+                                        <a class="block my-4  font-semibold text-dark dark:text-darklink text-lg group-hover:text-primary "
+                                            href="@@webRoot/rtl/blog-detail.html">COVID outbreak deepens as more lockdowns
+                                            loom in China</a>
+                                        <div class="flex items-center gap-4">
+                                            <div class="flex items-center gap-2 text-bodytext dark:text-darklink
+                                            "><i class="ti ti-eye text-dark dark:text-darklink text-lg"></i>9,480</div>
+                                            <div class="flex items-center gap-2 text-bodytext dark:text-darklink
+                                            "><i class="ti ti-message-2 text-dark dark:text-darklink text-lg"></i>12
+                                            </div>
+                                            <div class="flex items-center text-xs ms-auto text-bodytext dark:text-darklink 
+                                            "><i class="ti ti-point text-bodytext dark:text-darklink"></i>Sun, Jan 14
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                                <div class="card overflow-hidden group animate-card">
+                                    <div class=" relative ">
+                                        <a href="@@webRoot/rtl/blog-detail.html">
+                                            <img src="@@webRoot/assets/images/blog/blog-img5.jpg"
+                                                class="w-full max-w-full" alt="...">
+                                        </a>
+                                        <span
+                                            class="badge border-0  font-semibold leading-tight text-xs bg-white dark:bg-dark  text-dark dark:text-white  absolute right-4 rtl:right-auto rtl:left-4 bottom-4">
+                                            2 min Read</span>
+                                    </div>
+                                    <div class="card-body p-5">
+                                        <div class="relative hs-tooltip hs-tooltip-toggle w-fit">
+                                            <img src="@@webRoot/assets/images/profile/user-5.jpg" alt=""
+                                                class="rounded-full -mt-10  h-10 w-10 ">
+                                            <span
+                                                class="tooltip hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible "
+                                                role="tooltip">
+                                                Esther Lindsey
+                                            </span>
+                                        </div>
+                                        <span class="bg-lightgray dark:bg-darkgray text-dark dark:text-white 
+                                             text-xs badge border-0 leading-tight font-semibold mt-5 block w-fit">Lifestyle</span>
+                                        <a class="block my-4  font-semibold text-dark dark:text-darklink text-lg group-hover:text-primary"
+                                            href="@@webRoot/rtl/blog-detail.html">Streaming video way before it was cool, go
+                                            dark tomorrow</a>
+                                        <div class="flex items-center gap-4">
+                                            <div class="flex items-center gap-2 text-bodytext dark:text-darklink
+                                            "><i class="ti ti-eye text-dark dark:text-darklink text-lg"></i>2252</div>
+                                            <div class="flex items-center gap-2 text-bodytext dark:text-darklink
+                                            "><i class="ti ti-message-2 text-dark dark:text-darklink text-lg"></i>3
+                                            </div>
+                                            <div class="flex items-center text-xs ms-auto text-bodytext dark:text-darklink 
+                                            "><i class="ti ti-point text-bodytext dark:text-darklink"></i>Sun, Jan 14
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                                <div class="card overflow-hidden group animate-card">
+                                    <div class=" relative ">
+                                        <a href="@@webRoot/rtl/blog-detail.html">
+                                            <img src="@@webRoot/assets/images/blog/blog-img3.jpg"
+                                                class="w-full max-w-full" alt="...">
+                                        </a>
+                                        <span
+                                            class="badge border-0  font-semibold leading-tight text-xs bg-white dark:bg-dark  text-dark dark:text-white  absolute right-4 rtl:right-auto rtl:left-4 bottom-4">
+                                            2 min Read</span>
+                                    </div>
+                                    <div class="card-body p-5">
+                                        <div class="relative hs-tooltip hs-tooltip-toggle w-fit">
+                                            <img src="@@webRoot/assets/images/profile/user-3.jpg" alt=""
+                                                class="rounded-full -mt-10  h-10 w-10 ">
+                                            <span
+                                                class="tooltip hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible "
+                                                role="tooltip">
+                                                Leroy Greer
+                                            </span>
+                                        </div>
+                                        <span class="bg-lightgray dark:bg-darkgray text-dark dark:text-white 
+                                             text-xs badge border-0 leading-tight font-semibold mt-5 block w-fit">Design</span>
+                                        <a class="block my-4  font-semibold text-dark dark:text-darklink text-lg group-hover:text-primary"
+                                            href="@@webRoot/rtl/blog-detail.html">Apple is apparently working on a new
+                                            ‘streamlined’ accessibility for iOS</a>
+                                        <div class="flex items-center gap-4">
+                                            <div class="flex items-center gap-2 text-bodytext dark:text-darklink
+                                            "><i class="ti ti-eye text-dark dark:text-darklink text-lg"></i>5860</div>
+                                            <div class="flex items-center gap-2 text-bodytext dark:text-darklink
+                                            "><i class="ti ti-message-2 text-dark dark:text-darklink text-lg"></i>38
+                                            </div>
+                                            <div class="flex items-center text-xs ms-auto text-bodytext dark:text-darklink 
+                                            "><i class="ti ti-point text-bodytext dark:text-darklink"></i>Fri, Jan 13
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                                <div class="card overflow-hidden group animate-card">
+                                    <div class=" relative ">
+                                        <a href="@@webRoot/rtl/blog-detail.html">
+                                            <img src="@@webRoot/assets/images/blog/blog-img2.jpg"
+                                                class="w-full max-w-full" alt="...">
+                                        </a>
+                                        <span
+                                            class="badge border-0  font-semibold leading-tight text-xs bg-white dark:bg-dark  text-dark dark:text-white  absolute right-4 rtl:right-auto rtl:left-4 bottom-4">
+                                            2 min Read</span>
+                                    </div>
+                                    <div class="card-body p-5">
+                                        <div class="relative hs-tooltip hs-tooltip-toggle w-fit">
+                                            <img src="@@webRoot/assets/images/profile/user-2.jpg" alt=""
+                                                class="rounded-full -mt-10  h-10 w-10 ">
+                                            <span
+                                                class="tooltip hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible "
+                                                role="tooltip">
+                                                Tommy Butler
+                                            </span>
+                                        </div>
+                                        <span class="bg-lightgray dark:bg-darkgray text-dark dark:text-white 
+                                             text-xs badge border-0 leading-tight font-semibold mt-5 block w-fit">Lifestyle</span>
+                                        <a class="block my-4  font-semibold text-dark dark:text-darklink text-lg group-hover:text-primary"
+                                            href="@@webRoot/rtl/blog-detail.html">Apple is apparently working on a new
+                                            ‘streamlined’ accessibility for iOS</a>
+                                        <div class="flex items-center gap-4">
+                                            <div class="flex items-center gap-2 text-bodytext dark:text-darklink
+                                            "><i class="ti ti-eye text-dark dark:text-darklink text-lg"></i>6315</div>
+                                            <div class="flex items-center gap-2 text-bodytext dark:text-darklink
+                                            "><i class="ti ti-message-2 text-dark dark:text-darklink text-lg"></i>12
+                                            </div>
+                                            <div class="flex items-center text-xs ms-auto text-bodytext dark:text-darklink 
+                                            "><i class="ti ti-point text-bodytext dark:text-darklink"></i>Wed, Jan 11
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                                <div class="card overflow-hidden group animate-card">
+                                    <div class=" relative ">
+                                        <a href="@@webRoot/rtl/blog-detail.html">
+                                            <img src="@@webRoot/assets/images/blog/blog-img4.jpg"
+                                                class="w-full max-w-full" alt="...">
+                                        </a>
+                                        <span
+                                            class="badge border-0  font-semibold leading-tight text-xs bg-white dark:bg-dark  text-dark dark:text-white  absolute right-4 rtl:right-auto rtl:left-4 bottom-4">
+                                            2 min Read</span>
+                                    </div>
+                                    <div class="card-body p-5">
+                                        <div class="relative hs-tooltip hs-tooltip-toggle w-fit">
+                                            <img src="@@webRoot/assets/images/profile/user-4.jpg" alt=""
+                                                class="rounded-full -mt-10  h-10 w-10 ">
+                                            <span
+                                                class="tooltip hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible "
+                                                role="tooltip">
+                                                Donald Holmes
+                                            </span>
+                                        </div>
+                                        <span class="bg-lightgray dark:bg-darkgray text-dark dark:text-white 
+                                             text-xs badge border-0 leading-tight font-semibold mt-5 block w-fit">Design</span>
+                                        <a class="block my-4  font-semibold text-dark dark:text-darklink text-lg group-hover:text-primary"
+                                            href="@@webRoot/rtl/blog-detail.html">Why Figma is selling to Adobe for $20
+                                            billion</a>
+                                        <div class="flex items-center gap-4">
+                                            <div class="flex items-center gap-2 text-bodytext dark:text-darklink
+                                            "><i class="ti ti-eye text-dark dark:text-darklink text-lg"></i>7570</div>
+                                            <div class="flex items-center gap-2 text-bodytext dark:text-darklink
+                                            "><i class="ti ti-message-2 text-dark dark:text-darklink text-lg"></i>38
+                                            </div>
+                                            <div class="flex items-center text-xs ms-auto text-bodytext dark:text-darklink 
+                                            "><i class="ti ti-point text-bodytext dark:text-darklink"></i>Wed, Jan 11
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                                <div class="card overflow-hidden group animate-card">
+                                    <div class=" relative ">
+                                        <a href="@@webRoot/rtl/blog-detail.html">
+                                            <img src="@@webRoot/assets/images/blog/blog-img1.jpg"
+                                                class="w-full max-w-full" alt="...">
+                                        </a>
+                                        <span
+                                            class="badge border-0  font-semibold leading-tight text-xs bg-white dark:bg-dark  text-dark dark:text-white  absolute right-4 rtl:right-auto rtl:left-4 bottom-4">
+                                            2 min Read</span>
+                                    </div>
+                                    <div class="card-body p-5">
+                                        <div class="relative hs-tooltip hs-tooltip-toggle w-fit">
+                                            <img src="@@webRoot/assets/images/profile/user-5.jpg" alt=""
+                                                class="rounded-full -mt-10  h-10 w-10 ">
+                                            <span
+                                                class="tooltip hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible "
+                                                role="tooltip">
+                                                Eric Douglas
+                                            </span>
+                                        </div>
+                                        <span class="bg-lightgray dark:bg-darkgray text-dark dark:text-white 
+                                             text-xs badge border-0 leading-tight font-semibold mt-5 block w-fit">Gadget</span>
+                                        <a class="block my-4  font-semibold text-dark dark:text-darklink text-lg group-hover:text-primary"
+                                            href="@@webRoot/rtl/blog-detail.html">armins Instinct Crossover is a rugged
+                                            hybrid smartwatch</a>
+                                        <div class="flex items-center gap-4">
+                                            <div class="flex items-center gap-2 text-bodytext dark:text-darklink
+                                            "><i class="ti ti-eye text-dark dark:text-darklink text-lg"></i>6763</div>
+                                            <div class="flex items-center gap-2 text-bodytext dark:text-darklink
+                                            "><i class="ti ti-message-2 text-dark dark:text-darklink text-lg"></i>12
+                                            </div>
+                                            <div class="flex items-center text-xs ms-auto text-bodytext dark:text-darklink 
+                                            "><i class="ti ti-point text-bodytext dark:text-darklink"></i>Tue, Jan 10
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                              </div>
+                                    </div>
+                                  </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                <!-- Main Content End -->
+
+            </div>
+        </div>
+        <!--end of project-->
+    </main>
+    @@include("partials/header-components/mobile-menu.html")
+    @@include("partials/customizer.html")
+    @@include("partials/scripts.html")
+</body>
+</html>

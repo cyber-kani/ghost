@@ -1,0 +1,1739 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-color-theme="Blue_Theme" class="light selected"
+	data-layout="vertical" data-boxed-layout="boxed" data-card="shadow">
+
+	<head>
+		@@include("partials/head.html")
+		<title>Spike TailwindCSS HTML Admin Template</title>
+	</head>
+
+	<body class="DEFAULT_THEME bg-lightprimary dark:bg-darkbody">
+		<main>
+			<!--start the project-->
+			<div id="main-wrapper" class="flex p-5">
+
+				<aside id="application-sidebar-brand"
+					class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full xl:rtl:-translate-x-0 rtl:translate-x-full  left-0 rtl:left-auto xl:rtl:right-5 rtl:right-0 transform hidden xl:block xl:translate-x-0 xl:end-auto xl:bottom-0 fixed top-0 with-vertical  left-sidebar transition-all duration-300 h-screen z-[2] flex-shrink-0  w-[270px] border-border dark:border-darkborder bg-white dark:bg-dark xl:top-5 xl:start-5 shadow-md xl:rounded-md">
+                    @@include("partials/sidebar.html",{ "page":
+                    "widget-cards","page_group": "widgets" })
+				</aside>
+				<div class="page-wrapper w-full" role="main">
+
+					<!-- Main Content -->
+					<main class="h-full ">
+						<div class="container full-container py-5 xl:ps-6 ps-0 pt-0 pe-0 remove-ps">
+
+							<!--  Header Start -->
+							<header
+								class="sticky top-0 inset-x-0 z-[1] flex flex-wrap md:justify-start md:flex-nowrap text-fs_15 py-3 lg:py-0 mb-6 bg-white dark:bg-dark rounded-md shadow-md">
+								<div
+									class="with-vertical w-full">@@include("partials/header.html")</div>
+								<div class="with-horizontal w-full">
+									<div class="bg-white dark:bg-dark">
+										<div class="container">
+											@@include("partials/horizontal-header.html")
+										</div>
+									</div>
+								</div>
+							</header>
+							<!--  Header End -->
+
+							<!-- Horizontal Sidebar Menu -->
+							<aside
+								class="with-horizontal lg:flex hidden left-sidebar bg-white dark:bg-dark border-t border-border dark:border-darkborder">
+                                @@include("partials/horizontal-sidebar.html", { "page":
+                        "widget-cards","page_group": "widgets"})
+							</aside>
+							<!-- Horizontal Sidebar Menu End -->
+
+                            <!-- Main Content -->
+                            <div class="max-w-full">
+                                <div class="container full-container ">
+                                    <!----Breadcrumb Start---->
+                                    @@include("partials/breadcrumb.html", {"title": "Cards", "subtitle": 'Home'})
+                                    <!----Breadcrumb End---->
+
+									 <!-- Icon Cards    -->
+									 <div class="grid grid-cols-12 gap-6">
+										<div
+											class="xl:col-span-2 lg:col-span-4 sm:col-span-6 col-span-12">
+											<div
+												class="card shadow-none bg-lightprimary dark:bg-darkprimary ">
+												<div class="card-body">
+													<a
+														href="@@webRoot/horizontal/page-user-profile.html">
+														<div class="text-center">
+															<div
+																class="flex justify-center">
+																<img
+																	src="@@webRoot/assets/images/svgs/icon-user-male.svg"
+																	width="50"
+																	height="50"
+																	class="mb-3" alt>
+															</div>
+															<p
+																class="font-semibold text-sm text-primary mb-1">
+																Profile
+															</p>
+															<h5
+																class="text-lg font-semibold text-primary mb-0">3,685</h5>
+														</div>
+													</a>
+												</div>
+											</div>
+										</div>
+										<div
+											class="xl:col-span-2 lg:col-span-4 sm:col-span-6 col-span-12">
+											<div
+												class="card shadow-none bg-lightwarning dark:bg-darkwarning">
+												<div class="card-body">
+													<a
+														href="@@webRoot/horizontal/blog-posts.html">
+														<div class="text-center">
+															<div
+																class="flex justify-center">
+																<img
+																	src="@@webRoot/assets/images/svgs/icon-briefcase.svg"
+																	width="50"
+																	height="50"
+																	class="mb-3" alt>
+															</div>
+															<p
+																class="font-semibold text-sm text-warning mb-1">
+																Blog
+															</p>
+															<h5
+																class="text-lg font-semibold  text-warning mb-0">256</h5>
+														</div>
+													</a>
+												</div>
+											</div>
+										</div>
+										<div
+											class="xl:col-span-2 lg:col-span-4 sm:col-span-6 col-span-12">
+											<div
+												class="card shadow-none bg-lightinfo dark:bg-darkinfo">
+												<div class="card-body">
+													<a
+														href="@@webRoot/horizontal/app-calendar.html">
+														<div class="text-center">
+															<div
+																class="flex justify-center">
+																<img
+																	src="@@webRoot/assets/images/svgs/icon-mailbox.svg"
+																	width="50"
+																	height="50"
+																	class="mb-3" alt>
+															</div>
+															<p
+																class="font-semibold text-sm text-info mb-1">
+																Calendar
+															</p>
+															<h5
+																class="text-lg font-semibold  text-info mb-0">356</h5>
+														</div>
+													</a>
+												</div>
+											</div>
+										</div>
+										<div
+											class="xl:col-span-2 lg:col-span-4 sm:col-span-6 col-span-12">
+											<div
+												class="card shadow-none bg-lighterror dark:bg-darkerror">
+												<div class="card-body">
+													<a
+														href="@@webRoot/horizontal/app-email.html">
+														<div class="text-center">
+															<div
+																class="flex justify-center">
+																<img
+																	src="@@webRoot/assets/images/svgs/icon-favorites.svg"
+																	width="50"
+																	height="50"
+																	class="mb-3" alt>
+															</div>
+															<p
+																class="font-semibold text-sm text-error mb-1">
+																Email
+															</p>
+															<h5
+																class="text-lg font-semibold text-error mb-0">696</h5>
+														</div>
+													</a>
+												</div>
+											</div>
+										</div>
+										<div
+											class="xl:col-span-2 lg:col-span-4 sm:col-span-6 col-span-12">
+											<div
+												class="card shadow-none bg-lightsuccess dark:bg-darksuccess">
+												<div class="card-body">
+													<a
+														href="@@webRoot/horizontal/app-chats.html">
+														<div class="text-center">
+															<div
+																class="flex justify-center">
+																<img
+																	src="@@webRoot/assets/images/svgs/icon-speech-bubble.svg"
+																	width="50"
+																	height="50"
+																	class="mb-3" alt>
+															</div>
+															<p
+																class="font-semibold text-sm text-success mb-1">
+																Chats
+															</p>
+															<h5
+																class="text-lg font-semibold text-success mb-0">$96k</h5>
+														</div>
+													</a>
+												</div>
+											</div>
+										</div>
+										<div
+											class="xl:col-span-2 lg:col-span-4 sm:col-span-6 col-span-12">
+											<div
+												class="card shadow-none bg-lightprimary  dark:bg-darkprimary">
+												<div class="card-body">
+													<a
+														href="@@webRoot/horizontal/app-contact.html">
+														<div class="text-center">
+															<div
+																class="flex justify-center">
+																<img
+																	src="@@webRoot/assets/images/svgs/icon-connect.svg"
+																	width="50"
+																	height="50"
+																	class="mb-3" alt>
+															</div>
+															<p
+																class="font-semibold text-sm text-primary mb-1">
+																Contacts
+															</p>
+															<h5
+																class="text-lg font-semibold  text-primary mb-0">59</h5>
+														</div>
+													</a>
+												</div>
+											</div>
+										</div>
+										<!-- Icon Cards Ends  -->
+		
+										<!-- Blog Cards  -->
+										<div
+											class="lg:col-span-4 md:col-span-12 col-span-12">
+											<div class="card animate-card group">
+												<div class=" relative overflow-hidden">
+													<a href="javascript:void(0)">
+														<img
+															src="@@webRoot/assets/images/blog/blog-img1.jpg"
+															class="w-full max-w-full rounded-t-md"
+															alt="...">
+													</a>
+													<span
+														class="bg-white dark:bg-dark py-1 px-2 text-dark dark:text-white  text-xs rounded-full absolute right-4 rtl:right-auto rtl:left-4 bottom-4 font-semibold">
+														2 min Read</span>
+												</div>
+												<div class="card-body p-5">
+													<div
+														class="relative hs-tooltip hs-tooltip-toggle mb-5 w-fit -mt-10"
+														>
+														<img
+															src="@@webRoot/assets/images/profile/user-5.jpg"
+															alt
+															class="rounded-full  h-10 w-10 ">
+															<span
+															class="tooltip hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible"
+															role="tooltip">
+															Esther Lindsey
+														  </span>
+													</div>
+													<span
+														class="bg-gray-200 dark:bg-darkgray py-1 px-2  text-dark dark:text-white 
+												text-xs rounded-full mt-5 block w-fit font-medium">Lifestyle</span>
+													<a
+														class="block my-4  font-semibold text-lg text-dark dark:text-white group-hover:text-primary"
+														href="javascript:void(0)">Streaming
+														video way before it was cool, go
+														dark tomorrow</a>
+													<div
+														class="flex items-center gap-4">
+														<div
+															class="flex items-center gap-2 
+													"><i
+																class="ti ti-eye  text-bodytext dark:text-darklink text-lg"></i>2252</div>
+														<div
+															class="flex items-center gap-2 
+													"><i
+																class="ti ti-message-2 text-bodytext dark:text-darklink text-lg"></i>3
+														</div>
+														<div
+															class="flex items-center text-xs ms-auto  
+													"><i class="ti ti-point "></i>Sun,
+															Jan 14
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+		
+										<div
+											class="lg:col-span-4 md:col-span-12  col-span-12">
+											<div class="card animate-card group">
+												<div class=" relative overflow-hidden">
+													<a href="javascript:void(0)">
+														<img
+															src="@@webRoot/assets/images/blog/blog-img2.jpg"
+															class="w-full max-w-full rounded-t-md"
+															alt="...">
+													</a>
+													<span
+														class="bg-white dark:bg-dark py-1 px-2 text-dark dark:text-white  text-xs rounded-full absolute right-4 rtl:right-auto rtl:left-4 bottom-4 font-semibold">
+														2 min Read</span>
+												</div>
+												<div class="card-body p-5">
+													<div
+														class="relative hs-tooltip hs-tooltip-toggle mb-5 w-fit -mt-10"
+														>
+														<img
+															src="@@webRoot/assets/images/profile/user-3.jpg"
+															alt
+															class="rounded-full   h-10 w-10 ">
+															<span
+															class="tooltip hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible"
+															role="tooltip">
+															Leroy Greer
+														  </span>
+													</div>
+													<span
+														class="bg-gray-200 dark:bg-darkgray py-1 px-2  text-dark dark:text-white 
+												text-xs rounded-full mt-5 block w-fit font-medium">Design</span>
+													<a
+														class="block my-4  font-semibold text-lg text-dark dark:text-white group-hover:text-primary"
+														href="javascript:void(0)">Apple
+														is apparently working on a new
+														‘streamlined’ accessibility for
+														iOS</a>
+													<div
+														class="flex items-center gap-4">
+														<div
+															class="flex items-center gap-2 
+													"><i
+																class="ti ti-eye 0 text-lg"></i>5860</div>
+														<div
+															class="flex items-center gap-2 
+													"><i
+																class="ti ti-message-2 text-bodytext dark:text-darklink text-lg"></i>38
+														</div>
+														<div
+															class="flex items-center text-xs ms-auto  
+													"><i class="ti ti-point "></i>Fri,
+															Jan 13
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+		
+										<div
+											class="lg:col-span-4 md:col-span-12 col-span-12">
+											<div class="card animate-card group">
+												<div class=" relative overflow-hidden">
+													<a href="javascript:void(0)">
+														<img
+															src="@@webRoot/assets/images/blog/blog-img3.jpg"
+															class="w-full max-w-full rounded-t-md"
+															alt="...">
+													</a>
+													<span
+														class="bg-white dark:bg-dark py-1 px-2 text-dark dark:text-white  text-xs rounded-full absolute right-4 rtl:right-auto rtl:left-4 bottom-4 font-semibold">
+														2 min Read</span>
+												</div>
+												<div class="card-body p-5">
+													<div
+														class="relative hs-tooltip hs-tooltip-toggle mb-5 w-fit -mt-10"
+														>
+														<img
+															src="@@webRoot/assets/images/profile/user-4.jpg"
+															alt
+															class="rounded-full   h-10 w-10 ">
+															<span
+															class="tooltip hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible"
+															role="tooltip">
+															Tommy Butler
+														  </span>
+													</div>
+													<span
+														class="bg-gray-200 dark:bg-darkgray py-1 px-2  text-dark dark:text-white 
+												text-xs rounded-full mt-5 block w-fit font-medium">Lifestyle</span>
+													<a
+														class="block my-4  font-semibold text-lg text-dark dark:text-white group-hover:text-primary"
+														href="javascript:void(0)">COVID outbreak deepens as more lockdowns loom in China</a>
+													<div
+														class="flex items-center gap-4">
+														<div
+															class="flex items-center gap-2 
+													"><i
+																class="ti ti-eye  text-bodytext dark:text-darklink text-lg"></i>6315</div>
+														<div
+															class="flex items-center gap-2 
+													"><i
+																class="ti ti-message-2 text-lg"></i>12
+														</div>
+														<div
+															class="flex items-center text-xs ms-auto  
+													"><i class="ti ti-point "></i>Wed,
+															Jan 11
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- Blog Cards End -->
+		
+										<!-- Shop Cards  -->
+										<div
+											class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+											<div class="card overflow-hidden">
+												<div class="relative">
+													<a
+														href="@@webRoot/horizontal/eco-shop-detail.html">
+														<img
+															src="@@webRoot/assets/images/products/s11.jpg"
+															class="rounded-0 w-full max-w-full"
+															alt="..."></a>
+													<a href="javascript:void(0)"
+														class="hs-tooltip hs-tooltip-toggle bg-primary rounded-full h-8 w-8 flex justify-center items-center text-white absolute -bottom-4 end-4"><i
+															class="ti ti-basket text-lg"></i>
+														<span
+															class="tooltip hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible"
+															role="tooltip">
+															Add To Cart
+														</span>
+													</a>
+												</div>
+												<div class="card-body py-5 px-5">
+													<h6
+														class=" text-base mb-1">
+														Cute Soft Teddybear</h6>
+													<div
+														class="flex items-center justify-between">
+														<h6
+															class=" text-base">
+															$285 <span
+																class="ms-2 text-bodytext dark:text-darklink text-sm font-normal opacity-60"><del>$345</del></span>
+														</h6>
+														<ul
+															class="flex items-center mb-0">
+															<li><a class="me-1"
+																	href="javascript:void(0)"><i
+																		class="ti ti-star text-warning"></i></a>
+															</li>
+															<li><a class="me-1"
+																	href="javascript:void(0)"><i
+																		class="ti ti-star text-warning"></i></a>
+															</li>
+															<li><a class="me-1"
+																	href="javascript:void(0)"><i
+																		class="ti ti-star text-warning"></i></a>
+															</li>
+															<li><a class="me-1"
+																	href="javascript:void(0)"><i
+																		class="ti ti-star text-warning"></i></a>
+															</li>
+															<li><a class
+																	href="javascript:void(0)"><i
+																		class="ti ti-star text-warning"></i></a></li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+		
+										<div
+											class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+											<div class="card overflow-hidden">
+												<div class="relative">
+													<a
+														href="@@webRoot/horizontal/eco-shop-detail.html"><img
+															src="@@webRoot/assets/images/products/s5.jpg"
+															class="rounded-0 w-full max-w-full"
+															alt="..."></a>
+													<a href="javascript:void(0)"
+														class="hs-tooltip hs-tooltip-toggle bg-primary rounded-full h-8 w-8 flex justify-center items-center text-white absolute -bottom-4 end-4"><i
+															class="ti ti-basket text-lg"></i>
+														<span
+															class="tooltip hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible"
+															role="tooltip">
+															Add To Cart
+														</span>
+													</a>
+												</div>
+												<div class="card-body py-5 px-5">
+													<h6
+														class=" text-base mb-1">
+														MacBook Air Pro</h6>
+													<div
+														class="flex items-center justify-between">
+														<h6
+															class=" text-base">
+															$650 <span
+																class="ms-2 text-bodytext dark:text-darklink text-sm font-normal opacity-60"><del>$900</del></span>
+														</h6>
+														<ul
+															class="flex items-center mb-0">
+															<li><a class="me-1"
+																	href="javascript:void(0)"><i
+																		class="ti ti-star text-warning"></i></a>
+															</li>
+															<li><a class="me-1"
+																	href="javascript:void(0)"><i
+																		class="ti ti-star text-warning"></i></a>
+															</li>
+															<li><a class="me-1"
+																	href="javascript:void(0)"><i
+																		class="ti ti-star text-warning"></i></a>
+															</li>
+															<li><a class="me-1"
+																	href="javascript:void(0)"><i
+																		class="ti ti-star text-warning"></i></a>
+															</li>
+															<li><a class
+																	href="javascript:void(0)"><i
+																		class="ti ti-star text-warning"></i></a></li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div
+											class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+											<div class="card overflow-hidden">
+												<div class="relative">
+													<a
+														href="@@webRoot/horizontal/eco-shop-detail.html"><img
+															src="@@webRoot/assets/images/products/s6.jpg"
+															class="rounded-0 w-full max-w-full"
+															alt="..."></a>
+													<a href="javascript:void(0)"
+														class="hs-tooltip hs-tooltip-toggle bg-primary rounded-full h-8 w-8 flex justify-center items-center text-white absolute -bottom-4 end-4"><i
+															class="ti ti-basket text-lg"></i>
+														<span
+															class="tooltip hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible"
+															role="tooltip">
+															Add To Cart
+														</span>
+													</a>
+												</div>
+												<div class="card-body py-5 px-5">
+													<h6
+														class=" text-base mb-1">
+														Gaming Console</h6>
+													<div
+														class="flex items-center justify-between">
+														<h6
+															class=" text-base">
+															$25 <span
+																class="ms-2 text-bodytext dark:text-darklink text-sm font-normal opacity-60"><del>$31</del></span>
+														</h6>
+														<ul
+															class="flex items-center mb-0">
+															<li><a class="me-1"
+																	href="javascript:void(0)"><i
+																		class="ti ti-star text-warning"></i></a>
+															</li>
+															<li><a class="me-1"
+																	href="javascript:void(0)"><i
+																		class="ti ti-star text-warning"></i></a>
+															</li>
+															<li><a class="me-1"
+																	href="javascript:void(0)"><i
+																		class="ti ti-star text-warning"></i></a>
+															</li>
+															<li><a class="me-1"
+																	href="javascript:void(0)"><i
+																		class="ti ti-star text-warning"></i></a>
+															</li>
+															<li><a class
+																	href="javascript:void(0)"><i
+																		class="ti ti-star text-warning"></i></a></li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div
+											class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+											<div class="card overflow-hidden">
+												<div class="relative">
+													<a
+														href="@@webRoot/horizontal/eco-shop-detail.html"><img
+															src="@@webRoot/assets/images/products/s4.jpg"
+															class="rounded-0 w-full max-w-full"
+															alt="..."></a>
+													<a href="javascript:void(0)"
+														class="hs-tooltip hs-tooltip-toggle bg-primary rounded-full h-8 w-8 flex justify-center items-center text-white absolute -bottom-4 end-4"><i
+															class="ti ti-basket text-lg"></i>
+														<span
+															class="tooltip hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible"
+															role="tooltip">
+															Add To Cart
+														</span>
+													</a>
+												</div>
+												<div class="card-body py-5 px-5">
+													<h6
+														class=" text-base mb-1">
+														Boat Headphone</h6>
+													<div
+														class="flex items-center justify-between">
+														<h6
+															class=" text-base">
+															$50 <span
+																class="ms-2 text-bodytext dark:text-darklink text-sm font-normal opacity-60"><del>$65</del></span>
+														</h6>
+														<ul
+															class="flex items-center mb-0">
+															<li><a class="me-1"
+																	href="javascript:void(0)"><i
+																		class="ti ti-star text-warning"></i></a>
+															</li>
+															<li><a class="me-1"
+																	href="javascript:void(0)"><i
+																		class="ti ti-star text-warning"></i></a>
+															</li>
+															<li><a class="me-1"
+																	href="javascript:void(0)"><i
+																		class="ti ti-star text-warning"></i></a>
+															</li>
+															<li><a class="me-1"
+																	href="javascript:void(0)"><i
+																		class="ti ti-star text-warning"></i></a>
+															</li>
+															<li><a class
+																	href="javascript:void(0)"><i
+																		class="ti ti-star text-warning"></i></a></li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- Shop Cards Ends -->
+		
+										<!-- Music Cards -->
+										<div
+											class="lg:col-span-4 md:col-span-12 sm:col-span-12 col-span-12">
+											<div class="card overflow-hidden">
+												<div class="card-body p-0">
+													<div class="grid grid-cols-12">
+														<div
+															class="sm:col-span-6 col-span-12">
+															<div class="p-6">
+																<h5
+																	class="card-title">Uptown
+																	Funk</h5>
+																<p class="text-sm ">Jon
+																	Bon Jovi</p>
+																<div
+																	class="flex items-center justify-between pt-10">
+																	<button
+																		class="btn-circle btn-transparent"><i
+																			class="ti ti-player-skip-back text-lg text-bodytext"></i></button>
+																	<button
+																		class="btn-circle btn-transparent"><i
+																			class="ti ti-player-play text-lg text-error"></i></button>
+																	<button
+																		class="btn-circle btn-transparent"><i
+																			class="ti ti-player-skip-forward text-lg text-bodytext"></i></button>
+																</div>
+															</div>
+														</div>
+														<div
+															class="sm:col-span-6 col-span-12">
+															<img
+																src="@@webRoot/assets/images/blog/blog-img5.jpg"
+																class="w-full h-full"
+																alt>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div
+											class="lg:col-span-4 md:col-span-12 sm:col-span-12 col-span-12">
+											<div class="card overflow-hidden">
+												<div class="card-body p-0">
+													<div class="grid grid-cols-12">
+														<div
+															class="sm:col-span-6 col-span-12">
+															<div class="p-6">
+																<h5
+																	class="card-title">Blank
+																	Space</h5>
+																<p
+																	class="text-sm ">Madonna</p>
+																<div
+																	class="flex items-center justify-between pt-10">
+																	<button
+																		class="btn-circle btn-transparent"><i
+																			class="ti ti-player-skip-back text-lg text-bodytext"></i></button>
+																	<button
+																		class="btn-circle btn-transparent"><i
+																			class="ti ti-player-play text-lg text-error"></i></button>
+																	<button
+																		class="btn-circle btn-transparent"><i
+																			class="ti ti-player-skip-forward text-lg text-bodytext"></i></button>
+																</div>
+															</div>
+														</div>
+														<div
+															class="sm:col-span-6 col-span-12">
+															<img
+																src="@@webRoot/assets/images/blog/blog-img4.jpg"
+																class="w-full h-full"
+																alt>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div
+											class="lg:col-span-4 md:col-span-12 sm:col-span-12 col-span-12">
+											<div class="card overflow-hidden">
+												<div class="card-body p-0">
+													<div class="grid grid-cols-12">
+														<div
+															class="sm:col-span-6 col-span-12">
+															<div class="p-6">
+																<h5
+																	class="card-title">Lean
+																	On</h5>
+																<p class="text-sm ">Lean
+																	On</p>
+																<div
+																	class="flex items-center justify-between pt-10">
+																	<button
+																		class="btn-circle btn-transparent"><i
+																			class="ti ti-player-skip-back text-lg text-bodytext"></i></button>
+																	<button
+																		class="btn-circle btn-transparent"><i
+																			class="ti ti-player-play text-lg text-error"></i></button>
+																	<button
+																		class="btn-circle btn-transparent"><i
+																			class="ti ti-player-skip-forward text-lg text-bodytext"></i></button>
+																</div>
+															</div>
+														</div>
+														<div
+															class="sm:col-span-6 col-span-12">
+															<img
+																src="@@webRoot/assets/images/blog/blog-img3.jpg"
+																class="w-full h-full"
+																alt>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- Music Cards Ends-->
+		
+										<!-- Profile Cards -->
+										<div
+											class="lg:col-span-4 col-span-12">
+											<div class="card">
+												<div
+													class="card-body flex-row py-5 flex items-center gap-4">
+													<img
+														src="@@webRoot/assets/images/profile/user-1.jpg"
+														alt
+														class="rounded-full h-10 w-10">
+													<div class>
+														<h5
+															class="xl:text-lg text-base   mb-0 leading-normal">
+															Betty Adams</h5>
+														<span class="text-xs 
+												  flex items-center gap-1"><i
+																class="ti ti-map-pin text-sm  "></i>Sint
+															Maarten</span>
+													</div>
+													<button
+														class="btn ms-auto">Follow</button>
+												</div>
+											</div>
+										</div>
+										<div
+											class="lg:col-span-4 col-span-12">
+											<div class="card">
+												<div
+													class="card-body flex-row py-5 flex items-center gap-4">
+													<img
+														src="@@webRoot/assets/images/profile/user-2.jpg"
+														alt
+														class="rounded-full h-10 w-10">
+													<div class>
+														<h5
+															class="xl:text-lg text-base   mb-0 leading-normal">
+															Virginia Wong</h5>
+														<span class="text-xs 
+												  flex items-center gap-1"><i
+																class="ti ti-map-pin text-sm  "></i>Tunesia</span>
+													</div>
+													<button
+														class="btn ms-auto">Follow</button>
+												</div>
+											</div>
+										</div>
+										<div
+											class="lg:col-span-4 col-span-12">
+											<div class="card">
+												<div
+													class="card-body flex-row py-5 flex items-center gap-4">
+													<img
+														src="@@webRoot/assets/images/profile/user-3.jpg"
+														alt
+														class="rounded-full h-10 w-10">
+													<div class>
+														<h5
+															class="xl:text-lg text-base   mb-0 leading-normal">
+															Birdie Burgess</h5>
+														<span class="text-xs 
+												  flex items-center gap-1"><i
+																class="ti ti-map-pin text-sm  "></i>Algeria</span>
+													</div>
+													<button
+														class="btn ms-auto">Follow</button>
+												</div>
+											</div>
+										</div>
+										<!-- Profile Cards ends-->
+		
+										<!-- Freinds Cards -->
+										<div
+											class="lg:col-span-3 md:col-span-6 col-span-12">
+											<div class="card">
+												<div class="card-body">
+													<img
+														src="@@webRoot/assets/images/profile/user-1.jpg"
+														class="w-20 rounded-full" />
+													<h5
+														class="text-base  mt-4">Andrew
+														Grant</h5>
+													<div
+														class="flex items-center gap-4 mt-2">
+														<div class="flex">
+															<a href="javascript:void(0)"
+																class="relative transform translate-y-0 hover:z-10 hover:-translate-y-2 duration-500 ease-in-out ">
+																<img
+																	src="@@webRoot/assets/images/profile/user-3.jpg"
+																	class="rounded-full h-8 w-8 border-2 border-white "
+																	alt="user" />
+															</a>
+															<a href="javascript:void(0)"
+																class="relative -ms-2 transform translate-y-0 hover:z-10 hover:-translate-y-2 duration-500 ease-in-out">
+																<img
+																	src="@@webRoot/assets/images/profile/user-2.jpg"
+																	class="rounded-full h-8 w-8 border-2 border-white "
+																	alt="user" />
+															</a>
+															<a href="javascript:void(0)"
+																class="relative -ms-2 transform translate-y-0 hover:z-10 hover:-translate-y-2 duration-500 ease-in-out">
+																<img
+																	src="@@webRoot/assets/images/profile/user-1.jpg"
+																	class="rounded-full h-8 w-8 border-2 border-white "
+																	alt="user" />
+															</a>
+														</div>
+														<p>3 mutual friends</p>
+													</div>
+													<div
+														class="flex flex-col gap-4 mt-5">
+														<button
+															class="btn btn-light-primary">Add
+															Freind</button>
+														<button
+															class="btn btn-light-secondary">Remove</button>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div
+											class="lg:col-span-3 md:col-span-6 col-span-12">
+											<div class="card">
+												<div class="card-body">
+													<img
+														src="@@webRoot/assets/images/profile/user-2.jpg"
+														class="w-20 rounded-full" />
+													<h5
+														class="text-base  mt-4">Leo
+														Pratt</h5>
+													<div
+														class="flex items-center gap-4 mt-2">
+														<div class="flex">
+															<a href="javascript:void(0)"
+																class="relative transform translate-y-0 hover:-translate-y-2 duration-500 ease-in-out hover:z-10">
+																<img
+																	src="@@webRoot/assets/images/profile/user-1.jpg"
+																	class="rounded-full h-8 w-8 border-2 border-white "
+																	alt="user" />
+															</a>
+															<a href="javascript:void(0)"
+																class="relative -ms-2 transform translate-y-0 hover:-translate-y-2 duration-500 ease-in-out  hover:z-10">
+																<img
+																	src="@@webRoot/assets/images/profile/user-2.jpg"
+																	class="rounded-full h-8 w-8 border-2 border-white "
+																	alt="user" />
+															</a>
+															<a href="javascript:void(0)"
+																class="relative -ms-2 transform translate-y-0 hover:-translate-y-2 duration-500 ease-in-out  hover:z-10">
+																<img
+																	src="@@webRoot/assets/images/profile/user-3.jpg"
+																	class="rounded-full h-8 w-8 border-2 border-white "
+																	alt="user" />
+															</a>
+														</div>
+														<p>3 mutual friends</p>
+													</div>
+													<div
+														class="flex flex-col gap-4 mt-5">
+														<button
+															class="btn btn-light-primary">Add
+															Freind</button>
+														<button
+															class="btn btn-light-secondary">Remove</button>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div
+											class="lg:col-span-3 md:col-span-6 col-span-12">
+											<div class="card">
+												<div class="card-body">
+													<img
+														src="@@webRoot/assets/images/profile/user-3.jpg"
+														class="w-20 rounded-full" />
+													<h5
+														class="text-base  mt-4">Charles
+														Nunez</h5>
+													<div
+														class="flex items-center gap-4 mt-2">
+														<div class="flex">
+															<a href="javascript:void(0)"
+																class="relative transform translate-y-0 hover:-translate-y-2 duration-500 ease-in-out hover:z-10">
+																<img
+																	src="@@webRoot/assets/images/profile/user-1.jpg"
+																	class="rounded-full h-8 w-8 border-2 border-white "
+																	alt="user" />
+															</a>
+															<a href="javascript:void(0)"
+																class="relative -ms-2 transform translate-y-0 hover:-translate-y-2 duration-500 ease-in-out  hover:z-10">
+																<img
+																	src="@@webRoot/assets/images/profile/user-2.jpg"
+																	class="rounded-full h-8 w-8 border-2 border-white "
+																	alt="user" />
+															</a>
+															<a href="javascript:void(0)"
+																class="relative -ms-2 transform translate-y-0 hover:-translate-y-2 duration-500 ease-in-out  hover:z-10">
+																<img
+																	src="@@webRoot/assets/images/profile/user-3.jpg"
+																	class="rounded-full h-8 w-8 border-2 border-white "
+																	alt="user" />
+															</a>
+														</div>
+														<p>3 mutual friends</p>
+													</div>
+													<div
+														class="flex flex-col gap-4 mt-5">
+														<button
+															class="btn btn-light-primary">Add
+															Freind</button>
+														<button
+															class="btn btn-light-secondary">Remove</button>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div
+											class="lg:col-span-3 md:col-span-6 col-span-12">
+											<div class="card">
+												<div class="card-body">
+													<img
+														src="@@webRoot/assets/images/profile/user-4.jpg"
+														class="w-20 rounded-full" />
+													<h5
+														class="text-base  mt-4">Lora
+														Powers</h5>
+													<div
+														class="flex items-center gap-4 mt-2">
+														<div class="flex">
+															<a href="javascript:void(0)"
+																class="relative transform translate-y-0 hover:-translate-y-2 duration-500 ease-in-out hover:z-10">
+																<img
+																	src="@@webRoot/assets/images/profile/user-1.jpg"
+																	class="rounded-full h-8 w-8 border-2 border-white "
+																	alt="user" />
+															</a>
+															<a href="javascript:void(0)"
+																class="relative -ms-2 transform translate-y-0 hover:-translate-y-2 duration-500 ease-in-out  hover:z-10">
+																<img
+																	src="@@webRoot/assets/images/profile/user-2.jpg"
+																	class="rounded-full h-8 w-8 border-2 border-white "
+																	alt="user" />
+															</a>
+															<a href="javascript:void(0)"
+																class="relative -ms-2 transform translate-y-0 hover:-translate-y-2 duration-500 ease-in-out  hover:z-10">
+																<img
+																	src="@@webRoot/assets/images/profile/user-3.jpg"
+																	class="rounded-full h-8 w-8 border-2 border-white "
+																	alt="user" />
+															</a>
+														</div>
+														<p>3 mutual friends</p>
+													</div>
+													<div
+														class="flex flex-col gap-4 mt-5">
+														<button
+															class="btn btn-light-primary">Add
+															Freind</button>
+														<button
+															class="btn btn-light-secondary">Remove</button>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- Freinds Cards Ends-->
+		
+										<!--Social Cards-->
+										<div
+											class="md:col-span-4  col-span-12">
+											<div class="card animate-card overflow-hidden">
+												<div class="card-body pb-5 text-center">
+													<img
+														src="@@webRoot/assets/images/profile/user-1.jpg"
+														alt
+														class="rounded-full mb-3 h-20 w-20 mx-auto">
+													<h5
+														class="font-semibold  text-lg mb-0 leading-normal text-dark dark:text-white">
+														Betty Adams</h5>
+													<span class="text-xs ">Medical
+														Secretary</span>
+												</div>
+												<ul
+													class="px-3 py-3 flex items-center justify-center mb-0 gap-4 border-t border-border dark:border-darkborder
+												">
+													<li class="position-relative">
+														<a class="text-primary text-lg"
+															href="javascript:void(0)">
+															<i
+																class="ti ti-brand-facebook"></i>
+														</a>
+													</li>
+													<li class="position-relative ">
+														<a class="text-error text-lg"
+															href="javascript:void(0)">
+															<i
+																class="ti ti-brand-instagram"></i>
+														</a>
+													</li>
+													<li class="position-relative">
+														<a class="text-info text-lg"
+															href="javascript:void(0)">
+															<i
+																class="ti ti-brand-github"></i>
+														</a>
+													</li>
+													<li class="position-relative">
+														<a
+															class="text-secondary text-lg"
+															href="javascript:void(0)">
+															<i
+																class="ti ti-brand-twitter"></i>
+														</a>
+													</li>
+												</ul>
+											</div>
+										</div>
+		
+										<div
+											class="md:col-span-4  col-span-12">
+											<div class="card animate-card overflow-hidden">
+												<div class="card-body pb-5 text-center">
+													<img
+														src="@@webRoot/assets/images/profile/user-2.jpg"
+														alt
+														class="rounded-full mb-3 h-20 w-20 mx-auto">
+													<h5
+														class="font-semibold  text-lg mb-0 leading-normal text-dark dark:text-white">
+														Inez Lyons</h5>
+													<span class="text-xs ">Medical
+														Technician</span>
+												</div>
+												<ul
+													class="px-3 py-3 flex items-center justify-center mb-0 gap-4 border-t border-border dark:border-darkborder
+												">
+													<li class="position-relative">
+														<a class="text-primary text-lg"
+															href="javascript:void(0)">
+															<i
+																class="ti ti-brand-facebook"></i>
+														</a>
+													</li>
+													<li class="position-relative ">
+														<a class="text-error text-lg"
+															href="javascript:void(0)">
+															<i
+																class="ti ti-brand-instagram"></i>
+														</a>
+													</li>
+													<li class="position-relative">
+														<a class="text-info text-lg"
+															href="javascript:void(0)">
+															<i
+																class="ti ti-brand-github"></i>
+														</a>
+													</li>
+													<li class="position-relative">
+														<a
+															class="text-secondary text-lg"
+															href="javascript:void(0)">
+															<i
+																class="ti ti-brand-twitter"></i>
+														</a>
+													</li>
+												</ul>
+											</div>
+										</div>
+										<div
+											class="md:col-span-4  col-span-12">
+											<div class="card animate-card overflow-hidden">
+												<div class="card-body pb-5 text-center">
+													<img
+														src="@@webRoot/assets/images/profile/user-3.jpg"
+														alt
+														class="rounded-full mb-3 h-20 w-20 mx-auto">
+													<h5
+														class="font-semibold  text-lg mb-0 leading-normal text-dark dark:text-white">
+														Lydia Bryan</h5>
+													<span class="text-xs ">Preschool
+														Teacher</span>
+												</div>
+												<ul
+													class="px-3 py-3 flex items-center justify-center mb-0 gap-4 border-t border-border dark:border-darkborder
+												">
+													<li class="position-relative">
+														<a class="text-primary text-lg"
+															href="javascript:void(0)">
+															<i
+																class="ti ti-brand-facebook"></i>
+														</a>
+													</li>
+													<li class="position-relative ">
+														<a class="text-error text-lg"
+															href="javascript:void(0)">
+															<i
+																class="ti ti-brand-instagram"></i>
+														</a>
+													</li>
+													<li class="position-relative">
+														<a class="text-info text-lg"
+															href="javascript:void(0)">
+															<i
+																class="ti ti-brand-github"></i>
+														</a>
+													</li>
+													<li class="position-relative">
+														<a
+															class="text-secondary text-lg"
+															href="javascript:void(0)">
+															<i
+																class="ti ti-brand-twitter"></i>
+														</a>
+													</li>
+												</ul>
+											</div>
+										</div>
+										<!--Social Cards Ends--->
+		
+										<!--Others Cards--->
+										<div
+											class="lg:col-span-4  col-span-12">
+											<div class="card">
+												<div class="card-body">
+													<h4
+														class="font-semibold text-lg text-dark dark:text-white">Settings</h4>
+													<div class="mt-5">
+														<div
+															class="flex items-center gap-3.5">
+															<div>
+																<div
+																	class="bg-primary h-12 w-12 rounded-sm flex items-center justify-center">
+																	<i
+																		class="ti ti-volume text-white text-2xl"></i>
+																</div>
+															</div>
+															<div class="w-full">
+																<div
+																	class="flex justify-between mb-2">
+																	<h5
+																		class=" text-base mb-1">Sound</h5>
+																	<span>45%</span>
+																</div>
+																<div
+																	class="flex w-full h-2 bg-lightprimary dark:bg-darkprimary rounded-md overflow-hidden"
+																	role="progressbar"
+																	aria-valuenow="45"
+																	aria-valuemin="0"
+																	aria-valuemax="100">
+																	<div
+																		class="flex flex-col justify-center overflow-hidden bg-primary text-xs text-white text-center whitespace-nowrap transition duration-500 "
+																		style="width: 45%"></div>
+																</div>
+															</div>
+														</div>
+														<hr
+															class="botder-t border-border dark:border-darkborder my-6">
+														<div
+															class="flex items-center gap-3.5">
+															<div>
+																<div
+																	class="bg-secondary h-12 w-12 rounded-sm flex items-center justify-center">
+																	<i
+																		class="ti ti-message  text-white text-2xl"></i>
+																</div>
+															</div>
+															<div class="w-full">
+																<div
+																	class="flex justify-between items-center">
+																	<div>
+																		<h5
+																			class=" text-base mb-1">Chat</h5>
+																		<p>Turn on chat
+																			during
+																			call%</p>
+																	</div>
+																	<input
+																		type="checkbox"
+																		id="hs-small-switch"
+																		class="relative w-[35px] h-[20px] p-px bg-gray-100 border-transparent text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-primary  disabled:opacity-50 disabled:pointer-events-none checked:bg-none checked:text-primary checked:border-primatext-primary focus:checked:border-primatext-primary dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-600
+																	before:inline-block before:size-4 before:bg-white checked:before:bg-blue-200 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-gray-400 dark:checked:before:bg-blue-200">
+		
+																</div>
+		
+															</div>
+														</div>
+														<hr
+															class="botder-t border-border dark:border-darkborder my-6">
+														<div
+															class="flex justify-end gap-3.5 mt-4">
+															<button
+																class="btn btn-light-error">Cancel</button>
+															<button
+																class="btn">Save</button>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div
+											class="lg:col-span-4 md:col-span-6 col-span-12">
+											<div class="card">
+												<div class="card-body">
+													<div
+														class="flex justify-between mb-2">
+														<h6
+															class="text-base ">Andrew
+															Grant</h6>
+														<i
+															class="ti ti-gift text-info text-lg"></i>
+													</div>
+													<img
+														src="@@webRoot/assets/images/products/s1.jpg"
+														alt
+														class="rounded-lg w-full mb-6 h-44 min-w-full object-cover">
+													<button
+														class="btn py-3 w-full">Gift
+														to Friend ($50.00)</button>
+												</div>
+											</div>
+										</div>
+										<div
+											class="lg:col-span-4 md:col-span-6 col-span-12">
+											<div class="card">
+												<div class="card-body">
+													<div
+														class="flex justify-between mb-2">
+														<h6
+															class="text-base ">Leo
+															Pratt</h6>
+														<i
+															class="ti ti-gift text-info text-lg"></i>
+													</div>
+													<img
+														src="@@webRoot/assets/images/products/s2.jpg"
+														alt
+														class="rounded-lg w-full mb-6 h-44 min-w-full object-cover">
+													<button
+														class="btn py-3 w-full">Gift
+														to Friend ($50.00)</button>
+												</div>
+											</div>
+										</div>
+										<!--Others Cards Ends--->
+		
+										<!--Payment Gateways -->
+										<div
+											class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+											<div class="card">
+												<div class="card-body">
+													<h5
+														class="card-title">Payment
+														Gateways
+													</h5>
+													<p
+														class="card-subtitle">Platform
+														for Income</p>
+		
+													<div class="mt-9">
+														<div
+															class="flex items-center justify-between mb-6">
+															<div
+																class="flex gap-3 items-center">
+																<div
+																	class=" bg-lightprimary dark:bg-darkprimary rounded-sm flex items-center justify-center h-11 w-11">
+																	<img
+																		src="@@webRoot/assets/images/svgs/icon-paypal.svg"
+																		alt
+																		class="h-6 w-6">
+																</div>
+																<div>
+																	<h6
+																		class="text-base text-dark dark:text-white font-semibold">
+																		PayPal</h6>
+																	<p
+																		class="text-bodytext dark:text-darklink text-sm">Big
+																		Brands</p>
+																</div>
+															</div>
+															<p
+																class="text-sm text-dark dark:text-white font-semibold">+$6,235</p>
+														</div>
+														<div
+															class="flex items-center justify-between mb-6">
+															<div
+																class="flex gap-3 items-center">
+																<div
+																	class=" bg-lightsuccess dark:bg-darksuccess rounded-sm flex items-center justify-center h-11 w-11">
+																	<img
+																		src="@@webRoot/assets/images/svgs/icon-office-bag.svg"
+																		alt
+																		class="h-6 w-6">
+																</div>
+																<div>
+																	<h6
+																		class="text-base text-dark dark:text-white font-semibold">
+																		Wallet</h6>
+																	<p
+																		class="text-bodytext dark:text-darklink text-sm">Bill
+																		payment</p>
+																</div>
+															</div>
+															<p
+																class="text-sm text-dark dark:text-white font-semibold opacity-50">
+																+$345</p>
+														</div>
+														<div
+															class="flex items-center justify-between mb-6">
+															<div
+																class="flex gap-3 items-center">
+																<div
+																	class=" bg-lightwarning dark:bg-darkwarning rounded-sm flex items-center justify-center h-11 w-11">
+																	<img
+																		src="@@webRoot/assets/images/svgs/icon-master-card.svg"
+																		alt
+																		class="h-6 w-6">
+																</div>
+																<div>
+																	<h6
+																		class="text-base text-dark dark:text-white font-semibold">
+																		Credit card</h6>
+																	<p
+																		class="text-bodytext dark:text-darklink text-sm">Money
+																		reversed
+																	</p>
+																</div>
+															</div>
+															<p
+																class="text-sm text-dark dark:text-white font-semibold ">+$2,235</p>
+														</div>
+														<div
+															class="flex items-center justify-between mb-6">
+															<div
+																class="flex gap-3 items-center">
+																<div
+																	class=" bg-lighterror dark:bg-darkerror rounded-sm flex items-center justify-center h-11 w-11">
+																	<img
+																		src="@@webRoot/assets/images/svgs/icon-pie.svg"
+																		alt
+																		class="h-6 w-6">
+																</div>
+																<div>
+																	<h6
+																		class="text-base text-dark dark:text-white font-semibold">
+																		Refund</h6>
+																	<p
+																		class="text-bodytext dark:text-darklink text-sm">Bill
+																		payment</p>
+																</div>
+															</div>
+															<p
+																class="text-sm text-dark dark:text-white font-semibold opacity-50">
+																-$32</p>
+														</div>
+														<button type="button"
+															class="btn w-full mt-4">View
+															all transactions</button>
+													</div>
+		
+												</div>
+											</div>
+										</div>
+										<!--Payment Gateways End-->
+		
+										<!--Upcoming Activity -->
+										<div
+											class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+											<div class="card">
+												<div class="card-body ">
+													<h5
+														class="card-title ">Upcoming
+														Activity
+													</h5>
+													<p class="card-subtitle">In New year</p>
+		
+													<div class="mt-9">
+														<div
+															class="flex items-center justify-between mb-6">
+															<div
+																class="flex gap-3 items-center">
+																<div
+																	class="bg-lightprimary dark:bg-darkprimary  rounded-sm flex items-center justify-center h-11 w-11">
+																	<img
+																		src="@@webRoot/assets/images/svgs/icon-map-pin.svg"
+																		alt
+																		class="h-6 w-6">
+																</div>
+																<div>
+																	<h6
+																		class="text-base  ">
+																		Trip to
+																		singapore</h6>
+																	<p
+																		class=" text-sm">working
+																		on</p>
+																</div>
+															</div>
+															<p class="text-sm">5
+																mins</p>
+														</div>
+														<div
+															class="flex items-center justify-between mb-6">
+															<div
+																class="flex gap-3 items-center">
+																<div
+																	class=" bg-lightinfo dark:bg-darkinfo rounded-sm flex items-center justify-center h-11 w-11">
+																	<img
+																		src="@@webRoot/assets/images/svgs/icon-database.svg"
+																		alt
+																		class="h-6 w-6">
+																</div>
+																<div>
+																	<h6
+																		class="text-base  ">
+																		Archived
+																		Data</h6>
+																	<p
+																		class=" text-sm">working
+																		on</p>
+																</div>
+															</div>
+															<p class="text-sm ">
+																10 mins</p>
+														</div>
+														<div
+															class="flex items-center justify-between mb-6">
+															<div
+																class="flex gap-3 items-center">
+																<div
+																	class=" bg-lightwarning dark:bg-darkwarning rounded-sm flex items-center justify-center h-11 w-11">
+																	<img
+																		src="@@webRoot/assets/images/svgs/icon-phone.svg"
+																		alt
+																		class="h-6 w-6">
+																</div>
+																<div>
+																	<h6
+																		class="text-base  ">
+																		Meeting with
+																		client</h6>
+																	<p
+																		class=" text-sm">pending</p>
+																</div>
+															</div>
+															<p class="text-sm">
+																10 mins</p>
+														</div>
+														<div
+															class="flex items-center justify-between mb-6">
+															<div
+																class="flex gap-3 items-center">
+																<div
+																	class=" bg-lighterror dark:bg-darkerror rounded-sm flex items-center justify-center h-11 w-11">
+																	<img
+																		src="@@webRoot/assets/images/svgs/icon-screen-share.svg"
+																		alt
+																		class="h-6 w-6">
+																</div>
+																<div>
+																	<h6
+																		class="text-base  ">
+																		Screening Task
+																		Team</h6>
+																	<p
+																		class=" text-sm">working
+																		on</p>
+																</div>
+															</div>
+															<p class="text-sm">
+																20 mins</p>
+														</div>
+														<div
+															class="flex items-center justify-between ">
+															<div
+																class="flex gap-3 items-center">
+																<div
+																	class=" bg-lightsuccess dark:bg-darksuccess rounded-sm flex items-center justify-center h-11 w-11">
+																	<img
+																		src="@@webRoot/assets/images/svgs/icon-mail.svg"
+																		alt
+																		class="h-6 w-6">
+																</div>
+																<div>
+																	<h6
+																		class="text-base  ">
+																		Send envelope to
+																		John</h6>
+																	<p
+																		class=" text-sm">done</p>
+																</div>
+															</div>
+															<p class="text-sm">
+																20 mins</p>
+														</div>
+													</div>
+		
+												</div>
+											</div>
+										</div>
+										<!--Upcoming Activity End-->
+										<!--Recent Transactions Card -->
+										<div
+											class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+											<div class="card">
+												<div class="card-body pb-8">
+													<h5
+														class="card-title">Recent
+														Transactions
+													</h5>
+													<p
+														class="card-subtitle">How
+														to Secure Recent
+														Transactions</p>
+		
+													<div class="mt-6">
+														<!-- Item -->
+														<div class="flex gap-x-3">
+															<div class="w-1/4 text-end  mt-1 ">
+																<span
+																	class="card-subtitle text-dark text-sm">09:30</span>
+															</div>
+															<div
+																class="relative last:after:hidden after:absolute after:top-7 after:bottom-0 after:start-3.5 after:w-px after:-translate-x-[0.5px] after:bg-border dark:after:bg-darkborder">
+																<div
+																	class="relative z-10 w-7 h-7 flex justify-center items-center">
+																	<div
+																		class="h-3 w-3 rounded-full bg-transparent border-2 border-primary">
+																	</div>
+																</div>
+															</div>
+															<div
+																class="w-1/4 grow pt-0.5 pb-6">
+																<p
+																	class="card-subtitle text-dark text-sm">
+																	Payment received
+																	from John Doe of
+																	$385.90
+																</p>
+															</div>
+														</div>
+														<!-- End Item -->
+														<!-- Item -->
+														<div class="flex gap-x-3">
+															<div class="w-1/4 text-end  mt-1">
+																<span
+																	class="card-subtitle text-dark text-sm ">10:00
+																	am
+																</span>
+															</div>
+															<div
+																class="relative last:after:hidden after:absolute after:top-7 after:bottom-0 after:start-3.5 after:w-px after:-translate-x-[0.5px] after:bg-border dark:after:bg-darkborder">
+																<div
+																	class="relative z-10 w-7 h-7 flex justify-center items-center">
+																	<div
+																		class="h-3 w-3 rounded-full bg-transparent border-2 border-info">
+																	</div>
+																</div>
+															</div>
+															<div
+																class="w-1/4 grow pt-0.5 pb-6">
+																<h6
+																	class="text-dark dark:text-white font-semibold text-sm">New
+																	sale
+																	recorded </h6>
+																<a href="#"
+																	class="text-sm text-primary">
+																	#ML-3467
+																</a>
+															</div>
+														</div>
+														<!-- End Item -->
+														<!-- Item -->
+														<div class="flex gap-x-3">
+															<div class="w-1/4 text-end  mt-1">
+																<span
+																	class="card-subtitle text-dark text-sm">12:00
+																	am</span>
+															</div>
+															<div
+																class="relative last:after:hidden after:absolute after:top-7 after:bottom-0 after:start-3.5 after:w-px after:-translate-x-[0.5px] after:bg-border dark:after:bg-darkborder">
+																<div
+																	class="relative z-10 w-7 h-7 flex justify-center items-center">
+																	<div
+																		class="h-3 w-3 rounded-full bg-transparent border-2 border-success">
+																	</div>
+																</div>
+															</div>
+															<div
+																class="w-1/4 grow pt-0.5 pb-6">
+																<p
+																	class="card-subtitle text-dark text-sm">
+																	Payment was made of
+																	$64.95 to Michael
+																</p>
+															</div>
+														</div>
+														<!-- End Item -->
+														<!-- Item -->
+														<div class="flex gap-x-3">
+															<div class="w-1/4 text-end  mt-1">
+																<span
+																	class="card-subtitle text-dark text-sm">09:30
+																	am</span>
+															</div>
+															<div
+																class="relative last:after:hidden after:absolute after:top-7 after:bottom-0 after:start-3.5 after:w-px after:-translate-x-[0.5px] after:bg-border dark:after:bg-darkborder">
+																<div
+																	class="relative z-10 w-7 h-7 flex justify-center items-center">
+																	<div
+																		class="h-3 w-3 rounded-full bg-transparent border-2 border-warning">
+																	</div>
+																</div>
+															</div>
+															<div
+																class="w-1/4 grow pt-0.5 pb-6">
+																<h6
+																	class="text-dark dark:text-white font-semibold text-sm">New
+																	sale
+																	recorded </h6>
+																<a href="#"
+																	class="text-sm text-primary">
+																	#ML-3467
+																</a>
+															</div>
+														</div>
+														<!-- End Item -->
+														<!-- Item -->
+														<div class="flex gap-x-3">
+															<div class="w-1/4 text-end  mt-1">
+																<span
+																	class="card-subtitle text-dark text-sm">09:30
+																	am</span>
+															</div>
+															<div
+																class="relative last:after:hidden after:absolute after:top-7 after:bottom-0 after:start-3.5 after:w-px after:-translate-x-[0.5px] after:bg-border dark:after:bg-darkborder">
+																<div
+																	class="relative z-10 w-7 h-7 flex justify-center items-center">
+																	<div
+																		class="h-3 w-3 rounded-full bg-transparent border-2 border-error">
+																	</div>
+																</div>
+															</div>
+															<div
+																class="w-1/4 grow pt-0.5 pb-6">
+																<h6
+																	class="text-dark dark:text-white font-semibold text-sm">New
+																	sale
+																	recorded </h6>
+																<a href="#"
+																	class="text-sm text-primary">
+																	#ML-3467
+																</a>
+															</div>
+														</div>
+														<!-- End Item -->
+														<!-- Item -->
+														<div class="flex gap-x-3">
+															<div class="w-1/4 text-end  mt-1">
+																<span
+																	class="card-subtitle text-dark text-sm">12:00
+																	am</span>
+															</div>
+															<div
+																class="relative last:after:hidden after:absolute after:top-7 after:bottom-0 after:start-3.5 after:w-px after:-translate-x-[0.5px]  ">
+																<div
+																	class="relative z-10 w-7 h-7 flex justify-center items-center">
+																	<div
+																		class="h-3 w-3 rounded-full bg-transparent border-2 border-success">
+																	</div>
+																</div>
+															</div>
+															<div
+																class="w-1/4 grow pt-0.5">
+																<p
+																	class="card-subtitle text-dark text-sm">
+																	Payment Done
+																</p>
+															</div>
+														</div>
+														<!-- End Item -->
+													</div>
+												</div>
+											</div>
+										</div>
+										<!--Recent Transactions Card End-->
+		
+									</div>
+
+                                </div>
+                            </div>    
+						</div>
+					</main>
+					<!-- Main Content End -->
+
+				</div>
+			</div>
+			<!--end of project-->
+		</main>
+		@@include("partials/header-components/mobile-menu.html")
+		@@include("partials/customizer.html")
+		@@include("partials/scripts.html")
+	</body>
+</html>

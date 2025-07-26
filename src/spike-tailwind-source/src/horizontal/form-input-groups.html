@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-color-theme="Blue_Theme" class="light selected" data-layout="vertical"
+  data-boxed-layout="boxed" data-card="shadow">
+
+<head>
+  @@include("partials/head.html")
+  <title>Spike TailwindCSS HTML Admin Template</title>
+  <link rel="stylesheet" href="@@webRoot/node_modules/prismjs/themes/prism-okaidia.min.css">
+</head>
+
+<body class="DEFAULT_THEME bg-lightprimary dark:bg-darkbody">
+  <main>
+    <!--start the project-->
+    <div id="main-wrapper" class="flex p-5">
+
+      <aside id="application-sidebar-brand"
+        class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full xl:rtl:-translate-x-0 rtl:translate-x-full  left-0 rtl:left-auto xl:rtl:right-5 rtl:right-0 transform hidden xl:block xl:translate-x-0 xl:end-auto xl:bottom-0 fixed top-0 with-vertical  left-sidebar transition-all duration-300 h-screen z-[2] flex-shrink-0  w-[270px] border-border dark:border-darkborder bg-white dark:bg-dark xl:top-5 xl:start-5 shadow-md xl:rounded-md">
+        @@include("partials/sidebar.html",{ "page": "form-input-groups","page_group": "form" })
+      </aside>
+      <div class="page-wrapper w-full" role="main">
+
+        <!-- Main Content -->
+        <main class="h-full ">
+          <div class="container full-container py-5 xl:ps-6 ps-0 pt-0 pe-0 remove-ps">
+
+            <!--  Header Start -->
+            <header
+              class="sticky top-0 inset-x-0 z-[1] flex flex-wrap md:justify-start md:flex-nowrap text-fs_15 py-3 lg:py-0 mb-6 bg-white dark:bg-dark rounded-md shadow-md">
+              <div class="with-vertical w-full">@@include("partials/header.html")</div>
+              <div class="with-horizontal w-full">
+                <div class="bg-white dark:bg-dark">
+                  <div class="container">
+                    @@include("partials/horizontal-header.html")
+                  </div>
+                </div>
+              </div>
+            </header>
+            <!--  Header End -->
+
+            <!-- Horizontal Sidebar Menu -->
+            <aside
+              class="with-horizontal lg:flex hidden left-sidebar bg-white dark:bg-dark border-t border-border dark:border-darkborder">
+              @@include("partials/horizontal-sidebar.html", { "page": "form-input-groups","page_group": "form"})
+            </aside>
+            <!-- Horizontal Sidebar Menu End -->
+
+            <!-- Main Content -->
+            <div class="max-w-full">
+              <div class="container full-container ">
+                <!----Breadcrumb Start---->
+                @@include("partials/breadcrumb.html", {"title": "Form Input Groups", "subtitle": 'Home'})
+                <!----Breadcrumb End---->
+                <div class="grid grid-cols-12 gap-6">
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Input Addons Left</h5>
+                        <p class="card-subtitle  mb-6">Add span before <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">'&#60;input&#62;'</code> </p>
+                        <form action="#">
+                          <div class="flex rounded-lg ">
+                            <span
+                              class="px-4 inline-flex items-center min-w-fit rounded-s-sm border border-e-0 border-bordergray bg-gray-100 text-base text-gray-500 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400">@</span>
+                            <input type="text" id="form_InputText1"
+                              class="py-2.5 px-4 pe-11 block w-full form-control rounded-none rounded-e-sm"
+                              placeholder="Username">
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Input Addons Both Side</h5>
+                        <p class="card-subtitle  mb-6">Add span before & after <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">'&#60;input&#62;'</code> </p>
+                        <form action="#">
+                          <div class="flex rounded-lg ">
+                            <span
+                              class="px-4 inline-flex items-center min-w-fit rounded-s-sm border border-e-0 border-bordergray bg-gray-100 text-base text-gray-500 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400">@</span>
+                            <input type="text" id="form_InputText2"
+                              class="py-2.5 px-4 pe-11 block w-full form-control rounded-none ">
+                            <span
+                              class="px-4 inline-flex items-center min-w-fit rounded-e-sm border border-s-0 border-bordergray bg-gray-100 text-base text-gray-500 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400">0.00</span>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Input Addons Right</h5>
+                        <p class="card-subtitle  mb-6">Add span after <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">'&#60;input&#62;'</code> </p>
+                        <form action="#">
+                          <div class="flex rounded-lg ">
+                            <input type="text" id="form_InputText3"
+                              class="py-2.5 px-4 pe-11 block w-full form-control rounded-none  rounded-s-sm"
+                              placeholder="Username">
+                            <span
+                              class="px-4 inline-flex items-center min-w-fit rounded-e-sm border border-s-0 border-bordergray bg-gray-100 text-base text-gray-500 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400">0.00</span>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-6">Input Addons Left Icon</h5>
+                        <form action="#">
+                          <div class="flex rounded-lg ">
+                            <span
+                              class="px-4 inline-flex items-center min-w-fit rounded-s-sm border border-e-0 border-bordergray bg-gray-100 text-base text-gray-500 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400">
+                              <i class="ti ti-file-text text-base leading-tight font-medium"></i>
+                            </span>
+                            <input type="text" id="form_InputText4"
+                              class="py-2.5 px-4 pe-11 block w-full form-control rounded-none rounded-e-sm"
+                              placeholder="Username">
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-6">Input Addons Both Side Icon</h5>
+                        <form action="#">
+                          <div class="flex rounded-lg ">
+                            <span
+                              class="px-4 inline-flex items-center min-w-fit rounded-s-sm border border-e-0 border-bordergray bg-gray-100 text-base text-gray-500 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400">
+                              <i class="ti ti-file-text text-base leading-tight font-medium"></i>
+                            </span>
+                            <input type="text" id="form_InputText5"
+                              class="py-2.5 px-4 pe-11 block w-full form-control rounded-none ">
+                            <span
+                              class="px-4 inline-flex items-center min-w-fit rounded-e-sm border border-s-0 border-bordergray bg-gray-100 text-base text-gray-500 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400">
+                              <i class="ti ti-trash text-base leading-tight font-medium"></i></span>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-6">Input Addons Right Icon</h5>
+                        <form action="#">
+                          <div class="flex rounded-lg ">
+                            <input type="text" id="form_InputText6"
+                              class="py-2.5 px-4 pe-11 block w-full form-control rounded-none  rounded-s-sm"
+                              placeholder="Username">
+                            <span
+                              class="px-4 inline-flex items-center min-w-fit rounded-e-sm border border-s-0 border-bordergray bg-gray-100 text-base text-gray-500 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400">
+                              <i class="ti ti-file-text text-base leading-tight font-medium"></i>
+                            </span>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Addons With Right Checkbox</h5>
+                        <p class="card-subtitle  mb-6"> To use add span before <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">'&#60;input&#62;'</code> </p>
+                        <form action="#">
+                          <div class="flex rounded-lg ">
+                            <span
+                              class="px-4 inline-flex items-center min-w-fit rounded-s-sm border border-e-0 border-bordergray bg-gray-100 text-sm text-gray-500 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400">
+                              <span class="flex">
+                                <input type="checkbox" class="form-check-input rounded dark:bg-gray-800"
+                                  id="hs-input-group-with-checkbox">
+                                <label for="hs-input-group-with-checkbox" class="sr-only">Checkbox</label>
+                              </span>
+                            </span>
+                            <input type="text" name="hs-input-with-add-on-url-checkbox"
+                              id="hs-input-with-add-on-url-checkbox"
+                              class="py-2.5 px-4 pe-11 block w-full form-control rounded-none rounded-e-sm"
+                              placeholder="Checkbox">
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Addons With Checkbox & Button</h5>
+                        <p class="card-subtitle  mb-6">Add span before & after <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">'&#60;input&#62;'</code> </p>
+                        <form action="#">
+                          <div>
+                            <label for="hs-leading-button-add-on-with-icon" class="sr-only">Label</label>
+                            <div class="flex rounded-lg ">
+                              <span
+                                class="px-4 inline-flex items-center min-w-fit rounded-s-sm border border-e-0 border-bordergray bg-gray-100 text-sm text-gray-500 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400">
+                                <span class="flex">
+                                  <input type="checkbox" class="form-check-input rounded dark:bg-gray-800"
+                                    id="hs-input-group-with-checkbox">
+                                  <label for="hs-input-group-with-checkbox" class="sr-only">Checkbox</label>
+                                </span>
+                              </span>
+                              <input type="text" id="hs-leading-button-add-on-with-icon"
+                                name="hs-leading-button-add-on-with-icon"
+                                class="py-2.5 px-4 block w-full form-control rounded-none ">
+                              <button type="button"
+                                class="w-fit px-4 flex-shrink-0 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-e-sm border border-transparent bg-primary text-white hover:bg-primaryemphasis disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                Go!
+                              </button>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Addons With Right Checkbox</h5>
+                        <p class="card-subtitle  mb-6">To use add span after <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">'&#60;input&#62; field'</code> </p>
+                        <form action="#">
+                          <div class="flex rounded-lg ">
+                            <input type="text" name="hs-input-with-add-on-url-checkbox"
+                              id="hs-input-with-add-on-url-checkbox"
+                              class="py-2.5 px-4 pe-11 block w-full form-control rounded-none border-e-0  rounded-s-sm"
+                              placeholder="Checkbox">
+                            <span
+                              class="px-4 inline-flex items-center min-w-fit rounded-e-sm border border-bordergray bg-gray-100 text-sm text-gray-500 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400">
+                              <span class="flex">
+                                <input type="checkbox" class="form-check-input rounded dark:bg-gray-800"
+                                  id="hs-input-group-with-checkbox">
+                                <label for="hs-input-group-with-checkbox" class="sr-only">Checkbox</label>
+                              </span>
+                            </span>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Addons With Left Radio</h5>
+                        <p class="card-subtitle  mb-6"> To use add span before <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">'&#60;input&#62;'</code> </p>
+                        <form action="#">
+                          <div class="flex rounded-lg ">
+                            <span
+                              class="px-4 inline-flex items-center min-w-fit rounded-s-sm border border-e-0 border-bordergray bg-gray-100 text-sm text-gray-500 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400">
+                              <span class="flex">
+                                <input type="radio"
+                                  class="shrink-0 h-5 w-5 border-bordergray rounded-full text-primary focus:ring-primary dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-primary dark:checked:border-primary dark:focus:ring-offset-gray-800"
+                                  id="hs-input-group-with-radio">
+                                <label for="hs-input-group-with-radio" class="sr-only">Radio</label>
+                              </span>
+                            </span>
+                            <input type="text" name="hs-input-with-add-on-url-radio" id="hs-input-with-add-on-url-radio"
+                              class="py-2.5 px-4 pe-11 block w-full form-control rounded-none rounded-e-sm"
+                              placeholder="Radio">
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Addons With Radio & Button</h5>
+                        <p class="card-subtitle  mb-6">Add span before & after <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">'&#60;input&#62;'</code> </p>
+                        <form action="#">
+                          <div>
+                            <label for="hs-leading-button-add-on-with-icon" class="sr-only">Label</label>
+                            <div class="flex rounded-lg ">
+                              <button type="button"
+                                class="w-fit px-4 flex-shrink-0 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-s-sm border border-transparent bg-primary text-white hover:bg-primaryemphasis disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                Go!
+                              </button>
+                              <input type="text" id="hs-leading-button-add-on-with-icon"
+                                name="hs-leading-button-add-on-with-icon"
+                                class="py-2.5 px-4 block w-full form-control rounded-none border-e-0">
+                              <span
+                                class="px-4 inline-flex items-center min-w-fit rounded-e-sm border  border-bordergray bg-gray-100 text-sm text-gray-500 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400">
+                                <span class="flex">
+                                  <input type="radio"
+                                    class="shrink-0 h-5 w-5 border-bordergray rounded-full text-primary focus:ring-primary dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-primary dark:checked:border-primary dark:focus:ring-offset-gray-800"
+                                    id="hs-input-group-with-radio">
+                                  <label for="hs-input-group-with-radio" class="sr-only">Radio</label>
+                                </span>
+                              </span>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Addons With Right Radio</h5>
+                        <p class="card-subtitle  mb-6">To use add span after <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">'&#60;input&#62; field'</code> </p>
+                        <form action="#">
+                          <div class="flex rounded-lg ">
+                            <input type="text" name="hs-input-with-add-on-url-radio" id="hs-input-with-add-on-url-radio"
+                              class="py-2.5 px-4 pe-11 block w-full form-control rounded-none border-e-0 rounded-s-sm"
+                              placeholder="Radio">
+                            <span
+                              class="px-4 inline-flex items-center min-w-fit rounded-e-sm border  border-bordergray bg-gray-100 text-sm text-gray-500 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400">
+                              <span class="flex">
+                                <input type="radio"
+                                  class="shrink-0 h-5 w-5 border-bordergray rounded-full text-primary focus:ring-primary dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-primary dark:checked:border-primary dark:focus:ring-offset-gray-800"
+                                  id="hs-input-group-with-radio">
+                                <label for="hs-input-group-with-radio" class="sr-only">Radio</label>
+                              </span>
+                            </span>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Addons With Color Button Left</h5>
+                        <p class="card-subtitle  mb-6">To use add <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">button</code> before input field.</p>
+                        <form action="#">
+                          <div class="flex rounded-lg ">
+                            <button type="button"
+                              class="w-fit px-4 flex-shrink-0 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-s-sm border border-transparent bg-primary text-white hover:bg-primaryemphasis disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                              Go!
+                            </button>
+                            <input type="text" name="hs-input-with-add-on-url-radio" id="hs-input-with-add-on-url-radio"
+                              class="py-2.5 px-4 pe-11 block w-full form-control rounded-none rounded-e-sm">
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Addons With Color Buttons Both</h5>
+                        <p class="card-subtitle  mb-6">To use add <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">button</code> before & after input
+                          field.</p>
+                        <form action="#">
+                          <div>
+                            <label for="hs-leading-button-add-on-with-icon" class="sr-only">Label</label>
+                            <div class="flex rounded-lg ">
+                              <button type="button"
+                                class="w-fit px-4 flex-shrink-0 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-s-sm border border-transparent bg-error text-white hover:bg-erroremphasis disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600 leading-tight">
+                                <i class="ti ti-heart text-lg leading-tight font-medium"></i>
+                                Love
+                              </button>
+                              <input type="text" id="hs-leading-button-add-on-with-icon"
+                                name="hs-leading-button-add-on-with-icon"
+                                class="py-2.5 px-4 block w-full form-control rounded-none ">
+                              <button type="button"
+                                class="w-fit px-4 flex-shrink-0 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-e-sm border border-transparent bg-primary text-white hover:bg-primaryemphasis disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600 leading-tight">
+                                <i class="ti ti-circle-half text-lg leading-tight font-medium"></i>
+                                Hate
+                              </button>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Addons With Color Button Right</h5>
+                        <p class="card-subtitle  mb-6">To use add <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">button</code> after input field.</p>
+                        <form action="#">
+                          <div class="flex rounded-lg ">
+                            <input type="text" name="hs-input-with-add-on-url-radio" id="hs-input-with-add-on-url-radio"
+                              class="py-2.5 px-4 pe-11 block w-full form-control rounded-none  rounded-s-sm">
+                            <button type="button"
+                              class="w-fit px-4 flex-shrink-0 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-e-sm border border-transparent bg-primary text-white hover:bg-primaryemphasis disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600 leading-tight">
+                              <i class="ti ti-circle-half text-lg leading-tight font-medium"></i>
+                              Hate
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Addons With icon Button Left</h5>
+                        <p class="card-subtitle  mb-6">To use add <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">button</code> before input field.</p>
+                        <form action="#">
+                          <div class="flex rounded-lg ">
+                            <button type="button"
+                              class="w-fit px-4 flex-shrink-0 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-s-sm border border-transparent bg-lightprimary text-primary hover:bg-primary disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 hover:text-white dark:bg-darkprimary dark:hover:bg-primary  dark:focus:ring-gray-600">
+                              <i class="ti ti-settings text-lg leading-tight font-medium"></i>
+                            </button>
+                            <input type="text" name="hs-input-with-add-on-url-radio" id="hs-input-with-add-on-url-radio"
+                              class="py-2.5 px-4 pe-11 block w-full form-control rounded-none rounded-e-sm">
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Addons With icon Buttons Both</h5>
+                        <p class="card-subtitle  mb-6">To use add <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">button</code> before & after input
+                          field.</p>
+                        <form action="#">
+                          <div>
+                            <label for="hs-leading-button-add-on-with-icon" class="sr-only">Label</label>
+                            <div class="flex rounded-lg ">
+                              <button type="button"
+                                class="w-fit px-4 flex-shrink-0 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-s-sm border border-transparent bg-lightprimary text-primary hover:bg-primary disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 hover:text-white dark:bg-darkprimary dark:hover:bg-primary  dark:focus:ring-gray-600">
+                                <i class="ti ti-pencil text-lg leading-tight font-medium"></i>
+                              </button>
+                              <input type="text" id="hs-leading-button-add-on-with-icon"
+                                name="hs-leading-button-add-on-with-icon"
+                                class="py-2.5 px-4 block w-full form-control rounded-none ">
+                              <button type="button"
+                                class="w-fit px-4 flex-shrink-0 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-e-sm border border-transparent bg-lighterror text-error hover:bg-error disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 hover:text-white dark:bg-darkerror dark:hover:bg-error  dark:focus:ring-gray-600">
+                                <i class="ti ti-trash text-lg leading-tight font-medium"></i>
+                              </button>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Addons With icon Button Right</h5>
+                        <p class="card-subtitle  mb-6">To use add <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">button</code> after input field.</p>
+                        <form action="#">
+                          <div class="flex rounded-lg ">
+                            <input type="text" name="hs-input-with-add-on-url-radio" id="hs-input-with-add-on-url-radio"
+                              class="py-2.5 px-4 pe-11 block w-full form-control rounded-none  rounded-s-sm">
+                            <button type="button"
+                              class="w-fit px-4 flex-shrink-0 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-e-sm border border-transparent bg-lighterror text-error hover:bg-error disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 hover:text-white dark:bg-darkerror dark:hover:bg-error dark:focus:ring-gray-600">
+                              <i class="ti ti-heart text-lg leading-tight font-medium"></i>
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-6">Multiple Addons With Left Side</h5>
+                        <form action="#">
+                          <label for="hs-leading-multiple-add-on" class="sr-only">Multiple add-on</label>
+                          <div class="flex rounded-lg ">
+                            <div
+                              class="px-4 inline-flex items-center min-w-fit rounded-s-sm border border-e-0 border-bordergray bg-gray-100 dark:bg-gray-700 dark:border-gray-600">
+                              <span class="text-sm text-gray-500 dark:text-gray-400">$</span>
+                            </div>
+                            <div
+                              class="px-4 inline-flex items-center min-w-fit border border-e-0 border-bordergray bg-gray-100 dark:bg-gray-700 dark:border-gray-600">
+                              <span class="text-sm text-gray-500 dark:text-gray-400">0.00</span>
+                            </div>
+                            <input type="text" id="hs-leading-multiple-add-on" name="inline-add-on"
+                              class="py-2.5 px-4 block w-full form-control rounded-none  rounded-e-sm"
+                              placeholder="www.example.com">
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-6">Multiple Addons With Right Side</h5>
+                        <form action="#">
+                          <label for="hs-leading-multiple-add-on" class="sr-only">Multiple add-on</label>
+                          <div class="flex rounded-lg ">
+                            <input type="text" id="hs-leading-multiple-add-on" name="inline-add-on"
+                              class="py-2.5 px-4 block w-full form-control rounded-none  rounded-s-sm border-e-0"
+                              placeholder="www.example.com">
+                            <div
+                              class="px-4 inline-flex items-center min-w-fit border border-e-0 border-bordergray bg-gray-100 dark:bg-gray-700 dark:border-gray-600">
+                              <span class="text-sm text-gray-500 dark:text-gray-400">$</span>
+                            </div>
+                            <div
+                              class="px-4 inline-flex items-center min-w-fit rounded-e-sm border  border-bordergray bg-gray-100 dark:bg-gray-700 dark:border-gray-600">
+                              <span class="text-sm text-gray-500 dark:text-gray-400">0.00</span>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-6">Input With Right Side</h5>
+                        <form action="#">
+                          <div>
+                            <div>
+                              <div class="sm:flex rounded-sm">
+                                <span
+                                  class="py-2.5 px-4 inline-flex items-center min-w-fit w-full border border-bordergray bg-gray-50 text-sm text-gray-500 -mt-px -ms-px first:rounded-t-lg last:rounded-b-lg sm:w-auto sm:first:rounded-s-lg sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-lg dark:bg-gray-700 dark:border-darkborder dark:text-gray-400">First
+                                  and last name</span>
+                                <input type="text"
+                                  class="py-2.5 px-4 pe-11 block w-full border-bordergray sm:shadow-sm -mt-px -ms-px first:rounded-t-lg last:rounded-b-lg sm:first:rounded-s-lg sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-lg text-sm relative focus:z-10 focus:border-primary focus:ring-primary disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-darkborder dark:text-gray-400 dark:focus:ring-gray-600 focus:outline-none focus:ring-0">
+                                <input type="text"
+                                  class="py-2.5 px-4 pe-11 block w-full border-bordergray shadow-sm -mt-px -ms-px first:rounded-t-lg last:rounded-b-lg sm:first:rounded-s-lg sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-lg text-sm relative focus:z-10 focus:border-primary focus:ring-primary disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-darkborder dark:text-gray-400 dark:focus:ring-gray-600 focus:outline-none focus:ring-0">
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-6">Input With Left Side</h5>
+                        <form action="#">
+                          <div>
+                            <div class="sm:flex rounded-sm">
+                              <input type="text"
+                                class="py-2.5 px-4 pe-11 block w-full border-bordergray dark:border-darkborder shadow-sm -mt-px -ms-px first:rounded-t-lg last:rounded-b-lg sm:first:rounded-s-lg sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-lg text-sm relative focus:z-10 form-control rounded-none">
+                              <input type="text"
+                                class="py-2.5 px-4 pe-11 block w-full border-bordergray dark:border-darkborder shadow-sm -mt-px -ms-px first:rounded-t-lg last:rounded-b-lg sm:first:rounded-s-lg sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-lg text-sm relative focus:z-10 form-control rounded-none">
+                              <span
+                                class="py-2.5 px-4 inline-flex items-center min-w-fit w-full border border-bordergray dark:border-darkborder bg-gray-50 text-sm text-gray-500 -mt-px -ms-px first:rounded-t-lg last:rounded-b-lg sm:w-auto sm:first:rounded-s-lg sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-lg dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400">First
+                                and last name</span>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-6">Input With Middle Side</h5>
+                        <form action="#">
+                          <div class="sm:flex rounded-sm">
+                            <input type="text"
+                              class="py-2.5 px-4 pe-11 block w-full shadow-sm -mt-px -ms-px first:rounded-t-lg last:rounded-b-lg sm:first:rounded-s-lg sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-lg text-sm relative focus:z-10 form-control rounded-none">
+                            <span
+                              class="py-2.5 px-4 inline-flex items-center min-w-fit w-full border border-bordergray bg-gray-50 text-sm  -mt-px -ms-px first:rounded-t-lg last:rounded-b-lg sm:w-auto sm:first:rounded-s-lg sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-lg dark:bg-gray-700 dark:border-darkborder dark:text-gray-400">
+                              <i
+                                class="ti ti-arrows-down-up text-lg leading-tight font-medium mx-auto text-gray-400"></i>
+                            </span>
+                            <input type="text"
+                              class="py-2.5 px-4 pe-11 block w-full shadow-sm -mt-px -ms-px first:rounded-t-lg last:rounded-b-lg sm:first:rounded-s-lg sm:mt-0 sm:first:ms-0 sm:first:rounded-se-none sm:last:rounded-es-none sm:last:rounded-e-lg text-sm relative focus:z-10 form-control rounded-none">
+                          </div>
+
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Trailing button add-ons</h5>
+                        <p class="card-subtitle  mb-6">To use add <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">'button'</code> in the respective
+                          alignmnet of design</p>
+                        <form action="#" class="flex flex-col gap-4">
+                          <div>
+                            <label for="hs-trailing-button-add-on-with-icon" class="sr-only">Label</label>
+                            <div class="flex rounded-lg ">
+                              <input type="text" id="hs-trailing-button-add-on-with-icon"
+                                name="hs-trailing-button-add-on-with-icon"
+                                class="py-2.5 px-4 block w-full form-control rounded-none  rounded-s-sm">
+                              <button type="button"
+                                class="px-4 flex-shrink-0 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-e-sm border border-transparent bg-primary text-white hover:bg-primaryemphasis disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                <i class="ti ti-search text-lg leading-tight font-medium"></i>
+                              </button>
+                            </div>
+                          </div>
+
+                          <div>
+                            <label for="hs-trailing-button-add-on-with-leading-and-trailing"
+                              class="sr-only">Label</label>
+                            <div class="flex rounded-lg ">
+                              <span
+                                class="px-4 inline-flex items-center min-w-fit rounded-s-sm border border-e-0 border-bordergray bg-gray-100 text-sm dark:bg-gray-700 dark:border-gray-700">
+                                <span class="text-sm text-gray-500 dark:text-gray-400">http://</span>
+                              </span>
+                              <input type="text" id="hs-trailing-button-add-on-with-leading-and-trailing"
+                                name="hs-trailing-button-add-on-with-leading-and-trailing"
+                                class="py-2.5 px-4 block w-full  rounded-0 text-sm focus:z-10 form-control rounded-none">
+                              <button type="button"
+                                class="px-4 flex-shrink-0 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-e-sm border border-transparent bg-primary text-white hover:bg-primaryemphasis disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                <i class="ti ti-search text-lg leading-tight font-medium"></i>
+                              </button>
+                            </div>
+                          </div>
+
+                          <div>
+                            <label for="hs-trailing-button-add-on-with-icon-and-button" class="sr-only">Label</label>
+                            <div class="relative flex rounded-lg ">
+                              <input type="text" id="hs-trailing-button-add-on-with-icon-and-button"
+                                name="hs-trailing-button-add-on-with-icon-and-button"
+                                class="py-2.5 px-4 ps-11 block w-full form-control rounded-none  rounded-s-sm">
+                              <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none z-20 ps-4">
+                                <i class="ti ti-search text-lg leading-tight font-medium text-gray-400"></i>
+                              </div>
+                              <button type="button"
+                                class="py-2.5 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-e-sm border border-transparent bg-primary text-white hover:bg-primaryemphasis disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">Search</button>
+                            </div>
+                          </div>
+
+                          <div>
+                            <label for="hs-trailing-button-add-on" class="sr-only">Label</label>
+                            <div class="flex rounded-lg ">
+                              <input type="text" id="hs-trailing-button-add-on" name="hs-trailing-button-add-on"
+                                class="py-2.5 px-4 block w-full form-control rounded-none  rounded-s-sm">
+                              <button type="button"
+                                class="py-2.5 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-e-sm border border-transparent bg-primary text-white hover:bg-primaryemphasis disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                Button
+                              </button>
+                            </div>
+                          </div>
+
+                          <div>
+                            <label for="hs-trailing-button-add-on-multiple-add-ons" class="sr-only">Label</label>
+                            <div class="flex rounded-lg ">
+                              <input type="text" id="hs-trailing-button-add-on-multiple-add-ons"
+                                name="hs-trailing-button-add-on-multiple-add-ons"
+                                class="py-2.5 px-4 block w-full rounded-none rounded-s-sm text-sm focus:z-10 form-control ">
+                              <button type="button"
+                                class="-ms-px py-2.5 px-4 inline-flex justify-center items-center gap-2 border  font-medium border-bordergray bg-white text-gray-700  align-middle hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-primary transition-all text-sm dark:bg-gray-800 dark:hover:bg-slate-800 dark:border-gray-700 text-link dark:text-darklink dark:text-gray-400 dark:hover:text-white">
+                                Button
+                              </button>
+                              <button type="button"
+                                class="py-2.5 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-e-sm border border-transparent bg-primary text-white hover:bg-primaryemphasis disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                Button
+                              </button>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Search box with loading</h5>
+                        <p class="card-subtitle  mb-6">Search <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">'loading'</code> .</p>
+                        <form action="#" class="flex flex-col gap-4">
+                          <div>
+                            <div class="relative">
+                              <input type="text" id="hs-search-box-with-loading-1" name="hs-search-box-with-loading-1"
+                                class="py-2.5 px-4 ps-11 block w-full   rounded-lg text-sm focus:z-10 form-control "
+                                placeholder="Input search">
+                              <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-4">
+                                <div
+                                  class="animate-spin inline-block size-4 border-[3px] border-current border-t-transparent text-primary rounded-full"
+                                  role="status" aria-label="loading">
+                                  <span class="sr-only">Loading...</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div>
+                            <div class="flex rounded-lg ">
+                              <input type="text" id="hs-search-box-with-loading-2" name="hs-search-box-with-loading-2"
+                                class="py-2.5 px-4 block w-full form-control rounded-none  rounded-s-sm"
+                                placeholder="Input search">
+                              <button type="button"
+                                class="px-4 flex-shrink-0 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-e-sm border border-transparent bg-primary text-white hover:bg-primaryemphasis disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                <span
+                                  class="animate-spin inline-block size-4 border-[3px] border-current border-t-transparent text-white rounded-full"
+                                  role="status" aria-label="loading">
+                                  <span class="sr-only">Loading...</span>
+                                </span>
+                              </button>
+                            </div>
+                          </div>
+
+                          <div>
+                            <div class="flex rounded-lg ">
+                              <span
+                                class="px-4 inline-flex items-center min-w-fit rounded-s-sm border border-e-0 border-bordergray bg-gray-100 text-sm text-gray-500 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400">http://</span>
+                              <input type="text" id="hs-search-box-with-loading-3" name="hs-search-box-with-loading-3"
+                                class="py-2.5 px-4 block w-full  rounded-0 text-sm focus:z-10 form-control rounded-none"
+                                placeholder="Input search">
+                              <button type="button"
+                                class="px-4 flex-shrink-0 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-e-sm border border-transparent bg-primary text-white hover:bg-primaryemphasis disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                <span
+                                  class="animate-spin inline-block size-4 border-[3px] border-current border-t-transparent text-white rounded-full"
+                                  role="status" aria-label="loading">
+                                  <span class="sr-only">Loading...</span>
+                                </span>
+                              </button>
+                            </div>
+                          </div>
+
+                          <div>
+                            <div class="flex rounded-lg ">
+                              <input type="text" id="hs-search-box-with-loading-4" name="hs-search-box-with-loading-4"
+                                class="py-2.5 px-4 block w-full form-control rounded-none  rounded-s-sm"
+                                placeholder="Input search">
+                              <button type="button"
+                                class="py-2.5 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-e-sm border border-transparent bg-primary text-white hover:bg-primaryemphasis disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                <span
+                                  class="animate-spin inline-block size-4 border-[3px] border-current border-t-transparent text-white rounded-full"
+                                  role="status" aria-label="loading">
+                                  <span class="sr-only">Loading...</span>
+                                </span>
+                                Search
+                              </button>
+                            </div>
+                          </div>
+
+                          <div>
+                            <div class="relative flex rounded-lg ">
+                              <input type="text" id="hs-search-box-with-loading-5" name="hs-search-box-with-loading-5"
+                                class="py-2.5 px-4 ps-11 block w-full form-control rounded-none  rounded-s-sm"
+                                placeholder="Input search">
+                              <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-4">
+                                <i class="ti ti-search text-lg leading-tight font-medium"></i>
+                              </div>
+                              <button type="button"
+                                class="py-2.5 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-e-sm border border-transparent bg-primary text-white hover:bg-primaryemphasis disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                <span
+                                  class="animate-spin inline-block size-4 border-[3px] border-current border-t-transparent text-white rounded-full"
+                                  role="status" aria-label="loading">
+                                  <span class="sr-only">Loading...</span>
+                                </span>
+                                Search
+                              </button>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Leading and trailing icon</h5>
+                        <p class="card-subtitle  mb-6">Add a leading and trailing icon inside <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">'input'</code> .</p>
+                        <form action="#" class="flex flex-col gap-4">
+                          <div>
+                            <label for="hs-input-with-leading-and-trailing-icon"
+                              class="block text-sm font-medium mb-2 text-dark dark:text-white">Price</label>
+                            <div class="relative">
+                              <input type="text" id="hs-input-with-leading-and-trailing-icon"
+                                name="hs-input-with-leading-and-trailing-icon"
+                                class="py-2.5 px-4 ps-9 pe-16 block w-full   rounded-lg text-sm focus:z-10 form-control "
+                                placeholder="0.00">
+                              <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none z-20 ps-4">
+                                <span class="text-gray-500">$</span>
+                              </div>
+                              <div class="absolute inset-y-0 end-0 flex items-center pointer-events-none z-20 pe-4">
+                                <span class="text-gray-500">USD</span>
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Inline leading add-on and trailing select</h5>
+                        <p class="card-subtitle  mb-6">Add an <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">'inline'</code> add-on and trailing
+                          <code class="text-error bg-lightwarning dark:bg-darkwarning">'select'</code> inside input.</p>
+                        <form action="#" class="flex flex-col gap-4">
+                          <div>
+                            <label for="hs-inline-leading-pricing-select-label"
+                              class="block text-sm font-medium mb-2 text-dark dark:text-white">Price</label>
+                            <div class="relative">
+                              <input type="text" id="hs-inline-leading-pricing-select-label" name="inline-add-on"
+                                class="py-2.5 px-4 ps-9 pe-20 block w-full  rounded-lg text-sm focus:z-10 form-control"
+                                placeholder="0.00">
+                              <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none z-20 ps-4">
+                                <span class="text-gray-500">$</span>
+                              </div>
+                              <div class="absolute inset-y-0 end-0 flex items-center text-gray-500 pe-px">
+                                <label for="hs-inline-leading-select-currency" class="sr-only">Currency</label>
+                                <select id="hs-inline-leading-select-currency" name="hs-inline-leading-select-currency"
+                                  class="block w-full border-transparent rounded-lg focus:ring-blue-600 focus:border-blue-600 dark:bg-gray-800">
+                                  <option>USD</option>
+                                  <option>CAD</option>
+                                  <option>EUR</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Addons With Left Side Dropdown</h5>
+                        <p class="card-subtitle  mb-6">To use add <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">'dropdown'</code> in the prepend
+                          class div.</p>
+                        <form action="#" class="flex flex-col gap-4">
+                          <div class="flex rounded-lg ">
+                            <div class="hs-dropdown relative inline-flex [--placement:bottom-right]">
+                              <button id="hs-dropdown" type="button"
+                                class="hs-dropdown-toggle py-2.5 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-s-sm  bg-lightprimary text-primaryemphasis  hover:bg-primary disabled:opacity-50 disabled:pointer-events-none dark:bg-darkprimary hover:text-white dark:hover:text-white dark:text-primary dark:hover:bg-primary dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                Dropdown
+                                <i
+                                  class="ti ti-chevron-down text-base leading-tight font-medium hs-dropdown-open:rotate-180"></i>
+                              </button>
+
+                              <div
+                                class="hs-dropdown-menu w-72 transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden  bg-white shadow-md rounded-lg p-2 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700 z-[40]"
+                                aria-labelledby="hs-dropdown">
+                                <div class="py-2 first:pt-0 last:pb-0">
+                                  <span
+                                    class="block py-2 px-3 text-xs font-medium uppercase text-gray-400 dark:text-gray-500">
+                                    Settings
+                                  </span>
+                                  <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                    href="#">
+                                    <i class="ti ti-bell text-lg leading-none"></i>
+                                    Newsletter
+                                  </a>
+                                  <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                    href="#">
+                                    <i class="ti ti-shopping-cart text-lg leading-none"></i>
+                                    Purchases
+                                  </a>
+                                  <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                    href="#">
+                                    <i class="ti ti-cloud-download text-lg leading-none"></i>
+                                    Downloads
+                                  </a>
+                                  <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                    href="#">
+                                    <i class="ti ti-users text-lg leading-none"></i>
+                                    Team Account
+                                  </a>
+                                </div>
+                                <div class="py-2 first:pt-0 last:pb-0">
+                                  <span
+                                    class="block py-2 px-3 text-xs font-medium uppercase text-gray-400 dark:text-gray-500">
+                                    Contacts
+                                  </span>
+                                  <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                    href="#">
+                                    <i class="ti ti-address-book text-lg leading-none"></i>
+                                    Contact support
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+                            <input type="text" id="form_InputText17"
+                              class="py-2.5 px-4 pe-11 block w-full form-control rounded-none rounded-e-sm"
+                              placeholder="Username">
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Addons With Right Side Dropdown</h5>
+                        <p class="card-subtitle  mb-6">To use add <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">'dropdown'</code> in the append class
+                          div.</p>
+                        <form action="#" class="flex flex-col gap-4">
+                          <div class="flex rounded-lg ">
+                            <input type="text" id="form_InputText12"
+                              class="py-2.5 px-4 pe-11 block w-full form-control rounded-none rounded-s-sm"
+                              placeholder="Username">
+                            <div class="hs-dropdown relative inline-flex [--placement:bottom-right]">
+                              <button id="hs-dropdown" type="button"
+                                class="hs-dropdown-toggle py-2.5 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-e-sm  bg-lightprimary text-primaryemphasis  hover:bg-primary disabled:opacity-50 disabled:pointer-events-none dark:bg-darkprimary hover:text-white dark:hover:text-white dark:text-primary dark:hover:bg-primary dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                Dropdown
+                                <i
+                                  class="ti ti-chevron-down text-base leading-tight font-medium hs-dropdown-open:rotate-180"></i>
+                              </button>
+
+                              <div
+                                class="hs-dropdown-menu w-72 transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden  bg-white shadow-md rounded-lg p-2 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700 z-[40]"
+                                aria-labelledby="hs-dropdown">
+                                <div class="py-2 first:pt-0 last:pb-0">
+                                  <span
+                                    class="block py-2 px-3 text-xs font-medium uppercase text-gray-400 dark:text-gray-500">
+                                    Settings
+                                  </span>
+                                  <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                    href="#">
+                                    <i class="ti ti-bell text-lg leading-none"></i>
+                                    Newsletter
+                                  </a>
+                                  <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                    href="#">
+                                    <i class="ti ti-shopping-cart text-lg leading-none"></i>
+                                    Purchases
+                                  </a>
+                                  <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                    href="#">
+                                    <i class="ti ti-cloud-download text-lg leading-none"></i>
+                                    Downloads
+                                  </a>
+                                  <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                    href="#">
+                                    <i class="ti ti-users text-lg leading-none"></i>
+                                    Team Account
+                                  </a>
+                                </div>
+                                <div class="py-2 first:pt-0 last:pb-0">
+                                  <span
+                                    class="block py-2 px-3 text-xs font-medium uppercase text-gray-400 dark:text-gray-500">
+                                    Contacts
+                                  </span>
+                                  <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                    href="#">
+                                    <i class="ti ti-address-book text-lg leading-none"></i>
+                                    Contact support
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Addons With Right Side Split Dropdown</h5>
+                        <p class="card-subtitle  mb-6">To use add <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">'dropdown'</code> in the append class
+                          div.</p>
+                        <form action="#" class="flex flex-col gap-4">
+                          <div class="flex rounded-lg ">
+                            <input type="text" id="form_InputText13"
+                              class="py-2.5 px-4 pe-11 block w-full form-control rounded-none  rounded-s-sm"
+                              placeholder="Username">
+                            <div class="inline-flex">
+                              <button type="button"
+                                class="relative py-2.5 px-4 inline-flex items-center gap-x-2 text-sm font-semibold  bg-lightprimary text-primaryemphasis  hover:bg-primary disabled:opacity-50 disabled:pointer-events-none dark:bg-darkprimary hover:text-white dark:hover:text-white dark:text-primary dark:hover:bg-primary dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                Dropdown
+                              </button>
+                              <div class="hs-dropdown relative inline-flex [--placement:bottom-right]">
+                                <button id="hs-split-dropdown" type="button"
+                                  class="hs-dropdown-toggle relative -ms-[.3125rem] py-2.5 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-e-sm bg-lightprimary text-primaryemphasis  hover:bg-primary disabled:opacity-50 disabled:pointer-events-none dark:bg-darkprimary hover:text-white dark:hover:text-white dark:text-primary dark:hover:bg-primary dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                  <span class="sr-only">Toggle Dropdown</span>
+                                  <i
+                                    class="ti ti-chevron-down text-base leading-tight font-medium hs-dropdown-open:rotate-180"></i>
+                                </button>
+
+                                <div
+                                  class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-lg p-2 mt-2 divide-y divide-gray-200 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700 z-10"
+                                  aria-labelledby="hs-dropdown-with-title">
+                                  <div class="py-2 first:pt-0 last:pb-0">
+                                    <span
+                                      class="block py-2 px-3 text-xs font-medium uppercase text-gray-400 dark:text-gray-500">
+                                      Settings
+                                    </span>
+                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                      href="#">
+                                      <i class="ti ti-bell text-lg leading-none"></i>
+                                      Newsletter
+                                    </a>
+                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                      href="#">
+                                      <i class="ti ti-shopping-cart text-lg leading-none"></i>
+                                      Purchases
+                                    </a>
+                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                      href="#">
+                                      <i class="ti ti-cloud-download text-lg leading-none"></i>
+                                      Downloads
+                                    </a>
+                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                      href="#">
+                                      <i class="ti ti-users text-lg leading-none"></i>
+                                      Team Account
+                                    </a>
+                                  </div>
+                                  <div class="py-2 first:pt-0 last:pb-0">
+                                    <span
+                                      class="block py-2 px-3 text-xs font-medium uppercase text-gray-400 dark:text-gray-500">
+                                      Contacts
+                                    </span>
+                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                      href="#">
+                                      <i class="ti ti-address-book text-lg leading-none"></i>
+                                      Contact support
+                                    </a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Addons With Left Side Split Dropdown</h5>
+                        <p class="card-subtitle  mb-6">To use add <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">'dropdown'</code> in the append class
+                          div.</p>
+                        <form action="#" class="flex flex-col gap-4">
+                          <div class="flex rounded-lg ">
+
+                            <div class="inline-flex">
+                              <button type="button"
+                                class="relative py-2.5 px-4 inline-flex items-center gap-x-2 text-sm font-semibold  bg-lightprimary rounded-s-sm text-primaryemphasis  hover:bg-primary disabled:opacity-50 disabled:pointer-events-none dark:bg-darkprimary hover:text-white dark:hover:text-white dark:text-primary dark:hover:bg-primary dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                Dropdown
+                              </button>
+                              <div class="hs-dropdown relative inline-flex [--placement:bottom-right]">
+                                <button id="hs-split-dropdown" type="button"
+                                  class="hs-dropdown-toggle relative -ms-[.3125rem] py-2.5 px-4 inline-flex items-center gap-x-2 text-sm font-semibold  bg-lightprimary text-primaryemphasis  hover:bg-primary disabled:opacity-50 disabled:pointer-events-none dark:bg-darkprimary hover:text-white dark:hover:text-white dark:text-primary dark:hover:bg-primary dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                  <span class="sr-only">Toggle Dropdown</span>
+                                  <i
+                                    class="ti ti-chevron-down text-base leading-tight font-medium hs-dropdown-open:rotate-180"></i>
+                                </button>
+
+                                <div
+                                  class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-lg p-2 mt-2 divide-y divide-gray-200 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700 z-10"
+                                  aria-labelledby="hs-dropdown-with-title">
+                                  <div class="py-2 first:pt-0 last:pb-0">
+                                    <span
+                                      class="block py-2 px-3 text-xs font-medium uppercase text-gray-400 dark:text-gray-500">
+                                      Settings
+                                    </span>
+                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                      href="#">
+                                      <i class="ti ti-bell text-lg leading-none"></i>
+                                      Newsletter
+                                    </a>
+                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                      href="#">
+                                      <i class="ti ti-shopping-cart text-lg leading-none"></i>
+                                      Purchases
+                                    </a>
+                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                      href="#">
+                                      <i class="ti ti-cloud-download text-lg leading-none"></i>
+                                      Downloads
+                                    </a>
+                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                      href="#">
+                                      <i class="ti ti-users text-lg leading-none"></i>
+                                      Team Account
+                                    </a>
+                                  </div>
+                                  <div class="py-2 first:pt-0 last:pb-0">
+                                    <span
+                                      class="block py-2 px-3 text-xs font-medium uppercase text-gray-400 dark:text-gray-500">
+                                      Contacts
+                                    </span>
+                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                      href="#">
+                                      <i class="ti ti-address-book text-lg leading-none"></i>
+                                      Contact support
+                                    </a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <input type="text" id="form_InputText14"
+                              class="py-2.5 px-4 pe-11 block w-full form-control rounded-none rounded-e-sm"
+                              placeholder="Username">
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+        <!-- Main Content End -->
+
+      </div>
+    </div>
+    <!--end of project-->
+  </main>
+  @@include("partials/header-components/mobile-menu.html")
+  @@include("partials/customizer.html")
+  @@include("partials/scripts.html")
+  <script src="@@webRoot/node_modules/prismjs/prism.js"></script>
+</body>
+
+</html>

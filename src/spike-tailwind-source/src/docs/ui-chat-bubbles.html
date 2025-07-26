@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-color-theme="Blue_Theme" class="light selected" data-layout="vertical"
+    data-boxed-layout="boxed" data-card="shadow">
+
+<head>
+    @@include("partials/head.html")
+    <title>Spike TailwindCSS HTML Admin Template</title>
+</head>
+
+<body class="DEFAULT_THEME bg-lightprimary dark:bg-darkbody">
+    <main>
+        <!--start the project-->
+        <div id="main-wrapper" class="flex p-5">
+
+            <aside id="application-sidebar-brand"
+                class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full xl:rtl:-translate-x-0 rtl:translate-x-full  left-0 rtl:left-auto xl:rtl:right-5 rtl:right-0 transform hidden xl:block xl:translate-x-0 xl:end-auto xl:bottom-0 fixed top-0 with-vertical  docs-left-sidebar transition-all duration-300 h-screen z-[2] flex-shrink-0  w-[270px] border-border dark:border-darkborder bg-white dark:bg-dark xl:top-5 xl:start-5 shadow-md xl:rounded-md">
+                @@include("partials/sidebar.html",{ "page": "ui-chat-bubbles","page_group": "ui" })
+            </aside>
+            <div class="page-wrapper w-full" role="main">
+
+                <!-- Main Content -->
+                <main class="h-full ">
+                    <div class="container full-container py-5 xl:ps-6 ps-0 pt-0 pe-0">
+
+                        <!--  Header Start -->
+                        <header
+                            class="sticky top-0 inset-x-0 z-[1] flex flex-wrap md:justify-start md:flex-nowrap text-sm py-0 mb-6 bg-white dark:bg-dark rounded-md shadow-md">
+                            <div class="with-vertical w-full">@@include("partials/header.html")</div>
+                        </header>
+                        <!--  Header End -->
+
+                        <!-- ============================================================== -->
+                        <!-- Start Page Content -->
+                        <!-- ============================================================== -->
+                        <div class="max-w-full">
+                            <div class="d-sm-flex align-items-center justify-content-between">
+                                <h4 class="mb-8 text-lg  ">Chat Bubbles</h4>
+                            </div>
+                            <div class="grid grid-cols-12 gap-6">
+                                <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Default Chat Bubbles</h5>
+                                            <p class="card-subtitle  mb-6">Basic left and right sided chat bubble
+                                                example.</p>
+                                            <!-- Chat Bubble -->
+                                            <ul class="space-y-5">
+                                                <!-- Chat -->
+                                                <li class="max-w-lg flex gap-x-2 sm:gap-x-4">
+                                                    <!-- Card -->
+                                                    <div
+                                                        class="bg-white border border-gray-200 rounded-md p-4 space-y-3 dark:bg-transparent dark:border-gray-700">
+                                                        <h2 class="font-medium text-base text-gray-800 dark:text-white">
+                                                            How can we help?
+                                                        </h2>
+                                                        <div class="space-y-1.5">
+                                                            <p class="mb-1.5 text-sm text-gray-800 dark:text-white">
+                                                                You can ask questions like:
+                                                            </p>
+                                                            <ul class="list-disc list-outside space-y-1.5 ps-3.5">
+                                                                <li class="text-sm text-gray-800 dark:text-white">
+                                                                    What's Preline UI?
+                                                                </li>
+
+                                                                <li class="text-sm text-gray-800 dark:text-white">
+                                                                    How many Starter Pages & Examples are there?
+                                                                </li>
+
+                                                                <li class="text-sm text-gray-800 dark:text-white">
+                                                                    Is there a PRO version?
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <!-- End Card -->
+                                                </li>
+                                                <!-- End Chat -->
+
+                                                <!-- Chat -->
+                                                <li class="max-w-lg ms-auto flex justify-end gap-x-2 sm:gap-x-4">
+                                                    <div class="grow text-end space-y-3">
+                                                        <!-- Card -->
+                                                        <div class="inline-block bg-primary rounded-md p-4 shadow-sm">
+                                                            <p class="text-sm text-white">
+                                                                what's preline ui?
+                                                            </p>
+                                                        </div>
+                                                        <!-- End Card -->
+                                                    </div>
+                                                </li>
+                                                <!-- End Chat -->
+
+                                                <!-- Chat Bubble -->
+                                                <li class="max-w-lg flex gap-x-2 sm:gap-x-4">
+                                                    <!-- Card -->
+                                                    <div
+                                                        class="bg-white border border-gray-200 rounded-md p-4 space-y-3 dark:bg-transparent dark:border-gray-700">
+                                                        <p class="text-sm text-gray-800 dark:text-white">
+                                                            Preline UI is an open-source set of prebuilt UI components
+                                                            based on the utility-first Tailwind CSS framework.
+                                                        </p>
+                                                        <div class="space-y-1.5">
+                                                            <p class="text-sm text-gray-800 dark:text-white">
+                                                                Here're some links to get started
+                                                            </p>
+                                                            <ul>
+                                                                <li>
+                                                                    <a class="text-sm text-primary decoration-2 hover:underline font-medium dark:text-primary dark:hover:text-primary dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                                                                        href="../docs/index.html">
+                                                                        Installation Guide
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a class="text-sm text-primary decoration-2 hover:underline font-medium dark:text-primary dark:hover:text-primary dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                                                                        href="../docs/frameworks.html">
+                                                                        Framework Guides
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <!-- End Card -->
+                                                </li>
+                                                <!-- End Chat Bubble -->
+                                            </ul>
+                                            <!-- End Chat Bubble -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">One sided</h5>
+                                            <p class="card-subtitle  mb-6">one sided chat bubble.</p>
+                                            <!-- Chat Bubble -->
+                                            <ul class="space-y-5">
+                                                <!-- Chat -->
+                                                <li class="max-w-lg flex gap-x-2 sm:gap-x-4">
+                                                    <!-- Card -->
+                                                    <div
+                                                        class="bg-white border border-gray-200 rounded-md p-4 space-y-3 dark:bg-transparent dark:border-gray-700">
+                                                        <h2 class="font-medium text-base text-gray-800 dark:text-white">
+                                                            How can we help?
+                                                        </h2>
+                                                        <div class="space-y-1.5">
+                                                            <p class="mb-1.5 text-sm text-gray-800 dark:text-white">
+                                                                You can ask questions like:
+                                                            </p>
+                                                            <ul class="list-disc list-outside space-y-1.5 ps-3.5">
+                                                                <li class="text-sm text-gray-800 dark:text-white">
+                                                                    What's Preline UI?
+                                                                </li>
+
+                                                                <li class="text-sm text-gray-800 dark:text-white">
+                                                                    How many Starter Pages & Examples are there?
+                                                                </li>
+
+                                                                <li class="text-sm text-gray-800 dark:text-white">
+                                                                    Is there a PRO version?
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <!-- End Card -->
+                                                </li>
+                                                <!-- End Chat -->
+
+                                                <!-- Chat -->
+                                                <li class="max-w-lg flex gap-x-2 sm:gap-x-4">
+                                                    <div class="grow space-y-3">
+                                                        <!-- Card -->
+                                                        <div class="inline-block bg-primary rounded-md p-4 shadow-sm">
+                                                            <p class="text-sm text-white">
+                                                                what's preline ui?
+                                                            </p>
+                                                        </div>
+                                                        <!-- End Card -->
+                                                    </div>
+                                                </li>
+                                                <!-- End Chat -->
+
+                                                <!-- Chat Bubble -->
+                                                <li class="max-w-lg flex gap-x-2 sm:gap-x-4">
+                                                    <!-- Card -->
+                                                    <div
+                                                        class="bg-white border border-gray-200 rounded-md p-4 space-y-3 dark:bg-transparent dark:border-gray-700">
+                                                        <p class="text-sm text-gray-800 dark:text-white">
+                                                            Preline UI is an open-source set of prebuilt UI components
+                                                            based on the utility-first Tailwind CSS framework.
+                                                        </p>
+                                                        <div class="space-y-1.5">
+                                                            <p class="text-sm text-gray-800 dark:text-white">
+                                                                Here're some links to get started
+                                                            </p>
+                                                            <ul>
+                                                                <li>
+                                                                    <a class="text-sm text-primary decoration-2 hover:underline font-medium dark:text-primary dark:hover:text-primary dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                                                                        href="../docs/index.html">
+                                                                        Installation Guide
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a class="text-sm text-primary decoration-2 hover:underline font-medium dark:text-primary dark:hover:text-primary dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                                                                        href="../docs/frameworks.html">
+                                                                        Framework Guides
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <!-- End Card -->
+                                                </li>
+                                                <!-- End Chat Bubble -->
+                                            </ul>
+                                            <!-- End Chat Bubble -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">With avatar</h5>
+                                            <p class="card-subtitle  mb-6">You can also add additional elements to the
+                                                chat bubble, such as an avatar image.</p>
+                                            <!-- Chat Bubble -->
+                                            <ul class="space-y-5">
+                                                <!-- Chat -->
+                                                <li class="max-w-lg flex gap-x-2 sm:gap-x-4 me-11">
+                                                    <img class="inline-block size-9 rounded-full"
+                                                        src="@@webRoot/assets/images/profile/user-4.jpg"
+                                                        alt="Image Description">
+
+                                                    <!-- Card -->
+                                                    <div
+                                                        class="bg-white border border-gray-200 rounded-md p-4 space-y-3 dark:bg-transparent dark:border-gray-700">
+                                                        <h2 class="font-medium text-base text-gray-800 dark:text-white">
+                                                            How can we help?
+                                                        </h2>
+                                                        <div class="space-y-1.5">
+                                                            <p class="mb-1.5 text-sm text-gray-800 dark:text-white">
+                                                                You can ask questions like:
+                                                            </p>
+                                                            <ul class="list-disc list-outside space-y-1.5 ps-3.5">
+                                                                <li class="text-sm text-gray-800 dark:text-white">
+                                                                    What's Preline UI?
+                                                                </li>
+
+                                                                <li class="text-sm text-gray-800 dark:text-white">
+                                                                    How many Starter Pages & Examples are there?
+                                                                </li>
+
+                                                                <li class="text-sm text-gray-800 dark:text-white">
+                                                                    Is there a PRO version?
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <!-- End Card -->
+                                                </li>
+                                                <!-- End Chat -->
+
+                                                <!-- Chat -->
+                                                <li class="flex ms-auto gap-x-2 sm:gap-x-4">
+                                                    <div class="grow text-end space-y-3">
+                                                        <!-- Card -->
+                                                        <div class="inline-block bg-primary rounded-md p-4 shadow-sm">
+                                                            <p class="text-sm text-white">
+                                                                what's preline ui?
+                                                            </p>
+                                                        </div>
+                                                        <!-- End Card -->
+                                                    </div>
+
+                                                    <span
+                                                        class="flex-shrink-0 inline-flex items-center justify-center size-[38px] rounded-full bg-gray-600">
+                                                        <span
+                                                            class="text-sm font-medium text-white leading-none">AZ</span>
+                                                    </span>
+                                                </li>
+                                                <!-- End Chat -->
+
+                                                <!-- Chat Bubble -->
+                                                <li class="max-w-lg flex gap-x-2 sm:gap-x-4 me-11">
+                                                    <img class="inline-block size-9 rounded-full"
+                                                        src="@@webRoot/assets/images/profile/user-4.jpg"
+                                                        alt="Image Description">
+
+                                                    <!-- Card -->
+                                                    <div
+                                                        class="bg-white border border-gray-200 rounded-md p-4 space-y-3 dark:bg-transparent dark:border-gray-700">
+                                                        <p class="text-sm text-gray-800 dark:text-white">
+                                                            Preline UI is an open-source set of prebuilt UI components
+                                                            based on the utility-first Tailwind CSS framework.
+                                                        </p>
+                                                        <div class="space-y-1.5">
+                                                            <p class="text-sm text-gray-800 dark:text-white">
+                                                                Here're some links to get started
+                                                            </p>
+                                                            <ul>
+                                                                <li>
+                                                                    <a class="text-sm text-primary decoration-2 hover:underline font-medium dark:text-primary dark:hover:text-primary dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                                                                        href="../docs/index.html">
+                                                                        Installation Guide
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a class="text-sm text-primary decoration-2 hover:underline font-medium dark:text-primary dark:hover:text-primary dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                                                                        href="../docs/frameworks.html">
+                                                                        Framework Guides
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <!-- End Card -->
+                                                </li>
+                                                <!-- End Chat Bubble -->
+                                            </ul>
+                                            <!-- End Chat Bubble -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">With footer</h5>
+                                            <p class="card-subtitle  mb-6">The following examples uses an avatar image
+                                                and a message status.</p>
+                                            <!-- Chat Bubble -->
+                                            <ul class="space-y-5">
+                                                <!-- Chat -->
+                                                <li class="max-w-lg flex gap-x-2 sm:gap-x-4 me-11">
+                                                    <img class="inline-block size-9 rounded-full"
+                                                        src="@@webRoot/assets/images/profile/user-4.jpg"
+                                                        alt="Image Description">
+
+                                                    <div>
+                                                        <!-- Card -->
+                                                        <div
+                                                            class="bg-white border border-gray-200 rounded-md p-4 space-y-3 dark:bg-transparent dark:border-gray-700">
+                                                            <h2
+                                                                class="font-medium text-base text-gray-800 dark:text-white">
+                                                                How can we help?
+                                                            </h2>
+                                                            <div class="space-y-1.5">
+                                                                <p class="mb-1.5 text-sm text-gray-800 dark:text-white">
+                                                                    You can ask questions like:
+                                                                </p>
+                                                                <ul class="list-disc list-outside space-y-1.5 ps-3.5">
+                                                                    <li class="text-sm text-gray-800 dark:text-white">
+                                                                        What's Preline UI?
+                                                                    </li>
+
+                                                                    <li class="text-sm text-gray-800 dark:text-white">
+                                                                        How many Starter Pages & Examples are there?
+                                                                    </li>
+
+                                                                    <li class="text-sm text-gray-800 dark:text-white">
+                                                                        Is there a PRO version?
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End Card -->
+
+                                                        <span
+                                                            class="mt-1.5 flex items-center gap-x-1 text-xs text-gray-500">
+                                                            <i
+                                                                class="ti ti-checks text-sm leading-tight font-medium "></i>
+                                                            Sent
+                                                        </span>
+                                                    </div>
+                                                </li>
+                                                <!-- End Chat -->
+
+                                                <!-- Chat -->
+                                                <li class="flex ms-auto gap-x-2 sm:gap-x-4">
+                                                    <div class="grow text-end space-y-3">
+                                                        <div class="inline-flex flex-col justify-end">
+                                                            <!-- Card -->
+                                                            <div
+                                                                class="inline-block bg-primary rounded-md p-4 shadow-sm">
+                                                                <p class="text-sm text-white">
+                                                                    what's preline ui?
+                                                                </p>
+                                                            </div>
+                                                            <!-- End Card -->
+
+                                                            <span
+                                                                class="mt-1.5 ms-auto flex items-center gap-x-1 text-xs text-gray-500">
+                                                                <i
+                                                                    class="ti ti-checks text-sm leading-tight font-medium "></i>
+                                                                Sent
+                                                            </span>
+                                                        </div>
+                                                    </div>
+
+                                                    <span
+                                                        class="flex-shrink-0 inline-flex items-center justify-center size-[38px] rounded-full bg-gray-600">
+                                                        <span
+                                                            class="text-sm font-medium text-white leading-none">AZ</span>
+                                                    </span>
+                                                </li>
+                                                <!-- End Chat -->
+
+                                                <!-- Chat Bubble -->
+                                                <li class="max-w-lg flex gap-x-2 sm:gap-x-4 me-11">
+                                                    <img class="inline-block size-9 rounded-full"
+                                                        src="@@webRoot/assets/images/profile/user-4.jpg"
+                                                        alt="Image Description">
+
+                                                    <div>
+                                                        <!-- Card -->
+                                                        <div
+                                                            class="bg-white border border-gray-200 rounded-md p-4 space-y-3 dark:bg-transparent dark:border-gray-700">
+                                                            <p class="text-sm text-gray-800 dark:text-white">
+                                                                Preline UI is an open-source set of prebuilt UI
+                                                                components based on the utility-first Tailwind CSS
+                                                                framework.
+                                                            </p>
+                                                            <div class="space-y-1.5">
+                                                                <p class="text-sm text-gray-800 dark:text-white">
+                                                                    Here're some links to get started
+                                                                </p>
+                                                                <ul>
+                                                                    <li>
+                                                                        <a class="text-sm text-primary decoration-2 hover:underline font-medium dark:text-primary dark:hover:text-primary dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                                                                            href="../docs/index.html">
+                                                                            Installation Guide
+                                                                        </a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a class="text-sm text-primary decoration-2 hover:underline font-medium dark:text-primary dark:hover:text-primary dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                                                                            href="../docs/frameworks.html">
+                                                                            Framework Guides
+                                                                        </a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End Card -->
+
+                                                        <span
+                                                            class="mt-1.5 flex items-center gap-x-1 text-xs text-error">
+                                                            <i
+                                                                class="ti ti-alert-circle text-sm leading-tight font-medium "></i>
+                                                            Not sent
+                                                        </span>
+                                                    </div>
+                                                </li>
+                                                <!-- End Chat Bubble -->
+                                            </ul>
+                                            <!-- End Chat Bubble -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-------------->
+
+                    </div>
+                </main>
+                <!-- Main Content End -->
+
+            </div>
+        </div>
+        <!--end of project-->
+    </main>
+    @@include("partials/scripts.html")
+</body>
+
+</html>

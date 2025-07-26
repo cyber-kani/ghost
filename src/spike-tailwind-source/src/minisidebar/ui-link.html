@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-color-theme="Blue_Theme" class="light selected" data-layout="vertical"
+  data-boxed-layout="boxed" data-card="shadow">
+
+<head>
+  @@include("partials/head.html")
+  <title>Spike TailwindCSS HTML Admin Template</title>
+  <link rel="stylesheet" href="@@webRoot/node_modules/prismjs/themes/prism-okaidia.min.css">
+</head>
+
+<body class="DEFAULT_THEME bg-lightprimary dark:bg-darkbody">
+  <main>
+    <!--start the project-->
+    <div id="main-wrapper" class="flex p-5">
+
+      <aside id="application-sidebar-brand"
+        class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full xl:rtl:-translate-x-0 rtl:translate-x-full  left-0 rtl:left-auto xl:rtl:right-5 rtl:right-0 transform hidden xl:block xl:translate-x-0 xl:end-auto xl:bottom-0 fixed top-0 with-vertical  left-sidebar transition-all duration-300 h-screen z-[2] flex-shrink-0  w-[270px] border-border dark:border-darkborder bg-white dark:bg-dark xl:top-5 xl:start-5 shadow-md xl:rounded-md">
+        @@include("partials/sidebar.html",{ "page": "ui-link","page_group": "ui" })
+      </aside>
+      <div class="page-wrapper w-full" role="main">
+
+        <!-- Main Content -->
+        <main class="h-full ">
+          <div class="container full-container py-5 xl:ps-6 ps-0 pt-0 pe-0 remove-ps">
+
+            <!--  Header Start -->
+            <header
+              class="sticky top-0 inset-x-0 z-[1] flex flex-wrap md:justify-start md:flex-nowrap text-fs_15 py-3 lg:py-0 mb-6 bg-white dark:bg-dark rounded-md shadow-md">
+              <div class="with-vertical w-full">@@include("partials/header.html")</div>
+              <div class="with-horizontal w-full">
+                <div class="bg-white dark:bg-dark">
+                  <div class="container">
+                    @@include("partials/horizontal-header.html")
+                  </div>
+                </div>
+              </div>
+            </header>
+            <!--  Header End -->
+
+            <!-- Horizontal Sidebar Menu -->
+            <aside
+              class="with-horizontal lg:flex hidden left-sidebar bg-white dark:bg-dark border-t border-border dark:border-darkborder">
+              @@include("partials/horizontal-sidebar.html", { "page": "ui-link","page_group": "ui"})
+            </aside>
+            <!-- Horizontal Sidebar Menu End -->
+
+            <!-- Main Content -->
+            <div class="max-w-full">
+              <div class="container full-container ">
+                <!----Breadcrumb Start---->
+                @@include("partials/breadcrumb.html", {"title": "Link", "subtitle": 'Home'})
+                <!----Breadcrumb End---->
+                <div class="grid grid-cols-12 gap-6">
+                  <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-0">
+                          <h5 class="card-title mb-0">Link opacity</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal1">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal1"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Link opacity
+                                        -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal1">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+         <code class="language-html">  
+    &#x3C;p&#x3E;&#x3C;a class=&#x22;text-primary text-base hover:text-primary opacity-90&#x22; href=&#x22;#&#x22;&#x3E;Link opacity 90&#x3C;/a&#x3E;&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;&#x3C;a class=&#x22;text-primary text-base hover:text-primary opacity-80&#x22; href=&#x22;#&#x22;&#x3E;Link opacity 80&#x3C;/a&#x3E;&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;&#x3C;a class=&#x22;text-primary text-base hover:text-primary opacity-70&#x22; href=&#x22;#&#x22;&#x3E;Link opacity 70&#x3C;/a&#x3E;&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;&#x3C;a class=&#x22;text-primary text-base hover:text-primary opacity-60&#x22; href=&#x22;#&#x22;&#x3E;Link opacity 60&#x3C;/a&#x3E;&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;&#x3C;a class=&#x22;text-primary text-base hover:text-primary opacity-50&#x22; href=&#x22;#&#x22;&#x3E;Link opacity 50&#x3C;/a&#x3E;&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;&#x3C;a class=&#x22;text-primary text-base hover:text-primary opacity-40&#x22; href=&#x22;#&#x22;&#x3E;Link opacity 40&#x3C;/a&#x3E;&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;&#x3C;a class=&#x22;text-primary text-base hover:text-primary opacity-30&#x22; href=&#x22;#&#x22;&#x3E;Link opacity 30&#x3C;/a&#x3E;&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;&#x3C;a class=&#x22;text-primary text-base hover:text-primary opacity-20&#x22; href=&#x22;#&#x22;&#x3E;Link opacity 20&#x3C;/a&#x3E;&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;&#x3C;a class=&#x22;text-primary text-base hover:text-primary opacity-10&#x22; href=&#x22;#&#x22;&#x3E;Link opacity 10&#x3C;/a&#x3E;&#x3C;/p&#x3E;
+                    </code>
+                                                            </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <p class="card-subtitle  mb-6">Change the alpha opacity of the link color value with utilities.
+                        </p>
+                        <div class="flex flex-col gap-2">
+                          <p><a class="text-primary text-base hover:text-primary opacity-90" href="#">Link opacity
+                              90</a></p>
+                          <p><a class="text-primary text-base hover:text-primary opacity-80" href="#">Link opacity
+                              80</a></p>
+                          <p><a class="text-primary text-base hover:text-primary opacity-70" href="#">Link opacity
+                              70</a></p>
+                          <p><a class="text-primary text-base hover:text-primary opacity-60" href="#">Link opacity
+                              60</a></p>
+                          <p><a class="text-primary text-base hover:text-primary opacity-50" href="#">Link opacity
+                              50</a></p>
+                          <p><a class="text-primary text-base hover:text-primary opacity-40" href="#">Link opacity
+                              40</a></p>
+                          <p><a class="text-primary text-base hover:text-primary opacity-30" href="#">Link opacity
+                              30</a></p>
+                          <p><a class="text-primary text-base hover:text-primary opacity-20" href="#">Link opacity
+                              20</a></p>
+                          <p><a class="text-primary text-base hover:text-primary opacity-10" href="#">Link opacity
+                              10</a></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-0">
+                          <h5 class="card-title mb-0">Link Hover</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal2">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal2"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Link Hover -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal2">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+         <code class="language-html">  
+    &#x3C;p&#x3E;&#x3C;a class=&#x22;text-primary text-base hover:opacity-90&#x22; href=&#x22;#&#x22;&#x3E;Link opacity 90&#x3C;/a&#x3E;&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;&#x3C;a class=&#x22;text-primary text-base hover:opacity-80&#x22; href=&#x22;#&#x22;&#x3E;Link opacity 80&#x3C;/a&#x3E;&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;&#x3C;a class=&#x22;text-primary text-base hover:opacity-70&#x22; href=&#x22;#&#x22;&#x3E;Link opacity 70&#x3C;/a&#x3E;&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;&#x3C;a class=&#x22;text-primary text-base hover:opacity-60&#x22; href=&#x22;#&#x22;&#x3E;Link opacity 60&#x3C;/a&#x3E;&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;&#x3C;a class=&#x22;text-primary text-base hover:opacity-50&#x22; href=&#x22;#&#x22;&#x3E;Link opacity 50&#x3C;/a&#x3E;&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;&#x3C;a class=&#x22;text-primary text-base hover:opacity-40&#x22; href=&#x22;#&#x22;&#x3E;Link opacity 40&#x3C;/a&#x3E;&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;&#x3C;a class=&#x22;text-primary text-base hover:opacity-30&#x22; href=&#x22;#&#x22;&#x3E;Link opacity 30&#x3C;/a&#x3E;&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;&#x3C;a class=&#x22;text-primary text-base hover:opacity-20&#x22; href=&#x22;#&#x22;&#x3E;Link opacity 20&#x3C;/a&#x3E;&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;&#x3C;a class=&#x22;text-primary text-base hover:opacity-10&#x22; href=&#x22;#&#x22;&#x3E;Link opacity 10&#x3C;/a&#x3E;&#x3C;/p&#x3E;
+                    </code>
+                                                            </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <p class="card-subtitle  mb-6">You can even change the opacity level on hover</p>
+                        <div class="flex flex-col gap-2">
+                          <p><a class="text-primary text-base hover:opacity-90" href="#">Link opacity 90</a></p>
+                          <p><a class="text-primary text-base hover:opacity-80" href="#">Link opacity 80</a></p>
+                          <p><a class="text-primary text-base hover:opacity-70" href="#">Link opacity 70</a></p>
+                          <p><a class="text-primary text-base hover:opacity-60" href="#">Link opacity 60</a></p>
+                          <p><a class="text-primary text-base hover:opacity-50" href="#">Link opacity 50</a></p>
+                          <p><a class="text-primary text-base hover:opacity-40" href="#">Link opacity 40</a></p>
+                          <p><a class="text-primary text-base hover:opacity-30" href="#">Link opacity 30</a></p>
+                          <p><a class="text-primary text-base hover:opacity-20" href="#">Link opacity 20</a></p>
+                          <p><a class="text-primary text-base hover:opacity-10" href="#">Link opacity 10</a></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-0">
+                          <h5 class="card-title mb-0">Colored links</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal3">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal3"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Colored
+                                        links -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal3">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+         <code class="language-html">  
+    &#x3C;p&#x3E;&#x3C;a class=&#x22;text-gray-800 text-base underline decoration-gray-800 hover:opacity-80 dark:text-white dark:decoration-white&#x22; href=&#x22;#&#x22;&#x3E;Dark underline&#x3C;/a&#x3E;&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;&#x3C;a class=&#x22;text-gray-500 text-base underline decoration-gray-500 hover:opacity-80&#x22; href=&#x22;#&#x22;&#x3E;Secondary underline&#x3C;/a&#x3E;&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;&#x3C;a class=&#x22;text-primary text-base underline decoration-primary hover:opacity-80&#x22; href=&#x22;#&#x22;&#x3E;Primary underline&#x3C;/a&#x3E;&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;&#x3C;a class=&#x22;text-success text-base underline decoration-success hover:opacity-80&#x22; href=&#x22;#&#x22;&#x3E;Success underline&#x3C;/a&#x3E;&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;&#x3C;a class=&#x22;text-error text-base underline decoration-error hover:opacity-80&#x22; href=&#x22;#&#x22;&#x3E;Invalid underline&#x3C;/a&#x3E;&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;&#x3C;a class=&#x22;text-warning text-base underline decoration-warning hover:opacity-80&#x22; href=&#x22;#&#x22;&#x3E;Yellow underline&#x3C;/a&#x3E;&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;&#x3C;a class=&#x22;text-white text-base underline decoration-white hover:opacity-80&#x22; href=&#x22;#&#x22;&#x3E;Light underline&#x3C;/a&#x3E;&#x3C;/p&#x3E;
+                    </code>
+                                                            </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <p class="card-subtitle  mb-6">Examples of coloured links.</p>
+                        <div class="flex flex-col gap-2">
+                          <p><a
+                              class="text-gray-800 text-base underline decoration-gray-800 hover:opacity-80 dark:text-white dark:decoration-white"
+                              href="#">Dark underline</a></p>
+                          <p><a class="text-gray-500 text-base underline decoration-gray-500 hover:opacity-80"
+                              href="#">Secondary underline</a></p>
+                          <p><a class="text-primary text-base underline decoration-primary hover:opacity-80"
+                              href="#">Primary underline</a></p>
+                          <p><a class="text-success text-base underline decoration-success hover:opacity-80"
+                              href="#">Success underline</a></p>
+                          <p><a class="text-error text-base underline decoration-error hover:opacity-80"
+                              href="#">Invalid underline</a></p>
+                          <p><a class="text-warning text-base underline decoration-warning hover:opacity-80"
+                              href="#">Yellow underline</a></p>
+                          <p><a class="text-white text-base underline decoration-white hover:opacity-80" href="#">Light
+                              underline</a></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-0">
+                          <h5 class="card-title mb-0">Underline color</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal4">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal4"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Underline
+                                        color -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal4">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+         <code class="language-html">  
+    &#x3C;p&#x3E;&#x3C;a class=&#x22;text-gray-800 text-base underline decoration-gray-800 hover:opacity-80 dark:text-white dark:decoration-white&#x22; href=&#x22;#&#x22;&#x3E;Dark underline&#x3C;/a&#x3E;&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;&#x3C;a class=&#x22;text-gray-500 text-base underline decoration-gray-500 hover:opacity-80&#x22; href=&#x22;#&#x22;&#x3E;Secondary underline&#x3C;/a&#x3E;&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;&#x3C;a class=&#x22;text-primary text-base underline decoration-primary hover:opacity-80&#x22; href=&#x22;#&#x22;&#x3E;Primary underline&#x3C;/a&#x3E;&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;&#x3C;a class=&#x22;text-success text-base underline decoration-success hover:opacity-80&#x22; href=&#x22;#&#x22;&#x3E;Success underline&#x3C;/a&#x3E;&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;&#x3C;a class=&#x22;text-error text-base underline decoration-error hover:opacity-80&#x22; href=&#x22;#&#x22;&#x3E;Invalid underline&#x3C;/a&#x3E;&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;&#x3C;a class=&#x22;text-warning text-base underline decoration-warning hover:opacity-80&#x22; href=&#x22;#&#x22;&#x3E;Yellow underline&#x3C;/a&#x3E;&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;&#x3C;a class=&#x22;text-white text-base underline decoration-white hover:opacity-80&#x22; href=&#x22;#&#x22;&#x3E;Light underline&#x3C;/a&#x3E;&#x3C;/p&#x3E;
+                    </code>
+                                                            </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <p class="card-subtitle  mb-6">Change the underline’s color independent of the link text color.
+                        </p>
+                        <div class="flex flex-col gap-2">
+                          <p><a
+                              class="text-primary underline text-base decoration-gray-800 hover:opacity-80 dark:decoration-white"
+                              href="#">Dark underline</a></p>
+                          <p><a class="text-primary underline text-base decoration-gray-500 hover:opacity-80"
+                              href="#">Secondary underline</a></p>
+                          <p><a class="text-primary underline text-base decoration-primary hover:opacity-80"
+                              href="#">Primary underline</a></p>
+                          <p><a class="text-primary underline text-base decoration-success hover:opacity-80"
+                              href="#">Success underline</a></p>
+                          <p><a class="text-primary underline text-base decoration-error hover:opacity-80"
+                              href="#">Invalid underline</a></p>
+                          <p><a class="text-primary underline text-base decoration-warning hover:opacity-80"
+                              href="#">Yellow underline</a></p>
+                          <p><a class="text-primary underline text-base decoration-white hover:opacity-80"
+                              href="#">Light underline</a></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-0">
+                          <h5 class="card-title mb-0">Underline offset</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal5">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal5"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Underline
+                                        offset -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal5">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+         <code class="language-html">  
+    &#x3C;p&#x3E;&#x3C;a class=&#x22;text-primary text-base underline underline-offset-1 decoration-primary hover:opacity-80&#x22; href=&#x22;#&#x22;&#x3E;Underline offset 1&#x3C;/a&#x3E;&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;&#x3C;a class=&#x22;text-primary text-base underline underline-offset-2 decoration-primary hover:opacity-80&#x22; href=&#x22;#&#x22;&#x3E;Underline offset 2&#x3C;/a&#x3E;&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;&#x3C;a class=&#x22;text-primary text-base underline underline-offset-4 decoration-primary hover:opacity-80&#x22; href=&#x22;#&#x22;&#x3E;Underline offset 4&#x3C;/a&#x3E;&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;&#x3C;a class=&#x22;text-primary text-base underline underline-offset-8 decoration-primary hover:opacity-80&#x22; href=&#x22;#&#x22;&#x3E;Underline offset 8&#x3C;/a&#x3E;&#x3C;/p&#x3E;
+                    </code>
+                                                            </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <p class="card-subtitle  mb-6">Change the underline’s distance from your text.</p>
+                        <div class="flex flex-col gap-2">
+                          <p><a
+                              class="text-primary text-base underline underline-offset-1 decoration-primary hover:opacity-80"
+                              href="#">Underline offset 1</a></p>
+                          <p><a
+                              class="text-primary text-base underline underline-offset-2 decoration-primary hover:opacity-80"
+                              href="#">Underline offset 2</a></p>
+                          <p><a
+                              class="text-primary text-base underline underline-offset-4 decoration-primary hover:opacity-80"
+                              href="#">Underline offset 4</a></p>
+                          <p><a
+                              class="text-primary text-base underline underline-offset-8 decoration-primary hover:opacity-80"
+                              href="#">Underline offset 8</a></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-0">
+                          <h5 class="card-title mb-0">Hover variants</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal7">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal7"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Hover
+                                        variants -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal7">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+         <code class="language-html">  
+    &#x3C;p&#x3E;&#x3C;a class=&#x22;text-primary text-base underline underline-offset-1 decoration-primary hover:opacity-80&#x22; href=&#x22;#&#x22;&#x3E;Underline offset 1&#x3C;/a&#x3E;&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;&#x3C;a class=&#x22;text-primary text-base underline underline-offset-2 decoration-primary hover:opacity-80&#x22; href=&#x22;#&#x22;&#x3E;Underline offset 2&#x3C;/a&#x3E;&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;&#x3C;a class=&#x22;text-primary text-base underline underline-offset-4 decoration-primary hover:opacity-80&#x22; href=&#x22;#&#x22;&#x3E;Underline offset 4&#x3C;/a&#x3E;&#x3C;/p&#x3E;
+    &#x3C;p&#x3E;&#x3C;a class=&#x22;text-primary text-base underline underline-offset-8 decoration-primary hover:opacity-80&#x22; href=&#x22;#&#x22;&#x3E;Underline offset 8&#x3C;/a&#x3E;&#x3C;/p&#x3E;
+                    </code>
+                                                            </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <p class="card-subtitle  mb-6">Change the underline’s distance from your text.</p>
+                        <div class="flex flex-col gap-2">
+                          <p><a
+                              class="text-primary text-base hover:underline hover:decoration-gray-800 dark:decoration-white"
+                              href="#">Dark underline</a></p>
+                          <p><a class="text-primary text-base hover:underline hover:decoration-gray-500"
+                              href="#">Secondary underline</a></p>
+                          <p><a class="text-primary text-base hover:underline hover:decoration-primary" href="#">Primary
+                              underline</a></p>
+                          <p><a class="text-primary text-base hover:underline hover:decoration-success" href="#">Success
+                              underline</a></p>
+                          <p><a class="text-primary text-base hover:underline hover:decoration-error" href="#">Invalid
+                              underline</a></p>
+                          <p><a class="text-primary text-base hover:underline hover:decoration-warning" href="#">Yellow
+                              underline</a></p>
+                          <p><a class="text-primary text-base hover:underline hover:decoration-white" href="#">Light
+                              underline</a></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-0">
+                          <h5 class="card-title mb-0">White</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal8">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal8"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">White -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal8">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+         <code class="language-html">  
+    &#x3C;button type=&#x22;button&#x22; class=&#x22;py-1.5 px-2 inline-flex items-center gap-x-1 text-sm font-medium rounded-full border border-dashed border-gray-200 bg-white text-gray-800 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600&#x22;&#x3E;
+    &#x3C;i class=&#x22;ti ti-plus text-lg leading-tight font-medium&#x22;&#x3E;&#x3C;/i&#x3E;
+    Link-sm
+    &#x3C;/button&#x3E;
+    &#x3C;button type=&#x22;button&#x22; class=&#x22;py-2 px-3 inline-flex items-center gap-x-1 text-sm font-medium rounded-full border border-dashed border-gray-200 bg-white text-gray-800 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600&#x22;&#x3E;
+    &#x3C;i class=&#x22;ti ti-plus text-lg leading-tight font-medium &#x22;&#x3E;&#x3C;/i&#x3E;
+    Link
+    &#x3C;/button&#x3E;
+    &#x3C;button type=&#x22;button&#x22; class=&#x22;py-2.5 px-3 inline-flex items-center gap-x-1 text-sm font-medium rounded-full border border-dashed border-gray-200 bg-white text-gray-800 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600&#x22;&#x3E;
+    &#x3C;i class=&#x22;ti ti-plus text-lg leading-tight font-medium &#x22;&#x3E;&#x3C;/i&#x3E;
+    Link-lg
+    &#x3C;/button&#x3E;
+                    </code>
+                                                            </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <p class="card-subtitle  mb-6">White link examples.</p>
+                        <div class="flex gap-2">
+                          <button type="button"
+                            class="py-1.5 px-2 inline-flex items-center gap-x-1 text-sm font-medium rounded-full border border-dashed border-gray-200 bg-white text-gray-800 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                            <i class="ti ti-plus text-lg leading-tight font-medium"></i>
+                            Link-sm
+                          </button>
+                          <button type="button"
+                            class="py-2 px-3 inline-flex items-center gap-x-1 text-sm font-medium rounded-full border border-dashed border-gray-200 bg-white text-gray-800 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                            <i class="ti ti-plus text-lg leading-tight font-medium "></i>
+                            Link
+                          </button>
+                          <button type="button"
+                            class="py-2.5 px-3 inline-flex items-center gap-x-1 text-sm font-medium rounded-full border border-dashed border-gray-200 bg-white text-gray-800 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                            <i class="ti ti-plus text-lg leading-tight font-medium "></i>
+                            Link-lg
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-0">
+                          <h5 class="card-title mb-0">Working with icons</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal9">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal9"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Working with
+                                        icons -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal9">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+         <code class="language-html">  
+    &#x3C;a class=&#x22;inline-flex items-center gap-x-1 text-sm text-gray-800 hover:text-primary dark:text-gray-200 dark:hover:text-primary&#x22; href=&#x22;#&#x22;&#x3E;
+    &#x3C;i class=&#x22;ti ti-chevron-left text-base leading-tight font-medium&#x22;&#x3E;&#x3C;/i&#x3E;
+    &#x3C;span class=&#x22;leading-normal&#x22;&#x3E;Back to home&#x3C;/span&#x3E;
+    &#x3C;/a&#x3E;
+    &#x3C;a class=&#x22;inline-flex items-center gap-x-1 text-sm text-primary decoration-2 hover:underline font-medium dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600&#x22; href=&#x22;#&#x22;&#x3E;
+       Learn more
+       &#x3C;svg class=&#x22;flex-shrink-0 size-4&#x22; xmlns=&#x22;http://www.w3.org/2000/svg&#x22; width=&#x22;24&#x22; height=&#x22;24&#x22; viewBox=&#x22;0 0 24 24&#x22; fill=&#x22;none&#x22; stroke=&#x22;currentColor&#x22; stroke-width=&#x22;2&#x22; stroke-linecap=&#x22;round&#x22; stroke-linejoin=&#x22;round&#x22;&#x3E;
+          &#x3C;path d=&#x22;m9 18 6-6-6-6&#x22;/&#x3E;
+       &#x3C;/svg&#x3E;
+    &#x3C;/a&#x3E;
+                    </code>
+                                                            </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <p class="card-subtitle  mb-6">Working with icons example.</p>
+                        <div class="flex flex-col gap-2">
+                          <a class="inline-flex items-center gap-x-1 text-sm text-gray-800 hover:text-primary dark:text-gray-200 dark:hover:text-primary"
+                            href="#">
+                            <i class="ti ti-chevron-left text-base leading-tight font-medium"></i>
+                            <span class="leading-normal">Back to home</span>
+                          </a>
+                          <a class="inline-flex items-center gap-x-1 text-sm text-primary decoration-2 hover:underline font-medium dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                            href="#">
+                            Learn more
+                            <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                              stroke-linecap="round" stroke-linejoin="round">
+                              <path d="m9 18 6-6-6-6" />
+                            </svg>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+        <!-- Main Content End -->
+
+      </div>
+    </div>
+    <!--end of project-->
+  </main>
+  @@include("partials/header-components/mobile-menu.html")
+  @@include("partials/customizer.html")
+  @@include("partials/scripts.html")
+  <script src="@@webRoot/node_modules/prismjs/prism.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,1604 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-color-theme="Blue_Theme" class="light selected" data-layout="vertical"
+    data-boxed-layout="boxed" data-card="shadow">
+
+<head>
+    @@include("partials/head.html")
+    <title>Spike TailwindCSS HTML Admin Template</title>
+</head>
+
+<body class="DEFAULT_THEME bg-lightprimary dark:bg-darkbody">
+    <main>
+        <!--start the project-->
+        <div id="main-wrapper" class="flex p-5">
+
+            <aside id="application-sidebar-brand"
+                class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full xl:rtl:-translate-x-0 rtl:translate-x-full  left-0 rtl:left-auto xl:rtl:right-5 rtl:right-0 transform hidden xl:block xl:translate-x-0 xl:end-auto xl:bottom-0 fixed top-0 with-vertical  left-sidebar transition-all duration-300 h-screen z-[2] flex-shrink-0  w-[270px] border-border dark:border-darkborder bg-white dark:bg-dark xl:top-5 xl:start-5 shadow-md xl:rounded-md">
+                @@include("partials/sidebar.html",{ "page": "table-basic","page_group": "table" })
+            </aside>
+            <div class="page-wrapper w-full" role="main">
+
+                <!-- Main Content -->
+                <main class="h-full ">
+                    <div class="container full-container py-5 xl:ps-6 ps-0 pt-0 pe-0 remove-ps">
+
+                        <!--  Header Start -->
+                        <header
+                            class="sticky top-0 inset-x-0 z-[1] flex flex-wrap md:justify-start md:flex-nowrap text-fs_15 py-3 lg:py-0 mb-6 bg-white dark:bg-dark rounded-md shadow-md">
+                            <div class="with-vertical w-full">@@include("partials/header.html")</div>
+                            <div class="with-horizontal w-full">
+                                <div class="bg-white dark:bg-dark">
+                                    <div class="container">
+                                        @@include("partials/horizontal-header.html")
+                                    </div>
+                                </div>
+                            </div>
+                        </header>
+                        <!--  Header End -->
+
+                        <!-- Horizontal Sidebar Menu -->
+                        <aside
+                            class="with-horizontal lg:flex hidden left-sidebar bg-white dark:bg-dark border-t border-border dark:border-darkborder">
+                            @@include("partials/horizontal-sidebar.html", { "page": "table-basic","page_group":
+                            "table"})
+                        </aside>
+                        <!-- Horizontal Sidebar Menu End -->
+
+                        <!-- Main Content -->
+                        <div class="max-w-full">
+                            <div class="container full-container ">
+                                <!----Breadcrumb Start---->
+                                @@include("partials/breadcrumb.html", {"title": "Basic Table", "subtitle": 'Home'})
+                                <!----Breadcrumb End---->
+                            <div class="grid grid-cols-12 gap-6">
+                                <div class=" col-span-12 flex">
+                                    <div class="card">
+                                    <div class="border-b border-gray-200 dark:border-gray-700 py-4 px-6"> <h5 class="card-title mb-0">Basic Table</h5></div>
+                                    <div class="card-body">                                                
+                                        <div class="flex flex-col">
+                                            <div class="-m-1.5 overflow-x-auto">
+                                            <div class="p-1.5 min-w-full inline-block align-middle">
+                                                <div class="border overflow-hidden dark:border-darkborder rounded-md">
+                                                <table class="min-w-full divide-y divide-border dark:divide-darkborder">
+                                                    <thead>
+                                                    <tr>
+                                                        <th scope="col" class="p-4 text-start text-base font-semibold text-link dark:text-white capitalize">User</th>
+                                                        <th scope="col" class="p-4 text-start text-base font-semibold text-link dark:text-white capitalize">Project Name</th>
+                                                        <th scope="col" class="p-4 text-start text-base font-semibold text-link dark:text-white capitalize">Team</th>
+                                                        <th scope="col" class="p-4 text-start text-base font-semibold text-link dark:text-white capitalize">Status</th>
+                                                        <th scope="col" class="p-4 text-start text-base font-semibold text-link dark:text-white capitalize">Budget</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody class="divide-y divide-border dark:divide-darkborder">
+                                                    <tr>
+                                                        <td class="p-4 whitespace-nowrap ">
+                                                            <div class="flex gap-4 items-center">
+                                                                <img src="@@webRoot/assets/images/profile/user-2.jpg" alt="" class="w-10 h-10 rounded-full">
+                                                                <div>
+                                                                    <h6 class="text-base  mb-0 leading-tight">Sunil Joshi</h6>
+                                                                    <span class="text-dark dark:text-darklink text-sm font-light">Web Designer</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-sm"><p class="text-dark dark:text-darklink text-base font-light">Elite Admin</p></td>
+                                                        <td class="p-4 whitespace-nowrap">
+                                                            <div class="flex items-center">
+                                                                <a href="#" class="bg-secondary text-white text-xl w-10 h-10 rounded-full -me-2  border-2 border-white dark:border-dark flex items-center justify-center animate-card hover:z-10">
+                                                                S
+                                                                </a>
+                                                                <a href="#" class="bg-error text-white text-xl w-10 h-10 rounded-full -me-2  border-2 border-white dark:border-dark flex items-center justify-center animate-card hover:z-10">
+                                                                D
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-start">
+                                                            <span class="py-1 px-2 inline-flex items-center gap-x-1 text-xs font-semibold bg-lightsuccess text-success rounded-full  dark:bg-darksuccess dark:text-success">
+                                                                Active
+                                                            </span>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-start font-medium">
+                                                        <h6 class="text-base  mb-0 leading-tight">$3.9k</h6>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="p-4 whitespace-nowrap">
+                                                            <div class="flex gap-4 items-center">
+                                                                <img src="@@webRoot/assets/images/profile/user-3.jpg" alt="" class="w-10 h-10 rounded-full">
+                                                                <div>
+                                                                    <h6 class="text-base  mb-0 leading-tight">Andrew McDownland</h6>
+                                                                    <span class="text-dark dark:text-darklink text-sm font-light">Project Manager</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-sm"><p class="text-dark dark:text-darklink text-base font-light">Real Homes WP Theme</p></td>
+                                                        <td class="p-4 whitespace-nowrap">
+                                                            <div class="flex items-center">
+                                                                <a href="#" class="bg-primary text-white text-xl w-10 h-10 rounded-full -me-2 border-2 border-white dark:border-dark flex items-center justify-center animate-card hover:z-10">
+                                                                A
+                                                                </a>
+                                                                <a href="#" class="bg-warning text-white text-xl w-10 h-10 rounded-full -me-2 border-2 border-white dark:border-dark flex items-center justify-center animate-card hover:z-10">
+                                                                X
+                                                                </a>
+                                                                <a href="#" class="bg-secondary text-white text-xl w-10 h-10 rounded-full -me-2 border-2 border-white dark:border-dark flex items-center justify-center animate-card hover:z-10">
+                                                                N
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-start">
+                                                            <span class="py-1 px-2 inline-flex items-center gap-x-1 text-xs font-semibold bg-lightwarning text-warning rounded-full  dark:bg-darkwarning dark:text-warning">
+                                                                Pending
+                                                            </span>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-start">
+                                                        <h6 class="text-base  mb-0 leading-tight">$24.5k</h6>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="p-4 whitespace-nowrap">
+                                                            <div class="flex gap-4 items-center">
+                                                                <img src="@@webRoot/assets/images/profile/user-4.jpg" alt="" class="w-10 h-10 rounded-full">
+                                                                <div>
+                                                                    <h6 class="text-base  mb-0 leading-tight">Christopher Jamil</h6>
+                                                                    <span class="text-dark dark:text-darklink text-sm font-light">Project Manager</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-sm"><p class="text-dark dark:text-darklink text-base font-light">MedicalPro WP Theme</p></td>
+                                                        <td class="p-4 whitespace-nowrap">
+                                                            <div class="flex items-center">
+                                                                <a href="#" class="bg-error text-white text-xl w-10 h-10 rounded-full -me-2 border-2 border-white dark:border-dark flex items-center justify-center animate-card hover:z-10">
+                                                                X
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-start">
+                                                            <span class="py-1 px-2 inline-flex items-center gap-x-1 text-xs font-semibold bg-lightprimary text-primary rounded-full  dark:bg-darkprimary dark:text-primary">
+                                                                Completed
+                                                            </span>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-start">
+                                                        <h6 class="text-base  mb-0 leading-tight">$12.8k</h6>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="p-4 whitespace-nowrap">
+                                                            <div class="flex gap-4 items-center">
+                                                                <img src="@@webRoot/assets/images/profile/user-5.jpg" alt="" class="w-10 h-10 rounded-full">
+                                                                <div>
+                                                                    <h6 class="text-base  mb-0 leading-tight">Nirav Joshi</h6>
+                                                                    <span class="text-dark dark:text-darklink text-sm font-light">Frontend Engineer</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-sm"><p class="text-dark dark:text-darklink text-base font-light">Hosting Press HTML</p></td>
+                                                        <td class="p-4 whitespace-nowrap">
+                                                            <div class="flex items-center">
+                                                                <a href="#" class="bg-primary text-white text-xl w-10 h-10 rounded-full -me-2 border-2 border-white dark:border-dark flex items-center justify-center animate-card hover:z-10">
+                                                                Y
+                                                                </a>
+                                                                <a href="#" class="bg-error text-white text-xl w-10 h-10 rounded-full -me-2 border-2 border-white dark:border-dark flex items-center justify-center animate-card hover:z-10">
+                                                                X
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-start">
+                                                            <span class="py-1 px-2 inline-flex items-center gap-x-1 text-xs font-semibold bg-lightsuccess text-success rounded-full  dark:bg-darksuccess dark:text-success">
+                                                                Active
+                                                            </span>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-start">
+                                                        <h6 class="text-base  mb-0 leading-tight">$2.4k</h6>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="p-4 whitespace-nowrap">
+                                                            <div class="flex gap-4 items-center">
+                                                                <img src="@@webRoot/assets/images/profile/user-7.jpg" alt="" class="w-10 h-10 rounded-full">
+                                                                <div>
+                                                                    <h6 class="text-base  mb-0 leading-tight">Micheal Doe</h6>
+                                                                    <span class="text-dark dark:text-darklink text-sm font-light">Content Writer</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-sm"><p class="text-dark dark:text-darklink text-base font-light">Hosting Press HTML</p></td>
+                                                        <td class="p-4 whitespace-nowrap">
+                                                            <div class="flex items-center">
+                                                                <a href="#" class="bg-secondary text-white text-xl w-10 h-10 rounded-full -me-2 border-2 border-white dark:border-dark flex items-center justify-center animate-card hover:z-10">
+                                                                S
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-start">
+                                                            <span class="py-1 px-2 inline-flex items-center gap-x-1 text-xs font-semibold bg-lighterror text-error rounded-full  dark:bg-darkerror dark:text-error">
+                                                                Cancel
+                                                            </span>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-start">
+                                                        <h6 class="text-base  mb-0 leading-tight">$9.3k</h6>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                                </div>
+                                                <div class="border overflow-hidden dark:border-darkborder mt-6 rounded-md">
+                                                <table class="min-w-full divide-y divide-border dark:divide-darkborder">
+                                                    <thead>
+                                                    <tr>
+                                                        <th scope="col" class="p-4 text-start text-base font-semibold text-link dark:text-white capitalize">User</th>
+                                                        <th scope="col" class="p-4 text-start text-base font-semibold text-link dark:text-white capitalize">Project Name</th>
+                                                        <th scope="col" class="p-4 text-start text-base font-semibold text-link dark:text-white capitalize">Users</th>
+                                                        <th scope="col" class="p-4 text-start text-base font-semibold text-link dark:text-white capitalize">Status</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody class="divide-y divide-border dark:divide-darkborder">
+                                                    <tr>
+                                                        <td class="p-4 whitespace-nowrap ">
+                                                            <div class="flex gap-4 items-center">
+                                                                <img src="@@webRoot/assets/images/profile/user-10.jpg" alt="" class="w-10 h-10 rounded-full">
+                                                                <div>
+                                                                    <h6 class="text-base  mb-0 leading-tight">Olivia Rhye</h6>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-sm"><p class="text-dark dark:text-darklink font-light">Xtreme admin</p></td>
+                                                        <td class="p-4 whitespace-nowrap">
+                                                            <div class="flex items-center">
+                                                                <a href="#" class="-me-2 animate-card hover:z-10">
+                                                                <img src="@@webRoot/assets/images/profile/user-2.jpg" alt="" class="w-10 h-10 border-2 border-white rounded-full dark:border-dark">
+                                                                </a>
+                                                                <a href="#" class="-me-2 animate-card hover:z-10">
+                                                                <img src="@@webRoot/assets/images/profile/user-3.jpg" alt="" class="w-10 h-10 rounded-full border-2 border-white dark:border-dark">
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-start">
+                                                            <span class="py-1 px-2 inline-flex items-center gap-x-1 text-xs font-semibold bg-lightprimary text-primary rounded-full  dark:bg-darkprimary dark:text-primary">
+                                                                Active
+                                                            </span>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-start font-medium">
+                                                        <div class="hs-dropdown relative inline-flex [--placement:left-top]">
+                                                            <button id="hs-dropdown-default" type="button" class="hs-dropdown-toggle mx-4 w-8 h-8  rounded-full inline-flex items-center justify-center gap-x-2 text-sm font-medium hover:bg-gray-200 dark:hover:bg-darkprimary dark:hover:text-white">
+                                                            <i class="ti ti-dots-vertical text-lg text-dark dark:text-darklink leading-tight font-medium"></i>
+                                                            </button>
+                                    
+                                                            <div class="hs-dropdown-menu overflow-hidden z-[1] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-40 hidden" aria-labelledby="hs-dropdown-default">
+                                                                <div class="flex flex-col">
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-plus  text-base"></i>Add
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-edit  text-base"></i>Edit
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-trash  text-base"></i>Delete
+
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="p-4 whitespace-nowrap ">
+                                                            <div class="flex gap-4 items-center">
+                                                                <img src="@@webRoot/assets/images/profile/user-3.jpg" alt="" class="w-10 h-10 rounded-full">
+                                                                <div>
+                                                                    <h6 class="text-base  mb-0 leading-tight">John Steele</h6>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-sm"><p class="text-dark dark:text-darklink font-light">Adminpro admin</p></td>
+                                                        <td class="p-4 whitespace-nowrap">
+                                                            <div class="flex items-center">
+                                                                <a href="#" class="-me-2 animate-card hover:z-10">
+                                                                <img src="@@webRoot/assets/images/profile/user-2.jpg" alt="" class="w-10 h-10 border-2 border-white rounded-full dark:border-dark">
+                                                                </a>
+                                                                <a href="#" class="-me-2 animate-card hover:z-10">
+                                                                <img src="@@webRoot/assets/images/profile/user-3.jpg" alt="" class="w-10 h-10 rounded-full border-2 border-white dark:border-dark">
+                                                                </a>
+                                                                <a href="#" class="-me-2 animate-card hover:z-10">
+                                                                <img src="@@webRoot/assets/images/profile/user-4.jpg" alt="" class="w-10 h-10 rounded-full border-2 border-white dark:border-dark">
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-start">
+                                                            <span class="py-1 px-2 inline-flex items-center gap-x-1 text-xs font-semibold bg-lighterror text-error rounded-full  dark:bg-darkerror dark:text-error">
+                                                                Cancel
+                                                            </span>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-start font-medium">
+                                                        <div class="hs-dropdown relative inline-flex [--placement:left-top]">
+                                                            <button id="hs-dropdown-default2" type="button" class="hs-dropdown-toggle mx-4 w-8 h-8  rounded-full inline-flex items-center justify-center gap-x-2 text-sm font-medium hover:bg-gray-200 dark:hover:bg-darkprimary dark:hover:text-white">
+                                                            <i class="ti ti-dots-vertical text-lg text-dark dark:text-darklink leading-tight font-medium"></i>
+                                                            </button>
+                                    
+                                                            <div class="hs-dropdown-menu overflow-hidden z-[1] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-40 hidden" aria-labelledby="hs-dropdown-default2">
+                                                                <div class="flex flex-col">
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-plus  text-base"></i>Add
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-edit  text-base"></i>Edit
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-trash  text-base"></i>Delete
+
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="p-4 whitespace-nowrap ">
+                                                            <div class="flex gap-4 items-center">
+                                                                <img src="@@webRoot/assets/images/profile/user-4.jpg" alt="" class="w-10 h-10 rounded-full">
+                                                                <div>
+                                                                    <h6 class="text-base  mb-0 leading-tight">Leonard Gordon</h6>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-sm"><p class="text-dark dark:text-darklink font-light">Monster admin</p></td>
+                                                        <td class="p-4 whitespace-nowrap">
+                                                            <div class="flex items-center">
+                                                                <a href="#" class="-me-2 animate-card hover:z-10">
+                                                                <img src="@@webRoot/assets/images/profile/user-3.jpg" alt="" class="w-10 h-10 rounded-full border-2 border-white dark:border-dark">
+                                                                </a>
+                                                                <a href="#" class="-me-2 animate-card hover:z-10">
+                                                                <img src="@@webRoot/assets/images/profile/user-2.jpg" alt="" class="w-10 h-10 border-2 border-white rounded-full dark:border-dark">
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-start">
+                                                            <span class="py-1 px-2 inline-flex items-center gap-x-1 text-xs font-semibold bg-lightprimary text-primary rounded-full  dark:bg-darkprimary dark:text-primary">
+                                                                Active
+                                                            </span>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-start font-medium">
+                                                        <div class="hs-dropdown relative inline-flex [--placement:left-top]">
+                                                            <button id="hs-dropdown-default3" type="button" class="hs-dropdown-toggle mx-4 w-8 h-8  rounded-full inline-flex items-center justify-center gap-x-2 text-sm font-medium hover:bg-gray-200 dark:hover:bg-darkprimary dark:hover:text-white">
+                                                            <i class="ti ti-dots-vertical text-lg text-dark dark:text-darklink leading-tight font-medium"></i>
+                                                            </button>
+                                    
+                                                            <div class="hs-dropdown-menu overflow-hidden z-[1] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-40 hidden" aria-labelledby="hs-dropdown-default3">
+                                                                <div class="flex flex-col">
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-plus  text-base"></i>Add
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-edit  text-base"></i>Edit
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-trash  text-base"></i>Delete
+
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="p-4 whitespace-nowrap ">
+                                                            <div class="flex gap-4 items-center">
+                                                                <img src="@@webRoot/assets/images/profile/user-5.jpg" alt="" class="w-10 h-10 rounded-full">
+                                                                <div>
+                                                                    <h6 class="text-base  mb-0 leading-tight">Mark Richard</h6>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-sm"><p class="text-dark dark:text-darklink font-light">Materialpro admin</p></td>
+                                                        <td class="p-4 whitespace-nowrap">
+                                                            <div class="flex items-center">
+                                                                <a href="#" class="-me-2 animate-card hover:z-10">
+                                                                <img src="@@webRoot/assets/images/profile/user-3.jpg" alt="" class="w-10 h-10 rounded-full border-2 border-white dark:border-dark">
+                                                                </a>
+                                                                <a href="#" class="-me-2 animate-card hover:z-10">
+                                                                <img src="@@webRoot/assets/images/profile/user-2.jpg" alt="" class="w-10 h-10 border-2 border-white rounded-full dark:border-dark">
+                                                                </a>
+                                                            
+                                                                <a href="#" class="-me-2 animate-card hover:z-10">
+                                                                <img src="@@webRoot/assets/images/profile/user-5.jpg" alt="" class="w-10 h-10 border-2 border-white rounded-full dark:border-dark">
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-start">
+                                                            <span class="py-1 px-2 inline-flex items-center gap-x-1 text-xs font-semibold bg-lightsuccess text-success rounded-full  dark:bg-darksuccess dark:text-success">
+                                                                Pending
+                                                            </span>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-start font-medium">
+                                                        <div class="hs-dropdown relative inline-flex [--placement:left-top]">
+                                                            <button id="hs-dropdown-default4" type="button" class="hs-dropdown-toggle mx-4 w-8 h-8  rounded-full inline-flex items-center justify-center gap-x-2 text-sm font-medium hover:bg-gray-200 dark:hover:bg-darkprimary dark:hover:text-white">
+                                                            <i class="ti ti-dots-vertical text-lg text-dark dark:text-darklink leading-tight font-medium"></i>
+                                                            </button>
+                                    
+                                                            <div class="hs-dropdown-menu overflow-hidden z-[1] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-40 hidden" aria-labelledby="hs-dropdown-default4">
+                                                                <div class="flex flex-col">
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-plus  text-base"></i>Add
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-edit  text-base"></i>Edit
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-trash  text-base"></i>Delete
+
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="p-4 whitespace-nowrap ">
+                                                            <div class="flex gap-4 items-center">
+                                                                <img src="@@webRoot/assets/images/profile/user-8.jpg" alt="" class="w-10 h-10 rounded-full">
+                                                                <div>
+                                                                    <h6 class="text-base  mb-0 leading-tight">Tommy Garza</h6>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-sm"><p class="text-dark dark:text-darklink font-light">Elegant admin</p></td>
+                                                        <td class="p-4 whitespace-nowrap">
+                                                            <div class="flex items-center">
+                                                                <a href="#" class="-me-2 animate-card hover:z-10">
+                                                                <img src="@@webRoot/assets/images/profile/user-5.jpg" alt="" class="w-10 h-10 border-2 border-white rounded-full dark:border-dark">
+                                                                </a>
+                                                                <a href="#" class="-me-2 animate-card hover:z-10">
+                                                                <img src="@@webRoot/assets/images/profile/user-6.jpg" alt="" class="w-10 h-10 border-2 border-white rounded-full dark:border-dark">
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-start">
+                                                            <span class="py-1 px-2 inline-flex items-center gap-x-1 text-xs font-semibold bg-lighterror text-error rounded-full  dark:bg-darkerror dark:text-error">
+                                                                Cancel
+                                                            </span>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-start font-medium">
+                                                        <div class="hs-dropdown relative inline-flex [--placement:left-top]">
+                                                            <button id="hs-dropdown-default5" type="button" class="hs-dropdown-toggle mx-4 w-8 h-8  rounded-full inline-flex items-center justify-center gap-x-2 text-sm font-medium hover:bg-gray-200 dark:hover:bg-darkprimary dark:hover:text-white">
+                                                            <i class="ti ti-dots-vertical text-lg text-dark dark:text-darklink leading-tight font-medium"></i>
+                                                            </button>
+                                    
+                                                            <div class="hs-dropdown-menu overflow-hidden z-[1] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-40 hidden" aria-labelledby="hs-dropdown-default5">
+                                                                <div class="flex flex-col">
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-plus  text-base"></i>Add
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-edit  text-base"></i>Edit
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-trash  text-base"></i>Delete
+
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="p-4 whitespace-nowrap ">
+                                                            <div class="flex gap-4 items-center">
+                                                                <img src="@@webRoot/assets/images/profile/user-7.jpg" alt="" class="w-10 h-10 rounded-full">
+                                                                <div>
+                                                                    <h6 class="text-base  mb-0 leading-tight">Isabel Vasquez</h6>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-sm"><p class="text-dark dark:text-darklink font-light">Modernize admin</p></td>
+                                                        <td class="p-4 whitespace-nowrap">
+                                                            <div class="flex items-center">
+                                                                <a href="#" class="-me-2 animate-card hover:z-10">
+                                                                <img src="@@webRoot/assets/images/profile/user-2.jpg" alt="" class="w-10 h-10 border-2 border-white rounded-full dark:border-dark">
+                                                                </a>
+                                                                <a href="#" class="-me-2 animate-card hover:z-10">
+                                                                <img src="@@webRoot/assets/images/profile/user-4.jpg" alt="" class="w-10 h-10 border-2 border-white rounded-full dark:border-dark">
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-start">
+                                                            <span class="py-1 px-2 inline-flex items-center gap-x-1 text-xs font-semibold bg-lightsuccess text-success rounded-full  dark:bg-darksuccess dark:text-success">
+                                                                Pending
+                                                            </span>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-start font-medium">
+                                                        <div class="hs-dropdown relative inline-flex [--placement:left-top]">
+                                                            <button id="hs-dropdown-default6" type="button" class="hs-dropdown-toggle mx-4 w-8 h-8  rounded-full inline-flex items-center justify-center gap-x-2 text-sm font-medium hover:bg-gray-200 dark:hover:bg-darkprimary dark:hover:text-white">
+                                                            <i class="ti ti-dots-vertical text-lg text-dark dark:text-darklink leading-tight font-medium"></i>
+                                                            </button>
+                                    
+                                                            <div class="hs-dropdown-menu overflow-hidden z-[1] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-40 hidden" aria-labelledby="hs-dropdown-default6">
+                                                                <div class="flex flex-col">
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-plus  text-base"></i>Add
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-edit  text-base"></i>Edit
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-trash  text-base"></i>Delete
+
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                                </div>
+                                                <div class="border overflow-hidden dark:border-darkborder mt-6 rounded-md">
+                                                <table class="min-w-full divide-y divide-border dark:divide-darkborder">
+                                                    <thead>
+                                                    <tr>
+                                                        <th scope="col" class="p-4 text-start text-base font-semibold text-link dark:text-white capitalize">Customer</th>
+                                                        <th scope="col" class="p-4 text-start text-base font-semibold text-link dark:text-white capitalize">Status</th>
+                                                        <th scope="col" class="p-4 text-start text-base font-semibold text-link dark:text-white capitalize">Email Address</th>
+                                                        <th scope="col" class="p-4 text-start text-base font-semibold text-link dark:text-white capitalize">Teams</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody class="divide-y divide-border dark:divide-darkborder">
+                                                    <tr>
+                                                        <td class="p-4 whitespace-nowrap ">
+                                                            <div class="flex gap-4 items-center">
+                                                                <img src="@@webRoot/assets/images/profile/user-10.jpg" alt="" class="w-10 h-10 rounded-full">
+                                                                <div>
+                                                                    <h6 class="text-base  mb-0 leading-tight">Olivia Rhye</h6>
+                                                                    <span class="text-dark dark:text-darklink text-sm font-light">@rhye</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap">
+                                                        <span class="py-0.5 px-2.5 badge border-0 inline-flex items-center gap-x-1 text-xs font-semibold bg-lightsuccess text-success dark:bg-darksuccess dark:text-success">
+                                                            <i class="ti ti-circle text-sm text-success"></i>
+                                                            active
+                                                        </span>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-sm"><p class="text-dark dark:text-darklink font-light">olivia@ui.com</p></td>
+                                                        <td class="p-4 whitespace-nowrap">
+                                                        <div class="flex items-center gap-2">
+                                                            <span class="inline-flex items-center gap-x-1.5 py-1 px-3 rounded-full  text-xs font-medium bg-primary text-white ">Design</span>
+                                                            <span class="inline-flex items-center gap-x-1.5 py-1 px-3 rounded-full  text-xs font-medium bg-secondary text-white ">Product</span>
+                                                        </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-start font-medium">
+                                                        <div class="hs-dropdown relative inline-flex [--placement:left-top]">
+                                                            <button id="hs-dropdown-default7" type="button" class="hs-dropdown-toggle mx-4 w-8 h-8  rounded-full inline-flex items-center justify-center gap-x-2 text-sm font-medium hover:bg-gray-200 dark:hover:bg-darkprimary dark:hover:text-white">
+                                                            <i class="ti ti-dots text-lg text-dark dark:text-darklink leading-tight font-medium"></i>
+                                                            </button>
+                                    
+                                                            <div class="hs-dropdown-menu overflow-hidden z-[1] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-40 hidden" aria-labelledby="hs-dropdown-default7">
+                                                                <div class="flex flex-col">
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-plus  text-base"></i>Add
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-edit  text-base"></i>Edit
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-trash  text-base"></i>Delete
+
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="p-4 whitespace-nowrap ">
+                                                            <div class="flex gap-4 items-center">
+                                                                <img src="@@webRoot/assets/images/profile/user-3.jpg" alt="" class="w-10 h-10 rounded-full">
+                                                                <div>
+                                                                    <h6 class="text-base  mb-0 leading-tight">Barbara Steele</h6>
+                                                                    <span class="text-dark dark:text-darklink text-sm font-light">@steele</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap">
+                                                        <span class="py-0.5 px-2.5 badge border-0 inline-flex items-center gap-x-1 text-xs font-semibold bg-lightgray text-dark dark:bg-darkborder dark:text-darklink">
+                                                            <i class="ti ti-clock-hour-3 text-sm"></i>
+                                                            offline
+                                                        </span>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-sm"><p class="text-dark dark:text-darklink font-light">steele@ui.com</p></td>
+                                                        <td class="p-4 whitespace-nowrap">
+                                                        <div class="flex items-center gap-2">
+                                                            <span class="inline-flex items-center gap-x-1.5 py-1 px-3 rounded-full  text-xs font-medium bg-secondary text-white ">Product</span>
+                                                            <span class="inline-flex items-center gap-x-1.5 py-1 px-3 rounded-full  text-xs font-medium bg-error text-white ">Operations</span>
+                                                        </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-start font-medium">
+                                                        <div class="hs-dropdown relative inline-flex [--placement:left-top]">
+                                                            <button id="hs-dropdown-default8" type="button" class="hs-dropdown-toggle mx-4 w-8 h-8  rounded-full inline-flex items-center justify-center gap-x-2 text-sm font-medium hover:bg-gray-200 dark:hover:bg-darkprimary dark:hover:text-white">
+                                                            <i class="ti ti-dots text-lg text-dark dark:text-darklink leading-tight font-medium"></i>
+                                                            </button>
+                                    
+                                                            <div class="hs-dropdown-menu overflow-hidden z-[1] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-40 hidden" aria-labelledby="hs-dropdown-default8">
+                                                                <div class="flex flex-col">
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-plus  text-base"></i>Add
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-edit  text-base"></i>Edit
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-trash  text-base"></i>Delete
+
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="p-4 whitespace-nowrap ">
+                                                            <div class="flex gap-4 items-center">
+                                                                <img src="@@webRoot/assets/images/profile/user-4.jpg" alt="" class="w-10 h-10 rounded-full">
+                                                                <div>
+                                                                    <h6 class="text-base  mb-0 leading-tight">Leonard Gordon</h6>
+                                                                    <span class="text-dark dark:text-darklink text-sm font-light">@gordon</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap">
+                                                        <span class="py-0.5 px-2.5 badge border-0 inline-flex items-center gap-x-1 text-xs font-semibold bg-lightsuccess text-success  dark:bg-darksuccess dark:text-success">
+                                                            <i class="ti ti-circle text-sm"></i>
+                                                            active
+                                                        </span>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-sm"><p class="text-dark dark:text-darklink font-light">gordon@ui.com</p></td>
+                                                        <td class="p-4 whitespace-nowrap">
+                                                        <div class="flex items-center gap-2">
+                                                            <span class="inline-flex items-center gap-x-1.5 py-1 px-3 rounded-full  text-xs font-medium bg-primary text-white ">Finance</span>
+                                                            <span class="inline-flex items-center gap-x-1.5 py-1 px-3 rounded-full  text-xs font-medium bg-success text-white ">Customer Success</span>
+                                                        </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-start font-medium">
+                                                        <div class="hs-dropdown relative inline-flex [--placement:left-top]">
+                                                            <button id="hs-dropdown-default9" type="button" class="hs-dropdown-toggle mx-4 w-8 h-8  rounded-full inline-flex items-center justify-center gap-x-2 text-sm font-medium hover:bg-gray-200 dark:hover:bg-darkprimary dark:hover:text-white">
+                                                            <i class="ti ti-dots text-lg text-dark dark:text-darklink leading-tight font-medium"></i>
+                                                            </button>
+                                    
+                                                            <div class="hs-dropdown-menu overflow-hidden z-[1] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-40 hidden" aria-labelledby="hs-dropdown-default9">
+                                                                <div class="flex flex-col">
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-plus  text-base"></i>Add
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-edit  text-base"></i>Edit
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-trash  text-base"></i>Delete
+
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="p-4 whitespace-nowrap ">
+                                                            <div class="flex gap-4 items-center">
+                                                                <img src="@@webRoot/assets/images/profile/user-5.jpg" alt="" class="w-10 h-10 rounded-full">
+                                                                <div>
+                                                                    <h6 class="text-base  mb-0 leading-tight">Evelyn Pope</h6>
+                                                                    <span class="text-dark dark:text-darklink text-sm font-light">@pope</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap">
+                                                        <span class="py-0.5 px-2.5 badge border-0 inline-flex items-center gap-x-1 text-xs font-semibold bg-lightgray text-dark dark:bg-darkborder dark:text-darklink">
+                                                            <i class="ti ti-clock-hour-3 text-sm"></i>
+                                                            offline
+                                                        </span>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-sm"><p class="text-dark dark:text-darklink font-light">pope@ui.com</p></td>
+                                                        <td class="p-4 whitespace-nowrap">
+                                                        <div class="flex items-center gap-2">
+                                                            <span class="inline-flex items-center gap-x-1.5 py-1 px-3 rounded-full  text-xs font-medium bg-error text-white ">Operations</span>
+                                                            <span class="inline-flex items-center gap-x-1.5 py-1 px-3 rounded-full  text-xs font-medium bg-primary text-white ">Design</span>
+                                                        </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-start font-medium">
+                                                        <div class="hs-dropdown relative inline-flex [--placement:left-top]">
+                                                            <button id="hs-dropdown-default10" type="button" class="hs-dropdown-toggle mx-4 w-8 h-8  rounded-full inline-flex items-center justify-center gap-x-2 text-sm font-medium hover:bg-gray-200 dark:hover:bg-darkprimary dark:hover:text-white">
+                                                            <i class="ti ti-dots text-lg text-dark dark:text-darklink leading-tight font-medium"></i>
+                                                            </button>
+                                    
+                                                            <div class="hs-dropdown-menu overflow-hidden z-[1] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-40 hidden" aria-labelledby="hs-dropdown-default10">
+                                                                <div class="flex flex-col">
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-plus  text-base"></i>Add
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-edit  text-base"></i>Edit
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-trash  text-base"></i>Delete
+
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="p-4 whitespace-nowrap ">
+                                                            <div class="flex gap-4 items-center">
+                                                                <img src="@@webRoot/assets/images/profile/user-6.jpg" alt="" class="w-10 h-10 rounded-full">
+                                                                <div>
+                                                                    <h6 class="text-base  mb-0 leading-tight">Tommy Garza</h6>
+                                                                    <span class="text-dark dark:text-darklink text-sm font-light">@garza</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap">
+                                                        <span class="py-0.5 px-2.5 badge border-0 inline-flex items-center gap-x-1 text-xs font-semibold bg-lightsuccess text-success  dark:bg-darksuccess dark:text-success">
+                                                            <i class="ti ti-circle text-sm "></i>
+                                                            active
+                                                        </span>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-sm"><p class="text-dark dark:text-darklink font-light">garza@ui.com</p></td>
+                                                        <td class="p-4 whitespace-nowrap">
+                                                        <div class="flex items-center gap-1">
+                                                            <span class="inline-flex items-center gap-x-1.5 py-1 px-3 rounded-full  text-xs font-medium bg-secondary text-white ">Product</span>
+                                                        </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-start font-medium">
+                                                        <div class="hs-dropdown relative inline-flex [--placement:left-top]">
+                                                            <button id="hs-dropdown-default11" type="button" class="hs-dropdown-toggle mx-4 w-8 h-8  rounded-full inline-flex items-center justify-center gap-x-2 text-sm font-medium hover:bg-gray-200 dark:hover:bg-darkprimary dark:hover:text-white">
+                                                            <i class="ti ti-dots text-lg text-dark dark:text-darklink leading-tight font-medium"></i>
+                                                            </button>
+                                    
+                                                            <div class="hs-dropdown-menu overflow-hidden z-[1] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-40 hidden" aria-labelledby="hs-dropdown-default11">
+                                                                <div class="flex flex-col">
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-plus  text-base"></i>Add
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-edit  text-base"></i>Edit
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-trash  text-base"></i>Delete
+
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="p-4 whitespace-nowrap ">
+                                                            <div class="flex gap-4 items-center">
+                                                                <img src="@@webRoot/assets/images/profile/user-7.jpg" alt="" class="w-10 h-10 rounded-full">
+                                                                <div>
+                                                                    <h6 class="text-base  mb-0 leading-tight">Isabel Vasquez</h6>
+                                                                    <span class="text-dark dark:text-darklink text-sm font-light">@vasquez</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap">
+                                                        <span class="py-0.5 px-2.5 inline-flex badge border-0 items-center gap-x-1 text-xs font-semibold bg-lightsuccess text-success   dark:bg-darksuccess dark:text-success">
+                                                            <i class="ti ti-circle text-sm "></i>
+                                                            active
+                                                        </span>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-sm"><p class="text-dark dark:text-darklink font-light">vasquez@ui.com</p></td>
+                                                        <td class="p-4 whitespace-nowrap">
+                                                        <div class="flex items-center gap-1">
+                                                            <span class="inline-flex items-center gap-x-1.5 py-1 px-3 rounded-full  text-xs font-medium bg-success text-white ">Customer Success</span>
+                                                        </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-start font-medium">
+                                                        <div class="hs-dropdown relative inline-flex [--placement:left-top]">
+                                                            <button id="hs-dropdown-default12" type="button" class="hs-dropdown-toggle mx-4 w-8 h-8  rounded-full inline-flex items-center justify-center gap-x-2 text-sm font-medium hover:bg-gray-200 dark:hover:bg-darkprimary dark:hover:text-white">
+                                                            <i class="ti ti-dots text-lg text-dark dark:text-darklink leading-tight font-medium"></i>
+                                                            </button>
+                                    
+                                                            <div class="hs-dropdown-menu overflow-hidden z-[1] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-40 hidden" aria-labelledby="hs-dropdown-default12">
+                                                                <div class="flex flex-col">
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-plus  text-base"></i>Add
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-edit  text-base"></i>Edit
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-trash  text-base"></i>Delete
+
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                                </div>
+                                                <div class="border overflow-hidden dark:border-darkborder mt-6 rounded-md">
+                                                <table class="min-w-full divide-y divide-border dark:divide-darkborder">
+                                                    <thead>
+                                                    <tr>
+                                                        <th scope="col" class="p-4 text-start text-base font-semibold text-link dark:text-white capitalize">Invoice</th>
+                                                        <th scope="col" class="p-4 text-start text-base font-semibold text-link dark:text-white capitalize">Status</th>
+                                                        <th scope="col" class="p-4 text-start text-base font-semibold text-link dark:text-white capitalize">Customer</th>
+                                                        <th scope="col" class="p-4 text-start text-base font-semibold text-link dark:text-white capitalize">Progress</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody class="divide-y divide-border dark:divide-darkborder">
+                                                    <tr>
+                                                        <td class="p-4 whitespace-nowrap ">
+                                                        <h6 class="text-base  mb-0 leading-tight">INV-3066</h6>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap">
+                                                        <span class="py-0.5 px-2.5 badge border-0 inline-flex items-center gap-x-1 text-xs font-semibold bg-lightprimary text-primary rounded-full  dark:bg-darkprimary dark:text-primary">
+                                                            <i class="ti ti-check text-sm"></i>
+                                                            paid
+                                                        </span>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap">
+                                                        <div class="flex gap-4 items-center">
+                                                            <img src="@@webRoot/assets/images/profile/user-2.jpg" alt="" class="w-10 h-10 rounded-full">
+                                                            <div>
+                                                                <h6 class="text-base  mb-0 leading-tight">Olivia Rhye</h6>
+                                                                <span class="text-dark dark:text-darklink text-sm font-light">olivia@ui.com</span>
+                                                            </div>
+                                                        </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap">
+                                                        <div class="flex items-center gap-x-3 whitespace-nowrap">
+                                                            <div class="flex w-full h-1 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-700" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+                                                            <div class="flex flex-col justify-center rounded-full overflow-hidden bg-primary text-xs text-white text-center whitespace-nowrap transition duration-500 dark:bg-primary" style="width: 60%"></div>
+                                                            </div>
+                                                            <div class="w-10 text-end">
+                                                            <span class="text-sm text-gray-800 dark:text-white">60%</span>
+                                                            </div>
+                                                        </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-start font-medium">
+                                                        <div class="hs-dropdown relative inline-flex [--placement:left-top]">
+                                                            <button id="hs-dropdown-default13" type="button" class="hs-dropdown-toggle mx-4 w-8 h-8  rounded-full inline-flex items-center justify-center gap-x-2 text-sm font-medium hover:bg-gray-200 dark:hover:bg-darkprimary dark:hover:text-white">
+                                                            <i class="ti ti-dots-vertical text-lg text-dark dark:text-darklink leading-tight font-medium"></i>
+                                                            </button>
+                                    
+                                                            <div class="hs-dropdown-menu overflow-hidden z-[1] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-40 hidden" aria-labelledby="hs-dropdown-default13">
+                                                                <div class="flex flex-col">
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-plus  text-base"></i>Add
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-edit  text-base"></i>Edit
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-trash  text-base"></i>Delete
+
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="p-4 whitespace-nowrap ">
+                                                        <h6 class="text-base  mb-0 leading-tight">INV-3067</h6>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap">
+                                                        <span class="py-0.5 px-2.5 inline-flex badge border-0 items-center gap-x-1 text-xs font-semibold bg-lighterror text-error rounded-full  dark:bg-darkerror dark:text-error">
+                                                            <i class="ti ti-x text-sm"></i>
+                                                            cancelled
+                                                        </span>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap">
+                                                        <div class="flex gap-4 items-center">
+                                                            <img src="@@webRoot/assets/images/profile/user-3.jpg" alt="" class="w-10 h-10 rounded-full">
+                                                            <div>
+                                                                <h6 class="text-base  mb-0 leading-tight">Barbara Steele</h6>
+                                                                <span class="text-dark dark:text-darklink text-sm font-light">steele@ui.com</span>
+                                                            </div>
+                                                        </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap">
+                                                        <div class="flex items-center gap-x-3 whitespace-nowrap">
+                                                            <div class="flex w-full h-1 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-700" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">
+                                                            <div class="flex flex-col justify-center rounded-full overflow-hidden bg-primary text-xs text-white text-center whitespace-nowrap transition duration-500 dark:bg-primary" style="width: 30%"></div>
+                                                            </div>
+                                                            <div class="w-10 text-end">
+                                                            <span class="text-sm text-gray-800 dark:text-white">30%</span>
+                                                            </div>
+                                                        </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-start font-medium">
+                                                        <div class="hs-dropdown relative inline-flex [--placement:left-top]">
+                                                            <button id="hs-dropdown-default14" type="button" class="hs-dropdown-toggle mx-4 w-8 h-8  rounded-full inline-flex items-center justify-center gap-x-2 text-sm font-medium hover:bg-gray-200 dark:hover:bg-darkprimary dark:hover:text-white">
+                                                            <i class="ti ti-dots-vertical text-lg text-dark dark:text-darklink leading-tight font-medium"></i>
+                                                            </button>
+                                    
+                                                            <div class="hs-dropdown-menu overflow-hidden z-[1] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-40 hidden" aria-labelledby="hs-dropdown-default14">
+                                                                <div class="flex flex-col">
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-plus  text-base"></i>Add
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-edit  text-base"></i>Edit
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-trash  text-base"></i>Delete
+
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="p-4 whitespace-nowrap ">
+                                                        <h6 class="text-base  mb-0 leading-tight">INV-3068</h6>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap">
+                                                        <span class="py-0.5 px-2.5 inline-flex badge border-0 items-center gap-x-1 text-xs font-semibold bg-lightprimary text-primary rounded-full  dark:bg-darkprimary dark:text-primary">
+                                                            <i class="ti ti-check text-sm"></i>
+                                                            paid
+                                                        </span>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap">
+                                                        <div class="flex gap-4 items-center">
+                                                            <img src="@@webRoot/assets/images/profile/user-4.jpg" alt="" class="w-10 h-10 rounded-full">
+                                                            <div>
+                                                                <h6 class="text-base  mb-0 leading-tight">Leonard Gordon</h6>
+                                                                <span class="text-dark dark:text-darklink text-sm font-light">olivia@ui.com</span>
+                                                            </div>
+                                                        </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap">
+                                                        <div class="flex items-center gap-x-3 whitespace-nowrap">
+                                                            <div class="flex w-full h-1 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-700" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">
+                                                            <div class="flex flex-col justify-center rounded-full overflow-hidden bg-primary text-xs text-white text-center whitespace-nowrap transition duration-500 dark:bg-primary" style="width: 45%"></div>
+                                                            </div>
+                                                            <div class="w-10 text-end">
+                                                            <span class="text-sm text-gray-800 dark:text-white">45%</span>
+                                                            </div>
+                                                        </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-start font-medium">
+                                                        <div class="hs-dropdown relative inline-flex [--placement:left-top]">
+                                                            <button id="hs-dropdown-default15" type="button" class="hs-dropdown-toggle mx-4 w-8 h-8  rounded-full inline-flex items-center justify-center gap-x-2 text-sm font-medium hover:bg-gray-200 dark:hover:bg-darkprimary dark:hover:text-white">
+                                                            <i class="ti ti-dots-vertical text-lg text-dark dark:text-darklink leading-tight font-medium"></i>
+                                                            </button>
+                                    
+                                                            <div class="hs-dropdown-menu overflow-hidden z-[1] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-40 hidden" aria-labelledby="hs-dropdown-default15">
+                                                                <div class="flex flex-col">
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-plus  text-base"></i>Add
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-edit  text-base"></i>Edit
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-trash  text-base"></i>Delete
+
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="p-4 whitespace-nowrap ">
+                                                        <h6 class="text-base  mb-0 leading-tight">INV-3069</h6>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap">
+                                                        <span class="py-0.5 px-2.5 inline-flex badge border-0 items-center gap-x-1 text-xs font-semibold bg-lightsecondary text-secondary rounded-full  dark:bg-darksecondary dark:text-secondary">
+                                                            <i class="ti ti-arrow-back-up text-sm"></i>
+                                                            refunded
+                                                        </span>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap">
+                                                        <div class="flex gap-4 items-center">
+                                                            <img src="@@webRoot/assets/images/profile/user-5.jpg" alt="" class="w-10 h-10 rounded-full">
+                                                            <div>
+                                                                <h6 class="text-base  mb-0 leading-tight">Evelyn Pope</h6>
+                                                                <span class="text-dark dark:text-darklink text-sm font-light">teele@ui.com</span>
+                                                            </div>
+                                                        </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap">
+                                                        <div class="flex items-center gap-x-3 whitespace-nowrap">
+                                                            <div class="flex w-full h-1 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-700" role="progressbar" aria-valuenow="37" aria-valuemin="0" aria-valuemax="100">
+                                                            <div class="flex flex-col justify-center rounded-full overflow-hidden bg-primary text-xs text-white text-center whitespace-nowrap transition duration-500 dark:bg-primary" style="width: 37%"></div>
+                                                            </div>
+                                                            <div class="w-10 text-end">
+                                                            <span class="text-sm text-gray-800 dark:text-white">37%</span>
+                                                            </div>
+                                                        </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-start font-medium">
+                                                        <div class="hs-dropdown relative inline-flex [--placement:left-top]">
+                                                            <button id="hs-dropdown-default15" type="button" class="hs-dropdown-toggle mx-4 w-8 h-8  rounded-full inline-flex items-center justify-center gap-x-2 text-sm font-medium hover:bg-gray-200 dark:hover:bg-darkprimary dark:hover:text-white">
+                                                            <i class="ti ti-dots-vertical text-lg text-dark dark:text-darklink leading-tight font-medium"></i>
+                                                            </button>
+                                    
+                                                            <div class="hs-dropdown-menu overflow-hidden z-[1] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-40 hidden" aria-labelledby="hs-dropdown-default15">
+                                                                <div class="flex flex-col">
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-plus  text-base"></i>Add
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-edit  text-base"></i>Edit
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-trash  text-base"></i>Delete
+
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="p-4 whitespace-nowrap ">
+                                                        <h6 class="text-base  mb-0 leading-tight">INV-3070</h6>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap">
+                                                        <span class="py-0.5 px-2.5 inline-flex badge border-0 items-center gap-x-1 text-xs font-semibold bg-lighterror text-error rounded-full  dark:bg-darkerror dark:text-error">
+                                                            <i class="ti ti-x text-sm"></i>
+                                                            cancelled
+                                                        </span>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap">
+                                                        <div class="flex gap-4 items-center">
+                                                            <img src="@@webRoot/assets/images/profile/user-6.jpg" alt="" class="w-10 h-10 rounded-full">
+                                                            <div>
+                                                                <h6 class="text-base  mb-0 leading-tight">Tommy Garza</h6>
+                                                                <span class="text-dark dark:text-darklink text-sm font-light">olivia@ui.com</span>
+                                                            </div>
+                                                        </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap">
+                                                        <div class="flex items-center gap-x-3 whitespace-nowrap">
+                                                            <div class="flex w-full h-1 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-700" role="progressbar" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100">
+                                                            <div class="flex flex-col justify-center rounded-full overflow-hidden bg-primary text-xs text-white text-center whitespace-nowrap transition duration-500 dark:bg-primary" style="width: 87%"></div>
+                                                            </div>
+                                                            <div class="w-10 text-end">
+                                                            <span class="text-sm text-gray-800 dark:text-white">87%</span>
+                                                            </div>
+                                                        </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-start font-medium">
+                                                        <div class="hs-dropdown relative inline-flex [--placement:left-top]">
+                                                            <button id="hs-dropdown-default16" type="button" class="hs-dropdown-toggle mx-4 w-8 h-8  rounded-full inline-flex items-center justify-center gap-x-2 text-sm font-medium hover:bg-gray-200 dark:hover:bg-darkprimary dark:hover:text-white">
+                                                            <i class="ti ti-dots-vertical text-lg text-dark dark:text-darklink leading-tight font-medium"></i>
+                                                            </button>
+                                    
+                                                            <div class="hs-dropdown-menu overflow-hidden z-[1] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-40 hidden" aria-labelledby="hs-dropdown-default16">
+                                                                <div class="flex flex-col">
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-plus  text-base"></i>Add
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-edit  text-base"></i>Edit
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-trash  text-base"></i>Delete
+
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="p-4 whitespace-nowrap ">
+                                                        <h6 class="text-base  mb-0 leading-tight">INV-3071</h6>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap">
+                                                        <span class="py-0.5 px-2.5 inline-flex badge border-0 items-center gap-x-1 text-xs font-semibold bg-lightprimary text-primary rounded-full  dark:bg-darkprimary dark:text-primary">
+                                                            <i class="ti ti-check text-sm"></i>
+                                                            paid
+                                                        </span>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap">
+                                                        <div class="flex gap-4 items-center">
+                                                            <img src="@@webRoot/assets/images/profile/user-7.jpg" alt="" class="w-10 h-10 rounded-full">
+                                                            <div>
+                                                                <h6 class="text-base  mb-0 leading-tight">Isabel Vasquez</h6>
+                                                                <span class="text-dark dark:text-darklink text-sm font-light">olivia@ui.com</span>
+                                                            </div>
+                                                        </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap">
+                                                        <div class="flex items-center gap-x-3 whitespace-nowrap">
+                                                            <div class="flex w-full h-1 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-700" role="progressbar" aria-valuenow="32" aria-valuemin="0" aria-valuemax="100">
+                                                            <div class="flex flex-col justify-center rounded-full overflow-hidden bg-primary text-xs text-white text-center whitespace-nowrap transition duration-500 dark:bg-primary" style="width: 32%"></div>
+                                                            </div>
+                                                            <div class="w-10 text-end">
+                                                            <span class="text-sm text-gray-800 dark:text-white">32%</span>
+                                                            </div>
+                                                        </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-start font-medium">
+                                                        <div class="hs-dropdown relative inline-flex [--placement:left-top]">
+                                                            <button id="hs-dropdown-default17" type="button" class="hs-dropdown-toggle mx-4 w-8 h-8  rounded-full inline-flex items-center justify-center gap-x-2 text-sm font-medium hover:bg-gray-200 dark:hover:bg-darkprimary dark:hover:text-white">
+                                                            <i class="ti ti-dots-vertical text-lg text-dark dark:text-darklink leading-tight font-medium"></i>
+                                                            </button>
+                                    
+                                                            <div class="hs-dropdown-menu overflow-hidden z-[1] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-40 hidden" aria-labelledby="hs-dropdown-default17">
+                                                                <div class="flex flex-col">
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-plus  text-base"></i>Add
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-edit  text-base"></i>Edit
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-trash  text-base"></i>Delete
+
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        </td>
+                                                    </tr>
+
+                                                    </tbody>
+                                                </table>
+                                                </div>
+                                                <div class="border overflow-hidden dark:border-darkborder mt-6 rounded-md">
+                                                <table class="min-w-full divide-y divide-border dark:divide-darkborder">
+                                                    <thead>
+                                                    <tr>
+                                                        <th scope="col" class="p-4 text-start text-base font-semibold text-link dark:text-white capitalize">Authors</th>
+                                                        <th scope="col" class="p-4 text-start text-base font-semibold text-link dark:text-white capitalize">Courses</th>
+                                                        <th scope="col" class="p-4 text-start text-base font-semibold text-link dark:text-white capitalize">	
+                                                        Users</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody class="divide-y divide-border dark:divide-darkborder">
+                                                    <tr>
+                                                        <td class="p-4 whitespace-nowrap ">
+                                                            <div class="flex gap-4 items-center">
+                                                                <img src="@@webRoot/assets/images/blog/blog-img1.jpg" alt="" class="w-10 h-10 rounded-lg">
+                                                                <div>
+                                                                    <h6 class="text-base  mb-0 leading-tight">Top Authors</h6>
+                                                                    <span class="text-dark dark:text-darklink text-sm font-light">Successful Fellas</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-start">
+                                                        <div class="flex gap-2">
+                                                            <span class="py-1 px-2 inline-flex items-center gap-x-1 text-xs font-semibold bg-lighterror text-error rounded-full  dark:bg-darkerror dark:text-error">
+                                                            Angular
+                                                            </span>
+                                                            <span class="py-1 px-2 inline-flex items-center gap-x-1 text-xs font-semibold bg-lightprimary text-primary rounded-full  dark:bg-darkprimary dark:text-primary">
+                                                            PHP
+                                                            </span>
+                                                        </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-sm"><p class="text-dark dark:text-darklink font-light">4300 Users</p></td>
+                                                        <td class="p-4 whitespace-nowrap text-start font-medium">
+                                                        <div class="hs-dropdown relative inline-flex [--placement:left-top]">
+                                                            <button id="hs-dropdown-default18" type="button" class="hs-dropdown-toggle mx-4 w-8 h-8  rounded-full inline-flex items-center justify-center gap-x-2 text-sm font-medium hover:bg-gray-200 dark:hover:bg-darkprimary dark:hover:text-white">
+                                                            <i class="ti ti-dots text-lg text-dark dark:text-darklink leading-tight font-medium"></i>
+                                                            </button>
+                                    
+                                                            <div class="hs-dropdown-menu overflow-hidden z-[1] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-40 hidden" aria-labelledby="hs-dropdown-default18">
+                                                                <div class="flex flex-col">
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-plus  text-base"></i>Add
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-edit  text-base"></i>Edit
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-trash  text-base"></i>Delete
+
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="p-4 whitespace-nowrap ">
+                                                            <div class="flex gap-4 items-center">
+                                                                <img src="@@webRoot/assets/images/blog/blog-img2.jpg" alt="" class="w-10 h-10 rounded-lg">
+                                                                <div>
+                                                                    <h6 class="text-base  mb-0 leading-tight">Popular Authors</h6>
+                                                                    <span class="text-dark dark:text-darklink text-sm font-light">Most Successful</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-start">
+                                                        <div class="flex gap-2">
+                                                            <span class="py-1 px-2 inline-flex items-center gap-x-1 text-xs font-semibold bg-lightprimary text-primary rounded-full  dark:bg-darkprimary dark:text-primary">
+                                                            Bootstrap
+                                                            </span>
+                                                        </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-sm"><p class="text-dark dark:text-darklink font-light">1200 Users</p></td>
+                                                        <td class="p-4 whitespace-nowrap text-start font-medium">
+                                                        <div class="hs-dropdown relative inline-flex [--placement:left-top]">
+                                                            <button id="hs-dropdown-default19" type="button" class="hs-dropdown-toggle mx-4 w-8 h-8  rounded-full inline-flex items-center justify-center gap-x-2 text-sm font-medium hover:bg-gray-200 dark:hover:bg-darkprimary dark:hover:text-white">
+                                                            <i class="ti ti-dots text-lg text-dark dark:text-darklink leading-tight font-medium"></i>
+                                                            </button>
+                                    
+                                                            <div class="hs-dropdown-menu overflow-hidden z-[1] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-40 hidden" aria-labelledby="hs-dropdown-default19">
+                                                                <div class="flex flex-col">
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-plus  text-base"></i>Add
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-edit  text-base"></i>Edit
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-trash  text-base"></i>Delete
+
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="p-4 whitespace-nowrap ">
+                                                            <div class="flex gap-4 items-center">
+                                                                <img src="@@webRoot/assets/images/blog/blog-img3.jpg" alt="" class="w-10 h-10 rounded-lg">
+                                                                <div>
+                                                                    <h6 class="text-base  mb-0 leading-tight">New Users</h6>
+                                                                    <span class="text-dark dark:text-darklink text-sm font-light">Awesome Users</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-start">
+                                                        <div class="flex gap-2">
+                                                            <span class="py-1 px-2 inline-flex items-center gap-x-1 text-xs font-semibold bg-lightsuccess text-success rounded-full  dark:bg-darksuccess dark:text-success">
+                                                            Reactjs
+                                                            </span>
+                                                            <span class="py-1 px-2 inline-flex items-center gap-x-1 text-xs font-semibold bg-lighterror text-error rounded-full  dark:bg-darkerror dark:text-error">
+                                                            Angular
+                                                            </span>
+                                                        </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-sm"><p class="text-dark dark:text-darklink font-light">2000 Users</p></td>
+                                                        <td class="p-4 whitespace-nowrap text-start font-medium">
+                                                        <div class="hs-dropdown relative inline-flex [--placement:left-top]">
+                                                            <button id="hs-dropdown-default20" type="button" class="hs-dropdown-toggle mx-4 w-8 h-8  rounded-full inline-flex items-center justify-center gap-x-2 text-sm font-medium hover:bg-gray-200 dark:hover:bg-darkprimary dark:hover:text-white">
+                                                            <i class="ti ti-dots text-lg text-dark dark:text-darklink leading-tight font-medium"></i>
+                                                            </button>
+                                    
+                                                            <div class="hs-dropdown-menu overflow-hidden z-[1] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-40 hidden" aria-labelledby="hs-dropdown-default20">
+                                                                <div class="flex flex-col">
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-plus  text-base"></i>Add
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-edit  text-base"></i>Edit
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-trash  text-base"></i>Delete
+
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="p-4 whitespace-nowrap ">
+                                                            <div class="flex gap-4 items-center">
+                                                                <img src="@@webRoot/assets/images/blog/blog-img4.jpg" alt="" class="w-10 h-10 rounded-lg">
+                                                                <div>
+                                                                    <h6 class="text-base  mb-0 leading-tight">Active Customers</h6>
+                                                                    <span class="text-dark dark:text-darklink text-sm font-light">Best Customers</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-start">
+                                                        <div class="flex gap-2">
+                                                            <span class="py-1 px-2 inline-flex items-center gap-x-1 text-xs font-semibold bg-lightsuccess text-success rounded-full  dark:bg-darksuccess dark:text-success">
+                                                            Bootstrap
+                                                            </span>
+                                                        </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-sm"><p class="text-dark dark:text-darklink font-light">1500 Users</p></td>
+                                                        <td class="p-4 whitespace-nowrap text-start font-medium">
+                                                        <div class="hs-dropdown relative inline-flex [--placement:left-top]">
+                                                            <button id="hs-dropdown-default20" type="button" class="hs-dropdown-toggle mx-4 w-8 h-8  rounded-full inline-flex items-center justify-center gap-x-2 text-sm font-medium hover:bg-gray-200 dark:hover:bg-darkprimary dark:hover:text-white">
+                                                            <i class="ti ti-dots text-lg text-dark dark:text-darklink leading-tight font-medium"></i>
+                                                            </button>
+                                    
+                                                            <div class="hs-dropdown-menu overflow-hidden z-[1] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-40 hidden" aria-labelledby="hs-dropdown-default20">
+                                                                <div class="flex flex-col">
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-plus  text-base"></i>Add
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-edit  text-base"></i>Edit
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-trash  text-base"></i>Delete
+
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="p-4 whitespace-nowrap ">
+                                                            <div class="flex gap-4 items-center">
+                                                                <img src="@@webRoot/assets/images/blog/blog-img5.jpg" alt="" class="w-10 h-10 rounded-lg">
+                                                                <div>
+                                                                    <h6 class="text-base  mb-0 leading-tight">Bestseller Theme</h6>
+                                                                    <span class="text-dark dark:text-darklink text-sm font-light">Amazing Templates</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-start">
+                                                        <div class="flex gap-2">
+                                                            <span class="py-1 px-2 inline-flex items-center gap-x-1 text-xs font-semibold bg-lighterror text-error rounded-full  dark:bg-darkerror dark:text-error">
+                                                            Angular
+                                                            </span>
+                                                            <span class="py-1 px-2 inline-flex items-center gap-x-1 text-xs font-semibold bg-lightsuccess text-success rounded-full  dark:bg-darksuccess dark:text-success">
+                                                            Reactjs
+                                                            </span>
+                                                        </div>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-sm"><p class="text-dark dark:text-darklink font-light">9500 Users</p></td>
+                                                        <td class="p-4 whitespace-nowrap text-start font-medium">
+                                                        <div class="hs-dropdown relative inline-flex [--placement:left-top]">
+                                                            <button id="hs-dropdown-default21" type="button" class="hs-dropdown-toggle mx-4 w-8 h-8  rounded-full inline-flex items-center justify-center gap-x-2 text-sm font-medium hover:bg-gray-200 dark:hover:bg-darkprimary dark:hover:text-white">
+                                                            <i class="ti ti-dots text-lg text-dark dark:text-darklink leading-tight font-medium"></i>
+                                                            </button>
+                                    
+                                                            <div class="hs-dropdown-menu overflow-hidden z-[1] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-40 hidden" aria-labelledby="hs-dropdown-default21">
+                                                                <div class="flex flex-col">
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-plus  text-base"></i>Add
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-edit  text-base"></i>Edit
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="py-1 px-4 bg-hover">
+                                                                        <a class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-trash  text-base"></i>Delete
+
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                <!-- Main Content End -->
+
+            </div>
+        </div>
+        <!--end of project-->
+    </main>
+    @@include("partials/header-components/mobile-menu.html")
+    @@include("partials/customizer.html")
+    @@include("partials/scripts.html")
+</body>
+
+</html>

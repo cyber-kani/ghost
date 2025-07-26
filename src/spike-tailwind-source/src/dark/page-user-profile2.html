@@ -1,0 +1,2318 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-color-theme="Blue_Theme" class="light selected" data-layout="vertical"
+    data-boxed-layout="boxed" data-card="shadow">
+
+<head>
+    @@include("partials/head.html")
+    <title>Spike TailwindCSS HTML Admin Template</title>
+</head>
+
+<body class="DEFAULT_THEME bg-lightprimary dark:bg-darkbody">
+    <main>
+        <!--start the project-->
+        <div id="main-wrapper" class="flex p-5">
+
+            <aside id="application-sidebar-brand"
+                class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full xl:rtl:-translate-x-0 rtl:translate-x-full  left-0 rtl:left-auto xl:rtl:right-5 rtl:right-0 transform hidden xl:block xl:translate-x-0 xl:end-auto xl:bottom-0 fixed top-0 with-vertical  left-sidebar transition-all duration-300 h-screen z-[2] flex-shrink-0  w-[270px] border-border dark:border-darkborder bg-white dark:bg-dark xl:top-5 xl:start-5 shadow-md xl:rounded-md">
+                @@include("partials/sidebar.html",{ "page": "user-profile2","page_group": "user" })
+            </aside>
+            <div class="page-wrapper w-full" role="main">
+
+                <!-- Main Content -->
+                <main class="h-full ">
+                    <div class="container full-container py-5 xl:ps-6 ps-0 pt-0 pe-0 remove-ps">
+
+                        <!--  Header Start -->
+                        <header
+                            class="sticky top-0 inset-x-0 z-[1] flex flex-wrap md:justify-start md:flex-nowrap text-fs_15 py-3 lg:py-0 mb-6 bg-white dark:bg-dark rounded-md shadow-md">
+                            <div class="with-vertical w-full">@@include("partials/header.html")</div>
+                            <div class="with-horizontal w-full">
+                                <div class="bg-white dark:bg-dark">
+                                    <div class="container">
+                                        @@include("partials/horizontal-header.html")
+                                    </div>
+                                </div>
+                            </div>
+                        </header>
+                        <!--  Header End -->
+
+                        <!-- Horizontal Sidebar Menu -->
+                        <aside
+                            class="with-horizontal lg:flex hidden left-sidebar bg-white dark:bg-dark border-t border-border dark:border-darkborder">
+                            @@include("partials/horizontal-sidebar.html", { "page": "user-profile","page_group":
+                            "user"})
+                        </aside>
+                        <!-- Horizontal Sidebar Menu End -->
+
+                        <!-- Main Content -->
+                        <div class="max-w-full">
+                            <div class="container full-container ">
+                                <!----Breadcrumb Start---->
+                                @@include("partials/breadcrumb.html", {"title": "User Profile", "subtitle": 'Home'})
+                                <!----Breadcrumb End---->
+                                  <div class="relative">
+                                    <div class="relative overflow-hidden rounded-md">
+                                        <img src="@@webRoot/assets/images/backgrounds/profilebg-2.jpg" alt="" class="w-full max-w-full">
+                                      </div>
+                                      <div class="px-4">
+                                        <div class="card relative -top-12">
+                                            <div class="card-body pb-0">
+                                                 <div class="flex justify-between items-center">
+                                                   <div class="flex items-center gap-4"> 
+                                                     <div class="relative">
+                                                         <img src="@@webRoot/assets/images/profile/user-1.jpg" alt="" class="img-fluid rounded-full w-[100px] h-[100px]">
+                                                         <span class="bg-primary rounded-full text-white flex items-center justify-center absolute bottom-0 end-0 p-1 border-2 dark:border-primary"><i class="ti ti-plus"></i></span>
+                                                     </div>
+                                                      <div>
+                                                         <div class="flex items-center gap-7"><h4 class="text-2xl">Mike Nielson</h4> <div class="badge bg-lightprimary dark:bg-darkprimary border-primary text-primary w-fit">Admin</div> </div>
+                                                          <p class="font-semibold text-base text-bodytext dark:text-darklink">super admin</p>
+                                                           <div class="flex items-center justify-center md:justify-start">
+                                                      <span class="bg-success p-1 rounded-full"></span>
+                                                      <h6 class="mb-0 ms-2">Active</h6>
+                                                     </div>
+                                                      </div>
+                                                   </div>
+                                                   <button class="btn" >Edit Profile</button>
+                                                 </div>
+                                                                               
+                                     <nav class="flex justify-start space-x-3 mt-6" aria-label="Tabs" role="tablist">
+                                         <button type="button"
+                                             class="hs-tab-active:border-primary hs-tab-active:text-primary py-2 px-3 inline-flex items-center gap-3 border-b-2 border-transparent text-sm whitespace-nowrap  text-bodytext dark:text-darklink hover:text-primary focus:outline-none focus:text-primary disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:text-primary active"
+                                             id="Profile-tab" data-hs-tab="#profile" aria-controls="profile" role="tab">
+                                             <i class="ti ti-user-circle text-xl"></i><span class="md:flex hidden text-base font-medium">My Profile</span>
+                                         </button>
+                                         <button type="button"
+                                             class="hs-tab-active:border-primary hs-tab-active:text-primary py-2 px-3 inline-flex items-center gap-3 border-b-2 border-transparent text-sm whitespace-nowrap  text-bodytext dark:text-darklink hover:text-primary focus:outline-none focus:text-primary disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:text-primary"
+                                             id="Followers-tab" data-hs-tab="#followers" aria-controls="followers"
+                                             role="tab">
+                                             <i class="ti ti-users text-xl"></i><span class="md:flex hidden text-base font-medium">Teams</span>
+                                         </button>
+                                         <button type="button"
+                                             class="hs-tab-active:border-primary hs-tab-active:text-primary py-2 px-3 inline-flex items-center gap-3 border-b-2 border-transparent text-sm whitespace-nowrap  text-bodytext dark:text-darklink hover:text-primary focus:outline-none focus:text-primary disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:text-primary"
+                                             id="Friends-tab" data-hs-tab="#friends" aria-controls="friends" role="tab">
+                                             <i class="ti ti-layout-grid-add  text-xl"></i><span class="md:flex hidden text-base font-medium">Projects</span>
+                                         </button>
+                                         <button type="button"
+                                             class="hs-tab-active:border-primary hs-tab-active:text-primary py-2 px-3 inline-flex items-center gap-3 border-b-2 border-transparent text-sm whitespace-nowrap  text-bodytext dark:text-darklink hover:text-primary focus:outline-none focus:text-primary disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:text-primary"
+                                             id="Gallery-tab" data-hs-tab="#gallery" aria-controls="gallery" role="tab">
+                                             <i class="ti ti-id  text-xl"></i><span class="md:flex hidden text-base font-medium">Connections</span>
+                                         </button>
+                                     </nav>
+                                            </div>
+                                       </div>
+                                      </div>
+                                  </div>
+
+                        <!---Tabs Content--->
+                        <div class="-mt-6">
+                            <div id="profile" role="tabpanel" aria-labelledby="Profile-tab">
+                                <div class="grid grid-cols-12 gap-6">
+                                    <div class="lg:col-span-4 md:col-span-12 sm:col-span-12 col-span-12">
+                                        <div class="card shadow-none border border-border dark:border-darkborder mb-6">
+                                            <div class="card-body ">
+                                                <div class="pb-5">
+                                                    <h4 class="text-xl mb-5">
+                                                        About me</h4>
+                                                    <p class="text-dark dark:text-darklink font-medium">Hello, I’m Mike Nielsen. I’m a professional who designs, develops, tests, and maintains software applications and systems.</p>
+                                                </div>
+                                                <div class="pt-5 border-t border-light-dark">
+                                                    <h5 class="text-xl mb-5">Contact</h5>
+                                                    <ul class="mb-0">
+                                                        <li class="flex items-center mb-5 gap-4">
+                                                            <div class="bg-lighterror dark:bg-darkerror h-10 w-10 rounded-full flex items-center justify-center">
+                                                                <i class="ti ti-phone text-error text-xl"></i>
+                                                            </div>
+                                                            <div>
+                                                                <h6 class="text-fs_15 mb-1">Call</h6>
+                                                                <p class="text-darklink font-medium">(123) 456-7890</p>
+                                                            </div>
+                                                        </li>
+                                                        <li class="flex items-center mb-5 gap-4">
+                                                            <div class="bg-lightsuccess dark:bg-darksuccess h-10 w-10 rounded-full flex items-center justify-center">
+                                                                <i class="ti ti-mail text-success text-xl"></i>
+                                                            </div>
+                                                            <div>
+                                                                <h6 class="text-fs_15 mb-1">Email</h6>
+                                                                <p class="text-darklink font-medium">info@spike.com</p>
+                                                            </div>
+                                                        </li>
+                                                        <li class="flex items-center mb-5 gap-4">
+                                                            <div class="bg-lightprimary dark:bg-darkprimary h-10 w-10 rounded-full flex items-center justify-center">
+                                                                <i class="ti ti-brand-skype text-primary text-xl"></i>
+                                                            </div>
+                                                            <div>
+                                                                <h6 class="text-fs_15 mb-1">Skype</h6>
+                                                                <p class="text-darklink font-medium">jonathan.doe</p>
+                                                            </div>
+                                                        </li>
+                                                        
+                                                    </ul>
+                                                  </div>
+                                                  <div class="pt-5 border-t border-light-dark">
+                                                    <h5 class="text-xl mb-5">Other</h5>
+                                                    <ul class="mb-0">
+                                                        <li class="flex items-center mb-5 gap-4">
+                                                            <div class="bg-lightwarning dark:bg-darkwarning h-10 w-10 rounded-full flex items-center justify-center">
+                                                                <i class="ti ti-map-pin text-warning text-xl"></i>
+                                                            </div>
+                                                            <div>
+                                                                <h6 class="text-fs_15 mb-1">Location</h6>
+                                                                <p class="text-darklink font-medium">Newyork, USA - 100001</p>
+                                                            </div>
+                                                        </li>
+                                                        <li class="flex items-center mb-5 gap-4">
+                                                            <div class="bg-lightsuccess dark:bg-darksuccess h-10 w-10 rounded-full flex items-center justify-center">
+                                                                <i class="ti ti-school text-success text-xl"></i>
+                                                            </div>
+                                                            <div>
+                                                                <h6 class="text-fs_15 mb-1">Education</h6>
+                                                                <p class="text-darklink font-medium">Saint Josef Institute of Science</p>
+                                                            </div>
+                                                        </li>
+                                                        <li class="flex items-center mb-0 gap-4">
+                                                            <div class="bg-lightindigo dark:bg-darkindigo h-10 w-10 rounded-full flex items-center justify-center">
+                                                                <i class="ti ti-language text-indigo text-xl"></i>
+                                                            </div>
+                                                            <div>
+                                                                <h6 class="text-fs_15 mb-1">Language</h6>
+                                                                <p class="text-darklink font-medium">English</p>
+                                                            </div>
+                                                        </li>
+                                                        
+                                                    </ul>
+                                                  </div>
+                                            </div>
+                                        </div>
+                                        <div class="card shadow-none border border-border dark:border-darkborder">
+                                            <div class="card-body">
+                                                <h4 class="text-xl mb-5">
+                                                    Teams</h4>
+
+                                                    <ul class="mb-0">
+                                                        <li class="flex items-center mb-5 gap-4">
+                                                            <div class="bg-lightinfo dark:bg-darkinfo h-10 w-10 rounded-full flex items-center justify-center">
+                                                                <i class="ti ti-brand-github text-info text-xl"></i>
+                                                            </div>
+                                                            <div>
+                                                                <h6 class="text-fs_15 mb-1">Backend Developer</h6>
+                                                                <p class="text-darklink font-medium">120 members</p>
+                                                            </div>
+                                                        </li>
+                                                        <li class="flex items-center mb-5 gap-4">
+                                                            <div class="bg-lightprimary dark:bg-darkprimary h-10 w-10 rounded-full flex items-center justify-center">
+                                                                <i class="ti ti-brand-react text-primary text-xl"></i>
+                                                            </div>
+                                                            <div>
+                                                                <h6 class="text-fs_15 mb-1">React Developer</h6>
+                                                                <p class="text-darklink font-medium">86 members</p>
+                                                            </div>
+                                                        </li>
+                                                        <li class="flex items-center">
+                                                            <a href="#" class="text-dark dark:text-white hover:text-primary dark:hover:text-primary font-semibold">View all</a>
+                                                        </li>
+                                                    </ul>    
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-8 md:col-span-12 sm:col-span-12 col-span-12">
+                                        <div class="grid grid-cols-12 gap-6 mb-6">
+                                            <div class="lg:col-span-4 md:col-span-12 sm:col-span-12 col-span-12">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <div class="flex items-center gap-4">
+                                                            <div class="bg-lightprimary dark:bg-darkprimary h-12 w-12 rounded-full flex items-center justify-center">
+                                                                <i class="ti ti-template text-primary text-2xl"></i>
+                                                            </div>
+                                                            <div>
+                                                                <h6 class="text-xl">680</h6>
+                                                                <p class="text-fs_15 font-medium">Tasks Done</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div> 
+                                            <div class="lg:col-span-4 md:col-span-12 sm:col-span-12 col-span-12">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <div class="flex items-center gap-4">
+                                                            <div class="bg-lightsuccess dark:bg-darksuccess h-12 w-12 rounded-full flex items-center justify-center">
+                                                                <i class="ti ti-layout-grid-add text-success text-2xl"></i>
+                                                            </div>
+                                                            <div>
+                                                                <h6 class="text-xl">42</h6>
+                                                                <p class="text-fs_15 font-medium">Projects</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="lg:col-span-4 md:col-span-12 sm:col-span-12 col-span-12">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <div class="flex items-center gap-4">
+                                                            <div class="bg-lighterror dark:bg-darkerror h-12 w-12 rounded-full flex items-center justify-center">
+                                                                <i class="ti ti-id text-error text-2xl"></i>
+                                                            </div>
+                                                            <div>
+                                                                <h6 class="text-xl">$780 </h6>
+                                                                <p class="text-fs_15 font-medium">Sales</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>   
+                                        </div>
+                                        <!--Card 1-->
+                                        <div class="card border border-border dark:border-darkborder shadow-none mb-6">
+                                            <div class="card-body ">
+                                                <textarea class="form-control" rows="5"
+                                                    placeholder="Share your thoughts"></textarea>
+                                                <div class="flex items-center gap-6 mt-3">
+                                                    <a class="flex items-center gap-2" href="javascript:void(0)">
+                                                        <div
+                                                            class="btn p-0 flex items-center justify-center bg-primary rounded-full h-8 w-8 text-white">
+                                                            <i class="ti ti-photo"></i>
+                                                        </div>
+                                                        <span class="text-dark font-medium dark:text-white">Photo /
+                                                            Video</span>
+                                                    </a>
+                                                    <a href="javascript:void(0)" class="flex items-center gap-2">
+                                                        <div
+                                                            class="btn btn-secondary p-0 flex items-center justify-center  rounded-full h-8 w-8 text-white">
+                                                            <i class="ti ti-notebook"></i>
+                                                        </div>
+                                                        <span
+                                                            class="text-dark font-medium dark:text-white">Article</span>
+                                                    </a>
+                                                    <button class="btn btn-primary ms-auto">Post</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Card 2-->
+                                        <div class="card border border-border dark:border-darkborder shadow-none mb-6">
+                                            <div class="card-body ">
+                                                <div class="flex items-center gap-3">
+                                                    <img src="@@webRoot/assets/images/profile/user-7.jpg" alt=""
+                                                        class="rounded-full h-10 w-10">
+                                                    <div>
+                                                        <h6 class="text-base">Ralph Edwards</h6>
+                                                        <p>1 month ago</p>
+                                                    </div> 
+                                                    <div class="ms-auto">
+                                                        <div
+                                                            class="hs-dropdown relative inline-flex">
+                                                            <button
+                                                                id="hs-dropdown-custom-icon-trigger"
+                                                                class="hs-dropdown-toggle h-10 w-10 text-bodytext dark:text-darklink hover:text-primary dark:hover:text-primary group bg-hover justify-center items-center rounded-full">
+                                                                <i
+                                                                    class="ti ti-dots-vertical text-xl"></i>
+                                                            </button>
+
+                                                            <div
+                                                                class="hs-dropdown-menu overflow-hidden z-[1] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-40 hidden"
+                                                                aria-labelledby="hs-dropdown-custom-icon-trigger">
+                                                                <div
+                                                                    class="flex flex-col">
+                                                                    <div
+                                                                        class="py-1.5 px-4 bg-hover">
+                                                                        <a
+                                                                            class="card-subtitle flex gap-2 items-center "
+                                                                            href="#">
+                                                                            Action
+                                                                        </a>
+                                                                    </div>
+                                                                    <div
+                                                                        class="py-1.5 px-4 bg-hover">
+                                                                        <a
+                                                                            class="card-subtitle flex gap-2 items-center "
+                                                                            href="#">
+                                                                            Another
+                                                                            action
+                                                                        </a>
+                                                                    </div>
+                                                                    <div
+                                                                        class="py-1.5 px-4 bg-hover">
+                                                                        <a
+                                                                            class="card-subtitle flex gap-2 items-center "
+                                                                            href="#">
+                                                                            Something
+                                                                            else
+                                                                            here
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>   
+                                                </div>
+                                                <p class="my-3 font-medium text-dark dark:text-darklink text-base">
+                                                    This could be a real app for sure. but you need to pay royalties though
+                                                </p>
+                                                <img src="@@webRoot/assets/images/products/s13.jpg" alt=""
+                                                    class="rounded-md w-full max-w-full h-96 object-cover">
+                                                <div class="flex items-center gap-4 my-3">
+                                                    <div class="flex items-center gap-4">
+                                                        <a href="javascript:void(0)" class="flex gap-1 items-center text-dark dark:text-darklink text-hover">
+                                                            <i class="ti ti-thumb-up text-xl"></i>
+                                                            <span class="text-base font-medium">26</span>
+                                                        </a>
+                                                        <a href="javascript:void(0)" class="flex gap-1 items-center text-dark dark:text-darklink text-hover">
+                                                            <i class="ti ti-message-circle text-xl"></i>
+                                                            <span class="text-base font-medium">4</span>
+                                                        </a>
+                                                          
+                                                    </div>  
+                                                    <a href="javascript:void(0)" class="ms-auto text-base text-dark dark:text-darklink font-medium text-hover">Reply</a>            
+                                                </div>
+                                                <hr class="border-t border-light-dark"/>
+                                                <div class="flex items-center gap-3 pt-4">
+                                                    <img src="@@webRoot/assets/images/profile/user-2.jpg" alt=""
+                                                        class="rounded-full h-10 w-10">
+                                                    <div>
+                                                        <h6 class="text-base">Floyd Miles</h6>
+                                                        <p>1 month ago</p>
+                                                    </div> 
+                                                    <div class="ms-auto">
+                                                        <div
+                                                            class="hs-dropdown relative inline-flex">
+                                                            <button
+                                                                id="hs-dropdown-custom-icon-trigger"
+                                                                class="hs-dropdown-toggle h-10 w-10 text-bodytext dark:text-darklink hover:text-primary dark:hover:text-primary group bg-hover justify-center items-center rounded-full">
+                                                                <i
+                                                                    class="ti ti-dots-vertical text-xl"></i>
+                                                            </button>
+
+                                                            <div
+                                                                class="hs-dropdown-menu overflow-hidden z-[1] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-40 hidden"
+                                                                aria-labelledby="hs-dropdown-custom-icon-trigger">
+                                                                <div
+                                                                    class="flex flex-col">
+                                                                    <div
+                                                                        class="py-1.5 px-4 bg-hover">
+                                                                        <a
+                                                                            class="card-subtitle flex gap-2 items-center "
+                                                                            href="#">
+                                                                            Action
+                                                                        </a>
+                                                                    </div>
+                                                                    <div
+                                                                        class="py-1.5 px-4 bg-hover">
+                                                                        <a
+                                                                            class="card-subtitle flex gap-2 items-center "
+                                                                            href="#">
+                                                                            Another
+                                                                            action
+                                                                        </a>
+                                                                    </div>
+                                                                    <div
+                                                                        class="py-1.5 px-4 bg-hover">
+                                                                        <a
+                                                                            class="card-subtitle flex gap-2 items-center "
+                                                                            href="#">
+                                                                            Something
+                                                                            else
+                                                                            here
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>   
+                                                </div>
+                                                <p class="my-3 font-medium text-dark dark:text-darklink text-base">
+                                                    Great Work !!! Just to tell you that when I open your prototype I was swiping to see what's on the other slide instead of clicking continue.
+                                                </p>
+                                                <img src="@@webRoot/assets/images/products/s14.jpg" alt=""
+                                                    class="rounded-md w-full max-w-full h-96 object-cover">
+                                                <div class="flex items-center gap-4 my-3">
+                                                    <div class="flex items-center gap-4">
+                                                        <a href="javascript:void(0)" class="flex gap-1 items-center text-dark dark:text-darklink text-hover">
+                                                            <i class="ti ti-thumb-up text-xl"></i>
+                                                            <span class="text-base font-medium">12</span>
+                                                        </a>
+                                                        <a href="javascript:void(0)" class="flex gap-1 items-center text-dark dark:text-darklink text-hover">
+                                                            <i class="ti ti-message-circle text-xl"></i>
+                                                            <span class="text-base font-medium">2</span>
+                                                        </a>
+                                                          
+                                                    </div>  
+                                                    <a href="javascript:void(0)" class="ms-auto text-base text-dark dark:text-darklink font-medium text-hover">Reply</a>            
+                                                </div>
+
+                                                <!---Comments--->
+                                                <div class="border-s border-light-dark ps-6">
+                                                    <div>
+                                                        <div class="flex items-center gap-3 pt-4">
+                                                            <img src="@@webRoot/assets/images/profile/user-3.jpg" alt=""
+                                                                class="rounded-full h-10 w-10">
+                                                            <div>
+                                                                <h6 class="text-base">Darrell Steward</h6>
+                                                                <p>1 month ago</p>
+                                                            </div> 
+                                                            <div class="ms-auto">
+                                                                <div
+                                                                    class="hs-dropdown relative inline-flex">
+                                                                    <button
+                                                                        id="hs-dropdown-custom-icon-trigger"
+                                                                        class="hs-dropdown-toggle h-10 w-10 text-bodytext dark:text-darklink hover:text-primary dark:hover:text-primary group bg-hover justify-center items-center rounded-full">
+                                                                        <i
+                                                                            class="ti ti-dots-vertical text-xl"></i>
+                                                                    </button>
+        
+                                                                    <div
+                                                                        class="hs-dropdown-menu overflow-hidden z-[1] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-40 hidden"
+                                                                        aria-labelledby="hs-dropdown-custom-icon-trigger">
+                                                                        <div
+                                                                            class="flex flex-col">
+                                                                            <div
+                                                                                class="py-1.5 px-4 bg-hover">
+                                                                                <a
+                                                                                    class="card-subtitle flex gap-2 items-center "
+                                                                                    href="#">
+                                                                                    Action
+                                                                                </a>
+                                                                            </div>
+                                                                            <div
+                                                                                class="py-1.5 px-4 bg-hover">
+                                                                                <a
+                                                                                    class="card-subtitle flex gap-2 items-center "
+                                                                                    href="#">
+                                                                                    Another
+                                                                                    action
+                                                                                </a>
+                                                                            </div>
+                                                                            <div
+                                                                                class="py-1.5 px-4 bg-hover">
+                                                                                <a
+                                                                                    class="card-subtitle flex gap-2 items-center "
+                                                                                    href="#">
+                                                                                    Something
+                                                                                    else
+                                                                                    here
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>   
+                                                        </div>
+                                                        <p class="my-3 font-medium text-dark dark:text-darklink text-base">
+                                                            Awesome work! I love that the case study was laid out as a story that was perfectly told. Thanks for sharing.
+                                                        </p>
+                                                       
+                                                        <div class="flex items-center gap-4 my-3">
+                                                            <div class="flex items-center gap-4">
+                                                                <a href="javascript:void(0)" class="flex gap-1 items-center text-dark dark:text-darklink text-hover">
+                                                                    <i class="ti ti-thumb-up text-xl"></i>
+                                                                    <span class="text-base font-medium">3</span>
+                                                                </a>
+                                                            </div>  
+                                                            <a href="javascript:void(0)" class="ms-auto text-base text-dark dark:text-darklink font-medium text-hover">Reply</a>            
+                                                        </div>
+                                                    </div>
+                                                    <hr class="border-t border-light-dark"/>
+                                                    <div>
+                                                        <div class="flex items-center gap-3 pt-4">
+                                                            <img src="@@webRoot/assets/images/profile/user-6.jpg" alt=""
+                                                                class="rounded-full h-10 w-10">
+                                                            <div>
+                                                                <h6 class="text-base">Kathryn Murphy</h6>
+                                                                <p>1 month ago</p>
+                                                            </div> 
+                                                            <div class="ms-auto">
+                                                                <div
+                                                                    class="hs-dropdown relative inline-flex">
+                                                                    <button
+                                                                        id="hs-dropdown-custom-icon-trigger"
+                                                                        class="hs-dropdown-toggle h-10 w-10 text-bodytext dark:text-darklink hover:text-primary dark:hover:text-primary group bg-hover justify-center items-center rounded-full">
+                                                                        <i
+                                                                            class="ti ti-dots-vertical text-xl"></i>
+                                                                    </button>
+        
+                                                                    <div
+                                                                        class="hs-dropdown-menu overflow-hidden z-[1] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-40 hidden"
+                                                                        aria-labelledby="hs-dropdown-custom-icon-trigger">
+                                                                        <div
+                                                                            class="flex flex-col">
+                                                                            <div
+                                                                                class="py-1.5 px-4 bg-hover">
+                                                                                <a
+                                                                                    class="card-subtitle flex gap-2 items-center "
+                                                                                    href="#">
+                                                                                    Action
+                                                                                </a>
+                                                                            </div>
+                                                                            <div
+                                                                                class="py-1.5 px-4 bg-hover">
+                                                                                <a
+                                                                                    class="card-subtitle flex gap-2 items-center "
+                                                                                    href="#">
+                                                                                    Another
+                                                                                    action
+                                                                                </a>
+                                                                            </div>
+                                                                            <div
+                                                                                class="py-1.5 px-4 bg-hover">
+                                                                                <a
+                                                                                    class="card-subtitle flex gap-2 items-center "
+                                                                                    href="#">
+                                                                                    Something
+                                                                                    else
+                                                                                    here
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>   
+                                                        </div>
+                                                        <p class="my-3 font-medium text-dark dark:text-darklink text-base">
+                                                            Awesome work! I love that the case study was laid out as a story that was perfectly told. Thanks for sharing.
+                                                        </p>
+                                                       
+                                                        <div class="flex items-center gap-4 my-3">
+                                                            <div class="flex items-center gap-4">
+                                                                <a href="javascript:void(0)" class="flex gap-1 items-center text-dark dark:text-darklink text-hover">
+                                                                    <i class="ti ti-thumb-up text-xl"></i>
+                                                                    <span class="text-base font-medium">3</span>
+                                                                </a>
+                                                            </div>  
+                                                            <a href="javascript:void(0)" class="ms-auto text-base text-dark dark:text-darklink font-medium text-hover">Reply</a>            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                              
+                                                
+
+                                                <hr class="border-t border-light-dark"/>
+                                                <div class="flex items-center gap-3 pt-4">
+                                                    <img src="@@webRoot/assets/images/profile/user-3.jpg" alt=""
+                                                        class="rounded-full h-10 w-10">
+                                                    <div>
+                                                        <h6 class="text-base">Bessie Cooper</h6>
+                                                        <p>1 month ago</p>
+                                                    </div> 
+                                                    <div class="ms-auto">
+                                                        <div
+                                                            class="hs-dropdown relative inline-flex">
+                                                            <button
+                                                                id="hs-dropdown-custom-icon-trigger"
+                                                                class="hs-dropdown-toggle h-10 w-10 text-bodytext dark:text-darklink hover:text-primary dark:hover:text-primary group bg-hover justify-center items-center rounded-full">
+                                                                <i
+                                                                    class="ti ti-dots-vertical text-xl"></i>
+                                                            </button>
+
+                                                            <div
+                                                                class="hs-dropdown-menu overflow-hidden z-[1] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-40 hidden"
+                                                                aria-labelledby="hs-dropdown-custom-icon-trigger">
+                                                                <div
+                                                                    class="flex flex-col">
+                                                                    <div
+                                                                        class="py-1.5 px-4 bg-hover">
+                                                                        <a
+                                                                            class="card-subtitle flex gap-2 items-center "
+                                                                            href="#">
+                                                                            Action
+                                                                        </a>
+                                                                    </div>
+                                                                    <div
+                                                                        class="py-1.5 px-4 bg-hover">
+                                                                        <a
+                                                                            class="card-subtitle flex gap-2 items-center "
+                                                                            href="#">
+                                                                            Another
+                                                                            action
+                                                                        </a>
+                                                                    </div>
+                                                                    <div
+                                                                        class="py-1.5 px-4 bg-hover">
+                                                                        <a
+                                                                            class="card-subtitle flex gap-2 items-center "
+                                                                            href="#">
+                                                                            Something
+                                                                            else
+                                                                            here
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>   
+                                                </div>
+                                                <p class="my-3 font-medium text-dark dark:text-darklink text-base">
+                                                    Awesome work! I love that the case study was laid out as a story that was perfectly told. Thanks for sharing.
+                                                </p>
+                                                <div class="grid grid-cols-12 gap-6">
+                                                    <div class="col-span-12 sm:col-span-6">
+                                                        <img src="@@webRoot/assets/images/products/s15.jpg" alt="" class="rounded-md w-full sm:mb-0 mb-3">
+                                                    </div>
+                                                    <div class="col-span-12 sm:col-span-6">
+                                                        <img src="@@webRoot/assets/images/products/s16.jpg" alt="" class="rounded-md w-full sm:mb-0 mb-3">
+                                                    </div>
+                                                </div>
+                                                <div class="flex items-center gap-4 my-3">
+                                                    <div class="flex items-center gap-4">
+                                                        <a href="javascript:void(0)" class="flex gap-1 items-center text-dark dark:text-darklink text-hover">
+                                                            <i class="ti ti-thumb-up text-xl"></i>
+                                                            <span class="text-base font-medium">128</span>
+                                                        </a>
+                                                        <a href="javascript:void(0)" class="flex gap-1 items-center text-dark dark:text-darklink text-hover">
+                                                            <i class="ti ti-message-circle text-xl"></i>
+                                                            <span class="text-base font-medium">12</span>
+                                                        </a>
+                                                          
+                                                    </div>  
+                                                    <a href="javascript:void(0)" class="ms-auto text-base text-dark dark:text-darklink font-medium text-hover">Reply</a>            
+                                                </div>
+
+                                                <!-----Comments ends----->
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div id="followers" class="hidden" role="tabpanel" aria-labelledby="Followers-tab">
+                                <div class="sm:flex items-center justify-between mt-3 mb-4">
+                                    <h3
+                                        class="mb-3 sm:mb-0 font-semibold text-dark dark:text-white text-2xl gap-2 flex items-center">
+                                        Followers
+                                        <span
+                                            class="flex items-center leading-normal rounded-full bg-secondary  text-xs px-2 py-0.5 font-medium text-white w-fit">20</span>
+                                    </h3>
+                                    <form class="relative">
+                                        <input type="text" class="form-control search-chat py-2 ps-10" id="text-srh"
+                                            placeholder="Search Followers">
+                                        <i
+                                            class="ti ti-search absolute top-1.5 start-0 translate-middle-y text-lg text-dark dark:text-darklink  ms-3"></i>
+                                    </form>
+                                </div>
+
+                                <div class="grid grid-cols-12 gap-6">
+                                    <div class="xl:col-span-4 lg:col-span-6 md:col-span-6 col-span-12">
+                                        <div class="card">
+                                            <div class="card-body py-5 flex items-center gap-4">
+                                                <img src="@@webRoot/assets/images/profile/user-8.jpg" alt=""
+                                                    class="rounded-full h-10 w-10">
+                                                <div class="">
+                                                    <h5
+                                                        class="text-lg mb-0 leading-normal">
+                                                        Betty Adams</h5>
+                                                    <span class="text-xs text-bodytext dark:text-darklink
+                                                  flex items-center gap-1"><i
+                                                            class="ti ti-map-pin text-sm  text-bodytext dark:text-darklink"></i>Sint
+                                                        Maarten</span>
+                                                </div>
+                                                <button
+                                                    class="btn ms-auto btn-outline-primary py-1 px-2">Follow</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="xl:col-span-4 lg:col-span-6 md:col-span-6 col-span-12">
+                                        <div class="card">
+                                            <div class="card-body py-5 flex items-center gap-4">
+                                                <img src="@@webRoot/assets/images/profile/user-2.jpg" alt=""
+                                                    class="rounded-full h-10 w-10">
+                                                <div class="">
+                                                    <h5
+                                                        class="text-lg mb-0 leading-normal">
+                                                        Virginia Wong</h5>
+                                                    <span class="text-xs text-bodytext dark:text-darklink
+                                                  flex items-center gap-1"><i
+                                                            class="ti ti-map-pin text-sm  text-bodytext dark:text-darklink"></i>Tunesia</span>
+                                                </div>
+                                                <button
+                                                    class="btn ms-auto btn-outline-primary py-1 px-2">Follow</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="xl:col-span-4 lg:col-span-6 md:col-span-6 col-span-12">
+                                        <div class="card">
+                                            <div class="card-body py-5 flex items-center gap-4">
+                                                <img src="@@webRoot/assets/images/profile/user-3.jpg" alt=""
+                                                    class="rounded-full h-10 w-10">
+                                                <div class="">
+                                                    <h5
+                                                        class="text-lg mb-0 leading-normal">
+                                                        Birdie Burgess</h5>
+                                                    <span class="text-xs text-bodytext dark:text-darklink
+                                                  flex items-center gap-1"><i
+                                                            class="ti ti-map-pin text-sm  text-bodytext dark:text-darklink"></i>Algeria</span>
+                                                </div>
+                                                <button class="btn ms-auto py-1 px-2">Followed</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class=" xl:col-span-4 lg:col-span-6 md:col-span-6 col-span-12">
+                                        <div class="card">
+                                            <div class="card-body py-5 flex items-center gap-4">
+                                                <img src="@@webRoot/assets/images/profile/user-4.jpg" alt=""
+                                                    class="rounded-full h-10 w-10" width="40" height="40">
+                                                <div>
+                                                    <h5
+                                                        class="text-lg mb-0 leading-normal">
+                                                        Steven</h5>
+                                                    <span class="text-xs text-bodytext dark:text-darklink
+                                                  flex items-center gap-1"><i
+                                                            class="ti ti-map-pin text-sm  text-bodytext dark:text-darklink"></i>Malaysia</span>
+                                                </div>
+                                                <button class="btn ms-auto py-1 px-2">Followed</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class=" xl:col-span-4 lg:col-span-6 md:col-span-6 col-span-12">
+                                        <div class="card">
+                                            <div class="card-body py-5 flex items-center gap-4">
+                                                <img src="@@webRoot/assets/images/profile/user-5.jpg" alt=""
+                                                    class="rounded-full h-10 w-10" width="40" height="40">
+                                                <div>
+                                                    <h5
+                                                        class="text-lg mb-0 leading-normal">
+                                                       Rhodes</h5>
+                                                    <span class="text-xs text-bodytext dark:text-darklink
+                                                  flex items-center gap-1"><i
+                                                            class="ti ti-map-pin text-sm  text-bodytext dark:text-darklink"></i>Grenada</span>
+                                                </div>
+                                                <button class="btn ms-auto py-1 px-2">Followed</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class=" xl:col-span-4 lg:col-span-6 md:col-span-6 col-span-12">
+                                        <div class="card">
+                                            <div class="card-body py-5 flex items-center gap-4">
+                                                <img src="@@webRoot/assets/images/profile/user-6.jpg" alt=""
+                                                    class="rounded-full h-10 w-10" width="40" height="40">
+                                                <div>
+                                                    <h5
+                                                        class="text-lg mb-0 leading-normal">
+                                                        Effie Gross</h5>
+                                                    <span class="text-xs text-bodytext dark:text-darklink
+                                                  flex items-center gap-1"><i
+                                                            class="ti ti-map-pin text-sm  text-bodytext dark:text-darklink"></i>Azerbaijan</span>
+                                                </div>
+                                                <button
+                                                    class="btn ms-auto btn-outline-primary py-1 px-2">Follow</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class=" xl:col-span-4 lg:col-span-6 md:col-span-6 col-span-12">
+                                        <div class="card">
+                                            <div class="card-body py-5 flex items-center gap-4">
+                                                <img src="@@webRoot/assets/images/profile/user-7.jpg" alt=""
+                                                    class="rounded-full h-10 w-10" width="40" height="40">
+                                                <div>
+                                                    <h5
+                                                        class="text-lg mb-0 leading-normal">
+                                                        Barton</h5>
+                                                    <span class="text-xs text-bodytext dark:text-darklink
+                                                  flex items-center gap-1"><i
+                                                            class="ti ti-map-pin text-sm  text-bodytext dark:text-darklink"></i>French
+                                                        Southern </span>
+                                                </div>
+                                                <button
+                                                    class="btn ms-auto btn-outline-primary py-1 px-2">Follow</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class=" xl:col-span-4 lg:col-span-6 md:col-span-6 col-span-12">
+                                        <div class="card">
+                                            <div class="card-body py-5 flex items-center gap-4">
+                                                <img src="@@webRoot/assets/images/profile/user-8.jpg" alt=""
+                                                    class="rounded-full h-10 w-10" width="40" height="40">
+                                                <div>
+                                                    <h5
+                                                        class="text-lg mb-0 leading-normal">
+                                                        John</h5>
+                                                    <span class="text-xs text-bodytext dark:text-darklink
+                                                  flex items-center gap-1"><i
+                                                            class="ti ti-map-pin text-sm  text-bodytext dark:text-darklink"></i>Nauru</span>
+                                                </div>
+                                                <button class="btn ms-auto py-1 px-2">Followed</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class=" xl:col-span-4 lg:col-span-6 md:col-span-6 col-span-12">
+                                        <div class="card">
+                                            <div class="card-body py-5 flex items-center gap-4">
+                                                <img src="@@webRoot/assets/images/profile/user-9.jpg" alt=""
+                                                    class="rounded-full h-10 w-10" width="40" height="40">
+                                                <div>
+                                                    <h5
+                                                        class="text-lg mb-0 leading-normal">
+                                                        Elizabeth </h5>
+                                                    <span class="text-xs text-bodytext dark:text-darklink
+                                                  flex items-center gap-1"><i
+                                                            class="ti ti-map-pin text-sm  text-bodytext dark:text-darklink"></i>Djibouti</span>
+                                                </div>
+                                                <button class="btn ms-auto py-1 px-2">Followed</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class=" xl:col-span-4 lg:col-span-6 md:col-span-6 col-span-12">
+                                        <div class="card">
+                                            <div class="card-body py-5 flex items-center gap-4">
+                                                <img src="@@webRoot/assets/images/profile/user-10.jpg" alt=""
+                                                    class="rounded-full h-10 w-10" width="40" height="40">
+                                                <div>
+                                                    <h5
+                                                        class="text-lg mb-0 leading-normal">
+                                                        Jon Cohen</h5>
+                                                    <span class="text-xs text-bodytext dark:text-darklink
+                                                  flex items-center gap-1"><i
+                                                            class="ti ti-map-pin text-sm  text-bodytext dark:text-darklink"></i>United
+                                                        States</span>
+                                                </div>
+                                                <button class="btn ms-auto py-1 px-2">Followed</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class=" xl:col-span-4 lg:col-span-6 md:col-span-6 col-span-12">
+                                        <div class="card">
+                                            <div class="card-body py-5 flex items-center gap-4">
+                                                <img src="@@webRoot/assets/images/profile/user-8.jpg" alt=""
+                                                    class="rounded-full h-10 w-10" width="40" height="40">
+                                                <div>
+                                                    <h5
+                                                        class="text-lg mb-0 leading-normal">
+                                                        Dwayn</h5>
+                                                    <span class="text-xs text-bodytext dark:text-darklink
+                                                  flex items-center gap-1"><i
+                                                            class="ti ti-map-pin text-sm  text-bodytext dark:text-darklink"></i>Equatorial
+                                                        Guinea</span>
+                                                </div>
+                                                <button
+                                                    class="btn ms-auto py-1 px-2">Follow</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class=" xl:col-span-4 lg:col-span-6 md:col-span-6 col-span-12">
+                                        <div class="card">
+                                            <div class="card-body py-5 flex items-center gap-4">
+                                                <img src="@@webRoot/assets/images/profile/user-2.jpg" alt=""
+                                                    class="rounded-full h-10 w-10" width="40" height="40">
+                                                <div>
+                                                    <h5
+                                                        class="text-lg mb-0 leading-normal">
+                                                        Willie </h5>
+                                                    <span class="text-xs text-bodytext dark:text-darklink
+                                                  flex items-center gap-1"><i
+                                                            class="ti ti-map-pin text-sm  text-bodytext dark:text-darklink"></i>Solomon
+                                                        Islands</span>
+                                                </div>
+                                                <button class="btn ms-auto py-1 px-2">Followed</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class=" xl:col-span-4 lg:col-span-6 md:col-span-6 col-span-12">
+                                        <div class="card">
+                                            <div class="card-body py-5 flex items-center gap-4">
+                                                <img src="@@webRoot/assets/images/profile/user-3.jpg" alt=""
+                                                    class="rounded-full h-10 w-10" width="40" height="40">
+                                                <div>
+                                                    <h5
+                                                        class="text-lg mb-0 leading-normal">
+                                                        Harvey</h5>
+                                                    <span class="text-xs text-bodytext dark:text-darklink
+                                                  flex items-center gap-1"><i
+                                                            class="ti ti-map-pin text-sm  text-bodytext dark:text-darklink"></i>Uruguay</span>
+                                                </div>
+                                                <button class="btn ms-auto py-1 px-2">Followed</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class=" xl:col-span-4 lg:col-span-6 md:col-span-6 col-span-12">
+                                        <div class="card">
+                                            <div class="card-body py-5 flex items-center gap-4">
+                                                <img src="@@webRoot/assets/images/profile/user-4.jpg" alt=""
+                                                    class="rounded-full h-10 w-10" width="40" height="40">
+                                                <div>
+                                                    <h5
+                                                        class="text-lg mb-0 leading-normal">
+                                                        Alice George</h5>
+                                                    <span class="text-xs text-bodytext dark:text-darklink
+                                                  flex items-center gap-1"><i
+                                                            class="ti ti-map-pin text-sm  text-bodytext dark:text-darklink"></i>Madagascar</span>
+                                                </div>
+                                                <button
+                                                    class="btn ms-auto btn-outline-primary py-1 px-2">Follow</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class=" xl:col-span-4 lg:col-span-6 md:col-span-6 col-span-12">
+                                        <div class="card">
+                                            <div class="card-body py-5 flex items-center gap-4">
+                                                <img src="@@webRoot/assets/images/profile/user-5.jpg" alt=""
+                                                    class="rounded-full h-10 w-10" width="40" height="40">
+                                                <div>
+                                                    <h5
+                                                        class="text-lg mb-0 leading-normal">
+                                                        Simpson</h5>
+                                                    <span class="text-xs text-bodytext dark:text-darklink
+                                                  flex items-center gap-1"><i
+                                                            class="ti ti-map-pin text-sm  text-bodytext dark:text-darklink"></i>Bahrain</span>
+                                                </div>
+                                                <button class="btn ms-auto py-1 px-2">Followed</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class=" xl:col-span-4 lg:col-span-6 md:col-span-6 col-span-12">
+                                        <div class="card">
+                                            <div class="card-body py-5 flex items-center gap-4">
+                                                <img src="@@webRoot/assets/images/profile/user-3.jpg" alt=""
+                                                    class="rounded-full h-10 w-10" width="40" height="40">
+                                                <div>
+                                                    <h5
+                                                        class="text-lg mb-0 leading-normal">
+                                                        Francis Barber</h5>
+                                                    <span class="text-xs text-bodytext dark:text-darklink
+                                                  flex items-center gap-1"><i
+                                                            class="ti ti-map-pin text-sm  text-bodytext dark:text-darklink"></i>Colombia</span>
+                                                </div>
+                                                <button
+                                                    class="btn ms-auto py-1 px-2 btn-outline-primary">Follow</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class=" xl:col-span-4 lg:col-span-6 md:col-span-6 col-span-12">
+                                        <div class="card">
+                                            <div class="card-body py-5 flex items-center gap-4">
+                                                <img src="@@webRoot/assets/images/profile/user-7.jpg" alt=""
+                                                    class="rounded-full h-10 w-10" width="40" height="40">
+                                                <div>
+                                                    <h5
+                                                        class="text-lg mb-0 leading-normal">
+                                                        Christofer</h5>
+                                                    <span class="text-xs text-bodytext dark:text-darklink
+                                                  flex items-center gap-1"><i
+                                                            class="ti ti-map-pin text-sm  text-bodytext dark:text-darklink"></i>Maldives</span>
+                                                </div>
+                                                <button class="btn ms-auto py-1 px-2">Followed</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class=" xl:col-span-4 lg:col-span-6 md:col-span-6 col-span-12">
+                                        <div class="card">
+                                            <div class="card-body py-5 flex items-center gap-4">
+                                                <img src="@@webRoot/assets/images/profile/user-8.jpg" alt=""
+                                                    class="rounded-full h-10 w-10" width="40" height="40">
+                                                <div>
+                                                    <h5
+                                                        class="text-lg mb-0 leading-normal">
+                                                        Nelson</h5>
+                                                    <span class="text-xs text-bodytext dark:text-darklink
+                                                  flex items-center gap-1"><i
+                                                            class="ti ti-map-pin text-sm  text-bodytext dark:text-darklink"></i>St.
+                                                        Helena</span>
+                                                </div>
+                                                <button class="btn ms-auto py-1 px-2">Followed</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class=" xl:col-span-4 lg:col-span-6 md:col-span-6 col-span-12">
+                                        <div class="card">
+                                            <div class="card-body py-5 flex items-center gap-4">
+                                                <img src="@@webRoot/assets/images/profile/user-9.jpg" alt=""
+                                                    class="rounded-full h-10 w-10" width="40" height="40">
+                                                <div>
+                                                    <h5
+                                                        class="text-lg mb-0 leading-normal">
+                                                        Marlyn</h5>
+                                                    <span class="text-xs text-bodytext dark:text-darklink
+                                                  flex items-center gap-1"><i
+                                                            class="ti ti-map-pin text-sm  text-bodytext dark:text-darklink"></i>South
+                                                        Africa</span>
+                                                </div>
+                                                <button class="btn ms-auto py-1 px-2">Followed</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class=" xl:col-span-4 lg:col-span-6 md:col-span-6 col-span-12">
+                                        <div class="card">
+                                            <div class="card-body py-5 flex items-center gap-4">
+                                                <img src="@@webRoot/assets/images/profile/user-10.jpg" alt=""
+                                                    class="rounded-full h-10 w-10" width="40" height="40">
+                                                <div>
+                                                    <h5
+                                                        class="text-lg mb-0 leading-normal">
+                                                        Alica</h5>
+                                                    <span class="text-xs text-bodytext dark:text-darklink
+                                                  flex items-center gap-1"><i
+                                                            class="ti ti-map-pin text-sm  text-bodytext dark:text-darklink"></i>Suriname</span>
+                                                </div>
+                                                <button class="btn ms-auto py-1 px-2">Followed</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+                                </div>
+                            </div>
+                            <div id="friends" class="hidden" role="tabpanel" aria-labelledby="Friends-tab">
+                                <div class="sm:flex items-center justify-between mt-3 mb-4">
+                                    <h3
+                                        class="mb-3 sm:mb-0 font-semibold text-dark dark:text-white text-2xl gap-2 flex items-center">
+                                        Friends
+                                        <span
+                                            class="flex items-center leading-normal rounded-full bg-secondary  text-xs px-2 py-0.5 font-medium text-white w-fit">20</span>
+                                    </h3>
+                                    <form class="relative">
+                                        <input type="text" class="form-control search-chat py-2 ps-10" id="text-srh"
+                                            placeholder="Search Followers">
+                                        <i
+                                            class="ti ti-search absolute top-1.5 start-0 translate-middle-y text-lg text-dark dark:text-darklink  ms-3"></i>
+                                    </form>
+                                </div>
+
+                                <div class="grid grid-cols-12 gap-6">
+                                    <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                                        <div class="card overflow-hidden animate-card">
+                                            <div class="card-body pb-5 text-center">
+                                                <img src="@@webRoot/assets/images/profile/user-7.jpg" alt=""
+                                                    class="rounded-full mb-3 h-20 w-20 mx-auto">
+                                                <h5
+                                                    class="text-lg mb-0 leading-normal">
+                                                    Jonny Adams</h5>
+                                                <span class="text-xs text-dark font-medium dark:text-darklink">Medical
+                                                    Secretary</span>
+                                            </div>
+                                            <ul class="px-3 py-3 bg-lightgray dark:bg-darkprimary flex items-center justify-center mb-0 gap-4 border-t border-border dark:border-darkborder
+                                                ">
+                                                <li class="position-relative">
+                                                    <a class="text-primary text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-facebook"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative ">
+                                                    <a class="text-error text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-instagram"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative">
+                                                    <a class="text-info text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-github"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative">
+                                                    <a class="text-secondary text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-twitter"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                                        <div class="card overflow-hidden animate-card">
+                                            <div class="card-body pb-5 text-center">
+                                                <img src="@@webRoot/assets/images/profile/user-2.jpg" alt=""
+                                                    class="rounded-full mb-3 h-20 w-20 mx-auto">
+                                                <h5
+                                                    class="text-lg mb-0 leading-normal">
+                                                    Inez Lyons</h5>
+                                                <span class="text-xs text-dark font-medium dark:text-darklink">Medical
+                                                    Technician</span>
+                                            </div>
+                                            <ul class="px-3 py-3 bg-lightgray dark:bg-darkprimary flex items-center justify-center mb-0 gap-4 border-t border-border dark:border-darkborder
+                                                ">
+                                                <li class="position-relative">
+                                                    <a class="text-primary text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-facebook"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative ">
+                                                    <a class="text-error text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-instagram"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative">
+                                                    <a class="text-info text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-github"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative">
+                                                    <a class="text-secondary text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-twitter"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                                        <div class="card overflow-hidden animate-card">
+                                            <div class="card-body pb-5 text-center">
+                                                <img src="@@webRoot/assets/images/profile/user-3.jpg" alt=""
+                                                    class="rounded-full mb-3 h-20 w-20 mx-auto">
+                                                <h5
+                                                    class="text-lg mb-0 leading-normal">
+                                                    Steve Bryan</h5>
+                                                <span class="text-xs text-dark font-medium dark:text-darklink">Preschool
+                                                    Teacher</span>
+                                            </div>
+                                            <ul class="px-3 py-3 bg-lightgray dark:bg-darkprimary flex items-center justify-center mb-0 gap-4 border-t border-border dark:border-darkborder
+                                                ">
+                                                <li class="position-relative">
+                                                    <a class="text-primary text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-facebook"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative ">
+                                                    <a class="text-error text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-instagram"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative">
+                                                    <a class="text-info text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-github"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative">
+                                                    <a class="text-secondary text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-twitter"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                                        <div class="card overflow-hidden animate-card">
+                                            <div class="card-body pb-5 text-center">
+                                                <img src="@@webRoot/assets/images/profile/user-4.jpg" alt=""
+                                                    class="rounded-full mb-3 h-20 w-20 mx-auto">
+                                                <h5
+                                                    class="text-lg mb-0 leading-normal">
+                                                    Smash Bryant</h5>
+                                                <span class="text-xs text-dark font-medium dark:text-darklink">Legal
+                                                    Secretary</span>
+                                            </div>
+                                            <ul class="px-3 py-3 bg-lightgray dark:bg-darkprimary flex items-center justify-center mb-0 gap-4 border-t border-border dark:border-darkborder
+                                                ">
+                                                <li class="position-relative">
+                                                    <a class="text-primary text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-facebook"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative ">
+                                                    <a class="text-error text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-instagram"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative">
+                                                    <a class="text-info text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-github"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative">
+                                                    <a class="text-secondary text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-twitter"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                                        <div class="card overflow-hidden animate-card">
+                                            <div class="card-body pb-5 text-center">
+                                                <img src="@@webRoot/assets/images/profile/user-5.jpg" alt=""
+                                                    class="rounded-full mb-3 h-20 w-20 mx-auto">
+                                                <h5
+                                                    class="text-lg mb-0 leading-normal">
+                                                    Paul Benson</h5>
+                                                <span class="text-xs text-dark font-medium dark:text-darklink">Safety
+                                                    Engineer</span>
+                                            </div>
+                                            <ul class="px-3 py-3 bg-lightgray dark:bg-darkprimary flex items-center justify-center mb-0 gap-4 border-t border-border dark:border-darkborder
+                                                ">
+                                                <li class="position-relative">
+                                                    <a class="text-primary text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-facebook"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative ">
+                                                    <a class="text-error text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-instagram"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative">
+                                                    <a class="text-info text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-github"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative">
+                                                    <a class="text-secondary text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-twitter"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                                        <div class="card overflow-hidden animate-card">
+                                            <div class="card-body pb-5 text-center">
+                                                <img src="@@webRoot/assets/images/profile/user-6.jpg" alt=""
+                                                    class="rounded-full mb-3 h-20 w-20 mx-auto">
+                                                <h5
+                                                    class="text-lg mb-0 leading-normal">
+                                                    Roberta Francis</h5>
+                                                <span class="text-xs text-dark font-medium dark:text-darklink">Nursing
+                                                    Administrator</span>
+                                            </div>
+                                            <ul class="px-3 py-3 bg-lightgray dark:bg-darkprimary flex items-center justify-center mb-0 gap-4 border-t border-border dark:border-darkborder
+                                                ">
+                                                <li class="position-relative">
+                                                    <a class="text-primary text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-facebook"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative ">
+                                                    <a class="text-error text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-instagram"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative">
+                                                    <a class="text-info text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-github"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative">
+                                                    <a class="text-secondary text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-twitter"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                                        <div class="card overflow-hidden animate-card">
+                                            <div class="card-body pb-5 text-center">
+                                                <img src="@@webRoot/assets/images/profile/user-7.jpg" alt=""
+                                                    class="rounded-full mb-3 h-20 w-20 mx-auto">
+                                                <h5
+                                                    class="text-lg mb-0 leading-normal">
+                                                    Billy Rogers</h5>
+                                                <span class="text-xs text-dark font-medium dark:text-darklink">Legal
+                                                    Secretary</span>
+                                            </div>
+                                            <ul class="px-3 py-3 bg-lightgray dark:bg-darkprimary flex items-center justify-center mb-0 gap-4 border-t border-border dark:border-darkborder
+                                                ">
+                                                <li class="position-relative">
+                                                    <a class="text-primary text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-facebook"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative ">
+                                                    <a class="text-error text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-instagram"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative">
+                                                    <a class="text-info text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-github"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative">
+                                                    <a class="text-secondary text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-twitter"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                                        <div class="card overflow-hidden animate-card">
+                                            <div class="card-body pb-5 text-center">
+                                                <img src="@@webRoot/assets/images/profile/user-8.jpg" alt=""
+                                                    class="rounded-full mb-3 h-20 w-20 mx-auto">
+                                                <h5
+                                                    class="text-lg mb-0 leading-normal">
+                                                    Rian Brewer</h5>
+                                                <span class="text-xs text-dark font-medium dark:text-darklink">Comptroller</span>
+                                            </div>
+                                            <ul class="px-3 py-3 bg-lightgray dark:bg-darkprimary flex items-center justify-center mb-0 gap-4 border-t border-border dark:border-darkborder
+                                                ">
+                                                <li class="position-relative">
+                                                    <a class="text-primary text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-facebook"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative ">
+                                                    <a class="text-error text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-instagram"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative">
+                                                    <a class="text-info text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-github"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative">
+                                                    <a class="text-secondary text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-twitter"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                                        <div class="card overflow-hidden animate-card">
+                                            <div class="card-body pb-5 text-center">
+                                                <img src="@@webRoot/assets/images/profile/user-9.jpg" alt=""
+                                                    class="rounded-full mb-3 h-20 w-20 mx-auto">
+                                                <h5
+                                                    class="text-lg mb-0 leading-normal">
+                                                    Patricka Knight</h5>
+                                                <span class="text-xs text-dark font-medium dark:text-darklink">Retail Store
+                                                    Manager</span>
+                                            </div>
+                                            <ul class="px-3 py-3 bg-lightgray dark:bg-darkprimary flex items-center justify-center mb-0 gap-4 border-t border-border dark:border-darkborder
+                                                ">
+                                                <li class="position-relative">
+                                                    <a class="text-primary text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-facebook"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative ">
+                                                    <a class="text-error text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-instagram"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative">
+                                                    <a class="text-info text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-github"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative">
+                                                    <a class="text-secondary text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-twitter"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                                        <div class="card overflow-hidden animate-card">
+                                            <div class="card-body pb-5 text-center">
+                                                <img src="@@webRoot/assets/images/profile/user-10.jpg" alt=""
+                                                    class="rounded-full mb-3 h-20 w-20 mx-auto">
+                                                <h5
+                                                    class="text-lg mb-0 leading-normal">
+                                                    Francis Sutton</h5>
+                                                <span class="text-xs text-dark font-medium dark:text-darklink">Astronomer</span>
+                                            </div>
+                                            <ul class="px-3 py-3 bg-lightgray dark:bg-darkprimary flex items-center justify-center mb-0 gap-4 border-t border-border dark:border-darkborder
+                                                ">
+                                                <li class="position-relative">
+                                                    <a class="text-primary text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-facebook"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative ">
+                                                    <a class="text-error text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-instagram"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative">
+                                                    <a class="text-info text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-github"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative">
+                                                    <a class="text-secondary text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-twitter"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                                        <div class="card overflow-hidden animate-card">
+                                            <div class="card-body pb-5 text-center">
+                                                <img src="@@webRoot/assets/images/profile/user-5.jpg" alt=""
+                                                    class="rounded-full mb-3 h-20 w-20 mx-auto">
+                                                <h5
+                                                    class="text-lg mb-0 leading-normal">
+                                                    Bernice Henry</h5>
+                                                <span class="text-xs text-dark font-medium dark:text-darklink">Security
+                                                    Consultant</span>
+                                            </div>
+                                            <ul class="px-3 py-3 bg-lightgray dark:bg-darkprimary flex items-center justify-center mb-0 gap-4 border-t border-border dark:border-darkborder
+                                                ">
+                                                <li class="position-relative">
+                                                    <a class="text-primary text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-facebook"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative ">
+                                                    <a class="text-error text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-instagram"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative">
+                                                    <a class="text-info text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-github"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative">
+                                                    <a class="text-secondary text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-twitter"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                                        <div class="card overflow-hidden animate-card">
+                                            <div class="card-body pb-5 text-center">
+                                                <img src="@@webRoot/assets/images/profile/user-2.jpg" alt=""
+                                                    class="rounded-full mb-3 h-20 w-20 mx-auto">
+                                                <h5
+                                                    class="text-lg mb-0 leading-normal">
+                                                    Estella Garcia</h5>
+                                                <span class="text-xs text-dark font-medium dark:text-darklink">Lead Software Test
+                                                    Engineer</span>
+                                            </div>
+                                            <ul class="px-3 py-3 bg-lightgray dark:bg-darkprimary flex items-center justify-center mb-0 gap-4 border-t border-border dark:border-darkborder
+                                                ">
+                                                <li class="position-relative">
+                                                    <a class="text-primary text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-facebook"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative ">
+                                                    <a class="text-error text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-instagram"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative">
+                                                    <a class="text-info text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-github"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative">
+                                                    <a class="text-secondary text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-twitter"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                                        <div class="card overflow-hidden animate-card">
+                                            <div class="card-body pb-5 text-center">
+                                                <img src="@@webRoot/assets/images/profile/user-3.jpg" alt=""
+                                                    class="rounded-full mb-3 h-20 w-20 mx-auto">
+                                                <h5
+                                                    class="text-lg mb-0 leading-normal">
+                                                    Norman Moran</h5>
+                                                <span class="text-xs text-dark font-medium dark:text-darklink">Engineer
+                                                    Technician</span>
+                                            </div>
+                                            <ul class="px-3 py-3 bg-lightgray dark:bg-darkprimary flex items-center justify-center mb-0 gap-4 border-t border-border dark:border-darkborder
+                                                ">
+                                                <li class="position-relative">
+                                                    <a class="text-primary text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-facebook"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative ">
+                                                    <a class="text-error text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-instagram"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative">
+                                                    <a class="text-info text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-github"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative">
+                                                    <a class="text-secondary text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-twitter"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                                        <div class="card overflow-hidden animate-card">
+                                            <div class="card-body pb-5 text-center">
+                                                <img src="@@webRoot/assets/images/profile/user-4.jpg" alt=""
+                                                    class="rounded-full mb-3 h-20 w-20 mx-auto">
+                                                <h5
+                                                    class="text-lg mb-0 leading-normal">
+                                                    Jesson Matthews</h5>
+                                                <span class="text-xs text-dark font-medium dark:text-darklink">Lead Software
+                                                    Engineer</span>
+                                            </div>
+                                            <ul class="px-3 py-3 bg-lightgray dark:bg-darkprimary flex items-center justify-center mb-0 gap-4 border-t border-border dark:border-darkborder
+                                                ">
+                                                <li class="position-relative">
+                                                    <a class="text-primary text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-facebook"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative ">
+                                                    <a class="text-error text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-instagram"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative">
+                                                    <a class="text-info text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-github"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative">
+                                                    <a class="text-secondary text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-twitter"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                                        <div class="card overflow-hidden animate-card">
+                                            <div class="card-body pb-5 text-center">
+                                                <img src="@@webRoot/assets/images/profile/user-5.jpg" alt=""
+                                                    class="rounded-full mb-3 h-20 w-20 mx-auto">
+                                                <h5
+                                                    class="text-lg mb-0 leading-normal">
+                                                    Mcyan Perez</h5>
+                                                <span class="text-xs text-dark font-medium dark:text-darklink">Special Education
+                                                    Teacher</span>
+                                            </div>
+                                            <ul class="px-3 py-3 bg-lightgray dark:bg-darkprimary flex items-center justify-center mb-0 gap-4 border-t border-border dark:border-darkborder
+                                                ">
+                                                <li class="position-relative">
+                                                    <a class="text-primary text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-facebook"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative ">
+                                                    <a class="text-error text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-instagram"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative">
+                                                    <a class="text-info text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-github"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative">
+                                                    <a class="text-secondary text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-twitter"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                                        <div class="card overflow-hidden animate-card">
+                                            <div class="card-body pb-5 text-center">
+                                                <img src="@@webRoot/assets/images/profile/user-6.jpg" alt=""
+                                                    class="rounded-full mb-3 h-20 w-20 mx-auto">
+                                                <h5
+                                                    class="text-lg mb-0 leading-normal">
+                                                    Liily Martin</h5>
+                                                <span class="text-xs text-dark font-medium dark:text-darklink">Transportation
+                                                    Manager</span>
+                                            </div>
+                                            <ul class="px-3 py-3 bg-lightgray dark:bg-darkprimary flex items-center justify-center mb-0 gap-4 border-t border-border dark:border-darkborder
+                                                ">
+                                                <li class="position-relative">
+                                                    <a class="text-primary text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-facebook"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative ">
+                                                    <a class="text-error text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-instagram"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative">
+                                                    <a class="text-info text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-github"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative">
+                                                    <a class="text-secondary text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-twitter"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                                        <div class="card overflow-hidden animate-card">
+                                            <div class="card-body pb-5 text-center">
+                                                <img src="@@webRoot/assets/images/profile/user-7.jpg" alt=""
+                                                    class="rounded-full mb-3 h-20 w-20 mx-auto">
+                                                <h5
+                                                    class="text-lg mb-0 leading-normal">
+                                                    Elvsh Wong</h5>
+                                                <span class="text-xs text-dark font-medium dark:text-darklink">Logistics
+                                                    Manager</span>
+                                            </div>
+                                            <ul class="px-3 py-3 bg-lightgray dark:bg-darkprimary flex items-center justify-center mb-0 gap-4 border-t border-border dark:border-darkborder
+                                                ">
+                                                <li class="position-relative">
+                                                    <a class="text-primary text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-facebook"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative ">
+                                                    <a class="text-error text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-instagram"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative">
+                                                    <a class="text-info text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-github"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative">
+                                                    <a class="text-secondary text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-twitter"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                                        <div class="card overflow-hidden animate-card">
+                                            <div class="card-body pb-5 text-center">
+                                                <img src="@@webRoot/assets/images/profile/user-8.jpg" alt=""
+                                                    class="rounded-full mb-3 h-20 w-20 mx-auto">
+                                                <h5
+                                                    class="text-lg mb-0 leading-normal">
+                                                    Edith Taylor</h5>
+                                                <span class="text-xs text-dark font-medium dark:text-darklink">Union
+                                                    Representative</span>
+                                            </div>
+                                            <ul class="px-3 py-3 bg-lightgray dark:bg-darkprimary flex items-center justify-center mb-0 gap-4 border-t border-border dark:border-darkborder
+                                                ">
+                                                <li class="position-relative">
+                                                    <a class="text-primary text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-facebook"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative ">
+                                                    <a class="text-error text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-instagram"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative">
+                                                    <a class="text-info text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-github"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative">
+                                                    <a class="text-secondary text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-twitter"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                                        <div class="card overflow-hidden animate-card">
+                                            <div class="card-body pb-5 text-center">
+                                                <img src="@@webRoot/assets/images/profile/user-9.jpg" alt=""
+                                                    class="rounded-full mb-3 h-20 w-20 mx-auto">
+                                                <h5
+                                                    class="text-lg mb-0 leading-normal">
+                                                    Violet Jackson</h5>
+                                                <span class="text-xs text-dark font-medium dark:text-darklink">Agricultural
+                                                    Inspector</span>
+                                            </div>
+                                            <ul class="px-3 py-3 bg-lightgray dark:bg-darkprimary flex items-center justify-center mb-0 gap-4 border-t border-border dark:border-darkborder
+                                                ">
+                                                <li class="position-relative">
+                                                    <a class="text-primary text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-facebook"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative ">
+                                                    <a class="text-error text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-instagram"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative">
+                                                    <a class="text-info text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-github"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative">
+                                                    <a class="text-secondary text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-twitter"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                                        <div class="card overflow-hidden animate-card">
+                                            <div class="card-body pb-5 text-center">
+                                                <img src="@@webRoot/assets/images/profile/user-10.jpg" alt=""
+                                                    class="rounded-full mb-3 h-20 w-20 mx-auto">
+                                                <h5
+                                                    class="text-lg mb-0 leading-normal">
+                                                    Phoebe Owens</h5>
+                                                <span class="text-xs text-dark font-medium dark:text-darklink">Safety
+                                                    Engineer</span>
+                                            </div>
+                                            <ul class="px-3 py-3 bg-lightgray dark:bg-darkprimary flex items-center justify-center mb-0 gap-4 border-t border-border dark:border-darkborder
+                                                ">
+                                                <li class="position-relative">
+                                                    <a class="text-primary text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-facebook"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative ">
+                                                    <a class="text-error text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-instagram"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative">
+                                                    <a class="text-info text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-github"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="position-relative">
+                                                    <a class="text-secondary text-lg" href="javascript:void(0)">
+                                                        <i class="ti ti-brand-twitter"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                            <div id="gallery" class="hidden" role="tabpanel" aria-labelledby="Gallery-tab">
+                                <div class="sm:flex items-center justify-between mt-3 mb-4">
+                                    <h3
+                                        class="mb-3 sm:mb-0 font-semibold text-dark dark:text-white text-2xl gap-2 flex items-center">
+                                        Gallery
+                                        <span
+                                            class="flex items-center leading-normal rounded-full bg-secondary  text-xs px-2 py-0.5 font-medium text-white w-fit">12</span>
+                                    </h3>
+                                    <form class="relative">
+                                        <input type="text" class="form-control search-chat py-2 ps-10" id="text-srh"
+                                            placeholder="Search Followers">
+                                        <i
+                                            class="ti ti-search absolute top-1.5 start-0 translate-middle-y text-lg text-dark dark:text-darklink  ms-3"></i>
+                                    </form>
+                                </div>
+
+                                <div class="grid grid-cols-12 gap-6 mt-7">
+                                    <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                                        <div class="card overflow-hidden rounded-md animate-card">
+                                            <div class="card-body p-0">
+                                                <img src="@@webRoot/assets/images/products/s1.jpg" alt=""
+                                                    class="w-full max-w-full object-cover h-56">
+                                                <div class="p-6 flex items-center justify-between">
+                                                    <div>
+                                                        <h6 class="text-base">
+                                                            Isuava wakceajo fe.jpg</h6>
+                                                        <span class="text-xs text-dark font-medium dark:text-darklink
+                                                  ">Wed, Dec 14, 2023</span>
+                                                    </div>
+                                                    <div>
+                                                        <div class="hs-dropdown relative inline-flex">
+                                                            <button id="hs-dropdown-custom-icon-trigger " type="button"
+                                                                class="hs-dropdown-toggle flex justify-center items-center ">
+                                                                <i
+                                                                    class="ti ti-dots-vertical text-bodytext dark:text-darklink hover:text-primary"></i>
+                                                            </button>
+
+                                                            <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0  hidden min-w-40 z-[2]"
+                                                                aria-labelledby="hs-dropdown-custom-icon-trigger">
+                                                                <div class="flex flex-col">
+                                                                    <div
+                                                                        class="py-2 px-4 bg-hover">
+                                                                        <a class=" flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-link text-base"></i>Isuava
+                                                                            wakceajo fe.jpg
+                                                                        </a>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                                        <div class="card  animate-card overflow-hidden rounded-2">
+                                            <div class="card-body p-0">
+                                                <img src="@@webRoot/assets/images/products/s2.jpg" alt=""
+                                                    class="w-full max-w-full object-cover h-56">
+                                                <div class="p-6 flex items-center justify-between">
+                                                    <div>
+                                                        <h6 class="text-base">Ip
+                                                            docmowe vemremrif.jpg</h6>
+                                                        <span class="text-xs text-dark font-medium dark:text-darklink">Wed, Dec 14,
+                                                            2023</span>
+                                                    </div>
+                                                    <div>
+                                                        <div class="hs-dropdown relative inline-flex">
+                                                            <button id="hs-dropdown-custom-icon-trigger " type="button"
+                                                                class="hs-dropdown-toggle flex justify-center items-center ">
+                                                                <i
+                                                                    class="ti ti-dots-vertical text-bodytext dark:text-darklink hover:text-primary"></i>
+                                                            </button>
+
+                                                            <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0  hidden min-w-40 z-[2]"
+                                                                aria-labelledby="hs-dropdown-custom-icon-trigger">
+                                                                <div class="flex flex-col">
+                                                                    <div
+                                                                        class="py-2 px-4 bg-hover">
+                                                                        <a class=" flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-link text-base"></i>docmowe
+                                                                            vemremrif.jpg
+                                                                        </a>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                                        <div class="card  animate-card overflow-hidden rounded-2">
+                                            <div class="card-body p-0">
+                                                <img src="@@webRoot/assets/images/products/s3.jpg" alt=""
+                                                    class="w-full max-w-full object-cover h-56">
+                                                <div class="p-6 flex items-center justify-between">
+                                                    <div>
+                                                        <h6 class="text-base">
+                                                            Duan cosudos utaku.jpg</h6>
+                                                        <span class="text-xs text-dark font-medium dark:text-darklink">Wed, Dec 14,
+                                                            2023</span>
+                                                    </div>
+                                                    <div>
+                                                        <div class="hs-dropdown relative inline-flex">
+                                                            <button id="hs-dropdown-custom-icon-trigger " type="button"
+                                                                class="hs-dropdown-toggle flex justify-center items-center ">
+                                                                <i
+                                                                    class="ti ti-dots-vertical text-bodytext dark:text-darklink hover:text-primary"></i>
+                                                            </button>
+
+                                                            <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0  hidden min-w-40 z-[2]"
+                                                                aria-labelledby="hs-dropdown-custom-icon-trigger">
+                                                                <div class="flex flex-col">
+                                                                    <div
+                                                                        class="py-2 px-4 bg-hover">
+                                                                        <a class=" flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-link text-base"></i>Duan
+                                                                            cosudos utaku.jpg
+                                                                        </a>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                                        <div class="card  animate-card overflow-hidden rounded-2">
+                                            <div class="card-body p-0">
+                                                <img src="@@webRoot/assets/images/products/s4.jpg" alt=""
+                                                    class="w-full max-w-full object-cover h-56">
+                                                <div class="p-6 flex items-center justify-between">
+                                                    <div>
+                                                        <h6 class="text-base">Fu
+                                                            netbuv oggu.jpg</h6>
+                                                        <span class="text-xs text-dark font-medium dark:text-darklink">Wed, Dec 14,
+                                                            2023</span>
+                                                    </div>
+                                                    <div>
+                                                        <div class="hs-dropdown relative inline-flex">
+                                                            <button id="hs-dropdown-custom-icon-trigger " type="button"
+                                                                class="hs-dropdown-toggle flex justify-center items-center ">
+                                                                <i
+                                                                    class="ti ti-dots-vertical text-bodytext dark:text-darklink hover:text-primary"></i>
+                                                            </button>
+
+                                                            <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0  hidden min-w-40 z-[2]"
+                                                                aria-labelledby="hs-dropdown-custom-icon-trigger">
+                                                                <div class="flex flex-col">
+                                                                    <div
+                                                                        class="py-2 px-4 bg-hover">
+                                                                        <a class=" flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-link text-base"></i>netbuv
+                                                                            oggu.jpg
+                                                                        </a>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                                        <div class="card  animate-card overflow-hidden rounded-2">
+                                            <div class="card-body p-0">
+                                                <img src="@@webRoot/assets/images/products/s5.jpg" alt=""
+                                                    class="w-full max-w-full object-cover h-56">
+                                                <div class="p-6 flex items-center justify-between">
+                                                    <div>
+                                                        <h6 class="text-base">Di
+                                                            sekog do.jpg</h6>
+                                                        <span class="text-xs text-dark font-medium dark:text-darklink">Wed, Dec 14,
+                                                            2023</span>
+                                                    </div>
+                                                    <div>
+                                                        <div class="hs-dropdown relative inline-flex">
+                                                            <button id="hs-dropdown-custom-icon-trigger " type="button"
+                                                                class="hs-dropdown-toggle flex justify-center items-center ">
+                                                                <i
+                                                                    class="ti ti-dots-vertical text-bodytext dark:text-darklink hover:text-primary"></i>
+                                                            </button>
+
+                                                            <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0  hidden min-w-40 z-[2]"
+                                                                aria-labelledby="hs-dropdown-custom-icon-trigger">
+                                                                <div class="flex flex-col">
+                                                                    <div
+                                                                        class="py-2 px-4 bg-hover">
+                                                                        <a class=" flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-link text-base"></i>sekog
+                                                                            do.jpg
+                                                                        </a>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                                        <div class="card  animate-card overflow-hidden rounded-2">
+                                            <div class="card-body p-0">
+                                                <img src="@@webRoot/assets/images/products/s6.jpg" alt=""
+                                                    class="w-full max-w-full object-cover h-56">
+                                                <div class="p-6 flex items-center justify-between">
+                                                    <div>
+                                                        <h6 class="text-base">Lo
+                                                            jogu camhiisi.jpg</h6>
+                                                        <span class="text-xs text-dark font-medium dark:text-darklink">Thu, Dec 15,
+                                                            2023</span>
+                                                    </div>
+                                                    <div>
+                                                        <div class="hs-dropdown relative inline-flex">
+                                                            <button id="hs-dropdown-custom-icon-trigger " type="button"
+                                                                class="hs-dropdown-toggle flex justify-center items-center ">
+                                                                <i
+                                                                    class="ti ti-dots-vertical text-bodytext dark:text-darklink hover:text-primary"></i>
+                                                            </button>
+
+                                                            <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0  hidden min-w-40 z-[2]"
+                                                                aria-labelledby="hs-dropdown-custom-icon-trigger">
+                                                                <div class="flex flex-col">
+                                                                    <div
+                                                                        class="py-2 px-4 bg-hover">
+                                                                        <a class=" flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-link text-base"></i> jogu
+                                                                            camhiisi.jpg
+                                                                        </a>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                                        <div class="card  animate-card overflow-hidden rounded-2">
+                                            <div class="card-body p-0">
+                                                <img src="@@webRoot/assets/images/products/s7.jpg" alt=""
+                                                    class="w-full max-w-full object-cover h-56">
+                                                <div class="p-6 flex items-center justify-between">
+                                                    <div>
+                                                        <h6 class="text-base">
+                                                            Orewac huosazud robuf.jpg</h6>
+                                                        <span class="text-xs text-dark font-medium dark:text-darklink">Fri, Dec 16,
+                                                            2023</span>
+                                                    </div>
+                                                    <div>
+                                                        <div class="hs-dropdown relative inline-flex">
+                                                            <button id="hs-dropdown-custom-icon-trigger " type="button"
+                                                                class="hs-dropdown-toggle flex justify-center items-center ">
+                                                                <i
+                                                                    class="ti ti-dots-vertical text-bodytext dark:text-darklink hover:text-primary"></i>
+                                                            </button>
+
+                                                            <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0  hidden min-w-40 z-[2]"
+                                                                aria-labelledby="hs-dropdown-custom-icon-trigger">
+                                                                <div class="flex flex-col">
+                                                                    <div
+                                                                        class="py-2 px-4 bg-hover">
+                                                                        <a class=" flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-link text-base"></i>Orewac
+                                                                            huosazud robuf.jpg
+                                                                        </a>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                                        <div class="card  animate-card overflow-hidden rounded-2">
+                                            <div class="card-body p-0">
+                                                <img src="@@webRoot/assets/images/products/s8.jpg" alt=""
+                                                    class="w-full max-w-full object-cover h-56">
+                                                <div class="p-6 flex items-center justify-between">
+                                                    <div>
+                                                        <h6 class="text-base">
+                                                            Nira biolaizo tuzi.jpg</h6>
+                                                        <span class="text-xs text-dark font-medium dark:text-darklink">Sat, Dec 17,
+                                                            2023</span>
+                                                    </div>
+                                                    <div>
+                                                        <div class="hs-dropdown relative inline-flex">
+                                                            <button id="hs-dropdown-custom-icon-trigger " type="button"
+                                                                class="hs-dropdown-toggle flex justify-center items-center ">
+                                                                <i
+                                                                    class="ti ti-dots-vertical text-bodytext dark:text-darklink hover:text-primary"></i>
+                                                            </button>
+
+                                                            <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0  hidden min-w-40 z-[2]"
+                                                                aria-labelledby="hs-dropdown-custom-icon-trigger">
+                                                                <div class="flex flex-col">
+                                                                    <div
+                                                                        class="py-2 px-4 bg-hover">
+                                                                        <a class=" flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-link text-base"></i>Nira
+                                                                            biolaizo tuzi.jpg
+                                                                        </a>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                                        <div class="card  animate-card overflow-hidden rounded-2">
+                                            <div class="card-body p-0">
+                                                <img src="@@webRoot/assets/images/products/s9.jpg" alt=""
+                                                    class="w-full max-w-full object-cover h-56">
+                                                <div class="p-6 flex items-center justify-between">
+                                                    <div>
+                                                        <h6 class="text-base">
+                                                            Peri metu ejvu.jpg</h6>
+                                                        <span class="text-xs text-dark font-medium dark:text-darklink">Sun, Dec 18,
+                                                            2023</span>
+                                                    </div>
+                                                    <div>
+                                                        <div class="hs-dropdown relative inline-flex">
+                                                            <button id="hs-dropdown-custom-icon-trigger " type="button"
+                                                                class="hs-dropdown-toggle flex justify-center items-center ">
+                                                                <i
+                                                                    class="ti ti-dots-vertical text-bodytext dark:text-darklink hover:text-primary"></i>
+                                                            </button>
+
+                                                            <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0  hidden min-w-40 z-[2]"
+                                                                aria-labelledby="hs-dropdown-custom-icon-trigger">
+                                                                <div class="flex flex-col">
+                                                                    <div
+                                                                        class="py-2 px-4 bg-hover">
+                                                                        <a class=" flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-link text-base"></i>Peri
+                                                                            metu ejvu.jpgs
+                                                                        </a>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                                        <div class="card  animate-card overflow-hidden rounded-2">
+                                            <div class="card-body p-0">
+                                                <img src="@@webRoot/assets/images/products/s10.jpg" alt=""
+                                                    class="w-full max-w-full object-cover h-56">
+                                                <div class="p-6 flex items-center justify-between">
+                                                    <div>
+                                                        <h6 class="text-base">
+                                                            Vurnohot tajraje isusufuj.jpg</h6>
+                                                        <span class="text-xs text-dark font-medium dark:text-darklink">Mon, Dec 19,
+                                                            2023</span>
+                                                    </div>
+                                                    <div>
+                                                        <div class="hs-dropdown relative inline-flex">
+                                                            <button id="hs-dropdown-custom-icon-trigger " type="button"
+                                                                class="hs-dropdown-toggle flex justify-center items-center ">
+                                                                <i
+                                                                    class="ti ti-dots-vertical text-bodytext dark:text-darklink hover:text-primary"></i>
+                                                            </button>
+
+                                                            <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0  hidden min-w-40 z-[2]"
+                                                                aria-labelledby="hs-dropdown-custom-icon-trigger">
+                                                                <div class="flex flex-col">
+                                                                    <div
+                                                                        class="py-2 px-4 bg-hover">
+                                                                        <a class=" flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-link text-base"></i>Vurnohot
+                                                                            tajraje isusufuj.jpg
+                                                                        </a>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                                        <div class="card  animate-card overflow-hidden rounded-2">
+                                            <div class="card-body p-0">
+                                                <img src="@@webRoot/assets/images/products/s11.jpg" alt=""
+                                                    class="w-full max-w-full object-cover h-56">
+                                                <div class="p-6 flex items-center justify-between">
+                                                    <div>
+                                                        <h6 class="text-base">
+                                                            Juc oz
+                                                            ma.jpg</h6>
+                                                        <span class="text-xs text-dark font-medium dark:text-darklink">Tue, Dec 20,
+                                                            2023</span>
+                                                    </div>
+                                                    <div>
+                                                        <div class="hs-dropdown relative inline-flex">
+                                                            <button id="hs-dropdown-custom-icon-trigger " type="button"
+                                                                class="hs-dropdown-toggle flex justify-center items-center ">
+                                                                <i
+                                                                    class="ti ti-dots-vertical text-bodytext dark:text-darklink hover:text-primary"></i>
+                                                            </button>
+
+                                                            <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0  hidden min-w-40 z-[2]"
+                                                                aria-labelledby="hs-dropdown-custom-icon-trigger">
+                                                                <div class="flex flex-col">
+                                                                    <div
+                                                                        class="py-2 px-4 bg-hover">
+                                                                        <a class=" flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-link text-base"></i>Juc
+                                                                            ozma.jpg
+                                                                        </a>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-4 md:col-span-6 col-span-12">
+                                        <div class="card  animate-card overflow-hidden rounded-2">
+                                            <div class="card-body p-0">
+                                                <img src="@@webRoot/assets/images/products/s12.jpg" alt=""
+                                                    class="w-full max-w-full object-cover h-56">
+                                                <div class="p-6 flex items-center justify-between">
+                                                    <div>
+                                                        <h6 class="text-base">
+                                                            Povipvez marjelliz zuuva.jpg</h6>
+                                                        <span class="text-xs text-dark font-medium dark:text-darklink">Wed, Dec 21,
+                                                            2023</span>
+                                                    </div>
+                                                    <div>
+                                                        <div class="hs-dropdown relative inline-flex">
+                                                            <button id="hs-dropdown-custom-icon-trigger " type="button"
+                                                                class="hs-dropdown-toggle flex justify-center items-center ">
+                                                                <i
+                                                                    class="ti ti-dots-vertical text-bodytext dark:text-darklink hover:text-primary"></i>
+                                                            </button>
+
+                                                            <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0  hidden min-w-40 z-[2]"
+                                                                aria-labelledby="hs-dropdown-custom-icon-trigger">
+                                                                <div class="flex flex-col">
+                                                                    <div
+                                                                        class="py-2 px-4 bg-hover">
+                                                                        <a class=" flex gap-2 items-center "
+                                                                            href="#">
+                                                                            <i class="ti ti-link text-base"></i>Povipvez
+                                                                            marjelliz zuuva.jpg
+                                                                        </a>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!---Tabs Content End--->
+                    </div>
+                    
+                                    </div>
+                                  </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                <!-- Main Content End -->
+
+            </div>
+        </div>
+        <!--end of project-->
+    </main>
+    @@include("partials/header-components/mobile-menu.html")
+    @@include("partials/customizer.html")
+    @@include("partials/scripts.html")
+</body>
+
+</html>

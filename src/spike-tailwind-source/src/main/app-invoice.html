@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-color-theme="Blue_Theme" class="light selected" data-layout="vertical"
+    data-boxed-layout="boxed" data-card="shadow">
+
+<head>
+    @@include("partials/head.html")
+    <title>Spike TailwindCSS HTML Admin Template</title>
+
+</head>
+
+<body class="DEFAULT_THEME bg-lightprimary dark:bg-darkbody">
+    <main>
+        <!--start the project-->
+        <div id="main-wrapper" class="flex p-5">
+
+            <aside id="application-sidebar-brand"
+                class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full xl:rtl:-translate-x-0 rtl:translate-x-full  left-0 rtl:left-auto xl:rtl:right-5 rtl:right-0 transform hidden xl:block xl:translate-x-0 xl:end-auto xl:bottom-0 fixed top-0 with-vertical  left-sidebar transition-all duration-300 h-screen z-[2] flex-shrink-0  w-[270px] border-border dark:border-darkborder bg-white dark:bg-dark xl:top-5 xl:start-5 shadow-md xl:rounded-md">
+                @@include("partials/sidebar.html",{ "page": "invoice","page_group": "apps" })
+            </aside>
+            <div class="page-wrapper w-full" role="main">
+
+                <!-- Main Content -->
+                <main class="h-full ">
+                    <div class="container full-container py-5 xl:ps-6 ps-0 pt-0 pe-0 remove-ps">
+
+                        <!--  Header Start -->
+                        <header
+                            class="sticky top-0 inset-x-0 z-[1] flex flex-wrap md:justify-start md:flex-nowrap text-fs_15 py-3 lg:py-0 mb-6 bg-white dark:bg-dark rounded-md shadow-md">
+                            <div class="with-vertical w-full">@@include("partials/header.html")</div>
+                            <div class="with-horizontal w-full">
+                                <div class="bg-white dark:bg-dark">
+                                    <div class="container">
+                                        @@include("partials/horizontal-header.html")
+                                    </div>
+                                </div>
+                            </div>
+                        </header>
+                        <!--  Header End -->
+
+                        <!-- Horizontal Sidebar Menu -->
+                        <aside
+                            class="with-horizontal lg:flex hidden left-sidebar bg-white dark:bg-dark border-t border-border dark:border-darkborder">
+                            @@include("partials/horizontal-sidebar.html", { "page": "invoice","page_group":
+                            "apps"})
+                        </aside>
+                        <!-- Horizontal Sidebar Menu End -->
+
+                        <!-- Main Content -->
+                        <div class="max-w-full">
+                            <div class="container full-container ">
+                                <!----Breadcrumb Start---->
+                                @@include("partials/breadcrumb.html", {"title": "Contact Application", "subtitle": 'Home'})
+                                <!----Breadcrumb End---->
+                        <!---Invoice App Card--->
+                        <div class="card overflow-hidden chat-application">
+                            <div class="flex items-center justify-between gap-3 m-3 lg:hidden">
+                                <button class="btn btn-primary flex" type="button" data-hs-overlay="#invoice-sidebar"
+                                    aria-controls="invoice-sidebar" aria-label="Toggle navigation">
+                                    <i class="ti ti-menu-2 fs-5"></i>
+                                </button>
+                                <form class="relative w-full">
+                                    <input type="text" class="form-control search-chat py-2 ps-10" id="text-srh"
+                                        placeholder="Search Contact">
+                                    <i
+                                        class="ti ti-search absolute top-1.5 start-0 translate-middle-y text-lg text-dark ms-3"></i>
+                                </form>
+                            </div>
+                            <div class="flex">
+                                <div
+                                    class="left-part border-e border-border dark:border-darkborder w-1/4 flex-shrink-0 hidden lg:block">
+                                    <div class="p-3 border-bottom">
+                                        <form class="relative">
+                                            <input type="search" class="form-control py-2 ps-10 search-invoice"
+                                                id="text-srh" placeholder="Search Invoice" />
+                                            <i
+                                                class="ti ti-search absolute top-1.5 start-0 translate-middle-y text-lg text-dark ms-3"></i>
+                                        </form>
+                                    </div>
+                                    <div class="app-invoice">
+                                        <ul class="overflow-auto invoice-users" style="height: calc(100vh - 262px)"
+                                            data-simplebar>
+                                            <li>
+                                                <a href="javascript:void(0)" class="invoice-user listing-user border-b border-border dark:border-darkborder
+                                                  px-5 py-4 bg-lightgray dark:bg-darkprimary flex items-start gap-3"
+                                                    id="invoice-123" data-invoice-id="123">
+                                                    <div
+                                                        class="btn bg-primary rounded-full flex items-center h-11 w-11 justify-center">
+                                                        <i class="ti ti-user text-lg"></i>
+                                                    </div>
+                                                    <div class="inline-block w-3/4">
+                                                        <h6
+                                                            class="text-sm  invoice-customer">
+                                                            James Anderson</h6>
+                                                        <span
+                                                            class="block font-medium text-dark dark:text-darklink invoice-id text-truncate">Id:
+                                                            #123</span>
+                                                        <span
+                                                            class="block font-medium text-dark dark:text-darklink invoice-date text-nowrap">9
+                                                            Fab 2020</span>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:void(0)"
+                                                    class="invoice-user listing-user border-b border-border dark:border-darkborder
+                                                  px-5 py-4 bg-hover flex items-start gap-3"
+                                                    id="invoice-124" data-invoice-id="124">
+                                                    <div
+                                                        class="btn btn-error rounded-full flex items-center h-11 w-11 justify-center">
+                                                        <i class="ti ti-user text-lg"></i>
+                                                    </div>
+                                                    <div class="inline-block w-3/4">
+                                                        <h6
+                                                            class="text-sm font-medium  invoice-customer">
+                                                            Bianca Doe</h6>
+                                                        <span
+                                                            class="block font-medium text-dark dark:text-darklink invoice-id text-truncate">Id:
+                                                            #124</span>
+                                                        <span
+                                                            class="block font-medium text-dark dark:text-darklink invoice-date text-nowrap">9
+                                                            Fab 2020</span>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:void(0)"
+                                                    class="invoice-user listing-user border-b border-border dark:border-darkborder
+                                                  px-5 py-4 bg-hover flex items-start gap-3"
+                                                    id="invoice-125" data-invoice-id="125">
+                                                    <div
+                                                        class="btn btn-error rounded-full flex items-center h-11 w-11 justify-center">
+                                                        <i class="ti ti-user text-lg"></i>
+                                                    </div>
+                                                    <div class="inline-block w-3/4">
+                                                        <h6
+                                                            class="text-sm invoice-customer">
+                                                            Angelina Rhodes</h6>
+                                                        <span
+                                                            class="block font-medium text-dark dark:text-darklink invoice-id text-truncate">Id:
+                                                            #125</span>
+                                                        <span
+                                                            class="block font-medium text-dark dark:text-darklink invoice-date text-nowrap">9
+                                                            Fab 2020</span>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:void(0)"
+                                                    class="invoice-user listing-user border-b border-border dark:border-darkborder
+                                                  px-5 py-4 bg-hover flex items-start gap-3"
+                                                    id="invoice-126" data-invoice-id="126">
+                                                    <div
+                                                        class="btn bg-warning rounded-full flex items-center h-11 w-11 justify-center">
+                                                        <i class="ti ti-user text-lg"></i>
+                                                    </div>
+                                                    <div class="inline-block w-3/4">
+                                                        <h6
+                                                            class="text-sm invoice-customer">
+                                                            Samuel Smith</h6>
+                                                        <span
+                                                            class="block font-medium text-dark dark:text-darklink invoice-id text-truncate">Id:
+                                                            #126</span>
+                                                        <span
+                                                            class="block font-medium text-dark dark:text-darklink  invoice-date text-nowrap">9
+                                                            Fab 2020</span>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:void(0)"
+                                                    class="invoice-user listing-user border-b border-border dark:border-darkborder
+                                                  px-5 py-4 bg-hover flex items-start gap-3"
+                                                    id="invoice-127" data-invoice-id="127">
+                                                    <div
+                                                        class="btn bg-primary rounded-full flex items-center h-11 w-11 justify-center">
+                                                        <i class="ti ti-user text-lg"></i>
+                                                    </div>
+                                                    <div class="inline-block w-3/4">
+                                                        <h6
+                                                            class="text-sm invoice-customer">
+                                                            Gabriel Jobs</h6>
+                                                        <span
+                                                            class="block font-medium text-dark dark:text-darklink invoice-id text-truncate">Id:
+                                                            #127</span>
+                                                        <span
+                                                            class="block font-medium text-dark dark:text-darklink invoice-date text-nowrap">9
+                                                            Fab 2020</span>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="lg:w-3/4 w-full chat-container">
+                                    <div class="invoice-inner-part h-100">
+                                        <div class="invoiceing-box">
+                                            <div class="flex items-center border-b border-border dark:border-darkborder
+                                            p-4">
+                                                <h4
+                                                    class="font-mediumuppercase mb-0 text-xl">
+                                                    Invoice</h4>
+                                                <div class="ms-auto">
+                                                    <h4 class="invoice-number"></h4>
+                                                </div>
+                                            </div>
+                                            <div class="p-4 py-5" id="custom-invoice">
+                                                <div class="invoice-123" id="printableArea">
+                                                    <div>
+                                                        <h6 class="font-semibold text-dark dark:text-white text-sm mb-1">
+                                                            From,</h6>
+                                                        <h6 class="font-semibold text-dark dark:text-white mb-1">
+                                                            Steve Jobs</h6>
+                                                        <p class="card-subtitle
+                                                                  ">
+                                                            1108, Clair Street, <br />Massachusetts,
+                                                            <br />Woods Hole - 02543
+                                                        </p>
+                                                    </div>
+
+                                                    <div class="text-end">
+                                                        <h6 class="font-medium text-sm mb-1">
+                                                            To,</h6>
+                                                        <h6
+                                                            class="text-sm font-semibold text-dark dark:text-darklink mb-1 invoice-customer">
+                                                            James Anderson,
+                                                        </h6>
+                                                        <p class="card-subtitle">
+                                                            455, Shobe Lane, <br />Colorado, <br />Fort
+                                                            Collins - 80524
+                                                        </p>
+                                                        <p class="mt-5 card-subtitle">
+                                                            <span>Invoice Date :</span>
+                                                            <i class="ti ti-calendar"></i>
+                                                            23rd Jan 2021
+                                                        </p>
+                                                        <p class="text-sm mt-1 text-bodytext dark:text-darklink">
+                                                            <span>Due Date :</span>
+                                                            <i class="ti ti-calendar"></i>
+                                                            25th Jan 2021
+                                                        </p>
+                                                    </div>
+
+
+                                                    <div class="mt-10">
+                                                        <div class="flex flex-col">
+                                                            <div class="overflow-x-auto">
+                                                                <div class="p-1.5 min-w-full inline-block align-middle">
+                                                                    <div class="overflow-hidden">
+                                                                        <table
+                                                                            class="min-w-full divide-y divide-border dark:divide-darkborder">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th scope="col"
+                                                                                        class="text-left rtl:text-right  p-4 whitespace-nowrap font-semibold text-dark dark:text-white text-sm">
+                                                                                        #</th>
+                                                                                    <th scope="col"
+                                                                                        class="text-left rtl:text-right  p-4 whitespace-nowrap font-semibold text-dark dark:text-white text-sm">
+                                                                                        Description</th>
+                                                                                    <th scope="col"
+                                                                                        class="text-right rtl:text-left  p-4 whitespace-nowrap font-semibold text-dark dark:text-white text-sm">
+                                                                                        Quantity</th>
+                                                                                    <th scope="col"
+                                                                                        class="text-right rtl:text-left  p-4 whitespace-nowrap font-semibold text-dark dark:text-white text-sm">
+                                                                                        Unit Cost </th>
+                                                                                    <th scope="col"
+                                                                                        class="text-right rtl:text-left  p-4 whitespace-nowrap font-semibold text-dark dark:text-white text-sm">
+                                                                                        Total </th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody
+                                                                                class="divide-y divide-border dark:divide-darkborder">
+                                                                                <tr
+                                                                                    >
+                                                                                    <td
+                                                                                        class="text-dark font-medium dark:text-white p-4  whitespace-nowrap">
+                                                                                        1
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark font-medium dark:text-white p-4  whitespace-nowrap">
+                                                                                        Milk Powder
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark font-medium dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        2
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark font-medium dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        $24
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark font-medium dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        $48
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr
+                                                                                    >
+                                                                                    <td
+                                                                                        class="text-dark font-medium dark:text-white p-4  whitespace-nowrap">
+                                                                                        2
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark font-medium dark:text-white p-4  whitespace-nowrap">
+                                                                                        Air Conditioner
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark font-medium dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        5
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark font-medium dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        $500
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark font-medium dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        $2500
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr
+                                                                                    >
+                                                                                    <td
+                                                                                        class="text-dark font-medium dark:text-white p-4  whitespace-nowrap">
+                                                                                        3
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark font-medium dark:text-white p-4  whitespace-nowrap">
+                                                                                        RC Cars
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark font-medium dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        30
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark font-medium dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        $600
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark font-medium dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        $18000
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr
+                                                                                    >
+                                                                                    <td
+                                                                                        class="text-dark font-medium dark:text-white p-4  whitespace-nowrap">
+                                                                                        4
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark font-medium dark:text-white p-4  whitespace-nowrap">
+                                                                                        Down Coat
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark font-medium dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        62
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark font-medium dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        $5
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark font-medium dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        $310
+                                                                                    </td>
+                                                                                </tr>
+
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="mt-10">
+                                                        <div class="mt-4 text-end">
+                                                            <div class="mb-4">
+                                                                <p class="card-subtitle mb-2
+                                                                ">Sub - Total amount: $20,858</p>
+                                                                <p class="card-subtitle
+                                                                ">vat (10%) : $2,085</p>
+                                                            </div>
+                                                            <hr class="border-border dark:border-darkborder" />
+                                                            <h3
+                                                                class="text-2xl py-3">
+                                                                <b>Total :</b> $22,943
+                                                            </h3>
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                        <hr class="border-border dark:border-darkborder" />
+                                                        <div class="flex gap-3 justify-end mt-4">
+                                                            <button class="btn btn-light-error" type="submit">
+                                                                Proceed to payment
+                                                            </button>
+                                                            <button class="btn  print-page"
+                                                                type="button">
+                                                                <span><i class="ti ti-printer fs-5"></i>
+                                                                    Print</span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="invoice-124" id="printableArea">
+                                                    <div>
+                                                        <h6 class="font-semibold text-dark dark:text-white mb-1">
+                                                            From,</h6>
+                                                        <h6 class="font-semibold text-dark dark:text-white mb-1">
+                                                            Steve Jobs</h6>
+                                                        <p class="card-subtitle
+                                                                  ">
+                                                            1108, Clair Street, <br />Massachusetts,
+                                                            <br />Woods Hole - 02543
+                                                        </p>
+                                                    </div>
+
+                                                    <div class="text-end">
+                                                        <h6 class="font-medium text-sm mb-1">
+                                                            To,</h6>
+                                                        <h6
+                                                            class="font-medium text-sm mb-1 invoice-customer">
+                                                            Bianca Doe,
+                                                        </h6>
+                                                        <p class="card-subtitle">
+                                                            455, Shobe Lane, <br />Colorado, <br />Fort
+                                                            Collins - 80524
+                                                        </p>
+                                                        <p class="mt-5 card-subtitle">
+                                                            <span>Invoice Date :</span>
+                                                            <i class="ti ti-calendar"></i>
+                                                            23rd Jan 2021
+                                                        </p>
+                                                        <p class="text-sm mt-1 text-bodytext dark:text-darklink">
+                                                            <span>Due Date :</span>
+                                                            <i class="ti ti-calendar"></i>
+                                                            25th Jan 2021
+                                                        </p>
+                                                    </div>
+
+
+                                                    <div class="mt-10">
+                                                        <div class="flex flex-col">
+                                                            <div class="overflow-x-auto">
+                                                                <div class="p-1.5 min-w-full inline-block align-middle">
+                                                                    <div class="overflow-hidden">
+                                                                        <table
+                                                                            class="min-w-full divide-y divide-border dark:divide-darkborder">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th scope="col"
+                                                                                        class="text-left rtl:text-right  p-4 whitespace-nowrap font-semibold text-dark dark:text-white text-sm">
+                                                                                        #</th>
+                                                                                    <th scope="col"
+                                                                                        class="text-left rtl:text-right  p-4 whitespace-nowrap font-semibold text-dark dark:text-white text-sm">
+                                                                                        Description</th>
+                                                                                    <th scope="col"
+                                                                                        class="text-right rtl:text-left  p-4 whitespace-nowrap font-semibold text-dark dark:text-white text-sm">
+                                                                                        Quantity</th>
+                                                                                    <th scope="col"
+                                                                                        class="text-right rtl:text-left  p-4 whitespace-nowrap font-semibold text-dark dark:text-white text-sm">
+                                                                                        Unit Cost </th>
+                                                                                    <th scope="col"
+                                                                                        class="text-right rtl:text-left  p-4 whitespace-nowrap font-semibold text-dark dark:text-white text-sm">
+                                                                                        Total </th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody
+                                                                                class="divide-y divide-border dark:divide-darkborder">
+                                                                                <tr
+                                                                                    >
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap">
+                                                                                        1
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap">
+                                                                                        Milk Powder
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        2
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        $24
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        $48
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr
+                                                                                    >
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap">
+                                                                                        2
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap">
+                                                                                        Air Conditioner
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        5
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        $500
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        $2500
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr
+                                                                                    >
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap">
+                                                                                        3
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap">
+                                                                                        RC Cars
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        30
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        $600
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        $18000
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr
+                                                                                    >
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap">
+                                                                                        4
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap">
+                                                                                        Down Coat
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        62
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        $5
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        $310
+                                                                                    </td>
+                                                                                </tr>
+
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="mt-10">
+                                                        <div class="mt-4 text-end">
+                                                            <div class="mb-4">
+                                                                <p class="card-subtitle mb-2
+                                                                ">Sub - Total amount: $20,858</p>
+                                                                <p class="card-subtitle
+                                                                ">vat (10%) : $2,085</p>
+                                                            </div>
+                                                            <hr class="border-border dark:border-darkborder" />
+                                                            <h3
+                                                                class="text-2xl py-3">
+                                                                <b>Total :</b> $22,943
+                                                            </h3>
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                        <hr class="border-border dark:border-darkborder" />
+                                                        <div class="flex gap-3 justify-end mt-4">
+                                                            <button class="btn btn-light-error" type="submit">
+                                                                Proceed to payment
+                                                            </button>
+                                                            <button class="btn bg-primary btn-default print-page"
+                                                                type="button">
+                                                                <span><i class="ti ti-printer fs-5"></i>
+                                                                    Print</span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="invoice-125" id="printableArea">
+                                                    <div>
+                                                        <h6 class="font-semibold text-dark dark:text-white mb-1">
+                                                            From,</h6>
+                                                        <h6 class="font-semibold text-dark dark:text-white mb-1">
+                                                            Steve Jobs</h6>
+                                                        <p class="card-subtitle
+                                                                  ">
+                                                            1108, Clair Street, <br />Massachusetts,
+                                                            <br />Woods Hole - 02543
+                                                        </p>
+                                                    </div>
+
+                                                    <div class="text-end">
+                                                        <h6 class="font-medium text-sm mb-1">
+                                                            To,</h6>
+                                                        <h6
+                                                            class="font-medium text-sm mb-1 invoice-customer">
+                                                            Angelina Rhodes,
+                                                        </h6>
+                                                        <p class="card-subtitle">
+                                                            455, Shobe Lane, <br />Colorado, <br />Fort
+                                                            Collins - 80524
+                                                        </p>
+                                                        <p class="mt-5 card-subtitle">
+                                                            <span>Invoice Date :</span>
+                                                            <i class="ti ti-calendar"></i>
+                                                            23rd Jan 2021
+                                                        </p>
+                                                        <p class="text-sm mt-1 text-bodytext dark:text-darklink">
+                                                            <span>Due Date :</span>
+                                                            <i class="ti ti-calendar"></i>
+                                                            25th Jan 2021
+                                                        </p>
+                                                    </div>
+
+
+                                                    <div class="mt-10">
+                                                        <div class="flex flex-col">
+                                                            <div class="overflow-x-auto">
+                                                                <div class="p-1.5 min-w-full inline-block align-middle">
+                                                                    <div class="overflow-hidden">
+                                                                        <table
+                                                                            class="min-w-full divide-y divide-border dark:divide-darkborder">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th scope="col"
+                                                                                        class="text-left rtl:text-right  p-4 whitespace-nowrap font-semibold text-dark dark:text-white text-sm">
+                                                                                        #</th>
+                                                                                    <th scope="col"
+                                                                                        class="text-left rtl:text-right  p-4 whitespace-nowrap font-semibold text-dark dark:text-white text-sm">
+                                                                                        Description</th>
+                                                                                    <th scope="col"
+                                                                                        class="text-right rtl:text-left  p-4 whitespace-nowrap font-semibold text-dark dark:text-white text-sm">
+                                                                                        Quantity</th>
+                                                                                    <th scope="col"
+                                                                                        class="text-right rtl:text-left  p-4 whitespace-nowrap font-semibold text-dark dark:text-white text-sm">
+                                                                                        Unit Cost </th>
+                                                                                    <th scope="col"
+                                                                                        class="text-right rtl:text-left  p-4 whitespace-nowrap font-semibold text-dark dark:text-white text-sm">
+                                                                                        Total </th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody
+                                                                                class="divide-y divide-border dark:divide-darkborder">
+                                                                                <tr
+                                                                                    >
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap">
+                                                                                        1
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap">
+                                                                                        Milk Powder
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        2
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        $24
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        $48
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr
+                                                                                    >
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap">
+                                                                                        2
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap">
+                                                                                        Air Conditioner
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        5
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        $500
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        $2500
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr
+                                                                                    >
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap">
+                                                                                        3
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap">
+                                                                                        RC Cars
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        30
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        $600
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        $18000
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr
+                                                                                    >
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap">
+                                                                                        4
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap">
+                                                                                        Down Coat
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        62
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        $5
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        $310
+                                                                                    </td>
+                                                                                </tr>
+
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="mt-10">
+                                                        <div class="mt-4 text-end">
+                                                            <div class="mb-4">
+                                                                <p class="card-subtitle mb-2
+                                                                ">Sub - Total amount: $20,858</p>
+                                                                <p class="card-subtitle
+                                                                ">vat (10%) : $2,085</p>
+                                                            </div>
+                                                            <hr class="border-border dark:border-darkborder" />
+                                                            <h3
+                                                                class="text-2xl py-3">
+                                                                <b>Total :</b> $22,943
+                                                            </h3>
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                        <hr class="border-border dark:border-darkborder" />
+                                                        <div class="flex gap-3 justify-end mt-4">
+                                                            <button class="btn btn-light-error" type="submit">
+                                                                Proceed to payment
+                                                            </button>
+                                                            <button class="btn bg-primary btn-default print-page"
+                                                                type="button">
+                                                                <span><i class="ti ti-printer fs-5"></i>
+                                                                    Print</span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="invoice-126" id="printableArea">
+                                                    <div>
+                                                        <h6 class="font-semibold text-dark dark:text-white mb-1">
+                                                            From,</h6>
+                                                        <h6 class="font-semibold text-dark dark:text-white mb-1">
+                                                            Steve Jobs</h6>
+                                                        <p class="card-subtitle
+                                                                  ">
+                                                            1108, Clair Street, <br />Massachusetts,
+                                                            <br />Woods Hole - 02543
+                                                        </p>
+                                                    </div>
+
+                                                    <div class="text-end">
+                                                        <h6 class="font-medium text-sm mb-1">
+                                                            To,</h6>
+                                                        <h6
+                                                            class="font-medium text-sm mb-1 invoice-customer">
+                                                            Samuel Smith,
+                                                        </h6>
+                                                        <p class="card-subtitle">
+                                                            455, Shobe Lane, <br />Colorado, <br />Fort
+                                                            Collins - 80524
+                                                        </p>
+                                                        <p class="mt-5 card-subtitle">
+                                                            <span>Invoice Date :</span>
+                                                            <i class="ti ti-calendar"></i>
+                                                            23rd Jan 2021
+                                                        </p>
+                                                        <p class="text-sm mt-1 text-bodytext dark:text-darklink">
+                                                            <span>Due Date :</span>
+                                                            <i class="ti ti-calendar"></i>
+                                                            25th Jan 2021
+                                                        </p>
+                                                    </div>
+
+
+                                                    <div class="mt-10">
+                                                        <div class="flex flex-col">
+                                                            <div class="overflow-x-auto">
+                                                                <div class="p-1.5 min-w-full inline-block align-middle">
+                                                                    <div class="overflow-hidden">
+                                                                        <table
+                                                                            class="min-w-full divide-y divide-border dark:divide-darkborder">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th scope="col"
+                                                                                        class="text-left rtl:text-right  p-4 whitespace-nowrap font-semibold text-dark dark:text-white text-sm">
+                                                                                        #</th>
+                                                                                    <th scope="col"
+                                                                                        class="text-left rtl:text-right  p-4 whitespace-nowrap font-semibold text-dark dark:text-white text-sm">
+                                                                                        Description</th>
+                                                                                    <th scope="col"
+                                                                                        class="text-right rtl:text-left  p-4 whitespace-nowrap font-semibold text-dark dark:text-white text-sm">
+                                                                                        Quantity</th>
+                                                                                    <th scope="col"
+                                                                                        class="text-right rtl:text-left  p-4 whitespace-nowrap font-semibold text-dark dark:text-white text-sm">
+                                                                                        Unit Cost </th>
+                                                                                    <th scope="col"
+                                                                                        class="text-right rtl:text-left  p-4 whitespace-nowrap font-semibold text-dark dark:text-white text-sm">
+                                                                                        Total </th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody
+                                                                                class="divide-y divide-border dark:divide-darkborder">
+                                                                                <tr
+                                                                                    >
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap">
+                                                                                        1
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap">
+                                                                                        Milk Powder
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        2
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        $24
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        $48
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr
+                                                                                    >
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap">
+                                                                                        2
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap">
+                                                                                        Air Conditioner
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        5
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        $500
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        $2500
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr
+                                                                                    >
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap">
+                                                                                        3
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap">
+                                                                                        RC Cars
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        30
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        $600
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        $18000
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr
+                                                                                    >
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap">
+                                                                                        4
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap">
+                                                                                        Down Coat
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        62
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        $5
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        $310
+                                                                                    </td>
+                                                                                </tr>
+
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="mt-10">
+                                                        <div class="mt-4 text-end">
+                                                            <div class="mb-4">
+                                                                <p class="card-subtitle mb-2
+                                                                ">Sub - Total amount: $20,858</p>
+                                                                <p class="card-subtitle
+                                                                ">vat (10%) : $2,085</p>
+                                                            </div>
+                                                            <hr class="border-border dark:border-darkborder" />
+                                                            <h3
+                                                                class="text-2xl py-3">
+                                                                <b>Total :</b> $22,943
+                                                            </h3>
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                        <hr class="border-border dark:border-darkborder" />
+                                                        <div class="flex gap-3 justify-end mt-4">
+                                                            <button class="btn btn-light-error" type="submit">
+                                                                Proceed to payment
+                                                            </button>
+                                                            <button class="btn bg-primary btn-default print-page"
+                                                                type="button">
+                                                                <span><i class="ti ti-printer fs-5"></i>
+                                                                    Print</span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="invoice-127" id="printableArea">
+                                                    <div>
+                                                        <h6 class="font-semibold text-dark dark:text-white mb-1">
+                                                            From,</h6>
+                                                        <h6 class="font-semibold text-dark dark:text-white mb-1">
+                                                            Steve Jobs</h6>
+                                                        <p class="card-subtitle
+                                                                  ">
+                                                            1108, Clair Street, <br />Massachusetts,
+                                                            <br />Woods Hole - 02543
+                                                        </p>
+                                                    </div>
+
+                                                    <div class="text-end">
+                                                        <h6 class="font-medium text-sm mb-1">
+                                                            To,</h6>
+                                                        <h6
+                                                            class="font-medium text-sm mb-1 invoice-customer">
+                                                            Gabriel Jobs,
+                                                        </h6>
+                                                        <p class="card-subtitle">
+                                                            455, Shobe Lane, <br />Colorado, <br />Fort
+                                                            Collins - 80524
+                                                        </p>
+                                                        <p class="mt-5 card-subtitle">
+                                                            <span>Invoice Date :</span>
+                                                            <i class="ti ti-calendar"></i>
+                                                            23rd Jan 2021
+                                                        </p>
+                                                        <p class="text-sm mt-1 text-bodytext dark:text-darklink">
+                                                            <span>Due Date :</span>
+                                                            <i class="ti ti-calendar"></i>
+                                                            25th Jan 2021
+                                                        </p>
+                                                    </div>
+
+
+                                                    <div class="mt-10">
+                                                        <div class="flex flex-col">
+                                                            <div class="overflow-x-auto">
+                                                                <div class="p-1.5 min-w-full inline-block align-middle">
+                                                                    <div class="overflow-hidden">
+                                                                        <table
+                                                                            class="min-w-full divide-y divide-border dark:divide-darkborder">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th scope="col"
+                                                                                        class="text-left rtl:text-right  p-4 whitespace-nowrap font-semibold text-dark dark:text-white text-sm">
+                                                                                        #</th>
+                                                                                    <th scope="col"
+                                                                                        class="text-left rtl:text-right  p-4 whitespace-nowrap font-semibold text-dark dark:text-white text-sm">
+                                                                                        Description</th>
+                                                                                    <th scope="col"
+                                                                                        class="text-right rtl:text-left  p-4 whitespace-nowrap font-semibold text-dark dark:text-white text-sm">
+                                                                                        Quantity</th>
+                                                                                    <th scope="col"
+                                                                                        class="text-right rtl:text-left  p-4 whitespace-nowrap font-semibold text-dark dark:text-white text-sm">
+                                                                                        Unit Cost </th>
+                                                                                    <th scope="col"
+                                                                                        class="text-right rtl:text-left  p-4 whitespace-nowrap font-semibold text-dark dark:text-white text-sm">
+                                                                                        Total </th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody
+                                                                                class="divide-y divide-border dark:divide-darkborder">
+                                                                                <tr
+                                                                                    >
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap">
+                                                                                        1
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap">
+                                                                                        Milk Powder
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        2
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        $24
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        $48
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr
+                                                                                    >
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap">
+                                                                                        2
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap">
+                                                                                        Air Conditioner
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        5
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        $500
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        $2500
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr
+                                                                                    >
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap">
+                                                                                        3
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap">
+                                                                                        RC Cars
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        30
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        $600
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        $18000
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr
+                                                                                    >
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap">
+                                                                                        4
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap">
+                                                                                        Down Coat
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        62
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        $5
+                                                                                    </td>
+                                                                                    <td
+                                                                                        class="text-dark dark:text-white p-4  whitespace-nowrap text-right rtl:text-left">
+                                                                                        $310
+                                                                                    </td>
+                                                                                </tr>
+
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="mt-10">
+                                                        <div class="mt-4 text-end">
+                                                            <div class="mb-4">
+                                                                <p class="card-subtitle mb-2
+                                                                ">Sub - Total amount: $20,858</p>
+                                                                <p class="card-subtitle
+                                                                ">vat (10%) : $2,085</p>
+                                                            </div>
+                                                            <hr class="border-border dark:border-darkborder" />
+                                                            <h3
+                                                                class="text-2xl py-3">
+                                                                <b>Total :</b> $22,943
+                                                            </h3>
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                        <hr class="border-border dark:border-darkborder" />
+                                                        <div class="flex gap-3 justify-end mt-4">
+                                                            <button class="btn btn-light-error" type="submit">
+                                                                Proceed to payment
+                                                            </button>
+                                                            <button class="btn bg-primary btn-default print-page"
+                                                                type="button">
+                                                                <span><i class="ti ti-printer fs-5"></i>
+                                                                    Print</span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!----Mobile Sidebar----->
+                                <div id="invoice-sidebar"
+                                    class="lg:hidden bg-white hs-overlay  dark:bg-dark hs-overlay-open:translate-x-0  translate-x-full rtl:hs-overlay-open:translate-x-0  rtl:-translate-x-full  fixed top-0 right-0 rtl:left-0 rtl:right-auto transition-all duration-300 transform h-full max-w-xs  w-full z-[60] hidden"
+                                    tabindex="-1" data-hs-overlay-close-on-resize>
+
+                                    <div class="left-part border-e border-border dark:border-darkborder flex-shrink-0 "
+                                        style="height: calc(100vh - 80px)" data-simplebar>
+                                        <div class="py-5 px-5">
+                                            <div class="flex items-center justify-between">
+                                                <h5 class="font-bold text-dark dark:text-white text-lg">Invoice</h5>
+                                                <button type="button"
+                                                    class="inline-flex flex-shrink-0 justify-center items-center h-8 w-8 rounded-md text-gray-500 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white text-sm "
+                                                    data-hs-overlay="#invoice-sidebar">
+                                                    <span class="sr-only">Close modal</span>
+                                                    <i class="ti ti-x text-xl text-dark dark:text-white"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="p-3 border-bottom">
+                                            <form class="relative">
+                                                <input type="search" class="form-control py-2 ps-10 search-invoice"
+                                                    id="text-srh" placeholder="Search Invoice" />
+                                                <i
+                                                    class="ti ti-search absolute top-1.5 start-0 translate-middle-y text-lg text-dark ms-3"></i>
+                                            </form>
+                                        </div>
+                                        <ul class="overflow-auto invoice-users" style="height: calc(100vh - 262px)"
+                                            data-simplebar>
+                                            <li>
+                                                <a href="javascript:void(0)" class="invoice-user listing-user border-b border-border dark:border-darkborder
+                                       px-5 py-4 bg-lightgray dark:bg-darkprimary flex items-start gap-3"
+                                                    id="invoice-123" data-invoice-id="123">
+                                                    <div
+                                                        class="btn bg-primary rounded-full flex items-center h-11 w-11 justify-center">
+                                                        <i class="ti ti-user text-lg"></i>
+                                                    </div>
+                                                    <div class="inline-block w-3/4">
+                                                        <h6
+                                                            class="text-sm  invoice-customer">
+                                                            James Anderson</h6>
+                                                        <span
+                                                            class="block text-sm invoice-id text-dark dark:text-white font-medium text-truncate">Id:
+                                                            #123</span>
+                                                        <span
+                                                            class="block text-sm invoice-date text-dark dark:text-white font-medium text-nowrap">9
+                                                            Fab 2020</span>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:void(0)" class="invoice-user listing-user border-b border-border dark:border-darkborder
+                                       px-5 py-4 bg-hover flex items-start gap-3"
+                                                    id="invoice-124" data-invoice-id="124">
+                                                    <div
+                                                        class="btn btn-error rounded-full flex items-center h-11 w-11 justify-center">
+                                                        <i class="ti ti-user text-lg"></i>
+                                                    </div>
+                                                    <div class="inline-block w-3/4">
+                                                        <h6
+                                                            class="text-sm invoice-customer">
+                                                            Bianca Doe</h6>
+                                                        <span
+                                                            class="block invoice-id text-dark dark:text-white font-medium text-truncate">Id:
+                                                            #124</span>
+                                                        <span
+                                                            class="block invoice-date text-dark dark:text-white font-medium text-nowrap">9
+                                                            Fab 2020</span>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:void(0)" class="invoice-user listing-user border-b border-border dark:border-darkborder
+                                       px-5 py-4 bg-hover flex items-start gap-3"
+                                                    id="invoice-125" data-invoice-id="125">
+                                                    <div
+                                                        class="btn btn-error rounded-full flex items-center h-11 w-11 justify-center">
+                                                        <i class="ti ti-user text-lg"></i>
+                                                    </div>
+                                                    <div class="inline-block w-3/4">
+                                                        <h6
+                                                            class="text-sm invoice-customer">
+                                                            Angelina Rhodes</h6>
+                                                        <span
+                                                            class="block font-medium text-dark dark:text-darklink  invoice-id text-truncate">Id:
+                                                            #125</span>
+                                                        <span
+                                                            class="block font-medium text-dark dark:text-darklink invoice-date text-nowrap">9
+                                                            Fab 2020</span>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:void(0)" class="invoice-user listing-user border-b border-border dark:border-darkborder
+                                       px-5 py-4 bg-hover flex items-start gap-3"
+                                                    id="invoice-126" data-invoice-id="126">
+                                                    <div
+                                                        class="btn bg-warning rounded-full flex items-center h-11 w-11 justify-center">
+                                                        <i class="ti ti-user text-lg"></i>
+                                                    </div>
+                                                    <div class="inline-block w-3/4">
+                                                        <h6
+                                                            class="text-sm invoice-customer">
+                                                            Samuel Smith</h6>
+                                                        <span
+                                                            class="block font-medium text-dark dark:text-darklink invoice-id text-truncate">Id:
+                                                            #126</span>
+                                                        <span
+                                                            class="block font-medium text-dark dark:text-darklink invoice-date text-nowrap">9
+                                                            Fab 2020</span>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:void(0)" class="invoice-user listing-user border-b border-border dark:border-darkborder
+                                       px-5 py-4 bg-hover flex items-start gap-3"
+                                                    id="invoice-127" data-invoice-id="127">
+                                                    <div
+                                                        class="btn bg-primary rounded-full flex items-center h-11 w-11 justify-center">
+                                                        <i class="ti ti-user text-lg"></i>
+                                                    </div>
+                                                    <div class="inline-block w-3/4">
+                                                        <h6
+                                                            class="text-sm invoice-customer">
+                                                            Gabriel Jobs</h6>
+                                                        <span
+                                                            class="block font-medium text-dark dark:text-darklink invoice-id text-truncate">Id:
+                                                            #127</span>
+                                                        <span
+                                                            class="block font-medium text-dark dark:text-darklink invoice-date text-nowrap">9
+                                                            Fab 2020</span>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+
+                                </div>
+                                <!----Mobile Sidebar End----->
+
+
+                            </div>
+                        </div>
+                        <!---Invoice App Card End--->                               
+
+
+                        <!---Contact List Card End--->
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </main>
+    <!-- Main Content End -->
+
+    </div>
+    </div>
+    <!--end of project-->
+    </main>
+    @@include("partials/header-components/mobile-menu.html")
+    @@include("partials/customizer.html")
+    <script src="@@webRoot/assets/js/vendor.min.js"></script>
+    @@include("partials/scripts.html")
+    <script src="@@webRoot/assets/js/apps/invoice.js"></script>
+    <script src="@@webRoot/assets/js/apps/jquery.PrintArea.js"></script>
+</body>
+
+</html>

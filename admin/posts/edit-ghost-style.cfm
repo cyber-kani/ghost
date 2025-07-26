@@ -1043,6 +1043,347 @@ allTags = tagsResult.success ? tagsResult.data : [];
             color: #14b8ff;
         }
         
+        /* Ghost Bookmark Card Styles */
+        .ghost-bookmark-card {
+            border: 1px solid #e6e9eb;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #fff;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: all 0.2s ease;
+        }
+        
+        .ghost-bookmark-card:hover {
+            border-color: #c5c7c9;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .ghost-bookmark-content {
+            display: flex;
+            min-height: 120px;
+        }
+        
+        .ghost-bookmark-info {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .ghost-bookmark-title {
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1.3;
+            color: #15171a;
+            margin: 0 0 8px 0;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .ghost-bookmark-description {
+            font-size: 14px;
+            line-height: 1.4;
+            color: #626d79;
+            margin: 0 0 12px 0;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .ghost-bookmark-metadata {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: #626d79;
+        }
+        
+        .ghost-bookmark-publisher {
+            font-weight: 500;
+        }
+        
+        .ghost-bookmark-author::before {
+            content: "•";
+            margin-right: 8px;
+        }
+        
+        .ghost-bookmark-thumbnail {
+            width: 180px;
+            background: #f7f8f9;
+            flex-shrink: 0;
+        }
+        
+        .ghost-bookmark-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .ghost-bookmark-icon {
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
+            border-radius: 2px;
+        }
+        
+        .bookmark-card-content {
+            position: relative;
+        }
+        
+        .ghost-bookmark-settings {
+            background: #f7f8f9;
+            border-top: 1px solid #e6e9eb;
+            padding: 16px;
+            margin: 0 -1px -1px -1px;
+        }
+        
+        .ghost-bookmark-input {
+            width: 100%;
+            padding: 12px;
+            font-size: 14px;
+            border: 1px solid #dde1e5;
+            border-radius: 6px;
+            background: white;
+            color: #15171a;
+            outline: none;
+            font-family: inherit;
+        }
+        
+        .ghost-bookmark-input:focus {
+            border-color: #14b8ff;
+        }
+        
+        .ghost-bookmark-input::placeholder {
+            color: #626d79;
+        }
+        
+        .ghost-bookmark-loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            color: #626d79;
+            font-size: 14px;
+        }
+        
+        .ghost-bookmark-error {
+            text-align: center;
+            padding: 40px 20px;
+            color: #f56565;
+            font-size: 14px;
+        }
+        
+        /* Spinner animation */
+        .spin {
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Ghost Callout Card Styles */
+        .callout-card-content {
+            padding: 0;
+        }
+        
+        .ghost-callout-card {
+            padding: 1.2em 1.6em;
+            border-radius: 8px;
+            margin: 0;
+            position: relative;
+            display: flex;
+            gap: 0.8em;
+        }
+        
+        /* Callout card color styles - matching Ghost exactly */
+        .ghost-callout-card.kg-callout-card-grey {
+            background: rgba(124, 139, 154, 0.13);
+        }
+        
+        .ghost-callout-card.kg-callout-card-white {
+            background: transparent;
+            box-shadow: inset 0 0 0 1px rgba(124, 139, 154, 0.2);
+        }
+        
+        .ghost-callout-card.kg-callout-card-blue {
+            background: rgba(33, 172, 232, 0.12);
+        }
+        
+        .ghost-callout-card.kg-callout-card-green {
+            background: rgba(52, 183, 67, 0.12);
+        }
+        
+        .ghost-callout-card.kg-callout-card-yellow {
+            background: rgba(240, 165, 15, 0.13);
+        }
+        
+        .ghost-callout-card.kg-callout-card-red {
+            background: rgba(209, 46, 46, 0.11);
+        }
+        
+        .ghost-callout-card.kg-callout-card-pink {
+            background: rgba(225, 71, 174, 0.11);
+        }
+        
+        .ghost-callout-card.kg-callout-card-purple {
+            background: rgba(135, 85, 236, 0.12);
+        }
+        
+        .ghost-callout-card.kg-callout-card-accent {
+            background: #15171a;
+            color: #fff;
+        }
+        
+        .ghost-callout-card.kg-callout-card-accent .ghost-callout-text {
+            color: #fff;
+        }
+        
+        
+        .ghost-callout-emoji {
+            font-size: 1.15em;
+            line-height: 1.25em;
+            padding-right: 0.8em;
+            flex-shrink: 0;
+            cursor: pointer;
+            user-select: none;
+        }
+        
+        .ghost-callout-text {
+            flex: 1;
+            font-size: 0.95em;
+            line-height: 1.5em;
+            outline: none;
+            min-height: 24px;
+        }
+        
+        .ghost-callout-text:empty:before {
+            content: attr(data-placeholder);
+            color: #aaa;
+        }
+        
+        .ghost-callout-settings {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid #e6e9eb;
+        }
+        
+        .ghost-callout-colors {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .ghost-color-button {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        
+        .ghost-color-button:hover {
+            transform: scale(1.1);
+        }
+        
+        .ghost-color-button.active {
+            border-color: #15171a;
+            box-shadow: 0 0 0 2px white, 0 0 0 4px #15171a;
+        }
+        
+        .ghost-callout-card.kg-callout-card-white {
+            box-shadow: inset 0 0 0 1px rgba(124, 139, 154, 0.2);
+        }
+        
+        .ghost-callout-card.kg-callout-card-accent .ghost-callout-text {
+            color: white;
+        }
+        
+        .ghost-callout-card.kg-callout-card-accent .ghost-callout-text:empty:before {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Emoji picker styles */
+        .ghost-emoji-picker {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 1000;
+            background: white;
+            border: 1px solid #e6e9eb;
+            border-radius: 8px;
+            padding: 12px;
+            margin-top: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+        
+        .ghost-emoji-picker.active {
+            display: block;
+        }
+        
+        .ghost-emoji-grid {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 4px;
+        }
+        
+        .ghost-emoji-option {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+        }
+        
+        .ghost-emoji-option:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .ghost-color-picker {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+        
+        .ghost-color-button {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        
+        .ghost-color-button:hover {
+            transform: scale(1.1);
+        }
+        
+        .ghost-color-button.active {
+            box-shadow: 0 0 0 2px #fff, 0 0 0 4px #14b8ff;
+        }
+        
+        .ghost-color-button:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #fff, 0 0 0 4px #14b8ff;
+        }
+        
         /* Ghost-style image settings */
         .ghost-image-settings {
             margin-top: 12px;
@@ -1205,6 +1546,183 @@ allTags = tagsResult.success ? tagsResult.data : [];
                 margin-left: -1rem;
                 margin-right: -1rem;
             }
+        }
+        
+        /* Markdown card styles */
+        .markdown-card-content {
+            padding: 0;
+        }
+        
+        .ghost-markdown-card {
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #fafafa;
+        }
+        
+        .ghost-markdown-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            background: #f5f5f5;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .ghost-markdown-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #666;
+            font-size: 13px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+        
+        .ghost-markdown-label svg {
+            color: #999;
+        }
+        
+        .ghost-markdown-help-link {
+            color: #999;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.2s ease;
+        }
+        
+        .ghost-markdown-help-link:hover {
+            color: #666;
+        }
+        
+        .ghost-markdown-editor {
+            width: 100%;
+            min-height: 200px;
+            padding: 16px;
+            border: none;
+            background: transparent;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #333;
+            resize: none;
+            outline: none;
+        }
+        
+        .ghost-markdown-editor::placeholder {
+            color: #999;
+        }
+        
+        .editor-card.focused .ghost-markdown-card {
+            border-color: #30a46c;
+        }
+        
+        .editor-card.focused .ghost-markdown-header {
+            background: #eef8f3;
+            border-bottom-color: #30a46c;
+        }
+        
+        /* Toggle card styles */
+        .toggle-card-content {
+            padding: 0;
+        }
+        
+        .kg-toggle-card {
+            background: transparent;
+            box-shadow: inset 0 0 0 1px rgba(124, 139, 154, 0.25);
+            border-radius: 4px;
+            padding: 1.2em;
+        }
+        
+        .kg-toggle-card[data-kg-toggle-state="close"] .kg-toggle-content {
+            height: 0;
+            overflow: hidden;
+            transition: opacity .5s ease, top .35s ease;
+            opacity: 0;
+            top: -0.5em;
+            position: relative;
+        }
+        
+        .kg-toggle-content {
+            height: auto;
+            opacity: 1;
+            transition: opacity 1s ease, top .35s ease;
+            top: 0;
+            position: relative;
+        }
+        
+        .kg-toggle-card[data-kg-toggle-state="close"] svg {
+            transform: unset;
+        }
+        
+        .kg-toggle-heading {
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        
+        .kg-toggle-card h4.kg-toggle-heading-text {
+            font-size: 1.15em;
+            font-weight: 700;
+            line-height: 1.3em;
+            margin: 0;
+            flex: 1;
+            outline: none;
+        }
+        
+        .kg-toggle-heading-text:empty::before {
+            content: attr(data-placeholder);
+            color: #999;
+        }
+        
+        .kg-toggle-content p:first-of-type {
+            margin-top: 0.5em;
+        }
+        
+        .kg-toggle-content > div {
+            font-size: 0.95em;
+            line-height: 1.5em;
+            margin-top: 0.95em;
+            outline: none;
+        }
+        
+        .kg-toggle-content > div:empty::before {
+            content: attr(data-placeholder);
+            color: #999;
+        }
+        
+        .kg-toggle-card-icon {
+            height: 24px;
+            width: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 1em;
+            padding: 0;
+            background: none;
+            border: 0;
+            cursor: pointer;
+        }
+        
+        .kg-toggle-heading svg {
+            width: 14px;
+            color: rgba(124, 139, 154, 0.5);
+            transition: all 0.3s;
+            transform: rotate(-180deg);
+        }
+        
+        .kg-toggle-heading path {
+            fill: none;
+            stroke: currentcolor;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-width: 1.5;
+            fill-rule: evenodd;
+        }
+        
+        .editor-card.focused .kg-toggle-card {
+            box-shadow: inset 0 0 0 1px #30a46c;
         }
     </style>
 </head>
@@ -2007,6 +2525,14 @@ allTags = tagsResult.success ? tagsResult.data : [];
                         break; // Skip empty divs
                     }
                     
+                    // Check for markdown card
+                    if (element.classList.contains('markdown')) {
+                        addCardInternal('markdown', { 
+                            content: element.textContent || '',
+                            initialized: true
+                        });
+                    }
+                    
                     // Check for special divs (buttons, etc)
                     if (element.classList.contains('kg-button-card')) {
                         const link = element.querySelector('a');
@@ -2022,6 +2548,16 @@ allTags = tagsResult.success ? tagsResult.data : [];
                     } else if (element.classList.contains('callout')) {
                         const type = element.className.match(/callout-(\w+)/)?.[1] || 'info';
                         addCardInternal('callout', { content: element.innerHTML, type: type });
+                    } else if (element.classList.contains('kg-callout-card')) {
+                        // New Ghost-style callout card
+                        const color = element.className.match(/kg-callout-card-(\w+)/)?.[1] || 'blue';
+                        const emojiElement = element.querySelector('.kg-callout-emoji');
+                        const textElement = element.querySelector('.kg-callout-text');
+                        addCardInternal('callout', { 
+                            content: textElement?.innerHTML || '', 
+                            color: color,
+                            emoji: emojiElement?.textContent || '💡'
+                        });
                     } else if (element.classList.contains('kg-audio-card')) {
                         // Audio card
                         const audio = element.querySelector('audio');
@@ -2084,6 +2620,27 @@ allTags = tagsResult.success ? tagsResult.data : [];
                                 title: titleElement?.textContent || '',
                                 description: descriptionElement?.textContent || '',
                                 size: sizeElement ? parseFloat(sizeElement.textContent) * 1024 * 1024 : 0 // Convert MB to bytes
+                            });
+                        }
+                    } else if (element.classList.contains('kg-bookmark-card')) {
+                        // Bookmark card
+                        const linkElement = element.querySelector('.kg-bookmark-container');
+                        const titleElement = element.querySelector('.kg-bookmark-title');
+                        const descriptionElement = element.querySelector('.kg-bookmark-description');
+                        const authorElement = element.querySelector('.kg-bookmark-author');
+                        const publisherElement = element.querySelector('.kg-bookmark-publisher');
+                        const thumbnailElement = element.querySelector('.kg-bookmark-thumbnail img');
+                        const iconElement = element.querySelector('.kg-bookmark-icon');
+                        
+                        if (linkElement) {
+                            addCardInternal('bookmark', {
+                                url: linkElement.href,
+                                title: titleElement?.textContent || '',
+                                description: descriptionElement?.textContent || '',
+                                author: authorElement?.textContent || '',
+                                publisher: publisherElement?.textContent || '',
+                                thumbnail: thumbnailElement?.src || '',
+                                icon: iconElement?.src || ''
                             });
                         }
                     } else {
@@ -2208,6 +2765,9 @@ allTags = tagsResult.success ? tagsResult.data : [];
                 break;
             case 'product':
                 div.innerHTML += createProductCard(card);
+                break;
+            case 'bookmark':
+                div.innerHTML += createBookmarkCard(card);
                 break;
             // Add more card types as needed
         }
@@ -2375,16 +2935,41 @@ allTags = tagsResult.success ? tagsResult.data : [];
     }
     
     function createMarkdownCard(card) {
+        // Auto-expand textarea based on content
+        setTimeout(() => {
+            const textarea = document.querySelector(`#card-${card.id} .ghost-markdown-editor`);
+            if (textarea) {
+                adjustMarkdownHeight(textarea);
+                // Focus if new card
+                if (!card.data.content && !card.data.initialized) {
+                    textarea.focus();
+                    updateCardData(card.id, 'initialized', true);
+                }
+            }
+        }, 50);
+        
         return `
-            <div class="card-content">
-                <div class="mb-2 text-sm text-gray-600">
-                    <i class="ti ti-markdown me-1"></i> Markdown
+            <div class="card-content markdown-card-content">
+                <div class="ghost-markdown-card">
+                    <div class="ghost-markdown-header">
+                        <div class="ghost-markdown-label">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M16 3h5v18h-5M3 3h5l6 9-6 9H3"/>
+                            </svg>
+                            <span>Markdown</span>
+                        </div>
+                        <div class="ghost-markdown-help">
+                            <a href="https://ghost.org/help/writing-with-ghost/" target="_blank" class="ghost-markdown-help-link">
+                                <i class="ti ti-help-circle"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <textarea class="ghost-markdown-editor" 
+                              onblur="updateCardData('${card.id}', 'content', this.value)"
+                              oninput="markDirtySafe(); updateWordCount(); adjustMarkdownHeight(this);"
+                              onkeydown="handleMarkdownTab(event)"
+                              placeholder="Enter markdown content...">${card.data.content || ''}</textarea>
                 </div>
-                <textarea class="form-control font-mono text-sm" 
-                          rows="6"
-                          onblur="updateCard('${card.id}', this.value)"
-                          oninput="markDirtySafe(); updateWordCount();"
-                          placeholder="# Enter markdown...">${card.data.content || ''}</textarea>
             </div>
         `;
     }
@@ -2428,41 +3013,61 @@ allTags = tagsResult.success ? tagsResult.data : [];
     }
     
     function createCalloutCard(card) {
-        const bgColors = {
-            'info': 'bg-blue-50 border-blue-200',
-            'success': 'bg-green-50 border-green-200',
-            'warning': 'bg-yellow-50 border-yellow-200',
-            'error': 'bg-red-50 border-red-200'
+        const colors = {
+            'grey': { bg: 'rgba(124, 139, 154, 0.13)', emoji: '💡' },
+            'white': { bg: 'transparent', border: 'rgba(124, 139, 154, 0.2)', emoji: '💡' },
+            'blue': { bg: 'rgba(33, 172, 232, 0.12)', emoji: '💙' },
+            'green': { bg: 'rgba(52, 183, 67, 0.12)', emoji: '💚' },
+            'yellow': { bg: 'rgba(240, 165, 15, 0.13)', emoji: '💛' },
+            'red': { bg: 'rgba(209, 46, 46, 0.11)', emoji: '🚨' },
+            'pink': { bg: 'rgba(225, 71, 174, 0.11)', emoji: '💕' },
+            'purple': { bg: 'rgba(135, 85, 236, 0.12)', emoji: '💜' },
+            'accent': { bg: '#15171a', text: '#ffffff', emoji: '✨' }
         };
         
-        const iconColors = {
-            'info': 'text-blue-500',
-            'success': 'text-green-500',
-            'warning': 'text-yellow-500',
-            'error': 'text-red-500'
-        };
+        const color = card.data.color || 'grey';
+        const emoji = card.data.emoji || colors[color].emoji;
+        const colorStyle = colors[color] || colors.grey;
         
-        const type = card.data.type || 'info';
+        // Set focus to text field after render if this is a new card
+        if (!card.data.content && !card.data.initialized) {
+            setTimeout(() => {
+                const textElement = document.querySelector(`#card-${card.id} .ghost-callout-text`);
+                if (textElement) {
+                    textElement.focus();
+                    // Place cursor at the beginning
+                    const range = document.createRange();
+                    const sel = window.getSelection();
+                    range.setStart(textElement, 0);
+                    range.collapse(true);
+                    sel.removeAllRanges();
+                    sel.addRange(range);
+                }
+                updateCardData(card.id, 'initialized', true);
+            }, 50);
+        }
         
         return `
-            <div class="card-content">
-                <div class="mb-2">
-                    <select class="form-select form-select-sm" 
-                            onchange="updateCardData('${card.id}', 'type', this.value); refreshCard('${card.id}')">
-                        <option value="info" ${type === 'info' ? 'selected' : ''}>Info</option>
-                        <option value="success" ${type === 'success' ? 'selected' : ''}>Success</option>
-                        <option value="warning" ${type === 'warning' ? 'selected' : ''}>Warning</option>
-                        <option value="error" ${type === 'error' ? 'selected' : ''}>Error</option>
-                    </select>
+            <div class="card-content callout-card-content">
+                <div class="ghost-callout-card kg-callout-card-${color}">
+                    <div class="ghost-callout-emoji" onclick="showEmojiPicker('${card.id}')">${emoji}</div>
+                    <div class="ghost-callout-text" 
+                         contenteditable="true" 
+                         onblur="updateCardData('${card.id}', 'content', this.innerHTML)"
+                         oninput="markDirtySafe(); updateWordCount();"
+                         data-placeholder="Add a callout message..."
+                         onclick="event.stopPropagation();">${card.data.content || ''}</div>
                 </div>
-                <div class="${bgColors[type]} border rounded-lg p-4">
-                    <div class="flex items-start gap-3">
-                        <i class="ti ti-info-circle ${iconColors[type]} text-xl mt-0.5"></i>
-                        <div contenteditable="true" 
-                             class="flex-1" 
-                             onblur="updateCardData('${card.id}', 'content', this.innerHTML)"
-                             oninput="markDirtySafe();"
-                             placeholder="Enter callout text...">${card.data.content || ''}</div>
+                <div class="ghost-callout-settings">
+                    <div class="ghost-callout-colors">
+                        ${Object.entries(colors).map(([key, value]) => `
+                            <button type="button" 
+                                    class="ghost-color-button ${color === key ? 'active' : ''}"
+                                    style="background-color: ${value.bg}; ${key === 'white' ? `box-shadow: inset 0 0 0 1px ${value.border};` : ''}"
+                                    onclick="updateCardData('${card.id}', 'color', '${key}'); refreshCard('${card.id}')"
+                                    title="${key.charAt(0).toUpperCase() + key.slice(1)}">
+                            </button>
+                        `).join('')}
                     </div>
                 </div>
             </div>
@@ -2470,33 +3075,49 @@ allTags = tagsResult.success ? tagsResult.data : [];
     }
     
     function createToggleCard(card) {
-        const isOpen = card.data.isOpen || false;
-        const title = card.data.title || '';
+        const isOpen = card.data.isOpen !== false; // Default to open
+        const heading = card.data.heading || card.data.title || '';
         const content = card.data.content || '';
         
+        // Set focus to heading if new card
+        if (!heading && !card.data.initialized) {
+            setTimeout(() => {
+                const headingElement = document.querySelector(`#card-${card.id} .kg-toggle-heading-text`);
+                if (headingElement) {
+                    headingElement.focus();
+                    // Place cursor at the end
+                    const range = document.createRange();
+                    const sel = window.getSelection();
+                    range.selectNodeContents(headingElement);
+                    range.collapse(false);
+                    sel.removeAllRanges();
+                    sel.addRange(range);
+                }
+                updateCardData(card.id, 'initialized', true);
+            }, 50);
+        }
+        
         return `
-            <div class="card-content">
-                <div class="border rounded-lg overflow-hidden">
-                    <div class="bg-gray-50 p-4 cursor-pointer hover:bg-gray-100 transition-colors"
-                         onclick="toggleToggleCard('${card.id}')">
-                        <div class="flex items-center gap-2">
-                            <i class="ti ti-chevron-right text-gray-500 transition-transform ${isOpen ? 'rotate-90' : ''}" 
-                               id="toggle-icon-${card.id}"></i>
-                            <input type="text" 
-                                   class="flex-1 bg-transparent border-none outline-none font-medium" 
-                                   placeholder="Toggle heading..."
-                                   value="${title}"
-                                   onclick="event.stopPropagation();"
-                                   onblur="updateCardData('${card.id}', 'title', this.value)"
-                                   oninput="markDirtySafe();">
-                        </div>
+            <div class="card-content toggle-card-content">
+                <div class="kg-toggle-card" data-kg-toggle-state="${isOpen ? 'open' : 'close'}">
+                    <div class="kg-toggle-heading" onclick="toggleToggleCard('${card.id}')">
+                        <h4 class="kg-toggle-heading-text" 
+                            contenteditable="true"
+                            onclick="event.stopPropagation();"
+                            onblur="updateCardData('${card.id}', 'heading', this.textContent)"
+                            oninput="markDirtySafe();"
+                            data-placeholder="Toggle heading...">${heading}</h4>
+                        <button class="kg-toggle-card-icon" aria-label="Toggle content">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M23.25,7.311,12.53,18.03a.749.749,0,0,1-1.06,0L.75,7.311"></path>
+                            </svg>
+                        </button>
                     </div>
-                    <div class="p-4 ${isOpen ? '' : 'hidden'}" id="toggle-content-${card.id}">
+                    <div class="kg-toggle-content" id="toggle-content-${card.id}">
                         <div contenteditable="true" 
-                             class="prose max-w-none" 
                              onblur="updateCardData('${card.id}', 'content', this.innerHTML)"
-                             oninput="markDirtySafe();"
-                             placeholder="Toggle content...">${content}</div>
+                             oninput="markDirtySafe(); updateWordCount();"
+                             data-placeholder="Toggle content...">${content}</div>
                     </div>
                 </div>
             </div>
@@ -2935,6 +3556,106 @@ allTags = tagsResult.success ? tagsResult.data : [];
         }
     }
     
+    function createBookmarkCard(card) {
+        if (card.data.url) {
+            const hasMetadata = card.data.title || card.data.description || card.data.author || card.data.publisher;
+            
+            if (hasMetadata) {
+                return `
+                    <div class="card-content bookmark-card-content">
+                        <a href="${card.data.url}" target="_blank" class="ghost-bookmark-card">
+                            <div class="ghost-bookmark-content">
+                                <div class="ghost-bookmark-info">
+                                    <div class="ghost-bookmark-title">${card.data.title || 'Untitled'}</div>
+                                    ${card.data.description ? `<div class="ghost-bookmark-description">${card.data.description}</div>` : ''}
+                                    <div class="ghost-bookmark-metadata">
+                                        ${card.data.icon ? `<img src="${card.data.icon}" alt="" class="ghost-bookmark-icon">` : ''}
+                                        ${card.data.publisher ? `<span class="ghost-bookmark-publisher">${card.data.publisher}</span>` : ''}
+                                        ${card.data.author ? `<span class="ghost-bookmark-author">${card.data.author}</span>` : ''}
+                                    </div>
+                                </div>
+                                ${card.data.thumbnail ? `
+                                    <div class="ghost-bookmark-thumbnail">
+                                        <img src="${card.data.thumbnail}" alt="">
+                                    </div>
+                                ` : ''}
+                            </div>
+                        </a>
+                        <div class="ghost-bookmark-settings" id="bookmarkSettings-${card.id}">
+                            <input type="url" 
+                                   class="ghost-bookmark-input" 
+                                   placeholder="Paste URL to create bookmark"
+                                   value="${card.data.url || ''}"
+                                   onblur="handleBookmarkUrlChange('${card.id}', this.value)"
+                                   onkeypress="if(event.key==='Enter') handleBookmarkUrlChange('${card.id}', this.value)"
+                                   oninput="markDirtySafe();">
+                        </div>
+                    </div>
+                `;
+            } else if (card.data.loading) {
+                return `
+                    <div class="card-content bookmark-card-content">
+                        <div class="ghost-bookmark-loading">
+                            <i class="ti ti-loader-2 spin me-2"></i>
+                            Loading bookmark preview...
+                        </div>
+                        <div class="ghost-bookmark-settings" id="bookmarkSettings-${card.id}">
+                            <input type="url" 
+                                   class="ghost-bookmark-input" 
+                                   placeholder="Paste URL to create bookmark"
+                                   value="${card.data.url || ''}"
+                                   onblur="handleBookmarkUrlChange('${card.id}', this.value)"
+                                   onkeypress="if(event.key==='Enter') handleBookmarkUrlChange('${card.id}', this.value)"
+                                   oninput="markDirtySafe();">
+                        </div>
+                    </div>
+                `;
+            } else {
+                return `
+                    <div class="card-content bookmark-card-content">
+                        <div class="ghost-bookmark-error">
+                            <i class="ti ti-alert-circle mb-2" style="font-size: 2rem;"></i>
+                            <div>Unable to embed this URL</div>
+                            <div class="text-sm mt-1">Check that the URL is correct and try again</div>
+                        </div>
+                        <div class="ghost-bookmark-settings" id="bookmarkSettings-${card.id}">
+                            <input type="url" 
+                                   class="ghost-bookmark-input" 
+                                   placeholder="Paste URL to create bookmark"
+                                   value="${card.data.url || ''}"
+                                   onblur="handleBookmarkUrlChange('${card.id}', this.value)"
+                                   onkeypress="if(event.key==='Enter') handleBookmarkUrlChange('${card.id}', this.value)"
+                                   oninput="markDirtySafe();">
+                        </div>
+                    </div>
+                `;
+            }
+        } else {
+            return `
+                <div class="card-content bookmark-card-content">
+                    <div class="text-center py-5">
+                        <div class="mb-3">
+                            <i class="ti ti-bookmark text-muted" style="font-size: 3rem;"></i>
+                        </div>
+                        <h5>Bookmark Card</h5>
+                        <p class="text-muted mb-3">
+                            Capture and share links with rich previews including title, description, and images.
+                        </p>
+                    </div>
+                    <div class="ghost-bookmark-settings" id="bookmarkSettings-${card.id}">
+                        <input type="url" 
+                               class="ghost-bookmark-input" 
+                               placeholder="Paste URL to create bookmark"
+                               value="${card.data.url || ''}"
+                               onblur="handleBookmarkUrlChange('${card.id}', this.value)"
+                               onkeypress="if(event.key==='Enter') handleBookmarkUrlChange('${card.id}', this.value)"
+                               oninput="markDirtySafe();">
+                    </div>
+                </div>
+            `;
+        }
+    }
+    
     // Create add button
     function createAddButton() {
         const div = document.createElement('div');
@@ -3015,6 +3736,11 @@ allTags = tagsResult.success ? tagsResult.data : [];
             <div class="card-menu-item" onclick="insertCard('file', this)">
                 <i class="ti ti-file"></i>
                 <span>File</span>
+            </div>
+            <div class="card-menu-category">Links</div>
+            <div class="card-menu-item" onclick="insertCard('bookmark', this)">
+                <i class="ti ti-bookmark"></i>
+                <span>Bookmark</span>
             </div>
             <div class="card-menu-category">Commerce</div>
             <div class="card-menu-item" onclick="insertCard('product', this)">
@@ -3442,21 +4168,65 @@ allTags = tagsResult.success ? tagsResult.data : [];
     }
     
     // Toggle the toggle card open/closed
+    // Show emoji picker for callout card
+    function showEmojiPicker(cardId) {
+        const card = document.getElementById(`card-${cardId}`);
+        const emojiPicker = card.querySelector('.ghost-emoji-picker');
+        
+        if (!emojiPicker) {
+            const emojis = ['💡', '💙', '💚', '💛', '🚨', '💕', '💜', '✨', '🔥', '⭐', '✅', '❓', '❗', '💬', '📝', '🎯', '🚀', '💪', '👍', '⚡', '🌟', '🎉', '🔑', '📌'];
+            
+            const picker = document.createElement('div');
+            picker.className = 'ghost-emoji-picker';
+            picker.innerHTML = `
+                <div class="ghost-emoji-grid">
+                    ${emojis.map(emoji => `
+                        <div class="ghost-emoji-option" onclick="selectEmoji('${cardId}', '${emoji}')">${emoji}</div>
+                    `).join('')}
+                </div>
+            `;
+            
+            card.querySelector('.ghost-callout-card').style.position = 'relative';
+            card.querySelector('.ghost-callout-card').appendChild(picker);
+        }
+        
+        // Toggle picker visibility
+        const picker = card.querySelector('.ghost-emoji-picker');
+        picker.classList.toggle('active');
+        
+        // Close picker when clicking outside
+        if (picker.classList.contains('active')) {
+            setTimeout(() => {
+                document.addEventListener('click', function closeEmojiPicker(e) {
+                    if (!picker.contains(e.target) && !e.target.classList.contains('ghost-callout-emoji')) {
+                        picker.classList.remove('active');
+                        document.removeEventListener('click', closeEmojiPicker);
+                    }
+                });
+            }, 100);
+        }
+    }
+    
+    // Select emoji for callout card
+    function selectEmoji(cardId, emoji) {
+        updateCardData(cardId, 'emoji', emoji);
+        refreshCard(cardId);
+        const picker = document.querySelector(`#card-${cardId} .ghost-emoji-picker`);
+        if (picker) {
+            picker.classList.remove('active');
+        }
+    }
+    
     function toggleToggleCard(cardId) {
         const card = contentCards.find(c => c.id === cardId);
         if (card) {
             card.data.isOpen = !card.data.isOpen;
+            updateCardData(cardId, 'isOpen', card.data.isOpen);
             
             // Update UI
-            const icon = document.getElementById(`toggle-icon-${cardId}`);
-            const content = document.getElementById(`toggle-content-${cardId}`);
-            
-            if (card.data.isOpen) {
-                icon.classList.add('rotate-90');
-                content.classList.remove('hidden');
-            } else {
-                icon.classList.remove('rotate-90');
-                content.classList.add('hidden');
+            const toggleCard = document.querySelector(`#card-${cardId} .kg-toggle-card`);
+            if (toggleCard) {
+                toggleCard.setAttribute('data-kg-toggle-state', card.data.isOpen ? 'open' : 'close');
             }
             
             markDirtySafe();
@@ -3490,6 +4260,28 @@ allTags = tagsResult.success ? tagsResult.data : [];
         // Count words
         wordCount = text.trim().split(/\s+/).filter(word => word.length > 0).length;
         document.getElementById('wordCount').textContent = wordCount;
+    }
+    
+    // Adjust markdown textarea height
+    function adjustMarkdownHeight(textarea) {
+        textarea.style.height = 'auto';
+        textarea.style.height = Math.max(200, textarea.scrollHeight) + 'px';
+    }
+    
+    // Handle tab key in markdown editor
+    function handleMarkdownTab(event) {
+        if (event.key === 'Tab') {
+            event.preventDefault();
+            const textarea = event.target;
+            const start = textarea.selectionStart;
+            const end = textarea.selectionEnd;
+            
+            // Insert tab character
+            textarea.value = textarea.value.substring(0, start) + '    ' + textarea.value.substring(end);
+            
+            // Move cursor
+            textarea.selectionStart = textarea.selectionEnd = start + 4;
+        }
     }
     
     // Toggle settings panel
@@ -4868,6 +5660,89 @@ allTags = tagsResult.success ? tagsResult.data : [];
         return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
     }
     
+    // Handle bookmark URL change
+    function handleBookmarkUrlChange(cardId, url) {
+        if (!url.trim()) {
+            updateCardData(cardId, 'url', '');
+            return;
+        }
+        
+        // Validate URL
+        try {
+            new URL(url);
+        } catch {
+            alert('Please enter a valid URL');
+            return;
+        }
+        
+        const card = contentCards.find(c => c.id === cardId);
+        if (!card) return;
+        
+        // Update URL and show loading state
+        updateCardData(cardId, 'url', url);
+        updateCardData(cardId, 'loading', true);
+        updateCardData(cardId, 'title', '');
+        updateCardData(cardId, 'description', '');
+        updateCardData(cardId, 'author', '');
+        updateCardData(cardId, 'publisher', '');
+        updateCardData(cardId, 'thumbnail', '');
+        updateCardData(cardId, 'icon', '');
+        
+        // Re-render card to show loading state
+        renderCard(cardId);
+        
+        // Fetch URL metadata
+        fetchUrlMetadata(url)
+            .then(metadata => {
+                updateCardData(cardId, 'loading', false);
+                updateCardData(cardId, 'title', metadata.title || '');
+                updateCardData(cardId, 'description', metadata.description || '');
+                updateCardData(cardId, 'author', metadata.author || '');
+                updateCardData(cardId, 'publisher', metadata.publisher || '');
+                updateCardData(cardId, 'thumbnail', metadata.image || '');
+                updateCardData(cardId, 'icon', metadata.icon || '');
+                
+                // Re-render card with metadata
+                renderCard(cardId);
+                markDirtySafe();
+            })
+            .catch(error => {
+                console.error('Failed to fetch URL metadata:', error);
+                updateCardData(cardId, 'loading', false);
+                // Re-render card to show error state
+                renderCard(cardId);
+            });
+    }
+    
+    // Fetch URL metadata (mock implementation)
+    function fetchUrlMetadata(url) {
+        return new Promise((resolve, reject) => {
+            // In a real implementation, this would call a backend service
+            // For now, we'll simulate extracting some basic metadata
+            
+            setTimeout(() => {
+                try {
+                    const urlObj = new URL(url);
+                    const domain = urlObj.hostname.replace('www.', '');
+                    
+                    // Mock metadata based on common patterns
+                    const metadata = {
+                        title: `Link to ${domain}`,
+                        description: `Visit ${url} for more information`,
+                        publisher: domain.charAt(0).toUpperCase() + domain.slice(1),
+                        author: '',
+                        image: '',
+                        icon: `https://www.google.com/s2/favicons?domain=${domain}`
+                    };
+                    
+                    resolve(metadata);
+                } catch (error) {
+                    reject(error);
+                }
+            }, 1000); // Simulate network delay
+        });
+    }
+    
     // Save post
     function savePost(status, isAutosave = false) {
         return new Promise((resolve, reject) => {
@@ -4946,18 +5821,31 @@ allTags = tagsResult.success ? tagsResult.data : [];
                     }
                     break;
                 case 'callout':
-                    const type = card.data.type || 'info';
-                    html += `<div class="callout callout-${type}">${card.data.content || ''}</div>\n`;
+                    const calloutColor = card.data.color || 'blue';
+                    const calloutEmoji = card.data.emoji || '💡';
+                    html += `<div class="kg-card kg-callout-card kg-callout-card-${calloutColor}">`;
+                    html += `<div class="kg-callout-emoji">${calloutEmoji}</div>`;
+                    html += `<div class="kg-callout-text">${card.data.content || ''}</div>`;
+                    html += `</div>\n`;
                     plaintext += (card.data.content || '').replace(/<[^>]*>/g, '') + '\n\n';
                     break;
                 case 'toggle':
-                    if (card.data.title || card.data.content) {
-                        html += `<details>\n`;
-                        html += `<summary>${card.data.title || 'Toggle'}</summary>\n`;
-                        html += `<div>${card.data.content || ''}</div>\n`;
-                        html += `</details>\n`;
-                        plaintext += (card.data.title || 'Toggle') + '\n';
-                        plaintext += (card.data.content || '').replace(/<[^>]*>/g, '') + '\n\n';
+                    const toggleHeading = card.data.heading || card.data.title || '';
+                    const toggleContent = card.data.content || '';
+                    if (toggleHeading || toggleContent) {
+                        html += `<div class="kg-card kg-toggle-card" data-kg-toggle-state="${card.data.isOpen !== false ? 'open' : 'close'}">`;
+                        html += `<div class="kg-toggle-heading">`;
+                        html += `<h4 class="kg-toggle-heading-text">${toggleHeading}</h4>`;
+                        html += `<button class="kg-toggle-card-icon">`;
+                        html += `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">`;
+                        html += `<path d="M23.25,7.311,12.53,18.03a.749.749,0,0,1-1.06,0L.75,7.311"></path>`;
+                        html += `</svg>`;
+                        html += `</button>`;
+                        html += `</div>`;
+                        html += `<div class="kg-toggle-content">${toggleContent}</div>`;
+                        html += `</div>\n`;
+                        plaintext += toggleHeading + '\n';
+                        plaintext += (toggleContent || '').replace(/<[^>]*>/g, '') + '\n\n';
                     }
                     break;
                 case 'video':
@@ -5086,6 +5974,48 @@ allTags = tagsResult.success ? tagsResult.data : [];
                             plaintext += 'Price: ' + card.data.price + '\n';
                         }
                         plaintext += '\n';
+                    }
+                    break;
+                case 'bookmark':
+                    if (card.data.url) {
+                        html += `<div class="kg-card kg-bookmark-card">`;
+                        html += `<a href="${card.data.url}" class="kg-bookmark-container" target="_blank">`;
+                        html += `<div class="kg-bookmark-content">`;
+                        html += `<div class="kg-bookmark-info">`;
+                        if (card.data.title) {
+                            html += `<h4 class="kg-bookmark-title">${card.data.title}</h4>`;
+                        }
+                        if (card.data.description) {
+                            html += `<p class="kg-bookmark-description">${card.data.description}</p>`;
+                        }
+                        if (card.data.publisher || card.data.author || card.data.icon) {
+                            html += `<div class="kg-bookmark-metadata">`;
+                            if (card.data.icon) {
+                                html += `<img src="${card.data.icon}" class="kg-bookmark-icon" alt="">`;
+                            }
+                            if (card.data.publisher) {
+                                html += `<span class="kg-bookmark-publisher">${card.data.publisher}</span>`;
+                            }
+                            if (card.data.author) {
+                                html += `<span class="kg-bookmark-author">${card.data.author}</span>`;
+                            }
+                            html += `</div>`;
+                        }
+                        html += `</div>`;
+                        if (card.data.thumbnail) {
+                            html += `<div class="kg-bookmark-thumbnail">`;
+                            html += `<img src="${card.data.thumbnail}" alt="">`;
+                            html += `</div>`;
+                        }
+                        html += `</div>`;
+                        html += `</a>`;
+                        html += `</div>\n`;
+                        
+                        plaintext += `${card.data.title || card.data.url}\n`;
+                        if (card.data.description) {
+                            plaintext += `${card.data.description}\n`;
+                        }
+                        plaintext += `${card.data.url}\n\n`;
                     }
                     break;
             }

@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-color-theme="Blue_Theme" class="light selected" data-layout="vertical"
+    data-boxed-layout="boxed" data-card="shadow">
+
+<head>
+    @@include("partials/head.html")
+    <title>Spike TailwindCSS HTML Admin Template</title>
+    <link rel="stylesheet" href="@@webRoot/node_modules/prismjs/themes/prism-okaidia.min.css">
+</head>
+
+<body class="DEFAULT_THEME bg-lightprimary dark:bg-darkbody">
+    <main>
+        <!--start the project-->
+        <div id="main-wrapper" class="flex p-5">
+            <aside id="application-sidebar-brand"
+                class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full xl:rtl:-translate-x-0 rtl:translate-x-full  left-0 rtl:left-auto xl:rtl:right-5 rtl:right-0 transform hidden xl:block xl:translate-x-0 xl:end-auto xl:bottom-0 fixed top-0 with-vertical  left-sidebar transition-all duration-300 h-screen z-[2] flex-shrink-0  w-[270px] border-border dark:border-darkborder bg-white dark:bg-dark xl:top-5 xl:start-5 shadow-md xl:rounded-md">
+                @@include("partials/sidebar.html",{ "page": "eco-shop2","page_group": "ecomm" })
+            </aside>
+            <div class="page-wrapper w-full" role="main">
+
+                <!-- Main Content -->
+                <main class="h-full ">
+                    <div class="container full-container py-5 xl:ps-6 ps-0 pt-0 pe-0 remove-ps">
+
+                        <!--  Header Start -->
+                        <header
+                            class="sticky top-0 inset-x-0 z-[1] flex flex-wrap md:justify-start md:flex-nowrap text-fs_15 py-3 lg:py-0 mb-6 bg-white dark:bg-dark rounded-md shadow-md">
+                            <div class="with-vertical w-full">@@include("partials/header.html")</div>
+                            <div class="with-horizontal w-full">
+                                <div class="bg-white dark:bg-dark">
+                                    <div class="container">
+                                        @@include("partials/horizontal-header.html")
+                                    </div>
+                                </div>
+                            </div>
+                        </header>
+                        <!--  Header End -->
+
+                        <!-- Horizontal Sidebar Menu -->
+                        <aside
+                            class="with-horizontal lg:flex hidden left-sidebar bg-white dark:bg-dark border-t border-border dark:border-darkborder">
+                            @@include("partials/horizontal-sidebar.html", { "page": "eco-shop2","page_group":
+                            "ecomm"})
+                        </aside>
+                        <!-- Horizontal Sidebar Menu End -->
+
+                        <!-- Main Content -->
+                        <div class="max-w-full">
+                            <div class="container full-container ">
+                                <!----Breadcrumb Start---->
+                                @@include("partials/breadcrumb.html", {"title": "Shop2", "subtitle": 'Home'})
+                                <!----Breadcrumb End---->
+                                <div class="card mb-4">
+                                    <div class="card-body py-4 px-6">
+                                            <span class="font-semibold">Filter by:</span>
+                                              <div class="hs-dropdown relative inline-flex [--auto-close:inside] px-6 border-e border-light-dark">
+                                                <button id="hs-dropdown-default" type="button" class="hs-dropdown-toggle inline-flex items-center gap-x-1 text-fs_15 font-semibold text-dark dark:text-darklink">
+                                                <span>Category</span>
+                                                <i class="ti ti-chevron-down text-base leading-tight font-medium hs-dropdown-open:rotate-180 relative top-[1px]"></i>
+                                                </button>
+                                                <div class="hs-dropdown-menu [--auto-close:inside] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-52 bg-white shadow-md rounded-md p-2 mt-2 dark:bg-dark border-border dark:border-darkborder dark:divide-gray-700 after:h-4 after:absolute after:-bottom-4 after:start-0 after:w-full before:h-4 before:absolute before:-top-4 before:start-0 before:w-full z-10" aria-labelledby="hs-dropdown-default">
+                                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md bg-hover" href="#">
+                                                        <div class="flex gap-2 items-center">
+                                                            <input type="checkbox" class="border-bordergray w-4 h-4 rounded text-primary dark:border-darkborder bg-transparent dark:checked:bg-primary dark:checked:border-primary focus:ring-0 focus:ring-offset-0"
+                                                                id="hs-checked-checkbox" checked>
+                                                            <label for="hs-checked-checkbox" class="text-fs_15">All</label>
+                                                        </div>
+                                                    </a>
+                                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md bg-hover" href="#">
+                                                        <div class="flex gap-2 items-center">
+                                                            <input type="checkbox" class="border-bordergray w-4 h-4 rounded text-primary dark:border-darkborder bg-transparent dark:checked:bg-primary dark:checked:border-primary focus:ring-0 focus:ring-offset-0"
+                                                                id="hs-checked-checkbox2">
+                                                            <label for="hs-checked-checkbox2" class="text-fs_15">Make</label>
+                                                        </div>
+                                                    </a>
+                                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md bg-hover" href="#">
+                                                        <div class="flex gap-2 items-center">
+                                                            <input type="checkbox" class="border-bordergray w-4 h-4 rounded text-primary dark:border-darkborder bg-transparent dark:checked:bg-primary dark:checked:border-primary focus:ring-0 focus:ring-offset-0"
+                                                                id="hs-checked-checkbox3">
+                                                            <label for="hs-checked-checkbox3" class="text-fs_15">Skin</label>
+                                                        </div>
+                                                    </a>
+                                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md bg-hover" href="#">
+                                                        <div class="flex gap-2 items-center">
+                                                            <input type="checkbox" class="border-bordergray w-4 h-4 rounded text-primary dark:border-darkborder bg-transparent dark:checked:bg-primary dark:checked:border-primary focus:ring-0 focus:ring-offset-0"
+                                                                id="hs-checked-checkbox4">
+                                                            <label for="hs-checked-checkbox4" class="text-fs_15">Hair</label>
+                                                        </div>
+                                                    </a>
+                                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md bg-hover" href="#">
+                                                        <div class="flex gap-2 items-center">
+                                                            <input type="checkbox" class="border-bordergray w-4 h-4 rounded text-primary dark:border-darkborder bg-transparent dark:checked:bg-primary dark:checked:border-primary focus:ring-0 focus:ring-offset-0"
+                                                                id="hs-checked-checkbox5">
+                                                            <label for="hs-checked-checkbox5" class="text-fs_15">Bath & Body</label>
+                                                        </div>
+                                                    </a>
+                                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md bg-hover" href="#">
+                                                        <div class="flex gap-2 items-center">
+                                                            <input type="checkbox" class="border-bordergray w-4 h-4 rounded text-primary dark:border-darkborder bg-transparent dark:checked:bg-primary dark:checked:border-primary focus:ring-0 focus:ring-offset-0"
+                                                                id="hs-checked-checkbox6">
+                                                            <label for="hs-checked-checkbox6" class="text-fs_15">Fragrance</label>
+                                                        </div>
+                                                    </a>
+                                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md bg-hover" href="#">
+                                                        <div class="flex gap-2 items-center">
+                                                            <input type="checkbox" class="border-bordergray w-4 h-4 rounded text-primary dark:border-darkborder bg-transparent dark:checked:bg-primary dark:checked:border-primary focus:ring-0 focus:ring-offset-0"
+                                                                id="hs-checked-checkbox7">
+                                                            <label for="hs-checked-checkbox7" class="text-fs_15">Health & Wellness</label>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                              </div>
+                                              <div class="hs-dropdown relative inline-flex [--auto-close:inside] px-6 border-e border-light-dark">
+                                                <button id="hs-dropdown-default" type="button" class="hs-dropdown-toggle inline-flex items-center gap-x-1 text-fs_15 font-semibold text-dark dark:text-darklink">
+                                                <span>Pricing</span>
+                                                <i class="ti ti-chevron-down text-base leading-tight font-medium hs-dropdown-open:rotate-180 relative top-[1px]"></i>
+                                                </button>
+                                                <div class="hs-dropdown-menu [--auto-close:inside] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-52 bg-white shadow-md rounded-md p-2 mt-2 dark:bg-dark border-border dark:border-darkborder dark:divide-gray-700 after:h-4 after:absolute after:-bottom-4 after:start-0 after:w-full before:h-4 before:absolute before:-top-4 before:start-0 before:w-full z-10" aria-labelledby="hs-dropdown-default">
+                                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md bg-hover" href="#">
+                                                        <div class="flex gap-2 items-center">
+                                                            <input type="radio" name="hs-radio-vertical-group" class="bg-transparent shrink-0 rounded-full text-primary focus:ring-0 focus:ring-offset-0 disabled:opacity-50 disabled:pointer-events-none dark:checked:bg-primary dark:checked:border-primary" id="hs-radio-vertical-group-1" checked="">
+                                                            <label for="hs-radio-vertical-group-1" class="text-fs_15">All</label>
+                                                        </div>
+                                                    </a>
+                                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md bg-hover" href="#">
+                                                        <div class="flex gap-2 items-center">
+                                                            <input type="radio" name="hs-radio-vertical-group" class="bg-transparent shrink-0 rounded-full text-primary focus:ring-0 focus:ring-offset-0 disabled:opacity-50 disabled:pointer-events-none dark:checked:bg-primary dark:checked:border-primary" id="hs-radio-vertical-group-2" checked="">
+                                                            <label for="hs-radio-vertical-group-2" class="text-fs_15">0-50</label>
+                                                        </div>
+                                                    </a>
+                                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md bg-hover" href="#">
+                                                        <div class="flex gap-2 items-center">
+                                                            <input type="radio" name="hs-radio-vertical-group" class="bg-transparent shrink-0 rounded-full text-primary focus:ring-0 focus:ring-offset-0 disabled:opacity-50 disabled:pointer-events-none dark:checked:bg-primary dark:checked:border-primary" id="hs-radio-vertical-group-3" checked="">
+                                                            <label for="hs-radio-vertical-group-3" class="text-fs_15">50-100</label>
+                                                        </div>
+                                                    </a>
+                                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md bg-hover" href="#">
+                                                        <div class="flex gap-2 items-center">
+                                                            <input type="radio" name="hs-radio-vertical-group" class="bg-transparent shrink-0 rounded-full text-primary focus:ring-0 focus:ring-offset-0 disabled:opacity-50 disabled:pointer-events-none dark:checked:bg-primary dark:checked:border-primary" id="hs-radio-vertical-group-4" checked="">
+                                                            <label for="hs-radio-vertical-group-4" class="text-fs_15">100-200</label>
+                                                        </div>
+                                                    </a>
+                                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md bg-hover" href="#">
+                                                        <div class="flex gap-2 items-center">
+                                                            <input type="radio" name="hs-radio-vertical-group" class="bg-transparent shrink-0 rounded-full text-primary focus:ring-0 focus:ring-offset-0 disabled:opacity-50 disabled:pointer-events-none dark:checked:bg-primary dark:checked:border-primary" id="hs-radio-vertical-group-5" checked="">
+                                                            <label for="hs-radio-vertical-group-5" class="text-fs_15">Over 200</label>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                              </div>
+                                              <div class="hs-dropdown relative inline-flex [--auto-close:inside] px-6 border-e border-light-dark">
+                                                <button id="hs-dropdown-default" type="button" class="hs-dropdown-toggle inline-flex items-center gap-x-1 text-fs_15 font-semibold text-dark dark:text-darklink">
+                                                <span>Gender</span>
+                                                <i class="ti ti-chevron-down text-base leading-tight font-medium hs-dropdown-open:rotate-180 relative top-[1px]"></i>
+                                                </button>
+                                                <div class="hs-dropdown-menu [--auto-close:inside] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-52 bg-white shadow-md rounded-md p-2 mt-2 dark:bg-dark border-border dark:border-darkborder dark:divide-gray-700 after:h-4 after:absolute after:-bottom-4 after:start-0 after:w-full before:h-4 before:absolute before:-top-4 before:start-0 before:w-full z-10" aria-labelledby="hs-dropdown-default">
+                                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md bg-hover" href="#">
+                                                        <div class="flex gap-2 items-center">
+                                                            <input type="radio" name="hs-radio-vertical-group" class="bg-transparent shrink-0 rounded-full text-primary focus:ring-0 focus:ring-offset-0 disabled:opacity-50 disabled:pointer-events-none dark:checked:bg-primary dark:checked:border-primary" id="hs-radio-vertical-group-6" checked="">
+                                                            <label for="hs-radio-vertical-group-6" class="text-fs_15">All</label>
+                                                        </div>
+                                                    </a>
+                                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md bg-hover" href="#">
+                                                        <div class="flex gap-2 items-center">
+                                                            <input type="radio" name="hs-radio-vertical-group" class="bg-transparent shrink-0 rounded-full text-primary focus:ring-0 focus:ring-offset-0 disabled:opacity-50 disabled:pointer-events-none dark:checked:bg-primary dark:checked:border-primary" id="hs-radio-vertical-group-7" checked="">
+                                                            <label for="hs-radio-vertical-group-7" class="text-fs_15">Men</label>
+                                                        </div>
+                                                    </a>
+                                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md bg-hover" href="#">
+                                                        <div class="flex gap-2 items-center">
+                                                            <input type="radio" name="hs-radio-vertical-group" class="bg-transparent shrink-0 rounded-full text-primary focus:ring-0 focus:ring-offset-0 disabled:opacity-50 disabled:pointer-events-none dark:checked:bg-primary dark:checked:border-primary" id="hs-radio-vertical-group-8" checked="">
+                                                            <label for="hs-radio-vertical-group-8" class="text-fs_15">Women</label>
+                                                        </div>
+                                                    </a>
+                                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md bg-hover" href="#">
+                                                        <div class="flex gap-2 items-center">
+                                                            <input type="radio" name="hs-radio-vertical-group" class="bg-transparent shrink-0 rounded-full text-primary focus:ring-0 focus:ring-offset-0 disabled:opacity-50 disabled:pointer-events-none dark:checked:bg-primary dark:checked:border-primary" id="hs-radio-vertical-group-9" checked="">
+                                                            <label for="hs-radio-vertical-group-9" class="text-fs_15">Kids</label>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                              </div>
+                                              <div class="hs-dropdown relative inline-flex [--auto-close:inside] px-6">
+                                                <button id="hs-dropdown-default" type="button" class="hs-dropdown-toggle inline-flex items-center gap-x-1 text-fs_15 font-semibold text-dark dark:text-darklink">
+                                                <span>Color</span>
+                                                <i class="ti ti-chevron-down text-base leading-tight font-medium hs-dropdown-open:rotate-180 relative top-[1px]"></i>
+                                                </button>
+                                                <div class="hs-dropdown-menu [--auto-close:inside] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-52 bg-white shadow-md rounded-md p-2 mt-2 dark:bg-dark border-border dark:border-darkborder dark:divide-gray-700 after:h-4 after:absolute after:-bottom-4 after:start-0 after:w-full before:h-4 before:absolute before:-top-4 before:start-0 before:w-full z-10" aria-labelledby="hs-dropdown-default">
+                                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md bg-hover" href="#">
+                                                        <div class="flex gap-2 items-center">
+                                                            <input type="radio" name="hs-radio-vertical-group" class="bg-transparent shrink-0 rounded-full text-primary focus:ring-0 focus:ring-offset-0 disabled:opacity-50 disabled:pointer-events-none dark:checked:bg-primary dark:checked:border-primary" id="hs-radio-vertical-group-11113" checked="">
+                                                            <label for="hs-radio-vertical-group-11113" class="text-fs_15">Blue</label>
+                                                        </div>
+                                                    </a>
+                                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md bg-hover" href="#">
+                                                        <div class="flex gap-2 items-center">
+                                                            <input type="radio" name="hs-radio-vertical-group" class="bg-transparent shrink-0 rounded-full text-primary focus:ring-0 focus:ring-offset-0 disabled:opacity-50 disabled:pointer-events-none dark:checked:bg-primary dark:checked:border-primary" id="hs-radio-vertical-group-1113" checked="">
+                                                            <label for="hs-radio-vertical-group-1113" class="text-fs_15">Green</label>
+                                                        </div>
+                                                    </a>
+                                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md bg-hover" href="#">
+                                                        <div class="flex gap-2 items-center">
+                                                            <input type="radio" name="hs-radio-vertical-group" class="bg-transparent shrink-0 rounded-full text-primary focus:ring-0 focus:ring-offset-0 disabled:opacity-50 disabled:pointer-events-none dark:checked:bg-primary dark:checked:border-primary" id="hs-radio-vertical-group-113" checked="">
+                                                            <label for="hs-radio-vertical-group-113" class="text-fs_15">Red</label>
+                                                        </div>
+                                                    </a>
+                                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md bg-hover" href="#">
+                                                        <div class="flex gap-2 items-center">
+                                                            <input type="radio" name="hs-radio-vertical-group" class="bg-transparent shrink-0 rounded-full text-primary focus:ring-0 focus:ring-offset-0 disabled:opacity-50 disabled:pointer-events-none dark:checked:bg-primary dark:checked:border-primary" id="hs-radio-vertical-group-13" checked="">
+                                                            <label for="hs-radio-vertical-group-13" class="text-fs_15">Yellow</label>
+                                                        </div>
+                                                    </a>
+                                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md bg-hover" href="#">
+                                                        <div class="flex gap-2 items-center">
+                                                            <input type="radio" name="hs-radio-vertical-group" class="bg-transparent shrink-0 rounded-full text-primary focus:ring-0 focus:ring-offset-0 disabled:opacity-50 disabled:pointer-events-none dark:checked:bg-primary dark:checked:border-primary" id="hs-radio-vertical-group-14" checked="">
+                                                            <label for="hs-radio-vertical-group-14" class="text-fs_15">Black</label>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                              </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="flex items-center justify-between mb-6">
+                                            <div class="card-title">422 products</div>
+                                            <div class="flex gap-2">
+                                                  <form class="relative block">
+                                                    <input type="text" class="form-control rounded-sm py-[9px]  ps-12 border-bordergray  text-dark dark:text-darklink text-fs_15  placeholder:text-dark dark:placeholder:text-darklink placeholder:opacity-100 font-medium" placeholder="Search">
+                                                    <i class="ti ti-search text-dark dark:text-darklink absolute top-1.5  start-1 text-xl  ms-3"></i>
+                                                  </form>
+                                                  <select class="">
+                                                    <option selected="">Most Recent</option>
+                                                    <option>March 2024</option>
+                                                    <option>April 2024</option>
+                                                    <option>May 2024</option>
+                                                    <option>June 2024</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!-- Products -->
+                                        <div class="grid grid-cols-12 gap-6 pb-6 border-b border-light-dark">
+                                            <div class="lg:col-span-3 md:col-span-6 sm:col-span-12 col-span-12 group/parent animate-card">
+                                                <div class="relative overflow-hidden rounded-md group/image mb-3 cursor-pointer">
+                                                    <img src="@@webRoot/assets/images/products/product-10.jpg" alt="" class="w-full max-w-full">
+                                                    <div class=" absolute top-4 -end-24 flex items-center gap-3 group-hover/image:end-5 transition-all group-hover/parent:end-5 ">
+                                                        <a href="javascript:void(0)" class="bg-white dark:bg-dark dark:text-darklink rounded-full flex items-center justify-center text-dark text-xl p-2 hover:bg-error dark:hover:bg-error dark:hover:text-white hover:text-white"><i class="ti ti-heart"></i></a>
+                                                        <a href="@@webRoot/horizontal/eco-shop-detail2.html" class="bg-white rounded-full flex items-center dark:bg-dark dark:text-darklink justify-center text-dark text-xl p-2 hover:bg-primary dark:hover:bg-primary dark:hover:text-white hover:text-white"><i class="ti ti-basket"></i></a>
+                                                      </div>
+                                                </div>
+                                                <h5 class="mb-2 text-lg">The cleanser face wash</h5>
+                                                 <div class="flex gap-2 mb-2">
+                                                    <i class="ti ti-star-filled text-base text-warning leading-tight font-medium"></i>
+                                                    <div>
+                                                        <span class="text-fs_15 text-dark dark:text-white font-semibold">4.8</span>
+                                                        <span class="text-fs_15 font-semibold">(87)</span>
+                                                    </div>
+                                                 </div>
+                                                 <div class="flex gap-2">
+                                                    <span class="text-base text-dark dark:text-white font-semibold">$16.25</span>
+                                                    <span class="text-base font-semibold">$24.25</span>
+                                                 </div>
+                                            </div>
+                                            <div class="lg:col-span-3 md:col-span-6 sm:col-span-12 col-span-12 group/parent animate-card">
+                                                <div class="relative overflow-hidden rounded-md group/image mb-3 cursor-pointer">
+                                                    <img src="@@webRoot/assets/images/products/product-11.jpg" alt="" class="w-full max-w-full">
+                                                    <div class=" absolute top-4 -end-24 flex items-center gap-3 group-hover/image:end-5 transition-all group-hover/parent:end-5 ">
+                                                        <a href="javascript:void(0)" class="bg-white dark:bg-dark dark:text-darklink rounded-full flex items-center justify-center text-dark text-xl p-2 hover:bg-error dark:hover:bg-error dark:hover:text-white hover:text-white"><i class="ti ti-heart"></i></a>
+                                                        <a href="@@webRoot/horizontal/eco-shop-detail2.html" class="bg-white rounded-full flex items-center dark:bg-dark dark:text-darklink justify-center text-dark text-xl p-2 hover:bg-primary dark:hover:bg-primary dark:hover:text-white hover:text-white"><i class="ti ti-basket"></i></a>
+                                                      </div>
+                                                </div>
+                                                <h5 class="mb-2 text-lg">Glass Cosmetic Jar</h5>
+                                                 <div class="flex gap-2 mb-2">
+                                                    <i class="ti ti-star-filled text-base text-warning leading-tight font-medium"></i>
+                                                    <div>
+                                                        <span class="text-fs_15 text-dark dark:text-white font-semibold">4.8</span>
+                                                        <span class="text-fs_15 font-semibold">(87)</span>
+                                                    </div>
+                                                 </div>
+                                                 <div class="flex gap-2">
+                                                    <span class="text-base text-dark dark:text-white font-semibold">$16.25</span>
+                                                    <span class="text-base font-semibold">$24.25</span>
+                                                 </div>
+                                            </div>
+                                            <div class="lg:col-span-3 md:col-span-6 sm:col-span-12 col-span-12 group/parent animate-card">
+                                                <div class="relative overflow-hidden rounded-md group/image mb-3 cursor-pointer">
+                                                    <img src="@@webRoot/assets/images/products/product-12.jpg" alt="" class="w-full max-w-full">
+                                                    <div class=" absolute top-4 -end-24 flex items-center gap-3 group-hover/image:end-5 transition-all group-hover/parent:end-5 ">
+                                                        <a href="javascript:void(0)" class="bg-white dark:bg-dark dark:text-darklink rounded-full flex items-center justify-center text-dark text-xl p-2 hover:bg-error dark:hover:bg-error dark:hover:text-white hover:text-white"><i class="ti ti-heart"></i></a>
+                                                        <a href="@@webRoot/horizontal/eco-shop-detail2.html" class="bg-white rounded-full flex items-center dark:bg-dark dark:text-darklink justify-center text-dark text-xl p-2 hover:bg-primary dark:hover:bg-primary dark:hover:text-white hover:text-white"><i class="ti ti-basket"></i></a>
+                                                      </div>
+                                                </div>
+                                                <h5 class="mb-2 text-lg">The cleanser face wash</h5>
+                                                 <div class="flex gap-2 mb-2">
+                                                    <i class="ti ti-star-filled text-base text-warning leading-tight font-medium"></i>
+                                                    <div>
+                                                        <span class="text-fs_15 text-dark dark:text-white font-semibold">4.8</span>
+                                                        <span class="text-fs_15 font-semibold">(87)</span>
+                                                    </div>
+                                                 </div>
+                                                 <div class="flex gap-2">
+                                                    <span class="text-base text-dark dark:text-white font-semibold">$16.25</span>
+                                                    <span class="text-base font-semibold">$24.25</span>
+                                                 </div>
+                                            </div>
+                                            <div class="lg:col-span-3 md:col-span-6 sm:col-span-12 col-span-12 group/parent animate-card">
+                                                <div class="relative overflow-hidden rounded-md group/image mb-3 cursor-pointer">
+                                                    <img src="@@webRoot/assets/images/products/product-13.jpg" alt="" class="w-full max-w-full">
+                                                    <div class=" absolute top-4 -end-24 flex items-center gap-3 group-hover/image:end-5 transition-all group-hover/parent:end-5 ">
+                                                        <a href="javascript:void(0)" class="bg-white dark:bg-dark dark:text-darklink rounded-full flex items-center justify-center text-dark text-xl p-2 hover:bg-error dark:hover:bg-error dark:hover:text-white hover:text-white"><i class="ti ti-heart"></i></a>
+                                                        <a href="@@webRoot/horizontal/eco-shop-detail2.html" class="bg-white rounded-full flex items-center dark:bg-dark dark:text-darklink justify-center text-dark text-xl p-2 hover:bg-primary dark:hover:bg-primary dark:hover:text-white hover:text-white"><i class="ti ti-basket"></i></a>
+                                                      </div>
+                                                </div>
+                                                <h5 class="mb-2 text-lg">The cleanser face wash</h5>
+                                                 <div class="flex gap-2 mb-2">
+                                                    <i class="ti ti-star-filled text-base text-warning leading-tight font-medium"></i>
+                                                    <div>
+                                                        <span class="text-fs_15 text-dark dark:text-white font-semibold">4.8</span>
+                                                        <span class="text-fs_15 font-semibold">(87)</span>
+                                                    </div>
+                                                 </div>
+                                                 <div class="flex gap-2">
+                                                    <span class="text-base text-dark dark:text-white font-semibold">$16.25</span>
+                                                    <span class="text-base font-semibold">$24.25</span>
+                                                 </div>
+                                            </div>
+                                            <div class="lg:col-span-3 md:col-span-6 sm:col-span-12 col-span-12 group/parent animate-card">
+                                                <div class="relative overflow-hidden rounded-md group/image mb-3 cursor-pointer">
+                                                    <img src="@@webRoot/assets/images/products/product-14.jpg" alt="" class="w-full max-w-full">
+                                                    <div class=" absolute top-4 -end-24 flex items-center gap-3 group-hover/image:end-5 transition-all group-hover/parent:end-5 ">
+                                                        <a href="javascript:void(0)" class="bg-white dark:bg-dark dark:text-darklink rounded-full flex items-center justify-center text-dark text-xl p-2 hover:bg-error dark:hover:bg-error dark:hover:text-white hover:text-white"><i class="ti ti-heart"></i></a>
+                                                        <a href="@@webRoot/horizontal/eco-shop-detail2.html" class="bg-white rounded-full flex items-center dark:bg-dark dark:text-darklink justify-center text-dark text-xl p-2 hover:bg-primary dark:hover:bg-primary dark:hover:text-white hover:text-white"><i class="ti ti-basket"></i></a>
+                                                      </div>
+                                                </div>
+                                                <h5 class="mb-2 text-lg">The cleanser face wash</h5>
+                                                 <div class="flex gap-2 mb-2">
+                                                    <i class="ti ti-star-filled text-base text-warning leading-tight font-medium"></i>
+                                                    <div>
+                                                        <span class="text-fs_15 text-dark dark:text-white font-semibold">4.8</span>
+                                                        <span class="text-fs_15 font-semibold">(87)</span>
+                                                    </div>
+                                                 </div>
+                                                 <div class="flex gap-2">
+                                                    <span class="text-base text-dark dark:text-white font-semibold">$16.25</span>
+                                                    <span class="text-base font-semibold">$24.25</span>
+                                                 </div>
+                                            </div>
+                                            <div class="lg:col-span-3 md:col-span-6 sm:col-span-12 col-span-12 group/parent animate-card">
+                                                <div class="relative overflow-hidden rounded-md group/image mb-3 cursor-pointer">
+                                                    <img src="@@webRoot/assets/images/products/product-15.jpg" alt="" class="w-full max-w-full">
+                                                    <div class=" absolute top-4 -end-24 flex items-center gap-3 group-hover/image:end-5 transition-all group-hover/parent:end-5 ">
+                                                        <a href="javascript:void(0)" class="bg-white dark:bg-dark dark:text-darklink rounded-full flex items-center justify-center text-dark text-xl p-2 hover:bg-error dark:hover:bg-error dark:hover:text-white hover:text-white"><i class="ti ti-heart"></i></a>
+                                                        <a href="@@webRoot/horizontal/eco-shop-detail2.html" class="bg-white rounded-full flex items-center dark:bg-dark dark:text-darklink justify-center text-dark text-xl p-2 hover:bg-primary dark:hover:bg-primary dark:hover:text-white hover:text-white"><i class="ti ti-basket"></i></a>
+                                                      </div>
+                                                </div>
+                                                <h5 class="mb-2 text-lg">The cleanser face wash</h5>
+                                                 <div class="flex gap-2 mb-2">
+                                                    <i class="ti ti-star-filled text-base text-warning leading-tight font-medium"></i>
+                                                    <div>
+                                                        <span class="text-fs_15 text-dark dark:text-white font-semibold">4.8</span>
+                                                        <span class="text-fs_15 font-semibold">(87)</span>
+                                                    </div>
+                                                 </div>
+                                                 <div class="flex gap-2">
+                                                    <span class="text-base text-dark dark:text-white font-semibold">$16.25</span>
+                                                    <span class="text-base font-semibold">$24.25</span>
+                                                 </div>
+                                            </div>
+                                            <div class="lg:col-span-3 md:col-span-6 sm:col-span-12 col-span-12 group/parent animate-card">
+                                                <div class="relative overflow-hidden rounded-md group/image mb-3 cursor-pointer">
+                                                    <img src="@@webRoot/assets/images/products/product-16.jpg" alt="" class="w-full max-w-full">
+                                                    <div class=" absolute top-4 -end-24 flex items-center gap-3 group-hover/image:end-5 transition-all group-hover/parent:end-5 ">
+                                                        <a href="javascript:void(0)" class="bg-white dark:bg-dark dark:text-darklink rounded-full flex items-center justify-center text-dark text-xl p-2 hover:bg-error dark:hover:bg-error dark:hover:text-white hover:text-white"><i class="ti ti-heart"></i></a>
+                                                        <a href="@@webRoot/horizontal/eco-shop-detail2.html" class="bg-white rounded-full flex items-center dark:bg-dark dark:text-darklink justify-center text-dark text-xl p-2 hover:bg-primary dark:hover:bg-primary dark:hover:text-white hover:text-white"><i class="ti ti-basket"></i></a>
+                                                      </div>
+                                                </div>
+                                                <h5 class="mb-2 text-lg">The cleanser face wash</h5>
+                                                 <div class="flex gap-2 mb-2">
+                                                    <i class="ti ti-star-filled text-base text-warning leading-tight font-medium"></i>
+                                                    <div>
+                                                        <span class="text-fs_15 text-dark dark:text-white font-semibold">4.8</span>
+                                                        <span class="text-fs_15 font-semibold">(87)</span>
+                                                    </div>
+                                                 </div>
+                                                 <div class="flex gap-2">
+                                                    <span class="text-base text-dark dark:text-white font-semibold">$16.25</span>
+                                                    <span class="text-base font-semibold">$24.25</span>
+                                                 </div>
+                                            </div>
+                                            <div class="lg:col-span-3 md:col-span-6 sm:col-span-12 col-span-12 group/parent animate-card">
+                                                <div class="relative overflow-hidden rounded-md group/image mb-3 cursor-pointer">
+                                                    <img src="@@webRoot/assets/images/products/product-17.jpg" alt="" class="w-full max-w-full">
+                                                    <div class=" absolute top-4 -end-24 flex items-center gap-3 group-hover/image:end-5 transition-all group-hover/parent:end-5 ">
+                                                        <a href="javascript:void(0)" class="bg-white dark:bg-dark dark:text-darklink rounded-full flex items-center justify-center text-dark text-xl p-2 hover:bg-error dark:hover:bg-error dark:hover:text-white hover:text-white"><i class="ti ti-heart"></i></a>
+                                                        <a href="@@webRoot/horizontal/eco-shop-detail2.html" class="bg-white rounded-full flex items-center dark:bg-dark dark:text-darklink justify-center text-dark text-xl p-2 hover:bg-primary dark:hover:bg-primary dark:hover:text-white hover:text-white"><i class="ti ti-basket"></i></a>
+                                                      </div>
+                                                </div>
+                                                <h5 class="mb-2 text-lg">The cleanser face wash</h5>
+                                                 <div class="flex gap-2 mb-2">
+                                                    <i class="ti ti-star-filled text-base text-warning leading-tight font-medium"></i>
+                                                    <div>
+                                                        <span class="text-fs_15 text-dark dark:text-white font-semibold">4.8</span>
+                                                        <span class="text-fs_15 font-semibold">(87)</span>
+                                                    </div>
+                                                 </div>
+                                                 <div class="flex gap-2">
+                                                    <span class="text-base text-dark dark:text-white font-semibold">$16.25</span>
+                                                    <span class="text-base font-semibold">$24.25</span>
+                                                 </div>
+                                            </div>
+                                            <div class="lg:col-span-3 md:col-span-6 sm:col-span-12 col-span-12 group/parent animate-card">
+                                                <div class="relative overflow-hidden rounded-md group/image mb-3 cursor-pointer">
+                                                    <img src="@@webRoot/assets/images/products/product-18.jpg" alt="" class="w-full max-w-full">
+                                                    <div class=" absolute top-4 -end-24 flex items-center gap-3 group-hover/image:end-5 transition-all group-hover/parent:end-5 ">
+                                                        <a href="javascript:void(0)" class="bg-white dark:bg-dark dark:text-darklink rounded-full flex items-center justify-center text-dark text-xl p-2 hover:bg-error dark:hover:bg-error dark:hover:text-white hover:text-white"><i class="ti ti-heart"></i></a>
+                                                        <a href="@@webRoot/horizontal/eco-shop-detail2.html" class="bg-white rounded-full flex items-center dark:bg-dark dark:text-darklink justify-center text-dark text-xl p-2 hover:bg-primary dark:hover:bg-primary dark:hover:text-white hover:text-white"><i class="ti ti-basket"></i></a>
+                                                      </div>
+                                                </div>
+                                                <h5 class="mb-2 text-lg">The cleanser face wash</h5>
+                                                 <div class="flex gap-2 mb-2">
+                                                    <i class="ti ti-star-filled text-base text-warning leading-tight font-medium"></i>
+                                                    <div>
+                                                        <span class="text-fs_15 text-dark dark:text-white font-semibold">4.8</span>
+                                                        <span class="text-fs_15 font-semibold">(87)</span>
+                                                    </div>
+                                                 </div>
+                                                 <div class="flex gap-2">
+                                                    <span class="text-base text-dark dark:text-white font-semibold">$16.25</span>
+                                                    <span class="text-base font-semibold">$24.25</span>
+                                                 </div>
+                                            </div>
+                                            <div class="lg:col-span-3 md:col-span-6 sm:col-span-12 col-span-12 group/parent animate-card">
+                                                <div class="relative overflow-hidden rounded-md group/image mb-3 cursor-pointer">
+                                                    <img src="@@webRoot/assets/images/products/product-19.jpg" alt="" class="w-full max-w-full">
+                                                    <div class=" absolute top-4 -end-24 flex items-center gap-3 group-hover/image:end-5 transition-all group-hover/parent:end-5 ">
+                                                        <a href="javascript:void(0)" class="bg-white dark:bg-dark dark:text-darklink rounded-full flex items-center justify-center text-dark text-xl p-2 hover:bg-error dark:hover:bg-error dark:hover:text-white hover:text-white"><i class="ti ti-heart"></i></a>
+                                                        <a href="@@webRoot/horizontal/eco-shop-detail2.html" class="bg-white rounded-full flex items-center dark:bg-dark dark:text-darklink justify-center text-dark text-xl p-2 hover:bg-primary dark:hover:bg-primary dark:hover:text-white hover:text-white"><i class="ti ti-basket"></i></a>
+                                                      </div>
+                                                </div>
+                                                <h5 class="mb-2 text-lg">The cleanser face wash</h5>
+                                                 <div class="flex gap-2 mb-2">
+                                                    <i class="ti ti-star-filled text-base text-warning leading-tight font-medium"></i>
+                                                    <div>
+                                                        <span class="text-fs_15 text-dark dark:text-white font-semibold">4.8</span>
+                                                        <span class="text-fs_15 font-semibold">(87)</span>
+                                                    </div>
+                                                 </div>
+                                                 <div class="flex gap-2">
+                                                    <span class="text-base text-dark dark:text-white font-semibold">$16.25</span>
+                                                    <span class="text-base font-semibold">$24.25</span>
+                                                 </div>
+                                            </div>
+                                            <div class="lg:col-span-3 md:col-span-6 sm:col-span-12 col-span-12 group/parent animate-card">
+                                                <div class="relative overflow-hidden rounded-md group/image mb-3 cursor-pointer">
+                                                    <img src="@@webRoot/assets/images/products/product-20.jpg" alt="" class="w-full max-w-full">
+                                                    <div class=" absolute top-4 -end-24 flex items-center gap-3 group-hover/image:end-5 transition-all group-hover/parent:end-5 ">
+                                                        <a href="javascript:void(0)" class="bg-white dark:bg-dark dark:text-darklink rounded-full flex items-center justify-center text-dark text-xl p-2 hover:bg-error dark:hover:bg-error dark:hover:text-white hover:text-white"><i class="ti ti-heart"></i></a>
+                                                        <a href="@@webRoot/horizontal/eco-shop-detail2.html" class="bg-white rounded-full flex items-center dark:bg-dark dark:text-darklink justify-center text-dark text-xl p-2 hover:bg-primary dark:hover:bg-primary dark:hover:text-white hover:text-white"><i class="ti ti-basket"></i></a>
+                                                      </div>
+                                                </div>
+                                                <h5 class="mb-2 text-lg">The cleanser face wash</h5>
+                                                 <div class="flex gap-2 mb-2">
+                                                    <i class="ti ti-star-filled text-base text-warning leading-tight font-medium"></i>
+                                                    <div>
+                                                        <span class="text-fs_15 text-dark dark:text-white font-semibold">4.8</span>
+                                                        <span class="text-fs_15 font-semibold">(87)</span>
+                                                    </div>
+                                                 </div>
+                                                 <div class="flex gap-2">
+                                                    <span class="text-base text-dark dark:text-white font-semibold">$16.25</span>
+                                                    <span class="text-base font-semibold">$24.25</span>
+                                                 </div>
+                                            </div>
+                                            <div class="lg:col-span-3 md:col-span-6 sm:col-span-12 col-span-12 group/parent animate-card">
+                                                <div class="relative overflow-hidden rounded-md group/image mb-3 cursor-pointer">
+                                                    <img src="@@webRoot/assets/images/products/product-21.jpg" alt="" class="w-full max-w-full">
+                                                    <div class=" absolute top-4 -end-24 flex items-center gap-3 group-hover/image:end-5 transition-all group-hover/parent:end-5 ">
+                                                        <a href="javascript:void(0)" class="bg-white dark:bg-dark dark:text-darklink rounded-full flex items-center justify-center text-dark text-xl p-2 hover:bg-error dark:hover:bg-error dark:hover:text-white hover:text-white"><i class="ti ti-heart"></i></a>
+                                                        <a href="@@webRoot/horizontal/eco-shop-detail2.html" class="bg-white rounded-full flex items-center dark:bg-dark dark:text-darklink justify-center text-dark text-xl p-2 hover:bg-primary dark:hover:bg-primary dark:hover:text-white hover:text-white"><i class="ti ti-basket"></i></a>
+                                                      </div>
+                                                </div>
+                                                <h5 class="mb-2 text-lg">The cleanser face wash</h5>
+                                                 <div class="flex gap-2 mb-2">
+                                                    <i class="ti ti-star-filled text-base text-warning leading-tight font-medium"></i>
+                                                    <div>
+                                                        <span class="text-fs_15 text-dark dark:text-white font-semibold">4.8</span>
+                                                        <span class="text-fs_15 font-semibold">(87)</span>
+                                                    </div>
+                                                 </div>
+                                                 <div class="flex gap-2">
+                                                    <span class="text-base text-dark dark:text-white font-semibold">$16.25</span>
+                                                    <span class="text-base font-semibold">$24.25</span>
+                                                 </div>
+                                            </div>
+                                        </div>  
+                                         <nav class="flex items-center gap-x-1 mt-6 justify-end">
+                                            <button type="button" class="min-h-10 min-w-10 rounded-sm bg-hover border border-light-dark">
+                                                <i class="ti ti-chevron-left text-2xl leading-tight font-medium"></i>
+                                            </button>
+                                            <div class="flex items-center gap-x-1">
+                                                <button type="button" class="min-h-10 text-fs_15 min-w-10 rounded-sm bg-hover border border-primary dark:border-primary bg-lightprimary dark:bg-darkprimary text-primary" aria-current="page">1</button>
+                                                <button type="button" class="min-h-10 text-fs_15 min-w-10 rounded-sm bg-hover border border-light-dark">2</button>
+                                                <button type="button" class="min-h-10 text-fs_15 min-w-10 rounded-sm bg-hover border border-light-dark">3</button>
+                                                <button type="button" class="min-h-10 text-fs_15 min-w-10 rounded-sm bg-hover border border-light-dark">4</button>
+                                                <button type="button" class="min-h-10 text-fs_15 min-w-10 rounded-sm bg-hover border border-light-dark">5</button>
+                                                <button type="button" class="min-h-10 text-fs_15 min-w-10 rounded-sm bg-hover border border-light-dark">6</button>
+                                                <div class="hs-tooltip inline-block">
+                                                    <button type="button" class="hs-tooltip-toggle group min-h-10 min-w-10 rounded-sm bg-hover border border-light-dark">
+                                                       <i class="ti ti-dots group-hover:hidden text-fs_15"></i>
+                                                       <i class="ti ti-dots group-hover:block hidden text-fs_15"></i>
+                                                       <span class="tooltip hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible hidden" role="tooltip">
+                                                       Next 10 pages
+                                                       </span>
+                                                    </button>
+                                                 </div>
+                                                 <button type="button" class="min-h-10 text-fs_15 min-w-10 rounded-sm bg-hover border border-light-dark">16</button>
+                                            </div>
+                                            <button type="button" class="min-h-10 text-fs_15 min-w-10 rounded-sm bg-hover border border-light-dark">
+                                                <i class="ti ti-chevron-right text-2xl leading-tight font-medium"></i>
+                                            </button>
+                                        </nav>                                   
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                <!-- Main Content End -->
+
+            </div>
+        </div>
+        <!--end of project-->
+    </main>
+    @@include("partials/header-components/mobile-menu.html")
+    @@include("partials/customizer.html")
+    @@include("partials/scripts.html")
+    <script src="@@webRoot/node_modules/apexcharts/dist/apexcharts.min.js"></script>
+    <script src="@@webRoot/assets/js/apex-chart/apex.radar.init.js"></script>
+</body>
+
+</html>

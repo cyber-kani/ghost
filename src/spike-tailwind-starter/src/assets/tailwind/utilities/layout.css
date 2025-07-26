@@ -1,0 +1,8 @@
+@media (min-width: 1300px) {
+    [data-layout=vertical] body .page-wrapper {
+        margin-left: 270px;
+    }
+    [data-layout=vertical] body[data-sidebartype=mini-sidebar] .page-wrapper {
+        margin-left: 75px;
+    }
+}

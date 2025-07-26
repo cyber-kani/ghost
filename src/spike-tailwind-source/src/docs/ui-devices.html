@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-color-theme="Blue_Theme" class="light selected" data-layout="vertical"
+    data-boxed-layout="boxed" data-card="shadow">
+
+<head>
+    @@include("partials/head.html")
+    <title>Spike TailwindCSS HTML Admin Template</title>
+</head>
+
+<body class="DEFAULT_THEME bg-lightprimary dark:bg-darkbody">
+    <main>
+        <!--start the project-->
+        <div id="main-wrapper" class="flex p-5">
+
+            <aside id="application-sidebar-brand"
+                class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full xl:rtl:-translate-x-0 rtl:translate-x-full  left-0 rtl:left-auto xl:rtl:right-5 rtl:right-0 transform hidden xl:block xl:translate-x-0 xl:end-auto xl:bottom-0 fixed top-0 with-vertical  docs-left-sidebar transition-all duration-300 h-screen z-[2] flex-shrink-0  w-[270px] border-border dark:border-darkborder bg-white dark:bg-dark xl:top-5 xl:start-5 shadow-md xl:rounded-md">
+                @@include("partials/sidebar.html",{ "page": "ui-devices","page_group": "ui" })
+            </aside>
+            <div class="page-wrapper w-full" role="main">
+
+                <!-- Main Content -->
+                <main class="h-full ">
+                    <div class="container full-container py-5 xl:ps-6 ps-0 pt-0 pe-0">
+
+                        <!--  Header Start -->
+                        <header
+                            class="sticky top-0 inset-x-0 z-[1] flex flex-wrap md:justify-start md:flex-nowrap text-sm py-0 mb-6 bg-white dark:bg-dark rounded-md shadow-md">
+                            <div class="with-vertical w-full">@@include("partials/header.html")</div>
+                        </header>
+                        <!--  Header End -->
+
+                        <!-- ============================================================== -->
+                        <!-- Start Page Content -->
+                        <!-- ============================================================== -->
+                        <div class="max-w-full">
+                            <div class="d-sm-flex align-items-center justify-content-between">
+                                <h4 class="mb-8 text-lg  ">Devices</h4>
+                            </div>
+
+                            <div class="grid grid-cols-12 gap-6">
+                              <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                                <div class="card">
+                                  <div class="card-body">
+                                    <h5 class="card-title mb-0">Mobile</h5>
+                                    <p class="card-subtitle  mb-6">Mobile device mockup.</p>
+                                    <figure class="mx-auto max-w-full w-60 h-auto">
+                                      <div class="p-1.5 bg-gray-800 rounded-3xl ">
+                                        <img class="max-w-full h-auto rounded-[1.25rem]"
+                                          src="@@webRoot/assets/images/backgrounds/mobile_device.jpg" alt="Image Description">
+                                      </div>
+                                    </figure>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                                <div class="card">
+                                  <div class="card-body">
+                                    <h5 class="card-title mb-0">Browser</h5>
+                                    <p class="card-subtitle  mb-6">Browser device mockup.</p>
+                                    <figure class="ms-auto me-20 relative z-[1] max-w-full w-[50rem] h-auto rounded-b-lg ">
+                                      <div
+                                        class="relative flex items-center max-w-[50rem] bg-gray-800 rounded-t-lg py-2 px-24 dark:bg-gray-700">
+                                        <div class="flex space-x-1 absolute top-2/4 start-4 -translate-y-1">
+                                          <span class="size-2 bg-gray-600 rounded-full dark:bg-gray-600"></span>
+                                          <span class="size-2 bg-gray-600 rounded-full dark:bg-gray-600"></span>
+                                          <span class="size-2 bg-gray-600 rounded-full dark:bg-gray-600"></span>
+                                        </div>
+                                        <div
+                                          class="flex justify-center items-center size-full bg-gray-700 text-[.25rem] text-gray-400 rounded-sm sm:text-[.5rem] dark:bg-gray-600 dark:text-gray-400">
+                                          www.preline.com</div>
+                                      </div>
+            
+                                      <div class="bg-gray-800 rounded-b-lg">
+                                        <img class="max-w-full h-auto rounded-b-lg"
+                                          src="@@webRoot/assets/images/backgrounds/browser_device.jpg" alt="Image Description">
+                                      </div>
+                                    </figure>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                        <!-------------->
+
+                    </div>
+                </main>
+                <!-- Main Content End -->
+
+            </div>
+        </div>
+        <!--end of project-->
+    </main>
+    @@include("partials/scripts.html")
+</body>
+
+</html>

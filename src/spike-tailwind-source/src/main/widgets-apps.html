@@ -1,0 +1,1701 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-color-theme="Blue_Theme" class="light selected"
+	data-layout="vertical" data-boxed-layout="boxed" data-card="shadow">
+
+	<head>
+		@@include("partials/head.html")
+		<title>Spike TailwindCSS HTML Admin Template</title>
+	</head>
+
+	<body class="DEFAULT_THEME bg-lightprimary dark:bg-darkbody">
+		<main>
+			<!--start the project-->
+			<div id="main-wrapper" class="flex p-5">
+
+				<aside id="application-sidebar-brand"
+					class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full xl:rtl:-translate-x-0 rtl:translate-x-full  left-0 rtl:left-auto xl:rtl:right-5 rtl:right-0 transform hidden xl:block xl:translate-x-0 xl:end-auto xl:bottom-0 fixed top-0 with-vertical  left-sidebar transition-all duration-300 h-screen z-[2] flex-shrink-0  w-[270px] border-border dark:border-darkborder bg-white dark:bg-dark xl:top-5 xl:start-5 shadow-md xl:rounded-md">
+                    @@include("partials/sidebar.html",{ "page":
+                    "widgets-apps","page_group": "widgets" })
+				</aside>
+				<div class="page-wrapper w-full" role="main">
+
+					<!-- Main Content -->
+					<main class="h-full ">
+						<div class="container full-container py-5 xl:ps-6 ps-0 pt-0 pe-0 remove-ps">
+
+							<!--  Header Start -->
+							<header
+								class="sticky top-0 inset-x-0 z-[1] flex flex-wrap md:justify-start md:flex-nowrap text-fs_15 py-3 lg:py-0 mb-6 bg-white dark:bg-dark rounded-md shadow-md">
+								<div
+									class="with-vertical w-full">@@include("partials/header.html")</div>
+								<div class="with-horizontal w-full">
+									<div class="bg-white dark:bg-dark">
+										<div class="container">
+											@@include("partials/horizontal-header.html")
+										</div>
+									</div>
+								</div>
+							</header>
+							<!--  Header End -->
+
+							<!-- Horizontal Sidebar Menu -->
+							<aside
+								class="with-horizontal lg:flex hidden left-sidebar bg-white dark:bg-dark border-t border-border dark:border-darkborder">
+                                @@include("partials/horizontal-sidebar.html", { "page":
+                        "widgets-apps","page_group": "widgets"})
+							</aside>
+							<!-- Horizontal Sidebar Menu End -->
+
+                            <!-- Main Content -->
+                            <div class="max-w-full">
+                                <div class="container full-container ">
+                                    <!----Breadcrumb Start---->
+                                    @@include("partials/breadcrumb.html", {"title": "Widgets Apps", "subtitle": 'Home'})
+                                    <!----Breadcrumb End---->
+
+                                    <div class="grid grid-cols-12 gap-6">
+                                        <!-----First Column------>
+                                        <div class="xl:col-span-4 col-span-12">
+                                            <div class="grid grid-cols-12 gap-x-6">
+
+                                                <div class="xl:col-span-12 md:col-span-6 col-span-12">
+                                                    <div class="card mb-6">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">Recent Comments</h5>
+                                                        </div>
+                                                        <ul style="height: 450px" data-simplebar="">
+                                                            <li class="group relative bg-hover px-6 py-4">
+                                                                <div class="flex gap-3">
+                                                                    <img src="@@webRoot/assets/images/profile/user-2.jpg" alt=""
+                                                                        class="rounded-full h-12 w-12">
+                                                                    <div class="">
+                                                                        <h5 class="card-title text-sm">
+                                                                            James Anderson</h5>
+                                                                        <p class=" my-2 text-xs">Lorem Ipsum is simply
+                                                                            dummy text of
+                                                                            the printing and type setting industry.</p>
+                                                                        <div class="flex gap-4 items-center">
+                                                                            <div class="bg-lightprimary dark:bg-darkprimary text-fs_10 px-2  text-primary rounded-full">
+                                                                                Pending
+                                                                            </div>
+                                                                            <div class="invisible group-hover:visible flex gap-4">
+                                                                                <a href="javascript:void(0)" class="hover:text-primary"><i
+                                                                                        class="ti ti-edit text-lg"></i></a>
+                                                                                <a href="javascript:void(0)" class="hover:text-primary"><i
+                                                                                        class="ti ti-check text-lg"></i></a>
+                                                                                <a href="javascript:void(0)" class="hover:text-primary"><i
+                                                                                        class="ti ti-heart text-lg"></i></a>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="ms-auto text-end">
+                                                                            <p class=" opacity-70 mt-2 text-xs">April 14, 2024
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li class="bg-hover px-6 py-4 border-t border-border dark:dark:border-darkborder">
+                                                                <div class="flex gap-3">
+                                                                    <img src="@@webRoot/assets/images/profile/user-3.jpg" alt=""
+                                                                        class="rounded-full h-12 w-12">
+                                                                    <div class="">
+                                                                        <h5 class="card-title text-sm">
+                                                                            Michael Jorden</h5>
+                                                                        <p class=" my-2 text-xs">Lorem Ipsum is simply
+                                                                            dummy text of
+                                                                            the printing and type setting industry.</p>
+                                                                        <div class="flex gap-4 items-center">
+                                                                            <div class="bg-lightsuccess dark:bg-darksuccess text-fs_10 px-2  text-success rounded-full">
+                                                                                Approved
+                                                                            </div>
+                                                                            <div class="flex gap-4">
+                                                                                <a href="javascript:void(0)" class="hover:text-primary"><i
+                                                                                        class="ti ti-edit text-lg"></i></a>
+                                                                                <a href="javascript:void(0)" class="hover:text-primary"><i
+                                                                                        class="ti ti-circle-x text-lg"></i></a>
+                                                                                <a href="javascript:void(0)" class="hover:text-primary"><i
+                                                                                        class="ti ti-heart text-error text-lg"></i></a>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="ms-auto text-end">
+                                                                            <p class=" opacity-70 mt-2 text-xs">April 14, 2024
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li class="group relative bg-hover px-6 py-4 border-t border-border dark:dark:border-darkborder">
+                                                                <div class="flex gap-3">
+                                                                    <img src="@@webRoot/assets/images/profile/user-4.jpg" alt=""
+                                                                        class="rounded-full h-12 w-12">
+                                                                    <div class="">
+                                                                        <h5 class="card-title text-sm">
+                                                                            Johnathan Doeting</h5>
+                                                                        <p class=" my-2 text-xs">Lorem Ipsum is simply
+                                                                            dummy text of
+                                                                            the printing and type setting industry.</p>
+                                                                        <div class="flex gap-4 items-center">
+                                                                            <div class="bg-lighterror dark:bg-darkerror text-fs_10 px-2  text-error rounded-full">
+                                                                                Rejected
+                                                                            </div>
+                                                                            <div class="invisible group-hover:visible flex gap-4">
+                                                                                <a href="javascript:void(0)" class="hover:text-primary"><i
+                                                                                        class="ti ti-edit text-lg"></i></a>
+                                                                                <a href="javascript:void(0)" class="hover:text-primary"><i
+                                                                                        class="ti ti-check text-lg"></i></a>
+                                                                                <a href="javascript:void(0)" class="hover:text-primary"><i
+                                                                                        class="ti ti-heart text-lg"></i></a>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="ms-auto text-end">
+                                                                            <p class=" opacity-70 mt-2 text-xs">April 14, 2024
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li class="group relative bg-hover px-6 py-4 border-t border-border dark:dark:border-darkborder">
+                                                                <div class="flex gap-3">
+                                                                    <img src="@@webRoot/assets/images/profile/user-5.jpg" alt=""
+                                                                        class="rounded-full h-12 w-12">
+                                                                    <div class="">
+                                                                        <h5 class="card-title text-sm">
+                                                                            James Anderson</h5>
+                                                                        <p class=" my-2 text-xs">Lorem Ipsum is simply
+                                                                            dummy text of
+                                                                            the printing and type setting industry.</p>
+                                                                        <div class="flex gap-4 items-center">
+                                                                            <div class="bg-lightwarning dark:bg-darkwarning text-fs_10 px-2  text-warning rounded-full">
+                                                                                Pending
+                                                                            </div>
+                                                                            <div class="invisible group-hover:visible flex gap-4">
+                                                                                <a href="javascript:void(0)" class="hover:text-primary"><i
+                                                                                        class="ti ti-edit text-lg"></i></a>
+                                                                                <a href="javascript:void(0)" class="hover:text-primary"><i
+                                                                                        class="ti ti-check text-lg"></i></a>
+                                                                                <a href="javascript:void(0)" class="hover:text-primary"><i
+                                                                                        class="ti ti-heart text-lg"></i></a>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="ms-auto text-end">
+                                                                            <p class=" opacity-70 mt-2 text-xs">April 14, 2024
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="xl:col-span-12 md:col-span-6 col-span-12">
+                                                    <div class="card mb-6">
+                                                        <div class="card-body">
+                                                            <div class="sm:flex items-center justify-between mb-6">
+                                                                <div>
+                                                                    <h5 class="card-title">Weather Report</h5>
+                                                                </div>
+                                                                <div class="sm:mt-0 mt-4">
+                                                                    <select class="select input-bordered select-md">
+                                                                        <option selected="">Weekly</option>
+                                                                        <option>Today</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="flex gap-3 items-center px-3">
+                                                                <div class="text-info text-5xl">
+                                                                    <i class="ti ti-cloud-snow"></i>
+                                                                    <span>73<sup>°</sup></span>
+                                                                </div>
+                                                                <div>
+                                                                    <h3 class="text-2xl font-medium ">Saturday</h3>
+                                                                    <small>Ahmedabad, India</small>
+                                                                </div>
+                                                            </div>
+                
+                
+                                                            <table class="table no-border mt-3 w-full">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td class="text-dark dark:text-darklink  font-weight-medium p-4">Wind</td>
+                                                                        <td class="text-dark dark:text-darklink  font-weight-medium p-4">ESE 17 mph</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="text-dark dark:text-darklink  font-weight-medium p-4">Humidity</td>
+                                                                        <td class="text-dark dark:text-darklink  font-weight-medium p-4">83%</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="text-dark dark:text-darklink  font-weight-medium p-4">Pressure</td>
+                                                                        <td class="text-dark dark:text-darklink  font-weight-medium p-4">28.56 in</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="text-dark dark:text-darklink  font-weight-medium p-4">Cloud Cover</td>
+                                                                        <td class="text-dark dark:text-darklink  font-weight-medium p-4">78%</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="text-dark dark:text-darklink  font-weight-medium p-4">Ceiling</td>
+                                                                        <td class="text-dark dark:text-darklink  font-weight-medium p-4">25760 ft</td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            <hr class=" border-border dark:border-darkborder my-4" />
+                    
+                                                            <div class="grid grid-cols-4 gap-3 ">
+                                                                <div>
+                                                                    <i class="ti ti-sun-high text-lg"></i><span>09:30</span>
+                                                                    <h3 class="mb-0 text-2xl font-medium ">70<sup>°</sup></h3>
+                                                                </div>
+                                                                <div>
+                                                                    <i class="ti ti-cloud text-lg"></i><span>11:30</span>
+                                                                    <h3 class="mb-0 text-2xl font-medium ">72<sup>°</sup></h3>
+                                                                </div>
+                                                                <div>
+                                                                    <i class="ti ti-cloud-rain text-lg"></i><span>13:30</span>
+                                                                    <h3 class="mb-0 text-2xl font-medium ">75<sup>°</sup></h3>
+                                                                </div>
+                                                                <div>
+                                                                    <i class="ti ti-cloud-snow text-lg"></i><span>15:30</span>
+                                                                    <h3 class="mb-0 text-2xl font-medium ">76<sup>°</sup></h3>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                    
+                                                    </div>
+                                                </div>
+                                                <div class="xl:col-span-12 md:col-span-6 col-span-12">
+                                                    <div class="card mb-6">
+                                                        <div class="card-body text-center">
+                                                            <div class="text-center block mx-auto w-36">
+                                                                <img src="@@webRoot/assets/images/profile/user-5.jpg" class="rounded-full mt-5 mb-4 w-full"/>
+                                                            </div>
+                                                            <h5 class="font-medium text-xl ">Daniel Kristeen</h5>
+                                                            <a href="#"
+                                                                class=" hover:text-primary">danielkristeen@gmail.com</a>
+                                                            <div class="flex justify-center gap-1 mt-4">
+                                                                <div class="bg-lightprimary dark:bg-darkprimary text-sm py-1 px-3  text-primary rounded-full">Dashboard
+                                                                </div>
+                                                                <div class="bg-lightprimary dark:bg-darkprimary text-sm py-1 px-3  text-primary rounded-full">UI</div>
+                                                                <div class="bg-lightprimary dark:bg-darkprimary text-sm py-1 px-3  text-primary rounded-full">UX</div>
+                                                                <div class="bg-primary text-sm py-1 px-3  text-white rounded-full">+3</div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="grid grid-cols-2 border-t border-border dark:border-darkborder py-4 mt-5">
+                                                            <a href="#" class="
+                                                            flex
+                                                            items-center
+                                                            justify-center
+                                                            gap-2
+                                                            font-weight-medium
+                                                            text-dark dark:text-darklink 
+                                                            rtl:pe-auto rtl:ps-6 border-e border-border dark:border-darkborder border-opacity-10
+                                                          "><i class="ti ti-message text-lg"></i>Message</a>
+                                                            <a href="#" class="
+                                                          flex
+                                                          gap-2
+                                                          items-center
+                                                          justify-center
+                                                          font-weight-medium
+                                                          text-dark dark:text-darklink 
+                                                        "><i class="ti ti-artboard text-lg"></i>Portfolio</a>
+                                                        </div>
+                    
+                                                    </div>
+                                                </div>
+                                                <div class="xl:col-span-12 md:col-span-6 col-span-12">
+                                                    <div class="card mb-6 overflow-hidden rounded-none rounded-t-md">
+                                                        <div class="card-body bg-primary">
+                                                            <div class="flex justify-between">
+                                                                <h5 class="font-medium text-xl  text-white">People you may know</h5>
+                                                                <a href="javascript: void(0)"><i
+                                                                        class="ti ti-menu-2 text-white text-lg"></i></a>
+                                                            </div>
+                                                            <div class="mt-4">
+                                                                <div class="flex rounded-lg ">
+                                                                    <input type="email" id="hs-trailing-button-add-on-with-icon" placeholder="Search by Email" name="hs-trailing-button-add-on-with-icon" class="rounded-none py-2 w-full rounded-s-lg bg-white border-white">
+                                                                    <button type="button" class="px-4 flex-shrink-0 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-e-sm border border-transparent bg-white text-dark hover:bg-primaryemphasis hover:text-white disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                                                      <i class="ti ti-search text-lg leading-tight font-medium"></i>
+                                                                    </button>
+                                                                  </div>
+                                                            </div>
+                                                        </div>
+                    
+                                                        <div class="card-body">
+                                                            <div class="grid grid-cols-3 gap-6">
+                                                                <div class="text-center">
+                                                                    <img src="@@webRoot/assets/images/profile/user-1.jpg" alt=""
+                                                                        class="user-img rounded-md w-full" />
+                                                                    <h6 class="my-1 text-xs">Hanna Gover</h6>
+                                                                    <button
+                                                                        class="btn btn-light-primary text-xs">Connect</button>
+                                                                </div>
+                                                                <div class="text-center">
+                                                                    <img src="@@webRoot/assets/images/profile/user-2.jpg" alt=""
+                                                                        class="user-img rounded-md w-full" />
+                                                                    <h6 class="my-1 text-xs">Kendra Silly</h6>
+                                                                    <button
+                                                                        class="btn btn-light-primary text-xs">Connect</button>
+                                                                </div>
+                                                                <div class="text-center">
+                                                                    <img src="@@webRoot/assets/images/profile/user-3.jpg" alt=""
+                                                                        class="user-img rounded-md w-full" />
+                                                                    <h6 class="my-1 text-xs">Jack Sully</h6>
+                                                                    <button
+                                                                        class="btn btn-light-primary text-xs">Connect</button>
+                                                                </div>
+                                                            </div>
+                    
+                                                            <button class="btn mb-2 mt-8 w-full">
+                                                                Invite friends from Twitter
+                                                                <i class="ti ti-brand-twitter ms-2 text-lg"></i>
+                                                            </button>
+                                                            <button class="btn bg-info hover:bg-blue-500 text-white w-full">
+                                                                Invite friends from Facebook
+                                                                <i class="ti ti-brand-facebook ms-2 text-lg"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="xl:col-span-12 md:col-span-6 col-span-12">
+                                                    <div class="card mb-6 pb-7">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">Currency Exchange</h5>
+                                                            <p class="card-subtitle">exchange currency from here</p>
+                                                        </div>
+                                                        <div class="bg-lightgray dark:bg-darkprimary p-6">
+                                                            <div class="flex items-center ">
+                                                                <input class="form-control text-base" type="text" value="1.02458">
+                                                                <select class="form-control w-32 text-base ">
+                                                                    <option value="1">BTC</option>
+                                                                    <option value="2">ETH</option>
+                                                                    <option value="3">DASH</option>
+                                                                    <option value="4">LTC</option>
+                                                                    <option value="5">NEO</option>
+                                                                    <option value="6">XRP</option>
+                                                                    <option value="7">EOS</option>
+                                                                    <option value="8">NEM</option>
+                                                                    <option value="9">ADA</option>
+                                                                </select>
+                                                              </div>
+                                                            <div class="flex justify-center my-4">
+                                                                <button class="btn btn-error flex justify-center items-center h-10 w-10 rounded-full p-0"><i
+                                                                        class="ti ti-exchange text-lg"></i></button>
+                                                            </div>
+                                                            <div class="flex items-center ">
+                                                                <input class="form-control text-base" type="text" value="9526.39">
+                                                                <select class="form-control w-32 text-base ">
+                                                                    <option value="1">USD</option>
+                                                                    <option value="2">EUR</option>
+                                                                    <option value="3">INR</option>
+                                                                    <option value="4">AUD</option>
+                                                                    <option value="5">GBP</option>
+                                                                    <option value="6">CAD</option>
+                                                                </select>
+                                                              </div>
+                                                        </div>
+                                                        <div class="flex justify-center mt-6">
+                                                            <button class="btn px-7 py-3">Exchange Now</button>
+                                                        </div>
+                    
+                                                    </div>
+                                                </div>
+                                                <div class="xl:col-span-12 col-span-12">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">Result of Poll</h5>
+                                                            <p class="card-subtitle">Here is the result for the latest poll</p>
+                                                            <div class="mt-6">
+                                                                <p class="">What is your mobile app usage daily?</p>
+                                                                <div class="mt-5">
+                                                                    <div class="flex items-center justify-between mb-2">
+                                                                        <h6 class="mb-0 font-semibold ">
+                                                                            A <span class="font-light">30 Minutes</span>
+                                                                        </h6>
+                                                                        <span class="font-medium text-dark dark:text-white ">55%</span>
+                                                                    </div>
+                                                                    <div class="flex w-full h-2 bg-lightinfo dark:bg-darkinfo rounded-md overflow-hidden" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                                        <div class="flex flex-col justify-center overflow-hidden bg-info text-xs text-white text-center whitespace-nowrap transition duration-500 " style="width: 25%"></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="mt-5">
+                                                                    <div class="flex items-center justify-between mb-2">
+                                                                        <h6 class="mb-0 ">
+                                                                            B <span class="font-light">More than 30 minutes</span>
+                                                                        </h6>
+                                                                        <span class="font-medium text-dark dark:text-white">20%</span>
+                                                                    </div>
+                                                                    <div class="flex w-full h-2 bg-lightprimary dark:bg-darkprimary rounded-md overflow-hidden" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                                                                        <div class="flex flex-col justify-center overflow-hidden bg-primary text-xs text-white text-center whitespace-nowrap transition duration-500 " style="width: 20%"></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="mt-5">
+                                                                    <div class="flex items-center justify-between mb-2">
+                                                                        <h6 class="mb-0 ">
+                                                                            C <span class="font-light">1 Hour</span>
+                                                                        </h6>
+                                                                        <span class="font-medium text-dark dark:text-white">15%</span>
+                                                                    </div>
+                                                                    <div class="flex w-full h-2 bg-lightsuccess dark:bg-darksuccess rounded-md overflow-hidden" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                                        <div class="flex flex-col justify-center overflow-hidden bg-success text-xs text-white text-center whitespace-nowrap transition duration-500 " style="width: 25%"></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="mt-5">
+                                                                    <div class="flex items-center justify-between mb-2">
+                                                                        <h6 class="mb-0 ">
+                                                                            D <span class="font-light">More than 1 hour</span>
+                                                                        </h6>
+                                                                        <span class="font-medium text-dark dark:text-white">10%</span>
+                                                                    </div>
+                                                                    <div class="flex w-full h-2 bg-lighterror dark:bg-darkerror rounded-md overflow-hidden" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                                        <div class="flex flex-col justify-center overflow-hidden bg-error text-xs text-white text-center whitespace-nowrap transition duration-500 " style="width: 25%"></div>
+                                                                    </div>
+                                                                </div>
+                    
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-----First Column End------>
+            
+                                        <!------Second Column----->
+                                        <div class="xl:col-span-4 col-span-12">
+                                            <div class="grid grid-cols-12 gap-x-6">
+                                                <div class="xl:col-span-12 md:col-span-6 col-span-12">
+                                                     <!---Todo list--->
+                                            <div class="card mb-6">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">To do List</h5>
+                                                    <ul>
+                                                        <li class="flex items-center justify-between py-4">
+                                                            <label class="cursor-pointer flex gap-3 ">
+                                                                <input type="checkbox" class=" mt-1 h-5 w-5 border-bordergray bg-transparent dark:border-darkborder rounded text-primary focus:ring-primary disabled:opacity-50 disabled:pointer-events-none   dark:checked:bg-primary dark:checked:border-primary dark:focus:ring-offset-gray-800" id="hs-checked-checkbox4" checked="">
+                                                                <span>
+                                                                    <h5 class="font-medium">Give purchase report to john</h5>
+                                                                    <p class="text-xs">2 January 2024</p>
+                                                                </span>
+                                                            </label>
+        
+                                                            <div class="hs-dropdown relative inline-flex">
+                                                                <button id="hs-dropdown-custom-icon-trigger" class="hs-dropdown-toggle h-10 w-10 text-dark dark:text-darklink hover:text-primary light-dark-hoverbg  justify-center items-center rounded-full">
+                                                                    <i class="ti ti-dots text-xl"></i>
+                                                                </button>
+            
+                                                                <div class="hs-dropdown-menu z-[1] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-40 hidden pb-3" aria-labelledby="hs-dropdown-custom-icon-trigger" style="">
+                                                                    <ul class="flex flex-col">
+                                                                        <li class="px-3 py-2 text-xs">Choose Label</li>
+                                                                        <li>
+                                                                            <a class="text-sm py-2  flex gap-2 items-center bg-hover rounded-none"
+                                                                                href="#">
+                                                                                <div
+                                                                                    class="bg-lightsuccess dark:bg-darksuccess text-success px-2 py-1 block ml-3 rounded-sm border-0">
+                                                                                    Primary</div>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a class="text-sm py-2  flex gap-2 items-center bg-hover rounded-none"
+                                                                                href="#">
+                                                                                <div
+                                                                                    class="bg-lightprimary dark:bg-darkprimary text-primary px-2 py-1 block ml-3 rounded-sm border-0">
+                                                                                    Social</div>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a class="text-sm py-2  flex gap-2 items-center bg-hover rounded-none"
+                                                                                href="#">
+                                                                                <div
+                                                                                    class="bg-lightinfo dark:bg-darkinfo text-info px-2 py-1 block ml-3 rounded-sm border-0">
+                                                                                    Promotions</div>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a class="text-sm py-2  flex gap-2 items-center bg-hover rounded-none"
+                                                                                href="#">
+                                                                                <div
+                                                                                    class="bg-lighterror dark:bg-darkerror text-error px-2 py-1 block ml-3 rounded-sm border-0">
+                                                                                    Trash</div>
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+        
+                                                            
+                                                        </li>
+                                                        <li class="flex items-center justify-between py-4">
+                                                            <label class="cursor-pointer flex gap-3 ">
+                                                                <input type="checkbox" class="shrink-0 mt-1 h-5 w-5 border-bordergray bg-transparent dark:border-darkborder rounded text-success focus:ring-success disabled:opacity-50 disabled:pointer-events-none  dark:border-gray-700 dark:checked:bg-success dark:checked:border-success dark:focus:ring-offset-gray-800" id="hs-checked-checkbox" checked="">
+                                                                <span>
+                                                                    <h5 class="font-medium">Hit the gym</h5>
+                                                                    <p class="text-xs">5 January 2024</p>
+                                                                </span>
+                                                            </label>
+                                                            <div class="hs-dropdown relative inline-flex">
+                                                                <button id="hs-dropdown-custom-icon-trigger" class="hs-dropdown-toggle h-10 w-10 text-dark dark:text-darklink hover:text-primary light-dark-hoverbg  justify-center items-center rounded-full">
+                                                                    <i class="ti ti-dots text-xl"></i>
+                                                                </button>
+            
+                                                                <div class="hs-dropdown-menu z-[1] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-40 hidden pb-3" aria-labelledby="hs-dropdown-custom-icon-trigger" style="">
+                                                                    <ul class="flex flex-col">
+                                                                        <li class="px-3 py-2 text-xs">Choose Label</li>
+                                                                        <li>
+                                                                            <a class="text-sm py-2  flex gap-2 items-center bg-hover rounded-none"
+                                                                                href="#">
+                                                                                <div
+                                                                                    class="bg-lightsuccess dark:bg-darksuccess text-success px-2 py-1 block ml-3 rounded-sm border-0">
+                                                                                    Primary</div>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a class="text-sm py-2  flex gap-2 items-center bg-hover rounded-none"
+                                                                                href="#">
+                                                                                <div
+                                                                                    class="bg-lightprimary dark:bg-darkprimary text-primary px-2 py-1 block ml-3 rounded-sm border-0">
+                                                                                    Social</div>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a class="text-sm py-2  flex gap-2 items-center bg-hover rounded-none"
+                                                                                href="#">
+                                                                                <div
+                                                                                    class="bg-lightinfo dark:bg-darkinfo text-info px-2 py-1 block ml-3 rounded-sm border-0">
+                                                                                    Promotions</div>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a class="text-sm py-2  flex gap-2 items-center bg-hover rounded-none"
+                                                                                href="#">
+                                                                                <div
+                                                                                    class="bg-lighterror dark:bg-darkerror text-error px-2 py-1 block ml-3 rounded-sm border-0">
+                                                                                    Trash</div>
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="flex items-center justify-between py-4">
+                                                            <label class="cursor-pointer flex gap-3 ">
+                                                                <input type="checkbox" class="shrink-0 mt-1 h-5 w-5 border-bordergray bg-transparent dark:border-darkborder rounded text-error focus:ring-error disabled:opacity-50 disabled:pointer-events-none  dark:border-gray-700 dark:checked:bg-error dark:checked:border-error dark:focus:ring-offset-gray-800" id="hs-checked-checkbox2" checked="">
+                                                                <span>
+                                                                    <h5 class="font-medium">Pay bills</h5>
+                                                                    <p class="text-xs">12 January 2024</p>
+                                                                </span>
+                                                            </label>
+                                                            <div class="hs-dropdown relative inline-flex">
+                                                                <button id="hs-dropdown-custom-icon-trigger" class="hs-dropdown-toggle h-10 w-10 text-dark dark:text-darklink hover:text-primary light-dark-hoverbg  justify-center items-center rounded-full">
+                                                                    <i class="ti ti-dots text-xl"></i>
+                                                                </button>
+            
+                                                                <div class="hs-dropdown-menu z-[1] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-40 hidden pb-3" aria-labelledby="hs-dropdown-custom-icon-trigger" style="">
+                                                                    <ul class="flex flex-col">
+                                                                        <li class="px-3 py-2 text-xs">Choose Label</li>
+                                                                        <li>
+                                                                            <a class="text-sm py-2  flex gap-2 items-center bg-hover rounded-none"
+                                                                                href="#">
+                                                                                <div
+                                                                                    class="bg-lightsuccess dark:bg-darksuccess text-success px-2 py-1 block ml-3 rounded-sm border-0">
+                                                                                    Primary</div>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a class="text-sm py-2  flex gap-2 items-center bg-hover rounded-none"
+                                                                                href="#">
+                                                                                <div
+                                                                                    class="bg-lightprimary dark:bg-darkprimary text-primary px-2 py-1 block ml-3 rounded-sm border-0">
+                                                                                    Social</div>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a class="text-sm py-2  flex gap-2 items-center bg-hover rounded-none"
+                                                                                href="#">
+                                                                                <div
+                                                                                    class="bg-lightinfo dark:bg-darkinfo text-info px-2 py-1 block ml-3 rounded-sm border-0">
+                                                                                    Promotions</div>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a class="text-sm py-2  flex gap-2 items-center bg-hover rounded-none"
+                                                                                href="#">
+                                                                                <div
+                                                                                    class="bg-lighterror dark:bg-darkerror text-error px-2 py-1 block ml-3 rounded-sm border-0">
+                                                                                    Trash</div>
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="flex items-center justify-between py-4">
+                                                            <label class="cursor-pointer flex gap-3 ">
+                                                                <input type="checkbox" class="shrink-0 mt-1 h-5 w-5 border-bordergray bg-transparent dark:border-darkborder rounded text-warning focus:ring-warning disabled:opacity-50 disabled:pointer-events-none  dark:border-gray-700 dark:checked:bg-warning dark:checked:border-warning dark:focus:ring-offset-gray-800" id="hs-checked-checkbox3" checked="">
+                                                                <span>
+                                                                    <h5 class="font-medium">Meet George</h5>
+                                                                    <p class="text-xs">15 January 2024</p>
+                                                                </span>
+                                                            </label>
+                                                            <div class="hs-dropdown relative inline-flex">
+                                                                <button id="hs-dropdown-custom-icon-trigger" class="hs-dropdown-toggle h-10 w-10 text-dark dark:text-darklink hover:text-primary light-dark-hoverbg  justify-center items-center rounded-full">
+                                                                    <i class="ti ti-dots text-xl"></i>
+                                                                </button>
+            
+                                                                <div class="hs-dropdown-menu z-[1] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-40 hidden pb-3" aria-labelledby="hs-dropdown-custom-icon-trigger" style="">
+                                                                    <ul class="flex flex-col">
+                                                                        <li class="px-3 py-2 text-xs">Choose Label</li>
+                                                                        <li>
+                                                                            <a class="text-sm py-2  flex gap-2 items-center bg-hover rounded-none"
+                                                                                href="#">
+                                                                                <div
+                                                                                    class="bg-lightsuccess dark:bg-darksuccess text-success px-2 py-1 block ml-3 rounded-sm border-0">
+                                                                                    Primary</div>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a class="text-sm py-2  flex gap-2 items-center bg-hover rounded-none"
+                                                                                href="#">
+                                                                                <div
+                                                                                    class="bg-lightprimary dark:bg-darkprimary text-primary px-2 py-1 block ml-3 rounded-sm border-0">
+                                                                                    Social</div>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a class="text-sm py-2  flex gap-2 items-center bg-hover rounded-none"
+                                                                                href="#">
+                                                                                <div
+                                                                                    class="bg-lightinfo dark:bg-darkinfo text-info px-2 py-1 block ml-3 rounded-sm border-0">
+                                                                                    Promotions</div>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a class="text-sm py-2  flex gap-2 items-center bg-hover rounded-none"
+                                                                                href="#">
+                                                                                <div
+                                                                                    class="bg-lighterror dark:bg-darkerror text-error px-2 py-1 block ml-3 rounded-sm border-0">
+                                                                                    Trash</div>
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="flex items-center justify-between py-4">
+                                                            <label class="cursor-pointer flex gap-3 ">
+                                                                <input type="checkbox" class="shrink-0 mt-1 h-5 w-5 border-bordergray bg-transparent dark:border-darkborder rounded text-secondary focus:ring-secondary disabled:opacity-50 disabled:pointer-events-none  dark:border-gray-700 dark:checked:bg-secondary dark:checked:border-secondary dark:focus:ring-offset-gray-800" id="hs-checked-checkbox5" checked="">
+                                                                <span>
+                                                                    <h5 class="font-medium">Read a book</h5>
+                                                                    <p class="text-xs">20 January 2024</p>
+                                                                </span>
+                                                            </label>
+                                                            <div class="hs-dropdown relative inline-flex">
+                                                                <button id="hs-dropdown-custom-icon-trigger" class="hs-dropdown-toggle h-10 w-10 text-dark dark:text-darklink hover:text-primary light-dark-hoverbg  justify-center items-center rounded-full">
+                                                                    <i class="ti ti-dots text-xl"></i>
+                                                                </button>
+            
+                                                                <div class="hs-dropdown-menu z-[1] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-40 hidden pb-3" aria-labelledby="hs-dropdown-custom-icon-trigger">
+                                                                    <ul class="flex flex-col">
+                                                                        <li class="px-3 py-2 text-xs">Choose Label</li>
+                                                                        <li>
+                                                                            <a class="text-sm py-2  flex gap-2 items-center bg-hover rounded-none"
+                                                                                href="#">
+                                                                                <div
+                                                                                    class="bg-lightsuccess dark:bg-darksuccess text-success px-2 py-1 block ml-3 rounded-sm border-0">
+                                                                                    Primary</div>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a class="text-sm py-2  flex gap-2 items-center bg-hover rounded-none"
+                                                                                href="#">
+                                                                                <div
+                                                                                    class="bg-lightprimary dark:bg-darkprimary text-primary px-2 py-1 block ml-3 rounded-sm border-0">
+                                                                                    Social</div>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a class="text-sm py-2  flex gap-2 items-center bg-hover rounded-none"
+                                                                                href="#">
+                                                                                <div
+                                                                                    class="bg-lightinfo dark:bg-darkinfo text-info px-2 py-1 block ml-3 rounded-sm border-0">
+                                                                                    Promotions</div>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a class="text-sm py-2  flex gap-2 items-center bg-hover rounded-none"
+                                                                                href="#">
+                                                                                <div
+                                                                                    class="bg-lighterror dark:bg-darkerror text-error px-2 py-1 block ml-3 rounded-sm border-0">
+                                                                                    Trash</div>
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <!---Todo list End--->    
+                                                </div>
+                                                <div class="xl:col-span-12 md:col-span-6 col-span-12">
+                                                    <!---Task list--->
+                                            <div class="card mb-6">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Task List</h5>
+                                                    <ul>
+                                                        <li class="py-4">
+                                                            <label class="cursor-pointer flex gap-3 ">
+                                                                <input type="checkbox" class="shrink-0 mt-1 h-5 w-5 border-bordergray bg-transparent dark:border-darkborder rounded text-error focus:ring-error disabled:opacity-50 disabled:pointer-events-none  dark:border-gray-700 dark:checked:bg-error dark:checked:border-error dark:focus:ring-offset-gray-800">
+                                                                <span>
+                                                                    <div class="flex items-center gap-1">
+                                                                        <p class="">Schedule meeting with</p>
+                                                                        <div class="bg-error text-white px-2 text-xs py-0.5 block rounded-full">Today</div>
+                                                                    </div>
+            
+                                                                </span>
+                                                            </label>
+                                                            <ul class="flex gap-1 items-center mt-2 ps-7">
+                                                                <li><img src="@@webRoot/assets/images/profile/user-1.jpg"
+                                                                        class="h-7 w w-7 rounded-full" alt="user"></li>
+                                                                <li><img src="@@webRoot/assets/images/profile/user-2.jpg"
+                                                                        class="h-7 w w-7 rounded-full" alt="user"></li>
+                                                                <li><img src="@@webRoot/assets/images/profile/user-3.jpg"
+                                                                        class="h-7 w w-7 rounded-full" alt="user"></li>
+                                                                <li><img src="@@webRoot/assets/images/profile/user-4.jpg"
+                                                                        class="h-7 w w-7 rounded-full" alt="user"></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="py-4">
+                                                            <label class="cursor-pointer flex gap-3 ">
+                                                                <input type="checkbox" class="shrink-0 mt-1 h-5 w-5 border-bordergray bg-transparent dark:border-darkborder rounded text-info focus:ring-info disabled:opacity-50 disabled:pointer-events-none  dark:border-gray-700 dark:checked:bg-info dark:checked:border-info dark:focus:ring-offset-gray-800">
+                                                                <span>
+                                                                    <div class="flex items-center gap-1">
+                                                                        <p class="">Give Purchase report to</p>
+                                                                        <div class="bg-info text-white px-2 text-xs py-0.5 block rounded-full">Yesterday
+                                                                        </div>
+                                                                    </div>
+                                                                </span>
+                                                            </label>
+                                                            <ul class="flex gap-1 items-center mt-2 ps-7">
+                                                                <li><img src="@@webRoot/assets/images/profile/user-3.jpg"
+                                                                        class="h-7 w w-7 rounded-full" alt="user"></li>
+                                                                <li><img src="@@webRoot/assets/images/profile/user-4.jpg"
+                                                                        class="h-7 w w-7 rounded-full" alt="user"></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="py-4">
+                                                            <label class="cursor-pointer flex gap-3 ">
+                                                                <input type="checkbox" class="shrink-0 mt-1 h-5 w-5 border-bordergray bg-transparent dark:border-darkborder rounded text-primary focus:ring-primary disabled:opacity-50 disabled:pointer-events-none  dark:border-gray-700 dark:checked:bg-primary dark:checked:border-primary dark:focus:ring-offset-gray-800">
+        
+                                                                <span>
+                                                                    <div class="flex items-center gap-1">
+                                                                        <p class="">Book flight for holiday</p>
+                                                                        <div class="bg-primary text-white px-2 text-xs py-0.5 block rounded-full">1 week
+                                                                        </div>
+                                                                    </div>
+                                                                </span>
+                                                            </label>
+                                                            <p class="p mt-2 ps-7 text-xs">
+                                                                26 jun 2024
+                                                            </p>
+                                                        </li>
+                                                        <li class="py-4">
+                                                            <label class="cursor-pointer flex gap-3 ">
+                                                                <input type="checkbox" class="shrink-0 mt-1 h-5 w-5 border-bordergray bg-transparent dark:border-darkborder rounded text-warning focus:ring-warning disabled:opacity-50 disabled:pointer-events-none  dark:border-gray-700 dark:checked:bg-warning dark:checked:border-warning dark:focus:ring-offset-gray-800">
+        
+                                                                <span>
+                                                                    <div class="flex items-center gap-1">
+                                                                        <p class="">Forward all tasks</p>
+                                                                        <div class="bg-warning text-white px-2 text-xs py-0.5 block rounded-full">2 weeks
+                                                                        </div>
+                                                                    </div>
+                                                                </span>
+                                                            </label>
+                                                            <p class="p mt-2 ps-7 text-xs">
+                                                                26 jun 2024
+                                                            </p>
+                                                        </li>
+                                                        <li class="py-4">
+                                                            <label class="cursor-pointer flex gap-3 ">
+                                                                <input type="checkbox" class="shrink-0 mt-1 h-5 w-5 border-bordergray bg-transparent dark:border-darkborder rounded text-success focus:ring-success disabled:opacity-50 disabled:pointer-events-none  dark:border-gray-700 dark:checked:bg-success dark:checked:border-success dark:focus:ring-offset-gray-800">
+        
+                                                                <span>
+                                                                    <div class="flex items-center gap-1">
+                                                                        <p class="">Recieve shipment</p>
+                                                                        <div class="bg-success text-white px-2 text-xs py-0.5 block rounded-full">2 weeks
+                                                                        </div>
+                                                                    </div>
+            
+                                                                </span>
+                                                            </label>
+                                                            <ul class="flex gap-1 items-center mt-2 ps-7">
+                                                                <li><img src="@@webRoot/assets/images/profile/user-1.jpg"
+                                                                        class="h-7 w w-7 rounded-full" alt="user"></li>
+                                                                <li><img src="@@webRoot/assets/images/profile/user-2.jpg"
+                                                                        class="h-7 w w-7 rounded-full" alt="user"></li>
+                                                                <li><img src="@@webRoot/assets/images/profile/user-3.jpg"
+                                                                        class="h-7 w w-7 rounded-full" alt="user"></li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <!---Task list End--->
+                                                </div>
+                                                <div class="xl:col-span-12 md:col-span-6 col-span-12">
+                                                     <!---Recent Message--->
+                                            <div class="card mb-6">
+                                                <div class="card-body">
+                                                    <h5 class="card-title mb-2">Recent Messages</h5>
+                                                    <a href="javascript:void(0)"
+                                                        class="flex gap-3 items-center border-b border-border dark:border-darkborder
+         py-4 group">
+                                                        <img src="@@webRoot/assets/images/profile/user-1.jpg"
+                                                            class="h-10 w-10 rounded-full" alt="user ">
+                                                        <div>
+                                                            <h6 class="font-medium text-base group-hover:text-primary">
+                                                                Pavan Kumar</h6>
+                                                            <p class="text-xs ">
+                                                                info@wrappixel.com
+                                                            </p>
+                                                        </div>
+                                                    </a>
+                                                    <a href="javascript:void(0)"
+                                                        class="flex gap-3 items-center border-b border-border dark:border-darkborder
+         py-4 group">
+                                                        <img src="@@webRoot/assets/images/profile/user-2.jpg"
+                                                            class="h-10 w-10 rounded-full" alt="user ">
+                                                        <div>
+                                                            <h6 class="font-medium text-base group-hover:text-primary">
+                                                                Sonu Nigam</h6>
+                                                            <p class="text-xs ">
+                                                                pamela1987@gmail.com
+                                                            </p>
+                                                        </div>
+                                                    </a>
+                                                    <a href="javascript:void(0)"
+                                                        class="flex gap-3 items-center border-b border-border dark:border-darkborder
+         py-4 group">
+                                                        <img src="@@webRoot/assets/images/profile/user-3.jpg"
+                                                            class="h-10 w-10 rounded-full" alt="user ">
+                                                        <div>
+                                                            <h6 class="font-medium text-base group-hover:text-primary">
+                                                                Arijit Sinh</h6>
+                                                            <p class="text-xs ">
+                                                                cruise1298.fiplip@gmail.com
+                                                            </p>
+                                                        </div>
+                                                    </a>
+                                                    <a href="javascript:void(0)"
+                                                        class="flex gap-3 items-center border-b border-border dark:border-darkborder
+         py-4 group">
+                                                        <img src="@@webRoot/assets/images/profile/user-4.jpg"
+                                                            class="h-10 w-10 rounded-full" alt="user ">
+                                                        <div>
+                                                            <h6 class="font-medium text-base group-hover:text-primary">
+                                                                Pavan kumar</h6>
+                                                            <p class="text-xs ">
+                                                                kat@gmail.com
+                                                            </p>
+                                                        </div>
+                                                    </a>
+                                                    <a href="javascript:void(0)"
+                                                        class="flex gap-3 items-center border-b border-border dark:border-darkborder
+         py-4 group">
+                                                        <img src="@@webRoot/assets/images/profile/user-2.jpg"
+                                                            class="h-10 w-10 rounded-full" alt="user ">
+                                                        <div>
+                                                            <h6 class="font-medium text-base group-hover:text-primary">
+                                                                Sonu Nigam</h6>
+                                                            <p class="text-xs ">
+                                                                pamela1987@gmail.com
+                                                            </p>
+                                                        </div>
+                                                    </a>
+                                                    <a href="javascript:void(0)" class="flex gap-3 items-center py-4 group">
+                                                        <img src="@@webRoot/assets/images/profile/user-1.jpg"
+                                                            class="h-10 w-10 rounded-full" alt="user ">
+                                                        <div>
+                                                            <h6 class="font-medium text-base group-hover:text-primary">
+                                                                Pavan kumar</h6>
+                                                            <p class="text-xs ">
+                                                                info@wrappixel.com
+                                                            </p>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <!---Recent Message End--->
+                                                </div>
+                                                <div class="xl:col-span-12 md:col-span-6 col-span-12">
+                                                    <!---Subscribe--->
+                                            <div class="card mb-6">
+                                                <div class="card-body">
+                                                    <h5 class="card-title mb-2">Subscribe</h5>
+                                                    <input type="text" placeholder="Enter Name"
+                                                        class="form-control my-2 py-2">
+                                                    <input type="text" placeholder="Enter Email"
+                                                        class="form-control my-2 py-2">
+                                                    <button class="btn w-full mt-2">Submit</button>
+                                                </div>
+                                            </div>
+                                            <!---Subscribe End--->
+                                                </div>
+                                                <div class="xl:col-span-12 md:col-span-6 col-span-12">
+                                                      <!---Followers--->
+                                            <div class="card mb-6 overflow-hidden">
+                                                <div class="card-body p-0">
+                                                    <div class="relative flex justify-center items-center h-full">
+                                                        <img src="@@webRoot/assets/images/backgrounds/profile-bg.jpg"
+                                                            class="rounded-md w-full max-w-full">
+                                                        <div class="absolute left-0 right-0 flex justify-center items-center">
+                                                            <div class="text-center">
+                                                                <img src="@@webRoot/assets/images/profile/user-2.jpg"
+                                                                    class="h-24 w-24 rounded-full" alt="user ">
+                                                                <h5 class="card-title text-white">John doe</h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-body">
+                                                    <ul class="flex gap-4 text-center justify-between">
+                                                        <li>
+                                                            <h3 class="text-2xl font-medium">12K</h3>
+                                                            <p class="text-base">Followers</p>
+                                                        </li>
+                                                        <li>
+                                                            <h3 class="text-2xl font-medium">420</h3>
+                                                            <p class="text-base">Following</p>
+                                                        </li>
+                                                        <li>
+                                                            <h3 class="text-2xl font-medium">128</h3>
+                                                            <p class="text-base">Tweets</p>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <!---Followers End--->
+                                                </div>
+                                                <div class="xl:col-span-12 md:col-span-6 col-span-12">
+                                                     <!---Reviews--->
+                                            <div class="card mb-6">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Reviews</h5>
+                                                    <p class="card-subtitle">Overview of Review</p>
+                                                    <h3 class="text-2xl font-medium mt-8">25426</h3>
+                                                    <p class="">This month we got 346 New Reviews</p>
+                                                    <div class="flex gap-3 my-6">
+                                                        <a href="javascript:void(0)" class="hs-tooltip hs-tooltip-toggle">
+                                                            <img src="@@webRoot/assets/images/profile/user-1.jpg"
+                                                                class="h-11 w-11 rounded-full" alt="user ">
+        
+                                                                <span
+                                                                                        class="tooltip hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible"
+                                                                                        role="tooltip">
+                                                                                        Simmons
+                                                                                      </span>
+        
+                                                        </a>
+                                                        <a href="javascript:void(0)" class="hs-tooltip hs-tooltip-toggle">
+                                                            <img src="@@webRoot/assets/images/profile/user-2.jpg"
+                                                                class="h-11 w-11 rounded-full" alt="user ">
+                                                                <span
+                                                                                        class="tooltip hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible"
+                                                                                        role="tooltip">
+                                                                                        Mark
+                                                                                      </span>
+                                                        </a>
+                                                        <a href="javascript:void(0)" class="hs-tooltip hs-tooltip-toggle">
+                                                            <img src="@@webRoot/assets/images/profile/user-3.jpg"
+                                                                class="h-11 w-11 rounded-full" alt="user ">
+                                                                <span
+                                                                class="tooltip hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible"
+                                                                role="tooltip">
+                                                                Smith
+                                                              </span>
+                                                        </a>
+                                                        <a href="javascript:void(0)" class="hs-tooltip hs-tooltip-toggle" >
+                                                            <img src="@@webRoot/assets/images/profile/user-4.jpg"
+                                                                class="h-11 w-11 rounded-full" alt="user ">
+                                                                <span
+                                                                class="tooltip hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible"
+                                                                role="tooltip">
+                                                                Reyon
+                                                              </span>
+                                                        </a>
+                                                    </div>
+                                                    <button class="btn">Checkout All Reviews</button>
+                                                </div>
+                                            </div>
+                                            <!---Reviews End--->
+                                                </div>
+                                                <div class="xl:col-span-12 md:col-span-6 col-span-12">
+                                                        <!-- Visits around the countries -->
+                                            <div class="card mb-6">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Visits around the countries</h5>
+                                                    <div class="my-5">
+                                                        <h6 class="mb-0 font-medium text-2xl text-dark dark:text-white">
+                                                            6350
+                                                        </h6>
+                                                        <div class="flex items-center justify-between">
+                                                            <p class="text-xs">From India</p>
+                                                            <span class="font-medium">48% <iconify-icon icon="fa-solid:level-up-alt"
+                                                                    class="text-success ms-1"></iconify-icon></span>
+                                                        </div>
+                                                        <div class="flex w-full h-1.5 bg-lightsuccess dark:bg-darksuccess rounded-md overflow-hidden" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                                                            <div class="flex flex-col justify-center overflow-hidden bg-success text-xs text-white text-center whitespace-nowrap transition duration-500 " style="width: 50%"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="my-5">
+                                                        <h6 class="mb-0 font-medium text-2xl text-dark dark:text-white">
+                                                            3250
+                                                        </h6>
+                                                        <div class="flex items-center justify-between">
+                                                            <p class="text-xs">From UAE</p>
+                                                            <span class="font-medium">98%<iconify-icon icon="fa-solid:level-up-alt"
+                                                                    class="text-success ms-1"></iconify-icon></span>
+                                                        </div>
+                                                        <div class="flex w-full h-1.5 bg-lightinfo dark:bg-darkinfo rounded-md overflow-hidden" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                                                            <div class="flex flex-col justify-center overflow-hidden bg-info text-xs text-white text-center whitespace-nowrap transition duration-500 " style="width: 50%"></div>
+                                                        </div>
+                                                       
+                                                    </div>
+                                                    <div class="my-5">
+                                                        <h6 class="mb-0 font-medium text-2xl text-dark dark:text-white">
+                                                            1250
+                                                        </h6>
+                                                        <div class="flex items-center justify-between">
+                                                            <p class="text-xs">From Australia</p>
+                                                            <span class="font-medium">75%<iconify-icon
+                                                                    icon="fa-solid:level-down-alt"
+                                                                    class="text-error ms-1"></iconify-icon></span>
+                                                        </div>
+                                                        <div class="flex w-full h-1.5 bg-lightprimary dark:bg-darkprimary rounded-md overflow-hidden" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                                                            <div class="flex flex-col justify-center overflow-hidden bg-primary text-xs text-white text-center whitespace-nowrap transition duration-500 " style="width: 50%"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="my-5">
+                                                        <h6 class="mb-0 font-medium text-2xl text-dark dark:text-white">
+                                                            1350
+                                                        </h6>
+                                                        <div class="flex items-center justify-between">
+                                                            <p class="text-xs">From USA</p>
+                                                            <span class="font-medium">48%<iconify-icon icon="fa-solid:level-up-alt"
+                                                                    class="text-success ms-1"></iconify-icon></span>
+                                                        </div>
+                                                        <div class="flex w-full h-1.5 bg-lightwarning dark:bg-darkwarning rounded-md overflow-hidden" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                                                            <div class="flex flex-col justify-center overflow-hidden bg-warning text-xs text-white text-center whitespace-nowrap transition duration-500 " style="width: 50%"></div>
+                                                        </div>
+                                                    </div>
+            
+                                                </div>
+                                            </div>
+                                            <!-- Visits around the countries End -->
+                                                </div>
+                                                <div class="xl:col-span-12 md:col-span-6 col-span-12">
+                                                     <!-- Total Earning -->
+                                            <div class="card ">
+                                                <div class="card-body">
+        
+                                                    <div class="sm:flex items-center justify-between ">
+                                                        <div>
+                                                            <h5 class="card-title">Total Earning</h5>
+                                                            <p class="text-2xl font-medium text-dark dark:text-darklink">$586</p>
+                                                        </div>
+                                                        <div class="sm:mt-0 mt-4">
+                                                            <select class="">
+                                                                <option selected="">Today</option>
+                                                                <option>Weekly</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <hr class="border-t border-border dark:border-darkborder">
+                                                <div class="card-body flex flex-col gap-4">
+                                                    <div class="flex items-center justify-between ">
+                                                        <div class="flex gap-3 items-center">
+                                                            <img src="@@webRoot/assets/images/profile/user-1.jpg"
+                                                                class="h-12 w-12 rounded-full" alt="user ">
+                                                            <p class="card-subtitle">Andrew Simon</p>
+                                                        </div>
+                                                        <div class="bg-info text-white px-2 text-xs py-0.5 block rounded-full">$2300</div>
+                                                    </div>
+                                                    <div class="flex items-center justify-between ">
+                                                        <div class="flex gap-3 items-center">
+                                                            <img src="@@webRoot/assets/images/profile/user-2.jpg"
+                                                                class="h-12 w-12 rounded-full" alt="user ">
+                                                                <p class="card-subtitle">Daniel Kristeen</p>
+                                                        </div>
+                                                        <div class="bg-primary text-white px-2 text-xs py-0.5 block rounded-full">$4300</div>
+                                                    </div>
+                                                    <div class="flex items-center justify-between ">
+                                                        <div class="flex gap-3 items-center">
+                                                            <img src="@@webRoot/assets/images/profile/user-3.jpg"
+                                                                class="h-12 w-12 rounded-full" alt="user ">
+                                                                <p class="card-subtitle">Dany John</p>
+                                                        </div>
+                                                        <div class="bg-success text-white px-2 text-xs py-0.5 block rounded-full">$4300</div>
+                                                    </div>
+                                                    <div class="flex items-center justify-between ">
+                                                        <div class="flex gap-3 items-center">
+                                                            <img src="@@webRoot/assets/images/profile/user-4.jpg"
+                                                                class="h-12 w-12 rounded-full" alt="user ">
+                                                                <p class="card-subtitle">Chris gyl</p>
+                                                        </div>
+                                                        <div class="bg-warning text-white px-2 text-xs py-0.5 block rounded-full">$5300</div>
+                                                    </div>
+                                                    <div class="flex items-center justify-between ">
+                                                        <div class="flex gap-3 items-center">
+                                                            <img src="@@webRoot/assets/images/profile/user-5.jpg"
+                                                                class="h-12 w-12 rounded-full" alt="user ">
+                                                                <p class="card-subtitle">Mark Stonis</p>
+                                                        </div>
+                                                        <div class="bg-error text-white px-2 text-xs py-0.5 block rounded-full">$4567</div>
+                                                    </div>
+                                                    <div class="flex items-center justify-between ">
+                                                        <div class="flex gap-3 items-center">
+                                                            <img src="@@webRoot/assets/images/profile/user-6.jpg"
+                                                                class="h-12 w-12 rounded-full" alt="user ">
+                                                                <p class="card-subtitle">Dwyn smith</p>
+                                                        </div>
+                                                        <div class="bg-primary text-white px-2 text-xs py-0.5 block rounded-full">$7789</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Total Earning End-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!------Second Column End----->
+            
+                                        <!------Third Column ----->
+                                        <div class="xl:col-span-4 col-span-12">
+                                            <div class="grid grid-cols-12 gap-x-6">
+                                                <div class="col-span-12">
+                                                     <!-- Project of the month -->
+                                            <div class="card mb-6">
+                                                <div class="card-body">
+                                                    <div class="sm:flex items-center justify-between mb-6">
+                                                        <div>
+                                                            <h5 class="card-title ">Projects of the Month
+                                                            </h5>
+                                                        </div>
+                                                        <div class="sm:mt-0 mt-4">
+                                                            <select class="select input-bordered select-md">
+                                                                <option selected>January</option>
+                                                                <option>Febuary</option>
+                                                                <option>March</option>
+                                                                <option>April</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+            
+                                                    <div class="flex flex-col">
+                                                        <div class="-m-1.5 overflow-x-auto">
+                                                            <div class="p-1.5 min-w-full inline-block align-middle">
+                                                                <div class="overflow-hidden">
+                                                                    <table
+                                                                        class="min-w-full divide-y divide-border dark:divide-darkborder">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th scope="col"
+                                                                                    class="text-left rtl:text-right  p-4 ps-0 font-semibold text-dark dark:text-white text-sm">
+                                                                                    Assigned</th>
+                                                                                <th scope="col"
+                                                                                    class="text-left rtl:text-right  p-4 font-semibold text-dark dark:text-white text-sm">
+                                                                                    Project</th>
+                                                                                <th scope="col"
+                                                                                    class="text-left rtl:text-right  p-4 font-semibold text-dark dark:text-white text-sm">
+                                                                                    Priority</th>
+                                                                                <th scope="col"
+                                                                                    class="text-right rtl:text-left  p-4 font-semibold text-dark dark:text-white text-sm">
+                                                                                    Budget</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody
+                                                                            class="divide-y divide-border dark:divide-darkborder">
+                                                                            <tr class="">
+                                                                                <td class="p-4 ps-0 whitespace-nowrap">
+                                                                                    <div class="flex gap-3 items-center">
+                                                                                        <div class="">
+                                                                                            <img src="@@webRoot/assets/images/profile/user-1.jpg"
+                                                                                                class="rounded-circle h-10 w-10 rounded-full"
+                                                                                                alt="user " />
+                                                                                        </div>
+                                                                                        <div>
+                                                                                            <h6
+                                                                                                class="text-sm  mb-1">
+                                                                                                Sunil Joshi</h6>
+                                                                                            <p
+                                                                                                class="text-xs text-bodytext dark:text-darklink">
+                                                                                                Web Designer
+                                                                                            </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td
+                                                                                    class="text-sm whitespace-nowrap text-bodytext dark:text-darklink p-4">
+                                                                                    Elite Admin
+                                                                                </td>
+                                                                                <td class="p-4">
+                                                                                    <span
+                                                                                        class="rounded-md bg-lightprimary dark:bg-darkprimary text-sm px-3 py-1 font-semibold text-primary">Low</span>
+                                                                                </td>
+                                                                                <td
+                                                                                    class="text-sm whitespace-nowrap text-bodytext dark:text-darklink p-4 text-right rtl:text-left">
+                                                                                    $3.9K</td>
+                                                                            </tr>
+                                                                            <tr  class="">
+                                                                                <td class="p-4 ps-0 whitespace-nowrap">
+                                                                                    <div class="flex gap-3 items-center">
+                                                                                        <div class="">
+                                                                                            <img src="@@webRoot/assets/images/profile/user-2.jpg"
+                                                                                                class="rounded-circle h-10 w-10 rounded-full"
+                                                                                                alt="user " />
+                                                                                        </div>
+                                                                                        <div>
+                                                                                            <h6
+                                                                                                class="text-sm  mb-1">
+                                                                                                John Deo</h6>
+                                                                                            <p
+                                                                                                class="text-xs text-bodytext dark:text-darklink">
+                                                                                                Web Developer
+                                                                                            </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td
+                                                                                    class="text-sm whitespace-nowrap text-bodytext dark:text-darklink p-4">
+                                                                                    Flexy Admin
+                                                                                </td>
+                                                                                <td class="p-4">
+                                                                                    <span
+                                                                                        class="rounded-md bg-lightwarning dark:bg-darkwarning text-sm px-3 py-1 font-semibold text-warning">Low</span>
+                                                                                </td>
+                                                                                <td
+                                                                                    class="card-subtitlewhitespace-nowrap text-bodytext dark:text-darklink p-4 text-right rtl:text-left">
+                                                                                    $24.5K</td>
+                                                                            </tr>
+                                                                            <tr  class="">
+                                                                                <td class="p-4 ps-0 whitespace-nowrap">
+                                                                                    <div class="flex gap-3 items-center">
+                                                                                        <div class="">
+                                                                                            <img src="@@webRoot/assets/images/profile/user-3.jpg"
+                                                                                                class="rounded-circle h-10 w-10 rounded-full"
+                                                                                                alt="user " />
+                                                                                        </div>
+                                                                                        <div>
+                                                                                            <h6
+                                                                                                class="text-sm  mb-1">
+                                                                                                Nirav Joshi</h6>
+                                                                                            <p
+                                                                                                class="text-xs text-bodytext dark:text-darklink">
+                                                                                                Web Manager
+                                                                                            </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td
+                                                                                    class="text-sm whitespace-nowrap text-bodytext dark:text-darklink p-4">
+                                                                                    Material Pro
+                                                                                </td>
+                                                                                <td class="p-4">
+                                                                                    <span
+                                                                                        class="rounded-md bg-lightinfo dark:bg-darkinfo text-sm px-3 py-1 font-semibold text-info">High</span>
+                                                                                </td>
+                                                                                <td
+                                                                                    class="text-sm whitespace-nowrap text-bodytext dark:text-darklink p-4 text-right rtl:text-left">
+                                                                                    $12.8K</td>
+                                                                            </tr>
+                                                                            <tr  class="">
+                                                                                <td class="p-4 ps-0 whitespace-nowrap">
+                                                                                    <div class="flex gap-3 items-center">
+                                                                                        <div class="">
+                                                                                            <img src="@@webRoot/assets/images/profile/user-4.jpg"
+                                                                                                class="rounded-circle h-10 w-10 rounded-full"
+                                                                                                alt="user " />
+                                                                                        </div>
+                                                                                        <div>
+                                                                                            <h6
+                                                                                                class="text-sm  mb-1">
+                                                                                                Yuvraj Sheth</h6>
+                                                                                            <p
+                                                                                                class="text-xs text-bodytext dark:text-darklink">
+                                                                                                Project Manager
+                                                                                            </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td
+                                                                                    class="text-sm whitespace-nowrap text-bodytext dark:text-darklink p-4">
+                                                                                    Xtreme Admin
+                                                                                </td>
+                                                                                <td class="p-4">
+                                                                                    <span
+                                                                                        class="rounded-md bg-lightsuccess dark:bg-darksuccess text-sm px-3 py-1 font-semibold text-success">Low</span>
+                                                                                </td>
+                                                                                <td
+                                                                                    class="text-sm whitespace-nowrap text-bodytext dark:text-darklink p-4 text-right rtl:text-left">
+                                                                                    $4.8K</td>
+                                                                            </tr>
+                                                                            <tr  class="">
+                                                                                <td class="p-4 ps-0 whitespace-nowrap">
+                                                                                    <div class="flex gap-3 items-center">
+                                                                                        <div class="">
+                                                                                            <img src="@@webRoot/assets/images/profile/user-5.jpg"
+                                                                                                class="rounded-circle h-10 w-10 rounded-full"
+                                                                                                alt="user " />
+                                                                                        </div>
+                                                                                        <div>
+                                                                                            <h6
+                                                                                                class="text-sm  mb-1">
+                                                                                                Micheal Doe</h6>
+                                                                                            <p
+                                                                                                class="text-xs text-bodytext dark:text-darklink">
+                                                                                                Content Writer
+                                                                                            </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td
+                                                                                    class="text-sm whitespace-nowrap text-bodytext dark:text-darklink p-4">
+                                                                                    Helping Hands
+                                                                                    WP Theme</td>
+                                                                                <td class="p-4">
+                                                                                    <span
+                                                                                        class="rounded-md bg-lighterror dark:bg-darkerror text-sm px-3 py-1 font-semibold text-error">High</span>
+                                                                                </td>
+                                                                                <td
+                                                                                    class="text-sm whitespace-nowrap text-bodytext dark:text-darklink p-4 text-right rtl:text-left">
+                                                                                    $9.3K</td>
+                                                                            </tr>
+            
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+            
+                                                </div>
+                                            </div>
+                                            <!-- Project of the month End-->
+                                                </div>
+                                                <div class="xl:col-span-12 md:col-span-6 col-span-12">
+                                                    <!-- Profile Card-->
+                                            <div class="card mb-6">
+                                                <div class="card-body">
+                                                    <div class="flex align-baseline gap-3">
+                                                        <img src="@@webRoot/assets/images/profile/user-2.jpg"
+                                                            class="h-24 w-24 rounded-full" alt="user ">
+                                                        <div>
+                                                            <h5 class="text-2xl font-medium">Daniel Kristeen</h5>
+                                                            <h6 class="font-medium mb-2">UIUX Designer</h6>
+                                                            <button class="btn bg-success  hover:bg-successemphasis text-white flex items-center px-4 py-2
+                                                            "><i
+                                                                    class="ti ti-plus text-base"></i>Follow</button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="grid grid-cols-3 text-center mt-8 mb-5">
+                                                        <div>
+                                                            <h3 class="text-2xl font-medium">14</h3>
+                                                            <p>Photos</p>
+                                                        </div>
+                                                        <div class="border-x border-border dark:border-darkborder
+        ">
+                                                            <h3 class="text-2xl font-medium">54</h3>
+                                                            <p>Videos</p>
+                                                        </div>
+                                                        <div>
+                                                            <h3 class="text-2xl font-medium">145</h3>
+                                                            <p>Tasks</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <hr class="border-t border-border dark:border-darkborder ">
+                                                <div class="card-body">
+                                                    <p class="text-center ">
+                                                        Lorem ipsum dolor sit ametetur adipisicing elit, sed do eiusmod tempor
+                                                        incididunt adipisicing elit, sed do eiusmod tempor incididunLorem ipsum
+                                                        dolor sit ametetur adipisicing elit, sed do eiusmod tempor incididuntt
+                                                    </p>
+                                                    <div class="grid grid-cols-3 text-center mt-5">
+                                                        <a href="javascript:void(0)" class="hs-tooltip hs-tooltip-toggle text-dark dark:text-darklink  text-center "
+                                                            ><i class="ti ti-world text-lg"></i>
+                                                            <span
+                                                                                        class="tooltip hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible"
+                                                                                        role="tooltip">
+                                                                                        Website
+                                                                                      </span>
+        
+                                                        </a>
+                                                        <a href="javascript:void(0)" class="hs-tooltip hs-tooltip-toggle text-dark dark:text-darklink "
+                                                            ><i class="ti ti-brand-twitter text-lg"></i>
+                                                            <span
+                                                                                        class="tooltip hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible"
+                                                                                        role="tooltip">
+                                                                                        Twitter
+                                                                                      </span>
+                                                        </a>
+                                                        <a href="javascript:void(0)" class="hs-tooltip hs-tooltip-toggle text-dark dark:text-darklink "
+                                                           ><i class="ti ti-brand-facebook text-lg"></i>
+                                                            <span
+                                                                                        class="tooltip hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible"
+                                                                                        role="tooltip">
+                                                                                        Facebook
+                                                                                      </span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Profile Card end-->
+                                                </div>
+                                                <div class="xl:col-span-12 md:col-span-6 col-span-12">
+                                                    
+                                            <!-- Browser State-->
+                                            <div class="card mb-6">
+                                                <div class="card-body">
+                                                    <h5 class="card-title mb-2">Browser Stats</h5>
+                                                    <div class="flex items-center justify-between my-6">
+                                                        <div class="flex gap-3 items-center">
+                                                            <img src="@@webRoot/assets/images/browser/chrome-logo.png"
+                                                                class="h-8 w-8 rounded-full" alt="logo" />
+                                                            <p>Google Chrome</p>
+                                                        </div>
+                                                        <p>23%</p>
+                                                    </div>
+                                                    <div class="flex items-center justify-between my-6">
+                                                        <div class="flex gap-3 items-center">
+                                                            <img src="@@webRoot/assets/images/browser/firefox-logo.png"
+                                                                class="h-8 w-8 rounded-full" alt="logo" />
+                                                            <p>Mozila Firefox</p>
+                                                        </div>
+                                                        <p>15%</p>
+                                                    </div>
+                                                    <div class="flex items-center justify-between my-6">
+                                                        <div class="flex gap-3 items-center">
+                                                            <img src="@@webRoot/assets/images/browser/safari-logo.png"
+                                                                class="h-8 w-8 rounded-full" alt="logo" />
+                                                            <p>Apple Safari</p>
+                                                        </div>
+                                                        <p>07%</p>
+                                                    </div>
+                                                    <div class="flex items-center justify-between my-6">
+                                                        <div class="flex gap-3 items-center">
+                                                            <img src="@@webRoot/assets/images/browser/internet-logo.png"
+                                                                class="h-8 w-8 rounded-full" alt="logo" />
+                                                            <p>Internet Explorer</p>
+                                                        </div>
+                                                        <p>09%</p>
+                                                    </div>
+                                                    <div class="flex items-center justify-between my-6">
+                                                        <div class="flex gap-3 items-center">
+                                                            <img src="@@webRoot/assets/images/browser/opera-logo.png"
+                                                                class="h-8 w-8 rounded-full" alt="logo" />
+                                                            <p>Opera mini</p>
+                                                        </div>
+                                                        <p>23%</p>
+                                                    </div>
+                                                    <div class="flex items-center justify-between my-6">
+                                                        <div class="flex gap-3 items-center">
+                                                            <img src="@@webRoot/assets/images/browser/edge-logo.png"
+                                                                class="h-8 w-8 rounded-full" alt="logo" />
+                                                            <p>Microsoft edge</p>
+                                                        </div>
+                                                        <p>09%</p>
+                                                    </div>
+                                                    <div class="flex items-center justify-between my-6">
+                                                        <div class="flex gap-3 items-center">
+                                                            <img src="@@webRoot/assets/images/browser/netscape-logo.png"
+                                                                class="h-8 w-8 rounded-full" alt="logo" />
+                                                            <p>Netscape Navigator</p>
+                                                        </div>
+                                                        <p>04%</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Browser State End-->
+                                                </div>
+                                                <div class="xl:col-span-12 md:col-span-6 col-span-12">
+                                            <!-- Place your Order -->
+                                            <div class="card mb-6">
+                                                <div class="card-body">
+                                                    <div class="sm:flex items-center gap-4 justify-between mb-6">
+                                                        <div>
+                                                            <h5 class="card-title ">Place your Order</h5>
+                                                            <p class="text-sm ">Buy and Sell Crypto as you Like</p>
+                                                        </div>
+                                                        <div class="sm:mt-0 mt-4">
+                                                            <select class="select input-bordered select-md">
+                                                                <option selected="">Bitcoin</option>
+                                                                <option>Etherium</option>
+                                                                <option>Ripple</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+        
+                                            
+                                                        <nav class="flex space-x-2" aria-label="Tabs" role="tablist">
+                                                            <button type="button" class="hs-tab-active:bg-primary btn hs-tab-active:text-white hs-tab-active:hover:text-white hs-tab-active:dark:text-white  text-center py-2 items-center gap-x-2 bg-transparent text-base text-bodytext dark:text-darklink active hover:text-white dark:hover:text-white" id="pills-with-brand-color-item-1" data-hs-tab="#buy-tab" aria-controls="buy-tab" role="tab">
+                                                                Buy
+                                                            </button>
+                                                            <button type="button" class="hs-tab-active:bg-primary btn hs-tab-active:text-white hs-tab-active:hover:text-white hs-tab-active:dark:text-white  text-center py-2 items-center gap-x-2 bg-transparent text-base text-bodytext dark:text-darklink hover:text-white dark:hover:text-white" id="pills-with-brand-color-item-2" data-hs-tab="#sell-tab" aria-controls="sell-tab" role="tab">
+                                                                Sell
+                                                            </button>
+                                                        </nav>
+                
+                                                        <div class="mt-3">
+                                                            <div id="buy-tab" role="tabpanel" aria-labelledby="pills-with-brand-color-item-1" class="">
+                                                                <div class="pt-3 flex flex-col gap-4">
+                                                                    <div class="flex">
+                                                                        <span class="px-4 inline-flex items-center min-w-fit rounded-s-sm border border-e-0 border-gray-200 bg-gray-100 text-base text-gray-500 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400"><i class="ti ti-coin-bitcoin text-lg"></i></span>
+                                                                        <input type="text" id="form_InputText1" class="py-2.5 px-4 pe-11 block w-full form-control rounded-none rounded-e-lg" placeholder="Amount">
+                                                                      </div>
+                                                                      <div class="flex">
+                                                                        <span class="px-4 inline-flex items-center min-w-fit rounded-s-sm border border-e-0 border-gray-200 bg-gray-100 text-base text-gray-500 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400"><i class="ti ti-currency-dollar text-lg"></i></span>
+                                                                        <input type="text" id="form_InputText1" class="py-2.5 px-4 pe-11 block w-full form-control rounded-none rounded-e-lg" placeholder="Price">
+                                                                      </div>
+                                                                      <button class="btn w-fit">Buy Bitcoin</button>
+                                                                </div>
+                                                            </div>
+                                                            <div id="sell-tab" class="hidden" role="tabpanel" aria-labelledby="pills-with-brand-color-item-2">
+                                                                <div class="pt-3 flex flex-col gap-4">
+                                                                    <div class="flex">
+                                                                        <span class="px-4 inline-flex items-center min-w-fit rounded-s-sm border border-e-0 border-gray-200 bg-gray-100 text-base text-gray-500 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400"><i class="ti ti-coin-bitcoin text-lg"></i></span>
+                                                                        <input type="text" id="form_InputText1" class="py-2.5 px-4 pe-11 block w-full form-control rounded-none rounded-e-lg" placeholder="Amount">
+                                                                      </div>
+                                                                      <div class="flex">
+                                                                        <span class="px-4 inline-flex items-center min-w-fit rounded-s-sm border border-e-0 border-gray-200 bg-gray-100 text-base text-gray-500 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400"><i class="ti ti-currency-dollar text-lg"></i></span>
+                                                                        <input type="text" id="form_InputText1" class="py-2.5 px-4 pe-11 block w-full form-control rounded-none rounded-e-lg" placeholder="Price">
+                                                                      </div>
+                                                                      <button class="btn bg-success hover:bg-successemphasis text-white w-fit">Sell Bitcoin</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                   
+                                                    
+                                                </div>
+                                            </div>
+                                            <!-- Place your Order End -->
+                                                </div>
+                                                <div class="xl:col-span-12 md:col-span-6 col-span-12">
+                                                        <!-- Poll of the week -->
+                                            <div class="card mb-6">
+                                                <div class="card-body">
+                                                    <h5 class="card-title ">Poll of the week</h5>
+                                                    <p class="card-subtitle">Here is the latest poll</p>
+                                                    <p class="mt-4"></p>What is your mobile app usage daily?</p>
+                                                    <div class="flex flex-col gap-4 mt-4">
+                                                        <label class="flex gap-2 items-center cursor-pointer">
+                                                            <input type="radio" name="hs-colored-radio3" class="shrink-0 mt-0.5 w-5 h-5 border-gray-200 rounded-full text-primary focus:ring-primary disabled:opacity-50 disabled:pointer-events-none  dark:border-gray-700 dark:checked:bg-primary dark:checked:border-primary dark:focus:ring-offset-gray-800" id="hs-checked-poll1">
+                                                            <span class="text-dark dark:text-darklink "><b class="me-1">A</b> 30 Minutes</span>
+                                                        </label>
+                                                        <label class="flex gap-2 items-center cursor-pointer">
+                                                            <input type="radio" name="hs-colored-radio3" class="shrink-0 mt-0.5 w-5 h-5 border-gray-200 rounded-full text-primary focus:ring-primary disabled:opacity-50 disabled:pointer-events-none  dark:border-gray-700 dark:checked:bg-primary dark:checked:border-primary dark:focus:ring-offset-gray-800" id="hs-checked-poll2" checked>
+        
+                                                            <span class="text-dark dark:text-darklink "><b class="me-1">B</b> More than 30
+                                                                minutes</span>
+                                                        </label>
+                                                        <label class="flex gap-2 items-center cursor-pointer">
+                                                            <input type="radio" name="hs-colored-radio3" class="shrink-0 mt-0.5 w-5 h-5 border-gray-200 rounded-full text-primary focus:ring-primary disabled:opacity-50 disabled:pointer-events-none  dark:border-gray-700 dark:checked:bg-primary dark:checked:border-primary dark:focus:ring-offset-gray-800" id="hs-checked-poll3">
+        
+                                                            <span class="text-dark dark:text-darklink "><b class="me-1">C</b> 1 Hour</span>
+                                                        </label>
+                                                        <label class="flex gap-2 items-center cursor-pointer">
+                                                            <input type="radio" name="hs-colored-radio3" class="shrink-0 mt-0.5 w-5 h-5 border-gray-200 rounded-full text-primary focus:ring-primary disabled:opacity-50 disabled:pointer-events-none  dark:border-gray-700 dark:checked:bg-primary dark:checked:border-primary dark:focus:ring-offset-gray-800" id="hs-checked-poll4" >
+        
+                                                            <span class="text-dark dark:text-darklink "><b class="me-1">D</b> More than 1
+                                                                hour</span>
+                                                        </label>
+                                                    </div>
+                                                    <button class="btn bg-success hover:bg-successemphasis text-white w-fit mt-6">submit Answer</button>
+                                                </div>
+                                            </div>
+                                            <!-- Poll of the week end-->
+                                                </div>
+                                                <div class="xl:col-span-12 col-span-12">
+                                                    <!-- Feeds -->
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h5 class="card-title mb-4">Feeds</h5>
+                                                    <div class="flex items-center justify-between  border-s-2 border-info my-6">
+                                                        <div class="flex gap-4 items-center ms-4 group">
+                                                            <a href="javascript:void(0)" class="bg-lightinfo dark:bg-darkinfo rounded-sm flex items-center justify-center h-9 w-14  group-hover:bg-info">
+                                                                <i class="ti ti-bell text-xl text-info group-hover:text-white"></i>
+                                                            </a>
+                                                            <p class="truncate">You have 4 pending tasks.
+                                                                <span class="text-xs sm:hidden block">Just</span>
+                                                            </p>
+                                                            
+                                                        </div>
+                                                        <p class="text-xs sm:flex hidden">Just</p>
+                                                    </div>
+                                                    <div class="flex items-center justify-between  border-s-2 border-success my-6">
+                                                        <div class="flex gap-4 items-center ms-4 group">
+                                                            <a href="javascript:void(0)" class="bg-lightsuccess dark:bg-darksuccess rounded-sm flex items-center justify-center h-9 w-14  group-hover:bg-success">
+                                                                <i class="ti ti-database text-xl text-success group-hover:text-white"></i>
+                                                            </a>
+                                                            <p class="truncate">Server #1 overloaded
+                                                                <span class="text-xs sm:hidden block">2 Hours ago</span>
+                                                            </p>
+                                                        </div>
+                                                        <p class="text-xs sm:flex hidden">2 Hours ago</p>
+                                                    </div>
+                                                    <div class="flex items-center justify-between  border-s-2 border-warning my-6">
+                                                        <div class="flex gap-4 items-center ms-4 group">
+                                                            <a href="javascript:void(0)" class="bg-lightwarning dark:bg-darkwarning rounded-sm flex items-center justify-center h-9 w-14  group-hover:bg-warning">
+                                                                <i class="ti ti-shopping-cart text-xl text-warning group-hover:text-white"></i>
+                                                            </a>
+                                                            <p class="truncate">New order received.
+                                                                <span class="text-xs sm:hidden block">31 May</span>
+                                                            </p>
+                                                        </div>
+                                                        <p class="text-xs sm:flex hidden">31 May</p>
+                                                    </div>
+                                                    <div class="flex items-center justify-between  border-s-2 border-error my-6">
+                                                        <div class="flex gap-4 items-center ms-4 group">
+                                                            <a href="javascript:void(0)" class="bg-lighterror dark:bg-darkerror rounded-sm flex items-center justify-center h-9 w-14  group-hover:bg-error">
+                                                                <i class="ti ti-users text-xl text-error group-hover:text-white"></i>
+                                                            </a>
+                                                            <p class="truncate">New user registered.
+                                                                <span class="text-xs sm:hidden block">30 May</span>
+                                                            </p>
+                                                        </div>
+                                                        <p class="text-xs sm:flex hidden">30 May</p>
+                                                    </div>
+                                                    <div class="flex items-center justify-between  border-s-2 border-primary my-6">
+                                                        <div class="flex gap-4 items-center ms-4 group">
+                                                            <a href="javascript:void(0)" class="bg-lightprimary dark:bg-darkprimary rounded-sm flex items-center justify-center h-9 w-14  group-hover:bg-primary">
+                                                                <i class="ti ti-alert-circle text-xl text-primary group-hover:text-white"></i>
+                                                            </a>
+                                                            <p class="truncate">New Version just arrived.
+                                                                <span class="text-xs sm:hidden block">27 May</span>
+                                                            </p>
+                                                        </div>
+                                                        <p class="text-xs sm:flex hidden">27 May</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Feeds End-->
+                                                </div>
+                                            </div>
+                                        
+                                        </div>
+                                        <!------Third Column End----->
+            
+                                    </div>
+
+
+                                </div>
+                            </div>    
+						</div>
+					</main>
+					<!-- Main Content End -->
+
+				</div>
+			</div>
+			<!--end of project-->
+		</main>
+		@@include("partials/header-components/mobile-menu.html")
+		@@include("partials/customizer.html")
+		@@include("partials/scripts.html")
+	</body>
+</html>

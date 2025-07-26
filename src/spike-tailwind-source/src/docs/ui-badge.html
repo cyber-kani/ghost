@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-color-theme="Blue_Theme" class="light selected" data-layout="vertical"
+    data-boxed-layout="boxed" data-card="shadow">
+
+<head>
+    @@include("partials/head.html")
+    <title>Spike TailwindCSS HTML Admin Template</title>
+    <link rel="stylesheet" href="@@webRoot/node_modules/prismjs/themes/prism-okaidia.min.css">
+</head>
+
+<body class="DEFAULT_THEME bg-lightprimary dark:bg-darkbody">
+    <main>
+        <!--start the project-->
+        <div id="main-wrapper" class="flex p-5">
+
+            <aside id="application-sidebar-brand"
+                class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full xl:rtl:-translate-x-0 rtl:translate-x-full  left-0 rtl:left-auto xl:rtl:right-5 rtl:right-0 transform hidden xl:block xl:translate-x-0 xl:end-auto xl:bottom-0 fixed top-0 with-vertical  docs-left-sidebar transition-all duration-300 h-screen z-[2] flex-shrink-0  w-[270px] border-border dark:border-darkborder bg-white dark:bg-dark xl:top-5 xl:start-5 shadow-md xl:rounded-md">
+                @@include("partials/sidebar.html",{ "page": "ui-badge","page_group": "ui" })
+            </aside>
+            <div class="page-wrapper w-full" role="main">
+
+                <!-- Main Content -->
+                <main class="h-full ">
+                    <div class="container full-container py-5 xl:ps-6 ps-0 pt-0 pe-0">
+
+                        <!--  Header Start -->
+                        <header
+                            class="sticky top-0 inset-x-0 z-[1] flex flex-wrap md:justify-start md:flex-nowrap text-sm py-0 mb-6 bg-white dark:bg-dark rounded-md shadow-md">
+                            <div class="with-vertical w-full">@@include("partials/header.html")</div>
+                        </header>
+                        <!--  Header End -->
+
+                        <!-- ============================================================== -->
+                        <!-- Start Page Content -->
+                        <!-- ============================================================== -->
+                        <div class="max-w-full">
+                            <div class="d-sm-flex align-items-center justify-content-between">
+                                <h4 class="mb-8 text-lg  ">Badges</h4>
+                            </div>
+                            <div class="grid grid-cols-12 gap-6">
+                                <div class=" lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="flex justify-between items-center mb-6">
+                                                <h5 class="card-title">Rounded badges</h5>
+                                                <button
+                                                    class="w-9 h-9 flex items-center justify-center rounded-full  bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                                                    data-hs-overlay="#hs-focus-management-modal4">
+                                                    <i class="ti ti-code text-xl"></i>
+                                                </button>
+                                                <div id="hs-focus-management-modal4"
+                                                    class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                                                    <div
+                                                        class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                                                        <div
+                                                            class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                                            <div
+                                                                class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                                                <div class="overflow-hidden">
+                                                                    <div class="flex justify-between">
+                                                                        <h5
+                                                                            class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">
+                                                                            Rounded badges -
+                                                                            View Code</h5>
+                                                                        <button type="button"
+                                                                            class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                                                            data-hs-overlay="#hs-focus-management-modal4">
+                                                                            <span class="sr-only">Close</span>
+                                                                            <i class="ti ti-x text-xl"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="message-body max-h-[300px] "
+                                                                        data-simplebar="">
+                                                                        <pre class="mt-0">
+ <code class="language-html">  
+&#x3C;span class=&#x22;inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-md text-xs font-medium bg-lightprimary text-primary dark:bg-blue-700/30 &#x22;&#x3E;Badge&#x3C;/span&#x3E;
+            </code>
+                                                    </pre>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end -->
+                                            </div>
+                                            <span
+                                                class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-md text-xs font-medium bg-lightprimary text-primary dark:bg-darkprimary ">Badge</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=" lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="flex justify-between items-center mb-6">
+                                                <h5 class="card-title">Max width</h5>
+                                                <button
+                                                    class="w-9 h-9 flex items-center justify-center rounded-full  bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                                                    data-hs-overlay="#hs-focus-management-modal5">
+                                                    <i class="ti ti-code text-xl"></i>
+                                                </button>
+                                                <div id="hs-focus-management-modal5"
+                                                    class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                                                    <div
+                                                        class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                                                        <div
+                                                            class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                                            <div
+                                                                class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                                                <div class="overflow-hidden">
+                                                                    <div class="flex justify-between">
+                                                                        <h5
+                                                                            class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">
+                                                                            Max width -
+                                                                            View Code</h5>
+                                                                        <button type="button"
+                                                                            class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                                                            data-hs-overlay="#hs-focus-management-modal5">
+                                                                            <span class="sr-only">Close</span>
+                                                                            <i class="ti ti-x text-xl"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="message-body max-h-[300px] "
+                                                                        data-simplebar="">
+                                                                        <pre class="mt-0">
+ <code class="language-html">  
+&#x3C;span class=&#x22;max-w-[10rem] truncate whitespace-nowrap inline-block py-1.5 px-3 rounded-md text-xs font-medium bg-lightprimary dark:bg-blue-700/30 text-primary&#x22;&#x3E;This content is a little bit longer.&#x3C;/span&#x3E;
+            </code>
+                                                    </pre>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end -->
+                                            </div>
+                                            <span
+                                                class="max-w-[10rem] truncate whitespace-nowrap inline-block py-1.5 px-3 rounded-md text-xs font-medium bg-lightprimary dark:bg-darkprimary text-primary">This
+                                                content is a little bit longer.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=" lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="flex justify-between items-center mb-6">
+                                                <h5 class="card-title">Badge with indicator</h5>
+                                                <button
+                                                    class="w-9 h-9 flex items-center justify-center rounded-full  bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                                                    data-hs-overlay="#hs-focus-management-modal6">
+                                                    <i class="ti ti-code text-xl"></i>
+                                                </button>
+                                                <div id="hs-focus-management-modal6"
+                                                    class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                                                    <div
+                                                        class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                                                        <div
+                                                            class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                                            <div
+                                                                class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                                                <div class="overflow-hidden">
+                                                                    <div class="flex justify-between">
+                                                                        <h5
+                                                                            class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">
+                                                                            Badge with indicator -
+                                                                            View Code</h5>
+                                                                        <button type="button"
+                                                                            class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                                                            data-hs-overlay="#hs-focus-management-modal6">
+                                                                            <span class="sr-only">Close</span>
+                                                                            <i class="ti ti-x text-xl"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="message-body max-h-[300px] "
+                                                                        data-simplebar="">
+                                                                        <pre class="mt-0">
+ <code class="language-html">  
+&#x3C;span class=&#x22;inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full  text-xs font-medium bg-lightprimary text-primary dark:bg-darkprimary&#x22;&#x3E;
+&#x3C;span class=&#x22;w-1.5 h-1.5 inline-block rounded-full  bg-primary dark:bg-primary&#x22;&#x3E;&#x3C;/span&#x3E;
+Badge
+&#x3C;/span&#x3E;
+            </code>
+                                                    </pre>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end -->
+                                            </div>
+                                            <span
+                                                class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full  text-xs font-medium bg-lightprimary text-primary dark:bg-darkprimary">
+                                                <span
+                                                    class="w-1.5 h-1.5 inline-block rounded-full  bg-primary dark:bg-primary"></span>
+                                                Badge
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=" lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="flex justify-between items-center mb-6">
+                                                <h5 class="card-title">Working with icons</h5>
+                                                <button
+                                                    class="w-9 h-9 flex items-center justify-center rounded-full  bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                                                    data-hs-overlay="#hs-focus-management-modal7">
+                                                    <i class="ti ti-code text-xl"></i>
+                                                </button>
+                                                <div id="hs-focus-management-modal7"
+                                                    class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                                                    <div
+                                                        class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                                                        <div
+                                                            class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                                            <div
+                                                                class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                                                <div class="overflow-hidden">
+                                                                    <div class="flex justify-between">
+                                                                        <h5
+                                                                            class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">
+                                                                            Working with icons -
+                                                                            View Code</h5>
+                                                                        <button type="button"
+                                                                            class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                                                            data-hs-overlay="#hs-focus-management-modal7">
+                                                                            <span class="sr-only">Close</span>
+                                                                            <i class="ti ti-x text-xl"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="message-body max-h-[300px] "
+                                                                        data-simplebar="">
+                                                                        <pre class="mt-0">
+ <code class="language-html">  
+&#x3C;span class=&#x22;py-1 px-2 inline-flex items-center gap-x-1 text-xs font-medium bg-lightsuccess text-success rounded-full  dark:bg-darksuccess dark:text-success&#x22;&#x3E;
+   &#x3C;svg class=&#x22;flex-shrink-0 w-3 h-3&#x22; xmlns=&#x22;http://www.w3.org/2000/svg&#x22; width=&#x22;24&#x22; height=&#x22;24&#x22; viewBox=&#x22;0 0 24 24&#x22; fill=&#x22;none&#x22; stroke=&#x22;currentColor&#x22; stroke-width=&#x22;2&#x22; stroke-linecap=&#x22;round&#x22; stroke-linejoin=&#x22;round&#x22;&#x3E;
+      &#x3C;path d=&#x22;M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z&#x22;/&#x3E;
+      &#x3C;path d=&#x22;m9 12 2 2 4-4&#x22;/&#x3E;
+   &#x3C;/svg&#x3E;
+   Connected
+&#x3C;/span&#x3E;
+&#x3C;span class=&#x22;py-1 px-1.5 inline-flex items-center gap-x-1 text-xs font-medium bg-lighterror text-error rounded-full  dark:bg-darkerror dark:text-error&#x22;&#x3E;
+   &#x3C;svg class=&#x22;flex-shrink-0 w-3 h-3&#x22; xmlns=&#x22;http://www.w3.org/2000/svg&#x22; width=&#x22;24&#x22; height=&#x22;24&#x22; viewBox=&#x22;0 0 24 24&#x22; fill=&#x22;none&#x22; stroke=&#x22;currentColor&#x22; stroke-width=&#x22;2&#x22; stroke-linecap=&#x22;round&#x22; stroke-linejoin=&#x22;round&#x22;&#x3E;
+      &#x3C;path d=&#x22;m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z&#x22;/&#x3E;
+      &#x3C;path d=&#x22;M12 9v4&#x22;/&#x3E;
+      &#x3C;path d=&#x22;M12 17h.01&#x22;/&#x3E;
+   &#x3C;/svg&#x3E;
+   Attention
+&#x3C;/span&#x3E;
+&#x3C;span class=&#x22;py-1 px-1.5 inline-flex items-center gap-x-1 text-xs font-medium bg-lightprimary text-primary rounded-full  dark:bg-darkprimary dark:text-primary&#x22;&#x3E;
+   &#x3C;svg class=&#x22;flex-shrink-0 w-3 h-3&#x22; xmlns=&#x22;http://www.w3.org/2000/svg&#x22; width=&#x22;24&#x22; height=&#x22;24&#x22; viewBox=&#x22;0 0 24 24&#x22; fill=&#x22;none&#x22; stroke=&#x22;currentColor&#x22; stroke-width=&#x22;2&#x22; stroke-linecap=&#x22;round&#x22; stroke-linejoin=&#x22;round&#x22;&#x3E;
+      &#x3C;line x1=&#x22;12&#x22; x2=&#x22;12&#x22; y1=&#x22;2&#x22; y2=&#x22;6&#x22;/&#x3E;
+      &#x3C;line x1=&#x22;12&#x22; x2=&#x22;12&#x22; y1=&#x22;18&#x22; y2=&#x22;22&#x22;/&#x3E;
+      &#x3C;line x1=&#x22;4.93&#x22; x2=&#x22;7.76&#x22; y1=&#x22;4.93&#x22; y2=&#x22;7.76&#x22;/&#x3E;
+      &#x3C;line x1=&#x22;16.24&#x22; x2=&#x22;19.07&#x22; y1=&#x22;16.24&#x22; y2=&#x22;19.07&#x22;/&#x3E;
+      &#x3C;line x1=&#x22;2&#x22; x2=&#x22;6&#x22; y1=&#x22;12&#x22; y2=&#x22;12&#x22;/&#x3E;
+      &#x3C;line x1=&#x22;18&#x22; x2=&#x22;22&#x22; y1=&#x22;12&#x22; y2=&#x22;12&#x22;/&#x3E;
+      &#x3C;line x1=&#x22;4.93&#x22; x2=&#x22;7.76&#x22; y1=&#x22;19.07&#x22; y2=&#x22;16.24&#x22;/&#x3E;
+      &#x3C;line x1=&#x22;16.24&#x22; x2=&#x22;19.07&#x22; y1=&#x22;7.76&#x22; y2=&#x22;4.93&#x22;/&#x3E;
+   &#x3C;/svg&#x3E;
+   Loading
+&#x3C;/span&#x3E;
+&#x3C;span class=&#x22;py-1 px-2 inline-flex items-center gap-x-1 text-xs bg-lightgray rounded-full text-dark dark:bg-darkborder dark:text-darklink&#x22;&#x3E;
+   &#x3C;svg class=&#x22;flex-shrink-0 w-3 h-3&#x22; xmlns=&#x22;http://www.w3.org/2000/svg&#x22; width=&#x22;24&#x22; height=&#x22;24&#x22; viewBox=&#x22;0 0 24 24&#x22; fill=&#x22;none&#x22; stroke=&#x22;currentColor&#x22; stroke-width=&#x22;2&#x22; stroke-linecap=&#x22;round&#x22; stroke-linejoin=&#x22;round&#x22;&#x3E;
+      &#x3C;path d=&#x22;M18.36 6.64a9 9 0 1 1-12.73 0&#x22;/&#x3E;
+      &#x3C;line x1=&#x22;12&#x22; x2=&#x22;12&#x22; y1=&#x22;2&#x22; y2=&#x22;12&#x22;/&#x3E;
+   &#x3C;/svg&#x3E;
+   Disabled
+&#x3C;/span&#x3E;
+&#x3C;span class=&#x22;py-1 px-1.5 inline-flex items-center gap-x-1 text-xs font-medium bg-lightsuccess text-success rounded-full  dark:bg-darksuccess dark:text-success&#x22;&#x3E;
+   &#x3C;svg class=&#x22;flex-shrink-0 w-3 h-3&#x22; xmlns=&#x22;http://www.w3.org/2000/svg&#x22; width=&#x22;24&#x22; height=&#x22;24&#x22; viewBox=&#x22;0 0 24 24&#x22; fill=&#x22;none&#x22; stroke=&#x22;currentColor&#x22; stroke-width=&#x22;2&#x22; stroke-linecap=&#x22;round&#x22; stroke-linejoin=&#x22;round&#x22;&#x3E;
+      &#x3C;polyline points=&#x22;22 7 13.5 15.5 8.5 10.5 2 17&#x22;/&#x3E;
+      &#x3C;polyline points=&#x22;16 7 22 7 22 13&#x22;/&#x3E;
+   &#x3C;/svg&#x3E;
+   14.5%
+&#x3C;/span&#x3E;
+&#x3C;span class=&#x22;py-1 px-1.5 inline-flex items-center gap-x-1 text-xs font-medium bg-lighterror text-error rounded-full  dark:bg-darkerror dark:text-error&#x22;&#x3E;
+   &#x3C;svg class=&#x22;flex-shrink-0 w-3 h-3&#x22; xmlns=&#x22;http://www.w3.org/2000/svg&#x22; width=&#x22;24&#x22; height=&#x22;24&#x22; viewBox=&#x22;0 0 24 24&#x22; fill=&#x22;none&#x22; stroke=&#x22;currentColor&#x22; stroke-width=&#x22;2&#x22; stroke-linecap=&#x22;round&#x22; stroke-linejoin=&#x22;round&#x22;&#x3E;
+      &#x3C;polyline points=&#x22;22 17 13.5 8.5 8.5 13.5 2 7&#x22;/&#x3E;
+      &#x3C;polyline points=&#x22;16 17 22 17 22 11&#x22;/&#x3E;
+   &#x3C;/svg&#x3E;
+   2%
+&#x3C;/span&#x3E;
+&#x3C;span class=&#x22;py-1 px-1.5 inline-flex items-center gap-x-1 text-xs bg-lightgray text-dark dark:bg-darkborder dark:text-darklink rounded-md&#x22;&#x3E;
+   &#x3C;svg class=&#x22;flex-shrink-0 w-3 h-3&#x22; xmlns=&#x22;http://www.w3.org/2000/svg&#x22; width=&#x22;24&#x22; height=&#x22;24&#x22; viewBox=&#x22;0 0 24 24&#x22; fill=&#x22;none&#x22; stroke=&#x22;currentColor&#x22; stroke-width=&#x22;2&#x22; stroke-linecap=&#x22;round&#x22; stroke-linejoin=&#x22;round&#x22;&#x3E;
+      &#x3C;polyline points=&#x22;22 7 13.5 15.5 8.5 10.5 2 17&#x22;/&#x3E;
+      &#x3C;polyline points=&#x22;16 7 22 7 22 13&#x22;/&#x3E;
+   &#x3C;/svg&#x3E;
+   37.3%
+&#x3C;/span&#x3E;
+&#x3C;span class=&#x22;py-1 px-1.5 inline-flex items-center gap-x-1 text-xs bg-lightgray text-dark dark:bg-darkborder dark:text-darklink rounded-md&#x22;&#x3E;
+   &#x3C;svg class=&#x22;flex-shrink-0 w-3 h-3&#x22; xmlns=&#x22;http://www.w3.org/2000/svg&#x22; width=&#x22;24&#x22; height=&#x22;24&#x22; viewBox=&#x22;0 0 24 24&#x22; fill=&#x22;none&#x22; stroke=&#x22;currentColor&#x22; stroke-width=&#x22;2&#x22; stroke-linecap=&#x22;round&#x22; stroke-linejoin=&#x22;round&#x22;&#x3E;
+      &#x3C;polyline points=&#x22;22 17 13.5 8.5 8.5 13.5 2 7&#x22;/&#x3E;
+      &#x3C;polyline points=&#x22;16 17 22 17 22 11&#x22;/&#x3E;
+   &#x3C;/svg&#x3E;
+   56%
+&#x3C;/span&#x3E;
+            </code>
+                                                    </pre>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end -->
+                                            </div>
+                                            <div class="flex gap-2 flex-wrap">
+                                                <span
+                                                    class="py-1 px-2 inline-flex items-center gap-x-1 text-xs font-medium bg-lightsuccess text-success rounded-full  dark:bg-darksuccess dark:text-success">
+                                                    <svg class="flex-shrink-0 w-3 h-3"
+                                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path
+                                                            d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />
+                                                        <path d="m9 12 2 2 4-4" />
+                                                    </svg>
+                                                    Connected
+                                                </span>
+
+                                                <span
+                                                    class="py-1 px-1.5 inline-flex items-center gap-x-1 text-xs font-medium bg-lighterror text-error rounded-full  dark:bg-darkerror dark:text-error">
+                                                    <svg class="flex-shrink-0 w-3 h-3"
+                                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path
+                                                            d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
+                                                        <path d="M12 9v4" />
+                                                        <path d="M12 17h.01" />
+                                                    </svg>
+                                                    Attention
+                                                </span>
+
+                                                <span
+                                                    class="py-1 px-1.5 inline-flex items-center gap-x-1 text-xs font-medium bg-lightprimary text-primary rounded-full  dark:bg-darkprimary dark:text-primary">
+                                                    <svg class="flex-shrink-0 w-3 h-3"
+                                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                        <line x1="12" x2="12" y1="2" y2="6" />
+                                                        <line x1="12" x2="12" y1="18" y2="22" />
+                                                        <line x1="4.93" x2="7.76" y1="4.93" y2="7.76" />
+                                                        <line x1="16.24" x2="19.07" y1="16.24" y2="19.07" />
+                                                        <line x1="2" x2="6" y1="12" y2="12" />
+                                                        <line x1="18" x2="22" y1="12" y2="12" />
+                                                        <line x1="4.93" x2="7.76" y1="19.07" y2="16.24" />
+                                                        <line x1="16.24" x2="19.07" y1="7.76" y2="4.93" />
+                                                    </svg>
+                                                    Loading
+                                                </span>
+
+                                                <span
+                                                    class="py-1 px-2 inline-flex items-center gap-x-1 text-xs bg-lightgray rounded-full text-dark dark:bg-darkborder dark:text-darklink">
+                                                    <svg class="flex-shrink-0 w-3 h-3"
+                                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path d="M18.36 6.64a9 9 0 1 1-12.73 0" />
+                                                        <line x1="12" x2="12" y1="2" y2="12" />
+                                                    </svg>
+                                                    Disabled
+                                                </span>
+
+                                                <span
+                                                    class="py-1 px-1.5 inline-flex items-center gap-x-1 text-xs font-medium bg-lightsuccess text-success rounded-full  dark:bg-darksuccess dark:text-success">
+                                                    <svg class="flex-shrink-0 w-3 h-3"
+                                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                        <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
+                                                        <polyline points="16 7 22 7 22 13" />
+                                                    </svg>
+                                                    14.5%
+                                                </span>
+
+                                                <span
+                                                    class="py-1 px-1.5 inline-flex items-center gap-x-1 text-xs font-medium bg-lighterror text-error rounded-full  dark:bg-darkerror dark:text-error">
+                                                    <svg class="flex-shrink-0 w-3 h-3"
+                                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                        <polyline points="22 17 13.5 8.5 8.5 13.5 2 7" />
+                                                        <polyline points="16 17 22 17 22 11" />
+                                                    </svg>
+                                                    2%
+                                                </span>
+
+                                                <span
+                                                    class="py-1 px-1.5 inline-flex items-center gap-x-1 text-xs bg-lightgray text-dark dark:bg-darkborder dark:text-darklink rounded-md">
+                                                    <svg class="flex-shrink-0 w-3 h-3"
+                                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                        <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
+                                                        <polyline points="16 7 22 7 22 13" />
+                                                    </svg>
+                                                    37.3%
+                                                </span>
+
+                                                <span
+                                                    class="py-1 px-1.5 inline-flex items-center gap-x-1 text-xs bg-lightgray text-dark dark:bg-darkborder dark:text-darklink rounded-md">
+                                                    <svg class="flex-shrink-0 w-3 h-3"
+                                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                        <polyline points="22 17 13.5 8.5 8.5 13.5 2 7" />
+                                                        <polyline points="16 17 22 17 22 11" />
+                                                    </svg>
+                                                    56%
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=" lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="flex justify-between items-center mb-6">
+                                                <h5 class="card-title">Badge with remove button</h5>
+                                                <button
+                                                    class="w-9 h-9 flex items-center justify-center rounded-full  bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                                                    data-hs-overlay="#hs-focus-management-modal8">
+                                                    <i class="ti ti-code text-xl"></i>
+                                                </button>
+                                                <div id="hs-focus-management-modal8"
+                                                    class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                                                    <div
+                                                        class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                                                        <div
+                                                            class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                                            <div
+                                                                class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                                                <div class="overflow-hidden">
+                                                                    <div class="flex justify-between">
+                                                                        <h5
+                                                                            class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">
+                                                                            Badge with remove button -
+                                                                            View Code</h5>
+                                                                        <button type="button"
+                                                                            class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                                                            data-hs-overlay="#hs-focus-management-modal8">
+                                                                            <span class="sr-only">Close</span>
+                                                                            <i class="ti ti-x text-xl"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="message-body max-h-[300px] "
+                                                                        data-simplebar="">
+                                                                        <pre class="mt-0">
+ <code class="language-html">  
+&#x3C;span class=&#x22;inline-flex items-center gap-x-1.5 py-1.5 ps-3 pe-2 rounded-full  text-xs font-medium bg-lightprimary text-primary dark:bg-darkprimary dark:text-primary&#x22;&#x3E;
+   Badge
+   &#x3C;button type=&#x22;button&#x22; class=&#x22;flex-shrink-0 h-4 w-4 inline-flex items-center justify-center rounded-full  hover:bg-primary hover:text-white focus:outline-none&#x22;&#x3E;
+      &#x3C;span class=&#x22;sr-only&#x22;&#x3E;Remove badge&#x3C;/span&#x3E;
+      &#x3C;svg class=&#x22;flex-shrink-0 h-3 w-3&#x22; xmlns=&#x22;http://www.w3.org/2000/svg&#x22; width=&#x22;24&#x22; height=&#x22;24&#x22; viewBox=&#x22;0 0 24 24&#x22; fill=&#x22;none&#x22; stroke=&#x22;currentColor&#x22; stroke-width=&#x22;2&#x22; stroke-linecap=&#x22;round&#x22; stroke-linejoin=&#x22;round&#x22;&#x3E;
+         &#x3C;path d=&#x22;M18 6 6 18&#x22;/&#x3E;
+         &#x3C;path d=&#x22;m6 6 12 12&#x22;/&#x3E;
+      &#x3C;/svg&#x3E;
+   &#x3C;/button&#x3E;
+&#x3C;/span&#x3E;
+ </code>
+                                                    </pre>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end -->
+                                            </div>
+                                            <div class="flex gap-2">
+                                                <span
+                                                    class="inline-flex items-center gap-x-1.5 py-1.5 ps-3 pe-2 rounded-full  text-xs font-medium bg-lightprimary text-primary dark:bg-darkprimary dark:text-primary">
+                                                    Badge
+                                                    <button type="button"
+                                                        class="flex-shrink-0 h-4 w-4 inline-flex items-center justify-center rounded-full  hover:bg-primary hover:text-white focus:outline-none">
+                                                        <span class="sr-only">Remove badge</span>
+                                                        <svg class="flex-shrink-0 h-3 w-3"
+                                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                            viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round">
+                                                            <path d="M18 6 6 18" />
+                                                            <path d="m6 6 12 12" />
+                                                        </svg>
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=" lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="flex justify-between items-center mb-6">
+                                                <h5 class="card-title">Badge with avatar</h5>
+                                                <button
+                                                    class="w-9 h-9 flex items-center justify-center rounded-full  bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                                                    data-hs-overlay="#hs-focus-management-modal9">
+                                                    <i class="ti ti-code text-xl"></i>
+                                                </button>
+                                                <div id="hs-focus-management-modal9"
+                                                    class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                                                    <div
+                                                        class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                                                        <div
+                                                            class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                                            <div
+                                                                class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                                                <div class="overflow-hidden">
+                                                                    <div class="flex justify-between">
+                                                                        <h5
+                                                                            class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">
+                                                                            Badge with avatar -
+                                                                            View Code</h5>
+                                                                        <button type="button"
+                                                                            class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                                                            data-hs-overlay="#hs-focus-management-modal9">
+                                                                            <span class="sr-only">Close</span>
+                                                                            <i class="ti ti-x text-xl"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="message-body max-h-[300px] "
+                                                                        data-simplebar="">
+                                                                        <pre class="mt-0">
+ <code class="language-html">  
+&#x3C;div class=&#x22;inline-flex flex-nowrap items-center bg-white border border-border rounded-full p-1.5 pe-3 dark:bg-slate-900 dark:border-darkborder&#x22;&#x3E;
+   &#x3C;img class=&#x22;me-1.5 inline-block h-6 w-6 rounded-full &#x22; src=&#x22;@@webRoot/assets/images/profile/user-4.jpg&#x22; alt=&#x22;Image Description&#x22;&#x3E;
+   &#x3C;div class=&#x22;whitespace-nowrap text-sm font-medium text-dark dark:text-white&#x22;&#x3E;
+      Christina
+   &#x3C;/div&#x3E;
+&#x3C;/div&#x3E;
+&#x3C;div class=&#x22;inline-flex flex-nowrap items-center bg-white border border-border rounded-full p-1.5 dark:bg-slate-900 dark:border-darkborder&#x22;&#x3E;
+   &#x3C;img class=&#x22;me-1.5 inline-block h-6 w-6 rounded-full &#x22; src=&#x22;@@webRoot/assets/images/profile/user-2.jpg&#x22; alt=&#x22;Image Description&#x22;&#x3E;
+   &#x3C;div class=&#x22;whitespace-nowrap text-sm font-medium text-dark dark:text-white&#x22;&#x3E;
+      Mark
+   &#x3C;/div&#x3E;
+   &#x3C;div class=&#x22;ms-2.5 inline-flex justify-center items-center h-5 w-5 rounded-full text-dark bg-border hover:bg-gray-300 focus:outline-none focus:ring-2 dark:bg-slate-700/50 dark:hover:bg-slate-700 dark:text-slate-400 cursor-pointer&#x22;&#x3E;
+      &#x3C;svg class=&#x22;flex-shrink-0 w-3 h-3&#x22; xmlns=&#x22;http://www.w3.org/2000/svg&#x22; width=&#x22;24&#x22; height=&#x22;24&#x22; viewBox=&#x22;0 0 24 24&#x22; fill=&#x22;none&#x22; stroke=&#x22;currentColor&#x22; stroke-width=&#x22;2&#x22; stroke-linecap=&#x22;round&#x22; stroke-linejoin=&#x22;round&#x22;&#x3E;
+         &#x3C;path d=&#x22;M18 6 6 18&#x22;&#x3E;&#x3C;/path&#x3E;
+         &#x3C;path d=&#x22;m6 6 12 12&#x22;&#x3E;&#x3C;/path&#x3E;
+      &#x3C;/svg&#x3E;
+   &#x3C;/div&#x3E;
+&#x3C;/div&#x3E;
+ </code>
+                                                    </pre>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end -->
+                                            </div>
+                                            <div class="flex gap-2">
+                                                <div
+                                                    class="inline-flex flex-nowrap items-center bg-white border border-border rounded-full p-1.5 pe-3 dark:bg-transparent dark:border-darkborder">
+                                                    <img class="me-1.5 inline-block h-6 w-6 rounded-full "
+                                                        src="@@webRoot/assets/images/profile/user-4.jpg"
+                                                        alt="Image Description">
+                                                    <div
+                                                        class="whitespace-nowrap text-sm font-medium text-dark dark:text-white">
+                                                        Christina
+                                                    </div>
+                                                </div>
+
+                                                <div
+                                                    class="inline-flex flex-nowrap items-center bg-white border border-border rounded-full p-1.5 dark:bg-transparent dark:border-darkborder">
+                                                    <img class="me-1.5 inline-block h-6 w-6 rounded-full "
+                                                        src="@@webRoot/assets/images/profile/user-2.jpg">
+                                                    <div
+                                                        class="whitespace-nowrap text-sm font-medium text-dark dark:text-white">
+                                                        Mark
+                                                    </div>
+                                                    <div
+                                                        class="ms-2.5 inline-flex justify-center items-center h-5 w-5 rounded-full text-dark bg-border hover:bg-gray-300 focus:outline-none focus:ring-2 dark:bg-slate-700/50 dark:hover:bg-slate-700 dark:text-slate-400 cursor-pointer">
+                                                        <svg class="flex-shrink-0 w-3 h-3"
+                                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                            viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round">
+                                                            <path d="M18 6 6 18"></path>
+                                                            <path d="m6 6 12 12"></path>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=" lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="flex justify-between items-center mb-6">
+                                                <h5 class="card-title">With button</h5>
+                                                <button
+                                                    class="w-9 h-9 flex items-center justify-center rounded-full  bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                                                    data-hs-overlay="#hs-focus-management-modal10">
+                                                    <i class="ti ti-code text-xl"></i>
+                                                </button>
+                                                <div id="hs-focus-management-modal10"
+                                                    class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                                                    <div
+                                                        class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                                                        <div
+                                                            class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                                            <div
+                                                                class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                                                <div class="overflow-hidden">
+                                                                    <div class="flex justify-between">
+                                                                        <h5
+                                                                            class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">
+                                                                            With button -
+                                                                            View Code</h5>
+                                                                        <button type="button"
+                                                                            class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                                                            data-hs-overlay="#hs-focus-management-modal10">
+                                                                            <span class="sr-only">Close</span>
+                                                                            <i class="ti ti-x text-xl"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="message-body max-h-[300px] "
+                                                                        data-simplebar="">
+                                                                        <pre class="mt-0">
+ <code class="language-html">  
+&#x3C;button type=&#x22;button&#x22; class=&#x22;py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-md border border-border bg-white text-dark  hover:bg-gray-50 dark:bg-transparent dark:border-darkborder dark:text-white dark:hover:bg-slate-900 &#x22;&#x3E;
+Notifications
+&#x3C;span class=&#x22;inline-flex items-center py-0.5 px-1.5 rounded-full  text-xs font-medium bg-error text-white&#x22;&#x3E;5&#x3C;/span&#x3E;
+&#x3C;/button&#x3E;
+ </code>
+                                                    </pre>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end -->
+                                            </div>
+                                            <button type="button"
+                                                class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-md border border-border bg-white text-dark  hover:bg-gray-50 dark:bg-transparent dark:border-darkborder dark:text-white dark:hover:bg-slate-900 ">
+                                                Notifications
+                                                <span
+                                                    class="inline-flex items-center py-0.5 px-1.5 rounded-full  text-xs font-medium bg-error text-white">5</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=" lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="flex justify-between items-center mb-6">
+                                                <h5 class="card-title">Positioned</h5>
+                                                <button
+                                                    class="w-9 h-9 flex items-center justify-center rounded-full  bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                                                    data-hs-overlay="#hs-focus-management-modal11">
+                                                    <i class="ti ti-code text-xl"></i>
+                                                </button>
+                                                <div id="hs-focus-management-modal11"
+                                                    class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                                                    <div
+                                                        class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                                                        <div
+                                                            class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                                            <div
+                                                                class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                                                <div class="overflow-hidden">
+                                                                    <div class="flex justify-between">
+                                                                        <h5
+                                                                            class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">
+                                                                            Positioned -
+                                                                            View Code</h5>
+                                                                        <button type="button"
+                                                                            class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                                                            data-hs-overlay="#hs-focus-management-modal11">
+                                                                            <span class="sr-only">Close</span>
+                                                                            <i class="ti ti-x text-xl"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="message-body max-h-[300px] "
+                                                                        data-simplebar="">
+                                                                        <pre class="mt-0">
+ <code class="language-html">  
+&#x3C;button type=&#x22;button&#x22; class=&#x22;relative inline-flex justify-center items-center h-[3.375rem] w-[3.375rem] text-sm font-semibold rounded-md border border-border bg-white text-dark  hover:bg-gray-50  dark:bg-transparent dark:border-darkborder dark:text-white dark:hover:bg-slate-900 &#x22;&#x3E;
+   &#x3C;svg class=&#x22;flex-shrink-0 w-5 h-5&#x22; xmlns=&#x22;http://www.w3.org/2000/svg&#x22; width=&#x22;24&#x22; height=&#x22;24&#x22; viewBox=&#x22;0 0 24 24&#x22; fill=&#x22;none&#x22; stroke=&#x22;currentColor&#x22; stroke-width=&#x22;2&#x22; stroke-linecap=&#x22;round&#x22; stroke-linejoin=&#x22;round&#x22;&#x3E;
+      &#x3C;path d=&#x22;M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9&#x22;/&#x3E;
+      &#x3C;path d=&#x22;M10.3 21a1.94 1.94 0 0 0 3.4 0&#x22;/&#x3E;
+   &#x3C;/svg&#x3E;
+   &#x3C;span class=&#x22;absolute top-0 end-0 inline-flex items-center py-0.5 px-1.5 rounded-full  text-xs font-medium transform -translate-y-1/2 translate-x-1/2 bg-error text-white&#x22;&#x3E;99+&#x3C;/span&#x3E;
+&#x3C;/button&#x3E;
+ </code>
+                                                    </pre>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end -->
+                                            </div>
+                                            <button type="button"
+                                                class="relative inline-flex justify-center items-center h-[3.375rem] w-[3.375rem] text-sm font-semibold rounded-md border border-border bg-white text-dark  hover:bg-gray-50  dark:bg-transparent dark:border-darkborder dark:text-white dark:hover:bg-slate-900 ">
+                                                <svg class="flex-shrink-0 w-5 h-5" xmlns="http://www.w3.org/2000/svg"
+                                                    width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round">
+                                                    <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
+                                                    <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" />
+                                                </svg>
+                                                <span
+                                                    class="absolute top-0 end-0 inline-flex items-center py-0.5 px-1.5 rounded-full  text-xs font-medium transform -translate-y-1/2 translate-x-1/2 bg-error text-white">99+</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=" lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="flex justify-between items-center mb-6">
+                                                <h5 class="card-title">Profile</h5>
+                                                <button
+                                                    class="w-9 h-9 flex items-center justify-center rounded-full  bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                                                    data-hs-overlay="#hs-focus-management-modal12">
+                                                    <i class="ti ti-code text-xl"></i>
+                                                </button>
+                                                <div id="hs-focus-management-modal12"
+                                                    class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                                                    <div
+                                                        class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                                                        <div
+                                                            class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                                            <div
+                                                                class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                                                <div class="overflow-hidden">
+                                                                    <div class="flex justify-between">
+                                                                        <h5
+                                                                            class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">
+                                                                            Profile -
+                                                                            View Code</h5>
+                                                                        <button type="button"
+                                                                            class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                                                            data-hs-overlay="#hs-focus-management-modal12">
+                                                                            <span class="sr-only">Close</span>
+                                                                            <i class="ti ti-x text-xl"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="message-body max-h-[300px] "
+                                                                        data-simplebar="">
+                                                                        <pre class="mt-0">
+ <code class="language-html">  
+&#x3C;button type=&#x22;button&#x22; class=&#x22;relative inline-flex justify-center items-center h-[3.375rem] w-[3.375rem] text-sm font-semibold rounded-md border border-border bg-white text-dark  hover:bg-gray-50  dark:bg-transparent dark:border-darkborder dark:text-white dark:hover:bg-slate-900 &#x22;&#x3E;
+   &#x3C;svg class=&#x22;flex-shrink-0 w-5 h-5&#x22; xmlns=&#x22;http://www.w3.org/2000/svg&#x22; width=&#x22;24&#x22; height=&#x22;24&#x22; viewBox=&#x22;0 0 24 24&#x22; fill=&#x22;none&#x22; stroke=&#x22;currentColor&#x22; stroke-width=&#x22;2&#x22; stroke-linecap=&#x22;round&#x22; stroke-linejoin=&#x22;round&#x22;&#x3E;
+      &#x3C;path d=&#x22;M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9&#x22;/&#x3E;
+      &#x3C;path d=&#x22;M10.3 21a1.94 1.94 0 0 0 3.4 0&#x22;/&#x3E;
+   &#x3C;/svg&#x3E;
+   &#x3C;span class=&#x22;absolute top-0 end-0 inline-flex items-center w-3.5 h-3.5 rounded-full  border-2 border-white text-xs font-medium transform -translate-y-1/2 translate-x-1/2 bg-success text-white dark:border-darkborder&#x22;&#x3E;
+   &#x3C;span class=&#x22;sr-only&#x22;&#x3E;Badge value&#x3C;/span&#x3E;
+   &#x3C;/span&#x3E;
+&#x3C;/button&#x3E;
+ </code>
+                                                    </pre>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end -->
+                                            </div>
+                                            <button type="button"
+                                                class="relative inline-flex justify-center items-center h-[3.375rem] w-[3.375rem] text-sm font-semibold rounded-md border border-border bg-white text-dark  hover:bg-gray-50  dark:bg-transparent dark:border-darkborder dark:text-white dark:hover:bg-slate-900 ">
+                                                <svg class="flex-shrink-0 w-5 h-5" xmlns="http://www.w3.org/2000/svg"
+                                                    width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round">
+                                                    <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
+                                                    <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" />
+                                                </svg>
+                                                <span
+                                                    class="absolute top-0 end-0 inline-flex items-center w-3.5 h-3.5 rounded-full  border-2 border-white text-xs font-medium transform -translate-y-1/2 translate-x-1/2 bg-success text-white dark:border-darkborder">
+                                                    <span class="sr-only">Badge value</span>
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=" lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="flex justify-between items-center mb-6">
+                                                <h5 class="card-title">Ping</h5>
+                                                <button
+                                                    class="w-9 h-9 flex items-center justify-center rounded-full  bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                                                    data-hs-overlay="#hs-focus-management-modal13">
+                                                    <i class="ti ti-code text-xl"></i>
+                                                </button>
+                                                <div id="hs-focus-management-modal13"
+                                                    class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                                                    <div
+                                                        class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                                                        <div
+                                                            class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                                            <div
+                                                                class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                                                <div class="overflow-hidden">
+                                                                    <div class="flex justify-between">
+                                                                        <h5
+                                                                            class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">
+                                                                            Ping -
+                                                                            View Code</h5>
+                                                                        <button type="button"
+                                                                            class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                                                            data-hs-overlay="#hs-focus-management-modal13">
+                                                                            <span class="sr-only">Close</span>
+                                                                            <i class="ti ti-x text-xl"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="message-body max-h-[300px] "
+                                                                        data-simplebar="">
+                                                                        <pre class="mt-0">
+ <code class="language-html">  
+&#x3C;button type=&#x22;button&#x22; class=&#x22;m-1 ms-0 relative flex justify-center items-center h-[2.875rem] w-[2.875rem] text-sm font-semibold rounded-md border border-border bg-white text-dark  hover:bg-gray-50  dark:bg-transparent dark:border-darkborder dark:text-white dark:hover:bg-slate-900 &#x22;&#x3E;
+   &#x3C;svg class=&#x22;flex-shrink-0 w-4 h-4&#x22; xmlns=&#x22;http://www.w3.org/2000/svg&#x22; width=&#x22;24&#x22; height=&#x22;24&#x22; viewBox=&#x22;0 0 24 24&#x22; fill=&#x22;none&#x22; stroke=&#x22;currentColor&#x22; stroke-width=&#x22;2&#x22; stroke-linecap=&#x22;round&#x22; stroke-linejoin=&#x22;round&#x22;&#x3E;
+      &#x3C;path d=&#x22;m5 11 4-7&#x22;/&#x3E;
+      &#x3C;path d=&#x22;m19 11-4-7&#x22;/&#x3E;
+      &#x3C;path d=&#x22;M2 11h20&#x22;/&#x3E;
+      &#x3C;path d=&#x22;m3.5 11 1.6 7.4a2 2 0 0 0 2 1.6h9.8c.9 0 1.8-.7 2-1.6l1.7-7.4&#x22;/&#x3E;
+      &#x3C;path d=&#x22;m9 11 1 9&#x22;/&#x3E;
+      &#x3C;path d=&#x22;M4.5 15.5h15&#x22;/&#x3E;
+      &#x3C;path d=&#x22;m15 11-1 9&#x22;/&#x3E;
+   &#x3C;/svg&#x3E;
+   &#x3C;span class=&#x22;flex absolute top-0 end-0 h-3 w-3 -mt-1.5 -me-1.5&#x22;&#x3E;
+   &#x3C;span class=&#x22;animate-ping absolute inline-flex h-full w-full rounded-full bg-error opacity-75 dark:bg-error&#x22;&#x3E;&#x3C;/span&#x3E;
+   &#x3C;span class=&#x22;relative inline-flex rounded-full  h-3 w-3 bg-error&#x22;&#x3E;&#x3C;/span&#x3E;
+   &#x3C;/span&#x3E;
+&#x3C;/button&#x3E;
+&#x3C;button type=&#x22;button&#x22; class=&#x22;m-1 ms-0 relative py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-md border border-border bg-white text-dark  hover:bg-gray-50  dark:bg-transparent dark:border-darkborder dark:text-white dark:hover:bg-slate-900 &#x22;&#x3E;
+Notification
+&#x3C;span class=&#x22;flex absolute top-0 end-0 -mt-2 -me-2&#x22;&#x3E;
+&#x3C;span class=&#x22;animate-ping absolute inline-flex h-full w-full rounded-full bg-error opacity-75 dark:bg-error&#x22;&#x3E;&#x3C;/span&#x3E;
+&#x3C;span class=&#x22;relative inline-flex text-xs bg-error text-white rounded-full  py-0.5 px-1.5&#x22;&#x3E;
+9+
+&#x3C;/span&#x3E;
+&#x3C;/span&#x3E;
+&#x3C;/button&#x3E;
+ </code>
+                                                    </pre>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end -->
+                                            </div>
+                                            <div class="flex gap-2">
+                                                <button type="button"
+                                                    class="m-1 ms-0 relative flex justify-center items-center h-[2.875rem] w-[2.875rem] text-sm font-semibold rounded-md border border-border bg-white text-dark  hover:bg-gray-50  dark:bg-transparent dark:border-darkborder dark:text-white dark:hover:bg-slate-900 ">
+                                                    <svg class="flex-shrink-0 w-4 h-4"
+                                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path d="m5 11 4-7" />
+                                                        <path d="m19 11-4-7" />
+                                                        <path d="M2 11h20" />
+                                                        <path
+                                                            d="m3.5 11 1.6 7.4a2 2 0 0 0 2 1.6h9.8c.9 0 1.8-.7 2-1.6l1.7-7.4" />
+                                                        <path d="m9 11 1 9" />
+                                                        <path d="M4.5 15.5h15" />
+                                                        <path d="m15 11-1 9" />
+                                                    </svg>
+                                                    <span class="flex absolute top-0 end-0 h-3 w-3 -mt-1.5 -me-1.5">
+                                                        <span
+                                                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-error opacity-75 dark:bg-error"></span>
+                                                        <span
+                                                            class="relative inline-flex rounded-full  h-3 w-3 bg-error"></span>
+                                                    </span>
+                                                </button>
+                                                <button type="button"
+                                                    class="m-1 ms-0 relative py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-md border border-border bg-white text-dark  hover:bg-gray-50  dark:bg-transparent dark:border-darkborder dark:text-white dark:hover:bg-slate-900 ">
+                                                    Notification
+                                                    <span class="flex absolute top-0 end-0 -mt-2 -me-2">
+                                                        <span
+                                                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-error opacity-75 dark:bg-error"></span>
+                                                        <span
+                                                            class="relative inline-flex text-xs bg-error text-white rounded-full  py-0.5 px-1.5">
+                                                            9+
+                                                        </span>
+                                                    </span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="text-lg font-semibold text-dark dark:text-white mb-6">Color
+                                                variants</h5>
+                                            <div class="flex justify-between items-center">
+                                                <h6 class="text-sm font-semibold text-dark dark:text-white ">Solid color
+                                                    variants</h6>
+                                                <button
+                                                    class="w-8 h-8 flex items-center justify-center rounded-full  bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                                                    data-hs-overlay="#hs-focus-management-modal1">
+                                                    <i class="ti ti-code text-lg"></i>
+                                                </button>
+                                                <div id="hs-focus-management-modal1"
+                                                    class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                                                    <div
+                                                        class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                                                        <div
+                                                            class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                                            <div
+                                                                class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                                                <div class="overflow-hidden">
+                                                                    <div class="flex justify-between">
+                                                                        <h5
+                                                                            class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">
+                                                                            Solid color variants -
+                                                                            View Code</h5>
+                                                                        <button type="button"
+                                                                            class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                                                            data-hs-overlay="#hs-focus-management-modal1">
+                                                                            <span class="sr-only">Close</span>
+                                                                            <i class="ti ti-x text-xl"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="message-body max-h-[300px] "
+                                                                        data-simplebar="">
+                                                                        <pre class="mt-0">
+ <code class="language-html">  
+&#x3C;span class=&#x22;inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full  text-xs font-medium bg-dark text-white dark:bg-white dark:text-dark&#x22;&#x3E;Badge&#x3C;/span&#x3E;
+&#x3C;span class=&#x22;inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full  text-xs font-medium bg-darkgray text-white&#x22;&#x3E;Badge&#x3C;/span&#x3E;
+&#x3C;span class=&#x22;inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full  text-xs font-medium bg-success text-white&#x22;&#x3E;Badge&#x3C;/span&#x3E;
+&#x3C;span class=&#x22;inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full  text-xs font-medium bg-primary text-white &#x22;&#x3E;Badge&#x3C;/span&#x3E;
+&#x3C;span class=&#x22;inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full  text-xs font-medium bg-error text-white&#x22;&#x3E;Badge&#x3C;/span&#x3E;
+&#x3C;span class=&#x22;inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full  text-xs font-medium bg-warning text-white&#x22;&#x3E;Badge&#x3C;/span&#x3E;
+            </code>
+                                                    </pre>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end -->
+                                            </div>
+                                            <div class="flex gap-2">
+                                                <span
+                                                    class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full  text-xs font-medium bg-dark text-white dark:bg-white dark:text-dark">Badge</span>
+                                                <span
+                                                    class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full  text-xs font-medium bg-darkgray text-white">Badge</span>
+                                                <span
+                                                    class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full  text-xs font-medium bg-success text-white">Badge</span>
+                                                <span
+                                                    class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full  text-xs font-medium bg-primary text-white ">Badge</span>
+                                                <span
+                                                    class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full  text-xs font-medium bg-error text-white">Badge</span>
+                                                <span
+                                                    class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full  text-xs font-medium bg-warning text-white">Badge</span>
+                                            </div>
+                                            <div class="flex justify-between items-center mt-8">
+                                                <h6 class="text-sm font-semibold text-dark dark:text-white">Soft color
+                                                    variants</h6>
+                                                <button
+                                                    class="w-8 h-8 flex items-center justify-center rounded-full  bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                                                    data-hs-overlay="#hs-focus-management-modal2">
+                                                    <i class="ti ti-code text-lg"></i>
+                                                </button>
+                                                <div id="hs-focus-management-modal2"
+                                                    class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                                                    <div
+                                                        class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                                                        <div
+                                                            class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                                            <div
+                                                                class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                                                <div class="overflow-hidden">
+                                                                    <div class="flex justify-between">
+                                                                        <h5
+                                                                            class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">
+                                                                            Soft color variants -
+                                                                            View Code</h5>
+                                                                        <button type="button"
+                                                                            class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                                                            data-hs-overlay="#hs-focus-management-modal2">
+                                                                            <span class="sr-only">Close</span>
+                                                                            <i class="ti ti-x text-xl"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="message-body max-h-[300px] "
+                                                                        data-simplebar="">
+                                                                        <pre class="mt-0">
+ <code class="language-html">  
+&#x3C;span class=&#x22;inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full  text-xs font-medium bg-lightgray text-darkgray dark:bg-darkgray dark:text-lightgray&#x22;&#x3E;Badge&#x3C;/span&#x3E;
+&#x3C;span class=&#x22;inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full  text-xs font-medium bg-lightgray text-dark dark:bg-darkborder dark:text-lightgray&#x22;&#x3E;Badge&#x3C;/span&#x3E;
+&#x3C;span class=&#x22;inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full  text-xs font-medium bg-lightsuccess text-success dark:bg-darksuccess dark:text-success&#x22;&#x3E;Badge&#x3C;/span&#x3E;
+&#x3C;span class=&#x22;inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full  text-xs font-medium bg-lightprimary text-primary dark:bg-darkprimary dark:text-primary&#x22;&#x3E;Badge&#x3C;/span&#x3E;
+&#x3C;span class=&#x22;inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full  text-xs font-medium bg-lighterror text-error dark:bg-darkerror dark:text-error&#x22;&#x3E;Badge&#x3C;/span&#x3E;
+&#x3C;span class=&#x22;inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full  text-xs font-medium bg-lightwarning text-warning dark:bg-darkwarning dark:text-warning&#x22;&#x3E;Badge&#x3C;/span&#x3E;
+            </code>
+                                                    </pre>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end -->
+                                            </div>
+                                            <div class="flex gap-2">
+                                                <span
+                                                    class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full  text-xs font-medium bg-lightgray text-darkgray dark:bg-darkgray dark:text-lightgray">Badge</span>
+                                                <span
+                                                    class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full  text-xs font-medium bg-lightgray text-dark dark:bg-darkborder dark:text-lightgray">Badge</span>
+                                                <span
+                                                    class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full  text-xs font-medium bg-lightsuccess text-success dark:bg-darksuccess dark:text-success">Badge</span>
+                                                <span
+                                                    class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full  text-xs font-medium bg-lightprimary text-primary dark:bg-darkprimary dark:text-primary">Badge</span>
+                                                <span
+                                                    class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full  text-xs font-medium bg-lighterror text-error dark:bg-darkerror dark:text-error">Badge</span>
+                                                <span
+                                                    class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full  text-xs font-medium bg-lightwarning text-warning dark:bg-darkwarning dark:text-warning">Badge</span>
+                                            </div>
+                                            <div class="flex justify-between items-center mt-8">
+                                                <h6 class="text-sm font-semibold text-dark dark:text-white ">Outline
+                                                    color variants </h6>
+                                                <button
+                                                    class="w-8 h-8 flex items-center justify-center rounded-full  bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                                                    data-hs-overlay="#hs-focus-management-modal3">
+                                                    <i class="ti ti-code text-lg"></i>
+                                                </button>
+                                                <div id="hs-focus-management-modal3"
+                                                    class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                                                    <div
+                                                        class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                                                        <div
+                                                            class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                                            <div
+                                                                class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                                                <div class="overflow-hidden">
+                                                                    <div class="flex justify-between">
+                                                                        <h5
+                                                                            class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">
+                                                                            Outline color variants -
+                                                                            View Code</h5>
+                                                                        <button type="button"
+                                                                            class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                                                            data-hs-overlay="#hs-focus-management-modal3">
+                                                                            <span class="sr-only">Close</span>
+                                                                            <i class="ti ti-x text-xl"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="message-body max-h-[300px] "
+                                                                        data-simplebar="">
+                                                                        <pre class="mt-0">
+ <code class="language-html">  
+&#x3C;span class=&#x22;inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full  text-xs font-medium border border-darkgray text-darkgray dark:border-lightgray dark:text-lightgray&#x22;&#x3E;Badge&#x3C;/span&#x3E;
+&#x3C;span class=&#x22;inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full  text-xs font-medium border border-link text-link dark:text-darklink dark:border-darklink&#x22;&#x3E;Badge&#x3C;/span&#x3E;
+&#x3C;span class=&#x22;inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full  text-xs font-medium border border-success text-success&#x22;&#x3E;Badge&#x3C;/span&#x3E;
+&#x3C;span class=&#x22;inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full  text-xs font-medium border border-primary text-primary &#x22;&#x3E;Badge&#x3C;/span&#x3E;
+&#x3C;span class=&#x22;inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full  text-xs font-medium border border-error text-error&#x22;&#x3E;Badge&#x3C;/span&#x3E;
+&#x3C;span class=&#x22;inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full  text-xs font-medium border border-warning text-warning&#x22;&#x3E;Badge&#x3C;/span&#x3E;
+            </code>
+                                                    </pre>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end -->
+                                            </div>
+                                            <div class="flex gap-2">
+                                                <span
+                                                    class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full  text-xs font-medium border border-darkgray text-darkgray dark:border-lightgray dark:text-lightgray">Badge</span>
+                                                <span
+                                                    class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full  text-xs font-medium border border-link text-link dark:text-darklink dark:border-darklink">Badge</span>
+                                                <span
+                                                    class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full  text-xs font-medium border border-success text-success">Badge</span>
+                                                <span
+                                                    class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full  text-xs font-medium border border-primary text-primary ">Badge</span>
+                                                <span
+                                                    class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full  text-xs font-medium border border-error text-error">Badge</span>
+                                                <span
+                                                    class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full  text-xs font-medium border border-warning text-warning">Badge</span>
+                                            </div>
+                                            <div class="flex justify-between items-center mt-8">
+                                                <h6 class="text-sm font-semibold text-dark dark:text-white ">White color
+                                                    variants </h6>
+                                                <button
+                                                    class="w-8 h-8 flex items-center justify-center rounded-full  bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                                                    data-hs-overlay="#hs-focus-management-modal19">
+                                                    <i class="ti ti-code text-lg"></i>
+                                                </button>
+                                                <div id="hs-focus-management-modal19"
+                                                    class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                                                    <div
+                                                        class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                                                        <div
+                                                            class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                                            <div
+                                                                class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                                                <div class="overflow-hidden">
+                                                                    <div class="flex justify-between">
+                                                                        <h5
+                                                                            class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">
+                                                                            White color variants -
+                                                                            View Code</h5>
+                                                                        <button type="button"
+                                                                            class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                                                            data-hs-overlay="#hs-focus-management-modal19">
+                                                                            <span class="sr-only">Close</span>
+                                                                            <i class="ti ti-x text-xl"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="message-body max-h-[300px] "
+                                                                        data-simplebar="">
+                                                                        <pre class="mt-0">
+ <code class="language-html">  
+&#x3C;span class=&#x22;inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-md text-xs font-medium border border-border bg-white text-dark  dark:bg-slate-900 dark:border-darkborder dark:text-white&#x22;&#x3E;Badge&#x3C;/span&#x3E;
+&#x3C;span class=&#x22;inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full  text-xs font-medium border border-border bg-white text-dark  dark:bg-slate-900 dark:border-darkborder dark:text-white&#x22;&#x3E;Badge&#x3C;/span&#x3E;
+            </code>
+                                                    </pre>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end -->
+                                            </div>
+                                            <div class="flex gap-2">
+                                                <span
+                                                    class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-md text-xs font-medium border border-border bg-transparent text-dark  dark:bg-transparent dark:border-darkborder dark:text-white">Badge</span>
+                                                <span
+                                                    class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full  text-xs font-medium border border-border bg-transparent text-dark  dark:bg-transparent dark:border-darkborder dark:text-white">Badge</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-------------->
+
+                    </div>
+                </main>
+                <!-- Main Content End -->
+
+            </div>
+        </div>
+        <!--end of project-->
+    </main>
+    @@include("partials/scripts.html")
+    <script src="@@webRoot/node_modules/prismjs/prism.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-color-theme="Blue_Theme" class="light selected" data-layout="vertical"
+    data-boxed-layout="boxed" data-card="shadow">
+
+<head>
+    @@include("partials/head.html")
+    <title>Spike TailwindCSS HTML Admin Template</title>
+</head>
+
+<body class="DEFAULT_THEME bg-lightprimary dark:bg-darkbody">
+    <main>
+        <!--start the project-->
+        <div id="main-wrapper" class="flex p-5">
+
+            <aside id="application-sidebar-brand"
+                class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full xl:rtl:-translate-x-0 rtl:translate-x-full  left-0 rtl:left-auto xl:rtl:right-5 rtl:right-0 transform hidden xl:block xl:translate-x-0 xl:end-auto xl:bottom-0 fixed top-0 with-vertical  left-sidebar transition-all duration-300 h-screen z-[2] flex-shrink-0  w-[270px] border-border dark:border-darkborder bg-white dark:bg-dark xl:top-5 xl:start-5 shadow-md xl:rounded-md">
+                @@include("partials/sidebar.html",{ "page": "ui-timeline","page_group": "ui" })
+            </aside>
+            <div class="page-wrapper w-full" role="main">
+
+                <!-- Main Content -->
+                <main class="h-full ">
+                    <div class="container full-container py-5 xl:ps-6 ps-0 pt-0 pe-0 remove-ps">
+
+                        <!--  Header Start -->
+                        <header
+                            class="sticky top-0 inset-x-0 z-[1] flex flex-wrap md:justify-start md:flex-nowrap text-fs_15 py-3 lg:py-0 mb-6 bg-white dark:bg-dark rounded-md shadow-md">
+                            <div class="with-vertical w-full">@@include("partials/header.html")</div>
+                            <div class="with-horizontal w-full">
+                                <div class="bg-white dark:bg-dark">
+                                    <div class="container">
+                                        @@include("partials/horizontal-header.html")
+                                    </div>
+                                </div>
+                            </div>
+                        </header>
+                        <!--  Header End -->
+
+                        <!-- Horizontal Sidebar Menu -->
+                        <aside
+                            class="with-horizontal lg:flex hidden left-sidebar bg-white dark:bg-dark border-t border-border dark:border-darkborder">
+                            @@include("partials/horizontal-sidebar.html", { "page": "ui-timeline","page_group": "ui"})
+                        </aside>
+                        <!-- Horizontal Sidebar Menu End -->
+
+                        <!-- Main Content -->
+                        <div class="max-w-full">
+                            <div class="container full-container ">
+                                <!----Breadcrumb Start---->
+                                @@include("partials/breadcrumb.html", {"title": "Timeline", "subtitle": 'Home'})
+                                <!----Breadcrumb End---->
+                                <div class="grid grid-cols-12 gap-6">
+                                    <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                                        <div class="card">
+                                          <div class="card-body">                                                
+                                            <h5 class="card-title mb-0">Basic Timeline</h5>
+                                            <p class="card-subtitle  mb-6">A basic timeline usage with title, description and users.</p>
+                                            <!-- Timeline -->
+                                            <div>
+                                                <!-- Heading -->
+                                                <div class="ps-2 my-2 first:mt-0">
+                                                <h3 class="text-xs font-medium uppercase text-gray-500 dark:text-gray-400">
+                                                    1 Aug, 2024
+                                                </h3>
+                                                </div>
+                                                <!-- End Heading -->
+                                            
+                                                <!-- Item -->
+                                                <div class="flex gap-x-3">
+                                                <!-- Icon -->
+                                                <div class="relative last:after:hidden after:absolute after:top-7 after:bottom-0 after:start-3.5 after:w-px after:-translate-x-[0.5px] after:bg-gray-200 dark:after:bg-gray-700">
+                                                    <div class="relative z-10 size-7 flex justify-center items-center">
+                                                    <div class="size-2 rounded-full bg-gray-400 dark:bg-gray-600"></div>
+                                                    </div>
+                                                </div>
+                                                <!-- End Icon -->
+                                            
+                                                <!-- Right Content -->
+                                                <div class="grow pt-0.5 pb-8">
+                                                    <h3 class="flex text-base gap-x-1.5 font-semibold text-gray-800 dark:text-white">
+                                                        <i class="ti ti-notes text-lg leading-tight font-medium"></i>
+                                                    Created "Preline in React" task
+                                                    </h3>
+                                                    <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                                                    Find more detailed insctructions here.
+                                                    </p>
+                                                    <button type="button" class="mt-1 -ms-1 p-1 inline-flex items-center gap-x-2 text-xs rounded-md border border-transparent text-gray-500 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                                    <img class="flex-shrink-0 size-4 rounded-full" src="@@webRoot/assets/images/profile/user-7.jpg" alt="Image Description">
+                                                    James Collins
+                                                    </button>
+                                                </div>
+                                                <!-- End Right Content -->
+                                                </div>
+                                                <!-- End Item -->
+                                            
+                                                <!-- Item -->
+                                                <div class="flex gap-x-3">
+                                                <!-- Icon -->
+                                                <div class="relative last:after:hidden after:absolute after:top-7 after:bottom-0 after:start-3.5 after:w-px after:-translate-x-[0.5px] after:bg-gray-200 dark:after:bg-gray-700">
+                                                    <div class="relative z-10 size-7 flex justify-center items-center">
+                                                    <div class="size-2 rounded-full bg-gray-400 dark:bg-gray-600"></div>
+                                                    </div>
+                                                </div>
+                                                <!-- End Icon -->
+                                            
+                                                <!-- Right Content -->
+                                                <div class="grow pt-0.5 pb-8">
+                                                    <h3 class="flex text-base gap-x-1.5 font-semibold text-gray-800 dark:text-white">
+                                                    Release v5.2.0 quick bug fix 🐞
+                                                    </h3>
+                                                    <button type="button" class="mt-1 -ms-1 p-1 inline-flex items-center gap-x-2 text-xs rounded-md border border-transparent text-gray-500 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                                    <span class="flex flex-shrink-0 justify-center items-center size-4 bg-white border border-gray-200 text-[10px] font-semibold uppercase text-gray-600 rounded-full dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400">
+                                                        A
+                                                    </span>
+                                                    Alex Gregarov
+                                                    </button>
+                                                </div>
+                                                <!-- End Right Content -->
+                                                </div>
+                                                <!-- End Item -->
+                                            
+                                                <!-- Item -->
+                                                <div class="flex gap-x-3">
+                                                <!-- Icon -->
+                                                <div class="relative last:after:hidden after:absolute after:top-7 after:bottom-0 after:start-3.5 after:w-px after:-translate-x-[0.5px] after:bg-gray-200 dark:after:bg-gray-700">
+                                                    <div class="relative z-10 size-7 flex justify-center items-center">
+                                                    <div class="size-2 rounded-full bg-gray-400 dark:bg-gray-600"></div>
+                                                    </div>
+                                                </div>
+                                                <!-- End Icon -->
+                                            
+                                                <!-- Right Content -->
+                                                <div class="grow pt-0.5 pb-8">
+                                                    <h3 class="flex text-base gap-x-1.5 font-semibold text-gray-800 dark:text-white">
+                                                    Marked "Install Charts" completed
+                                                    </h3>
+                                                    <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                                                    Finally! You can check it out here.
+                                                    </p>
+                                                    <button type="button" class="mt-1 -ms-1 p-1 inline-flex items-center gap-x-2 text-xs rounded-md border border-transparent text-gray-500 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                                    <img class="flex-shrink-0 size-4 rounded-full" src="@@webRoot/assets/images/profile/user-7.jpg" alt="Image Description">
+                                                    James Collins
+                                                    </button>
+                                                </div>
+                                                <!-- End Right Content -->
+                                                </div>
+                                                <!-- End Item -->
+                                            
+                                                <!-- Heading -->
+                                                <div class="ps-2 my-2 first:mt-0">
+                                                <h3 class="text-xs font-medium uppercase text-gray-500 dark:text-gray-400">
+                                                    31 Jul, 2024
+                                                </h3>
+                                                </div>
+                                                <!-- End Heading -->
+                                            
+                                                <!-- Item -->
+                                                <div class="flex gap-x-3">
+                                                <!-- Icon -->
+                                                <div class="relative last:after:hidden after:absolute after:top-7 after:bottom-0 after:start-3.5 after:w-px after:-translate-x-[0.5px] after:bg-gray-200 dark:after:bg-gray-700">
+                                                    <div class="relative z-10 size-7 flex justify-center items-center">
+                                                    <div class="size-2 rounded-full bg-gray-400 dark:bg-gray-600"></div>
+                                                    </div>
+                                                </div>
+                                                <!-- End Icon -->
+                                            
+                                                <!-- Right Content -->
+                                                <div class="grow pt-0.5 pb-8">
+                                                    <h3 class="flex text-base gap-x-1.5 font-semibold text-gray-800 dark:text-white">
+                                                    Take a break ⛳️
+                                                    </h3>
+                                                    <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                                                    Just chill for now... 😉
+                                                    </p>
+                                                </div>
+                                                <!-- End Right Content -->
+                                                </div>
+                                                <!-- End Item -->
+                                            </div>
+                                            <!-- End Timeline -->
+                                          </div>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                                        <div class="card">
+                                          <div class="card-body">                                                
+                                            <h5 class="card-title mb-0">Collapsable</h5>
+                                            <p class="card-subtitle  mb-6">A basic timeline usage with title, description and users.</p>
+                                            <!-- Timeline -->
+                                            <div>
+                                                <!-- Heading -->
+                                                <div class="ps-2 my-2 first:mt-0">
+                                                <h3 class="text-xs font-medium uppercase text-gray-500 dark:text-gray-400">
+                                                    1 Aug, 2024
+                                                </h3>
+                                                </div>
+                                                <!-- End Heading -->
+                                            
+                                                <!-- Item -->
+                                                <div class="flex gap-x-3">
+                                                <!-- Icon -->
+                                                <div class="relative last:after:hidden after:absolute after:top-7 after:bottom-0 after:start-3.5 after:w-px after:-translate-x-[0.5px] after:bg-gray-200 dark:after:bg-gray-700">
+                                                    <div class="relative z-10 size-7 flex justify-center items-center">
+                                                    <div class="size-2 rounded-full bg-gray-400 dark:bg-gray-600"></div>
+                                                    </div>
+                                                </div>
+                                                <!-- End Icon -->
+                                            
+                                                <!-- Right Content -->
+                                                <div class="grow pt-0.5 pb-8">
+                                                    <h3 class="flex text-base gap-x-1.5 font-semibold text-gray-800 dark:text-white">
+                                                        <i class="ti ti-notes text-lg leading-tight font-medium"></i>
+                                                    Created "Preline in React" task
+                                                    </h3>
+                                                    <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                                                    Find more detailed insctructions here.
+                                                    </p>
+                                                    <button type="button" class="mt-1 -ms-1 p-1 inline-flex items-center gap-x-2 text-xs rounded-md border border-transparent text-gray-500 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                                    <img class="flex-shrink-0 size-4 rounded-full" src="@@webRoot/assets/images/profile/user-7.jpg" alt="Image Description">
+                                                    James Collins
+                                                    </button>
+                                                </div>
+                                                <!-- End Right Content -->
+                                                </div>
+                                                <!-- End Item -->
+                                            
+                                                <!-- Item -->
+                                                <div class="flex gap-x-3">
+                                                <!-- Icon -->
+                                                <div class="relative last:after:hidden after:absolute after:top-7 after:bottom-0 after:start-3.5 after:w-px after:-translate-x-[0.5px] after:bg-gray-200 dark:after:bg-gray-700">
+                                                    <div class="relative z-10 size-7 flex justify-center items-center">
+                                                    <div class="size-2 rounded-full bg-gray-400 dark:bg-gray-600"></div>
+                                                    </div>
+                                                </div>
+                                                <!-- End Icon -->
+                                            
+                                                <!-- Right Content -->
+                                                <div class="grow pt-0.5 pb-8">
+                                                    <h3 class="flex text-base gap-x-1.5 font-semibold text-gray-800 dark:text-white">
+                                                    Release v5.2.0 quick bug fix 🐞
+                                                    </h3>
+                                                    <button type="button" class="mt-1 -ms-1 p-1 inline-flex items-center gap-x-2 text-xs rounded-md border border-transparent text-gray-500 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                                    <span class="flex flex-shrink-0 justify-center items-center size-4 bg-white border border-gray-200 text-[10px] font-semibold uppercase text-gray-600 rounded-full dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400">
+                                                        A
+                                                    </span>
+                                                    Alex Gregarov
+                                                    </button>
+                                                </div>
+                                                <!-- End Right Content -->
+                                                </div>
+                                                <!-- End Item -->
+                                            
+                                                <!-- Item -->
+                                                <div class="flex gap-x-3">
+                                                <!-- Icon -->
+                                                <div class="relative last:after:hidden after:absolute after:top-7 after:bottom-0 after:start-3.5 after:w-px after:-translate-x-[0.5px] after:bg-gray-200 dark:after:bg-gray-700">
+                                                    <div class="relative z-10 size-7 flex justify-center items-center">
+                                                    <div class="size-2 rounded-full bg-gray-400 dark:bg-gray-600"></div>
+                                                    </div>
+                                                </div>
+                                                <!-- End Icon -->
+                                            
+                                                <!-- Right Content -->
+                                                <div class="grow pt-0.5 pb-8">
+                                                    <h3 class="flex text-base gap-x-1.5 font-semibold text-gray-800 dark:text-white">
+                                                    Marked "Install Charts" completed
+                                                    </h3>
+                                                    <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                                                    Finally! You can check it out here.
+                                                    </p>
+                                                    <button type="button" class="mt-1 -ms-1 p-1 inline-flex items-center gap-x-2 text-xs rounded-md border border-transparent text-gray-500 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                                    <img class="flex-shrink-0 size-4 rounded-full" src="@@webRoot/assets/images/profile/user-7.jpg" alt="Image Description">
+                                                    James Collins
+                                                    </button>
+                                                </div>
+                                                <!-- End Right Content -->
+                                                </div>
+                                                <!-- End Item -->
+                                            
+                                                <!-- Heading -->
+                                                <div class="ps-2 my-2">
+                                                <h3 class="text-xs font-medium uppercase text-gray-500 dark:text-gray-400">
+                                                    31 Jul, 2024
+                                                </h3>
+                                                </div>
+                                                <!-- End Heading -->
+                                            
+                                                <!-- Item -->
+                                                <div class="flex gap-x-3">
+                                                <!-- Icon -->
+                                                <div class="relative last:after:hidden after:absolute after:top-7 after:bottom-0 after:start-3.5 after:w-px after:-translate-x-[0.5px] after:bg-gray-200 dark:after:bg-gray-700">
+                                                    <div class="relative z-10 size-7 flex justify-center items-center">
+                                                    <div class="size-2 rounded-full bg-gray-400 dark:bg-gray-600"></div>
+                                                    </div>
+                                                </div>
+                                                <!-- End Icon -->
+                                            
+                                                <!-- Right Content -->
+                                                <div class="grow pt-0.5 pb-8">
+                                                    <h3 class="flex text-base gap-x-1.5 font-semibold text-gray-800 dark:text-white">
+                                                    Take a break ⛳️
+                                                    </h3>
+                                                    <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                                                    Just chill for now... 😉
+                                                    </p>
+                                                </div>
+                                                <!-- End Right Content -->
+                                                </div>
+                                                <!-- End Item -->
+                                            
+                                                <!-- Collapse -->
+                                                <div id="hs-timeline-collapse" class="hs-collapse hidden w-full overflow-hidden transition-[height] duration-300" aria-labelledby="hs-timeline-collapse-content">
+                                                <!-- Heading -->
+                                                <div class="ps-2 my-2 first:mt-0">
+                                                    <h3 class="text-xs font-medium uppercase text-gray-500 dark:text-gray-400">
+                                                    30 Jul, 2024
+                                                    </h3>
+                                                </div>
+                                                <!-- End Heading -->
+                                            
+                                                <!-- Item -->
+                                                <div class="flex gap-x-3">
+                                                    <!-- Icon -->
+                                                    <div class="relative last:after:hidden after:absolute after:top-7 after:bottom-0 after:start-3.5 after:w-px after:-translate-x-[0.5px] after:bg-gray-200 dark:after:bg-gray-700">
+                                                    <div class="relative z-10 size-7 flex justify-center items-center">
+                                                        <div class="size-2 rounded-full bg-gray-400 dark:bg-gray-600"></div>
+                                                    </div>
+                                                    </div>
+                                                    <!-- End Icon -->
+                                            
+                                                    <!-- Right Content -->
+                                                    <div class="grow pt-0.5 pb-8">
+                                                    <h3 class="flex text-base gap-x-1.5 font-semibold text-gray-800 dark:text-white">
+                                                        Final touch ups
+                                                    </h3>
+                                                    <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                                                        Double check everything and make sure we're ready to go.
+                                                    </p>
+                                                    </div>
+                                                    <!-- End Right Content -->
+                                                </div>
+                                                <!-- End Item -->
+                                                </div>
+                                                <!-- End Collapse -->
+                                            
+                                                <!-- Item -->
+                                                <div class="ps-[7px] flex gap-x-3">
+                                                <button type="button" class="hs-collapse-toggle hs-collapse-open:hidden text-start inline-flex items-center gap-x-1 text-sm text-primary font-medium decoration-2 hover:underline dark:text-primary dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" id="hs-timeline-collapse-content" data-hs-collapse="#hs-timeline-collapse">
+                                                    <i class="ti ti-chevron-down text-lg leading-tight font-medium"></i>
+                                                    Show older
+                                                </button>
+                                                </div>
+                                                <!-- End Item -->
+                                            </div>
+                                            <!-- End Timeline -->
+                                          </div>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                                        <div class="card">
+                                          <div class="card-body">                                                
+                                            <h5 class="card-title mb-0">Hoverable rows</h5>
+                                            <p class="card-subtitle  mb-6">For timelines that contain a lot of information, this allows to hover over the rows to see more information.</p>
+                                            <!-- Timeline -->
+                                            <div>
+                                                <!-- Heading -->
+                                                <div class="ps-2 my-2 first:mt-0">
+                                                <h3 class="text-xs font-medium uppercase text-gray-500 dark:text-gray-400">
+                                                    1 Aug, 2024
+                                                </h3>
+                                                </div>
+                                                <!-- End Heading -->
+                                            
+                                                <!-- Item -->
+                                                <div class="flex gap-x-3 relative group rounded-md hover:bg-gray-100 dark:hover:bg-white/10">
+                                                <a class="absolute inset-0 z-[1]" href="#"></a>
+                                            
+                                                <!-- Icon -->
+                                                <div class="relative last:after:hidden after:absolute after:top-0 after:bottom-0 after:start-3.5 after:w-px after:-translate-x-[0.5px] after:bg-gray-200 dark:after:bg-gray-700 dark:group-hover:after:bg-gray-600">
+                                                    <div class="relative z-10 size-7 flex justify-center items-center">
+                                                    <div class="size-2 rounded-full bg-white border-2 border-gray-300 group-hover:border-gray-600 dark:bg-gray-800 dark:border-gray-600"></div>
+                                                    </div>
+                                                </div>
+                                                <!-- End Icon -->
+                                            
+                                                <!-- Right Content -->
+                                                <div class="grow p-2 pb-8">
+                                                    <h3 class="flex text-base gap-x-1.5 font-semibold text-gray-800 dark:text-white">
+                                                        <i class="ti ti-notes text-lg leading-tight font-medium"></i>
+                                                    Created "Preline in React" task
+                                                    </h3>
+                                                    <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                                                    Find more detailed insctructions here.
+                                                    </p>
+                                                    <button type="button" class="mt-1 -ms-1 p-1 relative z-10 inline-flex items-center gap-x-2 text-xs rounded-md border border-transparent text-gray-500 hover:bg-white hover:shadow-sm disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                                    <img class="flex-shrink-0 size-4 rounded-full" src="@@webRoot/assets/images/profile/user-7.jpg" alt="Image Description">
+                                                    James Collins
+                                                    </button>
+                                                </div>
+                                                <!-- End Right Content -->
+                                                </div>
+                                                <!-- End Item -->
+                                            
+                                                <!-- Item -->
+                                                <div class="flex gap-x-3 relative group rounded-md hover:bg-gray-100 dark:hover:bg-white/10">
+                                                <a class="absolute inset-0 z-[1]" href="#"></a>
+                                            
+                                                <!-- Icon -->
+                                                <div class="relative last:after:hidden after:absolute after:top-0 after:bottom-0 after:start-3.5 after:w-px after:-translate-x-[0.5px] after:bg-gray-200 dark:after:bg-gray-700 dark:group-hover:after:bg-gray-600">
+                                                    <div class="relative z-10 size-7 flex justify-center items-center">
+                                                    <div class="size-2 rounded-full bg-white border-2 border-gray-300 group-hover:border-gray-600 dark:bg-gray-800 dark:border-gray-600"></div>
+                                                    </div>
+                                                </div>
+                                                <!-- End Icon -->
+                                            
+                                                <!-- Right Content -->
+                                                <div class="grow p-2 pb-8">
+                                                    <h3 class="flex text-base gap-x-1.5 font-semibold text-gray-800 dark:text-white">
+                                                    Release v5.2.0 quick bug fix 🐞
+                                                    </h3>
+                                                    <button type="button" class="mt-1 -ms-1 p-1 relative z-10 inline-flex items-center gap-x-2 text-xs rounded-md border border-transparent text-gray-500 hover:bg-white hover:shadow-sm disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                                    <span class="flex flex-shrink-0 justify-center items-center size-4 bg-white border border-gray-200 text-[10px] font-semibold uppercase text-gray-600 rounded-full dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400">
+                                                        A
+                                                    </span>
+                                                    Alex Gregarov
+                                                    </button>
+                                                </div>
+                                                <!-- End Right Content -->
+                                                </div>
+                                                <!-- End Item -->
+                                            
+                                                <!-- Item -->
+                                                <div class="flex gap-x-3 relative group rounded-md hover:bg-gray-100 dark:hover:bg-white/10">
+                                                <a class="absolute inset-0 z-[1]" href="#"></a>
+                                            
+                                                <!-- Icon -->
+                                                <div class="relative last:after:hidden after:absolute after:top-0 after:bottom-0 after:start-3.5 after:w-px after:-translate-x-[0.5px] after:bg-gray-200 dark:after:bg-gray-700 dark:group-hover:after:bg-gray-600">
+                                                    <div class="relative z-10 size-7 flex justify-center items-center">
+                                                    <div class="size-2 rounded-full bg-white border-2 border-gray-300 group-hover:border-gray-600 dark:bg-gray-800 dark:border-gray-600"></div>
+                                                    </div>
+                                                </div>
+                                                <!-- End Icon -->
+                                            
+                                                <!-- Right Content -->
+                                                <div class="grow p-2 pb-8">
+                                                    <h3 class="flex text-base gap-x-1.5 font-semibold text-gray-800 dark:text-white">
+                                                    Marked "Install Charts" completed
+                                                    </h3>
+                                                    <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                                                    Finally! You can check it out here.
+                                                    </p>
+                                                    <button type="button" class="mt-1 -ms-1 p-1 relative z-10 inline-flex items-center gap-x-2 text-xs rounded-md border border-transparent text-gray-500 hover:bg-white hover:shadow-sm disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                                    <img class="flex-shrink-0 size-4 rounded-full" src="@@webRoot/assets/images/profile/user-7.jpg" alt="Image Description">
+                                                    James Collins
+                                                    </button>
+                                                </div>
+                                                <!-- End Right Content -->
+                                                </div>
+                                                <!-- End Item -->
+                                            
+                                                <!-- Heading -->
+                                                <div class="ps-2 my-2 first:mt-0">
+                                                <h3 class="text-xs font-medium uppercase text-gray-500 dark:text-gray-400">
+                                                    31 Jul, 2024
+                                                </h3>
+                                                </div>
+                                                <!-- End Heading -->
+                                            
+                                                <!-- Item -->
+                                                <div class="flex gap-x-3 relative group rounded-md hover:bg-gray-100 dark:hover:bg-white/10">
+                                                <a class="absolute inset-0 z-[1]" href="#"></a>
+                                            
+                                                <!-- Icon -->
+                                                <div class="relative last:after:hidden after:absolute after:top-0 after:bottom-0 after:start-3.5 after:w-px after:-translate-x-[0.5px] after:bg-gray-200 dark:after:bg-gray-700 dark:group-hover:after:bg-gray-600">
+                                                    <div class="relative z-10 size-7 flex justify-center items-center">
+                                                    <div class="size-2 rounded-full bg-white border-2 border-gray-300 group-hover:border-gray-600 dark:bg-gray-800 dark:border-gray-600"></div>
+                                                    </div>
+                                                </div>
+                                                <!-- End Icon -->
+                                            
+                                                <!-- Right Content -->
+                                                <div class="grow p-2 pb-8">
+                                                    <h3 class="flex text-base gap-x-1.5 font-semibold text-gray-800 dark:text-white">
+                                                    Take a break ⛳️
+                                                    </h3>
+                                                    <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                                                    Just chill for now... 😉
+                                                    </p>
+                                                </div>
+                                                <!-- End Right Content -->
+                                                </div>
+                                                <!-- End Item -->
+                                            </div>
+                                            <!-- End Timeline -->
+                                          </div>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                                        <div class="card">
+                                          <div class="card-body">                                                
+                                            <h5 class="card-title mb-0">With time</h5>
+                                            <p class="card-subtitle  mb-6">With time on the left side.</p>
+                                            <!-- Timeline -->
+                                            <div>
+                                                <!-- Item -->
+                                                <div class="flex gap-x-3">
+                                                <!-- Left Content -->
+                                                <div class="w-16 text-end">
+                                                    <span class="text-xs text-gray-500 dark:text-gray-400">12:05PM</span>
+                                                </div>
+                                                <!-- End Left Content -->
+                                            
+                                                <!-- Icon -->
+                                                <div class="relative last:after:hidden after:absolute after:top-7 after:bottom-0 after:start-3.5 after:w-px after:-translate-x-[0.5px] after:bg-gray-200 dark:after:bg-gray-700">
+                                                    <div class="relative z-10 size-7 flex justify-center items-center">
+                                                    <div class="size-2 rounded-full bg-gray-400 dark:bg-gray-600"></div>
+                                                    </div>
+                                                </div>
+                                                <!-- End Icon -->
+                                            
+                                                <!-- Right Content -->
+                                                <div class="grow pt-0.5 pb-8">
+                                                    <h3 class="flex text-base gap-x-1.5 font-semibold text-gray-800 dark:text-white">
+                                                        <i class="ti ti-notes text-lg leading-tight font-medium"></i>
+                                                    Created "Preline in React" task
+                                                    </h3>
+                                                    <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                                                    Find more detailed insctructions here.
+                                                    </p>
+                                                    <button type="button" class="mt-1 -ms-1 p-1 inline-flex items-center gap-x-2 text-xs rounded-md border border-transparent text-gray-500 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                                    <img class="flex-shrink-0 size-4 rounded-full" src="@@webRoot/assets/images/profile/user-7.jpg" alt="Image Description">
+                                                    James Collins
+                                                    </button>
+                                                </div>
+                                                <!-- End Right Content -->
+                                                </div>
+                                                <!-- End Item -->
+                                            
+                                                <!-- Item -->
+                                                <div class="flex gap-x-3">
+                                                <!-- Left Content -->
+                                                <div class="w-16 text-end">
+                                                    <span class="text-xs text-gray-500 dark:text-gray-400">12:05PM</span>
+                                                </div>
+                                                <!-- End Left Content -->
+                                            
+                                                <!-- Icon -->
+                                                <div class="relative last:after:hidden after:absolute after:top-7 after:bottom-0 after:start-3.5 after:w-px after:-translate-x-[0.5px] after:bg-gray-200 dark:after:bg-gray-700">
+                                                    <div class="relative z-10 size-7 flex justify-center items-center">
+                                                    <div class="size-2 rounded-full bg-gray-400 dark:bg-gray-600"></div>
+                                                    </div>
+                                                </div>
+                                                <!-- End Icon -->
+                                            
+                                                <!-- Right Content -->
+                                                <div class="grow pt-0.5 pb-8">
+                                                    <h3 class="flex text-base gap-x-1.5 font-semibold text-gray-800 dark:text-white">
+                                                    Release v5.2.0 quick bug fix 🐞
+                                                    </h3>
+                                                    <button type="button" class="mt-1 -ms-1 p-1 inline-flex items-center gap-x-2 text-xs rounded-md border border-transparent text-gray-500 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                                    <span class="flex flex-shrink-0 justify-center items-center size-4 bg-white border border-gray-200 text-[10px] font-semibold uppercase text-gray-600 rounded-full dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400">
+                                                        A
+                                                    </span>
+                                                    Alex Gregarov
+                                                    </button>
+                                                </div>
+                                                <!-- End Right Content -->
+                                                </div>
+                                                <!-- End Item -->
+                                            
+                                                <!-- Item -->
+                                                <div class="flex gap-x-3">
+                                                <!-- Left Content -->
+                                                <div class="w-16 text-end">
+                                                    <span class="text-xs text-gray-500 dark:text-gray-400">12:05PM</span>
+                                                </div>
+                                                <!-- End Left Content -->
+                                            
+                                                <!-- Icon -->
+                                                <div class="relative last:after:hidden after:absolute after:top-7 after:bottom-0 after:start-3.5 after:w-px after:-translate-x-[0.5px] after:bg-gray-200 dark:after:bg-gray-700">
+                                                    <div class="relative z-10 size-7 flex justify-center items-center">
+                                                    <div class="size-2 rounded-full bg-gray-400 dark:bg-gray-600"></div>
+                                                    </div>
+                                                </div>
+                                                <!-- End Icon -->
+                                            
+                                                <!-- Right Content -->
+                                                <div class="grow pt-0.5 pb-8">
+                                                    <h3 class="flex text-base gap-x-1.5 font-semibold text-gray-800 dark:text-white">
+                                                    Marked "Install Charts" completed
+                                                    </h3>
+                                                    <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                                                    Finally! You can check it out here.
+                                                    </p>
+                                                    <button type="button" class="mt-1 -ms-1 p-1 inline-flex items-center gap-x-2 text-xs rounded-md border border-transparent text-gray-500 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                                    <img class="flex-shrink-0 size-4 rounded-full" src="@@webRoot/assets/images/profile/user-7.jpg" alt="Image Description">
+                                                    James Collins
+                                                    </button>
+                                                </div>
+                                                <!-- End Right Content -->
+                                                </div>
+                                                <!-- End Item -->
+                                            
+                                                <!-- Item -->
+                                                <div class="flex gap-x-3">
+                                                <!-- Left Content -->
+                                                <div class="w-16 text-end">
+                                                    <span class="text-xs text-gray-500 dark:text-gray-400">12:05PM</span>
+                                                </div>
+                                                <!-- End Left Content -->
+                                            
+                                                <!-- Icon -->
+                                                <div class="relative last:after:hidden after:absolute after:top-7 after:bottom-0 after:start-3.5 after:w-px after:-translate-x-[0.5px] after:bg-gray-200 dark:after:bg-gray-700">
+                                                    <div class="relative z-10 size-7 flex justify-center items-center">
+                                                    <div class="size-2 rounded-full bg-gray-400 dark:bg-gray-600"></div>
+                                                    </div>
+                                                </div>
+                                                <!-- End Icon -->
+                                            
+                                                <!-- Right Content -->
+                                                <div class="grow pt-0.5 pb-8">
+                                                    <h3 class="flex text-base gap-x-1.5 font-semibold text-gray-800 dark:text-white">
+                                                    Take a break ⛳️
+                                                    </h3>
+                                                    <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                                                    Just chill for now... 😉
+                                                    </p>
+                                                </div>
+                                                <!-- End Right Content -->
+                                                </div>
+                                                <!-- End Item -->
+                                            </div>
+                                            <!-- End Timeline -->
+                                          </div>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                                        <div class="card">
+                                          <div class="card-body">                                                
+                                            <h5 class="card-title mb-0">Icons and avatars</h5>
+                                            <p class="card-subtitle  mb-6">You can also add additional elements, such as icons and avatars.</p>
+                                            <!-- Timeline -->
+                                            <div>
+                                                <!-- Heading -->
+                                                <div class="ps-2 my-2 first:mt-0">
+                                                <h3 class="text-xs font-medium uppercase text-gray-500 dark:text-gray-400">
+                                                    1 Aug, 2024
+                                                </h3>
+                                                </div>
+                                                <!-- End Heading -->
+                                            
+                                                <!-- Item -->
+                                                <div class="flex gap-x-3">
+                                                <!-- Icon -->
+                                                <div class="relative last:after:hidden after:absolute after:top-7 after:bottom-0 after:start-3.5 after:w-px after:-translate-x-[0.5px] after:bg-gray-200 dark:after:bg-gray-700">
+                                                    <div class="relative z-10 size-7 flex justify-center items-center">
+                                                    <img class="flex-shrink-0 size-7 rounded-full" src="@@webRoot/assets/images/profile/user-7.jpg" alt="Image Description">
+                                                    </div>
+                                                </div>
+                                                <!-- End Icon -->
+                                            
+                                                <!-- Right Content -->
+                                                <div class="grow pt-0.5 pb-8">
+                                                    <h3 class="flex text-base gap-x-1.5 font-semibold text-gray-800 dark:text-white">
+                                                    <i class="ti ti-notes text-lg leading-tight font-medium"></i>
+                                                    Created "Preline in React" task
+                                                    </h3>
+                                                    <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                                                    Find more detailed insctructions here.
+                                                    </p>
+                                                    <button type="button" class="mt-1 -ms-1 p-1 inline-flex items-center gap-x-2 text-xs rounded-md border border-transparent text-gray-500 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                                    <img class="flex-shrink-0 size-4 rounded-full" src="@@webRoot/assets/images/profile/user-7.jpg" alt="Image Description">
+                                                    James Collins
+                                                    </button>
+                                                </div>
+                                                <!-- End Right Content -->
+                                                </div>
+                                                <!-- End Item -->
+                                            
+                                                <!-- Item -->
+                                                <div class="flex gap-x-3">
+                                                <!-- Icon -->
+                                                <div class="relative last:after:hidden after:absolute after:top-7 after:bottom-0 after:start-3.5 after:w-px after:-translate-x-[0.5px] after:bg-gray-200 dark:after:bg-gray-700">
+                                                    <div class="relative z-10 size-7 flex justify-center items-center">
+                                                    <span class="flex flex-shrink-0 justify-center items-center size-7 border border-gray-200 text-sm font-semibold uppercase text-gray-800 rounded-full dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400">
+                                                        A
+                                                    </span>
+                                                    </div>
+                                                </div>
+                                                <!-- End Icon -->
+                                            
+                                                <!-- Right Content -->
+                                                <div class="grow pt-0.5 pb-8">
+                                                    <h3 class="flex text-base gap-x-1.5 font-semibold text-gray-800 dark:text-white">
+                                                    Release v5.2.0 quick bug fix 🐞
+                                                    </h3>
+                                                    <button type="button" class="mt-1 -ms-1 p-1 inline-flex items-center gap-x-2 text-xs rounded-md border border-transparent text-gray-500 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                                    <span class="flex flex-shrink-0 justify-center items-center size-4 bg-white border border-gray-200 text-[10px] font-semibold uppercase text-gray-600 rounded-full dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400">
+                                                        A
+                                                    </span>
+                                                    Alex Gregarov
+                                                    </button>
+                                                </div>
+                                                <!-- End Right Content -->
+                                                </div>
+                                                <!-- End Item -->
+                                            
+                                                <!-- Item -->
+                                                <div class="flex gap-x-3">
+                                                <!-- Icon -->
+                                                <div class="relative last:after:hidden after:absolute after:top-7 after:bottom-0 after:start-3.5 after:w-px after:-translate-x-[0.5px] after:bg-gray-200 dark:after:bg-gray-700">
+                                                    <div class="relative z-10 size-7 flex justify-center items-center">
+                                                    <img class="flex-shrink-0 size-7 rounded-full" src="@@webRoot/assets/images/profile/user-7.jpg" alt="Image Description">
+                                                    </div>
+                                                </div>
+                                                <!-- End Icon -->
+                                            
+                                                <!-- Right Content -->
+                                                <div class="grow pt-0.5 pb-8">
+                                                    <h3 class="flex gap-x-1.5 font-semibold text-gray-800 dark:text-white">
+                                                    Marked "Install Charts" completed
+                                                    </h3>
+                                                    <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                                                    Finally! You can check it out here.
+                                                    </p>
+                                                    <button type="button" class="mt-1 -ms-1 p-1 inline-flex items-center gap-x-2 text-xs rounded-md border border-transparent text-gray-500 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                                    <img class="flex-shrink-0 size-4 rounded-full" src="@@webRoot/assets/images/profile/user-7.jpg" alt="Image Description">
+                                                    James Collins
+                                                    </button>
+                                                </div>
+                                                <!-- End Right Content -->
+                                                </div>
+                                                <!-- End Item -->
+                                            
+                                                <!-- Heading -->
+                                                <div class="ps-2 my-2 first:mt-0">
+                                                <h3 class="text-xs font-medium uppercase text-gray-500 dark:text-gray-400">
+                                                    31 Jul, 2024
+                                                </h3>
+                                                </div>
+                                                <!-- End Heading -->
+                                            
+                                                <!-- Item -->
+                                                <div class="flex gap-x-3">
+                                                <!-- Icon -->
+                                                <div class="relative last:after:hidden after:absolute after:top-7 after:bottom-0 after:start-3.5 after:w-px after:-translate-x-[0.5px] after:bg-gray-200 dark:after:bg-gray-700">
+                                                    <div class="relative z-10 size-7 flex justify-center items-center">
+                                                    <span class="flex flex-shrink-0 justify-center items-center size-7 bg-white border border-gray-200 text-[10px] font-semibold uppercase text-gray-600 rounded-full dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400">
+                                                        <i class="ti ti-arrow-fork text-lg leading-tight font-medium"></i>
+                                                    </span>
+                                                    </div>
+                                                </div>
+                                                <!-- End Icon -->
+                                            
+                                                <!-- Right Content -->
+                                                <div class="grow pt-0.5 pb-8">
+                                                    <h3 class="flex gap-x-1.5 font-semibold text-gray-800 dark:text-white">
+                                                    Take a break ⛳️
+                                                    </h3>
+                                                    <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                                                    Just chill for now... 😉
+                                                    </p>
+                                                </div>
+                                                <!-- End Right Content -->
+                                                </div>
+                                                <!-- End Item -->
+                                            </div>
+                                            <!-- End Timeline -->
+                                          </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                <!-- Main Content End -->
+
+            </div>
+        </div>
+        <!--end of project-->
+    </main>
+    @@include("partials/header-components/mobile-menu.html")
+    @@include("partials/customizer.html")
+    @@include("partials/scripts.html")
+</body>
+
+</html>

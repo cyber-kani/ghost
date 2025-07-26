@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-color-theme="Blue_Theme" class="light selected" data-layout="vertical"
+    data-boxed-layout="boxed" data-card="shadow">
+
+<head>
+    <!-- Required meta tags -->
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- Favicon icon-->
+<link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+  rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<!-- Core Css -->
+<link rel="stylesheet" href="../assets/css/theme.css" />
+    <title>Spike TailwindCSS HTML Admin Template</title>
+    <link rel="stylesheet" href="../assets/libs/prismjs/themes/prism-okaidia.min.css">
+</head>
+
+<body class="DEFAULT_THEME bg-lightprimary dark:bg-darkbody">
+    <main>
+        <!--start the project-->
+        <div id="main-wrapper" class="flex p-5">
+
+            <aside id="application-sidebar-brand"
+                class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full xl:rtl:-translate-x-0 rtl:translate-x-full  left-0 rtl:left-auto xl:rtl:right-5 rtl:right-0 transform hidden xl:block xl:translate-x-0 xl:end-auto xl:bottom-0 fixed top-0 with-vertical docs-left-sidebar transition-all duration-300 h-screen z-[2] flex-shrink-0  w-[270px] border-border dark:border-darkborder bg-white dark:bg-dark xl:top-5 xl:start-5 shadow-md xl:rounded-md">
+                <!-- ---------------------------------- -->
+<!-- Start Vertical Layout Sidebar -->
+<!-- ---------------------------------- -->
+<div class="p-3.5 flex justify-between" >
+  <div class="brand-logo d-flex align-items-center justify-center">
+  <a href="../main/index.html" class="text-nowrap logo-img">
+    <img
+      src="../assets/images/logos/logo-light.svg"
+      class="dark:hidden block rtl:hidden"
+      alt="Logo-Dark"
+    />
+    <img
+      src="../assets/images/logos/logo-dark.svg"
+      class="dark:block hidden rtl:hidden rtl:dark:hidden"
+      alt="Logo-light"
+    />
+    
+    <img
+      src="../assets/images/logos/logo-light-rtl.svg"
+      class="dark:hidden hidden rtl:block rtl:dark:hidden"
+      alt="Logo-Dark"
+    />
+    <img
+      src="../assets/images/logos/logo-dark-rtl.svg"
+      class="dark:hidden hidden rtl:hidden rtl:dark:block"
+      alt="Logo-light"
+    />
+  </a>
+</div>
+
+</div>
+<div class="scroll-sidebar" data-simplebar="">
+  <div class="px-4 mt-5 mini-layout" data-te-sidenav-menu-ref>
+    <nav class="hs-accordion-group w-full flex flex-col">
+      <ul data-te-sidenav-menu-ref id="sidebarnav">
+
+        <!-----Dashboard------->
+        <div class="caption">
+          <i class="ti ti-dots nav-small-cap-icon text-lg hidden text-center leading-[16px]"></i>
+          <span class="hide-menu">GETTING STARTED</span>
+        </div>
+
+        <li class="sidebar-item">
+          <a class="sidebar-link before:bg-lightprimary hover:text-primary
+          " href="../docs/index.html"
+            >
+            <iconify-icon icon="solar:home-line-duotone" class="text-xl p-2"></iconify-icon> <span class="hide-menu flex-shrink-0 ">Introduction</span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a class="sidebar-link before:bg-lightsuccess hover:text-success
+          " href="../docs/docs-structure.html"
+            >
+            <iconify-icon icon="solar:box-line-duotone" class="text-xl p-2"></iconify-icon> <span class="hide-menu flex-shrink-0 ">Package Structure</span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a class="sidebar-link before:bg-lightwarning hover:text-warning
+          " href="../docs/docs-start.html"
+            >
+            <iconify-icon icon="solar:branching-paths-down-line-duotone" class="text-xl p-2"></iconify-icon> <span class="hide-menu flex-shrink-0 ">Quick start</span>
+          </a>
+        </li>
+        <div class="caption">
+          <i class="ti ti-dots nav-small-cap-icon text-lg hidden text-center leading-[16px]"></i>
+          <span class="hide-menu">CUSTOMIZATION</span>
+         </div>
+         <li class="sidebar-item">
+          <a class="sidebar-link before:bg-lighterror hover:text-error
+          " href="../docs/docs-layout.html"
+            >
+            <iconify-icon icon="solar:tablet-line-duotone" class="text-xl p-2"></iconify-icon> <span class="hide-menu flex-shrink-0 ">Layout Option</span>
+          </a>
+        </li>         
+         <li class="sidebar-item">
+          <a class="sidebar-link before:bg-lightindigo hover:text-indigo
+          " href="../docs/docs-change-logo.html"
+            >
+            <iconify-icon icon="solar:tuning-4-linear" class="text-xl p-2"></iconify-icon> <span class="hide-menu flex-shrink-0 ">Change Logo</span>
+          </a>
+        </li>         
+         <li class="sidebar-item">
+          <a class="sidebar-link before:bg-lightprimary hover:text-primary
+           active before:bg-lightprimary text-primary dark:text-primary" href="../docs/docs-changes-skin-color.html"
+            >
+            <iconify-icon icon="solar:pallete-2-line-duotone" class="text-xl p-2"></iconify-icon> <span class="hide-menu flex-shrink-0 ">Global Skin Color</span>
+          </a>
+        </li>         
+
+
+        <div class="caption">
+        <i class="ti ti-dots nav-small-cap-icon text-lg hidden text-center leading-[16px]"></i>
+        <span class="hide-menu">THEME UI</span>
+        </div>
+
+        <li class="hs-accordion sidebar-item " id="menulevel-form-accordion">
+          <a class="cursor-pointer hs-accordion-toggle sidebar-link  before:bg-lightsuccess hover:text-success dark:hover:text-success "
+            >
+            <iconify-icon icon="solar:file-text-line-duotone" class="text-xl p-2"></iconify-icon><span class="hide-menu">Project Configuration</span>
+            <span class="hide-menu ms-auto">
+              <i class="ti ti-chevron-right text-lg me-4 leading-tight hs-accordion-active:hidden "></i>
+              <i
+                class="ti ti-chevron-up text-lg ms-auto hs-accordion-active:block hidden z-10 relative me-4"></i>
+            </span>
+          </a>
+          <div id="themui-block" 
+              class="hs-accordion-content ">
+              <ul class="hs-accordion-group " >
+                <li class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/docs-color.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                    <span class="hide-menu">Color</span>
+                  </a>
+                </li>
+                <li class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/docs-typography.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                    <span class="hide-menu">Typography</span>
+                  </a>
+                </li>
+                <li class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/docs-icon.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                    <span class="hide-menu">Icons</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+        </li>
+
+        <div class="caption">
+          <i class="ti ti-dots nav-small-cap-icon text-lg hidden text-center leading-[16px]"></i>
+          <span class="hide-menu">UI COMPONENTS</span>
+          </div>   
+          
+          <li class="hs-accordion sidebar-item " id="menulevel-form-accordion">
+            <a class="cursor-pointer hs-accordion-toggle sidebar-link  before:bg-lightwarning hover:text-warning dark:hover:text-warning "
+              >
+              <iconify-icon icon="solar:widget-6-linear" class="text-xl p-2"></iconify-icon><span class="hide-menu">Tailwind</span>
+              <span class="hide-menu ms-auto">
+                <i class="ti ti-chevron-right text-lg me-4 leading-tight hs-accordion-active:hidden "></i>
+                <i
+                  class="ti ti-chevron-up text-lg ms-auto hs-accordion-active:block hidden z-10 relative me-4"></i>
+              </span>
+            </a>
+            <div id="ui-block" 
+                class="hs-accordion-content ">
+                <ul class="hs-accordion-group " >
+                  <li
+                    class="dropdown-submenu">
+                    <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-accordion.html">
+                      <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                      <span class="hide-menu">Accordion</span>
+                    </a>
+                  </li>
+                  <li
+                    class="dropdown-submenu">
+                    <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-badge.html">
+                      <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                      <span class="hide-menu">Badge</span>
+                    </a>
+                  </li>
+                  <li
+                    class="dropdown-submenu">
+                    <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-button.html">
+                      <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                      <span class="hide-menu">Button</span>
+                    </a>
+                  </li>
+                  <li
+                    class="dropdown-submenu">
+                    <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-breadcrumb.html">
+                      <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                      <span class="hide-menu">Breadcrumb</span>
+                    </a>
+                  </li>
+                  <li
+                  class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-carousel.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                    <span class="hide-menu">Carousel</span>
+                  </a>
+                </li>
+                  <li
+                    class="dropdown-submenu">
+                    <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-chat-bubbles.html">
+                      <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                      <span class="hide-menu">Chat Bubbles</span>
+                    </a>
+                  </li>
+                  <li
+                    class="dropdown-submenu">
+                    <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-dropdowns.html">
+                      <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                      <span class="hide-menu">Dropdowns</span>
+                    </a>
+                  </li>
+                  <li
+                    class="dropdown-submenu">
+                    <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-datepicker.html">
+                      <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                      <span class="hide-menu">DatePicker</span>
+                    </a>
+                  </li>
+                  <li
+                    class="dropdown-submenu">
+                    <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-devices.html">
+                      <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                      <span class="hide-menu">Devices</span>
+                    </a>
+                  </li>
+                  <li
+                    class="dropdown-submenu">
+                    <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-grid.html">
+                      <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                      <span class="hide-menu">Grid</span>
+                    </a>
+                  </li>
+                  <li
+                    class="dropdown-submenu">
+                    <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-link.html">
+                      <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                      <span class="hide-menu">Link</span>
+                    </a>
+                  </li>
+                  <li
+                    class="dropdown-submenu">
+                    <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-link.html">
+                      <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                      <span class="hide-menu">Link</span>
+                    </a>
+                  </li>
+                  <li
+                  class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-modals.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                    <span class="hide-menu">Modals</span>
+                  </a>
+                </li>
+                <li
+                  class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-notification.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                    <span class="hide-menu">Notification</span>
+                  </a>
+                </li>
+                <li
+                  class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-offcanvas.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                    <span class="hide-menu">Offcanvas</span>
+                  </a>
+                </li>
+                <li
+                  class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-progressbar.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                    <span class="hide-menu">Progress Bars</span>
+                  </a>
+                </li>
+                <li
+                  class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-pagination.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                    <span class="hide-menu">Pagination</span>
+                  </a>
+                </li>
+                <li
+                  class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-ratings.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                    <span class="hide-menu">Ratings</span>
+                  </a>
+                </li>
+                <li
+                  class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-scrollspy.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                    <span class="hide-menu">Scrollspy</span>
+                  </a>
+                </li>
+                <li
+                  class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-spinner.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                    <span class="hide-menu">Spinner</span>
+                  </a>
+                </li>
+                <li
+                  class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-stepper.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                    <span class="hide-menu">Stepper</span>
+                  </a>
+                </li>
+                <li
+                  class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-skeleton.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                    <span class="hide-menu">Skeleton</span>
+                  </a>
+                </li>
+                <li
+                  class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-tab.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                    <span class="hide-menu">Tab</span>
+                  </a>
+                </li>
+                <li
+                  class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-typography.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                    <span class="hide-menu">Typography</span>
+                  </a>
+                </li>
+                <li
+                  class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-tooltip-popover.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                    <span class="hide-menu">Tooltip & Popover</span>
+                  </a>
+                </li>
+                <li
+                  class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-timeline.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                    <span class="hide-menu">Timeline</span>
+                  </a>
+                </li>
+                <li
+                  class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-toasts.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                    <span class="hide-menu">Toasts</span>
+                  </a>
+                </li>                  
+                </ul>
+              </div>
+          </li>
+
+        <div class="caption">
+          <i class="ti ti-dots nav-small-cap-icon text-lg hidden text-center leading-[16px]"></i>
+          <span class="hide-menu">SUPPORT</span>
+        </div>
+
+        <li class="sidebar-item">
+          <a class="sidebar-link before:bg-lighterror hover:text-error
+          " href="../docs/docs-change-log.html"
+            >
+            <iconify-icon icon="solar:refresh-circle-line-duotone" class="text-xl p-2"></iconify-icon> <span class="hide-menu flex-shrink-0 ">Change log</span>
+          </a>
+        </li> 
+
+      </ul>
+    </nav>
+  </div>
+</div>
+
+            </aside>
+            <div class="page-wrapper w-full" role="main">
+
+                <!-- Main Content -->
+                <main class="h-full ">
+                    <div class="container full-container py-5 xl:ps-6 ps-0 pt-0 pe-0">
+
+                        <!--  Header Start -->
+                        <header
+                            class="sticky top-0 inset-x-0 z-[1] flex flex-wrap md:justify-start md:flex-nowrap text-sm py-0 mb-6 bg-white dark:bg-dark rounded-md shadow-md">
+                            <div class="with-vertical w-full"><div class="w-full mx-auto px-4 lg:px-6 lg:hidden" aria-label="Global">
+
+  <div class="flex justify-between">
+    <div class="w-fit flex items-center"><div class="brand-logo d-flex align-items-center justify-center">
+  <a href="../main/index.html" class="text-nowrap logo-img">
+    <img
+      src="../assets/images/logos/logo-light.svg"
+      class="dark:hidden block rtl:hidden"
+      alt="Logo-Dark"
+    />
+    <img
+      src="../assets/images/logos/logo-dark.svg"
+      class="dark:block hidden rtl:hidden rtl:dark:hidden"
+      alt="Logo-light"
+    />
+    
+    <img
+      src="../assets/images/logos/logo-light-rtl.svg"
+      class="dark:hidden hidden rtl:block rtl:dark:hidden"
+      alt="Logo-Dark"
+    />
+    <img
+      src="../assets/images/logos/logo-dark-rtl.svg"
+      class="dark:hidden hidden rtl:hidden rtl:dark:block"
+      alt="Logo-light"
+    />
+  </a>
+</div>
+
+    </div>
+    <!-- Navigation Toggle -->
+    <a class="text-xl cursor-pointer text-link dark:text-darklink sidebartoggler h-[70px] hover:text-primary  flex justify-center items-center rounded-full"
+      data-hs-overlay="#application-sidebar-brand" aria-controls="application-sidebar-brand"
+      aria-label="Toggle navigation">
+      <iconify-icon icon="solar:list-bold-duotone" class="text-3xl relative z-[1]"></iconify-icon>
+    </a>
+    <!-- End Navigation Toggle -->
+  </div>
+</div></div>
+                        </header>
+                        <!--  Header End -->
+
+                        <!-- ============================================================== -->
+                        <!-- Start Page Content -->
+                        <!-- ============================================================== -->
+                        <div class="max-w-full">
+                            <!-- ============================================================== -->
+                            <!-- Start Page Content -->
+                            <!-- ============================================================== -->
+                            <div class="d-sm-flex align-items-center justify-content-between">
+                                <h4 class="mb-8 text-lg ">Change Global Skin
+                                    Color</h4>
+                            </div>
+                            <div class="grid grid-cols-12 gap-6">
+                                <div class="col-span-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="mb-4 text-lg ">How to
+                                                Configure Global Skin Colors ?</h4>
+                                            <div class="bg-lightprimary p-4 rounded-md mb-6">
+                                                <h5 class="text-lg font-medium text-dark dark:text-white">Note:</h5>
+                                                To execute Gulp, navigate to the package folder containing the
+                                                package.json file. Open a command
+                                                prompt in that directory and execute the command "gulp" as demonstrated
+                                                below. If you require
+                                                guidance on installing Gulp, please refer to the provided resource.
+                                                <a href="./docs-start.html"
+                                                    class="text-link font-medium hover:text-primary dark:text-darklink dark:hover:text-primary">Gulp</a>
+                                            </div>
+                                            <pre class="language-js mb-6" tabindex="0">
+                                        <code class="language-js">
+gulp
+                                          </code>
+                                        </pre>
+                                            <div class="mt-6">
+                                                <pre class="language-js " tabindex="0">
+                                            <code class="language-css">
+// -------------------------------------------------------------------------------------
+// File:</span> packages/demos/tailwind.config.js
+// -------------------------------------------------------------------------------------
+                                                                        
+primary: "var(--color-primary)",
+secondary: "var(--color-secondary)",
+                                                
+                                                                        </code>
+                                            </pre>
+                                                <pre class="language-html " tabindex="0">
+
+  // ---------------------------------------------------------------------------------------
+  // For all Color Theme - Primary-Secondary Color
+  // ---------------------------------------------------------------------------------------
+
+  // -------------------------------------------------------------------------------------
+  // File:</span> packages/demos/tailwind.config.js
+  // -------------------------------------------------------------------------------------
+  <code class="language-js">
+  primary: "var(--color-primary)",
+  secondary: "var(--color-secondary)",
+  lightprimary: "var(--color-lightprimary)",
+  lightsecondary: "var(--color-lightsecondary)",
+  primaryemphasis: "var(--color-primary-emphasis)",
+  secondaryemphasis: "var(--color-secondary-emphasis)",
+  </code>
+
+  // ---------------------------------------------------------------------------------------
+  // File:</span> package/main/src/assets/tailwind/utilities/default_colors.css
+  // ---------------------------------------------------------------------------------------
+
+<code class="language-css">
+  // ---------------------------------------------------------------------------------------
+  // For the Blue Theme - Primary-Secondary Color
+  // ---------------------------------------------------------------------------------------
+
+  [data-color-theme="Blue_Theme"]:root{
+    --color-primary: #0085db; 
+    --color-secondary: #707a82;
+    --color-lightprimary:#0085db12;
+    --color-darkprimary:#0f273f;
+    --color-darksecondary:#1a2535;
+    --color-lightsecondary:#707a821a;
+    --color-primary-emphasis:#0071ba; 
+    --color-secondary-emphasis:#5f686f;
+}
+
+// ---------------------------------------------------------------------------------------
+// For the Aqua Theme - Primary-Secondary Color
+// ---------------------------------------------------------------------------------------
+
+[data-color-theme="Aqua_Theme"]:root{
+    --color-primary: #0074BA;
+    --color-bghover:#00639e ; 
+    --color-primary-emphasis:#00639e;   
+    --color-secondary-emphasis:#3cb7a0;
+    --color-secondary: #47D7BC;
+    --color-lightprimary:#0074BA20;
+    --color-lightsecondary:#00639e20;
+    --color-darkprimary:#1D3143;
+    --color-darksecondary:#243B43; 
+}
+
+// ---------------------------------------------------------------------------------------
+// For the Purple_Theme - Primary-Secondary Color
+// ---------------------------------------------------------------------------------------
+
+[data-color-theme="Purple_Theme"]:root{
+    --color-primary: #763EBD;
+    --color-primary-emphasis:#6435a1;   
+    --color-secondary-emphasis:#7fb0b5;
+    --color-secondary: #49BEFF;
+    --color-lightprimary:#763EBD20;
+    --color-lightsecondary:#49BEFF20;
+    --color-darkprimary:#292B43;
+    --color-darksecondary:#2C3A46; 
+}
+
+// ---------------------------------------------------------------------------------------
+// For the Green_Theme - Primary-Secondary Color
+// ---------------------------------------------------------------------------------------
+
+[data-color-theme="Green_Theme"]:root{
+    --color-primary: #0A7EA4;
+    --color-primary-emphasis:#096b8b;   
+    --color-secondary-emphasis:#d4e069;
+    --color-secondary: #CCDA4E;
+    --color-lightprimary:#0A7EA420;
+    --color-lightsecondary:#CCDA4E20;
+    --color-darkprimary:#1E3241;
+    --color-darksecondary:#323B38; 
+    
+}
+
+// ---------------------------------------------------------------------------------------
+// For the Cyan_Theme - Primary-Secondary Color
+// ---------------------------------------------------------------------------------------
+
+[data-color-theme="Cyan_Theme"]:root{
+    --color-primary: #01C0C8;
+    --color-primary-emphasis:#01a3aa;   
+    --color-secondary-emphasis:#d58066;
+    --color-secondary: #FB9678;
+    --color-lightprimary:#01C0C820;
+    --color-lightsecondary:#FB967820;
+    --color-darkprimary:#1D3944;
+    --color-darksecondary:#37343C;
+}
+
+// ---------------------------------------------------------------------------------------
+// For the Orange_Theme - Primary-Secondary Color
+// ---------------------------------------------------------------------------------------
+
+[data-color-theme="Orange_Theme"]:root{
+    --color-primary: #FA896B;
+    --color-primary-emphasis:#d5745b;   
+    --color-secondary-emphasis:#00639e;
+    --color-secondary: #0074BA;
+    --color-lightprimary:#FA896B20;
+    --color-lightsecondary:#0074BA20;
+    --color-darkprimary:#36333B;
+    --color-darksecondary:#1D3143;
+}
+
+
+
+  
+                      </code>
+                                            </pre>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                        <!-------------->
+
+                    </div>
+                </main>
+                <!-- Main Content End -->
+
+            </div>
+        </div>
+        <!--end of project-->
+    </main>
+    
+<script src="../assets/js/theme/app.init.js"></script>
+<script src="../assets/js/theme/app.min.js"></script>
+<script src="../assets/libs/simplebar/dist/simplebar.min.js"></script>
+<script src="../assets/libs/iconify-icon/dist/iconify-icon.min.js"></script>
+<script src="../assets/libs/preline/dist/preline.js"></script>
+<script src="../assets/libs/@preline/input-number/index.js"></script>
+<script src="../assets/libs/@preline/tooltip/index.js"></script>
+<script src="../assets/libs/@preline/stepper/index.js"></script>
+
+    <script src="../assets/libs/prismjs/prism.js"></script>
+</body>
+
+</html>

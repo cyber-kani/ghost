@@ -1,0 +1,281 @@
+.chat-box {
+    width: calc(100% - 300px);
+}
+
+.parent-chat-box.app-chat-right .chat-box {
+    width: 100%;
+}
+
+.chat-box .chat {
+    display: none;
+}
+
+.chat-box .chat.active-chat {
+    display: block;
+}
+
+.chat-offcanvas {
+    width: 300px !important;
+}
+
+.app-chat-offcanvas {
+    flex-shrink: 0;
+    position: relative;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 300px;
+    visibility: visible;
+}
+
+.parent-chat-box.app-chat-right .app-chat-offcanvas {
+    width: 0;
+}
+.email-box {
+    width: 100% !important;
+}
+
+@media screen and (max-width: 991px) {
+    .app-email-chatting-box {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .parent-chat-box .app-chat-offcanvas {
+        width: 0;
+    }
+
+    .parent-chat-box.app-chat-right .app-chat-offcanvas {
+        left: 0;
+        position: absolute;
+        z-index: 9;
+    }
+
+    .parent-chat-box.app-chat-right .app-chat-offcanvas {
+        width: 300px;
+        visibility: visible;
+    }
+}
+@media screen and (max-width: 576px) {
+    .parent-chat-box.app-chat-right .app-chat-offcanvas {
+        width: 100%;
+    }
+}
+
+.file-chat-hover:hover .download-file {
+    display: flex;
+}
+
+.file-chat-hover .download-file {
+    display: none;
+}
+
+/*Invoice app*/
+.invoice-inner-part .invoiceing-box #custom-invoice #printableArea {
+    display: none;
+}
+
+.chat-box .chat {
+    display: none;
+}
+
+/*Product Details curosel*/
+body #sync2 .item {
+    cursor: pointer;
+    border: 2px solid var(--color-transparent);
+}
+body #sync2{
+    z-index: 0 !important;
+}
+body #sync1{
+    z-index: 0 !important;
+}
+body #sync2 .current .item {
+    border: 2px solid var(--color-dark);
+}
+body #sync1.owl-theme {
+    position: relative;
+}
+body #sync1.owl-theme .owl-next, body #sync1.owl-theme .owl-prev {
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: rgba(0,0,0,0.5);
+    position: absolute;
+    transform: translateY(-50%);
+}
+body #sync1.owl-theme .owl-prev {
+    left: 10px;
+}
+body #sync1.owl-theme .owl-next {
+    right: 10px;
+}
+body #sync4 .item {
+    cursor: pointer;
+    padding: 4px;
+}
+body #sync3{
+    z-index: 0 !important;
+}
+body #sync4{
+    z-index: 0 !important;
+}
+body .current .item {
+    border: 2px solid var(--color-primary);
+}
+
+body #sync3.owl-theme {
+    position: relative;
+}
+body #sync3.owl-theme .owl-next, body #sync3.owl-theme .owl-prev {
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: rgba(0,0,0,0.5);
+    position: absolute;
+    transform: translateY(-50%);
+}
+body #sync3.owl-theme .owl-prev {
+    left: 10px;
+}
+body #sync3.owl-theme .owl-next {
+    right: 10px;
+}
+body .shop-detail-carousel .owl-carousel .owl-nav {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    gap: 12px;
+    top: -55px;
+    right: 0;
+}
+body .shop-detail-carousel .owl-carousel .owl-nav button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+    color: var(--color-dark);
+    border-radius: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+#sync5.owl-theme .owl-nav button{
+    background-color: rgba(223, 223, 223, 0.261);
+}
+
+
+/*Checkout app*/
+.checkout .payment-method-list {
+    display: none;
+}
+
+.checkout .payment-method .btn-group-active .btn-group label {
+    border-color: var(--color-border);
+}
+
+.checkout .payment-method .btn-group-active .btn-group input:checked+label {
+    background-color: var(--color-lightprimary);
+    border-color: var(--color-primary);
+    box-shadow: inherit;
+}
+
+
+/*Notes app*/
+.note-has-grid .nav-link {
+    padding: 0.5rem;
+}
+
+.note-has-grid .single-note-item .favourite-note {
+    cursor: pointer;
+}
+
+.note-has-grid .single-note-item .side-stick {
+    position: absolute;
+    width: 3px;
+    height: 35px;
+    left: 0;
+    background-color: var(--color-bodytext);
+}
+
+.note-has-grid .single-note-item .category-dropdown.dropdown-toggle:after {
+    display: none;
+}
+
+.note-has-grid .single-note-item .category [class*="category-"] {
+    height: 15px;
+    width: 15px;
+    display: none;
+}
+
+.note-has-grid .single-note-item.note-business .point {
+    color: var(--color-lightsuccess);
+}
+
+.note-has-grid .single-note-item.note-business .side-stick {
+    background-color: var(--color-success);
+}
+
+.note-has-grid .single-note-item.note-business .category .category-business {
+    display: inline-block;
+}
+
+.note-has-grid .single-note-item.note-favourite .favourite-note {
+    color: var(--color-warning);
+}
+
+.note-has-grid .single-note-item.note-social .point {
+    color: var(--color-lightinfo);
+}
+
+.note-has-grid .single-note-item.note-social .side-stick {
+    background-color: var(--color-info);
+}
+
+.note-has-grid .single-note-item.note-social .category .category-social {
+    display: inline-block;
+}
+
+.note-has-grid .single-note-item.note-important .point {
+    color: var(--color-lighterror);
+}
+
+.note-has-grid .single-note-item.note-important .side-stick {
+    background-color: var(--color-error);
+}
+
+.note-has-grid .single-note-item.note-important .category .category-important {
+    display: inline-block;
+}
+
+.note-has-grid .single-note-item.all-category .more-options,
+.note-has-grid .single-note-item.all-category.note-favourite .more-options {
+    display: block;
+}
+
+.note-has-grid .single-note-item.all-category.note-important .more-options,
+.note-has-grid .single-note-item.all-category.note-favourite.note-important .more-options,
+.note-has-grid .single-note-item.all-category.note-business .more-options,
+.note-has-grid .single-note-item.all-category.note-favourite.note-business .more-options,
+.note-has-grid .single-note-item.all-category.note-social .more-options,
+.note-has-grid .single-note-item.all-category.note-favourite.note-social .more-options {
+    display: none;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+    color: var(--color-white);
+    background-color: var(--color-primary);
+}
+

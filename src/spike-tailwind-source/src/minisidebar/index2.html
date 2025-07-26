@@ -1,0 +1,1795 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-color-theme="Blue_Theme" class="light selected"
+    data-layout="vertical" data-boxed-layout="boxed" data-card="shadow">
+
+    <head>
+        @@include("partials/head.html")
+        <title>Spike TailwindCSS HTML Admin Template</title>
+    </head>
+
+    <body class="DEFAULT_THEME bg-lightprimary dark:bg-darkbody">
+        <!-- Toast -->
+		<div id="dismiss-toast"
+        class="toast-onload opacity-0   hs-removing:translate-x-5 hs-removing:opacity-0 transition duration-300 max-w-xs bg-primary rounded-md"
+        role="alert">
+        <div class="flex gap-2 p-3">
+            <i class="ti ti-alert-circle text-white text-lg"></i>
+            <div>
+                <h5 class="font-semibold text-white">Welcome to Spike</h5>
+                <p class="text-fs_12 text-white">Easy to costomize the Template!!!</p>
+            </div>
+            <div class="ms-auto">
+                <button type="button"
+                    data-hs-remove-element="#dismiss-toast">
+                    <i class="ti ti-x text-lg text-white opacity-70 leading-none"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- End Toast -->
+        <main>
+            <!--start the project-->
+            <div id="main-wrapper" class="flex p-5">
+
+                <aside id="application-sidebar-brand"
+                    class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full xl:rtl:-translate-x-0 rtl:translate-x-full  left-0 rtl:left-auto xl:rtl:right-5 rtl:right-0 transform hidden xl:block xl:translate-x-0 xl:end-auto xl:bottom-0 fixed top-0 with-vertical  left-sidebar transition-all duration-300 h-screen z-[2] flex-shrink-0  w-[270px] border-border dark:border-darkborder bg-white dark:bg-dark xl:top-5 xl:start-5 shadow-md xl:rounded-md">
+                    @@include("partials/sidebar.html",{ "page": "dashboard 2" ,"page_group": "dashboards" })
+                </aside>
+                <div class="page-wrapper w-full" role="main">
+
+                    <!-- Main Content -->
+                    <main class="h-full ">
+                        <div
+                            class="container full-container py-5 xl:ps-6 ps-0 pt-0 pe-0 remove-ps">
+
+                            <!--  Header Start -->
+                            <header
+                                class="sticky top-0 inset-x-0 z-[1] flex flex-wrap md:justify-start md:flex-nowrap text-sm py-3 lg:py-0 mb-6 bg-white dark:bg-dark rounded-md shadow-md">
+                                <div
+                                    class="with-vertical w-full">@@include("partials/header.html")</div>
+                                <div class="with-horizontal w-full">
+                                    <div class="bg-white dark:bg-dark">
+                                        <div class="container">
+                                            @@include("partials/horizontal-header.html")
+                                        </div>
+                                    </div>
+                                </div>
+                            </header>
+                            <!--  Header End -->
+
+                            <!-- Horizontal Sidebar Menu -->
+                            <aside
+                                class="with-horizontal lg:flex hidden left-sidebar bg-white dark:bg-dark border-t border-border dark:border-darkborder">
+                                @@include("partials/horizontal-sidebar.html", {
+                                "page":
+                                "dashboard 2","page_group": "dashboards" })
+                            </aside>
+                            <!-- Horizontal Sidebar Menu End -->
+
+                            <!------Container-------->
+                            <div class="max-w-full">
+                                <div class="container full-container ">
+                                    <div class="grid grid-cols-12 gap-6">
+                                        <!-----Welcome Card----->
+                                        <div class="xl:col-span-6 col-span-12">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h5
+                                                        class="card-title">Welcome
+                                                        Mike Nielsen</h5>
+                                                    <p
+                                                        class="card-subtitle">Check
+                                                        all the statastics</p>
+                                                    <button
+                                                        class="btn mt-5 px-7">visit
+                                                        now</button>
+                                                    <div
+                                                        class="md:absolute relative md:-end-6 -end-7 md:bottom-0 -bottom-8">
+                                                        <img
+                                                            src="@@webRoot/assets/images/backgrounds/school.png"
+                                                            alt
+                                                            class="max-w-[330px]">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="xl:col-span-6 col-span-12">
+                                            <div
+                                                class="grid grid-cols-12 gap-6">
+                                                <div
+                                                    class="md:col-span-4 col-span-12">
+                                                    <div
+                                                        class="card overflow-hidden">
+                                                        <div
+                                                            class="card-body bg-primary p-6 relative">
+                                                            <div class="mb-7">
+                                                                <i
+                                                                    class="ti ti-brand-producthunt text-3xl text-white"></i>
+                                                            </div>
+                                                            <h5
+                                                                class="text-white font-semibold text-xl">
+                                                                2358 <span
+                                                                    class="text-fs_12 font-light">+23%</span>
+                                                            </h5>
+                                                            <p
+                                                                class="opacity-50 text-white">Sales</p>
+                                                            <img
+                                                                src="@@webRoot/assets/images/shaps/warning-shap.png"
+                                                                alt
+                                                                class="absolute top-0 end-0 rtl:scale-x-[-1]">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="md:col-span-4 col-span-12">
+                                                    <div
+                                                        class="card overflow-hidden">
+                                                        <div
+                                                            class="card-body bg-primary p-6 relative">
+                                                            <div class="mb-7">
+                                                                <i
+                                                                    class="ti ti-report-money text-3xl text-white"></i>
+                                                            </div>
+                                                            <h5
+                                                                class="text-white font-semibold text-xl">
+                                                                356 <span
+                                                                    class="text-fs_12 font-light">+8%</span>
+                                                            </h5>
+                                                            <p
+                                                                class="opacity-50 text-white">Refunds</p>
+                                                            <img
+                                                                src="@@webRoot/assets/images/shaps/danger-shap.png"
+                                                                alt
+                                                                class="absolute top-0 end-0  rtl:scale-x-[-1]">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="md:col-span-4 col-span-12">
+                                                    <div
+                                                        class="card overflow-hidden">
+                                                        <div
+                                                            class="card-body bg-primary p-6 relative">
+                                                            <div class="mb-7">
+                                                                <i
+                                                                    class="ti ti-currency-dollar text-3xl text-white"></i>
+                                                            </div>
+                                                            <h5
+                                                                class="text-white font-semibold text-xl">
+                                                                235.8K<span
+                                                                    class="text-fs_12 font-light">-3%</span>
+                                                            </h5>
+                                                            <p
+                                                                class="opacity-50 text-white">Earnings</p>
+                                                            <img
+                                                                src="@@webRoot/assets/images/shaps/info-shap.png"
+                                                                alt
+                                                                class="absolute top-0 end-0  rtl:scale-x-[-1]">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-----Profit/Expense Card----->
+                                        <div class="lg:col-span-8 col-span-12">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div
+                                                        class="flex items-center justify-between ">
+                                                        <h5
+                                                            class="card-title">Profit
+                                                            & Expenses</h5>
+                                                        <div
+                                                            class="hs-dropdown relative inline-flex">
+                                                            <button
+                                                                id="hs-dropdown-custom-icon-trigger"
+                                                                class="hs-dropdown-toggle h-10 w-10 text-bodytext dark:text-darklink hover:text-primary dark:hover:text-primary group bg-hover justify-center items-center rounded-full">
+                                                                <i
+                                                                    class="ti ti-dots-vertical text-2xl"></i>
+                                                            </button>
+
+                                                            <div
+                                                                class="hs-dropdown-menu overflow-hidden z-[1] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-40 hidden"
+                                                                aria-labelledby="hs-dropdown-custom-icon-trigger">
+                                                                <div
+                                                                    class="flex flex-col">
+                                                                    <div
+                                                                        class="py-1.5 px-4 bg-hover">
+                                                                        <a
+                                                                            class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            Action
+                                                                        </a>
+                                                                    </div>
+                                                                    <div
+                                                                        class="py-1.5 px-4 bg-hover">
+                                                                        <a
+                                                                            class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            Another
+                                                                            action
+                                                                        </a>
+                                                                    </div>
+                                                                    <div
+                                                                        class="py-1.5 px-4 bg-hover">
+                                                                        <a
+                                                                            class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            Something
+                                                                            else
+                                                                            here
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div
+                                                        class="grid grid-cols-12 gap-6">
+                                                        <div
+                                                            class="md:col-span-7 col-span-12">
+                                                            <div id="profit"
+                                                                class="profit-chart -me-6"></div>
+                                                        </div>
+                                                        <div
+                                                            class="md:col-span-5 col-span-12 ">
+                                                            <div
+                                                                class="flex flex-col gap-9 mt-4">
+                                                                <div
+                                                                    class="flex gap-5 items-center">
+                                                                    <div
+                                                                        class="bg-lighterror dark:bg-darkerror h-10 w-10 rounded-full flex justify-center items-center">
+                                                                        <img
+                                                                            src="@@webRoot/assets/images/svgs/biology-1584993.svg"
+                                                                            width="24"
+                                                                            height="24"
+                                                                            alt />
+                                                                    </div>
+                                                                    <div>
+                                                                        <h5
+                                                                            class="text-lg">$63,489.50</h5>
+                                                                        <p
+                                                                            class="font-medium">Earning
+                                                                            this
+                                                                            year</p>
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    class="flex gap-5 items-center">
+                                                                    <div
+                                                                        class="bg-lightinfo dark:bg-darkinfo h-10 w-10 rounded-full flex justify-center items-center">
+                                                                        <img
+                                                                            src="@@webRoot/assets/images/svgs/erase-1585028.svg"
+                                                                            width="24"
+                                                                            height="24"
+                                                                            alt />
+                                                                    </div>
+                                                                    <div>
+                                                                        <h5
+                                                                            class="text-lg leading-tight">
+                                                                            $48,820.00
+                                                                            <span
+                                                                                class="text-fs_12 font-light text-success">+23%</span>
+                                                                        </h5>
+                                                                        <p
+                                                                            class="font-medium">Profit
+                                                                            this
+                                                                            year</p>
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    class="flex gap-5 items-center">
+                                                                    <div
+                                                                        class="bg-lightsecondary dark:bg-darksecondary h-10 w-10 rounded-full flex justify-center items-center">
+                                                                        <img
+                                                                            src="@@webRoot/assets/images/svgs/globe-1584990.svg"
+                                                                            width="24"
+                                                                            height="24"
+                                                                            alt />
+                                                                    </div>
+                                                                    <div>
+                                                                        <h5
+                                                                            class="text-lg">$103,582.50
+                                                                        </h5>
+                                                                        <p
+                                                                            class="font-medium">Overall
+                                                                            earnings</p>
+                                                                    </div>
+                                                                </div>
+                                                                <button
+                                                                    class="btn w-fit px-7 py-3">View
+                                                                    Full
+                                                                    Report</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="lg:col-span-4 col-span-12">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div
+                                                        class="flex items-center justify-between ">
+                                                        <h5
+                                                            class="card-title">Product
+                                                            Sales</h5>
+                                                        <div
+                                                            class="hs-dropdown relative inline-flex">
+                                                            <button
+                                                                id="hs-dropdown-custom-icon-trigger"
+                                                                class="hs-dropdown-toggle h-10 w-10 text-bodytext dark:text-darklink hover:text-primary dark:hover:text-primary group bg-hover justify-center items-center rounded-full">
+                                                                <i
+                                                                    class="ti ti-dots-vertical text-2xl"></i>
+                                                            </button>
+
+                                                            <div
+                                                                class="hs-dropdown-menu overflow-hidden z-[1] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-40 hidden"
+                                                                aria-labelledby="hs-dropdown-custom-icon-trigger">
+                                                                <div
+                                                                    class="flex flex-col">
+                                                                    <div
+                                                                        class="py-1.5 px-4 bg-hover">
+                                                                        <a
+                                                                            class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            Action
+                                                                        </a>
+                                                                    </div>
+                                                                    <div
+                                                                        class="py-1.5 px-4 bg-hover">
+                                                                        <a
+                                                                            class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            Another
+                                                                            action
+                                                                        </a>
+                                                                    </div>
+                                                                    <div
+                                                                        class="py-1.5 px-4 bg-hover">
+                                                                        <a
+                                                                            class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            Something
+                                                                            else
+                                                                            here
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div id="test"
+                                                        class="mt-4"></div>
+                                                    <div
+                                                        class="flex gap-5 items-center">
+                                                        <div
+                                                            class="bg-lightprimary dark:bg-darkprimary h-10 w-10 rounded-full flex justify-center items-center">
+                                                            <img
+                                                                src="@@webRoot/assets/images/svgs/icon-user.svg"
+                                                                width="24"
+                                                                height="24"
+                                                                alt />
+                                                        </div>
+                                                        <div>
+                                                            <div
+                                                                class="flex items-center">
+                                                                <h5
+                                                                    class="text-base">36,436</h5>
+                                                                <div
+                                                                    class="badge bg-lightsuccess dark:bg-darksuccess border-success text-success ms-2">+12%</div>
+                                                            </div>
+                                                            <p
+                                                                class="font-medium">New
+                                                                Customer</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!----New Goal----->
+                                        <div class="lg:col-span-3 col-span-12">
+                                            <div
+                                                class="card overflow-hidden mb-6">
+                                                <div
+                                                    class="card-body  bg-lightprimary dark:bg-darkprimary relative">
+                                                    <img
+                                                    src="@@webRoot/assets/images/shaps/info-shap.png"
+                                                    alt
+                                                    class="absolute top-0 end-0  rtl:scale-x-[-1]">
+                                                    <div
+                                                        class="absolute top-0 bottom-0 left-0 h-full w-full bg-lightprimary mix-blend-multiply"></div>
+                                                    <div
+                                                        class="bg-info h-12 w-12 rounded-full flex justify-center items-center">
+                                                        <img
+                                                            src="@@webRoot/assets/images/svgs/idea-1585024.svg"
+                                                            width="24"
+                                                            height="24" alt />
+                                                    </div>
+                                                   
+                                                    <div
+                                                        class="flex justify-between items-center mt-6 mb-4">
+                                                        <h5
+                                                            class="text-base">New
+                                                            Goals</h5>
+                                                        <p
+                                                            class="font-medium text-primary text-sm font-light">83%</p>
+                                                    </div>
+                                                    <div
+                                                        class="flex  w-full h-2 bg-lightprimary dark:bg-darkprimary rounded-md overflow-hidden"
+                                                        role="progressbar"
+                                                        aria-valuenow="83"
+                                                        aria-valuemin="0"
+                                                        aria-valuemax="100">
+                                                        <div
+                                                            class="flex flex-col justify-center overflow-hidden bg-primary text-xs text-white text-center whitespace-nowrap transition duration-500 "
+                                                            style="width: 83%"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card overflow-hidden">
+                                                <div class="card-body">
+                                                    <div
+                                                        class="flex justify-between">
+                                                        <img
+                                                            src="@@webRoot/assets/images/profile/user-3.jpg"
+                                                            class="rounded-full"
+                                                            width="60"
+                                                            alt="user" />
+                                                        <p
+                                                            class="text-sm font-semibold text-warning">#1
+                                                            in DevOps</p>
+                                                    </div>
+                                                    <div class="mt-6">
+                                                        <h5
+                                                            class="card-title">Adam
+                                                            Johnson</h5>
+                                                        <p
+                                                            class="card-subtitle">Top
+                                                            Developer</p>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!----- Traffic Distribution --->
+                                        <div class="lg:col-span-6 col-span-12">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div
+                                                        class="flex items-center justify-between ">
+                                                        <h5
+                                                            class="card-title">Traffic
+                                                            Distribution</h5>
+                                                        <div
+                                                            class="hs-dropdown relative inline-flex">
+                                                            <button
+                                                                id="hs-dropdown-custom-icon-trigger"
+                                                                class="hs-dropdown-toggle h-10 w-10 text-bodytext dark:text-darklink hover:text-primary dark:hover:text-primary group bg-hover justify-center items-center rounded-full">
+                                                                <i
+                                                                    class="ti ti-dots-vertical text-2xl"></i>
+                                                            </button>
+
+                                                            <div
+                                                                class="hs-dropdown-menu overflow-hidden z-[1] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-40 hidden"
+                                                                aria-labelledby="hs-dropdown-custom-icon-trigger">
+                                                                <div
+                                                                    class="flex flex-col">
+                                                                    <div
+                                                                        class="py-1.5 px-4 bg-hover">
+                                                                        <a
+                                                                            class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            Action
+                                                                        </a>
+                                                                    </div>
+                                                                    <div
+                                                                        class="py-1.5 px-4 bg-hover">
+                                                                        <a
+                                                                            class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            Another
+                                                                            action
+                                                                        </a>
+                                                                    </div>
+                                                                    <div
+                                                                        class="py-1.5 px-4 bg-hover">
+                                                                        <a
+                                                                            class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            Something
+                                                                            else
+                                                                            here
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        class="grid grid-cols-12 gap-6 mt-11">
+                                                        <div
+                                                            class="xl:col-span-6 md:col-span-8 col-span-12">
+                                                            <div
+                                                                id="grade"></div>
+                                                        </div>
+                                                        <div
+                                                            class="xl:col-span-6 md:col-span-4 col-span-12">
+                                                            <div
+                                                                class="flex flex-col gap-7 mt-4 xl:ps-5">
+                                                                <div
+                                                                    class="flex gap-3 items-baseline">
+                                                                    <i
+                                                                        class="ti ti-circle text-primary text-lg"></i>
+                                                                    <div>
+                                                                        <h5
+                                                                            class="text-lg leading-tight">
+                                                                            4,106
+                                                                            <span
+                                                                                class="text-fs_12 font-light text-success">+23%</span>
+                                                                        </h5>
+                                                                        <p
+                                                                            class="font-medium">Oragnic
+                                                                            Traffic</p>
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    class="flex gap-3 items-baseline">
+                                                                    <i
+                                                                        class="ti ti-circle text-error text-lg"></i>
+                                                                    <div>
+                                                                        <h5
+                                                                            class="text-lg leading-tight">3,500</h5>
+                                                                        <p
+                                                                            class="font-medium">Refferal
+                                                                            Traffic</p>
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    class="flex gap-3 items-baseline">
+                                                                    <i
+                                                                        class="ti ti-circle text-warning text-lg"></i>
+                                                                    <div>
+                                                                        <h5
+                                                                            class="text-lg leading-tight">3,319</h5>
+                                                                        <p
+                                                                            class="font-medium">Direct
+                                                                            Traffic</p>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!----Figma Cards----->
+                                        <div class="lg:col-span-3 col-span-12">
+                                            <div class="card overflow-hidden">
+                                                <div
+                                                    class="card-body bg-lighterror dark:bg-darkerror">
+                                                    <div class="text-center ">
+                                                        <img
+                                                            src="@@webRoot/assets/images/backgrounds/gifts.png"
+                                                            class="mx-auto"
+                                                            alt />
+                                                    </div>
+                                                </div>
+                                                <div class="card-body">
+                                                    <h6
+                                                        class="text-base">Figma
+                                                        Tips and Tricks with
+                                                        Stephan</h6>
+                                                    <p
+                                                        class="font-medium text-sm pt-3">Checkout
+                                                        latest events going to
+                                                        happen in USA.</p>
+                                                    <div class="flex pt-4">
+                                                        <a
+                                                            href="javascript:void(0)"
+                                                            class="relative ">
+                                                            <img
+                                                                src="@@webRoot/assets/images/profile/user-4.jpg"
+                                                                class="rounded-full h-8 w-8 border-2 border-body dark:border-dark"
+                                                                alt="user" />
+                                                        </a>
+                                                        <a
+                                                            href="javascript:void(0)"
+                                                            class="relative">
+                                                            <img
+                                                                src="@@webRoot/assets/images/profile/user-5.jpg"
+                                                                class="rounded-full h-8 w-8 border-2 border-body dark:border-dark"
+                                                                alt="user" />
+                                                        </a>
+                                                        <a
+                                                            href="javascript:void(0)"
+                                                            class="relative">
+                                                            <img
+                                                                src="@@webRoot/assets/images/profile/user-3.jpg"
+                                                                class="rounded-full h-8 w-8 border-2 border-body dark:border-dark"
+                                                                alt="user" />
+                                                        </a>
+                                                        <a
+                                                            href="javascript:void(0)"
+                                                            class="relative">
+                                                            <img
+                                                                src="@@webRoot/assets/images/profile/user-2.jpg"
+                                                                class="rounded-full h-8 w-8 border-2 border-body dark:border-dark"
+                                                                alt="user" />
+                                                        </a>
+                                                        <a
+                                                            href="javascript:void(0)"
+                                                            class="relative ms-1">
+                                                            <div
+                                                                class="rounded-full h-8 w-8 flex justify-center items-center font-medium hover:text-primary dark:hover:text-primary">
+                                                                +18
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!----Upcoming Scheduls----->
+                                        <div class="lg:col-span-4 col-span-12">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div
+                                                        class="flex items-center justify-between ">
+                                                        <h5
+                                                            class="card-title">Upcoming
+                                                            Scheduls</h5>
+                                                        <div
+                                                            class="hs-dropdown relative inline-flex">
+                                                            <button
+                                                                id="hs-dropdown-custom-icon-trigger"
+                                                                class="hs-dropdown-toggle h-10 w-10 text-bodytext dark:text-darklink hover:text-primary dark:hover:text-primary group bg-hover justify-center items-center rounded-full">
+                                                                <i
+                                                                    class="ti ti-dots-vertical text-2xl"></i>
+                                                            </button>
+
+                                                            <div
+                                                                class="hs-dropdown-menu overflow-hidden z-[1] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-40 hidden"
+                                                                aria-labelledby="hs-dropdown-custom-icon-trigger">
+                                                                <div
+                                                                    class="flex flex-col">
+                                                                    <div
+                                                                        class="py-1.5 px-4 bg-hover">
+                                                                        <a
+                                                                            class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            Action
+                                                                        </a>
+                                                                    </div>
+                                                                    <div
+                                                                        class="py-1.5 px-4 bg-hover">
+                                                                        <a
+                                                                            class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            Another
+                                                                            action
+                                                                        </a>
+                                                                    </div>
+                                                                    <div
+                                                                        class="py-1.5 px-4 bg-hover">
+                                                                        <a
+                                                                            class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            Something
+                                                                            else
+                                                                            here
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <nav
+                                                        class="flex justify-between mt-6 shadow-md rounded-full "
+                                                        aria-label="Tabs"
+                                                        role="tablist">
+                                                        <button type="button"
+                                                            class="hs-tab-active:bg-primary btn hs-tab-active:text-white  hs-tab-active:hover:text-white  hs-tab-active:dark:text-white  text-center py-2 px-4  items-center  bg-transparent text-base text-dark dark:text-darklink hover:text-white dark:hover:text-white
+                                                            active"
+                                                            id="tab-item-1"
+                                                            data-hs-tab="#tab1"
+                                                            aria-controls="tab1"
+                                                            role="tab">
+                                                            1 To 3
+                                                        </button>
+                                                        <button type="button"
+                                                            class="hs-tab-active:bg-primary btn hs-tab-active:text-white  hs-tab-active:hover:text-white  hs-tab-active:dark:text-white  text-center py-2 px-4  items-center  bg-transparent text-base text-dark dark:text-darklink hover:text-white dark:hover:text-white
+                                                            " id="tab-item-2"
+                                                            data-hs-tab="#tab2"
+                                                            aria-controls="tab1"
+                                                            role="tab">
+                                                            4 To 7
+                                                        </button>
+                                                        <button type="button"
+                                                            class="hs-tab-active:bg-primary btn hs-tab-active:text-white  hs-tab-active:hover:text-white  hs-tab-active:dark:text-white  text-center py-2 px-4  items-center  bg-transparent text-base text-dark dark:text-darklink hover:text-white dark:hover:text-white
+                                                            " id="tab-item-3"
+                                                            data-hs-tab="#tab3"
+                                                            aria-controls="tab1"
+                                                            role="tab">
+                                                            8 To 10
+                                                        </button>
+                                                    </nav>
+                                                    <div class="mt-10">
+                                                        <div id="tab1"
+                                                            role="tabpanel"
+                                                            class="h-96"
+                                                            aria-labelledby="tab-item-1"
+                                                            data-simplebar>
+
+                                                            <div
+                                                                class="grid grid-cols-12 gap-6">
+                                                                <div
+                                                                    class="col-span-2 grid">
+                                                                    <ul>
+                                                                        <li
+                                                                            class="mb-8">
+                                                                            <p
+                                                                                class="font-medium text-sm">8:00</p>
+                                                                        </li>
+                                                                        <li
+                                                                            class="mb-8">
+                                                                            <p
+                                                                                class="font-medium text-sm">8:30</p>
+                                                                        </li>
+                                                                        <li
+                                                                            class="mb-8">
+                                                                            <p
+                                                                                class="font-medium text-sm">9:00</p>
+                                                                        </li>
+                                                                        <li
+                                                                            class="mb-8">
+                                                                            <p
+                                                                                class="font-medium text-sm">9:30</p>
+                                                                        </li>
+                                                                        <li
+                                                                            class="mb-8">
+                                                                            <p
+                                                                                class="font-medium text-sm">10:00</p>
+                                                                        </li>
+                                                                        <li
+                                                                            class="mb-8">
+                                                                            <p
+                                                                                class="font-medium text-sm">10:30</p>
+                                                                        </li>
+                                                                        <li
+                                                                            class="mb-8">
+                                                                            <p
+                                                                                class="font-medium text-sm">11:00</p>
+                                                                        </li>
+                                                                        <li
+                                                                            class="mb-8">
+                                                                            <p
+                                                                                class="font-medium text-sm">11:30</p>
+                                                                        </li>
+                                                                        <li
+                                                                            class="mb-8">
+                                                                            <p
+                                                                                class="font-medium text-sm">12:00</p>
+                                                                        </li>
+                                                                        <li
+                                                                            class="mb-8">
+                                                                            <p
+                                                                                class="font-medium text-sm">12:30</p>
+                                                                        </li>
+                                                                        <li
+                                                                            class="mb-8">
+                                                                            <p
+                                                                                class="font-medium text-sm">13:00</p>
+                                                                        </li>
+                                                                        <li
+                                                                            class="mb-8">
+                                                                            <p
+                                                                                class="card-subtitle text-sm mb-0">13:30</p>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                                <div
+                                                                    class="col-span-10">
+                                                                    <div
+                                                                        class="card rounded-sm border-s-[5px] border-indigo mb-6 mt-7">
+                                                                        <div
+                                                                            class="card-body p-4">
+                                                                            <h5
+                                                                                class="text-base">Marketing
+                                                                                Meeting</h5>
+                                                                            <div
+                                                                                class="flex items-center mb-5">
+                                                                                <i
+                                                                                    class="ti ti-clock-hour-4 text-lg me-1"></i>
+                                                                                <p
+                                                                                    class="font-medium text-sm">08:30
+                                                                                    -
+                                                                                    10:00</p>
+                                                                            </div>
+                                                                            <div
+                                                                                class="flex pt-8">
+                                                                                <a
+                                                                                    href="javascript:void(0)"
+                                                                                    class="relative ">
+                                                                                    <img
+                                                                                        src="@@webRoot/assets/images/profile/user-2.jpg"
+                                                                                        class="rounded-full h-8 w-8 "
+                                                                                        alt="user" />
+                                                                                </a>
+                                                                                <a
+                                                                                    href="javascript:void(0)"
+                                                                                    class="relative -ms-1">
+                                                                                    <img
+                                                                                        src="@@webRoot/assets/images/profile/user-3.jpg"
+                                                                                        class="rounded-full h-8 w-8 "
+                                                                                        alt="user" />
+                                                                                </a>
+                                                                                <a
+                                                                                    href="javascript:void(0)"
+                                                                                    class="relative -ms-1">
+                                                                                    <img
+                                                                                        src="@@webRoot/assets/images/profile/user-4.jpg"
+                                                                                        class="rounded-full h-8 w-8 "
+                                                                                        alt="user" />
+                                                                                </a>
+                                                                                <a
+                                                                                    href="javascript:void(0)"
+                                                                                    class="relative -ms-1">
+                                                                                    <img
+                                                                                        src="@@webRoot/assets/images/profile/user-5.jpg"
+                                                                                        class="rounded-full h-8 w-8 "
+                                                                                        alt="user" />
+                                                                                </a>
+                                                                                <a
+                                                                                    href="javascript:void(0)"
+                                                                                    class="relative ms-1">
+                                                                                    <div
+                                                                                        class="h-8 w-8  flex justify-center items-center font-medium hover:text-primary dark:hover:text-primary">
+                                                                                        +18
+                                                                                    </div>
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div
+                                                                        class="card rounded-sm border-s-[5px] border-success mb-6">
+                                                                        <div
+                                                                            class="card-body p-4">
+                                                                            <h5
+                                                                                class="text-base">Applied
+                                                                                mathematics</h5>
+                                                                            <div
+                                                                                class="flex items-center mb-5">
+                                                                                <i
+                                                                                    class="ti ti-clock-hour-4 text-lg me-1"></i>
+                                                                                <p
+                                                                                    class="font-medium text-sm">10:15
+                                                                                    -
+                                                                                    11:45</p>
+                                                                            </div>
+                                                                            <div
+                                                                                class="flex pt-8">
+                                                                                <a
+                                                                                    href="javascript:void(0)"
+                                                                                    class="relative ">
+                                                                                    <img
+                                                                                        src="@@webRoot/assets/images/profile/user-2.jpg"
+                                                                                        class="rounded-full h-8 w-8 "
+                                                                                        alt="user" />
+                                                                                </a>
+                                                                                <a
+                                                                                    href="javascript:void(0)"
+                                                                                    class="relative -ms-1">
+                                                                                    <img
+                                                                                        src="@@webRoot/assets/images/profile/user-3.jpg"
+                                                                                        class="rounded-full h-8 w-8 "
+                                                                                        alt="user" />
+                                                                                </a>
+                                                                                <a
+                                                                                    href="javascript:void(0)"
+                                                                                    class="relative -ms-1">
+                                                                                    <img
+                                                                                        src="@@webRoot/assets/images/profile/user-4.jpg"
+                                                                                        class="rounded-full h-8 w-8 "
+                                                                                        alt="user" />
+                                                                                </a>
+                                                                                <a
+                                                                                    href="javascript:void(0)"
+                                                                                    class="relative -ms-1">
+                                                                                    <img
+                                                                                        src="@@webRoot/assets/images/profile/user-5.jpg"
+                                                                                        class="rounded-full h-8 w-8 "
+                                                                                        alt="user" />
+                                                                                </a>
+                                                                                <a
+                                                                                    href="javascript:void(0)"
+                                                                                    class="relative ms-1">
+                                                                                    <div
+                                                                                        class="h-8 w-8  flex justify-center items-center font-medium hover:text-primary dark:hover:text-primary">
+                                                                                        +18
+                                                                                    </div>
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div
+                                                                        class="card rounded-sm border-s-[5px] border-error mb-6">
+                                                                        <div
+                                                                            class="card-body p-4">
+                                                                            <h5
+                                                                                class="text-base">SEO
+                                                                                Session
+                                                                                with
+                                                                                Team</h5>
+                                                                            <div
+                                                                                class="flex items-center mb-5">
+                                                                                <i
+                                                                                    class="ti ti-clock-hour-4 text-lg me-1"></i>
+                                                                                <p
+                                                                                    class="font-medium text-sm">12:00
+                                                                                    -
+                                                                                    13:25</p>
+                                                                            </div>
+                                                                            <div
+                                                                                class="flex pt-8">
+                                                                                <a
+                                                                                    href="javascript:void(0)"
+                                                                                    class="relative ">
+                                                                                    <img
+                                                                                        src="@@webRoot/assets/images/profile/user-2.jpg"
+                                                                                        class="rounded-full h-8 w-8 "
+                                                                                        alt="user" />
+                                                                                </a>
+                                                                                <a
+                                                                                    href="javascript:void(0)"
+                                                                                    class="relative -ms-1">
+                                                                                    <img
+                                                                                        src="@@webRoot/assets/images/profile/user-3.jpg"
+                                                                                        class="rounded-full h-8 w-8 "
+                                                                                        alt="user" />
+                                                                                </a>
+                                                                                <a
+                                                                                    href="javascript:void(0)"
+                                                                                    class="relative -ms-1">
+                                                                                    <img
+                                                                                        src="@@webRoot/assets/images/profile/user-4.jpg"
+                                                                                        class="rounded-full h-8 w-8 "
+                                                                                        alt="user" />
+                                                                                </a>
+                                                                                <a
+                                                                                    href="javascript:void(0)"
+                                                                                    class="relative -ms-1">
+                                                                                    <img
+                                                                                        src="@@webRoot/assets/images/profile/user-5.jpg"
+                                                                                        class="rounded-full h-8 w-8 "
+                                                                                        alt="user" />
+                                                                                </a>
+                                                                                <a
+                                                                                    href="javascript:void(0)"
+                                                                                    class="relative ms-1">
+                                                                                    <div
+                                                                                        class="h-8 w-8  flex justify-center items-center font-medium hover:text-primary dark:hover:text-primary">
+                                                                                        +18
+                                                                                    </div>
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                        <div id="tab2"
+                                                            role="tabpanel"
+                                                            class="hidden h-96"
+                                                            aria-labelledby="tab-item-2"
+                                                            data-simplebar>
+                                                            <div
+                                                                class="grid grid-cols-12 gap-6">
+                                                                <div
+                                                                    class="col-span-2 grid">
+                                                                    <ul>
+                                                                        <li
+                                                                            class="mb-8">
+                                                                            <p
+                                                                                class="font-medium text-sm">8:00</p>
+                                                                        </li>
+                                                                        <li
+                                                                            class="mb-8">
+                                                                            <p
+                                                                                class="font-medium text-sm">8:30</p>
+                                                                        </li>
+                                                                        <li
+                                                                            class="mb-8">
+                                                                            <p
+                                                                                class="font-medium text-sm">9:00</p>
+                                                                        </li>
+                                                                        <li
+                                                                            class="mb-8">
+                                                                            <p
+                                                                                class="font-medium text-sm">9:30</p>
+                                                                        </li>
+                                                                        <li
+                                                                            class="mb-8">
+                                                                            <p
+                                                                                class="font-medium text-sm">10:00</p>
+                                                                        </li>
+                                                                        <li
+                                                                            class="mb-8">
+                                                                            <p
+                                                                                class="font-medium text-sm">10:30</p>
+                                                                        </li>
+                                                                        <li
+                                                                            class="mb-8">
+                                                                            <p
+                                                                                class="font-medium text-sm">11:00</p>
+                                                                        </li>
+                                                                        <li
+                                                                            class="mb-8">
+                                                                            <p
+                                                                                class="font-medium text-sm">11:30</p>
+                                                                        </li>
+                                                                        <li
+                                                                            class="mb-8">
+                                                                            <p
+                                                                                class="font-medium text-sm">12:00</p>
+                                                                        </li>
+                                                                        <li
+                                                                            class="mb-8">
+                                                                            <p
+                                                                                class="font-medium text-sm">12:30</p>
+                                                                        </li>
+                                                                        <li
+                                                                            class="mb-8">
+                                                                            <p
+                                                                                class="font-medium text-sm">13:00</p>
+                                                                        </li>
+                                                                        <li
+                                                                            class="mb-8">
+                                                                            <p
+                                                                                class="card-subtitle text-sm mb-0">13:30</p>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                                <div
+                                                                    class="col-span-10">
+                                                                    <div
+                                                                        class="card rounded-sm border-s-[5px] border-success mb-6">
+                                                                        <div
+                                                                            class="card-body p-4">
+                                                                            <h5
+                                                                                class="text-base">Applied
+                                                                                mathematics</h5>
+                                                                            <div
+                                                                                class="flex items-center mb-5">
+                                                                                <i
+                                                                                    class="ti ti-clock-hour-4 text-lg me-1"></i>
+                                                                                <p
+                                                                                    class="font-medium text-sm">10:15
+                                                                                    -
+                                                                                    11:45</p>
+                                                                            </div>
+                                                                            <div
+                                                                                class="flex pt-8">
+                                                                                <a
+                                                                                    href="javascript:void(0)"
+                                                                                    class="relative ">
+                                                                                    <img
+                                                                                        src="@@webRoot/assets/images/profile/user-2.jpg"
+                                                                                        class="rounded-full h-8 w-8 "
+                                                                                        alt="user" />
+                                                                                </a>
+                                                                                <a
+                                                                                    href="javascript:void(0)"
+                                                                                    class="relative -ms-1">
+                                                                                    <img
+                                                                                        src="@@webRoot/assets/images/profile/user-3.jpg"
+                                                                                        class="rounded-full h-8 w-8 "
+                                                                                        alt="user" />
+                                                                                </a>
+                                                                                <a
+                                                                                    href="javascript:void(0)"
+                                                                                    class="relative -ms-1">
+                                                                                    <img
+                                                                                        src="@@webRoot/assets/images/profile/user-4.jpg"
+                                                                                        class="rounded-full h-8 w-8 "
+                                                                                        alt="user" />
+                                                                                </a>
+                                                                                <a
+                                                                                    href="javascript:void(0)"
+                                                                                    class="relative -ms-1">
+                                                                                    <img
+                                                                                        src="@@webRoot/assets/images/profile/user-5.jpg"
+                                                                                        class="rounded-full h-8 w-8 "
+                                                                                        alt="user" />
+                                                                                </a>
+                                                                                <a
+                                                                                    href="javascript:void(0)"
+                                                                                    class="relative ms-1">
+                                                                                    <div
+                                                                                        class="h-8 w-8  flex justify-center items-center font-medium hover:text-primary dark:hover:text-primary">
+                                                                                        +18
+                                                                                    </div>
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div
+                                                                        class="card rounded-sm border-s-[5px] border-indigo mb-6 mt-7">
+                                                                        <div
+                                                                            class="card-body p-4">
+                                                                            <h5
+                                                                                class="text-base">Marketing
+                                                                                Meeting</h5>
+                                                                            <div
+                                                                                class="flex items-center mb-5">
+                                                                                <i
+                                                                                    class="ti ti-clock-hour-4 text-lg me-1"></i>
+                                                                                <p
+                                                                                    class="font-medium text-sm">08:30
+                                                                                    -
+                                                                                    10:00</p>
+                                                                            </div>
+                                                                            <div
+                                                                                class="flex pt-8">
+                                                                                <a
+                                                                                    href="javascript:void(0)"
+                                                                                    class="relative ">
+                                                                                    <img
+                                                                                        src="@@webRoot/assets/images/profile/user-2.jpg"
+                                                                                        class="rounded-full h-8 w-8 "
+                                                                                        alt="user" />
+                                                                                </a>
+                                                                                <a
+                                                                                    href="javascript:void(0)"
+                                                                                    class="relative -ms-1">
+                                                                                    <img
+                                                                                        src="@@webRoot/assets/images/profile/user-3.jpg"
+                                                                                        class="rounded-full h-8 w-8 "
+                                                                                        alt="user" />
+                                                                                </a>
+                                                                                <a
+                                                                                    href="javascript:void(0)"
+                                                                                    class="relative -ms-1">
+                                                                                    <img
+                                                                                        src="@@webRoot/assets/images/profile/user-4.jpg"
+                                                                                        class="rounded-full h-8 w-8 "
+                                                                                        alt="user" />
+                                                                                </a>
+                                                                                <a
+                                                                                    href="javascript:void(0)"
+                                                                                    class="relative -ms-1">
+                                                                                    <img
+                                                                                        src="@@webRoot/assets/images/profile/user-5.jpg"
+                                                                                        class="rounded-full h-8 w-8 "
+                                                                                        alt="user" />
+                                                                                </a>
+                                                                                <a
+                                                                                    href="javascript:void(0)"
+                                                                                    class="relative ms-1">
+                                                                                    <div
+                                                                                        class="h-8 w-8  flex justify-center items-center font-medium hover:text-primary dark:hover:text-primary">
+                                                                                        +18
+                                                                                    </div>
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div
+                                                                        class="card rounded-sm border-s-[5px] border-error mb-6">
+                                                                        <div
+                                                                            class="card-body p-4">
+                                                                            <h5
+                                                                                class="text-base">SEO
+                                                                                Session
+                                                                                with
+                                                                                Team</h5>
+                                                                            <div
+                                                                                class="flex items-center mb-5">
+                                                                                <i
+                                                                                    class="ti ti-clock-hour-4 text-lg me-1"></i>
+                                                                                <p
+                                                                                    class="font-medium text-sm">12:00
+                                                                                    -
+                                                                                    13:25</p>
+                                                                            </div>
+                                                                            <div
+                                                                                class="flex pt-8">
+                                                                                <a
+                                                                                    href="javascript:void(0)"
+                                                                                    class="relative ">
+                                                                                    <img
+                                                                                        src="@@webRoot/assets/images/profile/user-2.jpg"
+                                                                                        class="rounded-full h-8 w-8 "
+                                                                                        alt="user" />
+                                                                                </a>
+                                                                                <a
+                                                                                    href="javascript:void(0)"
+                                                                                    class="relative -ms-1">
+                                                                                    <img
+                                                                                        src="@@webRoot/assets/images/profile/user-3.jpg"
+                                                                                        class="rounded-full h-8 w-8 "
+                                                                                        alt="user" />
+                                                                                </a>
+                                                                                <a
+                                                                                    href="javascript:void(0)"
+                                                                                    class="relative -ms-1">
+                                                                                    <img
+                                                                                        src="@@webRoot/assets/images/profile/user-4.jpg"
+                                                                                        class="rounded-full h-8 w-8 "
+                                                                                        alt="user" />
+                                                                                </a>
+                                                                                <a
+                                                                                    href="javascript:void(0)"
+                                                                                    class="relative -ms-1">
+                                                                                    <img
+                                                                                        src="@@webRoot/assets/images/profile/user-5.jpg"
+                                                                                        class="rounded-full h-8 w-8 "
+                                                                                        alt="user" />
+                                                                                </a>
+                                                                                <a
+                                                                                    href="javascript:void(0)"
+                                                                                    class="relative ms-1">
+                                                                                    <div
+                                                                                        class="h-8 w-8  flex justify-center items-center font-medium hover:text-primary dark:hover:text-primary">
+                                                                                        +18
+                                                                                    </div>
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div id="tab3"
+                                                            role="tabpanel"
+                                                            class="hidden h-96"
+                                                            aria-labelledby="tab-item-3"
+                                                            data-simplebar>
+                                                            <div
+                                                                class="grid grid-cols-12 gap-6">
+                                                                <div
+                                                                    class="col-span-2 grid">
+                                                                    <ul>
+                                                                        <li
+                                                                            class="mb-8">
+                                                                            <p
+                                                                                class="font-medium text-sm">8:00</p>
+                                                                        </li>
+                                                                        <li
+                                                                            class="mb-8">
+                                                                            <p
+                                                                                class="font-medium text-sm">8:30</p>
+                                                                        </li>
+                                                                        <li
+                                                                            class="mb-8">
+                                                                            <p
+                                                                                class="font-medium text-sm">9:00</p>
+                                                                        </li>
+                                                                        <li
+                                                                            class="mb-8">
+                                                                            <p
+                                                                                class="font-medium text-sm">9:30</p>
+                                                                        </li>
+                                                                        <li
+                                                                            class="mb-8">
+                                                                            <p
+                                                                                class="font-medium text-sm">10:00</p>
+                                                                        </li>
+                                                                        <li
+                                                                            class="mb-8">
+                                                                            <p
+                                                                                class="font-medium text-sm">10:30</p>
+                                                                        </li>
+                                                                        <li
+                                                                            class="mb-8">
+                                                                            <p
+                                                                                class="font-medium text-sm">11:00</p>
+                                                                        </li>
+                                                                        <li
+                                                                            class="mb-8">
+                                                                            <p
+                                                                                class="font-medium text-sm">11:30</p>
+                                                                        </li>
+                                                                        <li
+                                                                            class="mb-8">
+                                                                            <p
+                                                                                class="font-medium text-sm">12:00</p>
+                                                                        </li>
+                                                                        <li
+                                                                            class="mb-8">
+                                                                            <p
+                                                                                class="font-medium text-sm">12:30</p>
+                                                                        </li>
+                                                                        <li
+                                                                            class="mb-8">
+                                                                            <p
+                                                                                class="font-medium text-sm">13:00</p>
+                                                                        </li>
+                                                                        <li
+                                                                            class="mb-8">
+                                                                            <p
+                                                                                class="card-subtitle text-sm mb-0">13:30</p>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                                <div
+                                                                    class="col-span-10">
+                                                                    <div
+                                                                        class="card rounded-sm border-s-[5px] border-info mb-6">
+                                                                        <div
+                                                                            class="card-body p-4">
+                                                                            <h5
+                                                                                class="text-base">Applied
+                                                                                mathematics</h5>
+                                                                            <div
+                                                                                class="flex items-center mb-5">
+                                                                                <i
+                                                                                    class="ti ti-clock-hour-4 text-lg me-1"></i>
+                                                                                <p
+                                                                                    class="font-medium text-sm">10:15
+                                                                                    -
+                                                                                    11:45</p>
+                                                                            </div>
+                                                                            <div
+                                                                                class="flex pt-8">
+                                                                                <a
+                                                                                    href="javascript:void(0)"
+                                                                                    class="relative ">
+                                                                                    <img
+                                                                                        src="@@webRoot/assets/images/profile/user-2.jpg"
+                                                                                        class="rounded-full h-8 w-8 "
+                                                                                        alt="user" />
+                                                                                </a>
+                                                                                <a
+                                                                                    href="javascript:void(0)"
+                                                                                    class="relative -ms-1">
+                                                                                    <img
+                                                                                        src="@@webRoot/assets/images/profile/user-3.jpg"
+                                                                                        class="rounded-full h-8 w-8 "
+                                                                                        alt="user" />
+                                                                                </a>
+                                                                                <a
+                                                                                    href="javascript:void(0)"
+                                                                                    class="relative -ms-1">
+                                                                                    <img
+                                                                                        src="@@webRoot/assets/images/profile/user-4.jpg"
+                                                                                        class="rounded-full h-8 w-8 "
+                                                                                        alt="user" />
+                                                                                </a>
+                                                                                <a
+                                                                                    href="javascript:void(0)"
+                                                                                    class="relative -ms-1">
+                                                                                    <img
+                                                                                        src="@@webRoot/assets/images/profile/user-5.jpg"
+                                                                                        class="rounded-full h-8 w-8 "
+                                                                                        alt="user" />
+                                                                                </a>
+                                                                                <a
+                                                                                    href="javascript:void(0)"
+                                                                                    class="relative ms-1">
+                                                                                    <div
+                                                                                        class="h-8 w-8  flex justify-center items-center font-medium hover:text-primary dark:hover:text-primary">
+                                                                                        +18
+                                                                                    </div>
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div
+                                                                        class="card rounded-sm border-s-[5px] border-warning mb-6 mt-7">
+                                                                        <div
+                                                                            class="card-body p-4">
+                                                                            <h5
+                                                                                class="text-base">Marketing
+                                                                                Meeting</h5>
+                                                                            <div
+                                                                                class="flex items-center mb-5">
+                                                                                <i
+                                                                                    class="ti ti-clock-hour-4 text-lg me-1"></i>
+                                                                                <p
+                                                                                    class="font-medium text-sm">08:30
+                                                                                    -
+                                                                                    10:00</p>
+                                                                            </div>
+                                                                            <div
+                                                                                class="flex pt-8">
+                                                                                <a
+                                                                                    href="javascript:void(0)"
+                                                                                    class="relative ">
+                                                                                    <img
+                                                                                        src="@@webRoot/assets/images/profile/user-2.jpg"
+                                                                                        class="rounded-full h-8 w-8 "
+                                                                                        alt="user" />
+                                                                                </a>
+                                                                                <a
+                                                                                    href="javascript:void(0)"
+                                                                                    class="relative -ms-1">
+                                                                                    <img
+                                                                                        src="@@webRoot/assets/images/profile/user-3.jpg"
+                                                                                        class="rounded-full h-8 w-8 "
+                                                                                        alt="user" />
+                                                                                </a>
+                                                                                <a
+                                                                                    href="javascript:void(0)"
+                                                                                    class="relative -ms-1">
+                                                                                    <img
+                                                                                        src="@@webRoot/assets/images/profile/user-4.jpg"
+                                                                                        class="rounded-full h-8 w-8 "
+                                                                                        alt="user" />
+                                                                                </a>
+                                                                                <a
+                                                                                    href="javascript:void(0)"
+                                                                                    class="relative -ms-1">
+                                                                                    <img
+                                                                                        src="@@webRoot/assets/images/profile/user-5.jpg"
+                                                                                        class="rounded-full h-8 w-8 "
+                                                                                        alt="user" />
+                                                                                </a>
+                                                                                <a
+                                                                                    href="javascript:void(0)"
+                                                                                    class="relative ms-1">
+                                                                                    <div
+                                                                                        class="h-8 w-8  flex justify-center items-center font-medium hover:text-primary dark:hover:text-primary">
+                                                                                        +18
+                                                                                    </div>
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div
+                                                                        class="card rounded-sm border-s-[5px] border-secondary mb-6">
+                                                                        <div
+                                                                            class="card-body p-4">
+                                                                            <h5
+                                                                                class="text-base">SEO
+                                                                                Session
+                                                                                with
+                                                                                Team</h5>
+                                                                            <div
+                                                                                class="flex items-center mb-5">
+                                                                                <i
+                                                                                    class="ti ti-clock-hour-4 text-lg me-1"></i>
+                                                                                <p
+                                                                                    class="font-medium text-sm">12:00
+                                                                                    -
+                                                                                    13:25</p>
+                                                                            </div>
+                                                                            <div
+                                                                                class="flex pt-8">
+                                                                                <a
+                                                                                    href="javascript:void(0)"
+                                                                                    class="relative ">
+                                                                                    <img
+                                                                                        src="@@webRoot/assets/images/profile/user-2.jpg"
+                                                                                        class="rounded-full h-8 w-8 "
+                                                                                        alt="user" />
+                                                                                </a>
+                                                                                <a
+                                                                                    href="javascript:void(0)"
+                                                                                    class="relative -ms-1">
+                                                                                    <img
+                                                                                        src="@@webRoot/assets/images/profile/user-3.jpg"
+                                                                                        class="rounded-full h-8 w-8 "
+                                                                                        alt="user" />
+                                                                                </a>
+                                                                                <a
+                                                                                    href="javascript:void(0)"
+                                                                                    class="relative -ms-1">
+                                                                                    <img
+                                                                                        src="@@webRoot/assets/images/profile/user-4.jpg"
+                                                                                        class="rounded-full h-8 w-8 "
+                                                                                        alt="user" />
+                                                                                </a>
+                                                                                <a
+                                                                                    href="javascript:void(0)"
+                                                                                    class="relative -ms-1">
+                                                                                    <img
+                                                                                        src="@@webRoot/assets/images/profile/user-5.jpg"
+                                                                                        class="rounded-full h-8 w-8 "
+                                                                                        alt="user" />
+                                                                                </a>
+                                                                                <a
+                                                                                    href="javascript:void(0)"
+                                                                                    class="relative ms-1">
+                                                                                    <div
+                                                                                        class="h-8 w-8  flex justify-center items-center font-medium hover:text-primary dark:hover:text-primary">
+                                                                                        +18
+                                                                                    </div>
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!----Top Employees----->
+                                        <div class="lg:col-span-8 col-span-12">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div
+                                                        class="flex items-center justify-between ">
+                                                        <h5
+                                                            class="card-title">Top
+                                                            Employees</h5>
+                                                        <div
+                                                            class="hs-dropdown relative inline-flex">
+                                                            <button
+                                                                id="hs-dropdown-custom-icon-trigger"
+                                                                class="hs-dropdown-toggle h-10 w-10 text-bodytext dark:text-darklink hover:text-primary dark:hover:text-primary group bg-hover justify-center items-center rounded-full">
+                                                                <i
+                                                                    class="ti ti-dots-vertical text-2xl"></i>
+                                                            </button>
+
+                                                            <div
+                                                                class="hs-dropdown-menu overflow-hidden z-[1] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-40 hidden"
+                                                                aria-labelledby="hs-dropdown-custom-icon-trigger">
+                                                                <div
+                                                                    class="flex flex-col">
+                                                                    <div
+                                                                        class="py-1.5 px-4 bg-hover">
+                                                                        <a
+                                                                            class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            Action
+                                                                        </a>
+                                                                    </div>
+                                                                    <div
+                                                                        class="py-1.5 px-4 bg-hover">
+                                                                        <a
+                                                                            class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            Another
+                                                                            action
+                                                                        </a>
+                                                                    </div>
+                                                                    <div
+                                                                        class="py-1.5 px-4 bg-hover">
+                                                                        <a
+                                                                            class="font-medium flex gap-2 items-center "
+                                                                            href="#">
+                                                                            Something
+                                                                            else
+                                                                            here
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="flex flex-col mt-6">
+														<div class="-m-1.5 overflow-x-auto">
+															<div class="p-1.5 min-w-full inline-block align-middle">
+																<div class="overflow-hidden">
+																	<table
+																		class="min-w-full divide-y divide-border dark:divide-darkborder">
+																		<thead>
+																			<tr>
+																				<th scope="col"
+																					class="text-start p-3 ps-0 font-semibold text-dark dark:text-white text-fs_15">
+																					Profile</th>
+																				<th scope="col"
+																					class="text-start p-3 font-semibold text-dark dark:text-white text-fs_15">
+																					Hour Rate</th>
+																				<th scope="col"
+																					class="text-start p-3 font-semibold text-dark dark:text-white text-fs_15">
+																					Skills</th>
+                                                                                <th scope="col"
+																					class="text-start p-3 font-semibold text-dark dark:text-white text-fs_15">
+																					Status</th>    
+
+																			</tr>
+																		</thead>
+																		<tbody
+																			class="divide-y divide-border dark:divide-darkborder">
+                                                                            <tr>
+                                                                                <td class="p-4 ps-0 whitespace-nowrap">
+                                                                                    <div class="flex gap-5 items-center">
+                                                                                        <div class="">
+                                                                                            <img src="@@webRoot/assets/images/profile/user-2.jpg"
+                                                                                                class="rounded-full"
+                                                                                                alt="user" width="50" />
+                                                                                        </div>
+                                                                                        <div>
+                                                                                            <h6
+                                                                                                class="font-bold text-fs_15  mb-1">
+                                                                                                Mark J. Freeman</h6>
+                                                                                            <p
+                                                                                                class="text-sm text-dark dark:text-darklink font-medium">
+                                                                                                Developer
+                                                                                            </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td class="p-4 whitespace-nowrap">
+                                                                                    <p class="text-sm text-dark dark:text-darklink font-medium">
+                                                                                    $80/hour
+                                                                                    </p>
+                                                                                </td>
+                                                                                <td class="p-4 whitespace-nowrap">
+                                                                                    <p class="text-sm text-dark dark:text-darklink font-medium">
+                                                                                        HTML
+                                                                                    </p>
+                                                                                </td>
+                                                                                <td class="p-4 whitespace-nowrap">
+                                                                                    <div
+																						class="badge bg-lightsuccess dark:bg-darksuccess border-success text-success w-fit">Available</div>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="p-4 ps-0 whitespace-nowrap">
+                                                                                    <div class="flex gap-5 items-center">
+                                                                                        <div class="">
+                                                                                            <img src="@@webRoot/assets/images/profile/user-3.jpg"
+                                                                                                class="rounded-full"
+                                                                                                alt="user" width="50" />
+                                                                                        </div>
+                                                                                        <div>
+                                                                                            <h6
+                                                                                                class="font-bold text-fs_15  mb-1">
+                                                                                                Nina R. Oldman</h6>
+                                                                                            <p
+                                                                                                class="text-sm text-dark dark:text-darklink font-medium">
+                                                                                                Designer
+                                                                                            </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td class="p-4 whitespace-nowrap">
+                                                                                    <p class="text-sm text-dark dark:text-darklink font-medium">
+                                                                                        $70/hour
+                                                                                    </p>
+                                                                                </td>
+                                                                                <td class="p-4 whitespace-nowrap">
+                                                                                    <p class="text-sm text-dark dark:text-darklink font-medium">
+                                                                                        JavaScript
+                                                                                    </p>
+                                                                                </td>
+                                                                                <td class="p-4 whitespace-nowrap">
+                                                                                    <div
+																						class="badge bg-lightprimary dark:bg-darkprimary border-primary text-primary w-fit">On Holiday</div>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="p-4 ps-0 whitespace-nowrap">
+                                                                                    <div class="flex gap-5 items-center">
+                                                                                        <div class="">
+                                                                                            <img src="@@webRoot/assets/images/profile/user-4.jpg"
+                                                                                                class="rounded-full"
+                                                                                                alt="user" width="50" />
+                                                                                        </div>
+                                                                                        <div>
+                                                                                            <h6
+                                                                                                class="font-bold text-fs_15  mb-1">
+                                                                                                Arya H. Shah</h6>
+                                                                                            <p
+                                                                                                class="text-sm text-dark dark:text-darklink font-medium">
+                                                                                                Developer
+                                                                                            </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td class="p-4 whitespace-nowrap">
+                                                                                    <p class="text-sm text-dark dark:text-darklink font-medium">
+                                                                                        $40/hour
+                                                                                    </p>
+                                                                                </td>
+                                                                                <td class="p-4 whitespace-nowrap">
+                                                                                    <p class="text-sm text-dark dark:text-darklink font-medium">
+                                                                                        React
+                                                                                    </p>
+                                                                                </td>
+                                                                                <td class="p-4 whitespace-nowrap">
+                                                                                    <div
+																						class="badge bg-lighterror dark:bg-darkerror border-error text-error w-fit">Absent</div>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="p-4 ps-0 whitespace-nowrap">
+                                                                                    <div class="flex gap-5 items-center">
+                                                                                        <div class="">
+                                                                                            <img src="@@webRoot/assets/images/profile/user-5.jpg"
+                                                                                                class="rounded-full"
+                                                                                                alt="user" width="50" />
+                                                                                        </div>
+                                                                                        <div>
+                                                                                            <h6
+                                                                                                class="font-bold text-fs_15  mb-1">
+                                                                                                June R. Smith</h6>
+                                                                                            <p
+                                                                                                class="text-sm text-dark dark:text-darklink font-medium">
+                                                                                                Designer
+                                                                                            </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td class="p-4 whitespace-nowrap">
+                                                                                    <p class="text-sm text-dark dark:text-darklink font-medium">
+                                                                                        $20/hour
+                                                                                    </p>
+                                                                                </td>
+                                                                                <td class="p-4 whitespace-nowrap">
+                                                                                    <p class="text-sm text-dark dark:text-darklink font-medium">
+                                                                                        Vuejs
+                                                                                    </p>
+                                                                                </td>
+                                                                                <td class="p-4 whitespace-nowrap">
+                                                                                    <div
+																						class="badge bg-lightwarning dark:bg-darkwarning border-warning text-warning w-fit">On Leave</div>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="p-4 ps-0 whitespace-nowrap">
+                                                                                    <div class="flex gap-5 items-center">
+                                                                                        <div class="">
+                                                                                            <img src="@@webRoot/assets/images/profile/user-8.jpg"
+                                                                                                class="rounded-full"
+                                                                                                alt="user" width="50" />
+                                                                                        </div>
+                                                                                        <div>
+                                                                                            <h6
+                                                                                                class="font-bold text-fs_15  mb-1">
+                                                                                                Mark J. Freeman</h6>
+                                                                                            <p
+                                                                                                class="text-sm text-dark dark:text-darklink font-medium">
+                                                                                                Developer
+                                                                                            </p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td class="p-4 whitespace-nowrap">
+                                                                                    <p class="text-sm text-dark dark:text-darklink font-medium">
+                                                                                        $65/hour
+                                                                                    </p>
+                                                                                </td>
+                                                                                <td class="p-4 whitespace-nowrap">
+                                                                                    <p class="text-sm text-dark dark:text-darklink font-medium">
+                                                                                        Angular
+                                                                                    </p>
+                                                                                </td>
+                                                                                <td class="p-4 whitespace-nowrap">
+                                                                                    <div
+																						class="badge bg-lightindigo dark:bg-darkindigo border-indigo text-indigo w-fit">Available</div>
+                                                                                </td>
+                                                                            </tr>
+																		</tbody>
+																	</table>
+																</div>
+															</div>
+														</div>
+													</div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-------------->
+
+                        </div>
+                    </main>
+                    <!-- Main Content End -->
+
+                </div>
+            </div>
+            <!--end of project-->
+        </main>
+        @@include("partials/header-components/mobile-menu.html")
+        @@include("partials/customizer.html")
+        @@include("partials/scripts.html")
+        <script
+            src="@@webRoot/node_modules/apexcharts/dist/apexcharts.min.js"></script>
+        <script src="@@webRoot/assets/js/dashboards/dashboard2.js"></script>
+    </body>
+
+</html>

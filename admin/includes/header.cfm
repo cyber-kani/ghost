@@ -1,8 +1,59 @@
+<!--- Check if user is logged in --->
+<cfif not structKeyExists(session, "ISLOGGEDIN") or not session.ISLOGGEDIN>
+    <cflocation url="/ghost/admin/login" addtoken="false">
+</cfif>
+
 <!--- Get current user information for header display --->
 <cfset displayUserName = "Admin User">
 <cfset displayUserRole = "Administrator">
 <cfset displayUserEmail = "admin@ghost.com">
+<cfset displayUserImage = "">
 
+<!--- Get user from session or database (use uppercase session variables) --->
+<cfif structKeyExists(session, "USERID") and len(session.USERID)>
+    <cftry>
+        <cfquery name="headerUserQuery" datasource="blog">
+            SELECT u.id, u.name, u.email, u.slug, u.profile_image,
+                   r.name as role_name
+            FROM users u
+            LEFT JOIN roles_users ru ON u.id = ru.user_id
+            LEFT JOIN roles r ON ru.role_id = r.id
+            WHERE u.id = <cfqueryparam value="#session.USERID#" cfsqltype="cf_sql_varchar">
+            AND u.status = 'active'
+            LIMIT 1
+        </cfquery>
+        
+        <cfif headerUserQuery.recordCount gt 0>
+            <cfset displayUserName = headerUserQuery.name[1] ?: "Admin User">
+            <cfset displayUserEmail = headerUserQuery.email[1] ?: "admin@ghost.com">
+            <cfset displayUserRole = headerUserQuery.role_name[1] ?: "Administrator">
+            <cfset displayUserImage = headerUserQuery.profile_image[1] ?: "">
+            
+            <!--- Update session with latest data --->
+            <cfset session.userName = displayUserName>
+            <cfset session.userEmail = displayUserEmail>
+            <cfset session.userRole = displayUserRole>
+        </cfif>
+        
+        <cfcatch>
+            <!--- Use session data as fallback --->
+            <cfif structKeyExists(session, "userName")>
+                <cfset displayUserName = session.userName>
+            </cfif>
+            <cfif structKeyExists(session, "userEmail")>
+                <cfset displayUserEmail = session.userEmail>
+            </cfif>
+            <cfif structKeyExists(session, "userRole")>
+                <cfset displayUserRole = session.userRole>
+            </cfif>
+        </cfcatch>
+    </cftry>
+<cfelse>
+    <!--- No user ID in session, redirect to login --->
+    <cflocation url="/ghost/admin/login" addtoken="false">
+</cfif>
+
+<!--- Check session as fallback --->
 <cfif structKeyExists(session, "user") and isStruct(session.user)>
     <cfif structKeyExists(session.user, "name") and len(trim(session.user.name))>
         <cfset displayUserName = session.user.name>
@@ -12,6 +63,9 @@
     </cfif>
     <cfif structKeyExists(session.user, "email") and len(trim(session.user.email))>
         <cfset displayUserEmail = session.user.email>
+    </cfif>
+    <cfif structKeyExists(session.user, "profile_image") and len(trim(session.user.profile_image))>
+        <cfset displayUserImage = session.user.profile_image>
     </cfif>
 <cfelseif structKeyExists(session, "adminUser") and len(trim(session.adminUser))>
     <cfset displayUserName = session.adminUser>
@@ -398,14 +452,17 @@
                                                 <!-- Profile -->
                                                 <div class="hs-dropdown xl:[--strategy:absolute] [--adaptive:none] md:[--trigger:hover] sm:relative ms-3">
                                                     <a id="hs-dropdown-hover-event-profile" class="relative hs-dropdown-toggle cursor-pointer align-middle rounded-full">
-                                                        <div class="flex gap-4">
+                                                        <div class="flex gap-3 items-center">
                                                             <div class="relative">
-                                                                <img class="object-cover w-11 h-11 rounded-full" src="https://ui-avatars.com/api/?name=<cfoutput>#urlEncodedFormat(displayUserName)#</cfoutput>&background=5D87FF&color=fff" alt="" aria-hidden="true">
+                                                                <cfif len(displayUserImage) gt 0>
+                                                                    <img class="object-cover w-11 h-11 rounded-full" src="<cfoutput>#displayUserImage#</cfoutput>" alt="<cfoutput>#htmlEditFormat(displayUserName)#</cfoutput>" aria-hidden="true">
+                                                                <cfelse>
+                                                                    <img class="object-cover w-11 h-11 rounded-full" src="https://ui-avatars.com/api/?name=<cfoutput>#urlEncodedFormat(displayUserName)#</cfoutput>&background=5D87FF&color=fff" alt="<cfoutput>#htmlEditFormat(displayUserName)#</cfoutput>" aria-hidden="true">
+                                                                </cfif>
                                                                 <span class="h-3.5 w-3.5 rounded-full bg-success block absolute top-0 -end-1 border-2 border-white dark:border-dark"></span>
                                                             </div>
-                                                            <div class="hidden sm:block">
-                                                                <h6 class="font-bold text-dark dark:text-white text-base mb-1 profile-name"><cfoutput>#htmlEditFormat(displayUserName)#</cfoutput></h6>
-                                                                <p class="text-sm leading-tight mb-0 text-link dark:text-darklink"><cfoutput>#htmlEditFormat(displayUserRole)#</cfoutput></p>
+                                                            <div class="hidden sm:flex items-center">
+                                                                <h6 class="font-bold text-dark dark:text-white text-base profile-name mb-0"><cfoutput>#htmlEditFormat(displayUserName)#</cfoutput></h6>
                                                             </div>
                                                         </div>
                                                     </a>
@@ -417,7 +474,11 @@
                                                             <div class="message-body" data-simplebar>
                                                                 <div class="">
                                                                     <div class="flex items-center gap-6 pb-5 border-b dark:border-darkborder">
-                                                                        <img src="https://ui-avatars.com/api/?name=<cfoutput>#urlEncodedFormat(displayUserName)#</cfoutput>&background=5D87FF&color=fff" class="h-[90px] w-[90px] rounded-full object-cover" alt="profile">
+                                                                        <cfif len(displayUserImage) gt 0>
+                                                                            <img src="<cfoutput>#displayUserImage#</cfoutput>" class="h-[90px] w-[90px] rounded-full object-cover" alt="profile">
+                                                                        <cfelse>
+                                                                            <img src="https://ui-avatars.com/api/?name=<cfoutput>#urlEncodedFormat(displayUserName)#</cfoutput>&background=5D87FF&color=fff" class="h-[90px] w-[90px] rounded-full object-cover" alt="profile">
+                                                                        </cfif>
                                                                         <div class="">
                                                                             <h5 class="card-title"><cfoutput>#htmlEditFormat(displayUserName)#</cfoutput></h5>
                                                                             <span class="card-subtitle"><cfoutput>#htmlEditFormat(lcase(displayUserRole))#</cfoutput></span>

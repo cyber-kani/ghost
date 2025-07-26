@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-color-theme="Blue_Theme" class="light selected" data-layout="vertical"
+    data-boxed-layout="boxed" data-card="shadow">
+
+<head>
+    @@include("partials/head.html")
+    <title>Spike TailwindCSS HTML Admin Template</title>
+</head>
+
+<body class="DEFAULT_THEME bg-lightprimary dark:bg-darkbody">
+    <main>
+        <!--start the project-->
+        <div id="main-wrapper" class="flex p-5">
+
+            <aside id="application-sidebar-brand"
+                class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full xl:rtl:-translate-x-0 rtl:translate-x-full  left-0 rtl:left-auto xl:rtl:right-5 rtl:right-0 transform hidden xl:block xl:translate-x-0 xl:end-auto xl:bottom-0 fixed top-0 with-vertical  left-sidebar transition-all duration-300 h-screen z-[2] flex-shrink-0  w-[270px] border-border dark:border-darkborder bg-white dark:bg-dark xl:top-5 xl:start-5 shadow-md xl:rounded-md">
+                @@include("partials/sidebar.html",{ "page": "form-checkbox-radio","page_group": "form" })
+            </aside>
+            <div class="page-wrapper w-full" role="main">
+
+                <!-- Main Content -->
+                <main class="h-full ">
+                    <div class="container full-container py-5 xl:ps-6 ps-0 pt-0 pe-0 remove-ps">
+
+                        <!--  Header Start -->
+                        <header
+                            class="sticky top-0 inset-x-0 z-[1] flex flex-wrap md:justify-start md:flex-nowrap text-fs_15 py-3 lg:py-0 mb-6 bg-white dark:bg-dark rounded-md shadow-md">
+                            <div class="with-vertical w-full">@@include("partials/header.html")</div>
+                            <div class="with-horizontal w-full">
+                                <div class="bg-white dark:bg-dark">
+                                    <div class="container">
+                                        @@include("partials/horizontal-header.html")
+                                    </div>
+                                </div>
+                            </div>
+                        </header>
+                        <!--  Header End -->
+
+                        <!-- Horizontal Sidebar Menu -->
+                        <aside
+                            class="with-horizontal lg:flex hidden left-sidebar bg-white dark:bg-dark border-t border-border dark:border-darkborder">
+                            @@include("partials/horizontal-sidebar.html", { "page": "form-checkbox-radio","page_group":
+                            "form"})
+                        </aside>
+                        <!-- Horizontal Sidebar Menu End -->
+
+                        <!-- Main Content -->
+                        <div class="max-w-full">
+                            <div class="container full-container ">
+                                <!----Breadcrumb Start---->
+                                @@include("partials/breadcrumb.html", {"title": "Checkboxes", "subtitle": 'Home'})
+                                <!----Breadcrumb End---->
+                                <div class="grid grid-cols-12 gap-6">
+                                    <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title mb-0">Default Checkbox</h5>
+                                                <p class="card-subtitle  mb-6">By default, a <code
+                                                        class="text-error bg-lightwarning dark:bg-darkwarning">'checkbox input'</code>
+                                                    includes a selected and unselected state. </p>
+                                                <form action="#" class="flex flex-col gap-4">
+                                                    <div class="flex">
+                                                        <input type="checkbox" class="rounded form-check-input"
+                                                            id="hs-default-checkbox2">
+                                                        <label for="hs-default-checkbox2"
+                                                            class="text-sm text-gray-500 ms-3 dark:text-gray-400">Default
+                                                            checkbox</label>
+                                                    </div>
+
+                                                    <div class="flex">
+                                                        <input type="checkbox" class="rounded form-check-input"
+                                                            id="hs-checked-checkbox" checked>
+                                                        <label for="hs-checked-checkbox"
+                                                            class="text-sm text-gray-500 ms-3 dark:text-gray-400">Checked
+                                                            checkbox</label>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title mb-0">Disabled Checkbox</h5>
+                                                <p class="card-subtitle  mb-6"><code
+                                                        class="text-error bg-lightwarning dark:bg-darkwarning">'Disabled'</code>
+                                                    checkbox.</p>
+                                                <form action="#" class="flex flex-col gap-4">
+                                                    <div class="flex opacity-40">
+                                                        <input id="hs-disabled-checkbox1" type="checkbox"
+                                                            class="form-check-input rounded disabled:opacity-50 disabled:pointer-events-none"
+                                                            id="hs-disabled-checkbox" disabled>
+                                                        <label for="hs-disabled-checkbox1"
+                                                            class="text-sm text-gray-500 ms-3 dark:text-gray-400">Disabled
+                                                            checkbox</label>
+                                                    </div>
+
+                                                    <div class="flex opacity-40">
+                                                        <input id="hs-disabled-checked-checkbox2" type="checkbox"
+                                                            class="form-check-input rounded disabled:opacity-50 disabled:pointer-events-none"
+                                                            checked disabled>
+                                                        <label for="hs-disabled-checked-checkbox2"
+                                                            class="text-sm text-gray-500 ms-3 dark:text-gray-400">Disabled
+                                                            checked checkbox</label>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title mb-0">Checkbox group</h5>
+                                                <p class="card-subtitle  mb-6">A group of <code
+                                                        class="text-error bg-lightwarning dark:bg-darkwarning">'checkbox'</code>
+                                                    components.</p>
+                                                <form action="#" class="flex flex-col gap-4">
+                                                    <div class="flex gap-x-6">
+                                                        <div class="flex">
+                                                            <input type="checkbox" class="form-check-input rounded"
+                                                                id="hs-checkbox-group-1">
+                                                            <label for="hs-checkbox-group-1"
+                                                                class="text-sm text-gray-500 ms-3 dark:text-gray-400">Apple</label>
+                                                        </div>
+
+                                                        <div class="flex">
+                                                            <input type="checkbox" class="form-check-input rounded"
+                                                                id="hs-checkbox-group-2">
+                                                            <label for="hs-checkbox-group-2"
+                                                                class="text-sm text-gray-500 ms-3 dark:text-gray-400">Pear</label>
+                                                        </div>
+
+                                                        <div class="flex">
+                                                            <input type="checkbox" class="form-check-input rounded"
+                                                                id="hs-checkbox-group-3">
+                                                            <label for="hs-checkbox-group-3"
+                                                                class="text-sm text-gray-500 ms-3 dark:text-gray-400">Orange</label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="flex gap-x-6">
+                                                        <div class="flex">
+                                                            <input type="checkbox" class="form-check-input rounded"
+                                                                id="hs-checkbox-group-4" checked>
+                                                            <label for="hs-checkbox-group-4"
+                                                                class="text-sm text-gray-500 ms-3 dark:text-gray-400">Apple</label>
+                                                        </div>
+
+                                                        <div class="flex">
+                                                            <input type="checkbox" class="form-check-input rounded"
+                                                                id="hs-checkbox-group-5" checked>
+                                                            <label for="hs-checkbox-group-5"
+                                                                class="text-sm text-gray-500 ms-3 dark:text-gray-400">Pear</label>
+                                                        </div>
+
+                                                        <div class="flex">
+                                                            <input type="checkbox" class="form-check-input rounded"
+                                                                id="hs-checkbox-group-6" checked>
+                                                            <label for="hs-checkbox-group-6"
+                                                                class="text-sm text-gray-500 ms-3 dark:text-gray-400">Orange</label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="flex gap-x-6">
+                                                        <div class="flex opacity-40">
+                                                            <input type="checkbox"
+                                                                class="form-check-input rounded disabled:opacity-50 disabled:pointer-events-none"
+                                                                id="hs-checkbox-group-7" checked disabled>
+                                                            <label for="hs-checkbox-group-7"
+                                                                class="text-sm text-gray-500 ms-3 dark:text-gray-400">Apple</label>
+                                                        </div>
+
+                                                        <div class="flex opacity-40">
+                                                            <input type="checkbox"
+                                                                class="form-check-input rounded disabled:opacity-50 disabled:pointer-events-none"
+                                                                id="hs-checkbox-group-8" disabled>
+                                                            <label for="hs-checkbox-group-8"
+                                                                class="text-sm text-gray-500 ms-3 dark:text-gray-400">Pear</label>
+                                                        </div>
+
+                                                        <div class="flex opacity-40">
+                                                            <input type="checkbox"
+                                                                class="form-check-input rounded disabled:opacity-50 disabled:pointer-events-none"
+                                                                id="hs-checkbox-group-9" disabled>
+                                                            <label for="hs-checkbox-group-9"
+                                                                class="text-sm text-gray-500 ms-3 dark:text-gray-400">Orange</label>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title mb-0">Checkbox With list group</h5>
+                                                <p class="card-subtitle  mb-6">Make the list item appear with <code
+                                                        class="text-error bg-lightwarning dark:bg-darkwarning">'checkbox'</code>.
+                                                </p>
+                                                <form action="#" class="flex flex-col gap-4">
+                                                    <ul class="max-w-sm flex flex-col">
+                                                        <li
+                                                            class="inline-flex items-center gap-x-2 py-3 px-4 text-sm font-medium bg-white dark:bg-darkprimary border border-light-dark text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg  dark:text-white">
+                                                            <div class="relative flex items-start w-full">
+                                                                <div class="flex items-center h-5">
+                                                                    <input id="hs-list-group-item-checkbox-1"
+                                                                        name="hs-list-group-item-checkbox-1"
+                                                                        type="checkbox" class="form-check-input rounded"
+                                                                        checked>
+                                                                </div>
+                                                                <label for="hs-list-group-item-checkbox-1"
+                                                                    class="ms-3.5 block w-full text-sm text-gray-600 dark:text-gray-500">
+                                                                    Chris Lynch
+                                                                </label>
+                                                            </div>
+                                                        </li>
+
+                                                        <li
+                                                            class="inline-flex items-center gap-x-2 py-3 px-4 text-sm font-medium bg-white dark:bg-darkprimary border border-light-dark text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg  dark:text-white">
+                                                            <div class="relative flex items-start w-full">
+                                                                <div class="flex items-center h-5">
+                                                                    <input id="hs-list-group-item-checkbox-2"
+                                                                        name="hs-list-group-item-checkbox-2"
+                                                                        type="checkbox"
+                                                                        class="form-check-input rounded">
+                                                                </div>
+                                                                <label for="hs-list-group-item-checkbox-2"
+                                                                    class="ms-3.5 block w-full text-sm text-gray-600 dark:text-gray-500">
+                                                                    Maria Guan
+                                                                </label>
+                                                            </div>
+                                                        </li>
+
+                                                        <li
+                                                            class="inline-flex items-center gap-x-2 py-3 px-4 text-sm font-medium bg-white dark:bg-darkprimary border border-light-dark text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg  dark:text-white">
+                                                            <div class="relative flex items-start w-full">
+                                                                <div class="flex items-center h-5">
+                                                                    <input id="hs-list-group-item-checkbox-3"
+                                                                        name="hs-list-group-item-checkbox-3"
+                                                                        type="checkbox"
+                                                                        class="form-check-input rounded">
+                                                                </div>
+                                                                <label for="hs-list-group-item-checkbox-3"
+                                                                    class="ms-3.5 block w-full text-sm text-gray-600 dark:text-gray-500">
+                                                                    Bob Arum
+                                                                </label>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title mb-6">List with description</h5>
+                                                <form action="#" class="flex flex-col gap-4">
+                                                    <div class="grid space-y-3">
+                                                        <div class="relative flex items-start">
+                                                            <div class="flex items-center h-5 mt-1">
+                                                                <input id="hs-checkbox-delete" name="hs-checkbox-delete"
+                                                                    type="checkbox" class="form-check-input rounded"
+                                                                    aria-describedby="hs-checkbox-delete-description"
+                                                                    checked>
+                                                            </div>
+                                                            <label for="hs-checkbox-delete" class="ms-3">
+                                                                <span
+                                                                    class="block text-sm font-semibold text-gray-800 dark:text-gray-300">Delete</span>
+                                                                <span id="hs-checkbox-delete-description"
+                                                                    class="block text-sm text-gray-600 dark:text-gray-500">Notify
+                                                                    me when this action happens.</span>
+                                                            </label>
+                                                        </div>
+
+                                                        <div class="relative flex items-start">
+                                                            <div class="flex items-center h-5 mt-1">
+                                                                <input id="hs-checkbox-archive"
+                                                                    name="hs-checkbox-archive" type="checkbox"
+                                                                    class="form-check-input rounded"
+                                                                    aria-describedby="hs-checkbox-archive-description">
+                                                            </div>
+                                                            <label for="hs-checkbox-archive" class="ms-3">
+                                                                <span
+                                                                    class="block text-sm font-semibold text-gray-800 dark:text-gray-300">Archive</span>
+                                                                <span id="hs-checkbox-archive-description"
+                                                                    class="block text-sm text-gray-600 dark:text-gray-500">Notify
+                                                                    me when this action happens.</span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title ">With horizontal list group</h5>
+                                                <p class="tex-sm mb-6">Make a horizontal list group item appear with
+                                                    checkbox.</p>
+                                                <form action="#" class="flex flex-col gap-4">
+                                                    <ul class="flex flex-col sm:flex-row">
+                                                        <li
+                                                            class="inline-flex items-center gap-x-2.5 py-3 px-4 text-sm font-medium bg-white dark:bg-darkprimary border border-light-dark text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg sm:-ms-px sm:mt-0 sm:first:rounded-se-none sm:first:rounded-es-lg sm:last:rounded-es-none sm:last:rounded-se-lg  dark:text-white">
+                                                            <div class="relative flex items-start w-full">
+                                                                <div class="flex items-center h-5">
+                                                                    <input id="hs-horizontal-list-group-item-checkbox-1"
+                                                                        name="hs-horizontal-list-group-item-checkbox-1"
+                                                                        type="checkbox" class="form-check-input rounded"
+                                                                        checked>
+                                                                </div>
+                                                                <label for="hs-horizontal-list-group-item-checkbox-1"
+                                                                    class="ms-3.5 block w-full text-sm text-gray-600 dark:text-gray-500">
+                                                                    Chris Lynch
+                                                                </label>
+                                                            </div>
+                                                        </li>
+
+                                                        <li
+                                                            class="inline-flex items-center gap-x-2.5 py-3 px-4 text-sm font-medium bg-white dark:bg-darkprimary border border-light-dark text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg sm:-ms-px sm:mt-0 sm:first:rounded-se-none sm:first:rounded-es-lg sm:last:rounded-es-none sm:last:rounded-se-lg  dark:text-white">
+                                                            <div class="relative flex items-start w-full">
+                                                                <div class="flex items-center h-5">
+                                                                    <input id="hs-horizontal-list-group-item-checkbox-2"
+                                                                        name="hs-horizontal-list-group-item-checkbox-2"
+                                                                        type="checkbox"
+                                                                        class="form-check-input rounded">
+                                                                </div>
+                                                                <label for="hs-horizontal-list-group-item-checkbox-2"
+                                                                    class="ms-3.5 block w-full text-sm text-gray-600 dark:text-gray-500">
+                                                                    Maria Guan
+                                                                </label>
+                                                            </div>
+                                                        </li>
+
+                                                        <li
+                                                            class="inline-flex items-center gap-x-2.5 py-3 px-4 text-sm font-medium bg-white dark:bg-darkprimary border border-light-dark text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg sm:-ms-px sm:mt-0 sm:first:rounded-se-none sm:first:rounded-es-lg sm:last:rounded-es-none sm:last:rounded-se-lg  dark:text-white">
+                                                            <div class="relative flex items-start w-full">
+                                                                <div class="flex items-center h-5">
+                                                                    <input id="hs-horizontal-list-group-item-checkbox-3"
+                                                                        name="hs-horizontal-list-group-item-checkbox-3"
+                                                                        type="checkbox"
+                                                                        class="form-check-input rounded">
+                                                                </div>
+                                                                <label for="hs-horizontal-list-group-item-checkbox-3"
+                                                                    class="ms-3.5 block w-full text-sm text-gray-600 dark:text-gray-500">
+                                                                    Bob Arum
+                                                                </label>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title mb-6">Checkbox - colors</h5>
+                                                <form action="#" class="flex flex-col gap-4">
+                                                    <div class="flex gap-20">
+                                                        <span class="text-sm w-20">Success</span>
+                                                        <div class="flex gap-4">
+                                                            <div class="flex">
+                                                                <input type="checkbox"
+                                                                    class="shrink-0 mt-0.5 w-5 h-5 rounded border-bordergray bg-transparent dark:border-darkborder text-success focus:ring-success disabled:opacity-50 disabled:pointer-events-none  dark:checked:bg-success dark:checked:border-success dark:focus:ring-offset-gray-800"
+                                                                    id="hs-default-checkbox">
+                                                                <label for="hs-default-checkbox"
+                                                                    class="text-sm text-gray-500 ms-3 dark:text-gray-400">Default</label>
+                                                            </div>
+
+                                                            <div class="flex">
+                                                                <input type="checkbox"
+                                                                    class="shrink-0 mt-0.5 h-5 w-5 border-bordergray bg-transparent dark:border-darkborder rounded text-success focus:ring-success disabled:opacity-50 disabled:pointer-events-none  dark:checked:bg-success dark:checked:border-success dark:focus:ring-offset-gray-800"
+                                                                    id="hs-checked-checkbox" checked>
+                                                                <label for="hs-checked-checkbox"
+                                                                    class="text-sm text-gray-500 ms-3 dark:text-gray-400">Checked</label>
+                                                            </div>
+                                                            <div class="flex opacity-40">
+                                                                <input type="checkbox"
+                                                                    class="shrink-0 mt-0.5 h-5 w-5 border-bordergray bg-transparent dark:border-darkborder rounded text-success focus:ring-success disabled:opacity-50 disabled:pointer-events-none  dark:checked:bg-success dark:checked:border-success dark:focus:ring-offset-gray-800"
+                                                                    id="hs-disabled-checked-checkbox6" checked disabled>
+                                                                <label for="hs-disabled-checked-checkbox6"
+                                                                    class="text-sm text-gray-500 ms-3 dark:text-gray-400">Checked</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex gap-20">
+                                                        <span class="text-sm w-20">Danger</span>
+                                                        <div class="flex gap-4">
+                                                            <div class="flex">
+                                                                <input type="checkbox"
+                                                                    class="shrink-0 mt-0.5 w-5 h-5 rounded border-bordergray bg-transparent dark:border-darkborder text-error focus:ring-error disabled:opacity-50 disabled:pointer-events-none  dark:checked:bg-error dark:checked:border-error dark:focus:ring-offset-gray-800"
+                                                                    id="hs-default-checkbox2">
+                                                                <label for="hs-default-checkbox2"
+                                                                    class="text-sm text-gray-500 ms-3 dark:text-gray-400">Default</label>
+                                                            </div>
+
+                                                            <div class="flex">
+                                                                <input type="checkbox"
+                                                                    class="shrink-0 mt-0.5 h-5 w-5 border-bordergray bg-transparent dark:border-darkborder rounded text-error focus:ring-error disabled:opacity-50 disabled:pointer-events-none  dark:checked:bg-error dark:checked:border-error dark:focus:ring-offset-gray-800"
+                                                                    id="hs-checked-checkbox2" checked>
+                                                                <label for="hs-checked-checkbox2"
+                                                                    class="text-sm text-gray-500 ms-3 dark:text-gray-400">Checked</label>
+                                                            </div>
+                                                            <div class="flex opacity-40">
+                                                                <input type="checkbox"
+                                                                    class="shrink-0 mt-0.5 h-5 w-5 border-bordergray bg-transparent dark:border-darkborder rounded text-error focus:ring-error disabled:opacity-50 disabled:pointer-events-none  dark:checked:bg-error dark:checked:border-error dark:focus:ring-offset-gray-800"
+                                                                    id="hs-disabled-checked-checkbox2" checked disabled>
+                                                                <label for="hs-disabled-checked-checkbox2"
+                                                                    class="text-sm text-gray-500 ms-3 dark:text-gray-400">Checked</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex gap-20">
+                                                        <span class="text-sm w-20">Warning</span>
+                                                        <div class="flex gap-4">
+                                                            <div class="flex">
+                                                                <input type="checkbox"
+                                                                    class="shrink-0 mt-0.5 w-5 h-5 rounded border-bordergray bg-transparent dark:border-darkborder text-warning focus:ring-warning disabled:opacity-50 disabled:pointer-events-none  dark:checked:bg-warning dark:checked:border-warning dark:focus:ring-offset-gray-800"
+                                                                    id="hs-default-checkbox3">
+                                                                <label for="hs-default-checkbox3"
+                                                                    class="text-sm text-gray-500 ms-3 dark:text-gray-400">Default</label>
+                                                            </div>
+
+                                                            <div class="flex">
+                                                                <input type="checkbox"
+                                                                    class="shrink-0 mt-0.5 h-5 w-5 border-bordergray bg-transparent dark:border-darkborder rounded text-warning focus:ring-warning disabled:opacity-50 disabled:pointer-events-none  dark:checked:bg-warning dark:checked:border-warning dark:focus:ring-offset-gray-800"
+                                                                    id="hs-checked-checkbox3" checked>
+                                                                <label for="hs-checked-checkbox3"
+                                                                    class="text-sm text-gray-500 ms-3 dark:text-gray-400">Checked</label>
+                                                            </div>
+                                                            <div class="flex opacity-40">
+                                                                <input type="checkbox"
+                                                                    class="shrink-0 mt-0.5 h-5 w-5 border-bordergray bg-transparent dark:border-darkborder rounded text-warning focus:ring-warning disabled:opacity-50 disabled:pointer-events-none  dark:checked:bg-warning dark:checked:border-warning dark:focus:ring-offset-gray-800"
+                                                                    id="hs-disabled-checked-checkbox3" checked disabled>
+                                                                <label for="hs-disabled-checked-checkbox3"
+                                                                    class="text-sm text-gray-500 ms-3 dark:text-gray-400">Checked</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex gap-20">
+                                                        <span class="text-sm w-20">Primary</span>
+                                                        <div class="flex gap-4">
+                                                            <div class="flex">
+                                                                <input type="checkbox"
+                                                                    class="shrink-0 mt-0.5 w-5 h-5 rounded border-bordergray bg-transparent dark:border-darkborder text-primary focus:ring-primary disabled:opacity-50 disabled:pointer-events-none  dark:checked:bg-primary dark:checked:border-primary dark:focus:ring-offset-gray-800"
+                                                                    id="hs-default-checkbox4">
+                                                                <label for="hs-default-checkbox4"
+                                                                    class="text-sm text-gray-500 ms-3 dark:text-gray-400">Default</label>
+                                                            </div>
+
+                                                            <div class="flex">
+                                                                <input type="checkbox"
+                                                                    class="shrink-0 mt-0.5 h-5 w-5 border-bordergray bg-transparent dark:border-darkborder rounded text-primary focus:ring-primary disabled:opacity-50 disabled:pointer-events-none  dark:checked:bg-primary dark:checked:border-primary dark:focus:ring-offset-gray-800"
+                                                                    id="hs-checked-checkbox4" checked>
+                                                                <label for="hs-checked-checkbox4"
+                                                                    class="text-sm text-gray-500 ms-3 dark:text-gray-400">Checked</label>
+                                                            </div>
+                                                            <div class="flex opacity-40">
+                                                                <input type="checkbox"
+                                                                    class="shrink-0 mt-0.5 h-5 w-5 border-bordergray bg-transparent dark:border-darkborder rounded text-primary focus:ring-primary disabled:opacity-50 disabled:pointer-events-none  dark:checked:bg-primary dark:checked:border-primary dark:focus:ring-offset-gray-800"
+                                                                    id="hs-disabled-checked-checkbox4" checked disabled>
+                                                                <label for="hs-disabled-checked-checkbox4"
+                                                                    class="text-sm text-gray-500 ms-3 dark:text-gray-400">Checked</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex gap-20">
+                                                        <span class="text-sm w-20">Secondary</span>
+                                                        <div class="flex gap-4">
+                                                            <div class="flex">
+                                                                <input type="checkbox"
+                                                                    class="shrink-0 mt-0.5 w-5 h-5 rounded border-bordergray bg-transparent dark:border-darkborder text-secondary focus:ring-secondary disabled:opacity-50 disabled:pointer-events-none  dark:checked:bg-secondary dark:checked:border-secondary dark:focus:ring-offset-gray-800"
+                                                                    id="hs-default-checkbox5">
+                                                                <label for="hs-default-checkbox5"
+                                                                    class="text-sm text-gray-500 ms-3 dark:text-gray-400">Default</label>
+                                                            </div>
+
+                                                            <div class="flex">
+                                                                <input type="checkbox"
+                                                                    class="shrink-0 mt-0.5 h-5 w-5 border-bordergray bg-transparent dark:border-darkborder rounded text-secondary focus:ring-secondary disabled:opacity-50 disabled:pointer-events-none  dark:checked:bg-secondary dark:checked:border-secondary dark:focus:ring-offset-gray-800"
+                                                                    id="hs-checked-checkbox5" checked>
+                                                                <label for="hs-checked-checkbox5"
+                                                                    class="text-sm text-gray-500 ms-3 dark:text-gray-400">Checked</label>
+                                                            </div>
+                                                            <div class="flex opacity-40">
+                                                                <input type="checkbox"
+                                                                    class="shrink-0 mt-0.5 h-5 w-5 border-bordergray bg-transparent dark:border-darkborder rounded text-secondary focus:ring-secondary disabled:opacity-50 disabled:pointer-events-none  dark:checked:bg-secondary dark:checked:border-secondary dark:focus:ring-offset-gray-800"
+                                                                    id="hs-disabled-checked-checkbox5" checked disabled>
+                                                                <label for="hs-disabled-checked-checkbox5"
+                                                                    class="text-sm text-gray-500 ms-3 dark:text-gray-400">Checked</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title mb-0">Default Radio</h5>
+                                                <p class="card-subtitle  mb-6">The <code
+                                                        class="text-error bg-lightwarning dark:bg-darkwarning">'default'</code>
+                                                    way to present a single option from a list.</p>
+                                                <form action="#" class="flex flex-col gap-4">
+                                                    <div class="flex">
+                                                        <input type="radio" name="hs-default-radio"
+                                                            class="shrink-0 mt-0.5 w-5 h-5 form-check-input"
+                                                            id="hs-default-radio">
+                                                        <label for="hs-default-radio"
+                                                            class="text-sm text-gray-500 ms-2 dark:text-gray-400">Default
+                                                            radio</label>
+                                                    </div>
+
+                                                    <div class="flex">
+                                                        <input type="radio" name="hs-default-radio"
+                                                            class="shrink-0 mt-0.5 w-5 h-5 form-check-input"
+                                                            id="hs-checked-radio" checked>
+                                                        <label for="hs-checked-radio"
+                                                            class="text-sm text-gray-500 ms-2 dark:text-gray-400">Checked
+                                                            radio</label>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title mb-0">Disabled Radio</h5>
+                                                <p class="card-subtitle  mb-6">The <code
+                                                        class="text-error bg-lightwarning dark:bg-darkwarning">'disabled'</code>
+                                                    radio.</p>
+                                                <form action="#" class="flex flex-col gap-4">
+                                                    <div class="flex opacity-40">
+                                                        <input type="radio" name="hs-default-radio"
+                                                            class="shrink-0 mt-0.5 w-5 h-5 form-check-input"
+                                                            id="hs-default-radio" disabled>
+                                                        <label for="hs-default-radio"
+                                                            class="text-sm text-gray-500 ms-2 dark:text-gray-400">Default
+                                                            radio</label>
+                                                    </div>
+
+                                                    <div class="flex opacity-40">
+                                                        <input type="radio" name="hs-default-radio"
+                                                            class="shrink-0 mt-0.5 w-5 h-5 form-check-input"
+                                                            id="hs-checked-radio" disabled checked>
+                                                        <label for="hs-checked-radio"
+                                                            class="text-sm text-gray-500 ms-2 dark:text-gray-400">Checked
+                                                            radio</label>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title mb-0">Radio With horizontal list group</h5>
+                                                <p class="card-subtitle  mb-6">Make a <code
+                                                        class="text-error bg-lightwarning dark:bg-darkwarning">'horizontal list'</code>
+                                                    group item appear with checkbox.</p>
+                                                <form action="#" class="flex flex-col gap-4">
+                                                    <ul class="flex flex-col sm:flex-row">
+                                                        <li
+                                                            class="inline-flex items-center gap-x-2.5 py-3 px-4 text-sm font-medium bg-white dark:bg-darkprimary border border-light-dark text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg sm:-ms-px sm:mt-0 sm:first:rounded-se-none sm:first:rounded-es-lg sm:last:rounded-es-none sm:last:rounded-se-lg  dark:text-white">
+                                                            <div class="relative flex items-start w-full">
+                                                                <div class="flex items-center h-5">
+                                                                    <input id="hs-horizontal-list-group-item-radio-1"
+                                                                        name="hs-horizontal-list-group-item-radio"
+                                                                        type="radio"
+                                                                        class="border-bordergray bg-transparent dark:border-darkborder w-5 h-5 text-primary rounded-full disabled:opacity-50  dark:checked:bg-primary dark:checked:border-primary dark:focus:ring-offset-gray-800"
+                                                                        checked>
+                                                                </div>
+                                                                <label for="hs-horizontal-list-group-item-radio-1"
+                                                                    class="ms-3 block w-full text-sm text-gray-600 dark:text-gray-500">
+                                                                    Chris Lynch
+                                                                </label>
+                                                            </div>
+                                                        </li>
+
+                                                        <li
+                                                            class="inline-flex items-center gap-x-2.5 py-3 px-4 text-sm font-medium bg-white dark:bg-darkprimary border border-light-dark text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg sm:-ms-px sm:mt-0 sm:first:rounded-se-none sm:first:rounded-es-lg sm:last:rounded-es-none sm:last:rounded-se-lg  dark:text-white">
+                                                            <div class="relative flex items-start w-full">
+                                                                <div class="flex items-center h-5">
+                                                                    <input id="hs-horizontal-list-group-item-radio-2"
+                                                                        name="hs-horizontal-list-group-item-radio"
+                                                                        type="radio"
+                                                                        class="border-bordergray bg-transparent dark:border-darkborder w-5 h-5 text-primary rounded-full disabled:opacity-50  dark:checked:bg-primary dark:checked:border-primary dark:focus:ring-offset-gray-800">
+                                                                </div>
+                                                                <label for="hs-horizontal-list-group-item-radio-2"
+                                                                    class="ms-3 block w-full text-sm text-gray-600 dark:text-gray-500">
+                                                                    Maria Guan
+                                                                </label>
+                                                            </div>
+                                                        </li>
+
+                                                        <li
+                                                            class="inline-flex items-center gap-x-2.5 py-3 px-4 text-sm font-medium bg-white dark:bg-darkprimary border border-light-dark text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg sm:-ms-px sm:mt-0 sm:first:rounded-se-none sm:first:rounded-es-lg sm:last:rounded-es-none sm:last:rounded-se-lg  dark:text-white">
+                                                            <div class="relative flex items-start w-full">
+                                                                <div class="flex items-center h-5">
+                                                                    <input id="hs-horizontal-list-group-item-radio-3"
+                                                                        name="hs-horizontal-list-group-item-radio"
+                                                                        type="radio"
+                                                                        class="border-bordergray bg-transparent dark:border-darkborder w-5 h-5 text-primary rounded-full disabled:opacity-50  dark:checked:bg-primary dark:checked:border-primary dark:focus:ring-offset-gray-800">
+                                                                </div>
+                                                                <label for="hs-horizontal-list-group-item-radio-3"
+                                                                    class="ms-3 block w-full text-sm text-gray-600 dark:text-gray-500">
+                                                                    Bob Arum
+                                                                </label>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title mb-0">Vertical radio group</h5>
+                                                <p class="card-subtitle  mb-6">A <code
+                                                        class="text-error bg-lightwarning dark:bg-darkwarning">'vertical'</code>
+                                                    group of radio components.</p>
+                                                <form action="#" class="flex flex-col gap-4">
+                                                    <div class="flex flex-col gap-y-3">
+                                                        <div class="flex">
+                                                            <input type="radio" name="hs-radio-vertical-group"
+                                                                class="shrink-0 mt-0.5 w-5 h-5 form-check-input"
+                                                                id="hs-radio-vertical-group-1" checked>
+                                                            <label for="hs-radio-vertical-group-1"
+                                                                class="text-sm text-gray-500 ms-2 dark:text-gray-400">Apple</label>
+                                                        </div>
+
+                                                        <div class="flex">
+                                                            <input type="radio" name="hs-radio-vertical-group"
+                                                                class="shrink-0 mt-0.5 w-5 h-5 form-check-input"
+                                                                id="hs-radio-vertical-group-2">
+                                                            <label for="hs-radio-vertical-group-2"
+                                                                class="text-sm text-gray-500 ms-2 dark:text-gray-400">Pear</label>
+                                                        </div>
+
+                                                        <div class="flex">
+                                                            <input type="radio" name="hs-radio-vertical-group"
+                                                                class="shrink-0 mt-0.5 w-5 h-5 form-check-input"
+                                                                id="hs-radio-vertical-group-3">
+                                                            <label for="hs-radio-vertical-group-3"
+                                                                class="text-sm text-gray-500 ms-2 dark:text-gray-400">Orange</label>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title mb-6">List with description</h5>
+                                                <form action="#" class="flex flex-col gap-4">
+                                                    <div class="grid space-y-3">
+                                                        <div class="relative flex items-start">
+                                                            <div class="flex items-center h-5 mt-1">
+                                                                <input id="hs-radio-delete"
+                                                                    name="hs-radio-with-description" type="radio"
+                                                                    class="border-bordergray bg-transparent dark:border-darkborder w-5 h-5 rounded-full text-primary focus:ring-primary  dark:checked:bg-primary dark:checked:border-primary dark:focus:ring-offset-gray-800"
+                                                                    aria-describedby="hs-radio-delete-description"
+                                                                    checked>
+                                                            </div>
+                                                            <label for="hs-radio-delete" class="ms-3">
+                                                                <span
+                                                                    class="block text-sm font-semibold text-gray-800 dark:text-gray-300">Delete</span>
+                                                                <span id="hs-radio-delete-description"
+                                                                    class="block text-sm text-gray-600 dark:text-gray-500">Notify
+                                                                    me when this action happens.</span>
+                                                            </label>
+                                                        </div>
+
+                                                        <div class="relative flex items-start">
+                                                            <div class="flex items-center h-5 mt-1">
+                                                                <input id="hs-radio-archive"
+                                                                    name="hs-radio-with-description" type="radio"
+                                                                    class="border-bordergray bg-transparent dark:border-darkborder w-5 h-5 rounded-full text-primary focus:ring-primary  dark:checked:bg-primary dark:checked:border-primary dark:focus:ring-offset-gray-800"
+                                                                    aria-describedby="hs-radio-archive-description">
+                                                            </div>
+                                                            <label for="hs-radio-archive" class="ms-3">
+                                                                <span
+                                                                    class="block text-sm font-semibold text-gray-800 dark:text-gray-300">Archive</span>
+                                                                <span id="hs-radio-archive-description"
+                                                                    class="block text-sm text-gray-600 dark:text-gray-500">Notify
+                                                                    me when this action happens.</span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title mb-0">Radio With list group</h5>
+                                                <p class="card-subtitle  mb-6">Make the <code
+                                                        class="text-error bg-lightwarning dark:bg-darkwarning">'list item'</code>
+                                                    appear with checkbox.</p>
+                                                <form action="#" class="flex flex-col gap-4">
+                                                    <ul class="max-w-sm flex flex-col">
+                                                        <li
+                                                            class="inline-flex items-center gap-x-2 py-3 px-4 text-sm font-medium bg-white dark:bg-darkprimary border border-light-dark text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg  dark:text-white">
+                                                            <div class="relative flex items-start w-full">
+                                                                <div class="flex items-center h-5">
+                                                                    <input id="hs-list-group-item-radio-1"
+                                                                        name="hs-list-group-item-radio" type="radio"
+                                                                        class="border-bordergray bg-transparent dark:border-darkborder w-5 h-5 text-primary rounded-full disabled:opacity-50  dark:checked:bg-primary dark:checked:border-primary dark:focus:ring-offset-gray-800"
+                                                                        checked>
+                                                                </div>
+                                                                <label for="hs-list-group-item-radio-1"
+                                                                    class="ms-3 block w-full text-sm text-gray-600 dark:text-gray-500">
+                                                                    Chris Lynch
+                                                                </label>
+                                                            </div>
+                                                        </li>
+
+                                                        <li
+                                                            class="inline-flex items-center gap-x-2 py-3 px-4 text-sm font-medium bg-white dark:bg-darkprimary border border-light-dark text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg  dark:text-white">
+                                                            <div class="relative flex items-start w-full">
+                                                                <div class="flex items-center h-5">
+                                                                    <input id="hs-list-group-item-radio-2"
+                                                                        name="hs-list-group-item-radio" type="radio"
+                                                                        class="border-bordergray bg-transparent dark:border-darkborder w-5 h-5 text-primary rounded-full disabled:opacity-50  dark:checked:bg-primary dark:checked:border-primary dark:focus:ring-offset-gray-800">
+                                                                </div>
+                                                                <label for="hs-list-group-item-radio-2"
+                                                                    class="ms-3 block w-full text-sm text-gray-600 dark:text-gray-500">
+                                                                    Maria Guan
+                                                                </label>
+                                                            </div>
+                                                        </li>
+
+                                                        <li
+                                                            class="inline-flex items-center gap-x-2 py-3 px-4 text-sm font-medium bg-white dark:bg-darkprimary border border-light-dark text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg  dark:text-white">
+                                                            <div class="relative flex items-start w-full">
+                                                                <div class="flex items-center h-5">
+                                                                    <input id="hs-list-group-item-radio-3"
+                                                                        name="hs-list-group-item-radio" type="radio"
+                                                                        class="border-bordergray bg-transparent dark:border-darkborder w-5 h-5 text-primary rounded-full disabled:opacity-50  dark:checked:bg-primary dark:checked:border-primary dark:focus:ring-offset-gray-800">
+                                                                </div>
+                                                                <label for="hs-list-group-item-radio-3"
+                                                                    class="ms-3 block w-full text-sm text-gray-600 dark:text-gray-500">
+                                                                    Bob Arum
+                                                                </label>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title mb-6">Checkbox - colors</h5>
+                                                <form action="#" class="flex flex-col gap-4">
+                                                    <div class="flex gap-20">
+                                                        <span class="text-sm w-20">Success</span>
+                                                        <div class="flex gap-4">
+                                                            <div class="flex">
+                                                                <input type="radio" name="hs-colored-radio"
+                                                                    class="shrink-0 mt-0.5 w-5 h-5 border-bordergray bg-transparent dark:border-darkborder rounded-full text-success focus:ring-success disabled:opacity-50 disabled:pointer-events-none  dark:checked:bg-success dark:checked:border-success dark:focus:ring-offset-gray-800"
+                                                                    id="hs-checked-radio7">
+                                                                <label for="hs-checked-radio7"
+                                                                    class="text-sm text-gray-500 ms-2 dark:text-gray-400">Default</label>
+                                                            </div>
+                                                            <div class="flex">
+                                                                <input type="radio" name="hs-colored-radio"
+                                                                    class="shrink-0 mt-0.5 w-5 h-5 border-bordergray bg-transparent dark:border-darkborder rounded-full text-success focus:ring-success disabled:opacity-50 disabled:pointer-events-none  dark:checked:bg-success dark:checked:border-success dark:focus:ring-offset-gray-800"
+                                                                    id="hs-checked-radio8" checked>
+                                                                <label for="hs-checked-radio8"
+                                                                    class="text-sm text-gray-500 ms-2 dark:text-gray-400">Checked</label>
+                                                            </div>
+                                                            <div class="flex opacity-40">
+                                                                <input type="radio" name="hs-disabled-radio"
+                                                                    class="shrink-0 mt-0.5 w-5 h-5 border-bordergray bg-transparent dark:border-darkborder rounded-full text-success focus:ring-success disabled:opacity-50 disabled:pointer-events-none  dark:checked:bg-success dark:checked:border-success dark:focus:ring-offset-gray-800"
+                                                                    id="hs-disabled-checked-radio9" checked disabled>
+                                                                <label for="hs-disabled-checked-radio9"
+                                                                    class="text-sm text-gray-500 ms-2 dark:text-gray-400">Disabled</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex gap-20">
+                                                        <span class="text-sm w-20">Danger</span>
+                                                        <div class="flex gap-4">
+                                                            <div class="flex">
+                                                                <input type="radio" name="hs-colored-radio1"
+                                                                    class="shrink-0 mt-0.5 w-5 h-5 border-bordergray bg-transparent dark:border-darkborder rounded-full text-error focus:ring-error disabled:opacity-50 disabled:pointer-events-none  dark:checked:bg-error dark:checked:border-error dark:focus:ring-offset-gray-800"
+                                                                    id="hs-checked-radio10">
+                                                                <label for="hs-checked-radio10"
+                                                                    class="text-sm text-gray-500 ms-2 dark:text-gray-400">Default</label>
+                                                            </div>
+                                                            <div class="flex">
+                                                                <input type="radio" name="hs-colored-radio1"
+                                                                    class="shrink-0 mt-0.5 w-5 h-5 border-bordergray bg-transparent dark:border-darkborder rounded-full text-error focus:ring-error disabled:opacity-50 disabled:pointer-events-none  dark:checked:bg-error dark:checked:border-error dark:focus:ring-offset-gray-800"
+                                                                    id="hs-checked-radio11" checked>
+                                                                <label for="hs-checked-radio11"
+                                                                    class="text-sm text-gray-500 ms-2 dark:text-gray-400">Checked</label>
+                                                            </div>
+                                                            <div class="flex opacity-40">
+                                                                <input type="radio" name="hs-disabled-radio1"
+                                                                    class="shrink-0 mt-0.5 w-5 h-5 border-bordergray bg-transparent dark:border-darkborder rounded-full text-error focus:ring-error disabled:opacity-50 disabled:pointer-events-none  dark:checked:bg-error dark:checked:border-error dark:focus:ring-offset-gray-800"
+                                                                    id="hs-disabled-checked-radio12" checked disabled>
+                                                                <label for="hs-disabled-checked-radio12"
+                                                                    class="text-sm text-gray-500 ms-2 dark:text-gray-400">Disabled</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex gap-20">
+                                                        <span class="text-sm w-20">Warning</span>
+                                                        <div class="flex gap-4">
+                                                            <div class="flex">
+                                                                <input type="radio" name="hs-colored-radio2"
+                                                                    class="shrink-0 mt-0.5 w-5 h-5 border-bordergray bg-transparent dark:border-darkborder rounded-full text-warning focus:ring-warning disabled:opacity-50 disabled:pointer-events-none  dark:checked:bg-warning dark:checked:border-warning dark:focus:ring-offset-gray-800"
+                                                                    id="hs-checked-radio13">
+                                                                <label for="hs-checked-radio13"
+                                                                    class="text-sm text-gray-500 ms-2 dark:text-gray-400">Default</label>
+                                                            </div>
+                                                            <div class="flex">
+                                                                <input type="radio" name="hs-colored-radio2"
+                                                                    class="shrink-0 mt-0.5 w-5 h-5 border-bordergray bg-transparent dark:border-darkborder rounded-full text-warning focus:ring-warning disabled:opacity-50 disabled:pointer-events-none  dark:checked:bg-warning dark:checked:border-warning dark:focus:ring-offset-gray-800"
+                                                                    id="hs-checked-radio14" checked>
+                                                                <label for="hs-checked-radio14"
+                                                                    class="text-sm text-gray-500 ms-2 dark:text-gray-400">Checked</label>
+                                                            </div>
+                                                            <div class="flex opacity-40">
+                                                                <input type="radio" name="hs-disabled-radio2"
+                                                                    class="shrink-0 mt-0.5 w-5 h-5 border-bordergray bg-transparent dark:border-darkborder rounded-full text-warning focus:ring-warning disabled:opacity-50 disabled:pointer-events-none  dark:checked:bg-warning dark:checked:border-warning dark:focus:ring-offset-gray-800"
+                                                                    id="hs-disabled-checked-radio14" checked disabled>
+                                                                <label for="hs-disabled-checked-radio14"
+                                                                    class="text-sm text-gray-500 ms-2 dark:text-gray-400">Disabled</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex gap-20">
+                                                        <span class="text-sm w-20">Primary</span>
+                                                        <div class="flex gap-4">
+                                                            <div class="flex">
+                                                                <input type="radio" name="hs-colored-radio3"
+                                                                    class="shrink-0 mt-0.5 w-5 h-5 form-check-input"
+                                                                    id="hs-checked-radio15">
+                                                                <label for="hs-checked-radio15"
+                                                                    class="text-sm text-gray-500 ms-2 dark:text-gray-400">Default</label>
+                                                            </div>
+                                                            <div class="flex">
+                                                                <input type="radio" name="hs-colored-radio3"
+                                                                    class="shrink-0 mt-0.5 w-5 h-5 form-check-input"
+                                                                    id="hs-checked-radio16" checked>
+                                                                <label for="hs-checked-radio16"
+                                                                    class="text-sm text-gray-500 ms-2 dark:text-gray-400">Checked</label>
+                                                            </div>
+                                                            <div class="flex opacity-40">
+                                                                <input type="radio" name="hs-disabled-radio3"
+                                                                    class="shrink-0 mt-0.5 w-5 h-5 form-check-input"
+                                                                    id="hs-disabled-checked-radio17" checked disabled>
+                                                                <label for="hs-disabled-checked-radio17"
+                                                                    class="text-sm text-gray-500 ms-2 dark:text-gray-400">Disabled</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex gap-20">
+                                                        <span class="text-sm w-20">Secondary</span>
+                                                        <div class="flex gap-4">
+                                                            <div class="flex">
+                                                                <input type="radio" name="hs-colored-radio4"
+                                                                    class="shrink-0 mt-0.5 w-5 h-5 border-bordergray bg-transparent dark:border-darkborder rounded-full text-secondary focus:ring-secondary disabled:opacity-50 disabled:pointer-events-none  dark:checked:bg-secondary dark:checked:border-secondary dark:focus:ring-offset-gray-800"
+                                                                    id="hs-checked-radio18">
+                                                                <label for="hs-checked-radio18"
+                                                                    class="text-sm text-gray-500 ms-2 dark:text-gray-400">Default</label>
+                                                            </div>
+                                                            <div class="flex">
+                                                                <input type="radio" name="hs-colored-radio4"
+                                                                    class="shrink-0 mt-0.5 w-5 h-5 border-bordergray bg-transparent dark:border-darkborder rounded-full text-secondary focus:ring-secondary disabled:opacity-50 disabled:pointer-events-none  dark:checked:bg-secondary dark:checked:border-secondary dark:focus:ring-offset-gray-800"
+                                                                    id="hs-checked-radio20" checked>
+                                                                <label for="hs-checked-radio20"
+                                                                    class="text-sm text-gray-500 ms-2 dark:text-gray-400">Checked</label>
+                                                            </div>
+                                                            <div class="flex opacity-40">
+                                                                <input type="radio" name="hs-disabled-radio4"
+                                                                    class="shrink-0 mt-0.5 w-5 h-5 border-bordergray bg-transparent dark:border-darkborder rounded-full text-secondary focus:ring-secondary disabled:opacity-50 disabled:pointer-events-none  dark:checked:bg-secondary dark:checked:border-secondary dark:focus:ring-offset-gray-800"
+                                                                    id="hs-disabled-checked-radio20" checked disabled>
+                                                                <label for="hs-disabled-checked-radio20"
+                                                                    class="text-sm text-gray-500 ms-2 dark:text-gray-400">Disabled</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                <!-- Main Content End -->
+
+            </div>
+        </div>
+        <!--end of project-->
+    </main>
+    @@include("partials/header-components/mobile-menu.html")
+    @@include("partials/customizer.html")
+    @@include("partials/scripts.html")
+</body>
+
+</html>

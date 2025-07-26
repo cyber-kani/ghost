@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-color-theme="Blue_Theme" class="light selected" data-layout="vertical"
+  data-boxed-layout="boxed" data-card="shadow">
+
+<head>
+  @@include("partials/head.html")
+  <title>Spike TailwindCSS HTML Admin Template</title>
+  <link rel="stylesheet" href="@@webRoot/node_modules/prismjs/themes/prism-okaidia.min.css">
+</head>
+
+<body class="DEFAULT_THEME bg-lightprimary dark:bg-darkbody">
+  <main>
+    <!--start the project-->
+    <div id="main-wrapper" class="flex p-5">
+
+      <aside id="application-sidebar-brand"
+        class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full xl:rtl:-translate-x-0 rtl:translate-x-full  left-0 rtl:left-auto xl:rtl:right-5 rtl:right-0 transform hidden xl:block xl:translate-x-0 xl:end-auto xl:bottom-0 fixed top-0 with-vertical  left-sidebar transition-all duration-300 h-screen z-[2] flex-shrink-0  w-[270px] border-border dark:border-darkborder bg-white dark:bg-dark xl:top-5 xl:start-5 shadow-md xl:rounded-md">
+        @@include("partials/sidebar.html",{ "page": "ui-scrollspy","page_group": "ui" })
+      </aside>
+      <div class="page-wrapper w-full" role="main">
+
+        <!-- Main Content -->
+        <main class="h-full ">
+          <div class="container full-container py-5 xl:ps-6 ps-0 pt-0 pe-0 remove-ps">
+
+            <!--  Header Start -->
+            <header
+              class="sticky top-0 inset-x-0 z-[1] flex flex-wrap md:justify-start md:flex-nowrap text-fs_15 py-3 lg:py-0 mb-6 bg-white dark:bg-dark rounded-md shadow-md">
+              <div class="with-vertical w-full">@@include("partials/header.html")</div>
+              <div class="with-horizontal w-full">
+                <div class="bg-white dark:bg-dark">
+                  <div class="container">
+                    @@include("partials/horizontal-header.html")
+                  </div>
+                </div>
+              </div>
+            </header>
+            <!--  Header End -->
+
+            <!-- Horizontal Sidebar Menu -->
+            <aside
+              class="with-horizontal lg:flex hidden left-sidebar bg-white dark:bg-dark border-t border-border dark:border-darkborder">
+              @@include("partials/horizontal-sidebar.html", { "page": "ui-scrollspy","page_group": "ui"})
+            </aside>
+            <!-- Horizontal Sidebar Menu End -->
+
+            <!-- Main Content -->
+            <div class="max-w-full">
+              <div class="container full-container ">
+                <!----Breadcrumb Start---->
+                @@include("partials/breadcrumb.html", {"title": "Scrollspy", "subtitle": 'Home'})
+                <!----Breadcrumb End---->
+                <div class="grid grid-cols-12 gap-6">
+                  <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-0">
+                          <h5 class="card-title mb-0">Scrollspy in navbar</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal1">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal1"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Scrollspy in
+                                        navbar -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal1">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+         <code class="language-html">  
+    &#x3C;div id=&#x22;scrollspy-scrollable-parent-1&#x22; class=&#x22;max-h-[340px] overflow-y-auto&#x22;&#x3E;
+       &#x3C;header class=&#x22;sticky top-0 inset-x-0 flex flex-wrap sm:justify-start sm:flex-nowrap z-40 w-full bg-white text-sm py-4 dark:bg-gray-800&#x22;&#x3E;
+          &#x3C;nav class=&#x22;max-w-[85rem] w-full mx-auto sm:flex sm:items-center sm:justify-between&#x22; aria-label=&#x22;Global&#x22;&#x3E;
+             &#x3C;div class=&#x22;flex items-center justify-between&#x22;&#x3E;
+                &#x3C;img src=&#x22;@@webRoot/assets/images/logos/favicon.png&#x22;&#x3E;
+                &#x3C;div class=&#x22;sm:hidden&#x22;&#x3E;
+                   &#x3C;button type=&#x22;button&#x22; class=&#x22;hs-collapse-toggle p-2 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-primary transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800&#x22; data-hs-collapse=&#x22;#navbar-collapse-basic&#x22; aria-controls=&#x22;navbar-collapse-basic&#x22; aria-label=&#x22;Toggle navigation&#x22;&#x3E;
+                   &#x3C;i class=&#x22;ti ti-menu-2 text-lg hs-collapse-open:hidden font-medium leading-none&#x22;&#x3E;&#x3C;/i&#x3E;
+                   &#x3C;i class=&#x22;ti ti-x text-lg hs-collapse-open:block hidden font-medium leading-none&#x22;&#x3E;&#x3C;/i&#x3E;
+                   &#x3C;/button&#x3E;
+                &#x3C;/div&#x3E;
+             &#x3C;/div&#x3E;
+             &#x3C;div id=&#x22;navbar-collapse-basic&#x22; class=&#x22;hidden overflow-hidden transition-all duration-300 basis-full grow sm:block&#x22;&#x3E;
+                &#x3C;div data-hs-scrollspy=&#x22;#scrollspy-1&#x22; data-hs-scrollspy-scrollable-parent=&#x22;#scrollspy-scrollable-parent-1&#x22; class=&#x22;flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:ps-5 [--scrollspy-offset:220] md:[--scrollspy-offset:70]&#x22;&#x3E;
+                   &#x3C;a class=&#x22;text-sm text-gray-700 leading-6 hover:text-gray-500 focus:outline-none focus:text-primary dark:text-gray-400 dark:hover:text-gray-500 dark:focus:text-primary hs-scrollspy-active:text-primary dark:hs-scrollspy-active:text-primary active&#x22; href=&#x22;#first&#x22;&#x3E;First&#x3C;/a&#x3E;
+                   &#x3C;a class=&#x22;text-sm text-gray-700 leading-6 hover:text-gray-500 focus:outline-none focus:text-primary dark:text-gray-400 dark:hover:text-gray-500 dark:focus:text-primary hs-scrollspy-active:text-primary dark:hs-scrollspy-active:text-primary&#x22; href=&#x22;#second&#x22;&#x3E;Second&#x3C;/a&#x3E;
+                   &#x3C;div data-hs-scrollspy-group=&#x22;&#x22; class=&#x22;hs-dropdown [--adaptive:none] [--placement:bottom-right]&#x22;&#x3E;
+                      &#x3C;button type=&#x22;button&#x22; id=&#x22;hs-mega-menu-basic-dr&#x22; class=&#x22;group hs-scrollspy-active:text-primary mb-3 sm:mb-0 inline-flex justify-center items-center gap-x-1 text-sm text-gray-700 leading-6 hover:text-gray-500 focus:outline-none focus:text-primary dark:text-gray-400 dark:hover:text-gray-500 dark:focus:text-primary dark:hs-scrollspy-active:text-primary&#x22;&#x3E;
+                         Dropdown
+                         &#x3C;svg class=&#x22;flex-shrink-0 size-4&#x22; xmlns=&#x22;http://www.w3.org/2000/svg&#x22; width=&#x22;24&#x22; height=&#x22;24&#x22; viewBox=&#x22;0 0 24 24&#x22; fill=&#x22;none&#x22; stroke=&#x22;currentColor&#x22; stroke-width=&#x22;2&#x22; stroke-linecap=&#x22;round&#x22; stroke-linejoin=&#x22;round&#x22;&#x3E;
+                            &#x3C;path d=&#x22;m6 9 6 6 6-6&#x22;&#x3E;&#x3C;/path&#x3E;
+                         &#x3C;/svg&#x3E;
+                      &#x3C;/button&#x3E;
+                      &#x3C;div class=&#x22;hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] sm:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 sm:w-48 z-10 bg-white sm:shadow-md rounded-md p-2 dark:bg-gray-800 sm:dark:border dark:border-gray-700 dark:divide-gray-700 before:absolute top-full sm:border before:-top-5 before:start-0 before:w-full before:h-5 hidden&#x22;&#x3E;
+                         &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-700 leading-6 hover:text-gray-500 focus:outline-none focus:text-primary dark:text-gray-400 dark:hover:text-gray-500 dark:focus:text-primary hs-scrollspy-active:text-primary dark:hs-scrollspy-active:text-primary&#x22; href=&#x22;#third&#x22;&#x3E;
+                         Third
+                         &#x3C;/a&#x3E;
+                         &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-700 leading-6 hover:text-gray-500 focus:outline-none focus:text-primary dark:text-gray-400 dark:hover:text-gray-500 dark:focus:text-primary hs-scrollspy-active:text-primary dark:hs-scrollspy-active:text-primary&#x22; href=&#x22;#fourth&#x22;&#x3E;
+                         Fourth
+                         &#x3C;/a&#x3E;
+                         &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-700 leading-6 hover:text-gray-500 focus:outline-none focus:text-primary dark:text-gray-400 dark:hover:text-gray-500 dark:focus:text-primary hs-scrollspy-active:text-primary dark:hs-scrollspy-active:text-primary&#x22; href=&#x22;#fifth&#x22;&#x3E;
+                         Fifth
+                         &#x3C;/a&#x3E;
+                      &#x3C;/div&#x3E;
+                   &#x3C;/div&#x3E;
+                &#x3C;/div&#x3E;
+             &#x3C;/div&#x3E;
+          &#x3C;/nav&#x3E;
+       &#x3C;/header&#x3E;
+       &#x3C;div id=&#x22;scrollspy-1&#x22; class=&#x22;mt-3 space-y-4&#x22;&#x3E;
+          &#x3C;div id=&#x22;first&#x22;&#x3E;
+             &#x3C;h3 class=&#x22;text-lg text-dark font-semibold dark:text-white&#x22;&#x3E;First&#x3C;/h3&#x3E;
+             &#x3C;p class=&#x22;mt-1 text-sm leading-6 text-gray-600 dark:text-gray-400&#x22;&#x3E;This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It&#x27;s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.&#x3C;/p&#x3E;
+          &#x3C;/div&#x3E;
+          &#x3C;div id=&#x22;second&#x22;&#x3E;
+             &#x3C;h3 class=&#x22;text-lg text-dark font-semibold dark:text-white&#x22;&#x3E;Second&#x3C;/h3&#x3E;
+             &#x3C;p class=&#x22;mt-1 text-sm leading-6 text-gray-600 dark:text-gray-400&#x22;&#x3E;This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It&#x27;s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.&#x3C;/p&#x3E;
+          &#x3C;/div&#x3E;
+          &#x3C;div id=&#x22;third&#x22;&#x3E;
+             &#x3C;h3 class=&#x22;text-lg text-dark font-semibold dark:text-white&#x22;&#x3E;Third&#x3C;/h3&#x3E;
+             &#x3C;p class=&#x22;mt-1 text-sm leading-6 text-gray-600 dark:text-gray-400&#x22;&#x3E;This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It&#x27;s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.&#x3C;/p&#x3E;
+          &#x3C;/div&#x3E;
+          &#x3C;div id=&#x22;fourth&#x22;&#x3E;
+             &#x3C;h3 class=&#x22;text-lg text-dark font-semibold dark:text-white&#x22;&#x3E;Fourth&#x3C;/h3&#x3E;
+             &#x3C;p class=&#x22;mt-1 text-sm leading-6 text-gray-600 dark:text-gray-400&#x22;&#x3E;This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It&#x27;s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.&#x3C;/p&#x3E;
+          &#x3C;/div&#x3E;
+          &#x3C;div id=&#x22;fifth&#x22;&#x3E;
+             &#x3C;h3 class=&#x22;text-lg text-dark font-semibold dark:text-white&#x22;&#x3E;Fifth&#x3C;/h3&#x3E;
+             &#x3C;p class=&#x22;mt-1 text-sm leading-6 text-gray-600 dark:text-gray-400&#x22;&#x3E;This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It&#x27;s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.&#x3C;/p&#x3E;
+          &#x3C;/div&#x3E;
+       &#x3C;/div&#x3E;
+    &#x3C;/div&#x3E;
+                    </code>
+                                                            </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <p class="card-subtitle  mb-6">Scroll the area below the navbar and watch the active class
+                          change. The dropdown items will be <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">highlighted</code> as well.</p>
+                        <div id="scrollspy-scrollable-parent-1" class="max-h-[340px] overflow-y-auto">
+                          <header
+                            class="sticky top-0 inset-x-0 flex flex-wrap sm:justify-start sm:flex-nowrap z-40 w-full bg-white text-sm py-4 dark:bg-gray-800">
+                            <nav class="max-w-[85rem] w-full mx-auto sm:flex sm:items-center sm:justify-between"
+                              aria-label="Global">
+                              <div class="flex items-center justify-between">
+                                <img src="@@webRoot/assets/images/logos/favicon.png">
+                                <div class="sm:hidden">
+                                  <button type="button"
+                                    class="hs-collapse-toggle p-2 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-primary transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
+                                    data-hs-collapse="#navbar-collapse-basic" aria-controls="navbar-collapse-basic"
+                                    aria-label="Toggle navigation">
+                                    <i
+                                      class="ti ti-menu-2 text-lg hs-collapse-open:hidden font-medium leading-none"></i>
+                                    <i
+                                      class="ti ti-x text-lg hs-collapse-open:block hidden font-medium leading-none"></i>
+                                  </button>
+                                </div>
+                              </div>
+                              <div id="navbar-collapse-basic"
+                                class="hidden overflow-hidden transition-all duration-300 basis-full grow sm:block">
+                                <div data-hs-scrollspy="#scrollspy-1"
+                                  data-hs-scrollspy-scrollable-parent="#scrollspy-scrollable-parent-1"
+                                  class="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:ps-5 [--scrollspy-offset:220] md:[--scrollspy-offset:70]">
+                                  <a class="text-sm text-gray-700 leading-6 hover:text-gray-500 focus:outline-none focus:text-primary dark:text-gray-400 dark:hover:text-gray-500 dark:focus:text-primary hs-scrollspy-active:text-primary dark:hs-scrollspy-active:text-primary active"
+                                    href="#first">First</a>
+                                  <a class="text-sm text-gray-700 leading-6 hover:text-gray-500 focus:outline-none focus:text-primary dark:text-gray-400 dark:hover:text-gray-500 dark:focus:text-primary hs-scrollspy-active:text-primary dark:hs-scrollspy-active:text-primary"
+                                    href="#second">Second</a>
+
+                                  <div data-hs-scrollspy-group=""
+                                    class="hs-dropdown [--adaptive:none] [--placement:bottom-right]">
+                                    <button type="button" id="hs-mega-menu-basic-dr"
+                                      class="group hs-scrollspy-active:text-primary mb-3 sm:mb-0 inline-flex justify-center items-center gap-x-1 text-sm text-gray-700 leading-6 hover:text-gray-500 focus:outline-none focus:text-primary dark:text-gray-400 dark:hover:text-gray-500 dark:focus:text-primary dark:hs-scrollspy-active:text-primary">
+                                      Dropdown
+                                      <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="m6 9 6 6 6-6"></path>
+                                      </svg>
+                                    </button>
+
+                                    <div
+                                      class="hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] sm:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 sm:w-48 z-10 bg-white sm:shadow-md rounded-md p-2 dark:bg-gray-800 sm:dark:border dark:border-gray-700 dark:divide-gray-700 before:absolute top-full sm:border before:-top-5 before:start-0 before:w-full before:h-5 hidden">
+                                      <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-700 leading-6 hover:text-gray-500 focus:outline-none focus:text-primary dark:text-gray-400 dark:hover:text-gray-500 dark:focus:text-primary hs-scrollspy-active:text-primary dark:hs-scrollspy-active:text-primary"
+                                        href="#third">
+                                        Third
+                                      </a>
+                                      <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-700 leading-6 hover:text-gray-500 focus:outline-none focus:text-primary dark:text-gray-400 dark:hover:text-gray-500 dark:focus:text-primary hs-scrollspy-active:text-primary dark:hs-scrollspy-active:text-primary"
+                                        href="#fourth">
+                                        Fourth
+                                      </a>
+                                      <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-700 leading-6 hover:text-gray-500 focus:outline-none focus:text-primary dark:text-gray-400 dark:hover:text-gray-500 dark:focus:text-primary hs-scrollspy-active:text-primary dark:hs-scrollspy-active:text-primary"
+                                        href="#fifth">
+                                        Fifth
+                                      </a>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </nav>
+                          </header>
+
+                          <div id="scrollspy-1" class="mt-3 space-y-4">
+                            <div id="first">
+                              <h3 class="text-lg text-dark font-semibold dark:text-white">First</h3>
+                              <p class="mt-1 text-sm leading-6 text-gray-600 dark:text-gray-400">This is some
+                                placeholder content for the scrollspy page. Note that as you scroll down the page, the
+                                appropriate navigation link is highlighted. It's repeated throughout the component
+                                example. We keep adding some more example copy here to emphasize the scrolling and
+                                highlighting.</p>
+                            </div>
+
+                            <div id="second">
+                              <h3 class="text-lg text-dark font-semibold dark:text-white">Second</h3>
+                              <p class="mt-1 text-sm leading-6 text-gray-600 dark:text-gray-400">This is some
+                                placeholder content for the scrollspy page. Note that as you scroll down the page, the
+                                appropriate navigation link is highlighted. It's repeated throughout the component
+                                example. We keep adding some more example copy here to emphasize the scrolling and
+                                highlighting.</p>
+                            </div>
+
+                            <div id="third">
+                              <h3 class="text-lg text-dark font-semibold dark:text-white">Third</h3>
+                              <p class="mt-1 text-sm leading-6 text-gray-600 dark:text-gray-400">This is some
+                                placeholder content for the scrollspy page. Note that as you scroll down the page, the
+                                appropriate navigation link is highlighted. It's repeated throughout the component
+                                example. We keep adding some more example copy here to emphasize the scrolling and
+                                highlighting.</p>
+                            </div>
+
+                            <div id="fourth">
+                              <h3 class="text-lg text-dark font-semibold dark:text-white">Fourth</h3>
+                              <p class="mt-1 text-sm leading-6 text-gray-600 dark:text-gray-400">This is some
+                                placeholder content for the scrollspy page. Note that as you scroll down the page, the
+                                appropriate navigation link is highlighted. It's repeated throughout the component
+                                example. We keep adding some more example copy here to emphasize the scrolling and
+                                highlighting.</p>
+                            </div>
+
+                            <div id="fifth">
+                              <h3 class="text-lg text-dark font-semibold dark:text-white">Fifth</h3>
+                              <p class="mt-1 text-sm leading-6 text-gray-600 dark:text-gray-400">This is some
+                                placeholder content for the scrollspy page. Note that as you scroll down the page, the
+                                appropriate navigation link is highlighted. It's repeated throughout the component
+                                example. We keep adding some more example copy here to emphasize the scrolling and
+                                highlighting.</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-0">
+                          <h5 class="card-title mb-0">Scrollspy with nested nav</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal2">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal2"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Scrollspy
+                                        with nested nav -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal2">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+         <code class="language-html">  
+    &#x3C;div id=&#x22;scrollspy-scrollable-parent-2&#x22; class=&#x22;max-h-[400px] overflow-y-auto&#x22;&#x3E;
+       &#x3C;div class=&#x22;grid grid-cols-5&#x22;&#x3E;
+          &#x3C;div class=&#x22;col-span-2&#x22;&#x3E;
+             &#x3C;img src=&#x22;@@webRoot/assets/images/logos/favicon.png&#x22; alt=&#x22;&#x22;&#x3E;
+             &#x3C;ul class=&#x22;sticky top-0&#x22; data-hs-scrollspy=&#x22;#scrollspy-2&#x22; data-hs-scrollspy-scrollable-parent=&#x22;#scrollspy-scrollable-parent-2&#x22;&#x3E;
+                &#x3C;li data-hs-docs-scrollspy-group=&#x22;&#x22;&#x3E;
+                   &#x3C;a href=&#x22;#item-1&#x22; class=&#x22;block py-0.5 text-sm font-medium leading-6 text-slate-700 hover:text-slate-900 focus:outline-none focus:text-primary dark:text-slate-400 dark:hover:text-slate-300 dark:focus:text-primary hs-scrollspy-active:text-primary dark:hs-scrollspy-active:text-primary&#x22;&#x3E;Item 1&#x3C;/a&#x3E;
+                   &#x3C;ul&#x3E;
+                      &#x3C;li class=&#x22;ms-4&#x22;&#x3E;
+                         &#x3C;a href=&#x22;#item-1-1&#x22; class=&#x22;group flex items-center gap-x-2 py-0.5 text-sm text-gray-700 leading-6 hover:text-gray-800 focus:outline-none focus:text-primary dark:text-gray-400 dark:hover:text-gray-300 dark:focus:text-primary hs-scrollspy-active:text-primary dark:hs-scrollspy-active:text-primary&#x22;&#x3E;
+                         &#x3C;i class=&#x22;ti ti-chevron-right text-lg leading-tight font-medium &#x22;&#x3E;&#x3C;/i&#x3E;
+                         Item 1-1
+                         &#x3C;/a&#x3E;
+                      &#x3C;/li&#x3E;
+                      &#x3C;li class=&#x22;ms-4&#x22;&#x3E;
+                         &#x3C;a href=&#x22;#item-1-2&#x22; class=&#x22;group flex items-center gap-x-2 py-0.5 text-sm text-gray-700 leading-6 hover:text-gray-800 focus:outline-none focus:text-primary dark:text-gray-400 dark:hover:text-gray-300 dark:focus:text-primary hs-scrollspy-active:text-primary dark:hs-scrollspy-active:text-primary&#x22;&#x3E;
+                         &#x3C;i class=&#x22;ti ti-chevron-right text-lg leading-tight font-medium &#x22;&#x3E;&#x3C;/i&#x3E;
+                         Item 1-2
+                         &#x3C;/a&#x3E;
+                      &#x3C;/li&#x3E;
+                   &#x3C;/ul&#x3E;
+                &#x3C;/li&#x3E;
+                &#x3C;li&#x3E;
+                   &#x3C;a href=&#x22;#item-2&#x22; class=&#x22;block py-0.5 text-sm font-medium leading-6 text-slate-700 hover:text-slate-900 focus:outline-none focus:text-primary dark:text-slate-400 dark:hover:text-slate-300 dark:focus:text-primary hs-scrollspy-active:text-primary dark:hs-scrollspy-active:text-primary active&#x22;&#x3E;Item 2&#x3C;/a&#x3E;
+                &#x3C;/li&#x3E;
+                &#x3C;li data-hs-docs-scrollspy-group=&#x22;&#x22;&#x3E;
+                   &#x3C;a href=&#x22;#item-3&#x22; class=&#x22;block py-0.5 text-sm font-medium leading-6 text-slate-700 hover:text-slate-900 focus:outline-none focus:text-primary dark:text-slate-400 dark:hover:text-slate-300 dark:focus:text-primary hs-scrollspy-active:text-primary dark:hs-scrollspy-active:text-primary&#x22;&#x3E;Item 3&#x3C;/a&#x3E;
+                   &#x3C;ul&#x3E;
+                      &#x3C;li class=&#x22;ms-4&#x22;&#x3E;
+                         &#x3C;a href=&#x22;#item-3-1&#x22; class=&#x22;group flex items-center gap-x-2 py-0.5 text-sm text-gray-700 leading-6 hover:text-gray-800 focus:outline-none focus:text-primary dark:text-gray-400 dark:hover:text-gray-300 dark:focus:text-primary hs-scrollspy-active:text-primary dark:hs-scrollspy-active:text-primary&#x22;&#x3E;
+                         &#x3C;i class=&#x22;ti ti-chevron-right text-lg leading-tight font-medium &#x22;&#x3E;&#x3C;/i&#x3E;
+                         Item 3-1
+                         &#x3C;/a&#x3E;
+                      &#x3C;/li&#x3E;
+                      &#x3C;li class=&#x22;ms-4&#x22;&#x3E;
+                         &#x3C;a href=&#x22;#item-3-2&#x22; class=&#x22;group flex items-center gap-x-2 py-0.5 text-sm text-gray-700 leading-6 hover:text-gray-800 focus:outline-none focus:text-primary dark:text-gray-400 dark:hover:text-gray-300 dark:focus:text-primary hs-scrollspy-active:text-primary dark:hs-scrollspy-active:text-primary&#x22;&#x3E;
+                         &#x3C;i class=&#x22;ti ti-chevron-right text-lg leading-tight font-medium &#x22;&#x3E;&#x3C;/i&#x3E;
+                         Item 3-2
+                         &#x3C;/a&#x3E;
+                      &#x3C;/li&#x3E;
+                   &#x3C;/ul&#x3E;
+                &#x3C;/li&#x3E;
+             &#x3C;/ul&#x3E;
+          &#x3C;/div&#x3E;
+          &#x3C;div class=&#x22;col-span-3&#x22;&#x3E;
+             &#x3C;div id=&#x22;scrollspy-2&#x22; class=&#x22;space-y-4&#x22;&#x3E;
+                &#x3C;div id=&#x22;item-1&#x22;&#x3E;
+                   &#x3C;h3 class=&#x22;text-lg text-dark font-semibold dark:text-white&#x22;&#x3E;Item 1&#x3C;/h3&#x3E;
+                   &#x3C;p class=&#x22;mt-1 text-sm leading-6 text-gray-600 dark:text-gray-400&#x22;&#x3E;This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It&#x27;s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.&#x3C;/p&#x3E;
+                &#x3C;/div&#x3E;
+                &#x3C;div id=&#x22;item-1-1&#x22;&#x3E;
+                   &#x3C;h3 class=&#x22;text-lg text-dark font-semibold dark:text-white&#x22;&#x3E;Item 1-1&#x3C;/h3&#x3E;
+                   &#x3C;p class=&#x22;mt-1 text-sm leading-6 text-gray-600 dark:text-gray-400&#x22;&#x3E;This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It&#x27;s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.&#x3C;/p&#x3E;
+                &#x3C;/div&#x3E;
+                &#x3C;div id=&#x22;item-1-2&#x22;&#x3E;
+                   &#x3C;h3 class=&#x22;text-lg text-dark font-semibold dark:text-white&#x22;&#x3E;Item 1-2&#x3C;/h3&#x3E;
+                   &#x3C;p class=&#x22;mt-1 text-sm leading-6 text-gray-600 dark:text-gray-400&#x22;&#x3E;This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It&#x27;s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.&#x3C;/p&#x3E;
+                &#x3C;/div&#x3E;
+                &#x3C;div id=&#x22;item-2&#x22;&#x3E;
+                   &#x3C;h3 class=&#x22;text-lg text-dark font-semibold dark:text-white&#x22;&#x3E;Item 2&#x3C;/h3&#x3E;
+                   &#x3C;p class=&#x22;mt-1 text-sm leading-6 text-gray-600 dark:text-gray-400&#x22;&#x3E;This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It&#x27;s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.&#x3C;/p&#x3E;
+                &#x3C;/div&#x3E;
+                &#x3C;div id=&#x22;item-3&#x22;&#x3E;
+                   &#x3C;h3 class=&#x22;text-lg text-dark font-semibold dark:text-white&#x22;&#x3E;Item 3&#x3C;/h3&#x3E;
+                   &#x3C;p class=&#x22;mt-1 text-sm leading-6 text-gray-600 dark:text-gray-400&#x22;&#x3E;This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It&#x27;s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.&#x3C;/p&#x3E;
+                &#x3C;/div&#x3E;
+                &#x3C;div id=&#x22;item-3-1&#x22;&#x3E;
+                   &#x3C;h3 class=&#x22;text-lg text-dark font-semibold dark:text-white&#x22;&#x3E;Item 3-1&#x3C;/h3&#x3E;
+                   &#x3C;p class=&#x22;mt-1 text-sm leading-6 text-gray-600 dark:text-gray-400&#x22;&#x3E;This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It&#x27;s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.&#x3C;/p&#x3E;
+                &#x3C;/div&#x3E;
+                &#x3C;div id=&#x22;item-3-2&#x22;&#x3E;
+                   &#x3C;h3 class=&#x22;text-lg text-dark font-semibold dark:text-white&#x22;&#x3E;Item 3-2&#x3C;/h3&#x3E;
+                   &#x3C;p class=&#x22;mt-1 text-sm leading-6 text-gray-600 dark:text-gray-400&#x22;&#x3E;This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It&#x27;s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.&#x3C;/p&#x3E;
+                &#x3C;/div&#x3E;
+             &#x3C;/div&#x3E;
+          &#x3C;/div&#x3E;
+       &#x3C;/div&#x3E;
+    &#x3C;/div&#x3E;
+                    </code>
+                                                            </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <p class="card-subtitle  mb-6">Scrollspy also works with nested lists. If a nested list is <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">`.active`</code> , its parents will
+                          also be <code class="text-error bg-lightwarning dark:bg-darkwarning">`.active`</code>.</p>
+                        <div id="scrollspy-scrollable-parent-2" class="max-h-[400px] overflow-y-auto">
+                          <div class="grid grid-cols-5">
+                            <div class="col-span-2">
+                              <img src="@@webRoot/assets/images/logos/favicon.png" alt="">
+
+                              <ul class="sticky top-0" data-hs-scrollspy="#scrollspy-2"
+                                data-hs-scrollspy-scrollable-parent="#scrollspy-scrollable-parent-2">
+                                <li data-hs-docs-scrollspy-group="">
+                                  <a href="#item-1"
+                                    class="block py-0.5 text-sm font-medium leading-6 text-slate-700 hover:text-slate-900 focus:outline-none focus:text-primary dark:text-slate-400 dark:hover:text-slate-300 dark:focus:text-primary hs-scrollspy-active:text-primary dark:hs-scrollspy-active:text-primary">Item
+                                    1</a>
+                                  <ul>
+                                    <li class="ms-4">
+                                      <a href="#item-1-1"
+                                        class="group flex items-center gap-x-2 py-0.5 text-sm text-gray-700 leading-6 hover:text-gray-800 focus:outline-none focus:text-primary dark:text-gray-400 dark:hover:text-gray-300 dark:focus:text-primary hs-scrollspy-active:text-primary dark:hs-scrollspy-active:text-primary">
+                                        <i class="ti ti-chevron-right text-lg leading-tight font-medium "></i>
+                                        Item 1-1
+                                      </a>
+                                    </li>
+                                    <li class="ms-4">
+                                      <a href="#item-1-2"
+                                        class="group flex items-center gap-x-2 py-0.5 text-sm text-gray-700 leading-6 hover:text-gray-800 focus:outline-none focus:text-primary dark:text-gray-400 dark:hover:text-gray-300 dark:focus:text-primary hs-scrollspy-active:text-primary dark:hs-scrollspy-active:text-primary">
+                                        <i class="ti ti-chevron-right text-lg leading-tight font-medium "></i>
+                                        Item 1-2
+                                      </a>
+                                    </li>
+                                  </ul>
+                                </li>
+                                <li>
+                                  <a href="#item-2"
+                                    class="block py-0.5 text-sm font-medium leading-6 text-slate-700 hover:text-slate-900 focus:outline-none focus:text-primary dark:text-slate-400 dark:hover:text-slate-300 dark:focus:text-primary hs-scrollspy-active:text-primary dark:hs-scrollspy-active:text-primary active">Item
+                                    2</a>
+                                </li>
+                                <li data-hs-docs-scrollspy-group="">
+                                  <a href="#item-3"
+                                    class="block py-0.5 text-sm font-medium leading-6 text-slate-700 hover:text-slate-900 focus:outline-none focus:text-primary dark:text-slate-400 dark:hover:text-slate-300 dark:focus:text-primary hs-scrollspy-active:text-primary dark:hs-scrollspy-active:text-primary">Item
+                                    3</a>
+                                  <ul>
+                                    <li class="ms-4">
+                                      <a href="#item-3-1"
+                                        class="group flex items-center gap-x-2 py-0.5 text-sm text-gray-700 leading-6 hover:text-gray-800 focus:outline-none focus:text-primary dark:text-gray-400 dark:hover:text-gray-300 dark:focus:text-primary hs-scrollspy-active:text-primary dark:hs-scrollspy-active:text-primary">
+                                        <i class="ti ti-chevron-right text-lg leading-tight font-medium "></i>
+                                        Item 3-1
+                                      </a>
+                                    </li>
+                                    <li class="ms-4">
+                                      <a href="#item-3-2"
+                                        class="group flex items-center gap-x-2 py-0.5 text-sm text-gray-700 leading-6 hover:text-gray-800 focus:outline-none focus:text-primary dark:text-gray-400 dark:hover:text-gray-300 dark:focus:text-primary hs-scrollspy-active:text-primary dark:hs-scrollspy-active:text-primary">
+                                        <i class="ti ti-chevron-right text-lg leading-tight font-medium "></i>
+                                        Item 3-2
+                                      </a>
+                                    </li>
+                                  </ul>
+                                </li>
+                              </ul>
+                            </div>
+
+                            <div class="col-span-3">
+                              <div id="scrollspy-2" class="space-y-4">
+                                <div id="item-1">
+                                  <h3 class="text-lg text-dark font-semibold dark:text-white">Item 1</h3>
+                                  <p class="mt-1 text-sm leading-6 text-gray-600 dark:text-gray-400">This is some
+                                    placeholder content for the scrollspy page. Note that as you scroll down the page,
+                                    the appropriate navigation link is highlighted. It's repeated throughout the
+                                    component example. We keep adding some more example copy here to emphasize the
+                                    scrolling and highlighting.</p>
+                                </div>
+
+                                <div id="item-1-1">
+                                  <h3 class="text-lg text-dark font-semibold dark:text-white">Item 1-1</h3>
+                                  <p class="mt-1 text-sm leading-6 text-gray-600 dark:text-gray-400">This is some
+                                    placeholder content for the scrollspy page. Note that as you scroll down the page,
+                                    the appropriate navigation link is highlighted. It's repeated throughout the
+                                    component example. We keep adding some more example copy here to emphasize the
+                                    scrolling and highlighting.</p>
+                                </div>
+
+                                <div id="item-1-2">
+                                  <h3 class="text-lg text-dark font-semibold dark:text-white">Item 1-2</h3>
+                                  <p class="mt-1 text-sm leading-6 text-gray-600 dark:text-gray-400">This is some
+                                    placeholder content for the scrollspy page. Note that as you scroll down the page,
+                                    the appropriate navigation link is highlighted. It's repeated throughout the
+                                    component example. We keep adding some more example copy here to emphasize the
+                                    scrolling and highlighting.</p>
+                                </div>
+
+                                <div id="item-2">
+                                  <h3 class="text-lg text-dark font-semibold dark:text-white">Item 2</h3>
+                                  <p class="mt-1 text-sm leading-6 text-gray-600 dark:text-gray-400">This is some
+                                    placeholder content for the scrollspy page. Note that as you scroll down the page,
+                                    the appropriate navigation link is highlighted. It's repeated throughout the
+                                    component example. We keep adding some more example copy here to emphasize the
+                                    scrolling and highlighting.</p>
+                                </div>
+
+                                <div id="item-3">
+                                  <h3 class="text-lg text-dark font-semibold dark:text-white">Item 3</h3>
+                                  <p class="mt-1 text-sm leading-6 text-gray-600 dark:text-gray-400">This is some
+                                    placeholder content for the scrollspy page. Note that as you scroll down the page,
+                                    the appropriate navigation link is highlighted. It's repeated throughout the
+                                    component example. We keep adding some more example copy here to emphasize the
+                                    scrolling and highlighting.</p>
+                                </div>
+
+                                <div id="item-3-1">
+                                  <h3 class="text-lg text-dark font-semibold dark:text-white">Item 3-1</h3>
+                                  <p class="mt-1 text-sm leading-6 text-gray-600 dark:text-gray-400">This is some
+                                    placeholder content for the scrollspy page. Note that as you scroll down the page,
+                                    the appropriate navigation link is highlighted. It's repeated throughout the
+                                    component example. We keep adding some more example copy here to emphasize the
+                                    scrolling and highlighting.</p>
+                                </div>
+
+                                <div id="item-3-2">
+                                  <h3 class="text-lg text-dark font-semibold dark:text-white">Item 3-2</h3>
+                                  <p class="mt-1 text-sm leading-6 text-gray-600 dark:text-gray-400">This is some
+                                    placeholder content for the scrollspy page. Note that as you scroll down the page,
+                                    the appropriate navigation link is highlighted. It's repeated throughout the
+                                    component example. We keep adding some more example copy here to emphasize the
+                                    scrolling and highlighting.</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+        <!-- Main Content End -->
+
+      </div>
+    </div>
+    <!--end of project-->
+  </main>
+  @@include("partials/header-components/mobile-menu.html")
+  @@include("partials/customizer.html")
+  @@include("partials/scripts.html")
+  <script src="@@webRoot/node_modules/prismjs/prism.js"></script>
+</body>
+
+</html>

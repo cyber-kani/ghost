@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-color-theme="Blue_Theme" class="light selected"
+	data-layout="vertical" data-boxed-layout="boxed" data-card="shadow">
+
+	<head>
+		@@include("partials/head.html")
+		<title>Spike TailwindCSS HTML Admin Template</title>
+	</head>
+
+	<body class="DEFAULT_THEME bg-lightprimary dark:bg-darkbody">
+		<main>
+			<!--start the project-->
+			<div id="main-wrapper" class="flex p-5">
+
+				<aside id="application-sidebar-brand"
+					class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full xl:rtl:-translate-x-0 rtl:translate-x-full  left-0 rtl:left-auto xl:rtl:right-5 rtl:right-0 transform hidden xl:block xl:translate-x-0 xl:end-auto xl:bottom-0 fixed top-0 with-vertical  left-sidebar transition-all duration-300 h-screen z-[2] flex-shrink-0  w-[270px] border-border dark:border-darkborder bg-white dark:bg-dark xl:top-5 xl:start-5 shadow-md xl:rounded-md">
+					@@include("partials/sidebar.html",{ "page":
+					"account-settings","page_group": "page" })
+				</aside>
+				<div class="page-wrapper w-full" role="main">
+
+					<!-- Main Content -->
+					<main class="h-full ">
+						<div class="container full-container py-5 xl:ps-6 ps-0 pt-0 pe-0 remove-ps">
+
+							<!--  Header Start -->
+							<header
+								class="sticky top-0 inset-x-0 z-[1] flex flex-wrap md:justify-start md:flex-nowrap text-fs_15 py-3 lg:py-0 mb-6 bg-white dark:bg-dark rounded-md shadow-md">
+								<div
+									class="with-vertical w-full">@@include("partials/header.html")</div>
+								<div class="with-horizontal w-full">
+									<div class="bg-white dark:bg-dark">
+										<div class="container">
+											@@include("partials/horizontal-header.html")
+										</div>
+									</div>
+								</div>
+							</header>
+							<!--  Header End -->
+
+							<!-- Horizontal Sidebar Menu -->
+							<aside
+								class="with-horizontal lg:flex hidden left-sidebar bg-white dark:bg-dark border-t border-border dark:border-darkborder">
+								@@include("partials/horizontal-sidebar.html", { "page":
+								"account-settings","page_group": "page"
+								})
+							</aside>
+							<!-- Horizontal Sidebar Menu End -->
+
+							<!-- Main Content -->
+							<div class="max-w-full">
+								<div class="container full-container ">
+									<!----Breadcrumb Start---->
+									@@include("partials/breadcrumb.html", {"title":
+									"Account Setting", "subtitle": 'Home'})
+									<!----Breadcrumb End---->
+
+									<div class="card">
+										<div class>
+											<nav class="flex"
+												aria-label="Tabs" role="tablist">
+												<button type="button"
+													class="hs-tab-active:border-primary font-medium hs-tab-active:text-primary py-5 px-4 inline-flex items-center gap-2 border-b-2 border-transparent text-sm whitespace-nowrap  text-bodytext dark:text-darklink hover:text-primary focus:outline-none focus:text-primary disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:text-primary active"
+													id="account-tab"
+													data-hs-tab="#account"
+													aria-controls="account" role="tab">
+													<i
+														class="ti ti-user-circle text-xl"></i><span
+														class="md:flex hidden">Account</span>
+												</button>
+												<button type="button"
+													class="hs-tab-active:border-primary font-medium hs-tab-active:text-primary py-5 px-4 inline-flex items-center gap-2 border-b-2 border-transparent text-sm whitespace-nowrap  text-bodytext dark:text-darklink hover:text-primary focus:outline-none focus:text-primary disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:text-primary"
+													id="Notification-tab"
+													data-hs-tab="#Notification"
+													aria-controls="Notification"
+													role="tab">
+													<i
+														class="ti ti-bell text-xl"></i><span
+														class="md:flex hidden">Notification</span>
+												</button>
+												<button type="button"
+													class="hs-tab-active:border-primary font-medium hs-tab-active:text-primary py-5 px-4 inline-flex items-center gap-2 border-b-2 border-transparent text-sm whitespace-nowrap  text-bodytext dark:text-darklink hover:text-primary focus:outline-none focus:text-primary disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:text-primary"
+													id="Bills-tab" data-hs-tab="#Bills"
+													aria-controls="Bills" role="tab">
+													<i
+														class="ti ti-article  text-xl"></i><span
+														class="md:flex hidden">Bills</span>
+												</button>
+												<button type="button"
+													class="hs-tab-active:border-primary font-medium hs-tab-active:text-primary py-5 px-4 inline-flex items-center gap-2 border-b-2 border-transparent text-sm whitespace-nowrap  text-bodytext dark:text-darklink hover:text-primary focus:outline-none focus:text-primary disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:text-primary"
+													id="Security-tab"
+													data-hs-tab="#Security"
+													aria-controls="Security" role="tab">
+													<i
+														class="ti ti-lock  text-xl"></i><span
+														class="md:flex hidden">Security</span>
+												</button>
+											</nav>
+										</div>
+										<div class="card-body">
+											<!-- Account Tab -->
+											<div id="account" role="tabpanel"
+												aria-labelledby="account-tab">
+												<div class="grid grid-cols-12 gap-6">
+													<div
+														class="lg:col-span-6 col-span-12">
+														<div class="card">
+															<div
+																class="card-body">
+																<h5
+																	class="card-title">Change
+																	Profile</h5>
+																<p
+																	class="card-subtitle">Change
+																	your profile picture
+																	from here</p>
+																<div
+																	class="text-center">
+																	<img
+																		src="@@webRoot/assets/images/profile/user-1.jpg"
+																		class="rounded-full h-[120px] mx-auto mt-6" />
+																	<div
+																		class="flex gap-3 justify-center my-6">
+																		<button
+																			class="btn btn-md">Upload</button>
+																		<button
+																			class="btn btn-md btn-light-error">Reset</button>
+																	</div>
+																	<p
+																		class="card-subtitle">Allowed
+																		JPG, GIF or PNG.
+																		Max size of
+																		800K</p>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div
+														class="lg:col-span-6 col-span-12">
+														<div class="card">
+															<div class="card-body">
+																<h5
+																	class="card-title">Change
+																	Password</h5>
+																<p
+																	class="card-subtitle">To
+																	change your password
+																	please confirm
+																	here</p>
+																<form class="mt-6">
+																	<div
+																		class="flex flex-col gap-4">
+																		<div>
+																			<label
+																				class="text-dark dark:text-darklink font-semibold mb-2 block ">Current
+																				Password</label>
+																			<input
+																				type="password"
+																				class="form-control py-2"
+																				
+																				value="12345678910">
+																		</div>
+																		<div>
+																			<label
+																				class="text-dark dark:text-darklink font-semibold mb-2 block ">New
+																				Password</label>
+																			<input
+																				type="password"
+																				class="form-control py-2"
+																				
+																				value="12345678910">
+																		</div>
+																		<div>
+																			<label
+																				class="text-dark dark:text-darklink font-semibold mb-2 block ">Confirm
+																				Password</label>
+																			<input
+																				type="password"
+																				class="form-control py-2"
+																				
+																				value="12345678910">
+																		</div>
+																	</div>
+																</form>
+															</div>
+														</div>
+													</div>
+													<div
+														class="col-span-12">
+														<div class="card">
+															<div class="card-body">
+																<h5
+																	class="card-title">Personal
+																	Details</h5>
+																<p
+																	class="card-subtitle">To
+																	change your personal
+																	detail , edit and
+																	save from here</p>
+																<form class="mt-6">
+																	<div
+																		class="grid grid-cols-12 gap-x-6 gap-y-4">
+																		<div
+																			class="lg:col-span-6 col-span-12">
+																			<div
+																				class="flex flex-col gap-4">
+																				<div>
+																					<label
+																						class="text-dark dark:text-darklink font-semibold mb-2 block ">Your
+																						Name</label>
+																					<input
+																						type="text"
+																						class="form-control py-2"
+																						placeholder="Mathew Anderson">
+																				</div>
+																				<div>
+																					<label
+																						class="text-dark dark:text-darklink font-semibold mb-2 block ">Your
+																						Location</label>
+																					<select
+																						class="form-control py-2">
+																						<option
+																							selected>United
+																							Kingdom</option>
+																						<option
+																							value="1">United
+																							States</option>
+																						<option
+																							value="2">United
+																							Kingdom</option>
+																						<option
+																							value="3">India</option>
+																						<option
+																							value="3">Russia</option>
+																					</select>
+																				</div>
+																				<div>
+																					<label
+																						class="text-dark dark:text-darklink font-semibold mb-2 block ">Email</label>
+																					<input
+																						type="email"
+																						class="form-control py-2"
+																						placeholder="info@modernize.com">
+																				</div>
+		
+																			</div>
+																		</div>
+																		<div
+																			class="lg:col-span-6 col-span-12">
+																			<div
+																				class="flex flex-col gap-4">
+																				<div>
+																					<label
+																						class="text-dark dark:text-darklink font-semibold mb-2 block ">Store
+																						Name</label>
+																					<input
+																						type="text"
+																						class="form-control py-2"
+																						placeholder="Maxima Studio">
+																				</div>
+																				<div>
+																					<label
+																						class="text-dark dark:text-darklink font-semibold mb-2 block ">Currency</label>
+																					<select
+																						class="form-control py-2">
+																						<option
+																							selected>India
+																							(INR)</option>
+																						<option
+																							value="1">US
+																							Dollar
+																							($)</option>
+																						<option
+																							value="2">United
+																							Kingdom
+																							(Pound)</option>
+																						<option
+																							value="3">India
+																							(INR)</option>
+																						<option
+																							value="3">Russia
+																							(Ruble)</option>
+																					</select>
+																				</div>
+																				<div>
+																					<label
+																						class="text-dark dark:text-darklink font-semibold mb-2 block ">Phone</label>
+																					<input
+																						type="text"
+																						class="form-control py-2"
+																						placeholder="+91 12345 65478">
+																				</div>
+																			</div>
+																		</div>
+																		<div
+																			class="col-span-12">
+																			<div>
+																				<label
+																					class="text-dark dark:text-darklink font-semibold mb-2 block ">Address</label>
+																				<input
+																					type="text"
+																					class="form-control py-2"
+																					placeholder="814 Howard Street, 120065, India">
+																			</div>
+																		</div>
+																		<div
+																			class="col-span-12">
+																			<div
+																				class="flex gap-3 justify-end mt-2">
+																				<button class="btn btn-md btn-md">Save</button>
+													<button
+														class="btn btn-md btn-light-error">Cancel</button>
+																			</div>
+																		</div>
+																	</div>
+		
+																</form>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- Account Tab  End -->
+		
+											 <!-- Notification Tab-->
+											<div id="Notification" class="hidden"
+												role="tabpanel"
+												aria-labelledby="Notification-tab">
+												
+												<div class="flex justify-center">
+													<div class="lg:w-3/4 w-full">
+														<div class="grid grid-cols-12 gap-6">
+															<div class="col-span-12">
+																<div class="card">
+																	<div class="card-body">
+																		<h5 class="text-fs_21 font-semibold text-dark dark:text-white mb-3">Notification
+																			Preferences</h5>
+																		<p class="my-4">Select the notificaitons ou
+																			would like
+																			to receive via email. Please note that you
+																			cannot
+																			opt out of receving service messages, such
+																			as
+																			payment, security or legal notifications.
+																		</p>
+																		<div>
+																			<label
+																			class="text-dark dark:text-darklink font-semibold mb-2 block ">Email
+																				Address*</label>
+																			<input type="email"
+																				class="form-control py-2" />
+																			<small class="text-sm">Required for
+																				notificaitons.</small>
+																		</div>
+																		<ul class="mt-6 flex flex-col gap-6">
+																			<li
+																				class="flex items-center justify-between">
+																				<div class="flex gap-4 items-center">
+																					<div
+																						class="h-12 w-12 min-w-12 rounded-sm bg-gray-200 dark:bg-darkgray flex items-center justify-center">
+																						<i
+																							class="ti ti-article text-2xl text-dark dark:text-darklink"></i>
+																					</div>
+																					<div>
+																						<h5
+																							class="text-base  mb-1">
+																							Our
+																							newsletter</h5>
+																						<p class="font-medium">We'll
+																							always
+																							let you know about important
+																							changes
+																						</p>
+																					</div>
+																				</div>
+																				<input type="checkbox" id="hs-small-switch" class="relative w-[35px] h-[20px] p-px bg-gray-100 border-transparent text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-primary  disabled:opacity-50 disabled:pointer-events-none checked:bg-none checked:text-primary checked:border-primatext-primary focus:checked:border-primatext-primary dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-600
+																				before:inline-block before:size-4 before:bg-white checked:before:bg-blue-200 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-gray-400 dark:checked:before:bg-blue-200">
+																			</li>
+																			<li
+																				class="flex items-center justify-between">
+																				<div class="flex gap-4 items-center">
+																					<div
+																						class="h-12 w-12 min-w-12 rounded-sm bg-gray-200 dark:bg-darkgray flex items-center justify-center">
+																						<i
+																							class="ti ti-checkbox text-2xl text-dark dark:text-darklink"></i>
+																					</div>
+																					<div>
+																						<h5
+																							class="text-base  mb-1">
+																							Order Confirmation</h5>
+																						<p class="font-medium">You
+																							will be
+																							notified when customer order
+																							any
+																							product</p>
+																					</div>
+																				</div>
+																				<input type="checkbox" id="hs-small-switch" class="relative w-[35px] h-[20px] p-px bg-gray-100 border-transparent text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-primary  disabled:opacity-50 disabled:pointer-events-none checked:bg-none checked:text-primary checked:border-primatext-primary focus:checked:border-primatext-primary dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-600
+																				before:inline-block before:size-4 before:bg-white checked:before:bg-blue-200 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-gray-400 dark:checked:before:bg-blue-200" checked>
+																			</li>
+																			<li
+																				class="flex items-center justify-between">
+																				<div class="flex gap-4 items-center">
+																					<div
+																						class="h-12 w-12 min-w-12 rounded-sm bg-gray-200 dark:bg-darkgray flex items-center justify-center">
+																						<i
+																							class="ti ti-clock-hour-4 text-2xl text-dark dark:text-darklink"></i>
+																					</div>
+																					<div>
+																						<h5
+																							class="text-base  mb-1">
+																							Order Status Changed</h5>
+																						<p class="font-medium">You
+																							will be
+																							notified when customer make
+																							changes
+																							to the order</p>
+																					</div>
+																				</div>
+																				<input type="checkbox" id="hs-small-switch" class="relative w-[35px] h-[20px] p-px bg-gray-100 border-transparent text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-primary  disabled:opacity-50 disabled:pointer-events-none checked:bg-none checked:text-primary checked:border-primatext-primary focus:checked:border-primatext-primary dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-600
+																				before:inline-block before:size-4 before:bg-white checked:before:bg-blue-200 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-gray-400 dark:checked:before:bg-blue-200" checked>
+																			</li>
+																			<li
+																				class="flex items-center justify-between">
+																				<div class="flex gap-4 items-center">
+																					<div
+																						class="h-12 w-12 min-w-12 rounded-sm bg-gray-200 dark:bg-darkgray flex items-center justify-center">
+																						<i
+																							class="ti ti-truck-delivery text-2xl text-dark dark:text-darklink"></i>
+																					</div>
+																					<div>
+																						<h5
+																							class="text-base  mb-1">
+																							Order Delivered</h5>
+																						<p class="font-medium">You
+																							will be
+																							notified once the order is
+																							delivered
+																						</p>
+																					</div>
+																				</div>
+																				<input type="checkbox" id="hs-small-switch" class="relative w-[35px] h-[20px] p-px bg-gray-100 border-transparent text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-primary  disabled:opacity-50 disabled:pointer-events-none checked:bg-none checked:text-primary checked:border-primatext-primary focus:checked:border-primatext-primary dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-600
+																				before:inline-block before:size-4 before:bg-white checked:before:bg-blue-200 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-gray-400 dark:checked:before:bg-blue-200" >
+																			</li>
+																			<li
+																				class="flex items-center justify-between">
+																				<div class="flex gap-4 items-center">
+																					<div
+																						class="h-12 w-12 min-w-12 rounded-sm bg-gray-200 dark:bg-darkgray flex items-center justify-center">
+																						<i
+																							class="ti ti-mail text-2xl text-dark dark:text-darklink"></i>
+																					</div>
+																					<div>
+																						<h5
+																							class="text-base  mb-1">
+																							Email Notification</h5>
+																						<p class="font-medium">Turn on
+																							email
+																							notificaiton to get updates
+																							through
+																							email</p>
+																					</div>
+																				</div>
+																				<input type="checkbox" id="hs-small-switch" class="relative w-[35px] h-[20px] p-px bg-gray-100 border-transparent text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-primary  disabled:opacity-50 disabled:pointer-events-none checked:bg-none checked:text-primary checked:border-primatext-primary focus:checked:border-primatext-primary dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-600
+																				before:inline-block before:size-4 before:bg-white checked:before:bg-blue-200 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-gray-400 dark:checked:before:bg-blue-200" checked>
+																			</li>
+																		</ul>
+																	</div>
+																</div>
+															</div>
+															<div class="col-span-12">
+																<div class="card">
+																	<div class="card-body">
+																		<h5 class="text-xl ">Date & Time
+																		</h5>
+																		<p class="my-4">Time zones and calendar display
+																			settings.</p>
+																		<ul class="mt-3 flex flex-col gap-6">
+																			<li
+																				class="flex items-center justify-between">
+																				<div class="flex gap-4 items-center">
+																					<div
+																						class="h-12 w-12 min-w-12 rounded-sm bg-gray-200 dark:bg-darkgray flex items-center justify-center">
+																						<i
+																							class="ti ti-clock-hour-4 text-2xl text-dark dark:text-darklink"></i>
+																					</div>
+																					<div>
+																						<p class="font-medium">Time
+																							zone
+																						</p>
+																						<h5
+																							class="text-base  mb-1">
+																							(UTC + 02:00) Athens,
+																							Bucharet</h5>
+		
+																					</div>
+																				</div>
+																				<a href="javascript:void(0)"
+																					class="hs-tooltip hs-tooltip-toggle"><i
+																						class="ti ti-download text-xl text-dark dark:text-darklink"></i>
+																						<span
+																						class="rounded-md hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0  absolute invisible z-10 text-fs_12 py-1 px-2 bg-dark dark:bg-darkgray  text-white dark:text-gray-300"
+																						role="tooltip">
+																						Download
+																					  </span>
+																					</a>
+																			</li>
+																		</ul>
+																	</div>
+																</div>
+															</div>
+															<div class="col-span-12">
+																<div class="card">
+																	<div class="card-body">
+																		<h5 class="text-xl ">Ignore
+																			Tracking</h5>
+																		<p class="my-4">Time zones and calendar display
+																			settings.</p>
+																		<ul class="mt-3 flex flex-col gap-6">
+																			<li
+																				class="flex items-center justify-between">
+																				<div class="flex gap-4 items-center">
+																					<div
+																						class="h-12 w-12 min-w-12 rounded-sm bg-gray-200 dark:bg-darkgray flex items-center justify-center">
+																						<i
+																							class="ti ti-player-pause  text-2xl text-dark dark:text-darklink"></i>
+																					</div>
+																					<div>
+																						<h5
+																							class="text-base  mb-1">
+																							Ignore Browser Tracking</h5>
+																						<p class="font-medium">Browser
+																							Cookie
+																						</p>
+																					</div>
+																				</div>
+																				<input type="checkbox" id="hs-small-switch" class="relative w-[35px] h-[20px] p-px bg-gray-100 border-transparent text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-primary  disabled:opacity-50 disabled:pointer-events-none checked:bg-none checked:text-primary checked:border-primatext-primary focus:checked:border-primatext-primary dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-600
+																				before:inline-block before:size-4 before:bg-white checked:before:bg-blue-200 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-gray-400 dark:checked:before:bg-blue-200">
+																			</li>
+																		</ul>
+																	</div>
+																</div>
+															</div>
+														</div>
+		
+													</div>
+												</div>
+		
+												<div class="flex gap-3 justify-end mt-6">
+													<button class="btn btn-md btn-md">Save</button>
+													<button
+														class="btn btn-md btn-light-error">Cancel</button>
+												</div>
+		
+		
+											</div>
+											<!-- Notification Tab End-->
+		
+											 <!-- Bills Tab -->
+											<div id="Bills" class="hidden"
+												role="tabpanel"
+												aria-labelledby="Bills-tab">
+		
+												<div class="flex justify-center">
+													<div class="lg:w-3/4 w-full">
+														<div class="grid grid-cols-12 gap-6">
+															<div class="col-span-12">
+																<div class="card">
+																	<div class="card-body">
+																		<h5 class="text-xl ">Billing
+																			Information</h5>
+		
+																		<div class="grid grid-cols-12 gap-6 mt-4">
+																			<div
+																				class="lg:col-span-6 md:col-span-6 col-span-12">
+																				<div class="flex flex-col gap-4">
+																					<div>
+																						<label
+																							class="text-dark dark:text-darklink font-semibold mb-2 block">Business
+																							Name*</label>
+																						<input type="text"
+																							placeholder="Visitor Analytics"
+																							class="form-control py-2" />
+																					</div>
+																					<div>
+																						<label
+																							class="text-dark dark:text-darklink font-semibold mb-2 block">Business
+																							Address*</label>
+																						<input type="text"
+																							class="form-control py-2" />
+																					</div>
+																					<div>
+																						<label
+																							class="text-dark dark:text-darklink font-semibold mb-2 block">First
+																							Name*</label>
+																						<input type="text"
+																							class="form-control py-2" />
+																					</div>
+																				</div>
+		
+																			</div>
+		
+																			<div
+																				class="lg:col-span-6 md:col-span-6 col-span-12">
+																				<div class="flex flex-col gap-4">
+																					<div>
+																						<label
+																							class="text-dark dark:text-darklink font-semibold mb-2 block">Business
+																							Sector*</label>
+																						<input type="text"
+																							placeholder="Arts, Media & Entertainment"
+																							class="form-control py-2" />
+																					</div>
+																					<div>
+																						<label
+																							class="text-dark dark:text-darklink font-semibold mb-2 block">Country*</label>
+																						<input type="text"
+																							class="form-control py-2"
+																							placeholder="Romania" />
+																					</div>
+																					<div>
+																						<label
+																							class="text-dark dark:text-darklink font-semibold mb-2 block">Last
+																							Name*</label>
+																						<input type="text"
+																							class="form-control py-2" />
+																					</div>
+																				</div>
+		
+																			</div>
+																		</div>
+		
+																	</div>
+																</div>
+		
+															</div>
+		
+															<div class="col-span-12">
+																<div class="card">
+																	<div class="card-body">
+																		<h5 class="text-xl ">Current Plan :
+																			<span class="text-success">Executive</span>
+																		</h5>
+																		<p class="my-4">Thanks for being a premium
+																			member and supporting our development.</p>
+																		<ul class="mt-3 flex flex-col gap-6">
+																			<li
+																				class="flex items-center justify-between">
+																				<div class="flex gap-4 items-center">
+																					<div
+																						class="h-12 w-12 min-w-12 rounded-sm bg-gray-200 dark:bg-darkgray flex items-center justify-center">
+																						<i
+																							class="ti ti-package  text-2xl text-dark dark:text-darklink"></i>
+																					</div>
+																					<div>
+																						<p class="">Current
+																							Plan
+																						</p>
+																						<h5
+																							class="text-dark dark:text-white text-base font-semibold">
+																							750.000 Monthly Visits</h5>
+		
+																					</div>
+																				</div>
+																				<a href="javascript:void(0)"
+																				class="hs-tooltip hs-tooltip-toggle"
+																				><i
+																						class="ti ti-circle-plus text-xl text-dark dark:text-darklink"></i>
+																					
+																						<span
+																						class="rounded-md hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0  absolute invisible z-10 text-fs_12 py-1 px-2 bg-dark dark:bg-darkgray  text-white dark:text-gray-300"
+																						role="tooltip">
+																						Add
+																					  </span>
+																					</a>
+																			</li>
+																		</ul>
+		
+																		<div class="flex gap-3 mt-6">
+																			<button
+																				class="btn btn-md">Change
+																				Plan</button>
+																			<button
+																				class="btn btn-md btn-light-error">Reset
+																				Plan</button>
+																		</div>
+		
+																	</div>
+																</div>
+															</div>
+		
+															<div class="col-span-12">
+																<div class="card">
+																	<div class="card-body">
+																		<h5 class="text-xl ">Payment Method
+																		</h5>
+																		<p class="my-4">On 26 December, 2024</p>
+																		<ul class="mt-3 flex flex-col gap-6">
+																			<li
+																				class="flex items-center justify-between">
+																				<div class="flex gap-4 items-center">
+																					<div
+																						class="h-12 w-12 min-w-12 rounded-sm bg-gray-200 dark:bg-darkgray flex items-center justify-center">
+																						<i
+																							class="ti ti-credit-card text-dark  text-2xl  dark:text-darklink"></i>
+																					</div>
+																					<div>
+																						<h5
+																							class="text-base ">
+																							Visa</h5>
+																						<p class="card-subtitle">
+																							*****2102
+																						</p>
+																					</div>
+																				</div>
+																				<a href="javascript:void(0)"
+																				class="hs-tooltip hs-tooltip-toggle"
+																				><i
+																						class="ti ti-pencil-minus text-xl text-dark dark:text-darklink"></i>
+																						<span
+																						class="rounded-md hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0  absolute invisible z-10 text-fs_12 py-1 px-2 bg-dark dark:bg-darkgray  text-white dark:text-gray-300"
+																						role="tooltip">
+																						Edit
+																					  </span>
+																					</a>
+																			</li>
+																		</ul>
+																		<p class="my-4">If you updated your payment
+																			method, it will only be dislpayed here after
+																			your next billing cycle.</p>
+																		<button
+																			class="btn btn-md btn-light-error">Cancel
+																			Subscrition</button>
+																	</div>
+																</div>
+															</div>
+														</div>
+		
+													</div>
+												</div>
+												<div class="flex gap-3 justify-end mt-6">
+													<button class="btn btn-md btn-md">Save</button>
+													<button
+														class="btn btn-md btn-light-error">Cancel</button>
+												</div>
+											</div>
+											 <!-- Bills Tab End-->
+		
+											<!-- Security Tab-->
+											<div id="Security" class="hidden"
+												role="tabpanel"
+												aria-labelledby="Security-tab">
+												<div class="grid grid-cols-12 gap-6">
+													<div class="lg:col-span-8 col-span-12">
+														<div class="card">
+															<div class="card-body">
+																<h5 class="text-xl ">Two-factor
+																	Authentication
+																</h5>
+																<div class="sm:flex gap-4 mt-3 mb-7">
+																	<p class="sm:mb-0 mb-3">Lorem ipsum, dolor sit amet
+																		consectetur adipisicing elit. Corporis sapiente
+																		sunt earum officiis laboriosam ut.</p>
+																		<button
+																		class="btn btn-md">Enable</button>
+																</div>
+															  
+																<ul class="mt-4 flex flex-col ">
+																	<li
+																		class="flex items-center justify-between border-t border-border dark:border-darkborder py-4">
+																		<div>
+																			<h5 class="text-base ">
+																				Authentication App</h5>
+																			<p>Google auth app</p>
+																		</div>
+																		<button
+																			class="btn btn-md btn-light-primary w-fit">Setup</button>
+																	</li>
+																	<li
+																		class="flex items-center justify-between border-t border-border dark:border-darkborder py-4">
+																		<div>
+																			<h5 class="text-base ">Another
+																				e-mail</h5>
+																			<p>E-mail to send verification link</p>
+																		</div>
+																		<button
+																			class="btn btn-md btn-light-primary w-fit">Setup</button>
+																	</li>
+																	<li
+																		class="flex items-center justify-between border-t border-border dark:border-darkborder py-4">
+																		<div>
+																			<h5 class="text-base ">SMS
+																				Recovery</h5>
+																			<p>Your phone number or something</p>
+																		</div>
+																		<button
+																			class="btn btn-md btn-light-primary w-fit">Setup</button>
+																	</li>
+																</ul>
+															</div>
+														</div>
+													</div>
+													<div class="lg:col-span-4 col-span-12">
+														<div class="card">
+															<div class="card-body">
+																<div class="h-12 w-12 min-w-12 rounded-sm bg-lightprimary dark:bg-darkprimary flex items-center justify-center">
+																	<i class="ti ti-device-laptop text-primary  text-2xl"></i>
+																</div>
+																<h5 class="text-lg  mt-4">Devices</h5>
+																<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Rem.</p>
+																<button class="btn btn-md mt-3 w-fit">sign out from all devices</button>
+																<div class="flex items-center justify-between mt-8">
+																	<div class="flex items-center gap-4">
+																		<i class="ti ti-device-mobile text-2xl text-base-400"></i>
+																		<div>
+																			<h5 class="font-semibold text-dark dark:text-white text-base">iPhone 14</h5>
+																			<p>London UK, Oct 23 at 1:15 AM</p>
+																		</div>
+																	</div>
+																	<button class="">
+																		<i class="ti ti-dots-vertical text-xl text-dark dark:text-darklink "></i>
+																	</button>
+																</div>
+																<hr class="border-t border-border dark:border-darkborder my-3">
+																<div class="flex items-center justify-between">
+																	<div class="flex items-center gap-4">
+																		<i class="ti ti-device-laptop text-2xl text-base-400"></i>
+																		<div>
+																			<h5 class="font-semibold text-dark dark:text-white text-base">Macbook Air</h5>
+																			<p>Gujarat India, Oct 24 at 3:15 AM</p>
+																		</div>
+																	</div>
+																	<button class="">
+																		<i class="ti ti-dots-vertical text-xl text-dark dark:text-darklink"></i>
+																	</button>
+																</div>
+																<button class="btn btn-md btn-light-primary mt-4">Need Help?</button>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="flex gap-3 justify-end mt-6">
+													<button class="btn btn-md btn-md">Save</button>
+													<button
+														class="btn btn-md btn-light-error">Cancel</button>
+												</div>
+											</div>
+											<!-- Security Tab end-->
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</main>
+					<!-- Main Content End -->
+
+				</div>
+			</div>
+			<!--end of project-->
+		</main>
+		@@include("partials/header-components/mobile-menu.html")
+		@@include("partials/customizer.html")
+		@@include("partials/scripts.html")
+	</body>
+</html>

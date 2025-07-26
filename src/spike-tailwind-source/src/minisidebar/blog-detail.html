@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-color-theme="Blue_Theme" class="light selected" data-layout="vertical"
+    data-boxed-layout="boxed" data-card="shadow">
+
+<head>
+    @@include("partials/head.html")
+    <title>Spike TailwindCSS HTML Admin Template</title>
+</head>
+
+<body class="DEFAULT_THEME bg-lightprimary dark:bg-darkbody">
+    <main>
+        <!--start the project-->
+        <div id="main-wrapper" class="flex p-5">
+
+            <aside id="application-sidebar-brand"
+                class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full xl:rtl:-translate-x-0 rtl:translate-x-full  left-0 rtl:left-auto xl:rtl:right-5 rtl:right-0 transform hidden xl:block xl:translate-x-0 xl:end-auto xl:bottom-0 fixed top-0 with-vertical  left-sidebar transition-all duration-300 h-screen z-[2] flex-shrink-0  w-[270px] border-border dark:border-darkborder bg-white dark:bg-dark xl:top-5 xl:start-5 shadow-md xl:rounded-md">
+                @@include("partials/sidebar.html",{ "page": "blog-detail","page_group": "blog" })
+            </aside>
+            <div class="page-wrapper w-full" role="main">
+
+                <!-- Main Content -->
+                <main class="h-full ">
+                    <div class="container full-container py-5 xl:ps-6 ps-0 pt-0 pe-0 remove-ps">
+
+                        <!--  Header Start -->
+                        <header
+                            class="sticky top-0 inset-x-0 z-[1] flex flex-wrap md:justify-start md:flex-nowrap text-fs_15 py-3 lg:py-0 mb-6 bg-white dark:bg-dark rounded-md shadow-md">
+                            <div class="with-vertical w-full">@@include("partials/header.html")</div>
+                            <div class="with-horizontal w-full">
+                                <div class="bg-white dark:bg-dark">
+                                    <div class="container">
+                                        @@include("partials/horizontal-header.html")
+                                    </div>
+                                </div>
+                            </div>
+                        </header>
+                        <!--  Header End -->
+
+                        <!-- Horizontal Sidebar Menu -->
+                        <aside
+                            class="with-horizontal lg:flex hidden left-sidebar bg-white dark:bg-dark border-t border-border dark:border-darkborder">
+                            @@include("partials/horizontal-sidebar.html", { "page": "blog-detail","page_group":
+                            "blog"})
+                        </aside>
+                        <!-- Horizontal Sidebar Menu End -->
+
+                        <!-- Main Content -->
+                        <div class="max-w-full">
+                            <div class="container full-container ">
+                                <!----Breadcrumb Start---->
+                                @@include("partials/breadcrumb.html", {"title": "Blog", "subtitle": 'Home'})
+                                <!----Breadcrumb End---->
+                                <div class="grid grid-cols-12 gap-6">
+                                    <div class="col-span-12">
+                                        <div class="card overflow-hidden">
+                                            <div class=" relative ">
+                                                <div>
+                                                    <img src="@@webRoot/assets/images/blog/blog-img5.jpg"
+                                                        class="w-full max-w-full h-[440px] object-cover" alt="...">
+                                                </div>
+                                                <span
+                                                    class="badge font-semibold leading-tight border-0 text-xs bg-white dark:bg-dark  text-dark dark:text-white  absolute right-4 rtl:right-auto rtl:left-4 bottom-4">
+                                                    2 min Read</span>
+                                            </div>
+                                            <div class="card-body p-5">
+                                                <div class="relative hs-tooltip hs-tooltip-toggle w-fit">
+                                                    <img src="@@webRoot/assets/images/profile/user-5.jpg" alt=""
+                                                        class="rounded-full -mt-10  h-10 w-10 ">
+                                                    <span
+                                                        class="tooltip hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible"
+                                                        role="tooltip">
+                                                        Addie Keller
+                                                    </span>
+                                                </div>
+                                                <span class="bg-lightgray dark:bg-darkgray text-dark dark:text-white 
+                                                text-xs badge leading-tight border-0 font-medium mt-5 block w-fit">Lifestyle</span>
+                                                <h2 class=" my-4   text-4xl">Streaming
+                                                    video way before it was cool, go dark tomorrow</h2>
+                                                <div class="flex items-center gap-4">
+                                                    <div class="flex items-center gap-2 text-bodytext dark:text-darklink
+                                                    "><i class="ti ti-eye text-dark dark:text-darklink text-lg"></i>9,125</div>
+                                                    <div class="flex items-center gap-2 text-bodytext dark:text-darklink
+                                                    "><i class="ti ti-message-2 text-dark dark:text-darklink text-lg"></i>3
+                                                    </div>
+                                                    <div class="flex items-center text-xs ms-auto text-bodytext dark:text-darklink 
+                                                    "><i class="ti ti-point text-bodytext dark:text-darklink"></i>Mon, Jan 16
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr class="border-t border-border dark:border-darkborder ">
+                                            <div class="card-body">
+                                                <h3 class="mb-4  text-3xl">Title of the
+                                                    paragraphs</h3>
+                                                <p class="mb-3 card-subtitle">
+                                                    But you cannot figure out what it is or what it can do. MTA web directory is
+                                                    the simplest way in which
+                                                    one can bid on a link, or a few links if they wish to do so. The link
+                                                    directory on MTA displays all of the links it currently has, and does so in
+                                                    alphabetical order, which
+                                                    makes it much easier for someone to find what they are looking for if it is
+                                                    something specific and they do not want to go through all the other sites
+                                                    and links as well. It allows
+                                                    you to start your bid at the bottom and slowly work your way to the top
+                                                    of the list.
+                                                </p>
+                                                <p class="mb-3 card-subtitle">
+                                                    Gigure out what it is or what it can do. MTA web directory is the simplest
+                                                    way in which one can bid on a
+                                                    link, or a few links if they wish to do so. The link directory on MTA
+                                                    displays all of the links it currently has, and does so in alphabetical
+                                                    order, which makes it much
+                                                    easier for someone to find what they are looking for if it is something
+                                                    specific and they do not want to go through all the other sites and links as
+                                                    well. It allows you to
+                                                    start your bid at the bottom and slowly work your way to the top of the
+                                                </p>
+                                                <p class="card-subtitle mb-0 text-dark dark:text-white"><strong>This is strong
+                                                        text.</strong></p>
+                                                <p class="mb-0 card-subtitle"><em>This is italic
+                                                        text.</em></p>
+        
+                                                <hr class="border-t border-border dark:border-darkborder my-8">
+        
+                                                <h3 class=" my-4   text-2xl">Unorder
+                                                    list.</h3>
+                                                <ul class="my-3 ps-4 text-dark dark:text-darklink font-medium">
+                                                    <li class="flex items-center gap-2"><span
+                                                            class="p-1 rounded-full bg-dark dark:bg-darklink"></span> Gigure
+                                                        out what it is or</li>
+                                                    <li class="flex items-center gap-2"><span
+                                                            class="p-1 rounded-full bg-dark dark:bg-darklink"></span> The links
+                                                        it currently</li>
+                                                    <li class="flex items-center gap-2"><span
+                                                            class="p-1 rounded-full bg-dark dark:bg-darklink"></span> It allows
+                                                        you to start your bid</li>
+                                                    <li class="flex items-center gap-2"><span
+                                                            class="p-1 rounded-full bg-dark dark:bg-darklink"></span> Gigure
+                                                        out what it is or</li>
+                                                    <li class="flex items-center gap-2"><span
+                                                            class="p-1 rounded-full bg-dark dark:bg-darklink"></span> The links
+                                                        it currently</li>
+                                                    <li class="flex items-center gap-2"><span
+                                                            class="p-1 rounded-full bg-dark dark:bg-darklink"></span> It allows
+                                                        you to start your bid</li>
+                                                </ul>
+        
+                                                <hr class="border-t border-border dark:border-darkborder my-8">
+        
+                                                <h3 class=" my-4   text-2xl">Order list.
+                                                </h3>
+                                                <ol class="my-3 ps-4 list-[upper-en] list-inside text-dark dark:text-darklink font-medium">
+                                                    <li>Gigure out what it is or</li>
+                                                    <li>The links it currently</li>
+                                                    <li>It allows you to start your bid</li>
+                                                    <li>Gigure out what it is or</li>
+                                                    <li>The links it currently</li>
+                                                    <li>It allows you to start your bid</li>
+                                                </ol>
+        
+                                                <hr class="border-t border-border dark:border-darkborder my-8">
+        
+                                                <h3 class=" text-2xl mb-2">Quotes</h3>
+                                                <div class="p-4 bg-hover bg-lightgray dark:bg-darkprimary rounded-sm border-s-2 border-primary">
+                                                    <h6 class="text-base"><i
+                                                            class="ti ti-quote text-xl"></i>Life is
+                                                        short, Smile while you still
+                                                        have teeth!</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+        
+        
+        
+        
+                                    </div>
+        
+                                    <div class="col-span-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h3 class="text-xl mb-4">Post Comments
+                                                </h3>
+                                                <textarea class="form-control" rows="5"></textarea>
+                                                <button class="btn btn-primary mt-4">Post Comments</button>
+        
+                                                <div class="mt-8">
+                                                    <h3
+                                                        class="flex items-center gap-3 text-xl mb-4">
+                                                        Comments
+                                                        <span
+                                                            class="bg-lightprimary dark:bg-darkprimary text-primary py-2 px-3 text-base rounded-md">3</span>
+                                                    </h3>
+                                                    <div class="card shadow-none bg-lightgray dark:bg-darkprimary mb-6">
+                                                        <div class="card-body">
+                                                            <div class="flex items-center gap-3">
+                                                                <img src="@@webRoot/assets/images/profile/user-2.jpg" alt=""
+                                                                    class="rounded-full h-8 w-8">
+                                                                <h6 class="text-base">
+                                                                    Don Russell</h6>
+                                                                <i class="h-2 w-2 bg-link  dark:bg-darklink
+                                                                    rounded-full  opacity-30"></i>
+                                                            </div>
+                                                            <p class="card-subtitle my-3 text-dark font-medium dark:text-darklink">
+                                                                Nu kek vuzkibsu mooruno ejepogojo uzjon gag fa ezik disan he
+                                                                nah.
+                                                                Wij wo pevhij tumbug rohsa
+                                                                ahpi ujisapse lo vap labkez eddu suk.
+                                                            </p>
+                                                            <div class="flex items-center gap-2">
+                                                                <a class="flex items-center justify-center btn p-0 rounded-full h-8 w-8 text-white relative hs-tooltip hs-tooltip-toggle" href="javascript:void(0)" >
+                                                                    <i class="ti ti-arrow-back-up"></i>
+                                                                    <span class="tooltip hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible" role="tooltip" data-popper-placement="top" style="position: fixed; inset: auto auto 0px 0px; margin: 0px; transform: translate(1001px, -382px);">
+                                                                        Reply
+                                                                    </span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+        
+                                                    <div class="card shadow-none bg-lightgray dark:bg-darkprimary mb-6">
+                                                        <div class="card-body">
+                                                            <div class="flex items-center gap-3">
+                                                                <img src="@@webRoot/assets/images/profile/user-3.jpg" alt=""
+                                                                    class="rounded-full h-8 w-8">
+                                                                <h6 class="text-base">
+                                                                    Cordelia Potter</h6>
+                                                                <i class="h-2 w-2 bg-link  dark:bg-darklink
+                                                                    rounded-full  opacity-30"></i>
+                                                            </div>
+                                                            <p class="card-subtitle my-3 text-dark font-medium dark:text-darklink">
+                                                                Huwso jewzehgu julriw niwgazep lewbob isujirmuz hemto pahop cewa zuhucze rinitba etdebluj. Obdevo bo fa siztes laobeir agoemugo rut sapaviw mulati do re dabelul wo tumnik wih mu.
+                                                            </p>
+                                                            <div class="flex items-center gap-2">
+                                                                <a class="flex items-center justify-center btn p-0 rounded-full h-8 w-8 text-white relative hs-tooltip hs-tooltip-toggle" href="javascript:void(0)" >
+                                                                    <i class="ti ti-arrow-back-up"></i>
+                                                                    <span class="tooltip hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible" role="tooltip" data-popper-placement="top" style="position: fixed; inset: auto auto 0px 0px; margin: 0px; transform: translate(1001px, -382px);">
+                                                                        Reply
+                                                                    </span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+        
+                                                    <div class="ms-6">
+                                                        <div class="card shadow-none bg-lightgray dark:bg-darkprimary mb-6">
+                                                            <div class="card-body">
+                                                                <div class="flex items-center gap-3">
+                                                                    <img src="@@webRoot/assets/images/profile/user-3.jpg" alt=""
+                                                                        class="rounded-full h-10 w-10">
+                                                                    <h6 class="text-base">
+                                                                        Irene Hanson</h6>
+                                                                    <i class="h-2 w-2 bg-link  dark:bg-darklink
+                                                                        rounded-full  opacity-30"></i>
+                                                                </div>
+                                                                <p class="card-subtitle my-3 text-dark font-medium dark:text-darklink">
+                                                                    Uborofgic be rof lom sedge vapozi ohoinu nutremcuc ro ko atmeg anrov git ve vuj ki teb or. Lohi hafa faddegon horoz ebema kew idful ducam nev rol iga wikkobsu sucdu gud.
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+        
+                                                    <div class="card shadow-none bg-lightgray dark:bg-darkprimary">
+                                                        <div class="card-body">
+                                                            <div class="flex items-center gap-3">
+                                                                <img src="@@webRoot/assets/images/profile/user-4.jpg" alt=""
+                                                                    class="rounded-full h-8 w-8">
+                                                                <h6 class="text-base">
+                                                                    Seth Ortiz</h6>
+                                                                <i class="h-2 w-2 bg-link  dark:bg-darklink
+                                                                    rounded-full  opacity-30"></i>
+                                                            </div>
+                                                            <p class="card-subtitle my-3 text-dark font-medium dark:text-darklink">
+                                                                Icme rasejmat ciwo ifekemug owoca vicoz ukikitus famiftat nuk eroewu za upe. Pobrikvup kivofvac tuba ot veh ozoab sa gesi hahoniha hop burbip volo hufotobo di uted vojoamu.
+                                                            </p>
+                                                            <div class="flex items-center gap-2">
+                                                                <a class="flex items-center justify-center btn p-0 rounded-full h-8 w-8 text-white relative hs-tooltip hs-tooltip-toggle" href="javascript:void(0)" >
+                                                                    <i class="ti ti-arrow-back-up"></i>
+                                                                    <span class="tooltip hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible" role="tooltip" data-popper-placement="top" style="position: fixed; inset: auto auto 0px 0px; margin: 0px; transform: translate(1001px, -382px);">
+                                                                        Reply
+                                                                    </span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+        
+                                                </div>
+        
+                                            </div>
+                                        </div>
+                                    </div>
+        
+                                </div>
+                              </div>
+                                    </div>
+                                  </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                <!-- Main Content End -->
+
+            </div>
+        </div>
+        <!--end of project-->
+    </main>
+    @@include("partials/header-components/mobile-menu.html")
+    @@include("partials/customizer.html")
+    @@include("partials/scripts.html")
+</body>
+</html>

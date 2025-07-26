@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-color-theme="Blue_Theme" class="light selected" data-layout="vertical"
+  data-boxed-layout="boxed" data-card="shadow">
+
+<head>
+  @@include("partials/head.html")
+  <title>Spike TailwindCSS HTML Admin Template</title>
+  <link rel="stylesheet" href="@@webRoot/node_modules/prismjs/themes/prism-okaidia.min.css">
+</head>
+
+<body class="DEFAULT_THEME bg-lightprimary dark:bg-darkbody">
+  <main>
+    <!--start the project-->
+    <div id="main-wrapper" class="flex p-5">
+
+      <aside id="application-sidebar-brand"
+        class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full xl:rtl:-translate-x-0 rtl:translate-x-full  left-0 rtl:left-auto xl:rtl:right-5 rtl:right-0 transform hidden xl:block xl:translate-x-0 xl:end-auto xl:bottom-0 fixed top-0 with-vertical  left-sidebar transition-all duration-300 h-screen z-[2] flex-shrink-0  w-[270px] border-border dark:border-darkborder bg-white dark:bg-dark xl:top-5 xl:start-5 shadow-md xl:rounded-md">
+        @@include("partials/sidebar.html",{ "page": "ui-tooltip-popover","page_group": "ui" })
+      </aside>
+      <div class="page-wrapper w-full" role="main">
+
+        <!-- Main Content -->
+        <main class="h-full ">
+          <div class="container full-container py-5 xl:ps-6 ps-0 pt-0 pe-0 remove-ps">
+
+            <!--  Header Start -->
+            <header
+              class="sticky top-0 inset-x-0 z-[1] flex flex-wrap md:justify-start md:flex-nowrap text-fs_15 py-3 lg:py-0 mb-6 bg-white dark:bg-dark rounded-md shadow-md">
+              <div class="with-vertical w-full">@@include("partials/header.html")</div>
+              <div class="with-horizontal w-full">
+                <div class="bg-white dark:bg-dark">
+                  <div class="container">
+                    @@include("partials/horizontal-header.html")
+                  </div>
+                </div>
+              </div>
+            </header>
+            <!--  Header End -->
+
+            <!-- Horizontal Sidebar Menu -->
+            <aside
+              class="with-horizontal lg:flex hidden left-sidebar bg-white dark:bg-dark border-t border-border dark:border-darkborder">
+              @@include("partials/horizontal-sidebar.html", { "page": "ui-tooltip-popover","page_group": "ui"})
+            </aside>
+            <!-- Horizontal Sidebar Menu End -->
+
+            <!-- Main Content -->
+            <div class="max-w-full">
+              <div class="container full-container ">
+                <!----Breadcrumb Start---->
+                @@include("partials/breadcrumb.html", {"title": "Tooltips", "subtitle": 'Home'})
+                <!----Breadcrumb End---->
+                <div class="grid grid-cols-12 gap-6">
+                  <div class=" lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-0">
+                          <h5 class="card-title">Tooltip Position</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal1">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal1"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Tooltip
+                                        Position -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal1">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+     <code class="language-html">  
+    &#x3C;!-- Grid --&#x3E;
+    &#x3C;div class=&#x22;grid grid-cols-3 gap-y-4 gap-x-2 max-w-60 mx-auto&#x22;&#x3E;
+       &#x3C;div class=&#x22;col-start-2 text-center&#x22;&#x3E;
+          &#x3C;div class=&#x22;hs-tooltip inline-block&#x22;&#x3E;
+             &#x3C;button type=&#x22;button&#x22; class=&#x22;hs-tooltip-toggle size-10 inline-flex justify-center items-center gap-2 rounded-full bg-gray-50 border border-gray-200 text-gray-600 hover:bg-blue-50 hover:border-blue-200 hover:text-primary dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-white/[.05] dark:hover:border-white/[.1] dark:hover:text-white&#x22;&#x3E;
+             &#x3C;i class=&#x22;ti ti-chevron-up text-lg&#x22;&#x3E;&#x3C;/i&#x3E;
+             &#x3C;span class=&#x22;hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-slate-700&#x22; role=&#x22;tooltip&#x22;&#x3E;
+             Tooltip on top
+             &#x3C;/span&#x3E;
+             &#x3C;/button&#x3E;
+          &#x3C;/div&#x3E;
+       &#x3C;/div&#x3E;
+       &#x3C;!-- End Col --&#x3E;
+       &#x3C;!-- Col --&#x3E;
+       &#x3C;div class=&#x22;col-start-1 text-end&#x22;&#x3E;
+          &#x3C;div class=&#x22;hs-tooltip inline-block [--placement:left]&#x22;&#x3E;
+             &#x3C;button type=&#x22;button&#x22; class=&#x22;hs-tooltip-toggle size-10 inline-flex justify-center items-center gap-2 rounded-full bg-gray-50 border border-gray-200 text-gray-600 hover:bg-blue-50 hover:border-blue-200 hover:text-primary dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-white/[.05] dark:hover:border-white/[.1] dark:hover:text-white&#x22;&#x3E;
+             &#x3C;i class=&#x22;ti ti-chevron-left text-lg&#x22;&#x3E;&#x3C;/i&#x3E;
+             &#x3C;span class=&#x22;hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-slate-700&#x22; role=&#x22;tooltip&#x22;&#x3E;
+             Tooltip on left
+             &#x3C;/span&#x3E;
+             &#x3C;/button&#x3E;
+          &#x3C;/div&#x3E;
+       &#x3C;/div&#x3E;
+       &#x3C;!-- End Col --&#x3E;
+       &#x3C;!-- Col --&#x3E;
+       &#x3C;div class=&#x22;col-start-3&#x22;&#x3E;
+          &#x3C;div class=&#x22;hs-tooltip inline-block [--placement:right]&#x22;&#x3E;
+             &#x3C;button type=&#x22;button&#x22; class=&#x22;hs-tooltip-toggle size-10 inline-flex justify-center items-center gap-2 rounded-full bg-gray-50 border border-gray-200 text-gray-600 hover:bg-blue-50 hover:border-blue-200 hover:text-primary dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-white/[.05] dark:hover:border-white/[.1] dark:hover:text-white&#x22;&#x3E;
+             &#x3C;i class=&#x22;ti ti-chevron-right text-lg&#x22;&#x3E;&#x3C;/i&#x3E;
+             &#x3C;span class=&#x22;hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-slate-700&#x22; role=&#x22;tooltip&#x22;&#x3E;
+             Tooltip on right
+             &#x3C;/span&#x3E;
+             &#x3C;/button&#x3E;
+          &#x3C;/div&#x3E;
+       &#x3C;/div&#x3E;
+       &#x3C;!-- End Col --&#x3E;
+       &#x3C;!-- Col --&#x3E;
+       &#x3C;div class=&#x22;col-start-2 text-center&#x22;&#x3E;
+          &#x3C;div class=&#x22;hs-tooltip inline-block [--placement:bottom]&#x22;&#x3E;
+             &#x3C;button type=&#x22;button&#x22; class=&#x22;hs-tooltip-toggle size-10 inline-flex justify-center items-center gap-2 rounded-full bg-gray-50 border border-gray-200 text-gray-600 hover:bg-blue-50 hover:border-blue-200 hover:text-primary dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-white/[.05] dark:hover:border-white/[.1] dark:hover:text-white&#x22;&#x3E;
+             &#x3C;i class=&#x22;ti ti-chevron-down text-lg&#x22;&#x3E;&#x3C;/i&#x3E;
+             &#x3C;span class=&#x22;hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-slate-700&#x22; role=&#x22;tooltip&#x22;&#x3E;
+             Tooltip on bottom
+             &#x3C;/span&#x3E;
+             &#x3C;/button&#x3E;
+          &#x3C;/div&#x3E;
+       &#x3C;/div&#x3E;
+       &#x3C;!-- End Col --&#x3E;
+    &#x3C;/div&#x3E;
+    &#x3C;!-- End Grid --&#x3E;
+                </code>
+                                                        </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <p class="text-sm mb-6">Hover over the buttons below to see the four tooltip directions: top,
+                          right, bottom, and left.</p>
+                        <!-- Grid -->
+                        <div class="grid grid-cols-3 gap-y-4 gap-x-2 max-w-60 mx-auto">
+                          <div class="col-start-2 text-center">
+                            <div class="hs-tooltip inline-block">
+                              <button type="button"
+                                class="hs-tooltip-toggle size-10 inline-flex justify-center items-center gap-2 rounded-full bg-gray-50 border border-gray-200 text-gray-600 hover:bg-blue-50 hover:border-blue-200 hover:text-primary dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-white/[.05] dark:hover:border-white/[.1] dark:hover:text-white">
+                                <i class="ti ti-chevron-up text-lg"></i>
+                                <span
+                                  class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-slate-700"
+                                  role="tooltip">
+                                  Tooltip on top
+                                </span>
+                              </button>
+                            </div>
+                          </div>
+                          <!-- End Col -->
+
+                          <!-- Col -->
+                          <div class="col-start-1 text-end">
+                            <div class="hs-tooltip inline-block [--placement:left]">
+                              <button type="button"
+                                class="hs-tooltip-toggle size-10 inline-flex justify-center items-center gap-2 rounded-full bg-gray-50 border border-gray-200 text-gray-600 hover:bg-blue-50 hover:border-blue-200 hover:text-primary dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-white/[.05] dark:hover:border-white/[.1] dark:hover:text-white">
+                                <i class="ti ti-chevron-left text-lg"></i>
+                                <span
+                                  class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-slate-700"
+                                  role="tooltip">
+                                  Tooltip on left
+                                </span>
+                              </button>
+                            </div>
+                          </div>
+                          <!-- End Col -->
+
+                          <!-- Col -->
+                          <div class="col-start-3">
+                            <div class="hs-tooltip inline-block [--placement:right]">
+                              <button type="button"
+                                class="hs-tooltip-toggle size-10 inline-flex justify-center items-center gap-2 rounded-full bg-gray-50 border border-gray-200 text-gray-600 hover:bg-blue-50 hover:border-blue-200 hover:text-primary dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-white/[.05] dark:hover:border-white/[.1] dark:hover:text-white">
+                                <i class="ti ti-chevron-right text-lg"></i>
+                                <span
+                                  class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-slate-700"
+                                  role="tooltip">
+                                  Tooltip on right
+                                </span>
+                              </button>
+                            </div>
+                          </div>
+                          <!-- End Col -->
+
+                          <!-- Col -->
+                          <div class="col-start-2 text-center">
+                            <div class="hs-tooltip inline-block [--placement:bottom]">
+                              <button type="button"
+                                class="hs-tooltip-toggle size-10 inline-flex justify-center items-center gap-2 rounded-full bg-gray-50 border border-gray-200 text-gray-600 hover:bg-blue-50 hover:border-blue-200 hover:text-primary dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-white/[.05] dark:hover:border-white/[.1] dark:hover:text-white">
+                                <i class="ti ti-chevron-down text-lg"></i>
+                                <span
+                                  class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:bg-slate-700"
+                                  role="tooltip">
+                                  Tooltip on bottom
+                                </span>
+                              </button>
+                            </div>
+                          </div>
+                          <!-- End Col -->
+                        </div>
+                        <!-- End Grid -->
+                      </div>
+                    </div>
+                  </div>
+                  <div class=" lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-0">
+                          <h5 class="card-title">User popover example</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal7">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal7"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">User popover
+                                        example -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal7">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+    <code class="language-html">  
+    &#x3C;!-- User --&#x3E;
+    &#x3C;div class=&#x22;hs-tooltip inline-block [--trigger:hover] sm:[--placement:right]&#x22;&#x3E;
+      &#x3C;div class=&#x22;hs-tooltip-toggle max-w-xs p-3 flex items-center gap-x-3 bg-white border border-gray-200 rounded-md shadow-sm dark:bg-transparent dark:border-gray-700&#x22;&#x3E;
+         &#x3C;img class=&#x22;inline-block size-9 rounded-full&#x22; src=&#x22;https://images.unsplash.com/photo-1541101767792-f9b2b1c4f127?ixlib=rb-4.0.3&#x26;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&#x26;&#x26;auto=format&#x26;fit=facearea&#x26;facepad=3&#x26;w=300&#x26;h=300&#x26;q=80&#x22; alt=&#x22;Image Description&#x22;&#x3E;
+         &#x3C;!-- User Content --&#x3E;
+         &#x3C;div class=&#x22;grow&#x22;&#x3E;
+            &#x3C;h4 class=&#x22;font-semibold text-sm text-gray-800 dark:text-white&#x22;&#x3E;
+               Amanda Harvey
+            &#x3C;/h4&#x3E;
+            &#x3C;p class=&#x22;text-sm text-gray-800 md:text-gray-500 dark:text-white md:dark:text-gray-500&#x22;&#x3E;
+               amanda@email.com
+            &#x3C;/p&#x3E;
+         &#x3C;/div&#x3E;
+         &#x3C;!-- End User Content --&#x3E;
+         &#x3C;!-- Popover Content --&#x3E;
+         &#x3C;div class=&#x22;hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible hidden opacity-0 transition-opacity absolute invisible z-10 max-w-xs w-full bg-white border border-gray-100 text-start rounded-md shadow-md after:absolute after:top-0 after:-start-4 after:w-4 after:h-full dark:bg-gray-800 dark:border-gray-700&#x22; role=&#x22;tooltip&#x22;&#x3E;
+            &#x3C;!-- Header --&#x3E;
+            &#x3C;div class=&#x22;py-3 px-4 border-b border-gray-200 dark:border-gray-700&#x22;&#x3E;
+               &#x3C;div class=&#x22;flex items-center gap-x-3&#x22;&#x3E;
+                  &#x3C;img class=&#x22;flex-shrink-0 inline-block size-10 rounded-full ring-2 ring-white dark:ring-gray-800&#x22; src=&#x22;https://images.unsplash.com/photo-1541101767792-f9b2b1c4f127?ixlib=rb-4.0.3&#x26;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&#x26;&#x26;auto=format&#x26;fit=facearea&#x26;facepad=3&#x26;w=300&#x26;h=300&#x26;q=80&#x22; alt=&#x22;Image Description&#x22;&#x3E;
+                  &#x3C;div class=&#x22;grow&#x22;&#x3E;
+                     &#x3C;h4 class=&#x22;font-semibold text-gray-800 dark:text-white&#x22;&#x3E;
+                        Amanda Harvey
+                        &#x3C;span class=&#x22;ms-0.5 inline-flex items-center align-middle gap-x-1.5 py-0.5 px-1.5 rounded-md text-[11px] font-medium bg-gray-800 text-white dark:bg-white dark:text-gray-800&#x22;&#x3E;
+                        PRO
+                        &#x3C;/span&#x3E;
+                     &#x3C;/h4&#x3E;
+                     &#x3C;p class=&#x22;text-sm text-gray-500&#x22;&#x3E;
+                        Storyteller
+                     &#x3C;/p&#x3E;
+                  &#x3C;/div&#x3E;
+               &#x3C;/div&#x3E;
+            &#x3C;/div&#x3E;
+            &#x3C;!-- End Header --&#x3E;
+            &#x3C;!-- List --&#x3E;
+            &#x3C;ul class=&#x22;py-3 px-4 space-y-1&#x22;&#x3E;
+               &#x3C;li&#x3E;
+                  &#x3C;div class=&#x22;inline-flex items-center gap-x-3 text-sm text-gray-800 dark:text-neutral-200&#x22;&#x3E;
+                     &#x3C;i class=&#x22;ti ti-building text-base leading-tight font-medium&#x22;&#x3E;&#x3C;/i&#x3E;
+                     Pixeel Ltd.
+                  &#x3C;/div&#x3E;
+               &#x3C;/li&#x3E;
+               &#x3C;li&#x3E;
+                  &#x3C;div class=&#x22;inline-flex items-center gap-x-3 text-sm text-gray-800 dark:text-neutral-200&#x22;&#x3E;
+                     &#x3C;i class=&#x22;ti ti-phone text-base leading-tight font-medium&#x22;&#x3E;&#x3C;/i&#x3E;
+                     (892) 312-5483
+                  &#x3C;/div&#x3E;
+               &#x3C;/li&#x3E;
+               &#x3C;li&#x3E;
+                  &#x3C;div class=&#x22;inline-flex items-center gap-x-3 text-sm text-gray-800 dark:text-neutral-200&#x22;&#x3E;
+                     &#x3C;i class=&#x22;ti ti-mail text-base leading-tight font-medium&#x22;&#x3E;&#x3C;/i&#x3E;
+                     amanda@email.com
+                  &#x3C;/div&#x3E;
+               &#x3C;/li&#x3E;
+            &#x3C;/ul&#x3E;
+            &#x3C;!-- End List --&#x3E;
+            &#x3C;!-- Footer --&#x3E;
+            &#x3C;div class=&#x22;py-2 px-4 flex justify-between items-center bg-gray-100 dark:bg-gray-800&#x22;&#x3E;
+               &#x3C;a class=&#x22;inline-flex items-center gap-x-1.5 text-xs text-gray-500 hover:text-primary disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600&#x22; href=&#x22;#&#x22;&#x3E;
+               &#x3C;i class=&#x22;ti ti-flag text-base leading-tight font-medium&#x22;&#x3E;&#x3C;/i&#x3E;
+               Flag
+               &#x3C;/a&#x3E;
+               &#x3C;button type=&#x22;button&#x22; class=&#x22;py-1.5 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-full border border-transparent bg-primary text-white hover:bg-primaryemphasis disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600&#x22;&#x3E;
+               Follow
+               &#x3C;/button&#x3E;
+            &#x3C;/div&#x3E;
+            &#x3C;!-- End Footer --&#x3E;
+         &#x3C;/div&#x3E;
+         &#x3C;!-- End Popover Content --&#x3E;
+      &#x3C;/div&#x3E;
+    &#x3C;/div&#x3E;
+    &#x3C;!-- End User --&#x3E;
+               </code>
+                                                       </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <p class="card-subtitle  mb-6">User popover example.</p>
+                        <!-- User -->
+                        <div class="hs-tooltip inline-block [--trigger:hover] sm:[--placement:right]">
+                          <div
+                            class="hs-tooltip-toggle max-w-xs p-3 flex items-center gap-x-3 bg-white border border-gray-200 rounded-md shadow-sm dark:bg-transparent dark:border-gray-700">
+                            <img class="inline-block size-9 rounded-full"
+                              src="@@webRoot/assets/images/profile/user-7.jpg" alt="Image Description">
+
+                            <!-- User Content -->
+                            <div class="grow">
+                              <h4 class="font-semibold text-sm text-gray-800 dark:text-white">
+                                Amanda Harvey
+                              </h4>
+                              <p class="text-sm text-gray-800 md:text-gray-500 dark:text-white md:dark:text-gray-500">
+                                amanda@email.com
+                              </p>
+                            </div>
+                            <!-- End User Content -->
+
+                            <!-- Popover Content -->
+                            <div
+                              class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible hidden opacity-0 transition-opacity absolute invisible z-10 max-w-xs w-full bg-white border border-gray-100 text-start rounded-md shadow-md after:absolute after:top-0 after:-start-4 after:w-4 after:h-full dark:bg-gray-800 dark:border-gray-700"
+                              role="tooltip">
+                              <!-- Header -->
+                              <div class="py-3 px-4 border-b border-gray-200 dark:border-gray-700">
+                                <div class="flex items-center gap-x-3">
+                                  <img
+                                    class="flex-shrink-0 inline-block size-10 rounded-full ring-2 ring-white dark:ring-gray-800"
+                                    src="@@webRoot/assets/images/profile/user-7.jpg" alt="Image Description">
+                                  <div class="grow">
+                                    <h4 class="font-semibold text-gray-800 dark:text-white">
+                                      Amanda Harvey
+                                      <span
+                                        class="ms-0.5 inline-flex items-center align-middle gap-x-1.5 py-0.5 px-1.5 rounded-md text-[11px] font-medium bg-gray-800 text-white dark:bg-white dark:text-gray-800">
+                                        PRO
+                                      </span>
+                                    </h4>
+                                    <p class="text-sm text-gray-500">
+                                      Storyteller
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- End Header -->
+
+                              <!-- List -->
+                              <ul class="py-3 px-4 space-y-1">
+                                <li>
+                                  <div
+                                    class="inline-flex items-center gap-x-3 text-sm text-gray-800 dark:text-neutral-200">
+                                    <i class="ti ti-building text-base leading-tight font-medium"></i>
+                                    Pixeel Ltd.
+                                  </div>
+                                </li>
+
+                                <li>
+                                  <div
+                                    class="inline-flex items-center gap-x-3 text-sm text-gray-800 dark:text-neutral-200">
+                                    <i class="ti ti-phone text-base leading-tight font-medium"></i>
+                                    (892) 312-5483
+                                  </div>
+                                </li>
+
+                                <li>
+                                  <div
+                                    class="inline-flex items-center gap-x-3 text-sm text-gray-800 dark:text-neutral-200">
+                                    <i class="ti ti-mail text-base leading-tight font-medium"></i>
+                                    amanda@email.com
+                                  </div>
+                                </li>
+                              </ul>
+                              <!-- End List -->
+
+                              <!-- Footer -->
+                              <div class="py-2 px-4 flex justify-between items-center bg-gray-100 dark:bg-gray-800">
+                                <a class="inline-flex items-center gap-x-1.5 text-xs text-gray-500 hover:text-primary disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                                  href="#">
+                                  <i class="ti ti-flag text-base leading-tight font-medium"></i>
+                                  Flag
+                                </a>
+
+                                <button type="button"
+                                  class="py-1.5 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-full border border-transparent bg-primary text-white hover:bg-primaryemphasis disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                  Follow
+                                </button>
+                              </div>
+                              <!-- End Footer -->
+                            </div>
+                            <!-- End Popover Content -->
+                          </div>
+                        </div>
+                        <!-- End User -->
+                      </div>
+                    </div>
+                  </div>
+                  <div class=" lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-0">
+                          <h5 class="card-title">Popover Direction</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal2">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal2"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Popover
+                                        Direction -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal2">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+     <code class="language-html">  
+    &#x3C;!-- Popover --&#x3E;
+    &#x3C;div class=&#x22;hs-tooltip inline-block [--trigger:click] [--placement:left]&#x22;&#x3E;
+       &#x3C;button type=&#x22;button&#x22; class=&#x22;hs-tooltip-toggle flex justify-center items-center size-10 text-sm font-semibold rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600&#x22;&#x3E;
+       &#x3C;i class=&#x22;ti ti-chevron-left text-lg&#x22;&#x3E;&#x3C;/i&#x3E;
+       &#x3C;span class=&#x22;hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-3 px-4 bg-white border text-sm text-gray-600 rounded-md shadow-md dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400&#x22; role=&#x22;tooltip&#x22;&#x3E;
+       Left popover
+       &#x3C;/span&#x3E;
+       &#x3C;/button&#x3E;
+    &#x3C;/div&#x3E;
+    &#x3C;!-- End Popover --&#x3E;
+    &#x3C;!-- Popover --&#x3E;
+    &#x3C;div class=&#x22;hs-tooltip inline-block [--trigger:click]&#x22;&#x3E;
+       &#x3C;button type=&#x22;button&#x22; class=&#x22;hs-tooltip-toggle flex justify-center items-center size-10 text-sm font-semibold rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600&#x22;&#x3E;
+       &#x3C;i class=&#x22;ti ti-chevron-up text-lg&#x22;&#x3E;&#x3C;/i&#x3E;
+       &#x3C;span class=&#x22;hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-3 px-4 bg-white border text-sm text-gray-600 rounded-md shadow-md dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400&#x22; role=&#x22;tooltip&#x22;&#x3E;
+       Top popover
+       &#x3C;/span&#x3E;
+       &#x3C;/button&#x3E;
+    &#x3C;/div&#x3E;
+    &#x3C;!-- End Popover --&#x3E;
+    &#x3C;!-- Popover --&#x3E;
+    &#x3C;div class=&#x22;hs-tooltip inline-block [--trigger:click] [--placement:bottom]&#x22;&#x3E;
+       &#x3C;button type=&#x22;button&#x22; class=&#x22;hs-tooltip-toggle flex justify-center items-center size-10 text-sm font-semibold rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600&#x22;&#x3E;
+       &#x3C;i class=&#x22;ti ti-chevron-down text-lg&#x22;&#x3E;&#x3C;/i&#x3E;
+       &#x3C;span class=&#x22;hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-3 px-4 bg-white border text-sm text-gray-600 rounded-md shadow-md dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400&#x22; role=&#x22;tooltip&#x22;&#x3E;
+       Bottom popover
+       &#x3C;/span&#x3E;
+       &#x3C;/button&#x3E;
+    &#x3C;/div&#x3E;
+    &#x3C;!-- End Popover --&#x3E;
+    &#x3C;!-- Popover --&#x3E;
+    &#x3C;div class=&#x22;hs-tooltip inline-block [--trigger:click] [--placement:right]&#x22;&#x3E;
+       &#x3C;button type=&#x22;button&#x22; class=&#x22;hs-tooltip-toggle flex justify-center items-center size-10 text-sm font-semibold rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600&#x22;&#x3E;
+       &#x3C;i class=&#x22;ti ti-chevron-right text-lg&#x22;&#x3E;&#x3C;/i&#x3E;
+       &#x3C;span class=&#x22;hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-3 px-4 bg-white border text-sm text-gray-600 rounded-md shadow-md dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400&#x22; role=&#x22;tooltip&#x22;&#x3E;
+       Right popover
+       &#x3C;/span&#x3E;
+       &#x3C;/button&#x3E;
+    &#x3C;/div&#x3E;
+    &#x3C;!-- End Popover --&#x3E;
+                </code>
+                                                        </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <p class="text-sm mb-6">Four options are available: top, right, bottom, and left aligned.</p>
+                        <!-- Popover -->
+                        <div class="hs-tooltip inline-block [--trigger:click] [--placement:left]">
+                          <button type="button"
+                            class="hs-tooltip-toggle flex justify-center items-center size-10 text-sm font-semibold rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                            <i class="ti ti-chevron-left text-lg"></i>
+                            <span
+                              class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-3 px-4 bg-white border text-sm text-gray-600 rounded-md shadow-md dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400"
+                              role="tooltip">
+                              Left popover
+                            </span>
+                          </button>
+                        </div>
+                        <!-- End Popover -->
+
+                        <!-- Popover -->
+                        <div class="hs-tooltip inline-block [--trigger:click]">
+                          <button type="button"
+                            class="hs-tooltip-toggle flex justify-center items-center size-10 text-sm font-semibold rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                            <i class="ti ti-chevron-up text-lg"></i>
+                            <span
+                              class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-3 px-4 bg-white border text-sm text-gray-600 rounded-md shadow-md dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400"
+                              role="tooltip">
+                              Top popover
+                            </span>
+                          </button>
+                        </div>
+                        <!-- End Popover -->
+
+                        <!-- Popover -->
+                        <div class="hs-tooltip inline-block [--trigger:click] [--placement:bottom]">
+                          <button type="button"
+                            class="hs-tooltip-toggle flex justify-center items-center size-10 text-sm font-semibold rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                            <i class="ti ti-chevron-down text-lg"></i>
+                            <span
+                              class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-3 px-4 bg-white border text-sm text-gray-600 rounded-md shadow-md dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400"
+                              role="tooltip">
+                              Bottom popover
+                            </span>
+                          </button>
+                        </div>
+                        <!-- End Popover -->
+
+                        <!-- Popover -->
+                        <div class="hs-tooltip inline-block [--trigger:click] [--placement:right]">
+                          <button type="button"
+                            class="hs-tooltip-toggle flex justify-center items-center size-10 text-sm font-semibold rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                            <i class="ti ti-chevron-right text-lg"></i>
+                            <span
+                              class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-3 px-4 bg-white border text-sm text-gray-600 rounded-md shadow-md dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400"
+                              role="tooltip">
+                              Right popover
+                            </span>
+                          </button>
+                        </div>
+                        <!-- End Popover -->
+                      </div>
+                    </div>
+                  </div>
+                  <div class=" lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-0">
+                          <h5 class="card-title">Review popover example</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal6">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal6"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Review
+                                        popover example -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal6">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+    <code class="language-html">  
+    &#x3C;!-- Popover --&#x3E;
+    &#x3C;div class=&#x22;hs-tooltip inline-block [--trigger:click]&#x22;&#x3E;
+      &#x3C;div class=&#x22;hs-tooltip-toggle block text-center&#x22;&#x3E;
+         &#x3C;button type=&#x22;button&#x22; class=&#x22;inline-flex items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-primary hover:text-primaryemphasis disabled:opacity-50 disabled:pointer-events-none dark:text-primary dark:hover:text-blue-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600&#x22;&#x3E;
+         Preline review
+         &#x3C;i class=&#x22;ti ti-chevron-up text-lg&#x22;&#x3E;&#x3C;/i&#x3E;
+         &#x3C;/button&#x3E;
+         &#x3C;div class=&#x22;hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible hidden opacity-0 transition-opacity absolute invisible z-10 max-w-xs w-full bg-white border border-gray-100 text-start rounded-md shadow-md dark:bg-gray-800 dark:border-gray-700&#x22; role=&#x22;tooltip&#x22;&#x3E;
+            &#x3C;div class=&#x22;p-4&#x22;&#x3E;
+               &#x3C;!-- Header --&#x3E;
+               &#x3C;div class=&#x22;mb-3 flex justify-between items-center gap-x-3&#x22;&#x3E;
+                  &#x3C;div class=&#x22;flex items-center gap-x-2&#x22;&#x3E;
+                     &#x3C;h4 class=&#x22;font-semibold text-gray-800 dark:text-white&#x22;&#x3E;
+                        5.0
+                     &#x3C;/h4&#x3E;
+                     &#x3C;!-- Rating --&#x3E;
+                     &#x3C;div class=&#x22;flex&#x22;&#x3E;
+                        &#x3C;i class=&#x22;ti ti-star-filled text-warning text-base&#x22;&#x3E;&#x3C;/i&#x3E;
+                        &#x3C;i class=&#x22;ti ti-star-filled text-warning text-base&#x22;&#x3E;&#x3C;/i&#x3E;
+                        &#x3C;i class=&#x22;ti ti-star-filled text-warning text-base&#x22;&#x3E;&#x3C;/i&#x3E;
+                        &#x3C;i class=&#x22;ti ti-star-filled text-warning text-base&#x22;&#x3E;&#x3C;/i&#x3E;
+                        &#x3C;i class=&#x22;ti ti-star-filled text-warning text-base&#x22;&#x3E;&#x3C;/i&#x3E;
+                     &#x3C;/div&#x3E;
+                     &#x3C;!-- End Rating --&#x3E;
+                  &#x3C;/div&#x3E;
+                  &#x3C;a class=&#x22;inline-flex items-center gap-x-1 text-xs text-primary decoration-2 hover:underline font-medium dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600&#x22; href=&#x22;#&#x22;&#x3E;
+                  See all (4)
+                  &#x3C;/a&#x3E;
+               &#x3C;/div&#x3E;
+               &#x3C;!-- End Header --&#x3E;
+               &#x3C;div class=&#x22;mb-3&#x22;&#x3E;
+                  &#x3C;!-- Progress --&#x3E;
+                  &#x3C;div class=&#x22;flex items-center gap-x-3 whitespace-nowrap&#x22;&#x3E;
+                     &#x3C;div class=&#x22;w-10 text-end&#x22;&#x3E;
+                        &#x3C;span class=&#x22;text-sm text-gray-800 dark:text-white&#x22;&#x3E;5 star&#x3C;/span&#x3E;
+                     &#x3C;/div&#x3E;
+                     &#x3C;div class=&#x22;flex w-full h-2 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-700&#x22; role=&#x22;progressbar&#x22; aria-valuenow=&#x22;78&#x22; aria-valuemin=&#x22;0&#x22; aria-valuemax=&#x22;100&#x22;&#x3E;
+                        &#x3C;div class=&#x22;flex flex-col justify-center rounded-full overflow-hidden bg-warning text-xs text-white text-center whitespace-nowrap transition duration-500 dark:bg-warning&#x22; style=&#x22;width: 78%&#x22;&#x3E;&#x3C;/div&#x3E;
+                     &#x3C;/div&#x3E;
+                     &#x3C;div class=&#x22;w-10 text-end&#x22;&#x3E;
+                        &#x3C;span class=&#x22;text-sm text-gray-800 dark:text-white&#x22;&#x3E;78%&#x3C;/span&#x3E;
+                     &#x3C;/div&#x3E;
+                  &#x3C;/div&#x3E;
+                  &#x3C;!-- End Progress --&#x3E;
+                  &#x3C;!-- Progress --&#x3E;
+                  &#x3C;div class=&#x22;flex items-center gap-x-3 whitespace-nowrap&#x22;&#x3E;
+                     &#x3C;div class=&#x22;w-10 text-end&#x22;&#x3E;
+                        &#x3C;span class=&#x22;text-sm text-gray-800 dark:text-white&#x22;&#x3E;4 star&#x3C;/span&#x3E;
+                     &#x3C;/div&#x3E;
+                     &#x3C;div class=&#x22;flex w-full h-2 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-700&#x22; role=&#x22;progressbar&#x22; aria-valuenow=&#x22;20&#x22; aria-valuemin=&#x22;0&#x22; aria-valuemax=&#x22;100&#x22;&#x3E;
+                        &#x3C;div class=&#x22;flex flex-col justify-center rounded-full overflow-hidden bg-warning text-xs text-white text-center whitespace-nowrap transition duration-500 dark:bg-warning&#x22; style=&#x22;width: 20%&#x22;&#x3E;&#x3C;/div&#x3E;
+                     &#x3C;/div&#x3E;
+                     &#x3C;div class=&#x22;w-10 text-end&#x22;&#x3E;
+                        &#x3C;span class=&#x22;text-sm text-gray-800 dark:text-white&#x22;&#x3E;20%&#x3C;/span&#x3E;
+                     &#x3C;/div&#x3E;
+                  &#x3C;/div&#x3E;
+                  &#x3C;!-- End Progress --&#x3E;
+                  &#x3C;!-- Progress --&#x3E;
+                  &#x3C;div class=&#x22;flex items-center gap-x-3 whitespace-nowrap&#x22;&#x3E;
+                     &#x3C;div class=&#x22;w-10 text-end&#x22;&#x3E;
+                        &#x3C;span class=&#x22;text-sm text-gray-800 dark:text-white&#x22;&#x3E;3 star&#x3C;/span&#x3E;
+                     &#x3C;/div&#x3E;
+                     &#x3C;div class=&#x22;flex w-full h-2 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-700&#x22; role=&#x22;progressbar&#x22; aria-valuenow=&#x22;6&#x22; aria-valuemin=&#x22;0&#x22; aria-valuemax=&#x22;100&#x22;&#x3E;
+                        &#x3C;div class=&#x22;flex flex-col justify-center rounded-full overflow-hidden bg-yellow-400 text-xs text-white text-center whitespace-nowrap transition duration-500 dark:bg-warning&#x22; style=&#x22;width: 6%&#x22;&#x3E;&#x3C;/div&#x3E;
+                     &#x3C;/div&#x3E;
+                     &#x3C;div class=&#x22;w-10 text-end&#x22;&#x3E;
+                        &#x3C;span class=&#x22;text-sm text-gray-800 dark:text-white&#x22;&#x3E;6%&#x3C;/span&#x3E;
+                     &#x3C;/div&#x3E;
+                  &#x3C;/div&#x3E;
+                  &#x3C;!-- End Progress --&#x3E;
+                  &#x3C;!-- Progress --&#x3E;
+                  &#x3C;div class=&#x22;flex items-center gap-x-3 whitespace-nowrap&#x22;&#x3E;
+                     &#x3C;div class=&#x22;w-10 text-end&#x22;&#x3E;
+                        &#x3C;span class=&#x22;text-sm text-gray-800 dark:text-white&#x22;&#x3E;2 star&#x3C;/span&#x3E;
+                     &#x3C;/div&#x3E;
+                     &#x3C;div class=&#x22;flex w-full h-2 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-700&#x22; role=&#x22;progressbar&#x22; aria-valuenow=&#x22;25&#x22; aria-valuemin=&#x22;0&#x22; aria-valuemax=&#x22;100&#x22;&#x3E;
+                        &#x3C;div class=&#x22;flex flex-col justify-center rounded-full overflow-hidden bg-yellow-400 text-xs text-white text-center whitespace-nowrap transition duration-500 dark:bg-warning&#x22; style=&#x22;width: 2%&#x22;&#x3E;&#x3C;/div&#x3E;
+                     &#x3C;/div&#x3E;
+                     &#x3C;div class=&#x22;w-10 text-end&#x22;&#x3E;
+                        &#x3C;span class=&#x22;text-sm text-gray-800 dark:text-white&#x22;&#x3E;2%&#x3C;/span&#x3E;
+                     &#x3C;/div&#x3E;
+                  &#x3C;/div&#x3E;
+                  &#x3C;!-- End Progress --&#x3E;
+                  &#x3C;!-- Progress --&#x3E;
+                  &#x3C;div class=&#x22;flex items-center gap-x-3 whitespace-nowrap&#x22;&#x3E;
+                     &#x3C;div class=&#x22;w-10 text-end&#x22;&#x3E;
+                        &#x3C;span class=&#x22;text-sm text-gray-800 dark:text-white&#x22;&#x3E;1 star&#x3C;/span&#x3E;
+                     &#x3C;/div&#x3E;
+                     &#x3C;div class=&#x22;flex w-full h-2 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-700&#x22; role=&#x22;progressbar&#x22; aria-valuenow=&#x22;0&#x22; aria-valuemin=&#x22;0&#x22; aria-valuemax=&#x22;100&#x22;&#x3E;
+                        &#x3C;div class=&#x22;flex flex-col justify-center rounded-full overflow-hidden bg-yellow-400 text-xs text-white text-center whitespace-nowrap transition duration-500 dark:bg-warning&#x22; style=&#x22;width: 0%&#x22;&#x3E;&#x3C;/div&#x3E;
+                     &#x3C;/div&#x3E;
+                     &#x3C;div class=&#x22;w-10 text-end&#x22;&#x3E;
+                        &#x3C;span class=&#x22;text-sm text-gray-800 dark:text-white&#x22;&#x3E;0%&#x3C;/span&#x3E;
+                     &#x3C;/div&#x3E;
+                  &#x3C;/div&#x3E;
+                  &#x3C;!-- End Progress --&#x3E;
+               &#x3C;/div&#x3E;
+               &#x3C;a class=&#x22;inline-flex items-center gap-x-1 text-xs text-gray-600 decoration-2 hover:underline dark:text-gray-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-400&#x22; href=&#x22;#&#x22;&#x3E;
+               How reviews and ratings work
+               &#x3C;i class=&#x22;ti ti-chevron-down text-base leading-tight font-medium&#x22;&#x3E;&#x3C;/i&#x3E;
+               &#x3C;/a&#x3E;
+            &#x3C;/div&#x3E;
+         &#x3C;/div&#x3E;
+      &#x3C;/div&#x3E;
+    &#x3C;/div&#x3E;
+    &#x3C;!-- End Popover --&#x3E;
+               </code>
+                                                       </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <p class="card-subtitle  mb-6">Example with content.</p>
+                        <!-- Popover -->
+                        <div class="hs-tooltip inline-block [--trigger:click]">
+                          <div class="hs-tooltip-toggle block text-center">
+                            <button type="button"
+                              class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-primary hover:text-primaryemphasis disabled:opacity-50 disabled:pointer-events-none dark:text-primary dark:hover:text-blue-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                              Preline review
+                              <i class="ti ti-chevron-up text-lg"></i>
+                            </button>
+
+                            <div
+                              class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible hidden opacity-0 transition-opacity absolute invisible z-10 max-w-xs w-full bg-white border border-gray-100 text-start rounded-md shadow-md dark:bg-gray-800 dark:border-gray-700"
+                              role="tooltip">
+                              <div class="p-4">
+                                <!-- Header -->
+                                <div class="mb-3 flex justify-between items-center gap-x-3">
+                                  <div class="flex items-center gap-x-2">
+                                    <h4 class="font-semibold text-gray-800 dark:text-white">
+                                      5.0
+                                    </h4>
+
+                                    <!-- Rating -->
+                                    <div class="flex">
+                                      <i class="ti ti-star-filled text-warning text-base"></i>
+                                      <i class="ti ti-star-filled text-warning text-base"></i>
+                                      <i class="ti ti-star-filled text-warning text-base"></i>
+                                      <i class="ti ti-star-filled text-warning text-base"></i>
+                                      <i class="ti ti-star-filled text-warning text-base"></i>
+                                    </div>
+                                    <!-- End Rating -->
+                                  </div>
+
+                                  <a class="inline-flex items-center gap-x-1 text-xs text-primary decoration-2 hover:underline font-medium dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                                    href="#">
+                                    See all (4)
+                                  </a>
+                                </div>
+                                <!-- End Header -->
+
+                                <div class="mb-3">
+                                  <!-- Progress -->
+                                  <div class="flex items-center gap-x-3 whitespace-nowrap">
+                                    <div class="w-10 text-end">
+                                      <span class="text-sm text-gray-800 dark:text-white">5 star</span>
+                                    </div>
+                                    <div
+                                      class="flex w-full h-2 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-700"
+                                      role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100">
+                                      <div
+                                        class="flex flex-col justify-center rounded-full overflow-hidden bg-warning text-xs text-white text-center whitespace-nowrap transition duration-500 dark:bg-warning"
+                                        style="width: 78%"></div>
+                                    </div>
+                                    <div class="w-10 text-end">
+                                      <span class="text-sm text-gray-800 dark:text-white">78%</span>
+                                    </div>
+                                  </div>
+                                  <!-- End Progress -->
+
+                                  <!-- Progress -->
+                                  <div class="flex items-center gap-x-3 whitespace-nowrap">
+                                    <div class="w-10 text-end">
+                                      <span class="text-sm text-gray-800 dark:text-white">4 star</span>
+                                    </div>
+                                    <div
+                                      class="flex w-full h-2 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-700"
+                                      role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                                      <div
+                                        class="flex flex-col justify-center rounded-full overflow-hidden bg-warning text-xs text-white text-center whitespace-nowrap transition duration-500 dark:bg-warning"
+                                        style="width: 20%"></div>
+                                    </div>
+                                    <div class="w-10 text-end">
+                                      <span class="text-sm text-gray-800 dark:text-white">20%</span>
+                                    </div>
+                                  </div>
+                                  <!-- End Progress -->
+
+                                  <!-- Progress -->
+                                  <div class="flex items-center gap-x-3 whitespace-nowrap">
+                                    <div class="w-10 text-end">
+                                      <span class="text-sm text-gray-800 dark:text-white">3 star</span>
+                                    </div>
+                                    <div
+                                      class="flex w-full h-2 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-700"
+                                      role="progressbar" aria-valuenow="6" aria-valuemin="0" aria-valuemax="100">
+                                      <div
+                                        class="flex flex-col justify-center rounded-full overflow-hidden bg-yellow-400 text-xs text-white text-center whitespace-nowrap transition duration-500 dark:bg-warning"
+                                        style="width: 6%"></div>
+                                    </div>
+                                    <div class="w-10 text-end">
+                                      <span class="text-sm text-gray-800 dark:text-white">6%</span>
+                                    </div>
+                                  </div>
+                                  <!-- End Progress -->
+
+                                  <!-- Progress -->
+                                  <div class="flex items-center gap-x-3 whitespace-nowrap">
+                                    <div class="w-10 text-end">
+                                      <span class="text-sm text-gray-800 dark:text-white">2 star</span>
+                                    </div>
+                                    <div
+                                      class="flex w-full h-2 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-700"
+                                      role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                      <div
+                                        class="flex flex-col justify-center rounded-full overflow-hidden bg-yellow-400 text-xs text-white text-center whitespace-nowrap transition duration-500 dark:bg-warning"
+                                        style="width: 2%"></div>
+                                    </div>
+                                    <div class="w-10 text-end">
+                                      <span class="text-sm text-gray-800 dark:text-white">2%</span>
+                                    </div>
+                                  </div>
+                                  <!-- End Progress -->
+
+                                  <!-- Progress -->
+                                  <div class="flex items-center gap-x-3 whitespace-nowrap">
+                                    <div class="w-10 text-end">
+                                      <span class="text-sm text-gray-800 dark:text-white">1 star</span>
+                                    </div>
+                                    <div
+                                      class="flex w-full h-2 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-700"
+                                      role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                      <div
+                                        class="flex flex-col justify-center rounded-full overflow-hidden bg-yellow-400 text-xs text-white text-center whitespace-nowrap transition duration-500 dark:bg-warning"
+                                        style="width: 0%"></div>
+                                    </div>
+                                    <div class="w-10 text-end">
+                                      <span class="text-sm text-gray-800 dark:text-white">0%</span>
+                                    </div>
+                                  </div>
+                                  <!-- End Progress -->
+                                </div>
+
+                                <a class="inline-flex items-center gap-x-1 text-xs text-gray-600 decoration-2 hover:underline dark:text-gray-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-400"
+                                  href="#">
+                                  How reviews and ratings work
+                                  <i class="ti ti-chevron-down text-base leading-tight font-medium"></i>
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- End Popover -->
+                      </div>
+                    </div>
+                  </div>
+                  <div class=" lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-0">
+                          <h5 class="card-title">Popover Focus event</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal3">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal3"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Popover
+                                        Focus event -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal3">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+     <code class="language-html">  
+    &#x3C;!-- Popover --&#x3E;
+    &#x3C;div class=&#x22;hs-tooltip inline-block [--trigger:focus]&#x22;&#x3E;
+       &#x3C;button type=&#x22;button&#x22; class=&#x22;hs-tooltip-toggle flex justify-center items-center size-10 text-sm font-semibold rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600&#x22;&#x3E;
+       &#x3C;i class=&#x22;ti ti-chevron-up text-lg&#x22;&#x3E;&#x3C;/i&#x3E;
+       &#x3C;span class=&#x22;hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-3 px-4 bg-white border text-sm text-gray-600 rounded-md shadow-md dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400&#x22; role=&#x22;tooltip&#x22;&#x3E;
+       Focus me
+       &#x3C;/span&#x3E;
+       &#x3C;/button&#x3E;
+    &#x3C;/div&#x3E;
+    &#x3C;!-- End Popover --&#x3E;
+                </code>
+                                                        </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <p class="card-subtitle  mb-6">Use <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">'[--trigger:focus]'</code>class for
+                          focus event.</p>
+                        <!-- Popover -->
+                        <div class="hs-tooltip inline-block [--trigger:focus]">
+                          <button type="button"
+                            class="hs-tooltip-toggle flex justify-center items-center size-10 text-sm font-semibold rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                            <i class="ti ti-chevron-up text-lg"></i>
+                            <span
+                              class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-3 px-4 bg-white border text-sm text-gray-600 rounded-md shadow-md dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400"
+                              role="tooltip">
+                              Focus me
+                            </span>
+                          </button>
+                        </div>
+                        <!-- End Popover -->
+                      </div>
+                    </div>
+                  </div>
+                  <div class=" lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-0">
+                          <h5 class="card-title">Popover Hover event</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal4">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal4"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Popover
+                                        Hover event -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal4">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+     <code class="language-html">  
+    &#x3C;!-- Popover --&#x3E;
+    &#x3C;div class=&#x22;hs-tooltip inline-block [--trigger:hover]&#x22;&#x3E;
+       &#x3C;button type=&#x22;button&#x22; class=&#x22;hs-tooltip-toggle flex justify-center items-center size-10 text-sm font-semibold rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600&#x22;&#x3E;
+       &#x3C;i class=&#x22;ti ti-chevron-up text-lg&#x22;&#x3E;&#x3C;/i&#x3E;
+       &#x3C;span class=&#x22;hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-3 px-4 bg-white border text-sm text-gray-600 rounded-md shadow-md dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400&#x22; role=&#x22;tooltip&#x22;&#x3E;
+       Focus me
+       &#x3C;/span&#x3E;
+       &#x3C;/button&#x3E;
+    &#x3C;/div&#x3E;
+    &#x3C;!-- End Popover --&#x3E;
+                </code>
+                                                        </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <p class="card-subtitle  mb-6">Use <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">'[--trigger:focus]'</code>class for
+                          focus event.</p>
+                        <!-- Popover -->
+                        <div class="hs-tooltip inline-block [--trigger:hover]">
+                          <button type="button"
+                            class="hs-tooltip-toggle flex justify-center items-center size-10 text-sm font-semibold rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                            <i class="ti ti-chevron-up text-lg"></i>
+                            <span
+                              class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-3 px-4 bg-white border text-sm text-gray-600 rounded-md shadow-md dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400"
+                              role="tooltip">
+                              Focus me
+                            </span>
+                          </button>
+                        </div>
+                        <!-- End Popover -->
+                      </div>
+                    </div>
+                  </div>
+                  <div class=" lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-0">
+                          <h5 class="card-title">Popover With content</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal5">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal5"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Popover With
+                                        content -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal5">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+     <code class="language-html">  
+    &#x3C;!-- Popover --&#x3E;
+    &#x3C;div class=&#x22;hs-tooltip inline-block [--trigger:click]&#x22;&#x3E;
+       &#x3C;div class=&#x22;hs-tooltip-toggle block text-center&#x22;&#x3E;
+          &#x3C;button type=&#x22;button&#x22; class=&#x22;flex justify-center items-center size-10 text-sm font-semibold rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600&#x22;&#x3E;
+          &#x3C;i class=&#x22;ti ti-chevron-up text-lg&#x22;&#x3E;&#x3C;/i&#x3E;
+          &#x3C;/button&#x3E;
+          &#x3C;div class=&#x22;hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible hidden opacity-0 transition-opacity absolute invisible z-10 max-w-xs bg-white border border-gray-100 text-start rounded-md shadow-md dark:bg-gray-800 dark:border-gray-700&#x22; role=&#x22;tooltip&#x22;&#x3E;
+             &#x3C;span class=&#x22;pt-3 px-4 block text-lg font-bold text-gray-800 dark:text-white&#x22;&#x3E;Overview&#x3C;/span&#x3E;
+             &#x3C;div class=&#x22;py-3 px-4 text-sm text-gray-600 dark:text-gray-400&#x22;&#x3E;
+                &#x3C;img src=&#x22;@@webRoot/assets/images/blog/blog-img2.jpg&#x22; alt=&#x22;&#x22; class=&#x22;w-full&#x22;&#x3E;
+                &#x3C;p&#x3E;This is a popover body with supporting text below as a natural lead-in to additional content.&#x3C;/p&#x3E;
+                &#x3C;dl class=&#x22;mt-3&#x22;&#x3E;
+                   &#x3C;dt class=&#x22;font-bold pt-3 first:pt-0 dark:text-white&#x22;&#x3E;Assigned to:&#x3C;/dt&#x3E;
+                   &#x3C;dd class=&#x22;text-gray-600 dark:text-gray-400&#x22;&#x3E;Mark Welson&#x3C;/dd&#x3E;
+                   &#x3C;dt class=&#x22;font-bold pt-3 first:pt-0 dark:text-white&#x22;&#x3E;Due:&#x3C;/dt&#x3E;
+                   &#x3C;dd class=&#x22;text-gray-600 dark:text-gray-400&#x22;&#x3E;December 21, 2021&#x3C;/dd&#x3E;
+                &#x3C;/dl&#x3E;
+             &#x3C;/div&#x3E;
+          &#x3C;/div&#x3E;
+       &#x3C;/div&#x3E;
+    &#x3C;/div&#x3E;
+    &#x3C;!-- End Popover --&#x3E;
+                </code>
+                                                        </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <p class="card-subtitle  mb-6">Example with content.</p>
+                        <!-- Popover -->
+                        <div class="hs-tooltip inline-block [--trigger:click]">
+                          <div class="hs-tooltip-toggle block text-center">
+                            <button type="button"
+                              class="flex justify-center items-center size-10 text-sm font-semibold rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                              <i class="ti ti-chevron-up text-lg"></i>
+                            </button>
+                            <div
+                              class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible hidden opacity-0 transition-opacity absolute invisible z-10 max-w-xs bg-white border border-gray-100 text-start rounded-md shadow-md dark:bg-gray-800 dark:border-gray-700"
+                              role="tooltip">
+                              <span
+                                class="pt-3 px-4 block text-lg font-bold text-gray-800 dark:text-white">Overview</span>
+                              <div class="py-3 px-4 text-sm text-gray-600 dark:text-gray-400">
+                                <img src="@@webRoot/assets/images/blog/blog-img2.jpg" alt="" class="w-full">
+                                <p>This is a popover body with supporting text below as a natural lead-in to additional
+                                  content.</p>
+                                <dl class="mt-3">
+                                  <dt class="font-bold pt-3 first:pt-0 dark:text-white">Assigned to:</dt>
+                                  <dd class="text-gray-600 dark:text-gray-400">Mark Welson</dd>
+                                  <dt class="font-bold pt-3 first:pt-0 dark:text-white">Due:</dt>
+                                  <dd class="text-gray-600 dark:text-gray-400">December 21, 2021</dd>
+                                </dl>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- End Popover -->
+                      </div>
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+        <!-- Main Content End -->
+
+      </div>
+    </div>
+    <!--end of project-->
+  </main>
+  @@include("partials/header-components/mobile-menu.html")
+  @@include("partials/customizer.html")
+  @@include("partials/scripts.html")
+  <script src="@@webRoot/node_modules/prismjs/prism.js"></script>
+</body>
+
+</html>

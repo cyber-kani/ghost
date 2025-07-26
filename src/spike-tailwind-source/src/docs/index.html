@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-color-theme="Blue_Theme" class="light selected"
+	data-layout="vertical" data-boxed-layout="boxed" data-card="shadow">
+
+	<head>
+		@@include("partials/head.html")
+		<title>Spike TailwindCSS HTML Admin Template</title>
+	</head>
+
+	<body class="DEFAULT_THEME bg-lightprimary dark:bg-darkbody">
+		<main>
+			<!--start the project-->
+			<div id="main-wrapper" class="flex p-5">
+
+				<aside id="application-sidebar-brand"
+					class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full xl:rtl:-translate-x-0 rtl:translate-x-full  left-0 rtl:left-auto xl:rtl:right-5 rtl:right-0 transform hidden xl:block xl:translate-x-0 xl:end-auto xl:bottom-0 fixed top-0 with-vertical  docs-left-sidebar transition-all duration-300 h-screen z-[2] flex-shrink-0  w-[270px] border-border dark:border-darkborder bg-white dark:bg-dark xl:top-5 xl:start-5 shadow-md xl:rounded-md">
+					@@include("partials/sidebar.html",{ "page": "doc" })
+				</aside>
+				<div class="page-wrapper w-full" role="main">
+
+					<!-- Main Content -->
+					<main class="h-full ">
+						<div class="container full-container py-5 xl:ps-6 ps-0 pt-0 pe-0">
+
+							<!--  Header Start -->
+							<header
+								class="sticky top-0 inset-x-0 z-[1] flex flex-wrap md:justify-start md:flex-nowrap text-sm py-0 mb-6 bg-white dark:bg-dark rounded-md shadow-md">
+								<div
+									class="with-vertical w-full">@@include("partials/header.html")</div>
+							</header>
+							<!--  Header End -->
+
+                            <!-- ============================================================== -->
+							<!-- Start Page Content -->
+							<!-- ============================================================== -->
+							<div class=" leading-tight text-lg text-link dark:text-darklink font-medium">
+                                <div class="card">
+                                  <div class="card-body">
+                                    Spike is meticulously crafted using the highly acclaimed Tailwind framework, ensuring a foundation of
+                                    robust and responsive design principles. The Spike Tailwind Dashboard offers an extensive array of
+                                    pre-built page templates, featuring three impressive dashboard variations, tables, charts, form examples,
+                                    and much more.<br><br>
+                                    <p>This dashboard is specifically built with Tailwind 3, the latest version of the framework, embracing
+                                      modern web development standards. To further facilitate your project development, we've thoughtfully
+                                      included a Figma File, allowing for seamless integration and extension of your design endeavors.</p>
+                                      <br>
+                                    <p>Spike Tailwind Dashboard is designed to be effortlessly deployable, providing a ready-to-use
+                                      solution that can be tailored to meet your unique requirements. The flexibility extends to
+                                      customization, and users with proficiency in Tailwind, CSS, and HTML can easily modify and adapt these
+                                      templates to suit their individual needs.</p>
+                                      <br>
+                                    <p>
+                                      For any assistance or support, we are committed to providing the necessary guidance to ensure a smooth
+                                      and successful implementation of Spike in your projects.</p>
+                                  </div>
+                                </div>
+                               
+                                </div>
+
+                                <div class="card mt-6">
+                                  <div class="card-body">
+                                    <h3 class="mb-2 text-2xl font-medium text-link dark:text-darklink">Support</h3>
+                                    <div class="mt-6">
+                                      <h5 class="font-medium text-gray-500 leading-normal text-lg">
+                                        Prior to creating a <a class="text-link dark:text-darklink dark:hover:text-primary hover:text-primary" href="http://wrappixel.com/support/">ticket</a>, ensure that your inquiry
+                                        pertains specifically to support-related matters
+                                        and not customization. Additionally, we encourage you to thoroughly review our comprehensive
+                                        documentation to verify that your question or reported bug hasn't been addressed therein.<br><br>
+                      
+                                        Our dedicated support team is committed to promptly addressing your support-related queries, ensuring
+                                        a seamless experience as you navigate and utilize our templates.<br><br>
+                      
+                                        Adminmart.com is pleased to provide cost-effective customization services tailored to our templates.
+                                        If you require customization work, kindly submit a ticket through our support platform at
+                                        <a class="text-link dark:text-darklink dark:hover:text-primary hover:text-primary" href="http://wrappixel.com/support/">wrappixel.com/support</a><br><br>
+                                      </h5>
+                                    </div>
+                                </div>
+                                </div>
+                  
+                               
+                  
+                                  <div class="card mt-6">
+                                    <div class="card-body">
+                                      <h4 class="text-fs_21 mb-2">Includes</h4>
+                                      <ul class="mb-0 text-gray-500 text-sm">
+                                        <li class="py-1">
+                                          Answering your questions or problems regarding the
+                                          template.
+                                        </li>
+                                        <li class="py-1">
+                                          Giving solution to the Bugs reported.
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                  <div class="card mt-6">
+                                    <div class="card-body">
+                                      <h4 class="text-fs_21 mb-2">Does not Includes</h4>
+                                      <ul class="mb-0 text-sm text-gray-500">
+                                        <li class=" py-1">
+                                          Customization Work
+                                        </li>
+                                        <li class=" py-1">
+                                          Any Installation Work
+                                        </li>
+                                        <li class=" py-1">
+                                          Support for any Third Party Plugins / Software
+                                        </li>
+                                        <li class=" py-1">
+                                          Support or Guide for How to integrate with any
+                                          technologies (like, PHP, .net, Java etc)
+                                        </li>
+                                        <li class=" pt-1">
+                                          Solve bug in your implemented template
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </div>
+							</div>
+							<!-------------->
+
+						</div>
+					</main>
+					<!-- Main Content End -->
+
+				</div>
+			</div>
+			<!--end of project-->
+		</main>
+		@@include("partials/scripts.html")
+	</body>
+
+</html>

@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-color-theme="Blue_Theme" class="light selected"
+	data-layout="vertical" data-boxed-layout="boxed" data-card="shadow">
+
+	<head>
+		@@include("partials/head.html")
+		<title>Spike TailwindCSS HTML Admin Template</title>
+	</head>
+
+	<body class="DEFAULT_THEME bg-lightprimary dark:bg-darkbody">
+		<main>
+			<!--start the project-->
+			<div id="main-wrapper" class="flex p-5">
+
+				<aside id="application-sidebar-brand"
+					class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full xl:rtl:-translate-x-0 rtl:translate-x-full  left-0 rtl:left-auto xl:rtl:right-5 rtl:right-0 transform hidden xl:block xl:translate-x-0 xl:end-auto xl:bottom-0 fixed top-0 with-vertical  left-sidebar transition-all duration-300 h-screen z-[2] flex-shrink-0  w-[270px] border-border dark:border-darkborder bg-white dark:bg-dark xl:top-5 xl:start-5 shadow-md xl:rounded-md">
+                    @@include("partials/sidebar.html",{ "page":
+                    "widget-charts","page_group": "widgets" })
+				</aside>
+				<div class="page-wrapper w-full" role="main">
+
+					<!-- Main Content -->
+					<main class="h-full ">
+						<div class="container full-container py-5 xl:ps-6 ps-0 pt-0 pe-0 remove-ps">
+
+							<!--  Header Start -->
+							<header
+								class="sticky top-0 inset-x-0 z-[1] flex flex-wrap md:justify-start md:flex-nowrap text-fs_15 py-3 lg:py-0 mb-6 bg-white dark:bg-dark rounded-md shadow-md">
+								<div
+									class="with-vertical w-full">@@include("partials/header.html")</div>
+								<div class="with-horizontal w-full">
+									<div class="bg-white dark:bg-dark">
+										<div class="container">
+											@@include("partials/horizontal-header.html")
+										</div>
+									</div>
+								</div>
+							</header>
+							<!--  Header End -->
+
+							<!-- Horizontal Sidebar Menu -->
+							<aside
+								class="with-horizontal lg:flex hidden left-sidebar bg-white dark:bg-dark border-t border-border dark:border-darkborder">
+                                @@include("partials/horizontal-sidebar.html", { "page":
+                        "widget-charts","page_group": "widgets"})
+							</aside>
+							<!-- Horizontal Sidebar Menu End -->
+
+                            <!-- Main Content -->
+                            <div class="max-w-full">
+                                <div class="container full-container ">
+                                    <!----Breadcrumb Start---->
+                                    @@include("partials/breadcrumb.html", {"title":
+                            "Charts", "subtitle": 'Home'})
+                                    <!----Breadcrumb End---->
+                                    <div class="grid grid-cols-12 gap-6">
+                                        <div
+                                            class="lg:col-span-3 md:col-span-6 col-span-12">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div
+                                                        class="flex justify-between items-end mb-5">
+                                                        <div>
+                                                            <h5
+                                                                class="card-title">2,545</h5>
+                                                            <p
+                                                                class="card-subtitle">Followers</p>
+                                                        </div>
+                                                        <span
+                                                            class="text-success">+1.20%</span>
+                                                    </div>
+                                                </div>
+                                                <div id="widgest-chart-1"></div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="lg:col-span-3 md:col-span-6 col-span-12">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div
+                                                        class="flex justify-between items-end mb-6">
+                                                        <div>
+                                                            <h5
+                                                                class="card-title">15,480</h5>
+                                                            <p
+                                                                class="card-subtitle">Views</p>
+                                                        </div>
+                                                        <span
+                                                            class="text-error">-4.150%</span>
+                                                    </div>
+                                                    <div class="-me-5">
+                                                        <div id="widgest-chart-2"></div>
+                                                    </div>
+                                                </div>
+        
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="lg:col-span-3 md:col-span-6 col-span-12">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div
+                                                        class="flex justify-between items-end mb-4">
+                                                        <div>
+                                                            <h5
+                                                                class="card-title">2,545</h5>
+                                                            <p
+                                                                class="card-subtitle">Earned</p>
+                                                        </div>
+                                                        <span
+                                                            class="text-success">+1.20%</span>
+                                                    </div>
+                                                </div>
+                                                <div id="widgest-chart-3"></div>
+        
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="lg:col-span-3 md:col-span-6 col-span-12">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="mb-12">
+                                                        <p
+                                                            class="card-subtitle">Total
+                                                            Earning</p>
+                                                        <h5
+                                                            class="card-title">$78,298</h5>
+                                                    </div>
+                                                    <div class="-me-2">
+                                                        <div id="widgest-chart-4"></div>
+                                                    </div>
+                                                </div>
+        
+                                            </div>
+                                        </div>
+        
+                                        <div class="col-span-12">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div
+                                                        class="flex items-center justify-between mb-6">
+                                                        <h5
+                                                            class="card-title">Current
+                                                            Value</h5>
+                                                        <div
+                                                            class="flex gap-2 items-center ">
+                                                            <button
+                                                                class="btn 
+                                                                ">Buy</button>
+                                                            <button
+                                                                class="btn btn-outline-primary">Sell</button>
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        class="grid grid-cols-12 gap-6">
+                                                        <div
+                                                            class="lg:col-span-4 md:col-span-6 col-span-12">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <div class="-me-9">
+                                                                        <div
+                                                                            id="widgest-chart-5"></div>
+                                                                    </div>
+        
+                                                                    <div
+                                                                        class="flex justify-between items-end mt-5">
+                                                                        <div>
+                                                                            <p
+                                                                                class="card-subtitle">Income</p>
+                                                                            <h5
+                                                                                class="card-title">$25,260</h5>
+                                                                        </div>
+                                                                        <span
+                                                                            class="text-success">+1.20%</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            class="lg:col-span-4 md:col-span-6 col-span-12">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <div class="-me-9">
+                                                                        <div
+                                                                            id="widgest-chart-6"></div>
+                                                                    </div>
+                                                                    <div
+                                                                        class="flex justify-between items-end mt-5">
+                                                                        <div>
+                                                                            <p
+                                                                                class="card-subtitle">Expance</p>
+                                                                            <h5
+                                                                                class="card-title">$12,260</h5>
+                                                                        </div>
+                                                                        <span
+                                                                            class="text-success">+4.25%</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            class="lg:col-span-4 col-span-12">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <div
+                                                                        id="current-year"></div>
+                                                                    <div
+                                                                        class="flex justify-between items-end mt-5">
+                                                                        <div>
+                                                                            <p
+                                                                                class="card-subtitle">Current
+                                                                                Year</p>
+                                                                            <h5
+                                                                                class="card-title">$98,260</h5>
+                                                                        </div>
+                                                                        <span
+                                                                            class="text-success">+2.5%</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+        
+                                        <!---Yearly Breakups Cards--->
+                                        <div
+                                            class="lg:col-span-4 md:col-span-12 sm:col-span-12 col-span-12">
+                                            <div class="grid grid-cols-12 gap-6">
+                                                <div
+                                                    class="lg:col-span-12 md:col-span-6 sm:col-span-12 col-span-12">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <div
+                                                                class="grid grid-cols-12 ">
+                                                                <div
+                                                                    class="lg:col-span-8 md:col-span-8 col-span-8">
+                                                                    <h5
+                                                                        class="card-title  mb-5">
+                                                                        Yearly
+                                                                        Breakup
+                                                                    </h5>
+                                                                    <h4
+                                                                        class="text-lg  mb-3">
+                                                                        $36,358
+                                                                    </h4>
+                                                                    <div
+                                                                        class="flex items-center mb-3 gap-2">
+                                                                        <span
+                                                                            class="rounded-full p-1 bg-lightsuccess dark:bg-darksuccess flex items-center justify-center ">
+                                                                            <i
+                                                                                class="ti ti-arrow-up-left text-success"></i>
+                                                                        </span>
+                                                                        <p
+                                                                            class=" text-sm mb-0">+9%</p>
+                                                                        <p
+                                                                            class=" mb-0 text-sm">last
+                                                                            year</p>
+                                                                    </div>
+                                                                    <div
+                                                                        class="flex gap-3 items-center">
+                                                                        <div
+                                                                            class="flex items-center">
+                                                                            <i
+                                                                                class="ti ti-point-filled text-primary text-xl"></i>
+                                                                            <span
+                                                                                class="text-xs ">2023</span>
+                                                                        </div>
+                                                                        <div
+                                                                            class="flex items-center">
+                                                                            <i
+                                                                                class="ti ti-point-filled text-secondary text-xl"></i>
+                                                                            <span
+                                                                                class="text-xs ">2024</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    class="lg:col-span-4 md:col-span-4 col-span-4">
+                                                                    <div
+                                                                        class="flex justify-center">
+                                                                        <div
+                                                                            id="breakup"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="lg:col-span-12 md:col-span-6 sm:col-span-12 col-span-12">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <div
+                                                                class="grid grid-cols-12 gap-6">
+                                                                <div
+                                                                    class="lg:col-span-8 md:col-span-8  col-span-8">
+                                                                    <h5
+                                                                        class="card-title  mb-4">
+                                                                        Monthly
+                                                                        Earnings
+                                                                    </h5>
+        
+                                                                    <div
+                                                                        class="flex items-center mb-3 gap-2">
+                                                                        <h4
+                                                                            class="text-lg">
+                                                                            $6,820
+                                                                        </h4>
+                                                                        <span
+                                                                            class="rounded-full p-1 bg-lightsuccess dark:bg-darksuccess flex items-center justify-center ">
+                                                                            <i
+                                                                                class="ti ti-arrow-up-left text-success"></i>
+                                                                        </span>
+                                                                        <p
+                                                                            class=" text-sm mb-0">+9%</p>
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    class="lg:col-span-4 md:col-span-4 col-span-4">
+                                                                    <div
+                                                                        class="flex justify-end">
+                                                                        <div
+                                                                            class="text-white bg-lightprimary dark:bg-darkprimary rounded-md h-11 w-11 flex items-center justify-center">
+                                                                            <img
+                                                                                src="@@webRoot/assets/images/svgs/icon-master-card-2.svg"
+                                                                                alt
+                                                                                class="h-6 w-6">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div id="monthly-earning"
+                                                                class="mt-7"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!---Yearly Breakups Cards End--->
+        
+                                        <!---Yearly Sales Card--->
+                                        <div
+                                            class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h5
+                                                        class="card-title">Yearly
+                                                        Sales</h5>
+                                                    <p
+                                                        class="text-sm ">Every
+                                                        month</p>
+                                                    <div class="-me-12">
+                                                        <div id="yearly-salary"
+                                                        class="mb-6"></div> 
+                                                    </div>    
+                                                    
+                                                    <div
+                                                        class="flex items-center justify-between">
+                                                        <div
+                                                            class="flex gap-3 items-center">
+                                                            <div
+                                                                class="bg-lightprimary dark:bg-darkprimary h-10 w-10 flex justify-center items-center rounded-sm">
+                                                                <i
+                                                                    class="ti ti-grid-dots text-primary text-xl"></i>
+                                                            </div>
+                                                            <div>
+                                                                <p
+                                                                    class=" text-sm">Salary</p>
+                                                                <h6
+                                                                    class="text-base">
+                                                                    $36,358
+                                                                </h6>
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            class="flex gap-3 items-center">
+                                                            <div
+                                                                class="bg-lightgray dark:bg-darkgray h-10 w-10 flex justify-center items-center rounded-sm">
+                                                                <i
+                                                                    class="ti ti-grid-dots  text-xl"></i>
+                                                            </div>
+                                                            <div>
+                                                                <p
+                                                                    class=" text-sm">Expance</p>
+                                                                <h6
+                                                                    class="text-base">
+                                                                    $5,296
+                                                                </h6>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!---Yearly Sales Card End--->
+        
+                                        <!---Revenue Updates card--->
+                                        <div
+                                            class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                                            <div class="card">
+                                                <div class="card-body ">
+                                                    <h5
+                                                        class="card-title">Revenue
+                                                        Updates</h5>
+                                                    <p
+                                                        class="card-subtitle mb-5">Overview
+                                                        of Profit</p>
+                                                    <div
+                                                        class="flex gap-3 items-center">
+                                                        <div
+                                                            class="flex items-center gap-2">
+                                                            <i
+                                                                class="ti ti-point-filled text-primary text-lg"></i>
+                                                            <p
+                                                                class="text-xs ">Footware</p>
+                                                        </div>
+                                                        <div
+                                                            class="flex items-center gap-2">
+                                                            <i
+                                                                class="ti ti-point-filled text-secondary text-lg"></i>
+                                                            <p
+                                                                class="text-xs ">Fashionware</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="-me-12">
+                                                    <div id="revenue-updates"
+                                                        class="revenue-chart"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!---Revenue Updates card End--->
+        
+                                        <!---Monthly Earning Card--->
+                                        <div
+                                            class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                                            <div class="card">
+                                                <div class="card-body ">
+                                                    <div
+                                                        class="sm:flex items-center justify-between mb-6">
+                                                        <div>
+                                                            <h5
+                                                                class="card-title">Monthly
+                                                                Earnings</h5>
+                                                        </div>
+                                                        <div class="sm:mt-0 mt-4">
+                                                            <select
+                                                                class="select input-bordered select-md">
+                                                                <option selected>March
+                                                                    2024</option>
+                                                                <option>April
+                                                                    2024</option>
+                                                                <option>May
+                                                                    2024</option>
+                                                                <option>June
+                                                                    2024</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="-me-6">
+                                                        <div id="most-visited"></div>
+                                                    </div>
+                                                   
+                                                    <div
+                                                        class="flex gap-5 justify-center items-center">
+                                                        <div
+                                                            class="flex items-center gap-2">
+                                                            <i
+                                                                class="h-2 w-2 rounded-full bg-primary"></i>
+                                                            <p>San
+                                                                Francisco
+                                                            </p>
+                                                        </div>
+                                                        <div
+                                                            class="flex items-center gap-2">
+                                                            <i
+                                                                class="h-2 w-2 rounded-full bg-secondary"></i>
+                                                            <p>Diego</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!---Monthly Earning Card End--->
+        
+                                        <!---Page Impression Card--->
+                                        <div
+                                            class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                                            <div class="grid grid-cols-12 gap-6">
+                                                <div class="col-span-12">
+                                                    <div class="card">
+                                                        <div class="card-body ">
+                                                            <h5
+                                                                class="card-title mb-6">Page
+                                                                Impressions</h5>
+                                                            <div
+                                                                class="grid grid-cols-12 gap-6 items-center">
+                                                                <div class="col-span-6">
+                                                                    <h4
+                                                                        class="text-2xl">$456,120</h4>
+                                                                    <p
+                                                                        class="text-xs mb-0 ">(Change
+                                                                        Yesterday)</p>
+                                                                    <div
+                                                                        class="flex items-center mt-2 gap-2 ">
+                                                                        <span
+                                                                            class="rounded-full p-1 bg-lighterror dark:bg-darkerror flex items-center justify-center ">
+                                                                            <i
+                                                                                class="ti ti-arrow-down-right text-error"></i>
+                                                                        </span>
+                                                                        <p
+                                                                            class=" text-sm mb-0 ">+9%</p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-span-6">
+                                                                    <div class="-me-3">
+                                                                        <div
+                                                                        id="impressions"></div>
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="md:col-span-6 col-span-12">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <p
+                                                                class="text-sm ">Customers
+                                                            </p>
+                                                            <h4
+                                                                class="my-2 text-2xl">
+                                                                36,358</h4>
+                                                            <div
+                                                                class="flex items-center mb-3 gap-2">
+                                                                <span
+                                                                    class="rounded-full p-1 bg-lighterror dark:bg-darkerror flex items-center justify-center ">
+                                                                    <i
+                                                                        class="ti ti-arrow-down-right text-error"></i>
+                                                                </span>
+                                                                <p
+                                                                    class=" text-sm mb-0 ">+9%</p>
+                                                            </div>
+                                                        </div>
+                                                        <div id="customers"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="md:col-span-6 col-span-12">
+                                                    <div class="card mb-0">
+                                                        <div class="card-body">
+                                                            <p
+                                                                class="text-sm ">Projects
+                                                            </p>
+                                                            <h4
+                                                                class="my-2 text-2xl">
+                                                                78,298</h4>
+                                                            <div
+                                                                class="flex items-center mb-3 gap-2">
+                                                                <span
+                                                                    class="rounded-full p-1 bg-lightsuccess dark:bg-darksuccess flex items-center justify-center ">
+                                                                    <i
+                                                                        class="ti ti-arrow-up-left text-success"></i>
+                                                                </span>
+                                                                <p
+                                                                    class=" text-sm mb-0 ">+9%</p>
+                                                            </div>
+                                                            <div class="-me-1">
+                                                                <div id="projects"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!---Page Impression Card--->
+        
+                                        <div
+                                            class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h5
+                                                        class="card-title">Sales
+                                                        Overview</h5>
+                                                    <p
+                                                        class="card-subtitle mb-5">Every
+                                                        Month</p>
+                                                    <div id="sales-overview"
+                                                        class="my-3"></div>
+                                                    <div
+                                                        class="flex items-center justify-between mt-6">
+                                                        <div
+                                                            class="flex gap-3 items-center">
+                                                            <div
+                                                                class="bg-lightprimary dark:bg-darkprimary h-10 w-10 flex justify-center items-center rounded-md">
+                                                                <i
+                                                                    class="ti ti-grid-dots text-primary text-xl"></i>
+                                                            </div>
+                                                            <div>
+                                                                <h6
+                                                                    class="text-base">
+                                                                    $23,450
+                                                                </h6>
+                                                                <p
+                                                                    class=" text-sm">Profit</p>
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            class="flex gap-3 items-center">
+                                                            <div
+                                                                class="bg-lightsecondary dark:bg-darksecondary h-10 w-10 flex justify-center items-center rounded-md">
+                                                                <i
+                                                                    class="ti ti-grid-dots text-secondary text-xl"></i>
+                                                            </div>
+                                                            <div>
+                                                                <h6
+                                                                    class="text-base">
+                                                                    $23,450
+                                                                </h6>
+                                                                <p
+                                                                    class=" text-sm">Expance</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+
+
+                                </div>
+                            </div>    
+						</div>
+					</main>
+					<!-- Main Content End -->
+
+				</div>
+			</div>
+			<!--end of project-->
+		</main>
+		@@include("partials/header-components/mobile-menu.html")
+		@@include("partials/customizer.html")
+		@@include("partials/scripts.html")
+        <script
+        src="@@webRoot/node_modules/apexcharts/dist/apexcharts.min.js"></script>
+    <script src="@@webRoot/assets/js/widget/widgets-charts.js"></script>
+	</body>
+</html>

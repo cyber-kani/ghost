@@ -1,0 +1,67 @@
+<nav class="relative py-4">
+    <div class="container">
+        <div class="flex gap-6 items-center">
+            <!-- Single Menu Link -->
+            <div class="block">
+            <a class="single-link-horizontal font-medium item-horizontal before:bg-lightprimary hover:text-primary text-dark flex  @@if (context.page === 'sample page 1') {before:bg-lightprimary active text-primary dark:text-primary}"
+                href="@@webRoot/index.html">
+                <iconify-icon icon="solar:screencast-2-line-duotone" class="text-xl p-2"></iconify-icon>
+                Sample Page
+            </a>
+        </div>
+
+            <!-- Dropdown Menu / Multilevel -->
+            <div
+                class="hs-dropdown  [--strategy:static] lg:[--strategy:absolute] md:[--trigger:hover] [--adaptive:none] relative">
+                <button type="button"
+                    class="single-link-horizontal font-medium item-horizontal before:bg-lightsuccess hover:text-success
+                    @@if (context.page_group == 'dropdown') { hs-accordion-active before:bg-lightsuccess active text-success dark:text-success}    
+                    ">
+                    <iconify-icon icon="solar:layers-line-duotone" class="text-xl p-2"></iconify-icon>
+                    Menu Level <i class="ti ti-chevron-down  ms-auto  text-md"></i>
+                </button>
+                <div
+                    class="py-4 px-3 hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] sm:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 left-0 hidden z-10 sm:mt-4 top-full start-0 min-w-64  before:absolute lg:bg-white bg-transparent dark:bg-dark lg:shadow-md shadow-none">
+                    <a class="dropdown-link-horizontal
+                    @@if (context.page === 'subpage') { active text-primary dark:text-primary}
+                        "
+                        href="@@webRoot/index2.html">
+                        <i class="ti ti-circle text-sm"></i>Page 1
+                    </a>
+                    <div
+                        class="hs-dropdown relative [--strategy:static] sm:[--strategy:absolute] [--adaptive:none] sm:[--trigger:hover]">
+                        <button type="button"
+                            class="dropdown-link-horizontal w-full">
+                            <i class="ti ti-circle text-sm"></i>
+                            Page 2
+                            <i class="ti ti-chevron-right ms-auto text-md"></i>
+                        </button>
+                        <div
+                            class="py-4 px-3 hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] sm:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0  min-w-64 hidden z-10 sm:mt-2  before:absolute  before:-start-5 before:top-0 before:h-full before:w-5 top-0 start-full !mx-[10px]">
+                            <a class="dropdown-link-horizontal"
+                                href="#">
+                                <i class="ti ti-circle text-sm"></i>
+                                Page 2.1
+                            </a>
+                            <a class="dropdown-link-horizontal"
+                                href="#">
+                                <i class="ti ti-circle text-sm"></i>
+                                Page 2.2
+                            </a>
+                            <a class="dropdown-link-horizontal"
+                                href="#">
+                                <i class="ti ti-circle text-sm"></i>
+                                Page 2.3
+                            </a>
+                        </div>
+                    </div>
+                    <a class="dropdown-link-horizontal 
+                   
+                    "
+                    href="#">
+                    <i class="ti ti-circle text-sm"></i>Page 3
+                </a>
+                </div>
+            </div>
+        </div>
+</nav>

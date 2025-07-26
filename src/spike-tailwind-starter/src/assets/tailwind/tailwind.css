@@ -1,0 +1,199 @@
+/* / tailwind css /  */
+
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+
+@layer components {
+
+    body {
+        @apply text-fs_15 text-bodytext dark:text-darklink
+    }
+
+    .container {
+        @apply max-w-[1300px];
+    }
+    .container-xl {
+        @apply max-w-[1600px];
+    }
+
+    .card-title {
+        @apply text-lg font-semibold text-dark dark:text-white
+    }
+
+    .card-subtitle {
+        @apply text-fs_15 text-bodytext dark:text-darklink font-medium
+    }
+
+    .card {
+        @apply rounded-md dark:shadow-dark-md shadow-md bg-white dark:bg-dark relative w-full break-words;
+    }
+
+    html[data-card='border'] .card {
+        @apply border border-border dark:border dark:border-darkborder shadow-none;
+    }
+
+    .card-body {
+        @apply p-[30px];
+    }
+
+    .hs-dropdown-menu {
+        @apply shadow-md bg-white dark:bg-dark relative rounded-md dark:shadow-dark-md;
+    }
+
+    .form-control {
+        @apply rounded-sm border border-bordergray dark:border-darkborder bg-transparent w-full text-link dark:text-darklink text-sm py-3 px-3;
+    }
+
+    .form-control:focus {
+        @apply border-primary outline-none shadow-none ring-offset-0 ring-transparent;
+    }
+
+    /* For Checkbox */
+    .form-check-input[type=checkbox] {
+        @apply border border-bordergray h-5 w-5 dark:border-darkborder focus:ring-0 focus:ring-offset-0 checked:border-primary bg-transparent cursor-pointer rounded;
+    }
+    .form-check-input[type=checkbox]:checked {
+        @apply bg-primary;
+    }
+    /* For Radio */
+    .form-check-input[type=radio] {
+        @apply border border-bordergray dark:border-darkborder focus:ring-0 focus:ring-offset-0 checked:border-primary bg-transparent cursor-pointer; 
+    }
+    .form-check-input[type=radio]:checked {
+        @apply bg-primary;
+    }
+
+    select:focus{
+        @apply border-primary outline-none shadow-none ring-offset-0 ring-transparent;
+    }
+
+
+    /* Button Css  */
+    .btn {
+        @apply bg-primary text-sm px-5 text-center capitalize font-medium py-2.5 rounded-full text-white border-primary hover:bg-primaryemphasis text-fs_15 hover:text-white;
+    }
+
+    .btn-secondary{
+        @apply rounded-md bg-secondary hover:bg-secondaryemphasis text-white text-sm py-2 px-4 text-center capitalize font-medium ;
+    }
+    .btn-md {
+        @apply py-3 px-7
+    }
+
+    .btn-error {
+        @apply bg-error text-white hover:bg-erroremphasis
+    }
+
+    .btn-outline-primary {
+        @apply rounded-md border border-primary text-primary py-2 px-4 text-center bg-transparent hover:bg-primary hover:text-white dark:hover:text-white;
+    }
+
+    .btn-light-primary {
+        @apply w-full bg-lightprimary text-primary hover:bg-primaryemphasis hover:text-white dark:bg-darkprimary hover:dark:bg-primary hover:dark:text-white
+    }
+
+    .btn-light-error {
+        @apply bg-lighterror text-error hover:text-white hover:bg-error dark:bg-darkerror dark:hover:bg-error dark:hover:text-white dark:text-error
+    }
+
+    .btn-light-warning {
+        @apply bg-lightwarning text-warning hover:text-white hover:bg-warning dark:bg-darkwarning dark:hover:bg-warning dark:hover:text-white dark:text-warning
+    }
+
+    .btn-light-success {
+        @apply bg-lightsuccess text-success hover:text-white hover:bg-success dark:bg-darksuccess dark:hover:bg-success dark:hover:text-white dark:text-success
+    }
+
+    .btn-light-info {
+        @apply bg-lightinfo text-info hover:text-white hover:bg-info dark:bg-darkinfo dark:hover:bg-info dark:hover:text-white dark:text-info
+    }
+
+    .btn-light-secondary {
+        @apply bg-lightsecondary text-secondary hover:text-white hover:bg-secondary dark:bg-darksecondary dark:hover:bg-secondary dark:hover:text-white dark:text-secondary
+    }
+
+
+    select {
+        @apply rounded-sm border-bordergray dark:border-darkborder text-fs_15 py-1.5 bg-transparent dark:bg-dark font-medium;
+    }
+
+    body {
+        @apply text-sm text-bodytext dark:text-darklink
+    }
+
+    .tooltip {
+        @apply rounded-sm absolute invisible z-10 text-fs_12 py-1 px-2 bg-dark dark:bg-gray-900 text-white dark:text-gray-300 opacity-0
+    }
+
+    /* Sidebar Css  */
+     .sidebar-link {
+        @apply text-dark dark:text-darklink w-full
+    }
+
+    #sidebarnav .hs-accordion-content {
+        @apply w-full overflow-hidden transition-[height] duration-300 hidden
+    }
+
+    .caption {
+        @apply text-xs text-dark dark:text-white font-bold py-1 px-0.5 mt-5 uppercase
+    }
+
+    .single-link-horizontal {
+        @apply text-fs_15 text-link dark:text-darklink flex items-center py-1 px-3 gap-2
+    }
+
+    .dropdown-link-horizontal {
+        @apply flex items-center gap-2 py-2.5 px-3 text-link dark:text-darklink text-sm hover:text-primary dark:hover:text-primary
+    }
+
+    .dropdown-submenu {
+        @apply pl-4 pr-3 py-1 transition-colors duration-150
+    }
+
+    .textlink {
+        @apply py-2 w-full gap-5 flex items-center text-fs_15 text-link dark:text-darklink
+    }
+
+    /*Hover Css*/
+    .bg-hover {
+        @apply hover:bg-lightgray dark:hover:bg-darkprimary
+    }
+
+    .badge {
+        @apply rounded-full border px-2 py-1 text-fs_13 font-medium leading-none text-center w-fit
+    }
+
+    .animate-card {
+        @apply transform translate-y-0 hover:-translate-y-1.5 duration-200 ease-in-out
+    }
+
+    .bg-overlay{
+        @apply absolute top-0 bottom-0 left-0 h-full w-full bg-blue-100  mix-blend-multiply invisible group-hover:visible
+    }
+    .preview-btn{
+        @apply btn text-xs  absolute  left-0 right-0 flex justify-center items-center w-fit mx-auto invisible group-hover:visible z-[1]
+    }
+    .text-hover{
+        @apply hover:text-primary dark:hover:text-primary
+    }
+
+
+
+    /*heading text color*/
+    h1, h2, h3, h4, h5, h6 {
+        @apply text-dark dark:text-white font-semibold;
+    }
+
+    .animate-card{
+        @apply transition-[transform] relative transform translate-y-0 hover:-translate-y-1.5 duration-300 ease-in-out
+    }
+    .border-light-dark {
+        @apply border-border dark:border-darkborder
+    }
+
+
+}

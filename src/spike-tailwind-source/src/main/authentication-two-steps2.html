@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-color-theme="Blue_Theme" class="light selected"
+    data-layout="vertical" data-boxed-layout="boxed" data-card="shadow">
+
+    <head>
+        @@include("partials/head.html")
+        <title>Spike TailwindCSS HTML Admin Template</title>
+    </head>
+
+    <body class="DEFAULT_THEME  bg-lightprimary dark:bg-darkbody">
+        <main>
+            <!--start the project-->
+            <div id="main-wrapper" class="flex ">
+
+                <div class="min-h-screen overflow-hidden w-full">
+                    <div class="h-full w-full flex justify-center items-center">
+                        <div class="flex my-3 justify-center w-full">
+                            <div class="xl:w-2/6 w-full">
+                                <div
+                                    class="max-w-[460px] px-3 mx-auto relative">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div
+                                                class="mx-auto text-center mb-8">
+                                                <div
+                                                    class="flex justify-center">
+                                                    @@include("partials/logo-sidebar.html")</div>
+                                            </div>
+                                            <div class="text-center">
+                                                <p class="text-base dark:text-darklink mb-5 font-medium">We sent a verification code to your mobile. Enter the code from the mobile in the field below.</p>    
+                                                <p class="text-dark dark:text-darklink font-semibold">******1234</p>
+                                            </div>
+                                            <form>
+                                                <div class="flex flex-col gap-4 mt-10">
+                                                    <div>
+                                                        <label class="text-dark dark:text-darklink font-semibold mb-2 block">Type your 6 digits
+                                                            security code</label>
+                                                        <div class="flex aitems-center gap-4">
+                                                            <input type="text" class="form-control py-2 text-center"
+                                                                placeholder="">
+                                                            <input type="text" class="form-control py-2 text-center"
+                                                                placeholder="">
+                                                            <input type="text" class="form-control py-2 text-center"
+                                                                placeholder="">
+                                                            <input type="text" class="form-control py-2 text-center"
+                                                                placeholder="">
+                                                            <input type="text" class="form-control py-2 text-center"
+                                                                placeholder="">
+                                                            <input type="text" class="form-control py-2 text-center"
+                                                                placeholder="">
+                                                        </div>
+                                                    </div>
+        
+                                                    <button class="btn btn-md py-3">Verify My Account</button>
+                                                    <div class="mt-2">
+                                                        <span class="text-base  text-dark dark:text-darklink font-medium ">Didn't get the
+                                                            code?<a href=""
+                                                                class="text-primary font-medium text-sm ms-2">Resend</a></span>
+        
+                                                    </div>
+        
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                        <!----Bottom Shape---->
+                                        <div
+                                            class="absolute -bottom-24 -left-24 h-52 w-52 rounded-full bg-error -z-[1]"></div>
+                                        <!----Top Shape---->
+                                        <img
+                                            src="@@webRoot/assets/images/shaps/shap-login.png"
+                                            alt="shape"
+                                            class="absolute h-52 w-52 -right-20 -z-[1] -top-24 ">
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <div class="hidden">
+                @@include("partials/customizer.html")
+            </div>
+            @@include("partials/scripts.html")
+        </body>
+    </html>

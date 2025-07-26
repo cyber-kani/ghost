@@ -1,0 +1,2666 @@
+<!DOCTYPE html>
+<html data-hs-theme-switch lang="en" dir="ltr" data-color-theme="Blue_Theme"
+    class="light selected"
+    data-layout="vertical" data-boxed-layout="boxed" data-card="shadow">
+
+    <head>
+        <!-- Required meta tags -->
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- Favicon icon-->
+<link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+  rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<!-- Core Css -->
+<link rel="stylesheet" href="../assets/css/theme.css" />
+        <title>Spike TailwindCSS HTML Admin Template</title>
+        <link rel="stylesheet"
+            href="../assets/libs/owl.carousel/dist/assets/owl.carousel.min.css">
+        <link rel="stylesheet" href="../assets/libs/aos/dist/aos.css" />
+    </head>
+
+    <body class="DEFAULT_THEME bg-white dark:bg-dark ">
+
+        <main>
+            <!--start the project-->
+            <div id="main-wrapper" class="flex landingpage">
+
+                <div class="w-full" role="main">
+                    <!--  Header Start -->
+                    <header
+                        class="sticky top-header top-0 inset-x-0 z-[5] flex flex-wrap md:justify-start md:flex-nowrap text-sm px-0 sm:py-6 py-3  bg-lightgray dark:bg-darkprimary">
+                        <div
+                            class="container flex items-center justify-between xl:px-0 px-5">
+
+                            <div>
+                                <div class="brand-logo d-flex align-items-center justify-center">
+  <a href="../index.html" class="text-nowrap logo-img">
+    <img
+      src="../assets/images/logos/logo-light.svg"
+      class="dark:hidden block rtl:hidden"
+      alt="Logo-Dark"
+    />
+    <img
+      src="../assets/images/logos/logo-dark.svg"
+      class="dark:block hidden rtl:hidden rtl:dark:hidden"
+      alt="Logo-light"
+    />
+    
+    <img
+      src="../assets/images/logos/logo-light-rtl.svg"
+      class="dark:hidden hidden rtl:block rtl:dark:hidden"
+      alt="Logo-Dark"
+    />
+    <img
+      src="../assets/images/logos/logo-dark-rtl.svg"
+      class="dark:hidden hidden rtl:hidden rtl:dark:block"
+      alt="Logo-light"
+    />
+  </a>
+</div>
+
+                            </div>
+                            <!---Lp Mobile Toggle Icons--->
+                            <div class="xl:hidden">
+                                <a
+                                    class="rounded-full icon-hover h-10 w-10 flex justify-center text-link dark:text-darklink items-center hover:text-primary  relative hover:bg-lightprimary dark:hover:bg-darkprimary "
+                                    data-hs-overlay="#application-sidebar-lp">
+                                    <i
+                                        class="ti ti-menu-2 text-xl relative "></i>
+                                </a>
+                            </div>
+
+                            <!-- Menu-->
+                            <div class="xl:flex hidden ">
+                                <ul class="flex items-center gap-5">
+                                    <li>
+                                        <div
+    class="hs-dropdown  [--strategy:static] xl:[--strategy:absolute] [--adaptive:none] xl:[--trigger:hover] relative group/menu">
+    <button type="button"
+        class="xl:w-auto w-full gap-2 header-link hover:text-primary hover:bg-lightprimary dark:hover:text-primary text-dark dark:text-white font-medium text-base py-2 px-3  rounded-md flex items-center group-hover/menu:text-primary group-hover/menu:bg-lightprimary">
+       Demos
+        <i
+            class="ti ti-chevron-down  ms-auto xl:text-sm text-lg"></i>
+    </button>
+
+    <div
+    class="hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] sm:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 xl:-left-80 hidden z-10 sm:mt-3 top-full xl:w-[1150px] before:absolute xl:bg-white bg-transparent dark:bg-dark xl:shadow-md shadow-none">
+        <div class="xl:p-6 p-3">
+            <div class="mb-5">
+                <h5
+                    class="card-title">Different
+                    Demos</h5>
+                <p>Included with the
+                    Package</p>
+            </div>
+
+            <div class="grid xl:grid-cols-5 grid-cols-1 gap-6">
+                <div>
+                    <div
+                        class="border-1 border-light-dark overflow-hidden rounded-md relative flex justify-center items-center group">
+                        <img src="../assets/images/demos/demo-main.jpg"
+                            alt class="max-w-full w-full" />
+                        <a target="_blank" href="../main/index.html"
+                            class="preview-btn ">Live
+                            Preview</a>
+                        <div
+                            class="bg-overlay">
+                        </div>
+                    </div>
+                    <div
+                        class="text-center p-3 text-sm font-semibold text-dark dark:text-white">Main</div>
+                </div>
+                <div>
+                    <div
+                        class="border border-light-dark overflow-hidden rounded-md relative flex justify-center items-center group">
+                        <img src="../assets/images/demos/demo-dark.jpg"
+                            alt class="max-w-full w-full" />
+                        <a target="_blank" href="../dark/index.html"
+                            class="preview-btn ">Live
+                            Preview</a>
+                        <div
+                            class="bg-overlay">
+                        </div>
+                    </div>
+                    <div
+                        class="text-center p-3 text-sm font-semibold text-dark dark:text-white">Dark</div>
+                </div>
+                <div>
+                    <div
+                        class="border border-light-dark overflow-hidden rounded-md relative flex justify-center items-center group">
+                        <img
+                            src="../assets/images/demos/demo-horizontal.jpg"
+                            alt class="max-w-full w-full" />
+                        <a target="_blank" href="../horizontal/index.html"
+                            class="preview-btn ">Live
+                            Preview</a>
+                        <div
+                            class="bg-overlay">
+                        </div>
+                    </div>
+                    <div
+                        class="text-center p-3 text-sm font-semibold text-dark dark:text-white">Horizontal</div>
+                </div>
+                <div>
+                    <div
+                        class="border border-light-dark overflow-hidden rounded-md relative flex justify-center items-center group">
+                        <img
+                            src="../assets/images/demos/demo-minisidebar.jpg"
+                            alt class="max-w-full w-full" />
+                        <a target="_blank" href="../minisidebar/index.html"
+                            class="preview-btn ">Live
+                            Preview</a>
+                        <div
+                            class="bg-overlay">
+                        </div>
+                    </div>
+                    <div
+                        class="text-center p-3 text-sm font-semibold text-dark dark:text-white">Minisidebar</div>
+                </div>
+                <div>
+                    <div
+                        class="border border-light-dark overflow-hidden rounded-md relative flex justify-center items-center group">
+                        <img src="../assets/images/demos/demo-rtl.jpg"
+                            alt class="max-w-full w-full" />
+                        <a target="_blank" href="../rtl/index.html"
+                            class="preview-btn ">Live
+                            Preview</a>
+                        <div
+                            class="bg-overlay">
+                        </div>
+                    </div>
+                    <div
+                        class="text-center p-3 text-sm font-semibold text-dark dark:text-white">RTL</div>
+                </div>
+            </div>
+            <div class="my-5">
+                <h5 class="card-title">Different Apps</h5>
+            </div>
+
+            <div class="grid xl:grid-cols-5 grid-cols-1 gap-6">
+                <div>
+                    <div
+                        class="border border-light-dark overflow-hidden rounded-md relative flex justify-center items-center group">
+                        <img src="../assets/images/apps/app-calendar.jpg"
+                            alt class="max-w-full w-full" />
+                        <a target="_blank"
+                            href="../main/app-calendar.html"
+                            class="preview-btn ">Live
+                            Preview</a>
+                        <div
+                            class="bg-overlay">
+                        </div>
+                    </div>
+                    <div
+                        class="text-center p-3 text-sm font-semibold text-dark dark:text-white">Calendar</div>
+                </div>
+                <div>
+                    <div
+                        class="border border-light-dark overflow-hidden rounded-md relative flex justify-center items-center group">
+                        <img src="../assets/images/apps/app-chat.jpg" alt
+                            class="max-w-full w-full" />
+                        <a target="_blank" href="../main/app-chat.html"
+                            class="preview-btn ">Live
+                            Preview</a>
+                        <div
+                            class="bg-overlay">
+                        </div>
+                    </div>
+                    <div
+                        class="text-center p-3 text-sm font-semibold text-dark dark:text-white">Chat</div>
+                </div>
+                <div>
+                    <div
+                        class="border border-light-dark overflow-hidden rounded-md relative flex justify-center items-center group">
+                        <img src="../assets/images/apps/app-email.jpg"
+                            alt class="max-w-full w-full" />
+                        <a target="_blank" href="../main/app-email.html"
+                            class="preview-btn ">Live
+                            Preview</a>
+                        <div
+                            class="bg-overlay">
+                        </div>
+                    </div>
+                    <div
+                        class="text-center p-3 text-sm font-semibold text-dark dark:text-white">Email</div>
+                </div>
+                <div>
+                    <div
+                        class="border border-light-dark overflow-hidden rounded-md relative flex justify-center items-center group">
+                        <img src="../assets/images/apps/app-contact.jpg"
+                            alt class="max-w-full w-full" />
+                        <a target="_blank"
+                            href="../main/app-contact2.html"
+                            class="preview-btn ">Live
+                            Preview</a>
+                        <div
+                            class="bg-overlay">
+                        </div>
+                    </div>
+                    <div
+                        class="text-center p-3 text-sm font-semibold text-dark dark:text-white">Contact</div>
+                </div>
+                <div>
+                    <div
+                        class="border border-light-dark overflow-hidden rounded-md relative flex justify-center items-center group">
+                        <img src="../assets/images/apps/app-invoice.jpg"
+                            alt class="max-w-full w-full" />
+                        <a target="_blank"
+                            href="../main/app-invoice.html"
+                            class="preview-btn ">Live
+                            Preview</a>
+                        <div
+                            class="bg-overlay">
+                        </div>
+                    </div>
+                    <div
+                        class="text-center p-3 text-sm font-semibold text-dark dark:text-white">Invoice</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                                    </li>
+                                    <li>
+                                        <div
+    class="hs-dropdown  [--strategy:static] xl:[--strategy:absolute] [--adaptive:none] xl:[--trigger:hover] relative group/menu">
+    <button type="button"
+        class=" xl:w-auto w-full gap-2  header-link hover:text-primary dark:hover:text-primary hover:bg-lightprimary text-dark dark:text-white font-medium text-base py-2 px-3  rounded-md flex items-center group-hover/menu:text-primary group-hover/menu:bg-lightprimary">
+       Pages
+        <i
+            class="ti ti-chevron-down  ms-auto xl:text-sm text-xl"></i>
+    </button>
+
+    <div
+        class="hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] sm:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 xl:-right-80 hidden z-10 sm:mt-3 top-full xl:w-[900px] before:absolute xl:bg-white bg-transparent dark:bg-dark xl:shadow-md shadow-none">
+        <div class="grid grid-cols-12">
+            <div
+                class="lg:col-span-8 col-span-12 flex items-stretch lg:px-8 lg:pr-0 px-0 py-8 pb-0">
+                <div class="grid grid-cols-12 lg:gap-3 w-full">
+                    <div
+                        class="col-span-12 lg:col-span-6 flex items-stretch pb-2.5">
+                        <ul class="flex flex-col gap-5">
+                            <li>
+                                <a href="../main/app-chat.html"
+                                    class="flex gap-3 items-center group relative ">
+                                    <span
+                                        class="bg-lightgray dark:bg-darkprimary  h-11 w-11 flex justify-center items-center rounded-sm">
+                                        <img
+                                            src="../assets/images/svgs/icon-dd-chat.svg"
+                                            class="h-6 w-6">
+                                    </span>
+                                    <div class>
+                                        <h6
+                                            class="text-fs_15  group-hover:text-primary mb-1 ">
+                                            Chat Application
+                                        </h6>
+                                        <p
+                                            class="text-xs text-dark dark:text-darklink opacity-90 font-normal">
+                                            New messages arrived</p>
+                                    </div>
+
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../main/app-invoice.html"
+                                    class="flex gap-3 items-center group relative ">
+                                    <span
+                                        class="bg-lightgray dark:bg-darkprimary  h-11 w-11 flex justify-center items-center rounded-sm">
+                                        <img
+                                            src="../assets/images/svgs/icon-dd-invoice.svg"
+                                            class="h-6 w-6">
+                                    </span>
+                                    <div class>
+                                        <h6
+                                            class="text-fs_15  mb-1  group-hover:text-primary ">
+                                            Invoice App
+                                        </h6>
+                                        <p
+                                            class="text-xs text-link dark:text-darklink  font-normal">
+                                            Get latest invoice</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../main/app-contact.html"
+                                    class="flex gap-3 items-center group relative ">
+                                    <span
+                                        class="bg-lightgray dark:bg-darkprimary  h-11 w-11 flex justify-center items-center rounded-sm">
+                                        <img
+                                            src="../assets/images/svgs/icon-dd-mobile.svg"
+                                            class="h-6 w-6">
+                                    </span>
+                                    <div class>
+                                        <h6
+                                            class="text-fs_15  mb-1  group-hover:text-primary">
+                                            Contact Application
+                                        </h6>
+                                        <p
+                                            class="text-xs text-link dark:text-darklink  font-normal">
+                                            2 Unsaved Contacts</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../main/app-email.html"
+                                    class="flex gap-3 items-center group relative ">
+                                    <span
+                                        class="bg-lightgray dark:bg-darkprimary  h-11 w-11 flex justify-center items-center rounded-sm">
+                                        <img
+                                            src="../assets/images/svgs/icon-dd-message-box.svg"
+                                            class="h-6 w-6">
+                                    </span>
+                                    <div class>
+                                        <h6
+                                            class="text-fs_15  mb-1  group-hover:text-primary ">
+                                            Email App
+                                        </h6>
+                                        <p
+                                            class="text-xs text-link dark:text-darklink  font-normal">
+                                            Get new emails</p>
+                                    </div>
+
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-span-12 lg:col-span-6 flex items-stretch">
+                        <ul class="flex flex-col gap-5">
+                            <li>
+                                <a href="../main/eco-shop.html"
+                                    class="flex gap-3 items-center group relative ">
+                                    <span
+                                        class="bg-lightgray dark:bg-darkprimary  h-11 w-11 flex justify-center items-center rounded-sm">
+                                        <img
+                                            src="../assets/images/svgs/icon-dd-cart.svg"
+                                            class="h-6 w-6">
+                                    </span>
+                                    <div class>
+                                        <h6
+                                            class="text-fs_15  mb-1  group-hover:text-primary ">
+                                            eCommerce App
+
+                                        </h6>
+                                        <p
+                                            class="text-xs text-link dark:text-darklink  font-normal">
+                                            learn more information</p>
+                                    </div>
+
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../main/app-calendar.html"
+                                    class="flex gap-3 items-center group relative ">
+                                    <span
+                                        class="bg-lightgray dark:bg-darkprimary  h-11 w-11 flex justify-center items-center rounded-sm">
+                                        <img
+                                            src="../assets/images/svgs/icon-dd-date.svg"
+                                            class="h-6 w-6">
+                                    </span>
+                                    <div class>
+                                        <h6
+                                            class="text-fs_15  mb-1  group-hover:text-primary ">
+                                            Calendar App
+                                        </h6>
+                                        <p
+                                            class="text-xs text-link dark:text-darklink  font-normal">
+                                            Get dates</p>
+                                    </div>
+
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../main/app-contact2.html"
+                                    class="flex gap-3 items-center group relative ">
+                                    <span
+                                        class="bg-lightgray dark:bg-darkprimary  h-11 w-11 flex justify-center items-center rounded-sm">
+                                        <img
+                                            src="../assets/images/svgs/icon-dd-lifebuoy.svg"
+                                            class="h-6 w-6">
+                                    </span>
+                                    <div class>
+                                        <h6
+                                            class="text-fs_15  mb-1  group-hover:text-primary ">
+                                            Contact List Table
+
+                                        </h6>
+                                        <p
+                                            class="text-xs text-link dark:text-darklink  font-normal">
+                                            Add new contact</p>
+                                    </div>
+
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../main/app-notes.html"
+                                    class="flex gap-3 items-center group relative ">
+                                    <span
+                                        class="bg-lightgray dark:bg-darkprimary  h-11 w-11 flex justify-center items-center rounded-sm">
+                                        <img
+                                            src="../assets/images/svgs/icon-dd-application.svg"
+                                            class="h-6 w-6">
+                                    </span>
+                                    <div class>
+                                        <h6
+                                            class="text-fs_15  mb-1  group-hover:text-primary ">
+                                            Notes Application
+
+                                        </h6>
+                                        <p
+                                            class="text-xs text-link dark:text-darklink  font-normal">
+                                            To-do and Daily tasks</p>
+                                    </div>
+
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="lg:col-span-4 col-span-12  flex items-strech">
+                <div
+                    class="lg:p-3 lg:border-s border-border dark:border-darkborder">
+                    <h5
+                        class="text-lg font-semibold mb-4 text-dark dark:text-white">
+                        Quick Links</h5>
+                    <ul class="flex flex-col gap-4 pb-3">
+                        <li><a href="../main/page-pricing.html"
+                                class="text-sm font-semibold text-link dark:text-darklink  hover:text-primary hover:dark:text-primary ">Pricing
+                                Page</a></li>
+                        <li><a href="../main/authentication-login.html"
+                                class="text-sm font-semibold text-link dark:text-darklink  hover:text-primary hover:dark:text-primary ">Authentication
+                                Design</a></li>
+                        <li><a
+                                href="../main/authentication-register.html"
+                                class="text-sm font-semibold text-link dark:text-darklink  hover:text-primary hover:dark:text-primary ">Register
+                                Now</a></li>
+                        <li><a href="../main/authentication-error.html"
+                                class="text-sm font-semibold text-link dark:text-darklink  hover:text-primary hover:dark:text-primary ">404
+                                Error
+                                Page</a></li>
+                        <li><a href="../main/app-notes.html"
+                                class="text-sm font-semibold text-link dark:text-darklink  hover:text-primary hover:dark:text-primary ">Notes
+                                App</a>
+                        </li>
+                        <li><a href="../main/page-user-profile.html"
+                                class="text-sm font-semibold text-link dark:text-darklink  hover:text-primary hover:dark:text-primary ">User
+                                Application</a></li>
+                        <li><a
+                                href="../main/blog-posts.html"
+                                class="text-sm font-semibold text-link dark:text-darklink  hover:text-primary hover:dark:text-primary">Blog
+                                Design</a></li>
+                        <li><a
+                                href="../main/eco-checkout.html"
+                                class="text-sm font-semibold text-link dark:text-darklink  hover:text-primary hover:dark:text-primary">Shopping
+                                Cart</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                                    </li>
+                                    <li>
+                                        <a href="../docs/index.html"
+                                            target="_blank"
+                                            class="hover:text-primary hover:bg-lightprimary dark:hover:text-primary text-dark dark:text-white font-medium text-base py-2 px-3  rounded-md ">Documentation</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://adminmart.com/support/"
+                                            target="_blank"
+                                            class="hover:text-primary hover:bg-lightprimary dark:hover:text-primary text-dark dark:text-white font-medium text-base py-2 px-3  rounded-md">Support</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <a
+                                href="../main/authentication-login.html"
+                                target="_blank"
+                                class="btn xl:flex hidden">Login</a>
+                        </div>
+                    </header>
+
+                    <!-- Main Content -->
+                    <div class="max-w-full">
+
+                        <!-- Hero Section -->
+                        <section
+                            class="hero-section overflow-hidden bg-lightgray dark:bg-darkprimary">
+                            <div class="container container-xl xl:px-0 px-5">
+                                <div class="flex justify-center">
+                                    <div class="w-full lg:max-w-4xl">
+                                        <div class="text-center pt-10 pb-14">
+                                            <h1
+                                                class="font-bold md:text-5xl text-3xl text-dark dark:text-white md:leading-[60px]"
+                                                data-aos="fade-up"
+                                                data-aos-delay="400"
+                                                data-aos-duration="1000">
+                                                Revolutionize your development
+                                                with
+                                                Powerful Tailwind css dashboard
+                                            </h1>
+                                            <p class="text-lg font-medium pt-7"
+                                                data-aos="fade-up"
+                                                data-aos-delay="600"
+                                                data-aos-duration="1000">Spike
+                                                comes with light & dark color
+                                                skins, well designed dashboards,
+                                                applications and pages</p>
+                                            <div
+                                                class="sm:flex items-center justify-center gap-3 pb-10 pt-9"
+                                                data-aos="fade-up"
+                                                data-aos-delay="800"
+                                                data-aos-duration="1000">
+                                                <a
+                                                    class="btn btn-md scroll-link block md:mb-0 mb-3"
+                                                    href="#production-template">Live
+                                                    Preview</a>
+                                                <a
+                                                    class="btn py-2.5 px-7 rounded-full btn-outline-primary  block"
+                                                    href="../docs/index.html"
+                                                    target="_blank">Documentation</a>
+                                            </div>
+                                            <ul
+                                                class="flex w-fit mx-auto items-center justify-center mb-0 gap-5 bg-white rounded-full p-3 ps-4 "
+                                                data-aos="fade-up"
+                                                data-aos-delay="1000"
+                                                data-aos-duration="1000">
+
+                                                <li><img
+                                                        src="../assets/images/svgs/icon-tailwind.svg"
+                                                        alt></li>
+                                                <li><img
+                                                        src="../assets/images/svgs/icon-preline.svg"
+                                                        alt></li>
+                                                <li><img
+                                                        src="../assets/images/svgs/icon-jquery.svg"
+                                                        alt></li>
+                                                <li><img
+                                                        src="../assets/images/svgs/icon-html.svg"
+                                                        alt></li>
+                                                <li><img
+                                                        src="../assets/images/svgs/icon-gulp.svg"
+                                                        alt></li>
+
+                                            </ul>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="sliding-wrapper relative overflow-hidden pt-5 pb-12">
+                                <div
+                                    class="slide-background flex flex-row w-full gap-3 py-lg-7">
+                                    <div class="slide">
+                                        <img
+                                            src="../assets/images/slider/slider-group.png"
+                                            alt="slide">
+                                    </div>
+                                    <div class="slide">
+                                        <img
+                                            src="../assets/images/slider/slider-group.png"
+                                            alt="slide">
+                                    </div>
+                                    <div class="slide">
+                                        <img
+                                            src="../assets/images/slider/slider-group.png"
+                                            alt="slide">
+                                    </div>
+                                    <div class="slide">
+                                        <img
+                                            src="../assets/images/slider/slider-group.png"
+                                            alt="slide">
+                                    </div>
+                                    <div class="slide">
+                                        <img
+                                            src="../assets/images/slider/slider-group.png"
+                                            alt="slide">
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- Hero Section End-->
+
+                        <!-- Product Section -->
+                        <section class="py-12" id="production-template">
+                            <div class="container relative xl:px-0 px-5">
+                                <div class="lg:w-3/5 w-full mx-auto"
+                                    data-aos="fade-up" data-aos-delay="200"
+                                    data-aos-duration="1000">
+                                    <div
+                                        class="sm:flex gap-3 items-center justify-center mb-8 text-center">
+                                        <div
+                                            class="flex sm:justify-start justify-center">
+                                            <a href="javascript:void(0)"
+                                                class="relative ">
+                                                <img
+                                                    src="../assets/images/profile/user-3.jpg"
+                                                    class="rounded-full h-8 w-8 border-2 border-white "
+                                                    alt="user" />
+                                            </a>
+                                            <a href="javascript:void(0)"
+                                                class="relative -ms-2">
+                                                <img
+                                                    src="../assets/images/profile/user-2.jpg"
+                                                    class="rounded-full h-8 w-8 border-2 border-white "
+                                                    alt="user" />
+                                            </a>
+                                            <a href="javascript:void(0)"
+                                                class="relative -ms-2">
+                                                <img
+                                                    src="../assets/images/profile/user-7.jpg"
+                                                    class="rounded-full h-8 w-8 border-2 border-white "
+                                                    alt="user" />
+                                            </a>
+                                        </div>
+                                        <p
+                                            class="text-lg font-semibold">52,589+
+                                            developers & agencies using our
+                                            templates</p>
+                                    </div>
+                                    <h2
+                                        class="text-center font-bold md:text-4xl text-2xl mb-14">
+                                        Production Ready & Developer Friendly
+                                        Tailwind Admin Template
+                                    </h2>
+                                </div>
+
+                                <!-- Demos -->
+                                <div class="text-center mb-8">
+                                    <span
+                                        class="items-center badge border-0 text-base bg-primary text-white px-3 py-2">Demos</span>
+                                </div>
+                                <div class="grid grid-cols-12  gap-6">
+                                    <div
+                                        class="lg:col-span-4 md:col-span-6 sm:col-span-6 col-span-12">
+                                        <div
+                                            class="relative overflow-hidden mb-4 rounded-md rounded-b-none"
+                                            data-aos="fade-up"
+                                            data-aos-delay="200"
+                                            data-aos-duration="1000">
+                                            <div
+                                                class="bg-gray-100 dark:bg-darkprimary p-4 pb-0">
+                                                <div
+                                                    class="border border-light-dark overflow-hidden rounded-md rounded-b-none relative flex justify-center items-center group ">
+                                                    <img
+                                                        src="../assets/images/demos/demo-main.jpg"
+                                                        alt
+                                                        class="max-w-full w-full" />
+                                                    <a target="_blank"
+                                                        href="../main/index.html"
+                                                        class="preview-btn text-sm py-2 px-4 ">Live
+                                                        Preview</a>
+                                                    <div
+                                                        class="bg-overlay">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="rounded-t-none rounded-md border-light border border-t-0 border-light-dark p-4">
+                                                <a target="_blank"
+                                                    href="../main/index.html"><h6
+                                                        class="text-base">Main</h6>
+                                                </a>
+                                                <p
+                                                    class="card-subtitle">Demo</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="lg:col-span-4 md:col-span-6 sm:col-span-6 col-span-12">
+                                        <div
+                                            class="relative overflow-hidden mb-4 rounded-md rounded-b-none"
+                                            data-aos="fade-up"
+                                            data-aos-delay="200"
+                                            data-aos-duration="1000">
+                                            <div
+                                                class="bg-gray-100 dark:bg-darkprimary p-4 pb-0">
+                                                <div
+                                                    class="border border-light-dark overflow-hidden rounded-md rounded-b-none relative flex justify-center items-center group ">
+                                                    <img
+                                                        src="../assets/images/demos/demo-dark.jpg"
+                                                        alt
+                                                        class="max-w-full w-full" />
+                                                    <a target="_blank"
+                                                        href="../dark/index.html"
+                                                        class="preview-btn text-sm py-2 px-4 ">Live
+                                                        Preview</a>
+                                                    <div
+                                                        class="bg-overlay">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="rounded-t-none rounded-md border-light border border-t-0 border-light-dark p-4">
+                                                <a target="_blank"
+                                                    href="../dark/index.html"><h6
+                                                        class="text-base">Dark</h6>
+                                                </a>
+                                                <p
+                                                    class="card-subtitle">Demo</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="lg:col-span-4 md:col-span-6 sm:col-span-6 col-span-12">
+                                        <div
+                                            class="relative overflow-hidden mb-4 rounded-md rounded-b-none"
+                                            data-aos="fade-up"
+                                            data-aos-delay="200"
+                                            data-aos-duration="1000">
+                                            <div
+                                                class="bg-gray-100 dark:bg-darkprimary p-4 pb-0">
+                                                <div
+                                                    class="border border-light-dark overflow-hidden rounded-md rounded-b-none relative flex justify-center items-center group ">
+                                                    <img
+                                                        src="../assets/images/demos/demo-horizontal.jpg"
+                                                        alt
+                                                        class="max-w-full w-full" />
+                                                    <a target="_blank"
+                                                        href="../horizontal/index.html"
+                                                        class="preview-btn text-sm py-2 px-4 ">Live
+                                                        Preview</a>
+                                                    <div
+                                                        class="bg-overlay">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="rounded-t-none rounded-md border-light border border-t-0 border-light-dark p-4">
+                                                <a target="_blank"
+                                                    href="../horizontal/index.html"><h6
+                                                        class="text-base">Horizontal</h6>
+                                                </a>
+                                                <p
+                                                    class="card-subtitle">Demo</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="lg:col-span-4 md:col-span-6 sm:col-span-6 col-span-12">
+                                        <div
+                                            class="relative overflow-hidden mb-4 rounded-md rounded-b-none"
+                                            data-aos="fade-up"
+                                            data-aos-delay="400"
+                                            data-aos-duration="1000">
+                                            <div
+                                                class="bg-gray-100 dark:bg-darkprimary p-4 pb-0">
+                                                <div
+                                                    class="border border-light-dark overflow-hidden rounded-md rounded-b-none relative flex justify-center items-center group ">
+                                                    <img
+                                                        src="../assets/images/demos/demo-minisidebar.jpg"
+                                                        alt
+                                                        class="max-w-full w-full" />
+                                                    <a target="_blank"
+                                                        href="../minisidebar/index.html"
+                                                        class="preview-btn text-sm py-2 px-4 ">Live
+                                                        Preview</a>
+                                                    <div
+                                                        class="bg-overlay">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="rounded-t-none rounded-md border-light border border-t-0 border-light-dark p-4">
+                                                <a target="_blank"
+                                                    href="../minisidebar/index.html"><h6
+                                                        class="text-base">Minisidebar</h6>
+                                                </a>
+                                                <p
+                                                    class="card-subtitle">Demo</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="lg:col-span-4 md:col-span-6 sm:col-span-6 col-span-12">
+                                        <div
+                                            class="relative overflow-hidden mb-4 rounded-md rounded-b-none"
+                                            data-aos="fade-up"
+                                            data-aos-delay="400"
+                                            data-aos-duration="1000">
+                                            <div
+                                                class="bg-gray-100 dark:bg-darkprimary p-4 pb-0">
+                                                <div
+                                                    class="border border-light-dark overflow-hidden rounded-md rounded-b-none relative flex justify-center items-center group ">
+                                                    <img
+                                                        src="../assets/images/demos/demo-rtl.jpg"
+                                                        alt
+                                                        class="max-w-full w-full" />
+                                                    <a target="_blank"
+                                                        href="../rtl/index.html"
+                                                        class="preview-btn text-sm py-2 px-4 ">Live
+                                                        Preview</a>
+                                                    <div
+                                                        class="bg-overlay">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="rounded-t-none rounded-md border-light border border-t-0 border-light-dark p-4">
+                                                <a target="_blank"
+                                                    href="../rtl/index.html"><h6
+                                                        class="text-base">RTL</h6>
+                                                </a>
+                                                <p
+                                                    class="card-subtitle">Demo</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Apps -->
+                                <div class="mt-10">
+                                    <div class="text-center mb-8">
+                                        <span
+                                            class="items-center badge border-0 text-base bg-primary text-white px-3 py-2">Apps</span>
+                                    </div>
+                                    <div class="grid grid-cols-12  gap-6">
+                                        <div
+                                            class="lg:col-span-4 md:col-span-6 sm:col-span-6 col-span-12">
+                                            <div
+                                                class="relative overflow-hidden mb-4 rounded-md rounded-b-none"
+                                                data-aos="fade-up"
+                                                data-aos-delay="200"
+                                                data-aos-duration="1000">
+                                                <div
+                                                    class="bg-gray-100 dark:bg-darkprimary p-4 pb-0">
+                                                    <div
+                                                        class="border border-light-dark overflow-hidden rounded-md rounded-b-none relative flex justify-center items-center group ">
+                                                        <img
+                                                            src="../assets/images/apps/app-calendar.jpg"
+                                                            alt
+                                                            class="max-w-full w-full" />
+                                                        <a target="_blank"
+                                                            href="../main/app-calendar.html"
+                                                            class="preview-btn text-sm py-2 px-4 ">Live
+                                                            Preview</a>
+                                                        <div
+                                                            class="bg-overlay">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="rounded-t-none rounded-md border-light border border-t-0 border-light-dark p-4">
+                                                    <a target="_blank"
+                                                        href="../main/app-calendar.html"><h6
+                                                            class="text-base">Calendar</h6>
+                                                    </a>
+                                                    <p
+                                                        class="card-subtitle">Application</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="lg:col-span-4 md:col-span-6 sm:col-span-6 col-span-12">
+                                            <div
+                                                class="relative overflow-hidden mb-4 rounded-md rounded-b-none"
+                                                data-aos="fade-up"
+                                                data-aos-delay="200"
+                                                data-aos-duration="1000">
+                                                <div
+                                                    class="bg-gray-100 dark:bg-darkprimary p-4 pb-0">
+                                                    <div
+                                                        class="border border-light-dark overflow-hidden rounded-md rounded-b-none relative flex justify-center items-center group ">
+                                                        <img
+                                                            src="../assets/images/apps/app-chat.jpg"
+                                                            alt
+                                                            class="max-w-full w-full" />
+                                                        <a target="_blank"
+                                                            href="../main/app-chat.html"
+                                                            class="preview-btn text-sm py-2 px-4 ">Live
+                                                            Preview</a>
+                                                        <div
+                                                            class="bg-overlay">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="rounded-t-none rounded-md border-light border border-t-0 border-light-dark p-4">
+                                                    <a target="_blank"
+                                                        href="../main/app-chat.html"><h6
+                                                            class="text-base">Chat</h6>
+                                                    </a>
+                                                    <p
+                                                        class="card-subtitle">Application</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="lg:col-span-4 md:col-span-6 sm:col-span-6 col-span-12">
+                                            <div
+                                                class="relative overflow-hidden mb-4 rounded-md rounded-b-none"
+                                                data-aos="fade-up"
+                                                data-aos-delay="200"
+                                                data-aos-duration="1000">
+                                                <div
+                                                    class="bg-gray-100 dark:bg-darkprimary p-4 pb-0">
+                                                    <div
+                                                        class="border border-light-dark overflow-hidden rounded-md rounded-b-none relative flex justify-center items-center group ">
+                                                        <img
+                                                            src="../assets/images/apps/app-email.jpg"
+                                                            alt
+                                                            class="max-w-full w-full" />
+                                                        <a target="_blank"
+                                                            href="../main/app-email.html"
+                                                            class="preview-btn text-sm py-2 px-4 ">Live
+                                                            Preview</a>
+                                                        <div
+                                                            class="bg-overlay">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="rounded-t-none rounded-md border-light border border-t-0 border-light-dark p-4">
+                                                    <a target="_blank"
+                                                        href="../main/app-email.html"><h6
+                                                            class="text-base">Email</h6>
+                                                    </a>
+                                                    <p
+                                                        class="card-subtitle">Application</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="lg:col-span-4 md:col-span-6 sm:col-span-6 col-span-12">
+                                            <div
+                                                class="relative overflow-hidden mb-4 rounded-md rounded-b-none"
+                                                data-aos="fade-up"
+                                                data-aos-delay="400"
+                                                data-aos-duration="1000">
+                                                <div
+                                                    class="bg-gray-100 dark:bg-darkprimary p-4 pb-0">
+                                                    <div
+                                                        class="border border-light-dark overflow-hidden rounded-md rounded-b-none relative flex justify-center items-center group ">
+                                                        <img
+                                                            src="../assets/images/apps/app-contact.jpg"
+                                                            alt
+                                                            class="max-w-full w-full" />
+                                                        <a target="_blank"
+                                                            href="../main/app-contact.html"
+                                                            class="preview-btn text-sm py-2 px-4 ">Live
+                                                            Preview</a>
+                                                        <div
+                                                            class="bg-overlay">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="rounded-t-none rounded-md border-light border border-t-0 border-light-dark p-4">
+                                                    <a target="_blank"
+                                                        href="../main/app-contact.html"><h6
+                                                            class="text-base">Contact</h6>
+                                                    </a>
+                                                    <p
+                                                        class="card-subtitle">Application</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="lg:col-span-4 md:col-span-6 sm:col-span-6 col-span-12">
+                                            <div
+                                                class="relative overflow-hidden mb-4 rounded-md rounded-b-none"
+                                                data-aos="fade-up"
+                                                data-aos-delay="400"
+                                                data-aos-duration="1000">
+                                                <div
+                                                    class="bg-gray-100 dark:bg-darkprimary p-4 pb-0">
+                                                    <div
+                                                        class="border border-light-dark overflow-hidden rounded-md rounded-b-none relative flex justify-center items-center group ">
+                                                        <img
+                                                            src="../assets/images/apps/app-invoice.jpg"
+                                                            alt
+                                                            class="max-w-full w-full" />
+                                                        <a target="_blank"
+                                                            href="../main/app-invoice.html"
+                                                            class="preview-btn text-sm py-2 px-4 ">Live
+                                                            Preview</a>
+                                                        <div
+                                                            class="bg-overlay">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="rounded-t-none rounded-md border-light border border-t-0 border-light-dark p-4">
+                                                    <a target="_blank"
+                                                        href="../main/app-invoice.html"><h6
+                                                            class="text-base">Invoice</h6>
+                                                    </a>
+                                                    <p
+                                                        class="card-subtitle">Application</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="lg:col-span-4 md:col-span-6 sm:col-span-6 col-span-12">
+                                            <div
+                                                class="relative overflow-hidden mb-4 rounded-md rounded-b-none"
+                                                data-aos="fade-up"
+                                                data-aos-delay="400"
+                                                data-aos-duration="1000">
+                                                <div
+                                                    class="bg-gray-100 dark:bg-darkprimary p-4 pb-0">
+                                                    <div
+                                                        class="border border-light-dark overflow-hidden rounded-md rounded-b-none relative flex justify-center items-center group ">
+                                                        <img
+                                                            src="../assets/images/apps/app-contact-list.jpg"
+                                                            alt
+                                                            class="max-w-full w-full" />
+                                                        <a target="_blank"
+                                                            href="../main/app-contact.html"
+                                                            class="preview-btn text-sm py-2 px-4 ">Live
+                                                            Preview</a>
+                                                        <div
+                                                            class="bg-overlay">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="rounded-t-none rounded-md border-light border border-t-0 border-light-dark p-4">
+                                                    <a target="_blank"
+                                                        href="../main/app-contact.html"><h6
+                                                            class="text-base">Contact
+                                                            List</h6>
+                                                    </a>
+                                                    <p
+                                                        class="card-subtitle">Application</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div
+                                            class="lg:col-span-4 md:col-span-6 sm:col-span-6 col-span-12">
+                                            <div
+                                                class="relative overflow-hidden mb-4 rounded-md rounded-b-none"
+                                                data-aos="fade-up"
+                                                data-aos-delay="600"
+                                                data-aos-duration="1000">
+                                                <div
+                                                    class="bg-gray-100 dark:bg-darkprimary p-4 pb-0">
+                                                    <div
+                                                        class="border border-light-dark overflow-hidden rounded-md rounded-b-none relative flex justify-center items-center group ">
+                                                        <img
+                                                            src="../assets/images/apps/page-user-profile2.jpg"
+                                                            alt
+                                                            class="max-w-full w-full" />
+                                                        <a target="_blank"
+                                                            href="../main/page-user-profile2.html"
+                                                            class="preview-btn text-sm py-2 px-4 ">Live
+                                                            Preview</a>
+                                                        <div
+                                                            class="bg-overlay">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="rounded-t-none rounded-md border-light border border-t-0 border-light-dark p-4">
+                                                    <a target="_blank"
+                                                        href="../main/page-user-profile2.html"><h6
+                                                            class="text-base">User
+                                                            Profile</h6>
+                                                    </a>
+                                                    <p
+                                                        class="card-subtitle">Application</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="lg:col-span-4 md:col-span-6 sm:col-span-6 col-span-12">
+                                            <div
+                                                class="relative overflow-hidden mb-4 rounded-md rounded-b-none"
+                                                data-aos="fade-up"
+                                                data-aos-delay="600"
+                                                data-aos-duration="1000">
+                                                <div
+                                                    class="bg-gray-100 dark:bg-darkprimary p-4 pb-0">
+                                                    <div
+                                                        class="border border-light-dark overflow-hidden rounded-md rounded-b-none relative flex justify-center items-center group ">
+                                                        <img
+                                                            src="../assets/images/apps/app-blog.jpg"
+                                                            alt
+                                                            class="max-w-full w-full" />
+                                                        <a target="_blank"
+                                                            href="../main/blog-posts.html"
+                                                            class="preview-btn text-sm py-2 px-4 ">Live
+                                                            Preview</a>
+                                                        <div
+                                                            class="bg-overlay">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="rounded-t-none rounded-md border-light border border-t-0 border-light-dark p-4">
+                                                    <a target="_blank"
+                                                        href="../main/blog-posts.html"><h6
+                                                            class="text-base">Blog</h6>
+                                                    </a>
+                                                    <p
+                                                        class="card-subtitle">Application</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="lg:col-span-4 md:col-span-6 sm:col-span-6 col-span-12">
+                                            <div
+                                                class="relative overflow-hidden mb-4 rounded-md rounded-b-none"
+                                                data-aos="fade-up"
+                                                data-aos-delay="600"
+                                                data-aos-duration="1000">
+                                                <div
+                                                    class="bg-gray-100 dark:bg-darkprimary p-4 pb-0">
+                                                    <div
+                                                        class="border border-light-dark overflow-hidden rounded-md rounded-b-none relative flex justify-center items-center group ">
+                                                        <img
+                                                            src="../assets/images/apps/app-blog-details.jpg"
+                                                            alt
+                                                            class="max-w-full w-full" />
+                                                        <a target="_blank"
+                                                            href="../main/blog-detail.html"
+                                                            class="preview-btn text-sm py-2 px-4 ">Live
+                                                            Preview</a>
+                                                        <div
+                                                            class="bg-overlay">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="rounded-t-none rounded-md border-light border border-t-0 border-light-dark p-4">
+                                                    <a target="_blank"
+                                                        href="../main/blog-detail.html"><h6
+                                                            class="text-base">Blog
+                                                            Detail</h6>
+                                                    </a>
+                                                    <p
+                                                        class="card-subtitle">Application</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="lg:col-span-4 md:col-span-6 sm:col-span-6 col-span-12">
+                                            <div
+                                                class="relative overflow-hidden mb-4 rounded-md rounded-b-none"
+                                                data-aos="fade-up"
+                                                data-aos-delay="800"
+                                                data-aos-duration="1000">
+                                                <div
+                                                    class="bg-gray-100 dark:bg-darkprimary p-4 pb-0">
+                                                    <div
+                                                        class="border border-light-dark overflow-hidden rounded-md rounded-b-none relative flex justify-center items-center group ">
+                                                        <img
+                                                            src="../assets/images/apps/eco-shop2.jpg"
+                                                            alt
+                                                            class="max-w-full w-full" />
+                                                        <a target="_blank"
+                                                            href="../main/eco-shop2.html"
+                                                            class="preview-btn text-sm py-2 px-4 ">Live
+                                                            Preview</a>
+                                                        <div
+                                                            class="bg-overlay">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="rounded-t-none rounded-md border-light border border-t-0 border-light-dark p-4">
+                                                    <a target="_blank"
+                                                        href="../main/eco-shop2.html"><h6
+                                                            class="text-base">eCommerce
+                                                            Shop</h6>
+                                                    </a>
+                                                    <p
+                                                        class="card-subtitle">Application</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div
+                                            class="lg:col-span-4 md:col-span-6 sm:col-span-6 col-span-12">
+                                            <div
+                                                class="relative overflow-hidden mb-4 rounded-md rounded-b-none"
+                                                data-aos="fade-up"
+                                                data-aos-delay="800"
+                                                data-aos-duration="1000">
+                                                <div
+                                                    class="bg-gray-100 dark:bg-darkprimary p-4 pb-0">
+                                                    <div
+                                                        class="border border-light-dark overflow-hidden rounded-md rounded-b-none relative flex justify-center items-center group ">
+                                                        <img
+                                                            src="../assets/images/apps/app-shop-details.jpg"
+                                                            alt
+                                                            class="max-w-full w-full" />
+                                                        <a target="_blank"
+                                                            href="../main/eco-shop-detail2.html"
+                                                            class="preview-btn text-sm py-2 px-4 ">Live
+                                                            Preview</a>
+                                                        <div
+                                                            class="bg-overlay">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="rounded-t-none rounded-md border-light border border-t-0 border-light-dark p-4">
+                                                    <a target="_blank"
+                                                        href="../main/eco-shop-detail2.html"><h6
+                                                            class="text-base">eCommerce
+                                                            Detail</h6>
+                                                    </a>
+                                                    <p
+                                                        class="card-subtitle">Application</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="lg:col-span-4 md:col-span-6 sm:col-span-6 col-span-12">
+                                            <div
+                                                class="relative overflow-hidden mb-4 rounded-md rounded-b-none"
+                                                data-aos="fade-up"
+                                                data-aos-delay="800"
+                                                data-aos-duration="1000">
+                                                <div
+                                                    class="bg-gray-100 dark:bg-darkprimary p-4 pb-0">
+                                                    <div
+                                                        class="border border-light-dark overflow-hidden rounded-md rounded-b-none relative flex justify-center items-center group ">
+                                                        <img
+                                                            src="../assets/images/apps/app-product-list.jpg"
+                                                            alt
+                                                            class="max-w-full w-full" />
+                                                        <a target="_blank"
+                                                            href="../main/eco-product-list.html"
+                                                            class="preview-btn text-sm py-2 px-4 ">Live
+                                                            Preview</a>
+                                                        <div
+                                                            class="bg-overlay">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="rounded-t-none rounded-md border-light border border-t-0 border-light-dark p-4">
+                                                    <a target="_blank"
+                                                        href="../main/eco-product-list.html"><h6
+                                                            class="text-base">eCommerce
+                                                            List</h6>
+                                                    </a>
+                                                    <p
+                                                        class="card-subtitle">Application</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="lg:col-span-4 md:col-span-6 sm:col-span-6 col-span-12">
+                                            <div
+                                                class="relative overflow-hidden mb-4 rounded-md rounded-b-none"
+                                                data-aos="fade-up"
+                                                data-aos-delay="1000"
+                                                data-aos-duration="1000">
+                                                <div
+                                                    class="bg-gray-100 dark:bg-darkprimary p-4 pb-0">
+                                                    <div
+                                                        class="border border-light-dark overflow-hidden rounded-md rounded-b-none relative flex justify-center items-center group ">
+                                                        <img
+                                                            src="../assets/images/apps/app-checkout.jpg"
+                                                            alt
+                                                            class="max-w-full w-full" />
+                                                        <a target="_blank"
+                                                            href="../main/eco-checkout.html"
+                                                            class="preview-btn text-sm py-2 px-4 ">Live
+                                                            Preview</a>
+                                                        <div
+                                                            class="bg-overlay">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="rounded-t-none rounded-md border-light border border-t-0 border-light-dark p-4">
+                                                    <a target="_blank"
+                                                        href="../main/eco-checkout.html"><h6
+                                                            class="text-base">eCommerce
+                                                            Checkout</h6>
+                                                    </a>
+                                                    <p
+                                                        class="card-subtitle">Application</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- Product Section End-->
+
+                        <!-- Feature Section-->
+                        <section class="bg-lightgray dark:bg-darkprimary py-12">
+                            <div class="container relative xl:px-0 px-5">
+                                <div class="lg:w-2/3 w-full mx-auto mb-12"
+                                    data-aos="fade-up" data-aos-delay="600"
+                                    data-aos-duration="1000">
+                                    <div>
+                                        <p
+                                            class="font-medium text-center mb-3 text-base">Almost
+                                            covered everything</p>
+                                        <h2
+                                            class="text-center font-bold md:text-4xl text-2xl">
+                                            Other Amazing Features & Flexibility
+                                            Provided
+                                        </h2>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-12 gap-6">
+                                    <div
+                                        class="xl:col-span-3 lg:col-span-4 md:col-span-6 col-span-12"
+                                        data-aos="fade-up" data-aos-delay="800"
+                                        data-aos-duration="1000">
+                                        <div class="card">
+                                            <div class="card-body p-6">
+                                                <div
+                                                    class="h-12 w-12 bg-lightprimary dark:bg-darkprimary flex justify-center items-center rounded-sm">
+                                                    <i
+                                                        class="block ti ti-wand text-primary text-3xl"></i>
+                                                </div>
+
+                                                <h5
+                                                    class="font-semibold text-xl text-dark dark:text-white mt-4 mb-3">6
+                                                    Theme Colors</h5>
+                                                <p
+                                                    class="text-base font-medium">
+                                                    We have included 6
+                                                    pre-defined
+                                                    Theme Colors with Elegant
+                                                    Admin.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="xl:col-span-3 lg:col-span-4 md:col-span-6 col-span-12"
+                                        data-aos="fade-up" data-aos-delay="800"
+                                        data-aos-duration="1000">
+                                        <div class="card">
+                                            <div class="card-body p-6">
+                                                <div
+                                                    class="h-12 w-12 bg-lighterror dark:bg-darkerror flex justify-center items-center rounded-sm">
+                                                    <i
+                                                        class="block ti ti-archive text-error text-3xl"></i>
+                                                </div>
+
+                                                <h5
+                                                    class="font-semibold text-xl text-dark dark:text-white mt-4 mb-3">
+                                                    425+ Page Templates</h5>
+                                                <p
+                                                    class="text-base font-medium">
+                                                    Yes, we have 5 demos & 79+
+                                                    Pages per demo to make it
+                                                    easier.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="xl:col-span-3 lg:col-span-4 md:col-span-6 col-span-12"
+                                        data-aos="fade-up" data-aos-delay="800"
+                                        data-aos-duration="1000">
+                                        <div class="card">
+                                            <div class="card-body p-6">
+                                                <div
+                                                    class="h-12 w-12 bg-lightinfo dark:bg-darkinfo flex justify-center items-center rounded-sm">
+                                                    <i
+                                                        class="block ti ti-adjustments  text-info text-3xl"></i>
+                                                </div>
+
+                                                <h5
+                                                    class="font-semibold text-xl text-dark dark:text-white mt-4 mb-3">
+                                                    150+ UI Components</h5>
+                                                <p
+                                                    class="text-base font-medium">
+                                                    Almost 150+ UI Components
+                                                    being given with Modernize.
+
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="xl:col-span-3 lg:col-span-4 md:col-span-6 col-span-12"
+                                        data-aos="fade-up" data-aos-delay="800"
+                                        data-aos-duration="1000">
+                                        <div class="card">
+                                            <div class="card-body p-6">
+                                                <div
+                                                    class="h-12 w-12 bg-lightsuccess dark:bg-darksuccess flex justify-center items-center rounded-sm">
+                                                    <i
+                                                        class="block ti ti-tag text-success text-3xl"></i>
+                                                </div>
+
+                                                <h5
+                                                    class="font-semibold text-xl text-dark dark:text-white mt-4 mb-3">
+                                                    Tailwind 3x</h5>
+                                                <p
+                                                    class="text-base font-medium">
+                                                    Its been made with Tailwind
+                                                    3 and full responsive
+                                                    layout.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="xl:col-span-3 lg:col-span-4 md:col-span-6 col-span-12"
+                                        data-aos="fade-up" data-aos-delay="800"
+                                        data-aos-duration="1000">
+                                        <div class="card">
+                                            <div class="card-body p-6">
+                                                <div
+                                                    class="h-12 w-12 bg-lightwarning dark:bg-darkwarning flex justify-center items-center rounded-sm">
+                                                    <i
+                                                        class="block ti ti-diamond text-warning text-3xl"></i>
+                                                </div>
+
+                                                <h5
+                                                    class="font-semibold text-xl text-dark dark:text-white mt-4 mb-3">
+                                                    3400+ Font Icons</h5>
+                                                <p
+                                                    class="text-base font-medium">
+                                                    Lots of Icon Fonts are
+                                                    included here in the package
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="xl:col-span-3 lg:col-span-4 md:col-span-6 col-span-12"
+                                        data-aos="fade-up" data-aos-delay="800"
+                                        data-aos-duration="1000">
+                                        <div class="card">
+                                            <div class="card-body p-6">
+                                                <div
+                                                    class="h-12 w-12 bg-lightprimary dark:bg-darkprimary flex justify-center items-center rounded-sm">
+                                                    <i
+                                                        class="block ti ti-database text-primary text-3xl"></i>
+                                                </div>
+
+                                                <h5
+                                                    class="font-semibold text-xl text-dark dark:text-white mt-4 mb-3">
+                                                    Preline UI</h5>
+                                                <p
+                                                    class="text-base font-medium">
+                                                    Built with Tailwind css
+                                                    preline + gulp task manager.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="xl:col-span-3 lg:col-span-4 md:col-span-6 col-span-12"
+                                        data-aos="fade-up" data-aos-delay="800"
+                                        data-aos-duration="1000">
+                                        <div class="card">
+                                            <div class="card-body p-6">
+                                                <div
+                                                    class="h-12 w-12 bg-lightindigo dark:bg-darkindigo flex justify-center items-center rounded-sm">
+                                                    <i
+                                                        class="block ti ti-language-katakana text-indigo text-3xl"></i>
+                                                </div>
+
+                                                <h5
+                                                    class="font-semibold text-xl text-dark dark:text-white mt-4 mb-3">
+                                                    RTL Support</h5>
+                                                <p
+                                                    class="text-base font-medium">
+                                                    Spike Admin comes with RTL
+                                                    right to left support.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="xl:col-span-3 lg:col-span-4 md:col-span-6 col-span-12"
+                                        data-aos="fade-up" data-aos-delay="800"
+                                        data-aos-duration="1000">
+                                        <div class="card">
+                                            <div class="card-body p-6">
+                                                <div
+                                                    class="h-12 w-12 bg-lightsecondary dark:bg-darksecondary flex justify-center items-center rounded-sm">
+                                                    <i
+                                                        class="block ti ti-arrows-shuffle text-secondary text-3xl"></i>
+                                                </div>
+
+                                                <h5
+                                                    class="font-semibold text-xl text-dark dark:text-white mt-4 mb-3">
+                                                    Easy to Customize</h5>
+                                                <p
+                                                    class="text-base font-medium">
+                                                    Customization will be easy
+                                                    as we understand your pain.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="xl:col-span-3 lg:col-span-4 md:col-span-6 col-span-12"
+                                        data-aos="fade-up" data-aos-delay="800"
+                                        data-aos-duration="1000">
+                                        <div class="card">
+                                            <div class="card-body p-6">
+                                                <div
+                                                    class="h-12 w-12 bg-lightinfo dark:bg-darkinfo flex justify-center items-center rounded-sm">
+                                                    <i
+                                                        class="block ti ti-chart-pie text-info text-3xl"></i>
+                                                </div>
+                                                <h5
+                                                    class="font-semibold text-xl text-dark dark:text-white mt-4 mb-3">
+                                                    Lots of Chart Options</h5>
+                                                <p
+                                                    class="text-base font-medium">
+                                                    You name it and we have it,
+                                                    Yes lots of variations for
+                                                    Charts.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="xl:col-span-3 lg:col-span-4 md:col-span-6 col-span-12"
+                                        data-aos="fade-up" data-aos-delay="800"
+                                        data-aos-duration="1000">
+                                        <div class="card">
+                                            <div class="card-body p-6">
+                                                <div
+                                                    class="h-12 w-12 bg-lightsuccess dark:bg-darksuccess flex justify-center items-center rounded-sm">
+                                                    <i
+                                                        class="block ti ti-layers-intersect text-success text-3xl"></i>
+                                                </div>
+                                                <h5
+                                                    class="font-semibold text-xl text-dark dark:text-white mt-4 mb-3">
+                                                    Lots of Table Examples</h5>
+                                                <p
+                                                    class="text-base font-medium">
+                                                    Tables are initial
+                                                    requirement and we added
+                                                    them.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="xl:col-span-3 lg:col-span-4 md:col-span-6 col-span-12"
+                                        data-aos="fade-up" data-aos-delay="800"
+                                        data-aos-duration="1000">
+                                        <div class="card">
+                                            <div class="card-body p-6">
+                                                <div
+                                                    class="h-12 w-12 bg-lightwarning dark:bg-darkwarning flex justify-center items-center rounded-sm">
+                                                    <i
+                                                        class="block ti ti-refresh text-warning text-3xl"></i>
+                                                </div>
+                                                <h5
+                                                    class="font-semibold text-xl text-dark dark:text-white mt-4 mb-3">
+                                                    Regular Updates</h5>
+                                                <p
+                                                    class="text-base font-medium">
+                                                    We are constantly updating
+                                                    our pack with new features.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="xl:col-span-3 lg:col-span-4 md:col-span-6 col-span-12"
+                                        data-aos="fade-up" data-aos-delay="800"
+                                        data-aos-duration="1000">
+                                        <div class="card">
+                                            <div class="card-body p-6">
+                                                <div
+                                                    class="h-12 w-12 bg-lighterror dark:bg-darkerror flex justify-center items-center rounded-sm">
+                                                    <i
+                                                        class="block ti ti-device-desktop text-error text-3xl"></i>
+                                                </div>
+                                                <h5
+                                                    class="font-semibold text-xl text-dark dark:text-white mt-4 mb-3">
+                                                    Fully Responsive</h5>
+                                                <p
+                                                    class="text-base font-medium">
+                                                    All the layout of Modernize
+                                                    Admin is Fully Responsive.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="xl:col-span-3 lg:col-span-4 md:col-span-6 col-span-12"
+                                        data-aos="fade-up" data-aos-delay="800"
+                                        data-aos-duration="1000">
+                                        <div class="card">
+                                            <div class="card-body p-6">
+                                                <div
+                                                    class="h-12 w-12 bg-lightwarning dark:bg-darkwarning flex justify-center items-center rounded-sm">
+                                                    <i
+                                                        class="block ti ti-book text-warning text-3xl"></i>
+                                                </div>
+                                                <h5
+                                                    class="font-semibold text-xl text-dark dark:text-white mt-4 mb-3">
+                                                    Detailed Documentation</h5>
+                                                <p
+                                                    class="text-base font-medium">
+                                                    We have made detailed
+                                                    documentation, for
+                                                    easy to use.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="xl:col-span-3 lg:col-span-4 md:col-span-6 col-span-12"
+                                        data-aos="fade-up" data-aos-delay="800"
+                                        data-aos-duration="1000">
+                                        <div class="card">
+                                            <div class="card-body p-6">
+                                                <div
+                                                    class="h-12 w-12 bg-lightindigo dark:bg-darkindigo flex justify-center items-center rounded-sm">
+                                                    <i
+                                                        class="block ti ti-calendar text-indigo text-3xl"></i>
+                                                </div>
+                                                <h5
+                                                    class="font-semibold text-xl text-dark dark:text-white mt-4 mb-3">
+                                                    Calendar Design</h5>
+                                                <p
+                                                    class="text-base font-medium">
+                                                    Calendar is available with
+                                                    our package & in nice
+                                                    design.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="xl:col-span-3 lg:col-span-4 md:col-span-6 col-span-12"
+                                        data-aos="fade-up" data-aos-delay="800"
+                                        data-aos-duration="1000">
+                                        <div class="card">
+                                            <div class="card-body p-6">
+                                                <div
+                                                    class="h-12 w-12 bg-lightprimary dark:bg-darkprimary flex justify-center items-center rounded-sm">
+                                                    <i
+                                                        class="block ti ti-mailbox text-primary text-3xl"></i>
+                                                </div>
+                                                <h5
+                                                    class="font-semibold text-xl text-dark dark:text-white mt-4 mb-3">
+                                                    Email Design</h5>
+                                                <p
+                                                    class="text-base font-medium">
+                                                    Email is available with our
+                                                    package & in nice design.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="xl:col-span-3 lg:col-span-4 md:col-span-6 col-span-12"
+                                        data-aos="fade-up" data-aos-delay="800"
+                                        data-aos-duration="1000">
+                                        <div class="card">
+                                            <div class="card-body p-6">
+                                                <div
+                                                    class="h-12 w-12 bg-lightsuccess dark:bg-darksuccess flex justify-center items-center rounded-sm">
+                                                    <i
+                                                        class="block ti ti-messages text-success text-3xl"></i>
+                                                </div>
+                                                <h5
+                                                    class="font-semibold text-xl text-dark dark:text-white mt-4 mb-3">
+                                                    Dedicated Support</h5>
+                                                <p
+                                                    class="text-base font-medium">
+                                                    We believe in supreme
+                                                    support is key and we offer
+                                                    that.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- Feature Section end-->
+
+                        <!-- Review Section-->
+                        <section class="py-12 review-section">
+                            <div class="container xl:px-0 px-5">
+                                <div class="review-slider position-relative"
+                                    data-aos="fade-up" data-aos-delay="400"
+                                    data-aos-duration="1000">
+                                    <div class="owl-carousel owl-theme">
+                                        <div class="item text-center">
+                                            <ul
+                                                class="flex items-center justify-center gap-1 pb-4">
+                                                <li>
+                                                    <a href>
+                                                        <i
+                                                            class="ti ti-star-filled d-block text-base text-warning"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href>
+                                                        <i
+                                                            class="ti ti-star-filled d-block text-base text-warning"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href>
+                                                        <i
+                                                            class="ti ti-star-filled d-block text-base text-warning"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href>
+                                                        <i
+                                                            class="ti ti-star-filled d-block text-base text-warning"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href>
+                                                        <i
+                                                            class="ti ti-star-filled d-block text-base text-warning"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <h2
+                                                class="md:text-4xl text-2xl pb-6 font-medium">
+                                                Such a beautiful, detailed, and
+                                                extensive template.
+                                                Spike admin is the perfect
+                                                foundation for any
+                                                project. I highly recommend this
+                                                huge time saver.
+                                            </h2>
+                                            <div
+                                                class="flex items-center justify-center">
+                                                <img
+                                                    src="../assets/images/profile/user-3.jpg"
+                                                    alt
+                                                    class="me-3 rounded-full h-16">
+                                                <div class="text-start">
+                                                    <h6 class="text-lg">Leslie
+                                                        Alexander</h6>
+                                                    <p
+                                                        class="text-base font-medium">Product
+                                                        Designer, Appzio</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="item text-center">
+                                            <ul
+                                                class="flex items-center justify-center gap-1 pb-4">
+                                                <li>
+                                                    <a href>
+                                                        <i
+                                                            class="ti ti-star-filled d-block text-base text-warning"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href>
+                                                        <i
+                                                            class="ti ti-star-filled d-block text-base text-warning"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href>
+                                                        <i
+                                                            class="ti ti-star-filled d-block text-base text-warning"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href>
+                                                        <i
+                                                            class="ti ti-star-filled d-block text-base text-warning"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href>
+                                                        <i
+                                                            class="ti ti-star-filled d-block text-base text-warning"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <h2
+                                                class="md:text-4xl text-2xl pb-6 font-medium">
+                                                The dashboard template from
+                                                Wrappixel has helped me provide
+                                                a clean
+                                                and sleek look to my dashboard
+                                                and made it look exactly the way
+                                                I wanted it to, mainly without
+                                                having.
+                                            </h2>
+                                            <div
+                                                class="flex items-center justify-center">
+                                                <img
+                                                    src="../assets/images/profile/user-7.jpg"
+                                                    alt
+                                                    class="me-3 rounded-full h-16">
+                                                <div class="text-start">
+                                                    <h6 class="text-lg">Jonny
+                                                        Wilson</h6>
+                                                    <p
+                                                        class="text-base font-medium">Features
+                                                        avaibility</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="item text-center">
+                                            <ul
+                                                class="flex items-center justify-center gap-1 pb-4">
+                                                <li>
+                                                    <a href>
+                                                        <i
+                                                            class="ti ti-star-filled d-block text-base text-warning"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href>
+                                                        <i
+                                                            class="ti ti-star-filled d-block text-base text-warning"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href>
+                                                        <i
+                                                            class="ti ti-star-filled d-block text-base text-warning"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href>
+                                                        <i
+                                                            class="ti ti-star-filled d-block text-base text-warning"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href>
+                                                        <i
+                                                            class="ti ti-star-filled d-block text-base text-warning"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <h2
+                                                class="md:text-4xl text-2xl pb-6 font-medium">
+                                                The quality of design is
+                                                excellent, customizability and
+                                                flexibility
+                                                much better than the other
+                                                products available in the
+                                                market. I strongly recommend the
+                                                Wrappixel to
+                                                other buyers.
+                                            </h2>
+                                            <div
+                                                class="flex items-center justify-center">
+                                                <img
+                                                    src="../assets/images/profile/user-2.jpg"
+                                                    alt
+                                                    class="me-3 rounded-full h-16">
+                                                <div class="text-start">
+                                                    <h6 class="text-lg">Minshan
+                                                        Cui</h6>
+                                                    <p
+                                                        class="text-base font-medium">Features
+                                                        avaibility</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- Review Section end-->
+
+                        <!-- Discord Section-->
+                        <section class="mt-10">
+                            <div class="container xl:px-0 px-5">
+                                <div
+                                    class="card bg-dark dark:bg-darkprimary relative">
+                                    <div class="card-body">
+                                        <div class="lg:w-2/4 w-full">
+                                            <h2
+                                                class="text-4xl text-white text-center lg:text-start font-bold mb-5">Haven't
+                                                found an answer
+                                                to your question?</h2>
+                                            <p
+                                                class="text-white text-xl text-center lg:text-start pb-10">
+                                                Connect with us either on
+                                                discord or email us
+                                            </p>
+                                            <div
+                                                class="sm:flex items-center justify-center lg:justify-start gap-3 mb-4">
+                                                <a
+                                                    href="https://discord.com/invite/eMzE8F6Wqs"
+                                                    target="_blank"
+                                                    class="btn btn-md block md:mb-0 mb-3"
+                                                    type="button">Ask on
+                                                    Discord</a>
+                                                <a
+                                                    href="https://support.wrappixel.com/"
+                                                    target="_blank"
+                                                    class="btn bg-transparent border border-white hover:bg-white text-white hover:text-dark block rounded-full"
+                                                    type="button">Submit
+                                                    Ticket</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="lg:absolute relative md:end-0 lg:-end-6 md:bottom-0 mx-auto">
+                                        <img
+                                            src="../assets/images/backgrounds/school.png"
+                                            alt class="w-full mx-auto">
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- Discord Section End-->
+
+                        <!-- Footer Section-->
+                        <footer class="py-9 text-center xl:px-0 px-5">
+                            <p class="font-medium">All rights reserved by Spike Admin. Designed &amp; Developed by <a target="_blank" class="text-primary hover:text-primary ms-1" href="https://www.wrappixel.com/">Wrappixel</a></p>
+                        </footer>
+                        <!-- Footer Section End-->
+
+
+                    </div>
+                    <!-- Main Content End -->
+                </div>
+            </div>
+            <!--end of project-->
+        </main>
+
+        <!--Offcanvas lp menu---->
+        <div id="application-sidebar-lp"
+            class="hs-overlay hs-overlay-open:translate-x-0 hidden -translate-x-full fixed top-0 start-0 transition-all duration-300 transform h-full max-w-72  w-full z-[80] bg-white dark:bg-dark"
+            tabindex="-1">
+            <div class="py-6 px-5">
+                <div class="brand-logo d-flex align-items-center justify-center">
+  <a href="../index.html" class="text-nowrap logo-img">
+    <img
+      src="../assets/images/logos/logo-light.svg"
+      class="dark:hidden block rtl:hidden"
+      alt="Logo-Dark"
+    />
+    <img
+      src="../assets/images/logos/logo-dark.svg"
+      class="dark:block hidden rtl:hidden rtl:dark:hidden"
+      alt="Logo-light"
+    />
+    
+    <img
+      src="../assets/images/logos/logo-light-rtl.svg"
+      class="dark:hidden hidden rtl:block rtl:dark:hidden"
+      alt="Logo-Dark"
+    />
+    <img
+      src="../assets/images/logos/logo-dark-rtl.svg"
+      class="dark:hidden hidden rtl:hidden rtl:dark:block"
+      alt="Logo-light"
+    />
+  </a>
+</div>
+</div>
+            <div style="max-height: calc(100vh - 100px);" data-simplebar>
+                <ul class="p-5 pt-0">
+
+                    <li>
+                        <div
+    class="hs-dropdown  [--strategy:static] xl:[--strategy:absolute] [--adaptive:none] xl:[--trigger:hover] relative group/menu">
+    <button type="button"
+        class="xl:w-auto w-full gap-2 header-link hover:text-primary hover:bg-lightprimary dark:hover:text-primary text-dark dark:text-white font-medium text-base py-2 px-3  rounded-md flex items-center group-hover/menu:text-primary group-hover/menu:bg-lightprimary">
+       Demos
+        <i
+            class="ti ti-chevron-down  ms-auto xl:text-sm text-lg"></i>
+    </button>
+
+    <div
+    class="hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] sm:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 xl:-left-80 hidden z-10 sm:mt-3 top-full xl:w-[1150px] before:absolute xl:bg-white bg-transparent dark:bg-dark xl:shadow-md shadow-none">
+        <div class="xl:p-6 p-3">
+            <div class="mb-5">
+                <h5
+                    class="card-title">Different
+                    Demos</h5>
+                <p>Included with the
+                    Package</p>
+            </div>
+
+            <div class="grid xl:grid-cols-5 grid-cols-1 gap-6">
+                <div>
+                    <div
+                        class="border-1 border-light-dark overflow-hidden rounded-md relative flex justify-center items-center group">
+                        <img src="../assets/images/demos/demo-main.jpg"
+                            alt class="max-w-full w-full" />
+                        <a target="_blank" href="../main/index.html"
+                            class="preview-btn ">Live
+                            Preview</a>
+                        <div
+                            class="bg-overlay">
+                        </div>
+                    </div>
+                    <div
+                        class="text-center p-3 text-sm font-semibold text-dark dark:text-white">Main</div>
+                </div>
+                <div>
+                    <div
+                        class="border border-light-dark overflow-hidden rounded-md relative flex justify-center items-center group">
+                        <img src="../assets/images/demos/demo-dark.jpg"
+                            alt class="max-w-full w-full" />
+                        <a target="_blank" href="../dark/index.html"
+                            class="preview-btn ">Live
+                            Preview</a>
+                        <div
+                            class="bg-overlay">
+                        </div>
+                    </div>
+                    <div
+                        class="text-center p-3 text-sm font-semibold text-dark dark:text-white">Dark</div>
+                </div>
+                <div>
+                    <div
+                        class="border border-light-dark overflow-hidden rounded-md relative flex justify-center items-center group">
+                        <img
+                            src="../assets/images/demos/demo-horizontal.jpg"
+                            alt class="max-w-full w-full" />
+                        <a target="_blank" href="../horizontal/index.html"
+                            class="preview-btn ">Live
+                            Preview</a>
+                        <div
+                            class="bg-overlay">
+                        </div>
+                    </div>
+                    <div
+                        class="text-center p-3 text-sm font-semibold text-dark dark:text-white">Horizontal</div>
+                </div>
+                <div>
+                    <div
+                        class="border border-light-dark overflow-hidden rounded-md relative flex justify-center items-center group">
+                        <img
+                            src="../assets/images/demos/demo-minisidebar.jpg"
+                            alt class="max-w-full w-full" />
+                        <a target="_blank" href="../minisidebar/index.html"
+                            class="preview-btn ">Live
+                            Preview</a>
+                        <div
+                            class="bg-overlay">
+                        </div>
+                    </div>
+                    <div
+                        class="text-center p-3 text-sm font-semibold text-dark dark:text-white">Minisidebar</div>
+                </div>
+                <div>
+                    <div
+                        class="border border-light-dark overflow-hidden rounded-md relative flex justify-center items-center group">
+                        <img src="../assets/images/demos/demo-rtl.jpg"
+                            alt class="max-w-full w-full" />
+                        <a target="_blank" href="../rtl/index.html"
+                            class="preview-btn ">Live
+                            Preview</a>
+                        <div
+                            class="bg-overlay">
+                        </div>
+                    </div>
+                    <div
+                        class="text-center p-3 text-sm font-semibold text-dark dark:text-white">RTL</div>
+                </div>
+            </div>
+            <div class="my-5">
+                <h5 class="card-title">Different Apps</h5>
+            </div>
+
+            <div class="grid xl:grid-cols-5 grid-cols-1 gap-6">
+                <div>
+                    <div
+                        class="border border-light-dark overflow-hidden rounded-md relative flex justify-center items-center group">
+                        <img src="../assets/images/apps/app-calendar.jpg"
+                            alt class="max-w-full w-full" />
+                        <a target="_blank"
+                            href="../main/app-calendar.html"
+                            class="preview-btn ">Live
+                            Preview</a>
+                        <div
+                            class="bg-overlay">
+                        </div>
+                    </div>
+                    <div
+                        class="text-center p-3 text-sm font-semibold text-dark dark:text-white">Calendar</div>
+                </div>
+                <div>
+                    <div
+                        class="border border-light-dark overflow-hidden rounded-md relative flex justify-center items-center group">
+                        <img src="../assets/images/apps/app-chat.jpg" alt
+                            class="max-w-full w-full" />
+                        <a target="_blank" href="../main/app-chat.html"
+                            class="preview-btn ">Live
+                            Preview</a>
+                        <div
+                            class="bg-overlay">
+                        </div>
+                    </div>
+                    <div
+                        class="text-center p-3 text-sm font-semibold text-dark dark:text-white">Chat</div>
+                </div>
+                <div>
+                    <div
+                        class="border border-light-dark overflow-hidden rounded-md relative flex justify-center items-center group">
+                        <img src="../assets/images/apps/app-email.jpg"
+                            alt class="max-w-full w-full" />
+                        <a target="_blank" href="../main/app-email.html"
+                            class="preview-btn ">Live
+                            Preview</a>
+                        <div
+                            class="bg-overlay">
+                        </div>
+                    </div>
+                    <div
+                        class="text-center p-3 text-sm font-semibold text-dark dark:text-white">Email</div>
+                </div>
+                <div>
+                    <div
+                        class="border border-light-dark overflow-hidden rounded-md relative flex justify-center items-center group">
+                        <img src="../assets/images/apps/app-contact.jpg"
+                            alt class="max-w-full w-full" />
+                        <a target="_blank"
+                            href="../main/app-contact2.html"
+                            class="preview-btn ">Live
+                            Preview</a>
+                        <div
+                            class="bg-overlay">
+                        </div>
+                    </div>
+                    <div
+                        class="text-center p-3 text-sm font-semibold text-dark dark:text-white">Contact</div>
+                </div>
+                <div>
+                    <div
+                        class="border border-light-dark overflow-hidden rounded-md relative flex justify-center items-center group">
+                        <img src="../assets/images/apps/app-invoice.jpg"
+                            alt class="max-w-full w-full" />
+                        <a target="_blank"
+                            href="../main/app-invoice.html"
+                            class="preview-btn ">Live
+                            Preview</a>
+                        <div
+                            class="bg-overlay">
+                        </div>
+                    </div>
+                    <div
+                        class="text-center p-3 text-sm font-semibold text-dark dark:text-white">Invoice</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                    </li>
+                    <li>
+                        <div
+    class="hs-dropdown  [--strategy:static] xl:[--strategy:absolute] [--adaptive:none] xl:[--trigger:hover] relative group/menu">
+    <button type="button"
+        class=" xl:w-auto w-full gap-2  header-link hover:text-primary dark:hover:text-primary hover:bg-lightprimary text-dark dark:text-white font-medium text-base py-2 px-3  rounded-md flex items-center group-hover/menu:text-primary group-hover/menu:bg-lightprimary">
+       Pages
+        <i
+            class="ti ti-chevron-down  ms-auto xl:text-sm text-xl"></i>
+    </button>
+
+    <div
+        class="hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] sm:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 xl:-right-80 hidden z-10 sm:mt-3 top-full xl:w-[900px] before:absolute xl:bg-white bg-transparent dark:bg-dark xl:shadow-md shadow-none">
+        <div class="grid grid-cols-12">
+            <div
+                class="lg:col-span-8 col-span-12 flex items-stretch lg:px-8 lg:pr-0 px-0 py-8 pb-0">
+                <div class="grid grid-cols-12 lg:gap-3 w-full">
+                    <div
+                        class="col-span-12 lg:col-span-6 flex items-stretch pb-2.5">
+                        <ul class="flex flex-col gap-5">
+                            <li>
+                                <a href="../main/app-chat.html"
+                                    class="flex gap-3 items-center group relative ">
+                                    <span
+                                        class="bg-lightgray dark:bg-darkprimary  h-11 w-11 flex justify-center items-center rounded-sm">
+                                        <img
+                                            src="../assets/images/svgs/icon-dd-chat.svg"
+                                            class="h-6 w-6">
+                                    </span>
+                                    <div class>
+                                        <h6
+                                            class="text-fs_15  group-hover:text-primary mb-1 ">
+                                            Chat Application
+                                        </h6>
+                                        <p
+                                            class="text-xs text-dark dark:text-darklink opacity-90 font-normal">
+                                            New messages arrived</p>
+                                    </div>
+
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../main/app-invoice.html"
+                                    class="flex gap-3 items-center group relative ">
+                                    <span
+                                        class="bg-lightgray dark:bg-darkprimary  h-11 w-11 flex justify-center items-center rounded-sm">
+                                        <img
+                                            src="../assets/images/svgs/icon-dd-invoice.svg"
+                                            class="h-6 w-6">
+                                    </span>
+                                    <div class>
+                                        <h6
+                                            class="text-fs_15  mb-1  group-hover:text-primary ">
+                                            Invoice App
+                                        </h6>
+                                        <p
+                                            class="text-xs text-link dark:text-darklink  font-normal">
+                                            Get latest invoice</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../main/app-contact.html"
+                                    class="flex gap-3 items-center group relative ">
+                                    <span
+                                        class="bg-lightgray dark:bg-darkprimary  h-11 w-11 flex justify-center items-center rounded-sm">
+                                        <img
+                                            src="../assets/images/svgs/icon-dd-mobile.svg"
+                                            class="h-6 w-6">
+                                    </span>
+                                    <div class>
+                                        <h6
+                                            class="text-fs_15  mb-1  group-hover:text-primary">
+                                            Contact Application
+                                        </h6>
+                                        <p
+                                            class="text-xs text-link dark:text-darklink  font-normal">
+                                            2 Unsaved Contacts</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../main/app-email.html"
+                                    class="flex gap-3 items-center group relative ">
+                                    <span
+                                        class="bg-lightgray dark:bg-darkprimary  h-11 w-11 flex justify-center items-center rounded-sm">
+                                        <img
+                                            src="../assets/images/svgs/icon-dd-message-box.svg"
+                                            class="h-6 w-6">
+                                    </span>
+                                    <div class>
+                                        <h6
+                                            class="text-fs_15  mb-1  group-hover:text-primary ">
+                                            Email App
+                                        </h6>
+                                        <p
+                                            class="text-xs text-link dark:text-darklink  font-normal">
+                                            Get new emails</p>
+                                    </div>
+
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-span-12 lg:col-span-6 flex items-stretch">
+                        <ul class="flex flex-col gap-5">
+                            <li>
+                                <a href="../main/eco-shop.html"
+                                    class="flex gap-3 items-center group relative ">
+                                    <span
+                                        class="bg-lightgray dark:bg-darkprimary  h-11 w-11 flex justify-center items-center rounded-sm">
+                                        <img
+                                            src="../assets/images/svgs/icon-dd-cart.svg"
+                                            class="h-6 w-6">
+                                    </span>
+                                    <div class>
+                                        <h6
+                                            class="text-fs_15  mb-1  group-hover:text-primary ">
+                                            eCommerce App
+
+                                        </h6>
+                                        <p
+                                            class="text-xs text-link dark:text-darklink  font-normal">
+                                            learn more information</p>
+                                    </div>
+
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../main/app-calendar.html"
+                                    class="flex gap-3 items-center group relative ">
+                                    <span
+                                        class="bg-lightgray dark:bg-darkprimary  h-11 w-11 flex justify-center items-center rounded-sm">
+                                        <img
+                                            src="../assets/images/svgs/icon-dd-date.svg"
+                                            class="h-6 w-6">
+                                    </span>
+                                    <div class>
+                                        <h6
+                                            class="text-fs_15  mb-1  group-hover:text-primary ">
+                                            Calendar App
+                                        </h6>
+                                        <p
+                                            class="text-xs text-link dark:text-darklink  font-normal">
+                                            Get dates</p>
+                                    </div>
+
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../main/app-contact2.html"
+                                    class="flex gap-3 items-center group relative ">
+                                    <span
+                                        class="bg-lightgray dark:bg-darkprimary  h-11 w-11 flex justify-center items-center rounded-sm">
+                                        <img
+                                            src="../assets/images/svgs/icon-dd-lifebuoy.svg"
+                                            class="h-6 w-6">
+                                    </span>
+                                    <div class>
+                                        <h6
+                                            class="text-fs_15  mb-1  group-hover:text-primary ">
+                                            Contact List Table
+
+                                        </h6>
+                                        <p
+                                            class="text-xs text-link dark:text-darklink  font-normal">
+                                            Add new contact</p>
+                                    </div>
+
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../main/app-notes.html"
+                                    class="flex gap-3 items-center group relative ">
+                                    <span
+                                        class="bg-lightgray dark:bg-darkprimary  h-11 w-11 flex justify-center items-center rounded-sm">
+                                        <img
+                                            src="../assets/images/svgs/icon-dd-application.svg"
+                                            class="h-6 w-6">
+                                    </span>
+                                    <div class>
+                                        <h6
+                                            class="text-fs_15  mb-1  group-hover:text-primary ">
+                                            Notes Application
+
+                                        </h6>
+                                        <p
+                                            class="text-xs text-link dark:text-darklink  font-normal">
+                                            To-do and Daily tasks</p>
+                                    </div>
+
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="lg:col-span-4 col-span-12  flex items-strech">
+                <div
+                    class="lg:p-3 lg:border-s border-border dark:border-darkborder">
+                    <h5
+                        class="text-lg font-semibold mb-4 text-dark dark:text-white">
+                        Quick Links</h5>
+                    <ul class="flex flex-col gap-4 pb-3">
+                        <li><a href="../main/page-pricing.html"
+                                class="text-sm font-semibold text-link dark:text-darklink  hover:text-primary hover:dark:text-primary ">Pricing
+                                Page</a></li>
+                        <li><a href="../main/authentication-login.html"
+                                class="text-sm font-semibold text-link dark:text-darklink  hover:text-primary hover:dark:text-primary ">Authentication
+                                Design</a></li>
+                        <li><a
+                                href="../main/authentication-register.html"
+                                class="text-sm font-semibold text-link dark:text-darklink  hover:text-primary hover:dark:text-primary ">Register
+                                Now</a></li>
+                        <li><a href="../main/authentication-error.html"
+                                class="text-sm font-semibold text-link dark:text-darklink  hover:text-primary hover:dark:text-primary ">404
+                                Error
+                                Page</a></li>
+                        <li><a href="../main/app-notes.html"
+                                class="text-sm font-semibold text-link dark:text-darklink  hover:text-primary hover:dark:text-primary ">Notes
+                                App</a>
+                        </li>
+                        <li><a href="../main/page-user-profile.html"
+                                class="text-sm font-semibold text-link dark:text-darklink  hover:text-primary hover:dark:text-primary ">User
+                                Application</a></li>
+                        <li><a
+                                href="../main/blog-posts.html"
+                                class="text-sm font-semibold text-link dark:text-darklink  hover:text-primary hover:dark:text-primary">Blog
+                                Design</a></li>
+                        <li><a
+                                href="../main/eco-checkout.html"
+                                class="text-sm font-semibold text-link dark:text-darklink  hover:text-primary hover:dark:text-primary">Shopping
+                                Cart</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                    </li>
+                    <li class="p-3">
+                        <a href="../docs/index.html" target="_blank"
+                            class="hover:text-primary text-dark dark:text-white text-base font-medium">Documentation</a>
+                    </li>
+                    <li class="p-3">
+                        <a href="https://adminmart.com/support/"
+                            target="_blank"
+                            class="hover:text-primary text-dark dark:text-white text-base font-medium">Support</a>
+                    </li>
+                    <li class="py-3 mt-2">
+                        <a
+                            href="../main/authentication-login.html"
+                            target="_blank"
+                            class="btn bg-primary hover:bg-primaryemphasis text-white btn-md py-2.5 px-4 w-full block">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--Offcanvas lp menu End---->
+        <script src="../assets/js/vendor.min.js"></script>
+        
+<script src="../assets/js/theme/app.init.js"></script>
+<script src="../assets/js/theme/app.min.js"></script>
+<script src="../assets/libs/simplebar/dist/simplebar.min.js"></script>
+<script src="../assets/libs/iconify-icon/dist/iconify-icon.min.js"></script>
+<script src="../assets/libs/preline/dist/preline.js"></script>
+<script src="../assets/libs/@preline/input-number/index.js"></script>
+<script src="../assets/libs/@preline/tooltip/index.js"></script>
+<script src="../assets/libs/@preline/stepper/index.js"></script>
+
+        <script
+            src="../assets/libs/owl.carousel/dist/owl.carousel.min.js"></script>
+        <script src="../assets/libs/aos/dist/aos.js"></script>
+        <script src="../assets/js/landingpage/landingpage.js"></script>
+        <div class="hidden">
+            <!------- Customizer button--------->
+<button type="button" class="btn overflow-hidden  sm:h-14 sm:w-14 h-10 w-10 rounded-full fixed sm:bottom-8 bottom-5 right-8 flex justify-center items-center rtl:left-8 rtl:right-auto z-10"
+  data-hs-overlay="#hs-overlay-right">
+  <i class="ti ti-settings sm:text-2xl text-lg text-white"></i>
+</button>
+
+<!------- Customizer Options--------->
+<div id="hs-overlay-right"
+  class="customizer  rounded-none hs-overlay bg-white dark:bg-dark hs-overlay-open:translate-x-0  translate-x-full rtl:hs-overlay-open:translate-x-0  rtl:-translate-x-full  fixed top-0 right-0 rtl:left-0 rtl:right-auto transition-all duration-300 transform h-full max-w-xs  w-full z-[60] hidden "
+  tabindex="-1">
+  <div class="flex justify-between items-center  border-border dark:border-darkborder  border-b py-3 px-6 ">
+    <h3 class="font-semibold text-lg text-dark dark:text-white">
+      Settings
+    </h3>
+    <button type="button"
+      class="inline-flex flex-shrink-0 justify-center items-center h-8 w-8 rounded-md text-gray-500 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white text-sm "
+      data-hs-overlay="#hs-overlay-right">
+      <span class="sr-only">Close modal</span>
+      <i class="ti ti-x text-xl text-dark dark:text-white"></i>
+    </button>
+  </div>
+
+  <!-------Light/Dark Theme--------->
+  <div class="px-6 py-6" data-simplebar="" style="height: calc(100vh - 80px)">
+    <h6 class="font-semibold text-dark dark:text-white mb-2">Theme</h6>
+    <div class="flex flex-row gap-3 customizer-box mb-8" role="group">
+      <input type="radio" class=" btn-check" name="theme-layout"   autocomplete="off" />
+      <label class="btn rounded-md border border-border dark:border-darkborder text-primary h-full py-3 px-5 hs-dark-mode-active:text-darklink cursor-pointer" for="light-layout" data-hs-theme-click-value="light"><i
+          class="icon ti ti-sun text-2xl me-2 "></i> Light</label>
+      <input type="radio" class="btn-check" name="theme-layout"   autocomplete="off" />
+      <label class="btn rounded-md border border-border dark:border-darkborder text-link  h-full py-3 px-5 cursor-pointer hs-dark-mode-active:text-primary" for="dark-layout" data-hs-theme-click-value="dark"><i
+          class="icon ti ti-moon text-2xl me-2 "></i> Dark</label>
+    </div>
+
+    <!-------Theme Direction--------->
+    <h6 class="font-semibold mb-2 text-dark dark:text-white">Theme Direction</h6>
+    <div class="flex flex-row gap-3 customizer-box mb-8" role="group">
+      <input type="radio" class="btn-check" name="direction-l" id="ltr-layout" autocomplete="off" />
+      <label class="btn rounded-md border border-border dark:border-darkborder text-link dark:text-darklink h-full py-3 px-5 cursor-pointer" for="ltr-layout"><i
+          class="icon ti ti-text-direction-ltr text-2xl me-2"></i>LTR</label>
+      <input type="radio" class="btn-check" name="direction-l" id="rtl-layout" autocomplete="off" />
+      <label class="btn rounded-md border border-border dark:border-darkborder text-link dark:text-darklink h-full py-3 px-5 cursor-pointer" for="rtl-layout">
+        <i class="icon ti ti-text-direction-rtl text-2xl me-2"></i>RTL</label>
+    </div>
+
+    <!-------Theme Colors--------->
+    <h6 class="font-semibold mb-2 text-dark dark:text-white">Theme Colors</h6>
+    <div class="flex flex-row flex-wrap gap-3 customizer-box color-pallete mb-8" role="group">
+      <input type="radio" class="btn-check" name="color-theme-layout" id="Blue_Theme" autocomplete="off" />
+      <label class="hs-tooltip btn py-4 px-5 rounded-md border border-border dark:border-darkborder flex items-center  justify-center hs-tooltip-toggle cursor-pointer"
+        onclick="handleColorTheme('Blue_Theme')" for="Blue_Theme"  data-bs-title="BLUE_THEME">
+        <div class="color-box rounded-full flex items-center justify-center skin-1">
+          <i class="ti ti-check  flex icon text-white fs-5"></i>
+        </div>
+        <span
+          class="tooltip hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible"
+          role="tooltip">
+          Blue_Theme
+        </span>
+      </label>
+
+      <input type="radio" class="btn-check" name="color-theme-layout" id="Aqua_Theme" autocomplete="off" />
+      <label class="hs-tooltip hs-tooltip-toggle btn py-4 px-5 rounded-md border border-border dark:border-darkborder flex items-center  justify-center cursor-pointer"
+        onclick="handleColorTheme('Aqua_Theme')" for="Aqua_Theme"  data-bs-title="AQUA_THEME">
+        <div class="color-box rounded-full flex items-center justify-center skin-2">
+          <i class="ti ti-check text-white flex icon fs-5"></i>
+        </div>
+        <span
+        class="tooltip hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible"
+        role="tooltip">
+        Aqua_Theme
+      </span>
+      </label>
+
+      <input type="radio" class="btn-check" name="color-theme-layout" id="Purple_Theme" autocomplete="off" />
+      <label class="hs-tooltip hs-tooltip-toggle btn py-4 px-5 rounded-md border border-border dark:border-darkborder flex items-center  justify-center cursor-pointer"
+        onclick="handleColorTheme('Purple_Theme')" for="Purple_Theme" 
+        data-bs-title="PURPLE_THEME">
+        <div class="color-box rounded-full flex items-center justify-center skin-3">
+          <i class="ti ti-check text-white flex icon fs-5"></i>
+        </div>
+        <span
+        class="tooltip hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible"
+        role="tooltip">
+        Purple_Theme
+      </span>
+      </label>
+
+      <input type="radio" class="btn-check" name="color-theme-layout" id="green-theme-layout" autocomplete="off" />
+      <label class="hs-tooltip hs-tooltip-toggle btn py-4 px-5 rounded-md border border-border dark:border-darkborder flex items-center  justify-center cursor-pointer"
+        onclick="handleColorTheme('Green_Theme')" for="green-theme-layout" 
+        data-bs-title="GREEN_THEME">
+        <div class="color-box rounded-full flex items-center justify-center skin-4">
+          <i class="ti ti-check text-white flex icon fs-5"></i>
+        </div>
+        <span
+        class="tooltip hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible"
+        role="tooltip">
+        Green_Theme
+      </span>
+      </label>
+
+      <input type="radio" class="btn-check" name="color-theme-layout" id="cyan-theme-layout" autocomplete="off" />
+      <label class="hs-tooltip hs-tooltip-toggle btn py-4 px-5 rounded-md border border-border dark:border-darkborder flex items-center  justify-center cursor-pointer"
+        onclick="handleColorTheme('Cyan_Theme')" for="cyan-theme-layout" 
+        data-bs-title="CYAN_THEME">
+        <div class="color-box rounded-full flex items-center justify-center skin-5">
+          <i class="ti ti-check text-white flex icon fs-5"></i>
+        </div>
+        <span
+        class="tooltip hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible"
+        role="tooltip">
+        Cyan_Theme
+      </span>
+      </label>
+
+      <input type="radio" class="btn-check" name="color-theme-layout" id="orange-theme-layout" autocomplete="off" />
+      <label class="hs-tooltip hs-tooltip-toggle btn py-4 px-5 rounded-md border border-border dark:border-darkborder flex items-center  justify-center cursor-pointer"
+        onclick="handleColorTheme('Orange_Theme')" for="orange-theme-layout" 
+        data-bs-title="ORANGE_THEME">
+        <div class="color-box rounded-full flex items-center justify-center skin-6">
+          <i class="ti ti-check text-white flex icon fs-5"></i>
+        </div>
+        <span
+        class="tooltip hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible"
+        role="tooltip">
+        Orange_Theme
+      </span>
+      </label>
+    </div>
+
+    <!-- Layput Options  -->
+    <h6 class="font-semibold mb-2 text-dark dark:text-white">Layout Type</h6>
+    <div class="flex flex-row gap-3 customizer-box mb-8" role="group">
+      <div>
+        <input type="radio" class="btn-check" name="page-layout" id="vertical-layout" autocomplete="off" />
+        <label class="btn rounded-md border border-border dark:border-darkborder text-link dark:text-darklink h-full py-3 px-5 cursor-pointer" for="vertical-layout">
+          <i class="icon ti ti-layout-sidebar-right text-2xl me-2"></i> Vertical</label>
+      </div>
+      <div>
+        <input type="radio" class="btn-check" name="page-layout" id="horizontal-layout" autocomplete="off" />
+        <label class="btn rounded-md border border-border dark:border-darkborder text-link dark:text-darklink h-full py-3 px-5 cursor-pointer" for="horizontal-layout">
+          <i class=" icon ti ti-layout-navbar text-2xl me-2"></i> Horizontal</label>
+      </div>
+    </div>
+
+    <!-- Container Options  -->
+    <h6 class="font-semibold mb-2 text-dark dark:text-white">Container Option</h6>
+    <div class="flex flex-row gap-3 customizer-box mb-8" role="group">
+      <input type="radio" class="btn-check" name="layout" id="boxed-layout" autocomplete="off" />
+      <label class="btn rounded-md border border-border dark:border-darkborder text-link dark:text-darklink h-full py-3 px-5 cursor-pointer" for="boxed-layout">
+        <i class="icon ti ti-layout-distribute-vertical text-2xl me-2"></i>
+        Boxed</label>
+
+      <input type="radio" class="btn-check" name="layout" id="full-layout" autocomplete="off" />
+      <label class="btn rounded-md border border-border dark:border-darkborder text-link dark:text-darklink h-full py-3 px-5 cursor-pointer" for="full-layout">
+        <i class="icon ti ti-layout-distribute-horizontal text-2xl me-2"></i> Full</label>
+    </div>
+
+    <!-- Sidebar Type Options  -->
+    <h6 class="font-semibold mb-2 text-dark dark:text-white">Sidebar Type</h6>
+    <div class="flex flex-row gap-3 customizer-box mb-8" role="group">
+      <a href="javascript:void(0)" class="fullsidebar">
+        <input type="radio" class="btn-check" name="sidebar-type" id="full-sidebar" autocomplete="off" />
+        <label class="btn rounded-md border border-border dark:border-darkborder text-link dark:text-darklink h-full py-3 px-5 cursor-pointer" for="full-sidebar"><i
+            class="icon ti ti-layout-sidebar-right text-2xl me-2"></i> Full</label>
+      </a>
+      <div>
+        <input type="radio" class="btn-check " name="sidebar-type" id="mini-sidebar" autocomplete="off" />
+        <label class="btn rounded-md border border-border dark:border-darkborder text-link dark:text-darklink h-full py-3 px-5 cursor-pointer" for="mini-sidebar">
+          <iconify-icon icon="solar:siderbar-outline" class="icon fs-7 me-2"></iconify-icon>Collapse</label>
+      </div>
+    </div>
+
+    <!-- Border-sahdow Card Options  -->
+    <h6 class="font-semibold mb-2 text-dark dark:text-white">Card With</h6>
+    <div class="flex flex-row gap-3 customizer-box mb-8" role="group">
+      <input type="radio" class="btn-check" name="card-layout" id="card-with-border" autocomplete="off" />
+      <label class="btn rounded-md border border-border dark:border-darkborder text-link dark:text-darklink h-full py-3 px-5 cursor-pointer" for="card-with-border"><i
+          class="icon ti ti-border-outer text-2xl me-2"></i>Border</label>
+
+      <input type="radio" class="btn-check" name="card-layout" id="card-without-border" autocomplete="off" />
+      <label class="btn rounded-md border border-border dark:border-darkborder text-link dark:text-darklink h-full py-3 px-5 cursor-pointer" for="card-without-border">
+        <i class="icon ti ti-border-none text-2xl me-2"></i>Shadow</label>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  function handleColorTheme(e) {
+    document.documentElement.setAttribute("data-color-theme", e);
+  }
+</script>
+        </div>
+    </body>
+
+</html>

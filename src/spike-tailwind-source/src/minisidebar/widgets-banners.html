@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-color-theme="Blue_Theme" class="light selected"
+	data-layout="vertical" data-boxed-layout="boxed" data-card="shadow">
+
+	<head>
+		@@include("partials/head.html")
+		<title>Spike TailwindCSS HTML Admin Template</title>
+	</head>
+
+	<body class="DEFAULT_THEME bg-lightprimary dark:bg-darkbody">
+		<main>
+			<!--start the project-->
+			<div id="main-wrapper" class="flex p-5">
+
+				<aside id="application-sidebar-brand"
+					class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full xl:rtl:-translate-x-0 rtl:translate-x-full  left-0 rtl:left-auto xl:rtl:right-5 rtl:right-0 transform hidden xl:block xl:translate-x-0 xl:end-auto xl:bottom-0 fixed top-0 with-vertical  left-sidebar transition-all duration-300 h-screen z-[2] flex-shrink-0  w-[270px] border-border dark:border-darkborder bg-white dark:bg-dark xl:top-5 xl:start-5 shadow-md xl:rounded-md">
+                    @@include("partials/sidebar.html",{ "page":
+                    "widget-banners","page_group": "widgets" })
+				</aside>
+				<div class="page-wrapper w-full" role="main">
+
+					<!-- Main Content -->
+					<main class="h-full ">
+						<div class="container full-container py-5 xl:ps-6 ps-0 pt-0 pe-0 remove-ps">
+
+							<!--  Header Start -->
+							<header
+								class="sticky top-0 inset-x-0 z-[1] flex flex-wrap md:justify-start md:flex-nowrap text-fs_15 py-3 lg:py-0 mb-6 bg-white dark:bg-dark rounded-md shadow-md">
+								<div
+									class="with-vertical w-full">@@include("partials/header.html")</div>
+								<div class="with-horizontal w-full">
+									<div class="bg-white dark:bg-dark">
+										<div class="container">
+											@@include("partials/horizontal-header.html")
+										</div>
+									</div>
+								</div>
+							</header>
+							<!--  Header End -->
+
+							<!-- Horizontal Sidebar Menu -->
+							<aside
+								class="with-horizontal lg:flex hidden left-sidebar bg-white dark:bg-dark border-t border-border dark:border-darkborder">
+                                @@include("partials/horizontal-sidebar.html", { "page":
+                                "widget-banners","page_group": "widgets"})
+							</aside>
+							<!-- Horizontal Sidebar Menu End -->
+
+                            <!-- Main Content -->
+                            <div class="max-w-full">
+                                <div class="container full-container ">
+                                    <!----Breadcrumb Start---->
+                                    @@include("partials/breadcrumb.html", {"title":
+                                    "Banners", "subtitle": 'Home'})
+                                    <!----Breadcrumb End---->
+
+                                    <div class="grid grid-cols-12 gap-6">
+                                        <div class="lg:col-span-8 col-span-12">
+                                            <div class="grid grid-cols-12 gap-6">
+                                                <div class="col-span-12">
+                                                    <div
+                                                        class="card shadow-none bg-lightprimary dark:bg-darkprimary overflow-hidden">
+                                                        <div class="card-body">
+                                                            <div
+                                                                class="grid grid-cols-12 gap-6 ">
+                                                                <div
+                                                                    class="md:col-span-6 col-span-12">
+                                                                    <h5
+                                                                        class="card-title mb-5 ">Welcome
+                                                                        back
+                                                                        Natalia!</h5>
+                                                                    <p class="mb-5 card-subtitle">
+                                                                        You have earned
+                                                                        54% more than
+                                                                        last month
+                                                                        which is great
+                                                                        thing.
+                                                                    </p>
+                                                                    <button
+                                                                        class="btn ">Check</button>
+                                                                </div>
+                                                                <div
+                                                                    class="md:col-span-5 col-span-12 ">
+                                                                    <div
+                                                                        class="sm:absolute sm:mb-0 -mb-5 relative right-0 rtl:right-auto rtl:left-0 -bottom-3 flex sm:justify-end justify-center">
+                                                                        <img
+                                                                            src="@@webRoot/assets/images/backgrounds/welcome-bg2.png"
+                                                                            alt>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+        
+                                                <div class="col-span-12">
+                                                    <div
+                                                        class="card shadow-none bg-lightsecondary dark:bg-darksecondary overflow-hidden">
+                                                        <div class="card-body pb-0">
+                                                            <div
+                                                                class="grid grid-cols-12 gap-6 ">
+                                                                <div
+                                                                    class="md:col-span-6 col-span-12">
+                                                                    <h5
+                                                                        class="card-title mb-5 ">Track
+                                                                        your every
+                                                                        Transaction
+                                                                        Easily</h5>
+                                                                    <p class="mb-5 card-subtitle">
+                                                                        Track and record
+                                                                        your every
+                                                                        income and
+                                                                        expence easily
+                                                                        to control
+                                                                        your balance
+                                                                    </p>
+                                                                    <button
+                                                                        class="btn bg-secondary hover:bg-secondaryemphasis text-white">Download</button>
+                                                                </div>
+                                                                <div
+                                                                    class="md:col-span-5 col-span-12 ">
+                                                                    <div
+                                                                        class="relative xl:-mb-5 -mb-0 flex sm:justify-end justify-center">
+                                                                        <img
+                                                                            src="@@webRoot/assets/images/backgrounds/track-bg.png"
+                                                                            alt>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="md:col-span-6 col-span-12">
+                                                    <div class="card ">
+                                                        <div
+                                                            class="card-body text-center ">
+        
+                                                            <img
+                                                                src="@@webRoot/assets/images/backgrounds/website-under-construction.svg"
+                                                                alt
+                                                                class="mx-auto mb-5 max-h-56">
+                                                            <div>
+                                                                <h5
+                                                                    class="card-title mb-2 ">Oops
+                                                                    something went
+                                                                    wrong!
+                                                                </h5>
+                                                                <p class="card-subtitle mb-5 sm:px-8">
+                                                                    Trying again to
+                                                                    bypasses these
+                                                                    temporary error.
+                                                                </p>
+                                                                <button
+                                                                    class="btn btn-error">Retry</button>
+                                                            </div>
+        
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="md:col-span-6 col-span-12">
+                                                    <div class="card ">
+                                                        <div
+                                                            class="card-body text-center ">
+        
+                                                            <img
+                                                                src="@@webRoot/assets/images/products/empty-shopping-bag.gif"
+                                                                alt
+                                                                class="mx-auto mb-5  max-h-48">
+                                                            <div >
+                                                                <h5
+                                                                    class="card-title mb-2 ">Oop,
+                                                                    Your cart is empty!
+                                                                </h5>
+                                                                <p class="mb-5 card-subtitle">
+                                                                    Get back to shopping
+                                                                    and get rewards from
+                                                                    it.
+                                                                </p>
+                                                                <button
+                                                                    class="btn">Go
+                                                                    for
+                                                                    shopping!</button>
+                                                            </div>
+        
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="lg:col-span-4 col-span-12">
+                                            <div class="card mb-6">
+                                                <div class="card-body text-center ">
+                                                    <h5>LEVEL UP</h5>
+                                                    <img
+                                                        src="@@webRoot/assets/images/backgrounds/gold.png"
+                                                        alt
+                                                        class="mx-auto my-5"
+                                                        width="150">
+                                                    <div class="sm:px-8">
+                                                        <h5
+                                                            class="card-title mb-2 ">You
+                                                            reach all Notifications</h5>
+                                                        <p class="card-subtitle mb-5 px-3">
+                                                            Congratulations, Tap to
+                                                            continue next task.
+                                                        </p>
+                                                        <button
+                                                            class="btn ">Yes,
+                                                            Got it!</button>
+                                                    </div>
+        
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-body text-center ">
+                                                    <h5
+                                                        class="card-title mb-2 ">Mutual
+                                                        Friend Revealed</h5>
+        
+                                                    <div
+                                                        class="relative w-36 mx-auto my-5">
+                                                        <img
+                                                            src="@@webRoot/assets/images/profile/user-2.jpg"
+                                                            alt
+                                                            class=" max-h-36 rounded-full">
+                                                        <div
+                                                            class="bg-error h-5 w-5 rounded-full absolute top-1 right-4 text-white">1</div>
+                                                    </div>
+        
+                                                    <div class="sm:px-12 pt-3">
+                                                        <h5
+                                                            class="card-title mb-2 ">Tommoie
+                                                            Henderson</h5>
+                                                        <p class="card-subtitle mb-5 px-3">
+                                                            Accept the request and type
+                                                            a message
+                                                        </p>
+                                                        <div
+                                                            class="flex justify-center gap-3">
+                                                            <button
+                                                                class="btn px-4">Accept</button>
+                                                            <button
+                                                                class="btn btn-light-error
+                                                                 ">Accept</button>
+                                                        </div>
+        
+                                                    </div>
+        
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>    
+						</div>
+					</main>
+					<!-- Main Content End -->
+
+				</div>
+			</div>
+			<!--end of project-->
+		</main>
+		@@include("partials/header-components/mobile-menu.html")
+		@@include("partials/customizer.html")
+		@@include("partials/scripts.html")
+	</body>
+</html>

@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-color-theme="Blue_Theme" class="light selected" data-layout="vertical"
+  data-boxed-layout="boxed" data-card="shadow">
+
+<head>
+  @@include("partials/head.html")
+  <title>Spike TailwindCSS HTML Admin Template</title>
+</head>
+
+<body class="DEFAULT_THEME bg-lightprimary dark:bg-darkbody">
+  <main>
+    <!--start the project-->
+    <div id="main-wrapper" class="flex p-5">
+
+      <aside id="application-sidebar-brand"
+        class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full xl:rtl:-translate-x-0 rtl:translate-x-full  left-0 rtl:left-auto xl:rtl:right-5 rtl:right-0 transform hidden xl:block xl:translate-x-0 xl:end-auto xl:bottom-0 fixed top-0 with-vertical  left-sidebar transition-all duration-300 h-screen z-[2] flex-shrink-0  w-[270px] border-border dark:border-darkborder bg-white dark:bg-dark xl:top-5 xl:start-5 shadow-md xl:rounded-md">
+        @@include("partials/sidebar.html",{ "page": "form-inputs","page_group": "form" })
+      </aside>
+      <div class="page-wrapper w-full" role="main">
+
+        <!-- Main Content -->
+        <main class="h-full ">
+          <div class="container full-container py-5 xl:ps-6 ps-0 pt-0 pe-0 remove-ps">
+
+            <!--  Header Start -->
+            <header
+              class="sticky top-0 inset-x-0 z-[1] flex flex-wrap md:justify-start md:flex-nowrap text-fs_15 py-3 lg:py-0 mb-6 bg-white dark:bg-dark rounded-md shadow-md">
+              <div class="with-vertical w-full">@@include("partials/header.html")</div>
+              <div class="with-horizontal w-full">
+                <div class="bg-white dark:bg-dark">
+                  <div class="container">
+                    @@include("partials/horizontal-header.html")
+                  </div>
+                </div>
+              </div>
+            </header>
+            <!--  Header End -->
+
+            <!-- Horizontal Sidebar Menu -->
+            <aside
+              class="with-horizontal lg:flex hidden left-sidebar bg-white dark:bg-dark border-t border-border dark:border-darkborder">
+              @@include("partials/horizontal-sidebar.html", { "page": "form-inputs","page_group": "form"})
+            </aside>
+            <!-- Horizontal Sidebar Menu End -->
+
+            <!-- Main Content -->
+            <div class="max-w-full">
+              <div class="container full-container ">
+                <!----Breadcrumb Start---->
+                @@include("partials/breadcrumb.html", {"title": "Form Inputs", "subtitle": 'Home'})
+                <!----Breadcrumb End---->
+                <div class="grid grid-cols-12 gap-6">
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Default Input</h5>
+                        <p class="card-subtitle  mb-6">Basic example of <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">'input'</code> element.</p>
+                        <form action="#">
+                          <input id="form-inputText1" type="text" class="py-2.5 px-4 form-control ">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-6">Input With Helper Text</h5>
+                        <form action="#">
+                          <input type="text" id="input-label-with-helper-text10" class="py-2.5 px-4 form-control "
+                            placeholder="Name" aria-describedby="hs-input-helper-text">
+                          <p class="card-subtitle text-gray-500 mt-2" id="hs-input-helper-text">We'll never share your
+                            details.</p>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-6">Password</h5>
+                        <form action="#">
+                          <input type="password" autocomplete="off" id="input-label-with-helper-text11"
+                            class="py-2.5 px-4 form-control " placeholder="password"
+                            aria-describedby="hs-input-helper-text">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Disabled Input</h5>
+                        <p class="card-subtitle  mb-6">Add attribute <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">'disabled'</code> to disable input
+                          field.</p>
+                        <form action="#">
+                          <input type="text" id="input-label-with-helper-text12"
+                            class="py-2.5 px-4 form-control block w-full border-gray-200 rounded-lg text-sm focus:border-primary focus:ring-primary disabled:opacity-50 disabled:pointer-events-none  dark:border-gray-700 dark:text-gray-400 dark:bg-gray-700 dark:focus:ring-gray-600"
+                            placeholder="Name" aria-describedby="hs-input-helper-text" disabled>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Predefined Input Value</h5>
+                        <p class="card-subtitle  mb-6">Add attribute <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">value="VALUE"</code> to set
+                          predefined value.</p>
+                        <form action="#">
+                          <input type="text" id="input-label-with-helper-text13" class="py-2.5 px-4 form-control "
+                            aria-describedby="hs-input-helper-text" value="Name">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Readonly Input Field</h5>
+                        <p class="card-subtitle  mb-6">Add attribute <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">readonly</code> to set field
+                          readonly.</p>
+                        <form action="#">
+                          <input type="text" id="input-label-with-helper-text14" class="py-2.5 px-4 form-control "
+                            placeholder="Readonly Text" aria-describedby="hs-input-helper-text" readonly>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Input With Placeholder</h5>
+                        <p class="card-subtitle  mb-6">Add attribute <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">placeholder="..."</code> to input
+                          area.</p>
+                        <form action="#">
+                          <input type="text" id="input-label-with-helper-text15" class="py-2.5 px-4 form-control "
+                            placeholder="Placeholder Text" aria-describedby="hs-input-helper-text">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Maximum Value</h5>
+                        <p class="card-subtitle  mb-6">Add attribute <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">maxlength="6"</code> to input area.
+                        </p>
+                        <form action="#">
+                          <input type="text" id="input-label-with-helper-text16" class="py-2.5 px-4 form-control "
+                            placeholder="Placeholder Text" aria-describedby="hs-input-helper-text" maxlength="6">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Minimum Value</h5>
+                        <p class="card-subtitle  mb-6">Add attribute <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">minlength="5"</code> to input area.
+                        </p>
+                        <form action="#">
+                          <input type="text" id="input-label-with-helper-text17" class="py-2.5 px-4 form-control "
+                            placeholder="Placeholder Text" aria-describedby="hs-input-helper-text" minlength="5">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Pilled input</h5>
+                        <p class="card-subtitle  mb-6">Use the <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">`.rounded-full`</code> utility class
+                          to make inputs circular.</p>
+                        <form action="#">
+                          <input id="form-inputText2" type="text" class="py-2.5 px-4 form-control"
+                            placeholder="Input text">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-6">Floating label</h5>
+                        <form action="#">
+                          <!-- Floating Input -->
+                          <div class="relative mb-2">
+                            <input type="email" id="hs-floating-input-email" class="peer p-2.5 block w-full border-gray-200 rounded-lg text-sm placeholder:text-transparent form-control
+                                focus:pt-6
+                                focus:pb-2
+                                [&:not(:placeholder-shown)]:pt-6
+                                [&:not(:placeholder-shown)]:pb-2
+                                autofill:pt-6
+                                autofill:pb-2" placeholder="you@email.com">
+                            <label for="hs-floating-input-email" class="absolute top-0 start-0 p-2.5 h-full text-sm truncate pointer-events-none transition ease-in-out duration-100 border border-transparent dark:text-white peer-disabled:opacity-50 peer-disabled:pointer-events-none
+                                peer-focus:text-xs
+                                peer-focus:-translate-y-1.5
+                                peer-focus:text-gray-500
+                                peer-[:not(:placeholder-shown)]:text-xs
+                                peer-[:not(:placeholder-shown)]:-translate-y-1.5
+                                peer-[:not(:placeholder-shown)]:text-gray-500">Email</label>
+                          </div>
+                          <!-- End Floating Input -->
+
+                          <!-- Floating Input -->
+                          <div class="relative">
+                            <input type="password" autocomplete="off" id="hs-floating-underline-input-passowrd" class="peer py-4 px-0 block w-full bg-transparent border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm placeholder:text-transparent focus:border-t-transparent focus:border-x-transparent focus:border-b-primary dark:focus:border-b-primary focus:border-b-[0.5px] focus:ring-0 disabled:opacity-50 disabled:pointer-events-none dark:border-b-gray-700 dark:text-gray-400 dark:focus:ring-gray-600 dark:focus:border-b-gray-600
+                                focus:pt-6
+                                focus:pb-2
+                                [&:not(:placeholder-shown)]:pt-6
+                                [&:not(:placeholder-shown)]:pb-2
+                                autofill:pt-6
+                                autofill:pb-2" placeholder="********">
+                            <label for="hs-floating-underline-input-passowrd" class="absolute top-0 start-0 py-4 px-0 h-full text-sm truncate pointer-events-none transition ease-in-out duration-100 border border-transparent dark:text-white peer-disabled:opacity-50 peer-disabled:pointer-events-none
+                                peer-focus:text-xs
+                                peer-focus:-translate-y-1.5
+                                peer-focus:text-gray-500
+                                peer-[:not(:placeholder-shown)]:text-xs
+                                peer-[:not(:placeholder-shown)]:-translate-y-1.5
+                                peer-[:not(:placeholder-shown)]:text-gray-500">Password</label>
+                          </div>
+                          <!-- End Floating Input -->
+
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <h5 class="text-xl font-semibold text-gray-700 dark:text-gray-500 mt-12 mb-6">Input Type Options</h5>
+                <div class="grid grid-cols-12 gap-6">
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Input Type Text</h5>
+                        <p class="card-subtitle  mb-6">Using <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">input type="text"</code>.</p>
+                        <form action="#">
+                          <input type="text" id="form-inputText3" class="py-2.5 px-4 form-control " value="Name">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Input Type Password</h5>
+                        <p class="card-subtitle  mb-6">Using <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">input type="password"</code>.</p>
+                        <form action="#">
+                          <input type="password" autocomplete="off" id="form-inputPassword1"
+                            class="py-2.5 px-4 form-control " value="****">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Input Phone Number</h5>
+                        <p class="card-subtitle  mb-6">Using <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">input type="tel"</code>.</p>
+                        <form action="#">
+                          <input type="tel" id="form-inputTel1" class="py-2.5 px-4 form-control "
+                            value="1-(444)-444-4445">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Input Type Email</h5>
+                        <p class="card-subtitle  mb-6">Using <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">input type="email"</code>.</p>
+                        <form action="#">
+                          <input type="email" id="form-inputEmail1" class="py-2.5 px-4 form-control "
+                            value="abc@example.com">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Input Type URL</h5>
+                        <p class="card-subtitle  mb-6">Using <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">input type="url"</code>.</p>
+                        <form action="#">
+                          <input type="url" id="form-inputUrl1" class="py-2.5 px-4 form-control "
+                            value="http://google.com">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Input Type Search</h5>
+                        <p class="card-subtitle  mb-6">Using <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">input type="search"</code>.</p>
+                        <form action="#">
+                          <input type="search" id="form-inputSearch1" class="py-2.5 px-4 form-control "
+                            value="how to...">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Input Type Numbers</h5>
+                        <p class="card-subtitle  mb-6">Using <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">input type="number"</code>.</p>
+                        <form action="#">
+                          <input type="number" id="form-inputNumber1" class="py-2.5 px-4 form-control " value="6029">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Input Type Date Time</h5>
+                        <p class="card-subtitle  mb-6">Using <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">input type="datetime-local"</code>.
+                        </p>
+                        <form action="#">
+                          <input type="datetime-local" id="form-InputDatetime-local1" class="py-2.5 px-4 form-control "
+                            value="2008-05-13T22:33:00">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Input Type Date</h5>
+                        <p class="card-subtitle  mb-6">Using <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">input type="date"</code>.</p>
+                        <form action="#">
+                          <input type="date" id="form-InputDate1" class="py-2.5 px-4 form-control " value="2018-05-13">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Input Type Time</h5>
+                        <p class="card-subtitle  mb-6">Using <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">input type="time"</code>.</p>
+                        <form action="#">
+                          <input type="time" id="form-InputTime1" class="py-2.5 px-4 form-control " value="22:33:00">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Input Type Weeke</h5>
+                        <p class="card-subtitle  mb-6">Using <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">input type="week"</code>.</p>
+                        <form action="#">
+                          <input type="week" id="form-InputWeek1" class="py-2.5 px-4 form-control " value="2011-W33">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Input Type Month</h5>
+                        <p class="card-subtitle  mb-6">Using <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">input type="month"</code>.</p>
+                        <form action="#">
+                          <input type="month" id="form-InputMonth1" class="py-2.5 px-4 form-control " value="2024-08">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Input Type Color</h5>
+                        <p class="card-subtitle  mb-6">Using <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">input type="color"</code>.</p>
+                        <form action="#">
+                          <input type="color" id="form-InputColor1"
+                            class="p-1 h-10 block w-full border-gray-200 rounded-lg text-sm  dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600 dark:bg-transparent"
+                            value="#56008c">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Preline Colorpicker</h5>
+                        <p class="card-subtitle  mb-6">Set the <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">input type="color"</code> to the
+                          <code class="text-error bg-lightwarning dark:bg-darkwarning">'&#60;input&#62;'</code></p>
+                        <form action="#">
+                          <input type="color" id="form-InputColor2"
+                            class="p-1 h-10 w-14 block bg-white border border-gray-200 cursor-pointer rounded-lg disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700"
+                            id="hs-color-input" value="#56008c" title="Choose your color">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Input Type Range</h5>
+                        <p class="card-subtitle  mb-6">Using <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">input type="range"</code>.</p>
+                        <form action="#">
+                          <label for="basic-range-slider-usage" class="sr-only">Example range</label>
+                          <input type="range" id="basic-range-slider-usage" class="w-full bg-transparent cursor-pointer appearance-none disabled:opacity-50 disabled:pointer-events-none focus:outline-none
+                            [&::-webkit-slider-thumb]:w-2.5
+                            [&::-webkit-slider-thumb]:h-2.5
+                            [&::-webkit-slider-thumb]:-mt-0.5
+                            [&::-webkit-slider-thumb]:appearance-none
+                            [&::-webkit-slider-thumb]:bg-white
+                            [&::-webkit-slider-thumb]:shadow-[0_0_0_4px_rgba(37,99,235,1)]
+                            [&::-webkit-slider-thumb]:rounded-full
+                            [&::-webkit-slider-thumb]:transition-all
+                            [&::-webkit-slider-thumb]:duration-150
+                            [&::-webkit-slider-thumb]:ease-in-out
+                            [&::-webkit-slider-thumb]:dark:bg-slate-700
+                            
+                            [&::-moz-range-thumb]:w-2.5
+                            [&::-moz-range-thumb]:h-2.5
+                            [&::-moz-range-thumb]:appearance-none
+                            [&::-moz-range-thumb]:bg-white
+                            [&::-moz-range-thumb]:border-4
+                            [&::-moz-range-thumb]:border-blue-600
+                            [&::-moz-range-thumb]:rounded-full
+                            [&::-moz-range-thumb]:transition-all
+                            [&::-moz-range-thumb]:duration-150
+                            [&::-moz-range-thumb]:ease-in-out
+                            
+                            [&::-webkit-slider-runnable-track]:w-full
+                            [&::-webkit-slider-runnable-track]:h-2
+                            [&::-webkit-slider-runnable-track]:bg-gray-100
+                            [&::-webkit-slider-runnable-track]:rounded-full
+                            [&::-webkit-slider-runnable-track]:dark:bg-gray-700
+                            
+                            [&::-moz-range-track]:w-full
+                            [&::-moz-range-track]:h-2
+                            [&::-moz-range-track]:bg-gray-100
+                            [&::-moz-range-track]:rounded-full" id="basic-range-slider-usage">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <h5 class="text-xl font-semibold text-gray-700 dark:text-gray-500 mt-12 mb-6">General Textarea</h5>
+                <div class="grid grid-cols-12 gap-6">
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-6">Textarea</h5>
+                        <form action="#">
+                          <textarea id="form_InputTextarea1" class="py-2.5 px-4 form-control" rows="3"></textarea>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-6">Textarea With Placeholder</h5>
+                        <form action="#">
+                          <textarea id="form_InputTextarea2" class="py-2.5 px-4 form-control" rows="3"
+                            placeholder="This is a textarea placeholder"></textarea>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-6">Textarea With Helper Text</h5>
+                        <form action="#">
+                          <textarea id="textarea-label-with-helper-text" class="py-2.5 px-4 form-control" rows="3"
+                            placeholder="Say hi, we'll be happy to chat with you."
+                            aria-describedby="hs-textarea-helper-text"></textarea>
+                          <p class="text-xs text-gray-500 mt-2" id="hs-textarea-helper-text">We'll get back to you soon.
+                          </p>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <h5 class="text-xl font-semibold text-gray-700 dark:text-gray-500 mt-12 mb-6">Inline Checkboxes & Radios
+                </h5>
+                <div class="grid grid-cols-12 gap-6">
+                  <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-6">Inline Default Checkbox</h5>
+                        <form action="#">
+                          <div class="flex gap-x-6">
+                            <div class="flex">
+                              <input type="checkbox" class="form-check-input rounded" id="hs-checkbox-group-6">
+                              <label for="hs-checkbox-group-6"
+                                class="text-sm text-gray-500 ms-3 dark:text-gray-400">1</label>
+                            </div>
+
+                            <div class="flex">
+                              <input type="checkbox" class="form-check-input rounded" id="hs-checkbox-group-2">
+                              <label for="hs-checkbox-group-2"
+                                class="text-sm text-gray-500 ms-3 dark:text-gray-400">2</label>
+                            </div>
+
+                            <div class="flex opacity-40">
+                              <input id="hs-checkbox-group-7" type="checkbox" class="form-check-input rounded" checked
+                                disabled>
+                              <label for="hs-checkbox-group-7"
+                                class="text-sm text-gray-500 ms-3 dark:text-gray-400">3(disabled)</label>
+                            </div>
+                          </div>
+
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-6">Textarea With Placeholder</h5>
+                        <form action="#">
+                          <div class="flex gap-x-6">
+                            <div class="flex">
+                              <input type="radio" name="hs-radio-group"
+                                class="shrink-0 mt-0.5 h-5 w-5 form-check-input"
+                                id="hs-radio-group-1" checked>
+                              <label for="hs-radio-group-1"
+                                class="text-sm text-gray-500 ms-2 dark:text-gray-400">1</label>
+                            </div>
+
+                            <div class="flex">
+                              <input type="radio" name="hs-radio-group"
+                                class="shrink-0 mt-0.5 h-5 w-5 form-check-input"
+                                id="hs-radio-group-2">
+                              <label for="hs-radio-group-2"
+                                class="text-sm text-gray-500 ms-2 dark:text-gray-400">2</label>
+                            </div>
+
+                            <div class="flex opacity-40">
+                              <input type="radio" name="hs-disabled-radio"
+                                class="shrink-0 mt-0.5 h-5 w-5 form-check-input"
+                                id="hs-disabled-radio" disabled>
+                              <label for="hs-disabled-radio"
+                                class="text-sm text-gray-500 ms-2 dark:text-gray-400">3(disabled)</label>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-6">Inline Custom Checkbox</h5>
+                        <form action="#">
+                          <div class="flex gap-x-6">
+                            <div class="flex">
+                              <input type="checkbox" class="form-check-input rounded" id="hs-checkbox-group-1">
+                              <label for="hs-checkbox-group-1"
+                                class="text-sm text-gray-500 ms-3 dark:text-gray-400">1</label>
+                            </div>
+
+                            <div class="flex">
+                              <input type="checkbox" class="form-check-input rounded" id="hs-checkbox-group-18">
+                              <label for="hs-checkbox-group-18"
+                                class="text-sm text-gray-500 ms-3 dark:text-gray-400">2</label>
+                            </div>
+
+                            <div class="flex">
+                              <input type="checkbox" id="hs-checkbox-group-8" class="form-check-input rounded">
+                              <label for="hs-checkbox-group-8"
+                                class="text-sm text-gray-500 ms-3 dark:text-gray-400">3</label>
+                            </div>
+                          </div>
+
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-6">Inline Custom Radios</h5>
+                        <form action="#">
+                          <div class="flex gap-x-6">
+                            <div class="flex">
+                              <input type="radio" name="hs-radio-group"
+                                class="shrink-0 mt-0.5 h-5 w-5 form-check-input"
+                                id="hs-radio-group-14" checked>
+                              <label for="hs-radio-group-14"
+                                class="text-sm text-gray-500 ms-2 dark:text-gray-400">1</label>
+                            </div>
+
+                            <div class="flex">
+                              <input type="radio" name="hs-radio-group"
+                                class="shrink-0 mt-0.5 h-5 w-5 form-check-input"
+                                id="hs-radio-group-15">
+                              <label for="hs-radio-group-15"
+                                class="text-sm text-gray-500 ms-2 dark:text-gray-400">2</label>
+                            </div>
+
+                            <div class="flex opacity-40">
+                              <input type="radio" name="hs-disabled-radio"
+                                class="shrink-0 mt-0.5 h-5 w-5 form-check-input"
+                                id="hs-disabled-radio2" disabled>
+                              <label for="hs-disabled-radio2"
+                                class="text-sm text-gray-500 ms-2 dark:text-gray-400">3</label>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <h5 class="text-xl font-semibold text-gray-700 dark:text-gray-500 mt-12 mb-6">General Select</h5>
+                <div class="grid grid-cols-12 gap-6">
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-6">Select</h5>
+                        <form action="#">
+                          <select id="form_InputSelect1" class="py-2.5 px-4 pe-9 form-control">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option selected>4</option>
+                          </select>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Label</h5>
+                        <p class="card-subtitle  mb-6">Basic input example with label.</p>
+                        <form action="#">
+                          <label for="hs-select-label"
+                            class="block text-sm font-medium mb-2 dark:text-white">Label</label>
+                          <select id="hs-select-label" class="py-2.5 px-4 pe-9 form-control">
+                            <option selected>Choose...</option>
+                            <option>One</option>
+                            <option>Two</option>
+                            <option>Three</option>
+                            <option>Four</option>
+                          </select>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Pilled select</h5>
+                        <p class="card-subtitle  mb-6">Use the <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">'.rounded-full'</code> utility class
+                          to make select circular.</p>
+                        <form action="#">
+                          <select id="form_InputSelect2" class="py-2.5 px-4 pe-9 form-control rounded-full">
+                            <option selected>Open this select menu</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                          </select>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-6">Floating label</h5>
+                        <form action="#">
+                          <!-- Floating Select -->
+                          <div class="relative">
+                            <select id="form_InputSelect3" class="peer p-4 pe-9 form-control
+                            focus:pt-6
+                            focus:pb-2
+                            [&:not(:placeholder-shown)]:pt-6
+                            [&:not(:placeholder-shown)]:pb-2
+                            autofill:pt-6
+                            autofill:pb-2">
+                              <option selected>Open this select menu</option>
+                              <option>1</option>
+                              <option>2</option>
+                              <option>3</option>
+                            </select>
+                            <label for="form_InputSelect3" class="absolute top-0 start-0 p-4 h-full truncate pointer-events-none transition ease-in-out duration-100 border border-transparent dark:text-white peer-disabled:opacity-50 peer-disabled:pointer-events-none
+                            peer-focus:text-xs
+                            peer-focus:-translate-y-1.5
+                            peer-focus:text-gray-500
+                            peer-[:not(:placeholder-shown)]:text-xs
+                            peer-[:not(:placeholder-shown)]:-translate-y-1.5
+                            peer-[:not(:placeholder-shown)]:text-gray-500">Label</label>
+                          </div>
+                          <!-- End Floating Select -->
+
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-6">Disabled</h5>
+                        <form action="#">
+                          <select id="form_InputSelect4" class="py-2.5 px-4 pe-9 form-control" disabled>
+                            <option selected>Open this select menu</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                          </select>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <h5 class="text-xl font-semibold text-gray-700 dark:text-gray-500 mt-12 mb-6">File Upload</h5>
+                <div class="grid grid-cols-12 gap-6">
+                  <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Default File Upload</h5>
+                        <p class="card-subtitle mb-6">Basic file input example.</p>
+
+                        <form>
+                          <label for="file-input" class="sr-only">Choose file</label>
+                          <input id="form_InputFile1" type="file" name="file-input" id="file-input" class="block w-full border border-gray-200  rounded-lg text-sm focus:z-10 focus:border-primary focus:ring-primary disabled:opacity-50 disabled:pointer-events-none  dark:border-gray-700 dark:text-gray-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600 focus:outline-none
+                                  file:bg-gray-50 file:border-0
+                                  file:me-4
+                                  file:py-2.5 file:px-4
+                                  dark:file:bg-gray-700 dark:file:text-gray-400">
+                        </form>
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Disabled File Upload</h5>
+                        <p class="card-subtitle  mb-6">To use add <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">'disabled'</code> attr to the input
+                        </p>
+
+                        <form>
+                          <label for="file-input" class="sr-only">Choose file</label>
+                          <input type="file" name="file-input" id="file-input" class="block w-full border border-gray-200  rounded-lg text-sm focus:z-10 focus:border-primary focus:ring-primary disabled:opacity-50 disabled:pointer-events-none  dark:border-gray-700 dark:text-gray-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600
+                                  file:bg-gray-50 file:border-0
+                                  file:me-4
+                                  file:py-2.5 file:px-4
+                                  dark:file:bg-gray-700 dark:file:text-gray-400" disabled>
+                        </form>
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Sizes</h5>
+                        <p class="card-subtitle  mb-6">File inputs stacked small to large sizes.</p>
+                        <div class="flex flex-col gap-2">
+                          <form>
+                            <label for="small-file-input" class="sr-only">Choose file</label>
+                            <input type="file" name="small-file-input" id="small-file-input" class="block w-full border border-gray-200  rounded-lg text-sm focus:z-10 focus:border-primary focus:ring-primary disabled:opacity-50 disabled:pointer-events-none  dark:border-gray-700 dark:text-gray-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600 focus:outline-none
+                                  file:bg-gray-50 file:border-0
+                                  file:me-4
+                                  file:py-2 file:px-4
+                                  dark:file:bg-gray-700 dark:file:text-gray-400">
+                          </form>
+
+                          <form>
+                            <label for="file-input-medium" class="sr-only">Choose file</label>
+                            <input type="file" name="file-input-medium" id="file-input-medium" class="block w-full border border-gray-200  rounded-lg text-sm focus:z-10 focus:border-primary focus:ring-primary disabled:opacity-50 disabled:pointer-events-none  dark:border-gray-700 dark:text-gray-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600 focus:outline-none
+                                  file:bg-gray-50 file:border-0
+                                  file:me-4
+                                  file:py-2.5 file:px-4
+                                  dark:file:bg-gray-700 dark:file:text-gray-400">
+                          </form>
+
+                          <form>
+                            <label for="large-file-input" class="sr-only">Choose file</label>
+                            <input type="file" name="large-file-input" id="large-file-input" class="block w-full border border-gray-200  rounded-lg text-sm focus:z-10 focus:border-primary focus:ring-primary disabled:opacity-50 disabled:pointer-events-none  dark:border-gray-700 dark:text-gray-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600 focus:outline-none
+                                  file:bg-gray-50 file:border-0
+                                  file:me-4
+                                  file:py-2.5 file:px-4 file:sm:py-5
+                                  dark:file:bg-gray-700 dark:file:text-gray-400">
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">File input buttons</h5>
+                        <p class="card-subtitle  mb-6">Button style file input example.</p>
+                        <form action="">
+                          <form>
+                            <label class="block">
+                              <span class="sr-only">Choose profile photo</span>
+                              <input id="form_InputFile6" type="file" class="block w-full text-sm text-gray-500
+                                    file:me-4 file:py-2 file:px-4
+                                    file:rounded-lg file:border-0
+                                    file:text-sm file:font-semibold
+                                    file:bg-primary file:text-white
+                                    hover:file:bg-primaryemphasis
+                                    file:disabled:opacity-50 file:disabled:pointer-events-none
+                                    dark:file:bg-primary
+                                    dark:hover:file:bg-primary focus:outline-none
+                                  ">
+                            </label>
+                          </form>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <h5 class="text-xl font-semibold text-gray-700 dark:text-gray-500 mt-12 mb-6">Different Style in Helper
+                  Text</h5>
+                <div class="grid grid-cols-12 gap-6">
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Left Helper Text</h5>
+                        <p class="card-subtitle  mb-6">To use add <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">'justify-start'</code> class to the
+                          text.</p>
+                        <form>
+                          <label for="input-label-with-helper-text"
+                            class="block text-sm font-medium mb-2 dark:text-white">Email</label>
+                          <input type="email" id="input-label-with-helper-text" class="py-2.5 px-4 form-control"
+                            placeholder="you@site.com" aria-describedby="hs-input-helper-text">
+                          <div class="flex justify-start">
+                            <p class="card-subtitle py-1 px-3 bg-lightprimary text-primaryemphasis dark:bg-darkprimary dark:text-primary mt-1"
+                              id="hs-input-helper-text leading-none">Helper text</p>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Center Helper Text</h5>
+                        <p class="card-subtitle  mb-6">To use add <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">'justify-center'</code> class to the
+                          text.</p>
+                        <form>
+                          <label for="input-label-with-helper-text2"
+                            class="block text-sm font-medium mb-2 dark:text-white">Email</label>
+                          <input type="email" id="input-label-with-helper-text2" class="py-2.5 px-4 form-control"
+                            placeholder="you@site.com" aria-describedby="hs-input-helper-text">
+                          <div class="flex justify-center">
+                            <p class="card-subtitle py-1 px-3 bg-lightwarning text-warningemphasis dark:bg-darkwarning dark:text-warning mt-1"
+                              id="hs-input-helper-text leading-none">Helper text</p>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Right Helper Text</h5>
+                        <p class="card-subtitle  mb-6">To use add <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">'justify-end'</code> class to the
+                          text.</p>
+                        <form>
+                          <label for="input-label-with-helper-text3"
+                            class="block text-sm font-medium mb-2 dark:text-white">Email</label>
+                          <input type="email" id="input-label-with-helper-text3" class="py-2.5 px-4 form-control"
+                            placeholder="you@site.com" aria-describedby="hs-input-helper-text">
+                          <div class="flex justify-center">
+                            <p class="card-subtitle py-1 px-3 bg-lighterror text-erroremphasis dark:bg-darkerror dark:text-error mt-1"
+                              id="hs-input-helper-text leading-none">Helper text</p>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Inline Helper Text</h5>
+                        <p class="card-subtitle  mb-6">Basic input example with inline helper text.</p>
+                        <form>
+                          <div class="sm:inline-flex sm:items-center space-y-2 sm:space-y-0 sm:space-x-3 w-full">
+                            <input type="email" id="inline-input-label-with-helper-text"
+                              class="py-2.5 px-4 form-control" placeholder="you@site.com"
+                              aria-describedby="hs-inline-input-helper-text">
+                            <p class="card-subtitle text-gray-500 mt-2 text-nowrap" id="hs-inline-input-helper-text">
+                              Helper Text</p>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-0">Inline Helper Text With Color</h5>
+                        <p class="card-subtitle  mb-6">Input example with inline helper text with color.</p>
+                        <form>
+                          <div class="sm:inline-flex sm:items-center space-y-2 sm:space-y-0 sm:space-x-3 w-full">
+                            <input type="email" id="inline-input-label-with-helper-text2"
+                              class="py-2.5 px-4 form-control" placeholder="you@site.com"
+                              aria-describedby="hs-inline-input-helper-text">
+                            <p class="card-subtitle py-1 px-3 bg-lightsuccess text-successemphasis dark:bg-darksuccess dark:text-success mt-1 text-nowrap"
+                              id="hs-inline-input-helper-text">Helper Text</p>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <h5 class="text-xl font-semibold text-gray-700 dark:text-gray-500 mt-12 mb-6">Input With Validaton</h5>
+                <div class="grid grid-cols-12 gap-6">
+                  <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-6">Input With Success</h5>
+                        <form>
+                          <div>
+                            <label for="hs-validation-name-success"
+                              class="block text-sm text-dark font-medium mb-2 dark:text-white">Email</label>
+                            <div class="relative">
+                              <input type="text" id="hs-validation-name-success" name="hs-validation-name-success"
+                                class="py-2.5 px-4 block w-full border-success rounded-lg text-sm focus:border-success focus:ring-success dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400"
+                                required aria-describedby="hs-validation-name-success-helper">
+                              <div class="absolute inset-y-0 end-0 flex items-center pointer-events-none pe-3">
+                                <i class="ti ti-check text-lg leading-tight font-medium text-success"></i>
+                              </div>
+                            </div>
+                            <p class="card-subtitle text-success mt-2" id="hs-validation-name-success-helper">Looks
+                              good!</p>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-6">Input With Success</h5>
+                        <form>
+                          <div>
+                            <label for="hs-validation-name-error"
+                              class="block text-sm text-dark font-medium mb-2 dark:text-white">Email</label>
+                            <div class="relative">
+                              <input type="text" id="hs-validation-name-error" name="hs-validation-name-error"
+                                class="py-2.5 px-4 block w-full border-error rounded-lg text-sm focus:border-error focus:ring-error dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400"
+                                required aria-describedby="hs-validation-name-error-helper">
+                              <div class="absolute inset-y-0 end-0 flex items-center pointer-events-none pe-3">
+                                <i class="ti ti-alert-circle text-lg leading-tight font-medium text-error"></i>
+                              </div>
+                            </div>
+                            <p class="card-subtitle text-error mt-2" id="hs-validation-name-error-helper">Please enter a
+                              valid email address.</p>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-6">Select With Success</h5>
+                        <form>
+                          <div>
+                            <label for="select-2" class="block text-sm font-medium mb-2 dark:text-white">Label</label>
+                            <div class="relative">
+                              <select id="select-2"
+                                class="py-2.5 px-4 pe-16 block w-full border-success rounded-lg text-sm focus:border-success focus:ring-success disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600">
+                                <option>Open this select menu</option>
+                                <option selected>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                              </select>
+                              <div class="absolute inset-y-0 end-0 flex items-center pointer-events-none pe-8">
+                                <i class="ti ti-check text-lg leading-tight font-medium text-success"></i>
+                              </div>
+                            </div>
+                            <p class="card-subtitle text-success mt-2">Looks good!</p>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-6">Select With Error</h5>
+                        <form>
+                          <div>
+                            <label for="select-3" class="block text-sm font-medium mb-2 dark:text-white">Label</label>
+                            <div class="relative">
+                              <select id="select-3"
+                                class="py-2.5 px-4 pe-16 block w-full border-error rounded-lg text-sm focus:border-error focus:ring-error disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600">
+                                <option>Open this select menu</option>
+                                <option selected>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                              </select>
+                              <div class="absolute inset-y-0 end-0 flex items-center pointer-events-none pe-8">
+                                <i class="ti ti-alert-circle text-lg leading-tight font-medium text-error"></i>
+                              </div>
+                            </div>
+                            <p class="card-subtitle text-error mt-2">Please select a valid state.</p>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <h5 class="text-xl font-semibold text-gray-700 dark:text-gray-500 mt-12 mb-6">Input Text Styles</h5>
+                <div class="grid grid-cols-12 gap-6">
+                  <div class="lg:col-span-3 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-6">Input Text Bold</h5>
+                        <form>
+                          <input type="text" id="form-inputText11" class="py-2.5 px-4 form-control font-bold"
+                            placeholder="Bold Text">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-3 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-6">Input Text Normal</h5>
+                        <form>
+                          <input type="text" id="form-inputText12" class="py-2.5 px-4 form-control font-normal"
+                            placeholder="Normal Text">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-3 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-6">Input Text Light</h5>
+                        <form>
+                          <input type="text" id="form-inputText13" class="py-2.5 px-4 form-control font-light"
+                            placeholder="Normal Text">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-3 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-6">Input Text Italic</h5>
+                        <form>
+                          <input type="text" id="form-inputText14" class="py-2.5 px-4 form-control font-light italic"
+                            placeholder="Italic Text">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-6">Input Text Lowercase</h5>
+                        <form>
+                          <input type="text" id="form-inputText15" class="py-2.5 px-4 form-control font-light lowercase"
+                            placeholder="lowercase">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-6">Input Text Uppercase</h5>
+                        <form>
+                          <input type="text" id="form-inputText16" class="py-2.5 px-4 form-control font-light uppercase"
+                            placeholder="UPPERCASE">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-6">Input Text Capitalize</h5>
+                        <form>
+                          <input type="text" id="form-inputText17"
+                            class="py-2.5 px-4 form-control font-light capitalize" placeholder="Capitalize">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <h5 class="text-xl font-semibold text-gray-700 dark:text-gray-500 mt-12 mb-6">Input Sizing</h5>
+                <div class="grid grid-cols-12 gap-6">
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-6">Small Input</h5>
+                        <form>
+                          <input type="text" id="form-inputText18" class="py-2 px-3 form-control"
+                            placeholder="Small size">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-6">Normal Input</h5>
+                        <form>
+                          <input type="text" id="form-inputText19" class="py-2.5 px-4 form-control"
+                            placeholder="Default size">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12 flex">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title mb-6">Large Input</h5>
+                        <form>
+                          <input type="text" id="form-inputText20" class="p-4 sm:p-5 form-control"
+                            placeholder="Large size">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+        <!-- Main Content End -->
+
+      </div>
+    </div>
+    <!--end of project-->
+  </main>
+  @@include("partials/header-components/mobile-menu.html")
+  @@include("partials/customizer.html")
+  @@include("partials/scripts.html")
+</body>
+
+</html>

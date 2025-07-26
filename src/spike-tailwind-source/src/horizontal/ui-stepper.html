@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-color-theme="Blue_Theme" class="light selected" data-layout="vertical"
+    data-boxed-layout="boxed" data-card="shadow">
+
+<head>
+    @@include("partials/head.html")
+    <title>Spike TailwindCSS HTML Admin Template</title>
+    <link rel="stylesheet" href="@@webRoot/node_modules/prismjs/themes/prism-okaidia.min.css">
+</head>
+
+<body class="DEFAULT_THEME bg-lightprimary dark:bg-darkbody">
+    <main>
+        <!--start the project-->
+        <div id="main-wrapper" class="flex p-5">
+
+            <aside id="application-sidebar-brand"
+                class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full xl:rtl:-translate-x-0 rtl:translate-x-full  left-0 rtl:left-auto xl:rtl:right-5 rtl:right-0 transform hidden xl:block xl:translate-x-0 xl:end-auto xl:bottom-0 fixed top-0 with-vertical  left-sidebar transition-all duration-300 h-screen z-[2] flex-shrink-0  w-[270px] border-border dark:border-darkborder bg-white dark:bg-dark xl:top-5 xl:start-5 shadow-md xl:rounded-md">
+                @@include("partials/sidebar.html",{ "page": "ui-stepper","page_group": "ui" })
+            </aside>
+            <div class="page-wrapper w-full" role="main">
+
+                <!-- Main Content -->
+                <main class="h-full ">
+                    <div class="container full-container py-5 xl:ps-6 ps-0 pt-0 pe-0 remove-ps">
+
+                        <!--  Header Start -->
+                        <header
+                            class="sticky top-0 inset-x-0 z-[1] flex flex-wrap md:justify-start md:flex-nowrap text-fs_15 py-3 lg:py-0 mb-6 bg-white dark:bg-dark rounded-md shadow-md">
+                            <div class="with-vertical w-full">@@include("partials/header.html")</div>
+                            <div class="with-horizontal w-full">
+                                <div class="bg-white dark:bg-dark">
+                                    <div class="container">
+                                        @@include("partials/horizontal-header.html")
+                                    </div>
+                                </div>
+                            </div>
+                        </header>
+                        <!--  Header End -->
+
+                        <!-- Horizontal Sidebar Menu -->
+                        <aside
+                            class="with-horizontal lg:flex hidden left-sidebar bg-white dark:bg-dark border-t border-border dark:border-darkborder">
+                            @@include("partials/horizontal-sidebar.html", { "page": "ui-stepper","page_group": "ui"})
+                        </aside>
+                        <!-- Horizontal Sidebar Menu End -->
+
+                        <!-- Main Content -->
+                        <div class="max-w-full">
+                            <div class="container full-container ">
+                                <!----Breadcrumb Start---->
+                                @@include("partials/breadcrumb.html", {"title": "Stepper", "subtitle": 'Home'})
+                                <!----Breadcrumb End---->
+                                <div class="grid grid-cols-12 gap-6">
+                                    <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title mb-0">Solid Stepper</h5>
+                                                <p class="card-subtitle  mb-6">Solid stepper example.</p>
+                                                <!-- Stepper -->
+                                                <ul class="relative flex flex-row gap-x-2">
+                                                    <!-- Item -->
+                                                    <li class="flex items-center gap-x-2 shrink basis-0 flex-1 group">
+                                                        <div
+                                                            class="min-w-7 min-h-7 inline-flex justify-center items-center text-xs align-middle">
+                                                            <span
+                                                                class="size-7 flex justify-center items-center flex-shrink-0 bg-gray-800 font-medium text-white rounded-full dark:bg-white dark:text-gray-800">
+                                                                1
+                                                            </span>
+                                                            <span
+                                                                class="ms-2 block text-sm font-medium text-gray-800 dark:text-white">
+                                                                Step
+                                                            </span>
+                                                        </div>
+                                                        <div
+                                                            class="w-full h-px flex-1 bg-gray-200 group-last:hidden dark:bg-gray-700">
+                                                        </div>
+                                                    </li>
+                                                    <!-- End Item -->
+
+                                                    <!-- Item -->
+                                                    <li class="flex items-center gap-x-2 shrink basis-0 flex-1 group">
+                                                        <div
+                                                            class="min-w-7 min-h-7 inline-flex justify-center items-center text-xs align-middle">
+                                                            <span
+                                                                class="size-7 flex justify-center items-center flex-shrink-0 bg-gray-800 font-medium text-white rounded-full dark:bg-white dark:text-gray-800">
+                                                                2
+                                                            </span>
+                                                            <span
+                                                                class="ms-2 block text-sm font-medium text-gray-800 dark:text-white">
+                                                                Step
+                                                            </span>
+                                                        </div>
+                                                        <div
+                                                            class="w-full h-px flex-1 bg-gray-200 group-last:hidden dark:bg-gray-700">
+                                                        </div>
+                                                    </li>
+                                                    <!-- End Item -->
+
+                                                    <!-- Item -->
+                                                    <li class="flex items-center gap-x-2 shrink basis-0 flex-1 group">
+                                                        <div
+                                                            class="min-w-7 min-h-7 inline-flex justify-center items-center text-xs align-middle">
+                                                            <span
+                                                                class="size-7 flex justify-center items-center flex-shrink-0 bg-gray-800 font-medium text-white rounded-full dark:bg-white dark:text-gray-800">
+                                                                3
+                                                            </span>
+                                                            <span
+                                                                class="ms-2 block text-sm font-medium text-gray-800 dark:text-white">
+                                                                Step
+                                                            </span>
+                                                        </div>
+                                                        <div
+                                                            class="w-full h-px flex-1 bg-gray-200 group-last:hidden dark:bg-gray-700">
+                                                        </div>
+                                                    </li>
+                                                    <!-- End Item -->
+                                                </ul>
+                                                <!-- End Stepper -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title mb-0">Working with icon and avatar</h5>
+                                                <p class="card-subtitle  mb-6">You can also add additional elements,
+                                                    such as an avatar image or icons.</p>
+                                                <!-- Stepper -->
+                                                <ul class="relative flex flex-row gap-x-2">
+                                                    <!-- Item -->
+                                                    <li class="flex items-center gap-x-2 shrink basis-0 flex-1 group">
+                                                        <div
+                                                            class="min-w-7 min-h-7 inline-flex justify-center items-center text-xs align-middle">
+                                                            <img class="flex-shrink-0 size-7 rounded-full"
+                                                                src="../assets/images/profile/user-7.jpg"
+                                                                alt="Image Description">
+                                                            <span
+                                                                class="ms-2 block text-sm font-medium text-gray-800 dark:text-white">
+                                                                Step
+                                                            </span>
+                                                        </div>
+                                                        <div
+                                                            class="w-full h-px flex-1 bg-gray-200 group-last:hidden dark:bg-gray-700">
+                                                        </div>
+                                                    </li>
+                                                    <!-- End Item -->
+
+                                                    <!-- Item -->
+                                                    <li class="flex items-center gap-x-2 shrink basis-0 flex-1 group">
+                                                        <div
+                                                            class="min-w-7 min-h-7 inline-flex justify-center items-center text-xs align-middle">
+                                                            <span
+                                                                class="size-7 flex justify-center items-center flex-shrink-0 bg-white border border-gray-200 font-medium text-gray-800 rounded-full dark:bg-slate-900 dark:border-gray-700 dark:text-white">
+                                                                <svg class="flex-shrink-0 size-4"
+                                                                    xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                    height="24" viewBox="0 0 24 24" fill="none"
+                                                                    stroke="currentColor" stroke-width="2"
+                                                                    stroke-linecap="round" stroke-linejoin="round">
+                                                                    <path d="M16 3h5v5" />
+                                                                    <path d="M8 3H3v5" />
+                                                                    <path d="M12 22v-8.3a4 4 0 0 0-1.172-2.872L3 3" />
+                                                                    <path d="m15 9 6-6" />
+                                                                </svg>
+                                                            </span>
+                                                            <span
+                                                                class="ms-2 block text-sm font-medium text-gray-800 dark:text-white">
+                                                                Step
+                                                            </span>
+                                                        </div>
+                                                        <div
+                                                            class="w-full h-px flex-1 bg-gray-200 group-last:hidden dark:bg-gray-700">
+                                                        </div>
+                                                    </li>
+                                                    <!-- End Item -->
+
+                                                    <!-- Item -->
+                                                    <li class="flex items-center gap-x-2 shrink basis-0 flex-1 group">
+                                                        <div
+                                                            class="min-w-7 min-h-7 inline-flex justify-center items-center text-xs align-middle">
+                                                            <span
+                                                                class="size-7 flex justify-center items-center flex-shrink-0 bg-white border border-gray-200 font-medium text-gray-800 rounded-full dark:bg-slate-900 dark:border-gray-700 dark:text-white">
+                                                                <span
+                                                                    class="animate-spin inline-block size-4 border-[3px] border-current border-t-transparent text-primary rounded-full dark:text-primary"
+                                                                    role="status" aria-label="loading">
+                                                                    <span class="sr-only">Loading...</span>
+                                                                </span>
+                                                            </span>
+                                                            <span
+                                                                class="ms-2 block text-sm font-medium text-gray-800 dark:text-white">
+                                                                Step
+                                                            </span>
+                                                        </div>
+                                                        <div
+                                                            class="w-full h-px flex-1 bg-gray-200 group-last:hidden dark:bg-gray-700">
+                                                        </div>
+                                                    </li>
+                                                    <!-- End Item -->
+                                                </ul>
+                                                <!-- End Stepper -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title mb-0">Dynamic Linear</h5>
+                                                <p class="card-subtitle  mb-6">A dynamic stepper example that guides
+                                                    users through the steps of a task.</p>
+                                                <!-- Stepper -->
+                                                <div data-hs-stepper>
+                                                    <!-- Stepper Nav -->
+                                                    <ul class="relative flex flex-row gap-x-2">
+                                                        <li class="flex items-center gap-x-2 shrink basis-0 flex-1 group"
+                                                            data-hs-stepper-nav-item='{
+                                                    "index": 1
+                                                }'>
+                                                            <span
+                                                                class="min-w-7 min-h-7 group inline-flex items-center text-xs align-middle">
+                                                                <span
+                                                                    class="size-7 flex justify-center items-center flex-shrink-0 bg-gray-100 font-medium text-gray-800 rounded-full group-focus:bg-gray-200 dark:bg-gray-700 dark:text-white dark:group-focus:bg-gray-600 hs-stepper-active:bg-primary hs-stepper-active:text-white hs-stepper-success:bg-primary hs-stepper-success:text-white hs-stepper-completed:bg-success hs-stepper-completed:group-focus:bg-success">
+                                                                    <span
+                                                                        class="hs-stepper-success:hidden hs-stepper-completed:hidden">1</span>
+                                                                    <i
+                                                                        class="ti ti-check text-lg leading-tight font-medium hidden hs-stepper-success:block"></i>
+                                                                </span>
+                                                                <span class="ms-2 text-sm font-medium text-gray-800">
+                                                                    Step
+                                                                </span>
+                                                            </span>
+                                                            <div
+                                                                class="w-full h-px flex-1 bg-gray-200 group-last:hidden hs-stepper-success:bg-primary hs-stepper-completed:bg-success">
+                                                            </div>
+                                                        </li>
+
+                                                        <li class="flex items-center gap-x-2 shrink basis-0 flex-1 group"
+                                                            data-hs-stepper-nav-item='{
+                                                    "index": 2
+                                                }'>
+                                                            <span
+                                                                class="min-w-7 min-h-7 group inline-flex items-center text-xs align-middle">
+                                                                <span
+                                                                    class="size-7 flex justify-center items-center flex-shrink-0 bg-gray-100 font-medium text-gray-800 rounded-full group-focus:bg-gray-200 dark:bg-gray-700 dark:text-white dark:group-focus:bg-gray-600 hs-stepper-active:bg-primary hs-stepper-active:text-white hs-stepper-success:bg-primary hs-stepper-success:text-white hs-stepper-completed:bg-success hs-stepper-completed:group-focus:bg-success">
+                                                                    <span
+                                                                        class="hs-stepper-success:hidden hs-stepper-completed:hidden">2</span>
+                                                                    <i
+                                                                        class="ti ti-check text-lg leading-tight font-medium hidden hs-stepper-success:block"></i>
+                                                                </span>
+                                                                <span class="ms-2 text-sm font-medium text-gray-800">
+                                                                    Step
+                                                                </span>
+                                                            </span>
+                                                            <div
+                                                                class="w-full h-px flex-1 bg-gray-200 group-last:hidden hs-stepper-success:bg-primary hs-stepper-completed:bg-success">
+                                                            </div>
+                                                        </li>
+
+                                                        <li class="flex items-center gap-x-2 shrink basis-0 flex-1 group"
+                                                            data-hs-stepper-nav-item='{
+                                                    "index": 3
+                                                    }'>
+                                                            <span
+                                                                class="min-w-7 min-h-7 group inline-flex items-center text-xs align-middle">
+                                                                <span
+                                                                    class="size-7 flex justify-center items-center flex-shrink-0 bg-gray-100 font-medium text-gray-800 rounded-full group-focus:bg-gray-200 dark:bg-gray-700 dark:text-white dark:group-focus:bg-gray-600 hs-stepper-active:bg-primary hs-stepper-active:text-white hs-stepper-success:bg-primary hs-stepper-success:text-white hs-stepper-completed:bg-success hs-stepper-completed:group-focus:bg-success">
+                                                                    <span
+                                                                        class="hs-stepper-success:hidden hs-stepper-completed:hidden">3</span>
+                                                                    <i
+                                                                        class="ti ti-check text-lg leading-tight font-medium hidden hs-stepper-success:block"></i>
+                                                                </span>
+                                                                <span class="ms-2 text-sm font-medium text-gray-800">
+                                                                    Step
+                                                                </span>
+                                                            </span>
+                                                            <div
+                                                                class="w-full h-px flex-1 bg-gray-200 group-last:hidden hs-stepper-success:bg-primary hs-stepper-completed:bg-success">
+                                                            </div>
+                                                        </li>
+                                                        <!-- End Item -->
+                                                    </ul>
+                                                    <!-- End Stepper Nav -->
+
+                                                    <!-- Stepper Content -->
+                                                    <div class="mt-5 sm:mt-8">
+                                                        <!-- First Contnet -->
+                                                        <div data-hs-stepper-content-item='{
+                                                    "index": 1
+                                                }'>
+                                                            <div
+                                                                class="p-4 h-48 bg-gray-50 flex justify-center items-center border border-dashed border-gray-200 rounded-md">
+                                                                <h3 class="text-gray-500 text-base">
+                                                                    First content
+                                                                </h3>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End First Contnet -->
+
+                                                        <!-- First Contnet -->
+                                                        <div data-hs-stepper-content-item='{
+                                                    "index": 2
+                                                }' style="display: none;">
+                                                            <div
+                                                                class="p-4 h-48 bg-gray-50 flex justify-center items-center border border-dashed border-gray-200 rounded-md">
+                                                                <h3 class="text-gray-500 text-base">
+                                                                    Second content
+                                                                </h3>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End First Contnet -->
+
+                                                        <!-- First Contnet -->
+                                                        <div data-hs-stepper-content-item='{
+                                                    "index": 3
+                                                }' style="display: none;">
+                                                            <div
+                                                                class="p-4 h-48 bg-gray-50 flex justify-center items-center border border-dashed border-gray-200 rounded-md">
+                                                                <h3 class="text-gray-500 text-base">
+                                                                    Third content
+                                                                </h3>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End First Contnet -->
+
+                                                        <!-- Final Contnet -->
+                                                        <div data-hs-stepper-content-item='{
+                                                    "isFinal": true
+                                                }' style="display: none;">
+                                                            <div
+                                                                class="p-4 h-48 bg-gray-50 flex justify-center items-center border border-dashed border-gray-200 rounded-md">
+                                                                <h3 class="text-gray-500 text-base">
+                                                                    Final content
+                                                                </h3>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End Final Contnet -->
+
+                                                        <!-- Button Group -->
+                                                        <div class="mt-5 flex justify-between items-center gap-x-2">
+                                                            <button type="button"
+                                                                class="py-2 px-3 inline-flex items-center gap-x-1 text-sm font-medium rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
+                                                                data-hs-stepper-back-btn>
+                                                                <i
+                                                                    class="ti ti-chevron-left text-lg leading-tight font-medium"></i>
+                                                                Back
+                                                            </button>
+                                                            <button type="button"
+                                                                class="py-2 px-3 inline-flex items-center gap-x-1 text-sm font-semibold rounded-full border border-transparent bg-primary text-white hover:bg-primaryemphasis disabled:opacity-50 disabled:pointer-events-none"
+                                                                data-hs-stepper-next-btn>
+                                                                Next
+                                                                <i
+                                                                    class="ti ti-chevron-right text-lg leading-tight font-medium"></i>
+                                                            </button>
+                                                            <button type="button"
+                                                                class="py-2 px-3 inline-flex items-center gap-x-1 text-sm font-semibold rounded-full border border-transparent bg-primary text-white hover:bg-primaryemphasis disabled:opacity-50 disabled:pointer-events-none"
+                                                                data-hs-stepper-finish-btn style="display: none;">
+                                                                Finish
+                                                            </button>
+                                                            <button type="reset"
+                                                                class="py-2 px-3 inline-flex items-center gap-x-1 text-sm font-semibold rounded-full border border-transparent bg-primary text-white hover:bg-primaryemphasis disabled:opacity-50 disabled:pointer-events-none"
+                                                                data-hs-stepper-reset-btn style="display: none;">
+                                                                Reset
+                                                            </button>
+                                                        </div>
+                                                        <!-- End Button Group -->
+                                                    </div>
+                                                    <!-- End Stepper Content -->
+                                                </div>
+                                                <!-- End Stepper -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title mb-0">Non-linear</h5>
+                                                <p class="card-subtitle  mb-6">With a "Complete Step" button.</p>
+                                                <!-- Stepper -->
+                                                <div data-hs-stepper='{
+                                                "mode": "non-linear"
+                                            }'>
+                                                    <!-- Stepper Nav -->
+                                                    <ul class="relative flex flex-row gap-x-2">
+                                                        <!-- Item -->
+                                                        <li class="flex items-center gap-x-2 shrink basis-0 flex-1 group active"
+                                                            data-hs-stepper-nav-item='{
+                                                    "index": 1
+                                                }'>
+                                                            <span
+                                                                class="min-w-7 min-h-7 group inline-flex items-center text-xs align-middle focus:outline-none disabled:opacity-50 disabled:pointer-events-none">
+                                                                <span
+                                                                    class="size-7 flex justify-center items-center flex-shrink-0 bg-gray-100 font-medium text-gray-800 rounded-full group-focus:bg-gray-200 dark:bg-gray-700 dark:text-white dark:group-focus:bg-gray-600 hs-stepper-active:bg-primary hs-stepper-active:text-white hs-stepper-success:bg-primary hs-stepper-success:text-white hs-stepper-completed:bg-success hs-stepper-completed:group-focus:bg-success">
+                                                                    <span
+                                                                        class="hs-stepper-success:hidden hs-stepper-completed:hidden">1</span>
+                                                                    <i
+                                                                        class="ti ti-check text-lg leading-tight font-medium hidden hs-stepper-success:block"></i>
+                                                                </span>
+                                                                <span
+                                                                    class="ms-2 text-sm font-medium text-gray-800 group-focus:text-gray-500 dark:text-white dark:group-focus:text-gray-400">
+                                                                    Step
+                                                                </span>
+                                                            </span>
+                                                            <div
+                                                                class="w-full h-px flex-1 bg-gray-200 group-last:hidden dark:bg-blue-500 hs-stepper-success:bg-primary hs-stepper-completed:bg-success">
+                                                            </div>
+                                                        </li>
+                                                        <!-- End Item -->
+
+                                                        <!-- Item -->
+                                                        <li class="flex items-center gap-x-2 shrink basis-0 flex-1 group"
+                                                            data-hs-stepper-nav-item='{
+                                                    "index": 2
+                                                }'>
+                                                            <span
+                                                                class="min-w-7 min-h-7 group inline-flex items-center text-xs align-middle focus:outline-none disabled:opacity-50 disabled:pointer-events-none">
+                                                                <span
+                                                                    class="size-7 flex justify-center items-center flex-shrink-0 bg-gray-100 font-medium text-gray-800 rounded-full group-focus:bg-gray-200 dark:bg-gray-700 dark:text-white dark:group-focus:bg-gray-600 hs-stepper-active:bg-primary hs-stepper-active:text-white hs-stepper-success:bg-primary hs-stepper-success:text-white hs-stepper-completed:bg-success hs-stepper-completed:group-focus:bg-success">
+                                                                    <span
+                                                                        class="hs-stepper-success:hidden hs-stepper-completed:hidden">2</span>
+                                                                    <i
+                                                                        class="ti ti-check text-lg leading-tight font-medium hidden hs-stepper-success:block"></i>
+                                                                </span>
+                                                                <span
+                                                                    class="ms-2 text-sm font-medium text-gray-800 group-focus:text-gray-500 dark:text-white dark:group-focus:text-gray-400">
+                                                                    Step
+                                                                </span>
+                                                            </span>
+                                                            <div
+                                                                class="w-full h-px flex-1 bg-gray-200 group-last:hidden dark:bg-gray-700 hs-stepper-success:bg-primary hs-stepper-completed:bg-success">
+                                                            </div>
+                                                        </li>
+                                                        <!-- End Item -->
+
+                                                        <!-- Item -->
+                                                        <li class="flex items-center gap-x-2 shrink basis-0 flex-1 group"
+                                                            data-hs-stepper-nav-item='{
+                                                    "index": 3
+                                                }'>
+                                                            <span
+                                                                class="min-w-7 min-h-7 group inline-flex items-center text-xs align-middle focus:outline-none disabled:opacity-50 disabled:pointer-events-none">
+                                                                <span
+                                                                    class="size-7 flex justify-center items-center flex-shrink-0 bg-gray-100 font-medium text-gray-800 rounded-full group-focus:bg-gray-200 dark:bg-gray-700 dark:text-white dark:group-focus:bg-gray-600 hs-stepper-active:bg-primary hs-stepper-active:text-white hs-stepper-success:bg-primary hs-stepper-success:text-white hs-stepper-completed:bg-success hs-stepper-completed:group-focus:bg-success">
+                                                                    <span
+                                                                        class="hs-stepper-success:hidden hs-stepper-completed:hidden">3</span>
+                                                                    <i
+                                                                        class="ti ti-check text-lg leading-tight font-medium hidden hs-stepper-success:block"></i>
+                                                                </span>
+                                                                <span
+                                                                    class="ms-2 text-sm font-medium text-gray-800 group-focus:text-gray-500 dark:text-white dark:group-focus:text-gray-400">
+                                                                    Step
+                                                                </span>
+                                                            </span>
+                                                            <div
+                                                                class="w-full h-px flex-1 bg-gray-200 group-last:hidden dark:bg-gray-700 hs-stepper-success:bg-primary hs-stepper-completed:bg-success">
+                                                            </div>
+                                                        </li>
+                                                        <!-- End Item -->
+                                                    </ul>
+                                                    <!-- End Stepper Nav -->
+
+                                                    <!-- Stepper Content -->
+                                                    <div class="mt-5 sm:mt-8">
+                                                        <!-- First Content -->
+                                                        <div data-hs-stepper-content-item='{
+                                                    "index": 1
+                                                }' style="display: none;">
+                                                            <div
+                                                                class="p-4 h-48 bg-gray-50 flex justify-center items-center border border-dashed border-gray-200 rounded-md dark:bg-gray-800 dark:border-gray-700">
+                                                                <h3 class="text-gray-500 text-base">
+                                                                    First content
+                                                                </h3>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End First Content -->
+
+                                                        <!-- Second Content -->
+                                                        <div data-hs-stepper-content-item='{
+                                                    "index": 2
+                                                }' style="display: none;">
+                                                            <div
+                                                                class="p-4 h-48 bg-gray-50 flex justify-center items-center border border-dashed border-gray-200 rounded-md dark:bg-gray-800 dark:border-gray-700">
+                                                                <h3 class="text-gray-500 text-base">
+                                                                    Second content
+                                                                </h3>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End Second Content -->
+
+                                                        <!-- Third Content -->
+                                                        <div data-hs-stepper-content-item='{
+                                                    "index": 3
+                                                }' style="display: none;">
+                                                            <div
+                                                                class="p-4 h-48 bg-gray-50 flex justify-center items-center border border-dashed border-gray-200 rounded-md dark:bg-gray-800 dark:border-gray-700">
+                                                                <h3 class="text-gray-500 text-base">
+                                                                    Third content
+                                                                </h3>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End Third Content -->
+
+                                                        <!-- Final Content -->
+                                                        <div data-hs-stepper-content-item='{
+                                                    "isFinal": true
+                                                }'>
+                                                            <div
+                                                                class="p-4 h-48 bg-gray-50 flex justify-center items-center border border-dashed border-gray-200 rounded-md">
+                                                                <h3 class="text-gray-500 text-base">
+                                                                    Final content
+                                                                </h3>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End Final Content -->
+
+                                                        <div class="mt-5 flex justify-between items-center gap-x-2">
+                                                            <button type="button"
+                                                                class="py-2 px-3 inline-flex items-center gap-x-1 text-sm font-medium rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
+                                                                data-hs-stepper-back-btn>
+                                                                <i
+                                                                    class="ti ti-chevron-left text-lg leading-tight font-medium"></i>
+                                                                Back
+                                                            </button>
+                                                            <button type="button"
+                                                                class="py-2 px-3 inline-flex items-center gap-x-1 text-sm font-semibold rounded-full border border-transparent bg-primary text-white hover:bg-primaryemphasis disabled:opacity-50 disabled:pointer-events-none"
+                                                                data-hs-stepper-skip-btn style="display: none;">
+                                                                Skip
+                                                            </button>
+                                                            <button type="button"
+                                                                class="py-2 px-3 inline-flex items-center gap-x-1 text-sm font-semibold rounded-full border border-transparent bg-primary text-white hover:bg-primaryemphasis disabled:opacity-50 disabled:pointer-events-none"
+                                                                data-hs-stepper-complete-step-btn='{
+                                                    "completedText": "This step is completed"
+                                                    }'>
+                                                                Complete Step
+                                                            </button>
+                                                            <button type="button"
+                                                                class="py-2 px-3 inline-flex items-center gap-x-1 text-sm font-semibold rounded-full border border-transparent bg-primary text-white hover:bg-primaryemphasis disabled:opacity-50 disabled:pointer-events-none"
+                                                                data-hs-stepper-next-btn>
+                                                                Next
+                                                                <i
+                                                                    class="ti ti-chevron-right text-lg leading-tight font-medium"></i>
+                                                            </button>
+                                                            <button type="button"
+                                                                class="py-2 px-3 inline-flex items-center gap-x-1 text-sm font-semibold rounded-full border border-transparent bg-primary text-white hover:bg-primaryemphasis disabled:opacity-50 disabled:pointer-events-none"
+                                                                data-hs-stepper-finish-btn style="display: none;">
+                                                                Finish
+                                                            </button>
+                                                            <button type="reset"
+                                                                class="py-2 px-3 inline-flex items-center gap-x-1 text-sm font-semibold rounded-full border border-transparent bg-primary text-white hover:bg-primaryemphasis disabled:opacity-50 disabled:pointer-events-none"
+                                                                data-hs-stepper-reset-btn style="display: none;">
+                                                                Reset
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <!-- End Stepper Content -->
+                                                </div>
+                                                <!-- End Stepper -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title mb-0">Skipped</h5>
+                                                <p class="card-subtitle  mb-6">A skip button step example.</p>
+                                                <!-- Stepper -->
+                                                <div data-hs-stepper>
+                                                    <!-- Stepper Nav -->
+                                                    <ul class="relative flex flex-row gap-x-2">
+                                                        <!-- Item -->
+                                                        <li class="flex items-center gap-x-2 shrink basis-0 flex-1 group active"
+                                                            data-hs-stepper-nav-item='{
+                                                    "index": 1,
+                                                    "isOptional": true
+                                                }'>
+                                                            <span
+                                                                class="min-w-7 min-h-7 group inline-flex items-center text-xs align-middle focus:outline-none disabled:opacity-50 disabled:pointer-events-none">
+                                                                <span
+                                                                    class="size-7 flex justify-center items-center flex-shrink-0 bg-gray-100 font-medium text-gray-800 rounded-full group-focus:bg-gray-200 dark:bg-gray-700 dark:text-white dark:group-focus:bg-gray-600 hs-stepper-active:bg-primary hs-stepper-active:text-white hs-stepper-success:bg-primary hs-stepper-success:text-white hs-stepper-completed:bg-success hs-stepper-completed:group-focus:bg-success">
+                                                                    <span
+                                                                        class="hs-stepper-success:hidden hs-stepper-completed:hidden">1</span>
+                                                                    <i
+                                                                        class="ti ti-check text-lg leading-tight font-medium hidden hs-stepper-success:block"></i>
+                                                                </span>
+                                                                <span
+                                                                    class="ms-2 text-sm font-medium text-gray-800 group-focus:text-gray-500 dark:text-white dark:group-focus:text-gray-400">
+                                                                    Step
+                                                                </span>
+                                                            </span>
+                                                            <div
+                                                                class="w-full h-px flex-1 bg-gray-200 group-last:hidden dark:bg-blue-500 hs-stepper-success:bg-primary hs-stepper-completed:bg-success">
+                                                            </div>
+                                                        </li>
+                                                        <!-- End Item -->
+
+                                                        <!-- Item -->
+                                                        <li class="flex items-center gap-x-2 shrink basis-0 flex-1 group"
+                                                            data-hs-stepper-nav-item='{
+                                                    "index": 2,
+                                                    "isOptional": true
+                                                }'>
+                                                            <span
+                                                                class="min-w-7 min-h-7 group inline-flex items-center text-xs align-middle focus:outline-none disabled:opacity-50 disabled:pointer-events-none">
+                                                                <span
+                                                                    class="size-7 flex justify-center items-center flex-shrink-0 bg-gray-100 font-medium text-gray-800 rounded-full group-focus:bg-gray-200 dark:bg-gray-700 dark:text-white dark:group-focus:bg-gray-600 hs-stepper-active:bg-primary hs-stepper-active:text-white hs-stepper-success:bg-primary hs-stepper-success:text-white hs-stepper-completed:bg-success hs-stepper-completed:group-focus:bg-success">
+                                                                    <span
+                                                                        class="hs-stepper-success:hidden hs-stepper-completed:hidden">2</span>
+                                                                    <i
+                                                                        class="ti ti-check text-lg leading-tight font-medium hidden hs-stepper-success:block"></i>
+                                                                </span>
+                                                                <span
+                                                                    class="ms-2 text-sm font-medium text-gray-800 group-focus:text-gray-500 dark:text-white dark:group-focus:text-gray-400">
+                                                                    Step
+                                                                </span>
+                                                            </span>
+                                                            <div
+                                                                class="w-full h-px flex-1 bg-gray-200 group-last:hidden dark:bg-gray-700 hs-stepper-success:bg-primary hs-stepper-completed:bg-success">
+                                                            </div>
+                                                        </li>
+                                                        <!-- End Item -->
+
+                                                        <!-- Item -->
+                                                        <li class="flex items-center gap-x-2 shrink basis-0 flex-1 group"
+                                                            data-hs-stepper-nav-item='{
+                                                    "index": 3
+                                                }'>
+                                                            <span
+                                                                class="min-w-7 min-h-7 group inline-flex items-center text-xs align-middle focus:outline-none disabled:opacity-50 disabled:pointer-events-none">
+                                                                <span
+                                                                    class="size-7 flex justify-center items-center flex-shrink-0 bg-gray-100 font-medium text-gray-800 rounded-full group-focus:bg-gray-200 dark:bg-gray-700 dark:text-white dark:group-focus:bg-gray-600 hs-stepper-active:bg-primary hs-stepper-active:text-white hs-stepper-success:bg-primary hs-stepper-success:text-white hs-stepper-completed:bg-success hs-stepper-completed:group-focus:bg-success">
+                                                                    <span
+                                                                        class="hs-stepper-success:hidden hs-stepper-completed:hidden">3</span>
+                                                                    <i
+                                                                        class="ti ti-check text-lg leading-tight font-medium hidden hs-stepper-success:block"></i>
+                                                                </span>
+                                                                <span
+                                                                    class="ms-2 text-sm font-medium text-gray-800 group-focus:text-gray-500 dark:text-white dark:group-focus:text-gray-400">
+                                                                    Step
+                                                                </span>
+                                                            </span>
+                                                            <div
+                                                                class="w-full h-px flex-1 bg-gray-200 group-last:hidden dark:bg-gray-700 hs-stepper-success:bg-primary hs-stepper-completed:bg-success">
+                                                            </div>
+                                                        </li>
+                                                        <!-- End Item -->
+                                                    </ul>
+                                                    <!-- End Stepper Nav -->
+
+                                                    <!-- Stepper Content -->
+                                                    <div class="mt-5 sm:mt-8">
+                                                        <!-- First Content -->
+                                                        <div data-hs-stepper-content-item='{
+                                                    "index": 1
+                                                }' style="display: none;">
+                                                            <div
+                                                                class="p-4 h-48 bg-gray-50 flex justify-center items-center border border-dashed border-gray-200 rounded-md dark:bg-gray-800 dark:border-gray-700">
+                                                                <h3 class="text-gray-500 text-base">
+                                                                    First content
+                                                                </h3>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End First Content -->
+
+                                                        <!-- Second Content -->
+                                                        <div data-hs-stepper-content-item='{
+                                                    "index": 2
+                                                }' style="display: none;">
+                                                            <div
+                                                                class="p-4 h-48 bg-gray-50 flex justify-center items-center border border-dashed border-gray-200 rounded-md dark:bg-gray-800 dark:border-gray-700">
+                                                                <h3 class="text-gray-500 text-base">
+                                                                    Second content
+                                                                </h3>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End Second Content -->
+
+                                                        <!-- Third Content -->
+                                                        <div data-hs-stepper-content-item='{
+                                                    "index": 3
+                                                }' style="display: none;">
+                                                            <div
+                                                                class="p-4 h-48 bg-gray-50 flex justify-center items-center border border-dashed border-gray-200 rounded-md dark:bg-gray-800 dark:border-gray-700">
+                                                                <h3 class="text-gray-500 text-base">
+                                                                    Third content
+                                                                </h3>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End Third Content -->
+
+                                                        <!-- Final Content -->
+                                                        <div data-hs-stepper-content-item='{
+                                                    "isFinal": true
+                                                }'>
+                                                            <div
+                                                                class="p-4 h-48 bg-gray-50 flex justify-center items-center border border-dashed border-gray-200 rounded-md">
+                                                                <h3 class="text-gray-500 text-base">
+                                                                    Final content
+                                                                </h3>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End Final Content -->
+
+                                                        <div class="mt-5 flex justify-between items-center gap-x-2">
+                                                            <button type="button"
+                                                                class="py-2 px-3 inline-flex items-center gap-x-1 text-sm font-medium rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
+                                                                data-hs-stepper-back-btn>
+                                                                <i
+                                                                    class="ti ti-chevron-left text-lg leading-tight font-medium"></i>
+                                                                Back
+                                                            </button>
+                                                            <button type="button"
+                                                                class="py-2 px-3 inline-flex items-center gap-x-1 text-sm font-semibold rounded-full border border-transparent bg-primary text-white hover:bg-primaryemphasis disabled:opacity-50 disabled:pointer-events-none"
+                                                                data-hs-stepper-skip-btn style="display: none;">
+                                                                Skip
+                                                            </button>
+                                                            <button type="button"
+                                                                class="py-2 px-3 inline-flex items-center gap-x-1 text-sm font-semibold rounded-full border border-transparent bg-primary text-white hover:bg-primaryemphasis disabled:opacity-50 disabled:pointer-events-none"
+                                                                data-hs-stepper-next-btn>
+                                                                Next
+                                                                <i
+                                                                    class="ti ti-chevron-right text-lg leading-tight font-medium"></i>
+                                                            </button>
+                                                            <button type="button"
+                                                                class="py-2 px-3 inline-flex items-center gap-x-1 text-sm font-semibold rounded-full border border-transparent bg-primary text-white hover:bg-primaryemphasis disabled:opacity-50 disabled:pointer-events-none"
+                                                                data-hs-stepper-finish-btn style="display: none;">
+                                                                Finish
+                                                            </button>
+                                                            <button type="reset"
+                                                                class="py-2 px-3 inline-flex items-center gap-x-1 text-sm font-semibold rounded-full border border-transparent bg-primary text-white hover:bg-primaryemphasis disabled:opacity-50 disabled:pointer-events-none"
+                                                                data-hs-stepper-reset-btn style="display: none;">
+                                                                Reset
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <!-- End Stepper Content -->
+                                                </div>
+                                                <!-- Stepper -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title mb-0">Active</h5>
+                                                <p class="card-subtitle  mb-6">Active stepper example.</p>
+                                                <!-- Stepper -->
+                                                <div data-hs-stepper='{
+                                                "currentIndex": 2
+                                            }'>
+                                                    <!-- Stepper Nav -->
+                                                    <ul class="relative flex flex-row gap-x-2">
+                                                        <li class="flex items-center gap-x-2 shrink basis-0 flex-1 group success"
+                                                            data-hs-stepper-nav-item='{
+                                                    "index": 1,
+                                                    "isCompleted": true
+                                                }'>
+                                                            <span
+                                                                class="min-w-7 min-h-7 group inline-flex items-center text-xs align-middle">
+                                                                <span
+                                                                    class="size-7 flex justify-center items-center flex-shrink-0 bg-gray-100 font-medium text-gray-800 rounded-full group-focus:bg-gray-200 dark:bg-gray-700 dark:text-white dark:group-focus:bg-gray-600 hs-stepper-active:bg-primary hs-stepper-active:text-white hs-stepper-success:bg-primary hs-stepper-success:text-white hs-stepper-completed:bg-success hs-stepper-completed:group-focus:bg-success">
+                                                                    <span
+                                                                        class="hs-stepper-success:hidden hs-stepper-completed:hidden">1</span>
+                                                                    <i
+                                                                        class="ti ti-check text-lg leading-tight font-medium hidden hs-stepper-success:block"></i>
+                                                                </span>
+                                                                <span class="ms-2 text-sm font-medium text-gray-800">
+                                                                    Step
+                                                                </span>
+                                                            </span>
+                                                            <div
+                                                                class="w-full h-px flex-1 bg-gray-200 group-last:hidden hs-stepper-success:bg-primary hs-stepper-completed:bg-success">
+                                                            </div>
+                                                        </li>
+
+                                                        <li class="flex items-center gap-x-2 shrink basis-0 flex-1 group active"
+                                                            data-hs-stepper-nav-item='{
+                                                    "index": 2
+                                                }'>
+                                                            <span
+                                                                class="min-w-7 min-h-7 group inline-flex items-center text-xs align-middle">
+                                                                <span
+                                                                    class="size-7 flex justify-center items-center flex-shrink-0 bg-gray-100 font-medium text-gray-800 rounded-full group-focus:bg-gray-200 dark:bg-gray-700 dark:text-white dark:group-focus:bg-gray-600 hs-stepper-active:bg-primary hs-stepper-active:text-white hs-stepper-success:bg-primary hs-stepper-success:text-white hs-stepper-completed:bg-success hs-stepper-completed:group-focus:bg-success">
+                                                                    <span
+                                                                        class="hs-stepper-success:hidden hs-stepper-completed:hidden">2</span>
+                                                                    <i
+                                                                        class="ti ti-check text-lg leading-tight font-medium hidden hs-stepper-success:block"></i>
+                                                                </span>
+                                                                <span class="ms-2 text-sm font-medium text-gray-800">
+                                                                    Step
+                                                                </span>
+                                                            </span>
+                                                            <div
+                                                                class="w-full h-px flex-1 bg-gray-200 group-last:hidden hs-stepper-success:bg-primary hs-stepper-completed:bg-success">
+                                                            </div>
+                                                        </li>
+
+                                                        <li class="flex items-center gap-x-2 shrink basis-0 flex-1 group"
+                                                            data-hs-stepper-nav-item='{
+                                                    "index": 3
+                                                }'>
+                                                            <span
+                                                                class="min-w-7 min-h-7 group inline-flex items-center text-xs align-middle">
+                                                                <span
+                                                                    class="size-7 flex justify-center items-center flex-shrink-0 bg-gray-100 font-medium text-gray-800 rounded-full group-focus:bg-gray-200 dark:bg-gray-700 dark:text-white dark:group-focus:bg-gray-600 hs-stepper-active:bg-primary hs-stepper-active:text-white hs-stepper-success:bg-primary hs-stepper-success:text-white hs-stepper-completed:bg-success hs-stepper-completed:group-focus:bg-success">
+                                                                    <span
+                                                                        class="hs-stepper-success:hidden hs-stepper-completed:hidden">3</span>
+                                                                    <i
+                                                                        class="ti ti-check text-lg leading-tight font-medium hidden hs-stepper-success:block"></i>
+                                                                </span>
+                                                                <span class="ms-2 text-sm font-medium text-gray-800">
+                                                                    Step
+                                                                </span>
+                                                            </span>
+                                                            <div
+                                                                class="w-full h-px flex-1 bg-gray-200 group-last:hidden hs-stepper-success:bg-primary hs-stepper-completed:bg-success">
+                                                            </div>
+                                                        </li>
+                                                        <!-- End Item -->
+                                                    </ul>
+                                                    <!-- End Stepper Nav -->
+
+                                                    <!-- Stepper Content -->
+                                                    <div class="mt-5 sm:mt-8">
+                                                        <!-- First Content -->
+                                                        <div data-hs-stepper-content-item='{
+                                                    "index": 1,
+                                                    "isCompleted": true
+                                                }' class="success" style="display: none;">
+                                                            <div
+                                                                class="p-4 h-48 bg-gray-50 flex justify-center items-center border border-dashed border-gray-200 rounded-md">
+                                                                <h3 class="text-gray-500 text-base">
+                                                                    First content
+                                                                </h3>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End First Content -->
+
+                                                        <!-- First Content -->
+                                                        <div data-hs-stepper-content-item='{
+                                                    "index": 2
+                                                }' class="active">
+                                                            <div
+                                                                class="p-4 h-48 bg-gray-50 flex justify-center items-center border border-dashed border-gray-200 rounded-md">
+                                                                <h3 class="text-gray-500 text-base">
+                                                                    Second content
+                                                                </h3>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End First Content -->
+
+                                                        <!-- First Content -->
+                                                        <div data-hs-stepper-content-item='{
+                                                    "index": 3
+                                                }' style="display: none;">
+                                                            <div
+                                                                class="p-4 h-48 bg-gray-50 flex justify-center items-center border border-dashed border-gray-200 rounded-md">
+                                                                <h3 class="text-gray-500 text-base">
+                                                                    Third content
+                                                                </h3>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End First Content -->
+
+                                                        <!-- Final Content -->
+                                                        <div data-hs-stepper-content-item='{
+                                                    "isFinal": true
+                                                }' style="display: none;">
+                                                            <div
+                                                                class="p-4 h-48 bg-gray-50 flex justify-center items-center border border-dashed border-gray-200 rounded-md">
+                                                                <h3 class="text-gray-500 text-base">
+                                                                    Final content
+                                                                </h3>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End Final Content -->
+
+                                                        <!-- Button Group -->
+                                                        <div class="mt-5 flex justify-between items-center gap-x-2">
+                                                            <button type="button"
+                                                                class="py-2 px-3 inline-flex items-center gap-x-1 text-sm font-medium rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
+                                                                data-hs-stepper-back-btn>
+                                                                <i
+                                                                    class="ti ti-chevron-left text-lg leading-tight font-medium"></i>
+                                                                Back
+                                                            </button>
+                                                            <button type="button"
+                                                                class="py-2 px-3 inline-flex items-center gap-x-1 text-sm font-semibold rounded-full border border-transparent bg-primary text-white hover:bg-primaryemphasis disabled:opacity-50 disabled:pointer-events-none"
+                                                                data-hs-stepper-next-btn>
+                                                                Next
+                                                                <i
+                                                                    class="ti ti-chevron-right text-lg leading-tight font-medium"></i>
+                                                            </button>
+                                                            <button type="button"
+                                                                class="py-2 px-3 inline-flex items-center gap-x-1 text-sm font-semibold rounded-full border border-transparent bg-primary text-white hover:bg-primaryemphasis disabled:opacity-50 disabled:pointer-events-none"
+                                                                data-hs-stepper-finish-btn style="display: none;">
+                                                                Finish
+                                                            </button>
+                                                            <button type="reset"
+                                                                class="py-2 px-3 inline-flex items-center gap-x-1 text-sm font-semibold rounded-full border border-transparent bg-primary text-white hover:bg-primaryemphasis disabled:opacity-50 disabled:pointer-events-none"
+                                                                data-hs-stepper-reset-btn style="display: none;">
+                                                                Reset
+                                                            </button>
+                                                        </div>
+                                                        <!-- End Button Group -->
+                                                    </div>
+                                                    <!-- End Stepper Content -->
+                                                </div>
+                                                <!-- End Stepper -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title mb-0">Success</h5>
+                                                <p class="card-subtitle  mb-6">Success stepper example.</p>
+                                                <!-- Stepper -->
+                                                <div data-hs-stepper='{
+                                                "isCompleted": true
+                                            }' class="completed">
+                                                    <!-- Stepper Nav -->
+                                                    <ul class="relative flex flex-row gap-x-2">
+                                                        <!-- Item -->
+                                                        <li class="flex items-center gap-x-2 shrink basis-0 flex-1 group success"
+                                                            data-hs-stepper-nav-item='{
+                                                    "index": 1,
+                                                    "isCompleted": true
+                                                }'>
+                                                            <span
+                                                                class="min-w-7 min-h-7 group inline-flex items-center text-xs align-middle focus:outline-none disabled:opacity-50 disabled:pointer-events-none">
+                                                                <span
+                                                                    class="size-7 flex justify-center items-center flex-shrink-0 bg-gray-100 font-medium text-gray-800 rounded-full group-focus:bg-gray-200 dark:bg-gray-700 dark:text-white dark:group-focus:bg-gray-600 hs-stepper-active:bg-primary hs-stepper-active:text-white hs-stepper-success:bg-primary hs-stepper-success:text-white hs-stepper-completed:bg-success hs-stepper-completed:group-focus:bg-success">
+                                                                    <span
+                                                                        class="hs-stepper-success:hidden hs-stepper-completed:hidden">1</span>
+                                                                    <i
+                                                                        class="ti ti-check text-lg leading-tight font-medium hidden hs-stepper-success:block"></i>
+                                                                </span>
+                                                                <span
+                                                                    class="ms-2 text-sm font-medium text-gray-800 group-focus:text-gray-500 dark:text-white dark:group-focus:text-gray-400">
+                                                                    Step
+                                                                </span>
+                                                            </span>
+                                                            <div
+                                                                class="w-full h-px flex-1 bg-gray-200 group-last:hidden dark:bg-blue-500 hs-stepper-success:bg-primary hs-stepper-completed:bg-success">
+                                                            </div>
+                                                        </li>
+                                                        <!-- End Item -->
+
+                                                        <!-- Item -->
+                                                        <li class="flex items-center gap-x-2 shrink basis-0 flex-1 group success"
+                                                            data-hs-stepper-nav-item='{
+                                                    "index": 2,
+                                                    "isCompleted": true
+                                                }'>
+                                                            <span
+                                                                class="min-w-7 min-h-7 group inline-flex items-center text-xs align-middle focus:outline-none disabled:opacity-50 disabled:pointer-events-none">
+                                                                <span
+                                                                    class="size-7 flex justify-center items-center flex-shrink-0 bg-gray-100 font-medium text-gray-800 rounded-full group-focus:bg-gray-200 dark:bg-gray-700 dark:text-white dark:group-focus:bg-gray-600 hs-stepper-active:bg-primary hs-stepper-active:text-white hs-stepper-success:bg-primary hs-stepper-success:text-white hs-stepper-completed:bg-success hs-stepper-completed:group-focus:bg-success">
+                                                                    <span
+                                                                        class="hs-stepper-success:hidden hs-stepper-completed:hidden">2</span>
+                                                                    <i
+                                                                        class="ti ti-check text-lg leading-tight font-medium hidden hs-stepper-success:block"></i>
+                                                                </span>
+                                                                <span
+                                                                    class="ms-2 text-sm font-medium text-gray-800 group-focus:text-gray-500 dark:text-white dark:group-focus:text-gray-400">
+                                                                    Step
+                                                                </span>
+                                                            </span>
+                                                            <div
+                                                                class="w-full h-px flex-1 bg-gray-200 group-last:hidden dark:bg-gray-700 hs-stepper-success:bg-primary hs-stepper-completed:bg-success">
+                                                            </div>
+                                                        </li>
+                                                        <!-- End Item -->
+
+                                                        <!-- Item -->
+                                                        <li class="flex items-center gap-x-2 shrink basis-0 flex-1 group active success"
+                                                            data-hs-stepper-nav-item='{
+                                                    "index": 3,
+                                                    "isCompleted": true
+                                                }'>
+                                                            <span
+                                                                class="min-w-7 min-h-7 group inline-flex items-center text-xs align-middle focus:outline-none disabled:opacity-50 disabled:pointer-events-none">
+                                                                <span
+                                                                    class="size-7 flex justify-center items-center flex-shrink-0 bg-gray-100 font-medium text-gray-800 rounded-full group-focus:bg-gray-200 dark:bg-gray-700 dark:text-white dark:group-focus:bg-gray-600 hs-stepper-active:bg-primary hs-stepper-active:text-white hs-stepper-success:bg-primary hs-stepper-success:text-white hs-stepper-completed:bg-success hs-stepper-completed:group-focus:bg-success">
+                                                                    <span
+                                                                        class="hs-stepper-success:hidden hs-stepper-completed:hidden">3</span>
+                                                                    <i
+                                                                        class="ti ti-check text-lg leading-tight font-medium hidden hs-stepper-success:block"></i>
+                                                                </span>
+                                                                <span
+                                                                    class="ms-2 text-sm font-medium text-gray-800 group-focus:text-gray-500 dark:text-white dark:group-focus:text-gray-400">
+                                                                    Step
+                                                                </span>
+                                                            </span>
+                                                            <div
+                                                                class="w-full h-px flex-1 bg-gray-200 group-last:hidden dark:bg-gray-700 hs-stepper-success:bg-primary hs-stepper-completed:bg-success">
+                                                            </div>
+                                                        </li>
+                                                        <!-- End Item -->
+                                                    </ul>
+                                                    <!-- End Stepper Nav -->
+
+                                                    <!-- Stepper Content -->
+                                                    <div class="mt-5 sm:mt-8">
+                                                        <!-- First Content -->
+                                                        <div data-hs-stepper-content-item='{
+                                                    "index": 1,
+                                                    "isCompleted": true
+                                                }' style="display: none;">
+                                                            <div
+                                                                class="p-4 h-48 bg-gray-50 flex justify-center items-center border border-dashed border-gray-200 rounded-md dark:bg-gray-800 dark:border-gray-700">
+                                                                <h3 class="text-gray-500 text-base">
+                                                                    First content
+                                                                </h3>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End First Content -->
+
+                                                        <!-- Second Content -->
+                                                        <div data-hs-stepper-content-item='{
+                                                    "index": 2,
+                                                    "isCompleted": true
+                                                }' style="display: none;">
+                                                            <div
+                                                                class="p-4 h-48 bg-gray-50 flex justify-center items-center border border-dashed border-gray-200 rounded-md dark:bg-gray-800 dark:border-gray-700">
+                                                                <h3 class="text-gray-500 text-base">
+                                                                    Second content
+                                                                </h3>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End Second Content -->
+
+                                                        <!-- Third Content -->
+                                                        <div data-hs-stepper-content-item='{
+                                                    "index": 3,
+                                                    "isCompleted": true
+                                                }' style="display: none;">
+                                                            <div
+                                                                class="p-4 h-48 bg-gray-50 flex justify-center items-center border border-dashed border-gray-200 rounded-md dark:bg-gray-800 dark:border-gray-700">
+                                                                <h3 class="text-gray-500 text-base">
+                                                                    Third content
+                                                                </h3>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End Third Content -->
+
+                                                        <!-- Final Content -->
+                                                        <div data-hs-stepper-content-item='{
+                                                    "isFinal": true
+                                                }'>
+                                                            <div
+                                                                class="p-4 h-48 bg-gray-50 flex justify-center items-center border border-dashed border-gray-200 rounded-md">
+                                                                <h3 class="text-gray-500 text-base">
+                                                                    Final content
+                                                                </h3>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End Final Content -->
+
+                                                        <div class="mt-5 flex justify-between items-center gap-x-2">
+                                                            <button type="button"
+                                                                class="py-2 px-3 inline-flex items-center gap-x-1 text-sm font-medium rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
+                                                                data-hs-stepper-back-btn style="display: none;">
+                                                                <i
+                                                                    class="ti ti-chevron-left text-lg leading-tight font-medium"></i>
+                                                                Back
+                                                            </button>
+                                                            <button type="button"
+                                                                class="py-2 px-3 inline-flex items-center gap-x-1 text-sm font-semibold rounded-full border border-transparent bg-primary text-white hover:bg-primaryemphasis disabled:opacity-50 disabled:pointer-events-none"
+                                                                data-hs-stepper-next-btn style="display: none;">
+                                                                Next
+                                                                <i
+                                                                    class="ti ti-chevron-right text-lg leading-tight font-medium"></i>
+                                                            </button>
+                                                            <button type="button"
+                                                                class="py-2 px-3 inline-flex items-center gap-x-1 text-sm font-semibold rounded-full border border-transparent bg-primary text-white hover:bg-primaryemphasis disabled:opacity-50 disabled:pointer-events-none"
+                                                                data-hs-stepper-finish-btn style="display: none;">
+                                                                Finish
+                                                            </button>
+                                                            <button type="reset"
+                                                                class="py-2 px-3 inline-flex items-center gap-x-1 text-sm font-semibold rounded-full border border-transparent bg-primary text-white hover:bg-primaryemphasis disabled:opacity-50 disabled:pointer-events-none"
+                                                                data-hs-stepper-reset-btn>
+                                                                Reset
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <!-- End Stepper Content -->
+                                                </div>
+                                                <!-- End Stepper -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                <!-- Main Content End -->
+
+            </div>
+        </div>
+        <!--end of project-->
+    </main>
+    @@include("partials/header-components/mobile-menu.html")
+    @@include("partials/customizer.html")
+    @@include("partials/scripts.html")
+    <script src="@@webRoot/node_modules/prismjs/prism.js"></script>
+</body>
+
+</html>

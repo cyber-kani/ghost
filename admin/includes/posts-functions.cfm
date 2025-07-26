@@ -24,28 +24,29 @@ function getPosts(
         
         // Filter by type (post vs page)
         if (len(arguments.type)) {
-            whereClause &= " AND type = :type";
+            whereClause &= " AND p.type = :type";
             queryParams.type = {value: arguments.type, cfsqltype: "cf_sql_varchar"};
         }
         
         if (len(arguments.status)) {
-            whereClause &= " AND status = :status";
+            whereClause &= " AND p.status = :status";
             queryParams.status = {value: arguments.status, cfsqltype: "cf_sql_varchar"};
         }
         
         if (len(arguments.author)) {
-            whereClause &= " AND created_by = :author";
+            whereClause &= " AND p.created_by = :author";
             queryParams.author = {value: arguments.author, cfsqltype: "cf_sql_varchar"};
         }
         
         if (arguments.featured) {
-            whereClause &= " AND featured = 1";
+            whereClause &= " AND p.featured = 1";
         }
         
         // Get posts with author information
         var sql = "
             SELECT p.id, p.title, p.status, p.created_at, p.updated_at, p.published_at, 
                    p.featured, p.created_by, p.plaintext, p.html, p.slug, p.type, p.visibility,
+                   p.feature_image,
                    u.name as author_name, u.slug as author_slug, u.profile_image as author_avatar
             FROM posts p
             LEFT JOIN posts_authors pa ON p.id = pa.post_id AND pa.sort_order = 0
@@ -53,6 +54,9 @@ function getPosts(
             WHERE " & whereClause & "
             ORDER BY p.updated_at DESC 
             LIMIT " & arguments.limit & " OFFSET " & offset;
+        
+        // Debug output (comment out for production)    
+        // writeOutput("<!-- DEBUG getPosts: status='" & arguments.status & "', whereClause='" & whereClause & "' -->");
             
         var result = queryExecute(sql, queryParams, {datasource: "blog"});
         
@@ -77,7 +81,8 @@ function getPosts(
                 html: result.html[i] ?: "",
                 slug: result.slug[i] ?: "",
                 type: result.type[i] ?: "post",
-                visibility: result.visibility[i] ?: "public"
+                visibility: result.visibility[i] ?: "public",
+                feature_image: result.feature_image[i] ?: ""
             };
             
             // Add author info from database
@@ -114,6 +119,8 @@ function getPosts(
         };
         
     } catch (any e) {
+        // Debug error output (comment out for production)
+        // writeOutput("<!-- ERROR in getPosts: " & e.message & " -->");
         return {
             success: false,
             message: "Error retrieving posts: " & e.message,

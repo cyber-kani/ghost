@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-color-theme="Blue_Theme" class="light selected" data-layout="vertical"
+    data-boxed-layout="boxed" data-card="shadow">
+
+<head>
+    <!-- Required meta tags -->
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- Favicon icon-->
+<link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+  rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<!-- Core Css -->
+<link rel="stylesheet" href="../assets/css/theme.css" />
+    <title>Spike TailwindCSS HTML Admin Template</title>
+    <link rel="stylesheet" href="../assets/libs/prismjs/themes/prism-okaidia.min.css">
+</head>
+
+<body class="DEFAULT_THEME bg-lightprimary dark:bg-darkbody">
+    <main>
+        <!--start the project-->
+        <div id="main-wrapper" class="flex p-5">
+
+            <aside id="application-sidebar-brand"
+                class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full xl:rtl:-translate-x-0 rtl:translate-x-full  left-0 rtl:left-auto xl:rtl:right-5 rtl:right-0 transform hidden xl:block xl:translate-x-0 xl:end-auto xl:bottom-0 fixed top-0 with-vertical  docs-left-sidebar transition-all duration-300 h-screen z-[2] flex-shrink-0  w-[270px] border-border dark:border-darkborder bg-white dark:bg-dark xl:top-5 xl:start-5 shadow-md xl:rounded-md">
+                <!-- ---------------------------------- -->
+<!-- Start Vertical Layout Sidebar -->
+<!-- ---------------------------------- -->
+<div class="p-3.5 flex justify-between" >
+  <div class="brand-logo d-flex align-items-center justify-center">
+  <a href="../main/index.html" class="text-nowrap logo-img">
+    <img
+      src="../assets/images/logos/logo-light.svg"
+      class="dark:hidden block rtl:hidden"
+      alt="Logo-Dark"
+    />
+    <img
+      src="../assets/images/logos/logo-dark.svg"
+      class="dark:block hidden rtl:hidden rtl:dark:hidden"
+      alt="Logo-light"
+    />
+    
+    <img
+      src="../assets/images/logos/logo-light-rtl.svg"
+      class="dark:hidden hidden rtl:block rtl:dark:hidden"
+      alt="Logo-Dark"
+    />
+    <img
+      src="../assets/images/logos/logo-dark-rtl.svg"
+      class="dark:hidden hidden rtl:hidden rtl:dark:block"
+      alt="Logo-light"
+    />
+  </a>
+</div>
+
+</div>
+<div class="scroll-sidebar" data-simplebar="">
+  <div class="px-4 mt-5 mini-layout" data-te-sidenav-menu-ref>
+    <nav class="hs-accordion-group w-full flex flex-col">
+      <ul data-te-sidenav-menu-ref id="sidebarnav">
+
+        <!-----Dashboard------->
+        <div class="caption">
+          <i class="ti ti-dots nav-small-cap-icon text-lg hidden text-center leading-[16px]"></i>
+          <span class="hide-menu">GETTING STARTED</span>
+        </div>
+
+        <li class="sidebar-item">
+          <a class="sidebar-link before:bg-lightprimary hover:text-primary
+          " href="../docs/index.html"
+            >
+            <iconify-icon icon="solar:home-line-duotone" class="text-xl p-2"></iconify-icon> <span class="hide-menu flex-shrink-0 ">Introduction</span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a class="sidebar-link before:bg-lightsuccess hover:text-success
+          " href="../docs/docs-structure.html"
+            >
+            <iconify-icon icon="solar:box-line-duotone" class="text-xl p-2"></iconify-icon> <span class="hide-menu flex-shrink-0 ">Package Structure</span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a class="sidebar-link before:bg-lightwarning hover:text-warning
+          " href="../docs/docs-start.html"
+            >
+            <iconify-icon icon="solar:branching-paths-down-line-duotone" class="text-xl p-2"></iconify-icon> <span class="hide-menu flex-shrink-0 ">Quick start</span>
+          </a>
+        </li>
+        <div class="caption">
+          <i class="ti ti-dots nav-small-cap-icon text-lg hidden text-center leading-[16px]"></i>
+          <span class="hide-menu">CUSTOMIZATION</span>
+         </div>
+         <li class="sidebar-item">
+          <a class="sidebar-link before:bg-lighterror hover:text-error
+          " href="../docs/docs-layout.html"
+            >
+            <iconify-icon icon="solar:tablet-line-duotone" class="text-xl p-2"></iconify-icon> <span class="hide-menu flex-shrink-0 ">Layout Option</span>
+          </a>
+        </li>         
+         <li class="sidebar-item">
+          <a class="sidebar-link before:bg-lightindigo hover:text-indigo
+          " href="../docs/docs-change-logo.html"
+            >
+            <iconify-icon icon="solar:tuning-4-linear" class="text-xl p-2"></iconify-icon> <span class="hide-menu flex-shrink-0 ">Change Logo</span>
+          </a>
+        </li>         
+         <li class="sidebar-item">
+          <a class="sidebar-link before:bg-lightprimary hover:text-primary
+          " href="../docs/docs-changes-skin-color.html"
+            >
+            <iconify-icon icon="solar:pallete-2-line-duotone" class="text-xl p-2"></iconify-icon> <span class="hide-menu flex-shrink-0 ">Global Skin Color</span>
+          </a>
+        </li>         
+
+
+        <div class="caption">
+        <i class="ti ti-dots nav-small-cap-icon text-lg hidden text-center leading-[16px]"></i>
+        <span class="hide-menu">THEME UI</span>
+        </div>
+
+        <li class="hs-accordion sidebar-item " id="menulevel-form-accordion">
+          <a class="cursor-pointer hs-accordion-toggle sidebar-link  before:bg-lightsuccess hover:text-success dark:hover:text-success "
+            >
+            <iconify-icon icon="solar:file-text-line-duotone" class="text-xl p-2"></iconify-icon><span class="hide-menu">Project Configuration</span>
+            <span class="hide-menu ms-auto">
+              <i class="ti ti-chevron-right text-lg me-4 leading-tight hs-accordion-active:hidden "></i>
+              <i
+                class="ti ti-chevron-up text-lg ms-auto hs-accordion-active:block hidden z-10 relative me-4"></i>
+            </span>
+          </a>
+          <div id="themui-block" 
+              class="hs-accordion-content ">
+              <ul class="hs-accordion-group " >
+                <li class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/docs-color.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                    <span class="hide-menu">Color</span>
+                  </a>
+                </li>
+                <li class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/docs-typography.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                    <span class="hide-menu">Typography</span>
+                  </a>
+                </li>
+                <li class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/docs-icon.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                    <span class="hide-menu">Icons</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+        </li>
+
+        <div class="caption">
+          <i class="ti ti-dots nav-small-cap-icon text-lg hidden text-center leading-[16px]"></i>
+          <span class="hide-menu">UI COMPONENTS</span>
+          </div>   
+          
+          <li class="hs-accordion sidebar-item  active " id="menulevel-form-accordion">
+            <a class="cursor-pointer hs-accordion-toggle sidebar-link  before:bg-lightwarning hover:text-warning dark:hover:text-warning  active sidebar-link before:bg-lightwarning dark:before:bg-darkwarning text-warning dark:text-warning"
+              >
+              <iconify-icon icon="solar:widget-6-linear" class="text-xl p-2"></iconify-icon><span class="hide-menu">Tailwind</span>
+              <span class="hide-menu ms-auto">
+                <i class="ti ti-chevron-right text-lg me-4 leading-tight hs-accordion-active:hidden "></i>
+                <i
+                  class="ti ti-chevron-up text-lg ms-auto hs-accordion-active:block hidden z-10 relative me-4"></i>
+              </span>
+            </a>
+            <div id="ui-block" 
+                class="hs-accordion-content  active-menu h-full ">
+                <ul class="hs-accordion-group " >
+                  <li
+                    class="dropdown-submenu">
+                    <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-accordion.html">
+                      <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                      <span class="hide-menu">Accordion</span>
+                    </a>
+                  </li>
+                  <li
+                    class="dropdown-submenu">
+                    <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-badge.html">
+                      <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                      <span class="hide-menu">Badge</span>
+                    </a>
+                  </li>
+                  <li
+                    class="dropdown-submenu">
+                    <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-button.html">
+                      <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                      <span class="hide-menu">Button</span>
+                    </a>
+                  </li>
+                  <li
+                    class="dropdown-submenu">
+                    <a class="hs-accordion-toggle textlink dark:opacity-70   active font-semibold dark:opacity-100 " href="../docs/ui-breadcrumb.html">
+                      <div class="w-1.5 h-1.5 rounded-full bg-secondary  active bg-dark dark:bg-secondary "></div>
+                      <span class="hide-menu">Breadcrumb</span>
+                    </a>
+                  </li>
+                  <li
+                  class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-carousel.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                    <span class="hide-menu">Carousel</span>
+                  </a>
+                </li>
+                  <li
+                    class="dropdown-submenu">
+                    <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-chat-bubbles.html">
+                      <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                      <span class="hide-menu">Chat Bubbles</span>
+                    </a>
+                  </li>
+                  <li
+                    class="dropdown-submenu">
+                    <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-dropdowns.html">
+                      <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                      <span class="hide-menu">Dropdowns</span>
+                    </a>
+                  </li>
+                  <li
+                    class="dropdown-submenu">
+                    <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-datepicker.html">
+                      <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                      <span class="hide-menu">DatePicker</span>
+                    </a>
+                  </li>
+                  <li
+                    class="dropdown-submenu">
+                    <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-devices.html">
+                      <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                      <span class="hide-menu">Devices</span>
+                    </a>
+                  </li>
+                  <li
+                    class="dropdown-submenu">
+                    <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-grid.html">
+                      <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                      <span class="hide-menu">Grid</span>
+                    </a>
+                  </li>
+                  <li
+                    class="dropdown-submenu">
+                    <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-link.html">
+                      <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                      <span class="hide-menu">Link</span>
+                    </a>
+                  </li>
+                  <li
+                    class="dropdown-submenu">
+                    <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-link.html">
+                      <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                      <span class="hide-menu">Link</span>
+                    </a>
+                  </li>
+                  <li
+                  class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-modals.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                    <span class="hide-menu">Modals</span>
+                  </a>
+                </li>
+                <li
+                  class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-notification.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                    <span class="hide-menu">Notification</span>
+                  </a>
+                </li>
+                <li
+                  class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-offcanvas.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                    <span class="hide-menu">Offcanvas</span>
+                  </a>
+                </li>
+                <li
+                  class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-progressbar.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                    <span class="hide-menu">Progress Bars</span>
+                  </a>
+                </li>
+                <li
+                  class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-pagination.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                    <span class="hide-menu">Pagination</span>
+                  </a>
+                </li>
+                <li
+                  class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-ratings.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                    <span class="hide-menu">Ratings</span>
+                  </a>
+                </li>
+                <li
+                  class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-scrollspy.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                    <span class="hide-menu">Scrollspy</span>
+                  </a>
+                </li>
+                <li
+                  class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-spinner.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                    <span class="hide-menu">Spinner</span>
+                  </a>
+                </li>
+                <li
+                  class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-stepper.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                    <span class="hide-menu">Stepper</span>
+                  </a>
+                </li>
+                <li
+                  class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-skeleton.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                    <span class="hide-menu">Skeleton</span>
+                  </a>
+                </li>
+                <li
+                  class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-tab.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                    <span class="hide-menu">Tab</span>
+                  </a>
+                </li>
+                <li
+                  class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-typography.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                    <span class="hide-menu">Typography</span>
+                  </a>
+                </li>
+                <li
+                  class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-tooltip-popover.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                    <span class="hide-menu">Tooltip & Popover</span>
+                  </a>
+                </li>
+                <li
+                  class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-timeline.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                    <span class="hide-menu">Timeline</span>
+                  </a>
+                </li>
+                <li
+                  class="dropdown-submenu">
+                  <a class="hs-accordion-toggle textlink dark:opacity-70  " href="../docs/ui-toasts.html">
+                    <div class="w-1.5 h-1.5 rounded-full bg-secondary "></div>
+                    <span class="hide-menu">Toasts</span>
+                  </a>
+                </li>                  
+                </ul>
+              </div>
+          </li>
+
+        <div class="caption">
+          <i class="ti ti-dots nav-small-cap-icon text-lg hidden text-center leading-[16px]"></i>
+          <span class="hide-menu">SUPPORT</span>
+        </div>
+
+        <li class="sidebar-item">
+          <a class="sidebar-link before:bg-lighterror hover:text-error
+          " href="../docs/docs-change-log.html"
+            >
+            <iconify-icon icon="solar:refresh-circle-line-duotone" class="text-xl p-2"></iconify-icon> <span class="hide-menu flex-shrink-0 ">Change log</span>
+          </a>
+        </li> 
+
+      </ul>
+    </nav>
+  </div>
+</div>
+
+            </aside>
+            <div class="page-wrapper w-full" role="main">
+
+                <!-- Main Content -->
+                <main class="h-full ">
+                    <div class="container full-container py-5 xl:ps-6 ps-0 pt-0 pe-0">
+
+                        <!--  Header Start -->
+                        <header
+                            class="sticky top-0 inset-x-0 z-[1] flex flex-wrap md:justify-start md:flex-nowrap text-sm py-0 mb-6 bg-white dark:bg-dark rounded-md shadow-md">
+                            <div class="with-vertical w-full"><div class="w-full mx-auto px-4 lg:px-6 lg:hidden" aria-label="Global">
+
+  <div class="flex justify-between">
+    <div class="w-fit flex items-center"><div class="brand-logo d-flex align-items-center justify-center">
+  <a href="../main/index.html" class="text-nowrap logo-img">
+    <img
+      src="../assets/images/logos/logo-light.svg"
+      class="dark:hidden block rtl:hidden"
+      alt="Logo-Dark"
+    />
+    <img
+      src="../assets/images/logos/logo-dark.svg"
+      class="dark:block hidden rtl:hidden rtl:dark:hidden"
+      alt="Logo-light"
+    />
+    
+    <img
+      src="../assets/images/logos/logo-light-rtl.svg"
+      class="dark:hidden hidden rtl:block rtl:dark:hidden"
+      alt="Logo-Dark"
+    />
+    <img
+      src="../assets/images/logos/logo-dark-rtl.svg"
+      class="dark:hidden hidden rtl:hidden rtl:dark:block"
+      alt="Logo-light"
+    />
+  </a>
+</div>
+
+    </div>
+    <!-- Navigation Toggle -->
+    <a class="text-xl cursor-pointer text-link dark:text-darklink sidebartoggler h-[70px] hover:text-primary  flex justify-center items-center rounded-full"
+      data-hs-overlay="#application-sidebar-brand" aria-controls="application-sidebar-brand"
+      aria-label="Toggle navigation">
+      <iconify-icon icon="solar:list-bold-duotone" class="text-3xl relative z-[1]"></iconify-icon>
+    </a>
+    <!-- End Navigation Toggle -->
+  </div>
+</div></div>
+                        </header>
+                        <!--  Header End -->
+
+                        <!-- ============================================================== -->
+                        <!-- Start Page Content -->
+                        <!-- ============================================================== -->
+                        <div class="max-w-full">
+                            <div class="d-sm-flex align-items-center justify-content-between">
+                                <h4 class="mb-8 text-lg  ">Breadcrumb</h4>
+                            </div>
+                            <div class="grid grid-cols-12 gap-6">
+                                <div class=" lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="flex justify-between items-center mb-0">
+                                                <h5 class="card-title mb-0">Chevrons Breadcrumb</h5>
+                                                <button
+                                                    class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                                                    data-hs-overlay="#hs-focus-management-modal1">
+                                                    <i class="ti ti-code text-xl"></i>
+                                                </button>
+                                                <div id="hs-focus-management-modal1"
+                                                    class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                                                    <div
+                                                        class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                                                        <div
+                                                            class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                                            <div
+                                                                class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                                                <div class="overflow-hidden">
+                                                                    <div class="flex justify-between">
+                                                                        <h5
+                                                                            class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">
+                                                                            Chevrons Breadcrumb -
+                                                                            View Code</h5>
+                                                                        <button type="button"
+                                                                            class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                                                            data-hs-overlay="#hs-focus-management-modal1">
+                                                                            <span class="sr-only">Close</span>
+                                                                            <i class="ti ti-x text-xl"></i>
+                                                                        </button>
+                                                                    </div>
+
+                                                                    <div class="message-body max-h-[300px] "
+                                                                        data-simplebar="">
+                                                                        <pre class="mt-0">
+ <code class="language-html">  
+&#x3C;ol class=&#x22;flex items-center whitespace-nowrap&#x22; aria-label=&#x22;Breadcrumb&#x22;&#x3E;
+   &#x3C;li class=&#x22;inline-flex items-center&#x22;&#x3E;
+      &#x3C;a class=&#x22;flex items-center text-sm text-gray-500 hover:text-primary focus:outline-none focus:text-primary dark:focus:text-primary leading-tight&#x22; href=&#x22;#&#x22;&#x3E;
+      Home
+      &#x3C;/a&#x3E;
+      &#x3C;i class=&#x22;ti ti-chevron-right text-sm leading-tight font-medium mx-2&#x22;&#x3E;&#x3C;/i&#x3E;
+   &#x3C;/li&#x3E;
+   &#x3C;li class=&#x22;inline-flex items-center&#x22;&#x3E;
+      &#x3C;a class=&#x22;flex items-center text-sm text-gray-500 hover:text-primary focus:outline-none focus:text-primary dark:focus:text-primary leading-tight&#x22; href=&#x22;#&#x22;&#x3E;
+      App Center
+      &#x3C;i class=&#x22;ti ti-chevron-right text-sm leading-tight font-medium mx-2&#x22;&#x3E;&#x3C;/i&#x3E;
+      &#x3C;/a&#x3E;
+   &#x3C;/li&#x3E;
+   &#x3C;li class=&#x22;inline-flex items-center text-sm font-semibold text-gray-800 truncate dark:text-gray-200 leading-tight&#x22; aria-current=&#x22;page&#x22;&#x3E;
+      Application
+   &#x3C;/li&#x3E;
+&#x3C;/ol&#x3E;
+            </code>
+                                                    </pre>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end -->
+                                            </div>
+                                            <p class="card-subtitle  mb-6">The simple form of chevron breadcrumbs.</p>
+                                            <ol class="flex items-center whitespace-nowrap" aria-label="Breadcrumb">
+                                                <li class="inline-flex items-center">
+                                                    <a class="flex items-center text-sm text-gray-500 hover:text-primary focus:outline-none focus:text-primary dark:focus:text-primary leading-tight"
+                                                        href="#">
+                                                        Home
+                                                    </a>
+                                                    <i
+                                                        class="ti ti-chevron-right text-sm leading-tight font-medium mx-2"></i>
+                                                </li>
+                                                <li class="inline-flex items-center">
+                                                    <a class="flex items-center text-sm text-gray-500 hover:text-primary focus:outline-none focus:text-primary dark:focus:text-primary leading-tight"
+                                                        href="#">
+                                                        App Center
+                                                        <i
+                                                            class="ti ti-chevron-right text-sm leading-tight font-medium mx-2"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="inline-flex items-center text-sm font-semibold text-gray-800 truncate dark:text-gray-200 leading-tight"
+                                                    aria-current="page">
+                                                    Application
+                                                </li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=" lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="flex justify-between items-center mb-0">
+                                                <h5 class="card-title mb-0">Slashes Breadcrumb</h5>
+                                                <button
+                                                    class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                                                    data-hs-overlay="#hs-focus-management-modal2">
+                                                    <i class="ti ti-code text-xl"></i>
+                                                </button>
+                                                <div id="hs-focus-management-modal2"
+                                                    class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                                                    <div
+                                                        class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                                                        <div
+                                                            class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                                            <div
+                                                                class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                                                <div class="overflow-hidden">
+                                                                    <div class="flex justify-between">
+                                                                        <h5
+                                                                            class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">
+                                                                            Slashes Breadcrumb -
+                                                                            View Code</h5>
+                                                                        <button type="button"
+                                                                            class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                                                            data-hs-overlay="#hs-focus-management-modal2">
+                                                                            <span class="sr-only">Close</span>
+                                                                            <i class="ti ti-x text-xl"></i>
+                                                                        </button>
+                                                                    </div>
+
+                                                                    <div class="message-body max-h-[300px] "
+                                                                        data-simplebar="">
+                                                                        <pre class="mt-0">
+ <code class="language-html">  
+&#x3C;ol class=&#x22;flex items-center whitespace-nowrap&#x22; aria-label=&#x22;Breadcrumb&#x22;&#x3E;
+   &#x3C;li class=&#x22;inline-flex items-center&#x22;&#x3E;
+      &#x3C;a class=&#x22;flex items-center text-sm text-gray-500 hover:text-primary focus:outline-none focus:text-primary dark:focus:text-primary leading-tight&#x22; href=&#x22;#&#x22;&#x3E;
+      Home
+      &#x3C;/a&#x3E;
+      &#x3C;i class=&#x22;ti ti-slash text-sm leading-tight font-medium mx-2&#x22;&#x3E;&#x3C;/i&#x3E;
+   &#x3C;/li&#x3E;
+   &#x3C;li class=&#x22;inline-flex items-center&#x22;&#x3E;
+      &#x3C;a class=&#x22;flex items-center text-sm text-gray-500 hover:text-primary focus:outline-none focus:text-primary dark:focus:text-primary leading-tight&#x22; href=&#x22;#&#x22;&#x3E;
+      App Center
+      &#x3C;i class=&#x22;ti ti-slash text-sm leading-tight font-medium mx-2&#x22;&#x3E;&#x3C;/i&#x3E;
+      &#x3C;/a&#x3E;
+   &#x3C;/li&#x3E;
+   &#x3C;li class=&#x22;inline-flex items-center text-sm font-semibold text-gray-800 truncate dark:text-gray-200 leading-tight&#x22; aria-current=&#x22;page&#x22;&#x3E;
+      Application
+   &#x3C;/li&#x3E;
+&#x3C;/ol&#x3E;
+            </code>
+                                                    </pre>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end -->
+                                            </div>
+                                            <p class="card-subtitle  mb-6">The simple form of slashes breadcrumbs.</p>
+                                            <ol class="flex items-center whitespace-nowrap" aria-label="Breadcrumb">
+                                                <li class="inline-flex items-center">
+                                                    <a class="flex items-center text-sm text-gray-500 hover:text-primary focus:outline-none focus:text-primary dark:focus:text-primary leading-tight"
+                                                        href="#">
+                                                        Home
+                                                    </a>
+                                                    <i class="ti ti-slash text-sm leading-tight font-medium mx-2"></i>
+                                                </li>
+                                                <li class="inline-flex items-center">
+                                                    <a class="flex items-center text-sm text-gray-500 hover:text-primary focus:outline-none focus:text-primary dark:focus:text-primary leading-tight"
+                                                        href="#">
+                                                        App Center
+                                                        <i
+                                                            class="ti ti-slash text-sm leading-tight font-medium mx-2"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="inline-flex items-center text-sm font-semibold text-gray-800 truncate dark:text-gray-200 leading-tight"
+                                                    aria-current="page">
+                                                    Application
+                                                </li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=" lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="flex justify-between items-center mb-0">
+                                                <h5 class="card-title mb-0">Breadcrumb with icons</h5>
+                                                <button
+                                                    class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                                                    data-hs-overlay="#hs-focus-management-modal3">
+                                                    <i class="ti ti-code text-xl"></i>
+                                                </button>
+                                                <div id="hs-focus-management-modal3"
+                                                    class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                                                    <div
+                                                        class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                                                        <div
+                                                            class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                                            <div
+                                                                class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                                                <div class="overflow-hidden">
+                                                                    <div class="flex justify-between">
+                                                                        <h5
+                                                                            class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">
+                                                                            Breadcrumb with icons -
+                                                                            View Code</h5>
+                                                                        <button type="button"
+                                                                            class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                                                            data-hs-overlay="#hs-focus-management-modal3">
+                                                                            <span class="sr-only">Close</span>
+                                                                            <i class="ti ti-x text-xl"></i>
+                                                                        </button>
+                                                                    </div>
+
+                                                                    <div class="message-body max-h-[300px] "
+                                                                        data-simplebar="">
+                                                                        <pre class="mt-0">
+ <code class="language-html">  
+&#x3C;ol class=&#x22;flex items-center whitespace-nowrap&#x22; aria-label=&#x22;Breadcrumb&#x22;&#x3E;
+   &#x3C;li class=&#x22;inline-flex items-center&#x22;&#x3E;
+      &#x3C;a class=&#x22;flex items-center text-sm text-gray-500 hover:text-primary focus:outline-none focus:text-primary dark:focus:text-primary leading-tight&#x22; href=&#x22;#&#x22;&#x3E;
+      &#x3C;i class=&#x22;ti ti-home text-lg leading-tight font-medium  me-3&#x22;&#x3E;&#x3C;/i&#x3E;
+      Home
+      &#x3C;/a&#x3E;
+      &#x3C;i class=&#x22;ti ti-chevron-right text-sm leading-tight mx-2 font-medium&#x22;&#x3E;&#x3C;/i&#x3E;
+   &#x3C;/li&#x3E;
+   &#x3C;li class=&#x22;inline-flex items-center&#x22;&#x3E;
+      &#x3C;a class=&#x22;flex items-center text-sm text-gray-500 hover:text-primary focus:outline-none focus:text-primary dark:focus:text-primary leading-tight&#x22; href=&#x22;#&#x22;&#x3E;
+      &#x3C;i class=&#x22;ti ti-apps text-lg leading-tight font-medium me-3&#x22;&#x3E;&#x3C;/i&#x3E;
+      App Center
+      &#x3C;i class=&#x22;ti ti-chevron-right text-sm leading-tight mx-2 font-medium&#x22;&#x3E;&#x3C;/i&#x3E;
+      &#x3C;/a&#x3E;
+   &#x3C;/li&#x3E;
+   &#x3C;li class=&#x22;inline-flex items-center text-sm font-semibold text-gray-800 truncate dark:text-gray-200&#x22; aria-current=&#x22;page&#x22;&#x3E;
+      Application
+   &#x3C;/li&#x3E;
+&#x3C;/ol&#x3E;
+            </code>
+                                                    </pre>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end -->
+                                            </div>
+                                            <p class="card-subtitle  mb-6">Example with icons.</p>
+                                            <ol class="flex items-center whitespace-nowrap" aria-label="Breadcrumb">
+                                                <li class="inline-flex items-center">
+                                                    <a class="flex items-center text-sm text-gray-500 hover:text-primary focus:outline-none focus:text-primary dark:focus:text-primary leading-tight"
+                                                        href="#">
+                                                        <i
+                                                            class="ti ti-home text-lg leading-tight font-medium  me-3"></i>
+                                                        Home
+                                                    </a>
+                                                    <i
+                                                        class="ti ti-chevron-right text-sm leading-tight mx-2 font-medium"></i>
+                                                </li>
+                                                <li class="inline-flex items-center">
+                                                    <a class="flex items-center text-sm text-gray-500 hover:text-primary focus:outline-none focus:text-primary dark:focus:text-primary leading-tight"
+                                                        href="#">
+                                                        <i
+                                                            class="ti ti-apps text-lg leading-tight font-medium me-3"></i>
+                                                        App Center
+                                                        <i
+                                                            class="ti ti-chevron-right text-sm leading-tight mx-2 font-medium"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="inline-flex items-center text-sm font-semibold text-gray-800 truncate dark:text-gray-200"
+                                                    aria-current="page">
+                                                    Application
+                                                </li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=" lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="flex justify-between items-center mb-0">
+                                                <h5 class="card-title mb-0">Bordered</h5>
+                                                <button
+                                                    class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                                                    data-hs-overlay="#hs-focus-management-modal4">
+                                                    <i class="ti ti-code text-xl"></i>
+                                                </button>
+                                                <div id="hs-focus-management-modal4"
+                                                    class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                                                    <div
+                                                        class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                                                        <div
+                                                            class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                                            <div
+                                                                class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                                                <div class="overflow-hidden">
+                                                                    <div class="flex justify-between">
+                                                                        <h5
+                                                                            class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">
+                                                                            Bordered -
+                                                                            View Code</h5>
+                                                                        <button type="button"
+                                                                            class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                                                            data-hs-overlay="#hs-focus-management-modal4">
+                                                                            <span class="sr-only">Close</span>
+                                                                            <i class="ti ti-x text-xl"></i>
+                                                                        </button>
+                                                                    </div>
+
+                                                                    <div class="message-body max-h-[300px] "
+                                                                        data-simplebar="">
+                                                                        <pre class="mt-0">
+ <code class="language-html">  
+&#x3C;ol class=&#x22;flex items-center whitespace-nowrap p-2 border-y border-gray-200 dark:border-gray-700&#x22; aria-label=&#x22;Breadcrumb&#x22;&#x3E;
+   &#x3C;li class=&#x22;inline-flex items-center&#x22;&#x3E;
+      &#x3C;a class=&#x22;flex items-center text-sm text-gray-500 hover:text-primary focus:outline-none focus:text-primary dark:focus:text-primary leading-tight&#x22; href=&#x22;#&#x22;&#x3E;
+      &#x3C;i class=&#x22;ti ti-home text-lg leading-tight font-medium  me-3&#x22;&#x3E;&#x3C;/i&#x3E;
+      Home
+      &#x3C;/a&#x3E;
+      &#x3C;i class=&#x22;ti ti-chevron-right text-sm leading-tight mx-2 font-medium&#x22;&#x3E;&#x3C;/i&#x3E;
+   &#x3C;/li&#x3E;
+   &#x3C;li class=&#x22;inline-flex items-center&#x22;&#x3E;
+      &#x3C;a class=&#x22;flex items-center text-sm text-gray-500 hover:text-primary focus:outline-none focus:text-primary dark:focus:text-primary leading-tight&#x22; href=&#x22;#&#x22;&#x3E;
+      &#x3C;i class=&#x22;ti ti-apps text-lg leading-tight font-medium me-3&#x22;&#x3E;&#x3C;/i&#x3E;
+      App Center
+      &#x3C;i class=&#x22;ti ti-chevron-right text-sm leading-tight mx-2 font-medium&#x22;&#x3E;&#x3C;/i&#x3E;
+      &#x3C;/a&#x3E;
+   &#x3C;/li&#x3E;
+   &#x3C;li class=&#x22;inline-flex items-center text-sm font-semibold text-gray-800 truncate dark:text-gray-200&#x22; aria-current=&#x22;page&#x22;&#x3E;
+      Application
+   &#x3C;/li&#x3E;
+&#x3C;/ol&#x3E;
+            </code>
+                                                    </pre>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end -->
+                                            </div>
+                                            <p class="card-subtitle  mb-6">Top and bottom divided with borders.</p>
+                                            <ol class="flex items-center whitespace-nowrap p-2 border-y border-gray-200 dark:border-gray-700"
+                                                aria-label="Breadcrumb">
+                                                <li class="inline-flex items-center">
+                                                    <a class="flex items-center text-sm text-gray-500 hover:text-primary focus:outline-none focus:text-primary dark:focus:text-primary leading-tight"
+                                                        href="#">
+                                                        <i
+                                                            class="ti ti-home text-lg leading-tight font-medium  me-3"></i>
+                                                        Home
+                                                    </a>
+                                                    <i
+                                                        class="ti ti-chevron-right text-sm leading-tight mx-2 font-medium"></i>
+                                                </li>
+                                                <li class="inline-flex items-center">
+                                                    <a class="flex items-center text-sm text-gray-500 hover:text-primary focus:outline-none focus:text-primary dark:focus:text-primary leading-tight"
+                                                        href="#">
+                                                        <i
+                                                            class="ti ti-apps text-lg leading-tight font-medium me-3"></i>
+                                                        App Center
+                                                        <i
+                                                            class="ti ti-chevron-right text-sm leading-tight mx-2 font-medium"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="inline-flex items-center text-sm font-semibold text-gray-800 truncate dark:text-gray-200"
+                                                    aria-current="page">
+                                                    Application
+                                                </li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=" lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="flex justify-between items-center mb-0">
+                                                <h5 class="card-title mb-0">"More" static button</h5>
+                                                <button
+                                                    class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                                                    data-hs-overlay="#hs-focus-management-modal5">
+                                                    <i class="ti ti-code text-xl"></i>
+                                                </button>
+                                                <div id="hs-focus-management-modal5"
+                                                    class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                                                    <div
+                                                        class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                                                        <div
+                                                            class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                                            <div
+                                                                class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                                                <div class="overflow-hidden">
+                                                                    <div class="flex justify-between">
+                                                                        <h5
+                                                                            class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">
+                                                                            "More" static button -
+                                                                            View Code</h5>
+                                                                        <button type="button"
+                                                                            class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                                                            data-hs-overlay="#hs-focus-management-modal5">
+                                                                            <span class="sr-only">Close</span>
+                                                                            <i class="ti ti-x text-xl"></i>
+                                                                        </button>
+                                                                    </div>
+
+                                                                    <div class="message-body max-h-[300px] "
+                                                                        data-simplebar="">
+                                                                        <pre class="mt-0">
+ <code class="language-html">  
+&#x3C;ol class=&#x22;flex items-center whitespace-nowrap&#x22; aria-label=&#x22;Breadcrumb&#x22;&#x3E;
+   &#x3C;li class=&#x22;inline-flex items-center&#x22;&#x3E;
+      &#x3C;a class=&#x22;flex items-center text-sm text-gray-500 hover:text-primary focus:outline-none focus:text-primary dark:focus:text-primary leading-tight&#x22; href=&#x22;#&#x22;&#x3E;
+      Home
+      &#x3C;/a&#x3E;
+      &#x3C;i class=&#x22;ti ti-chevron-right text-sm leading-tight mx-2 font-medium&#x22;&#x3E;&#x3C;/i&#x3E;
+   &#x3C;/li&#x3E;
+   &#x3C;li class=&#x22;inline-flex items-center&#x22;&#x3E;
+      &#x3C;i class=&#x22;ti ti-dots text-lg leading-tight font-medium&#x22;&#x3E;&#x3C;/i&#x3E;
+      &#x3C;i class=&#x22;ti ti-chevron-right text-sm leading-tight font-medium mx-2&#x22;&#x3E;&#x3C;/i&#x3E;
+   &#x3C;/li&#x3E;
+   &#x3C;li class=&#x22;inline-flex items-center text-sm font-semibold text-gray-800 truncate dark:text-gray-200&#x22; aria-current=&#x22;page&#x22;&#x3E;
+      Application
+   &#x3C;/li&#x3E;
+&#x3C;/ol&#x3E;
+            </code>
+                                                    </pre>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end -->
+                                            </div>
+                                            <p class="card-subtitle  mb-6">Add icon to indicate that there's more links,
+                                                but this icon will be static.</p>
+                                            <ol class="flex items-center whitespace-nowrap" aria-label="Breadcrumb">
+                                                <li class="inline-flex items-center">
+                                                    <a class="flex items-center text-sm text-gray-500 hover:text-primary focus:outline-none focus:text-primary dark:focus:text-primary leading-tight"
+                                                        href="#">
+                                                        Home
+                                                    </a>
+                                                    <i
+                                                        class="ti ti-chevron-right text-sm leading-tight mx-2 font-medium"></i>
+                                                </li>
+                                                <li class="inline-flex items-center">
+                                                    <i class="ti ti-dots text-lg leading-tight font-medium"></i>
+                                                    <i
+                                                        class="ti ti-chevron-right text-sm leading-tight font-medium mx-2"></i>
+                                                </li>
+                                                <li class="inline-flex items-center text-sm font-semibold text-gray-800 truncate dark:text-gray-200"
+                                                    aria-current="page">
+                                                    Application
+                                                </li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=" lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="flex justify-between items-center mb-0">
+                                                <h5 class="card-title mb-0">"More" button with Dropdown</h5>
+                                                <button
+                                                    class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                                                    data-hs-overlay="#hs-focus-management-modal6">
+                                                    <i class="ti ti-code text-xl"></i>
+                                                </button>
+                                                <div id="hs-focus-management-modal6"
+                                                    class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                                                    <div
+                                                        class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                                                        <div
+                                                            class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                                            <div
+                                                                class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                                                <div class="overflow-hidden">
+                                                                    <div class="flex justify-between">
+                                                                        <h5
+                                                                            class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">
+                                                                            "More" button with Dropdown -
+                                                                            View Code</h5>
+                                                                        <button type="button"
+                                                                            class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                                                            data-hs-overlay="#hs-focus-management-modal6">
+                                                                            <span class="sr-only">Close</span>
+                                                                            <i class="ti ti-x text-xl"></i>
+                                                                        </button>
+                                                                    </div>
+
+                                                                    <div class="message-body max-h-[300px] "
+                                                                        data-simplebar="">
+                                                                        <pre class="mt-0">
+ <code class="language-html">  
+&#x3C;ol class=&#x22;flex items-center whitespace-nowrap&#x22; aria-label=&#x22;Breadcrumb&#x22;&#x3E;
+   &#x3C;li class=&#x22;inline-flex items-center py-1.5 px-2&#x22;&#x3E;
+      &#x3C;a class=&#x22;flex items-center text-sm text-gray-500 hover:text-primary focus:outline-none focus:text-primary dark:focus:text-primary&#x22; href=&#x22;#&#x22;&#x3E;
+      Home
+      &#x3C;/a&#x3E;
+      &#x3C;i class=&#x22;ti ti-chevron-left text-sm leading-tight font-medium ms-2&#x22;&#x3E;&#x3C;/i&#x3E;
+   &#x3C;/li&#x3E;
+   &#x3C;li class=&#x22;inline-flex items-center text-sm&#x22;&#x3E;
+      &#x3C;div class=&#x22;hs-dropdown relative inline-flex [--placement:top-left]&#x22;&#x3E;
+         &#x3C;button id=&#x22;hs-breadcrumb-dropdown&#x22; type=&#x22;button&#x22; class=&#x22;hs-dropdown-toggle py-1.5 px-2 inline-flex items-center gap-x-2 text-sm font-medium rounded-md border border-gray-200 text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:text-primary disabled:opacity-50 disabled:pointer-events-none dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:text-primary&#x22;&#x3E;
+         &#x3C;i class=&#x22;ti ti-dots-vertical text-lg leading-tight font-medium&#x22;&#x3E;&#x3C;/i&#x3E;
+         App Center
+         &#x3C;/button&#x3E;
+         &#x3C;div class=&#x22;hs-dropdown-menu hs-dropdown-open:opacity-100 w-48 hidden z-10 transition-[margin,opacity] opacity-0 duration-300 mb-2 bg-white shadow-md rounded-md p-2 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700&#x22; aria-labelledby=&#x22;hs-breadcrumb-dropdown&#x22;&#x3E;
+            &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:text-primary dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:text-primary&#x22; href=&#x22;#&#x22;&#x3E;
+            Projects
+            &#x3C;/a&#x3E;
+            &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:text-primary dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:text-primary&#x22; href=&#x22;#&#x22;&#x3E;
+            Preline
+            &#x3C;/a&#x3E;
+         &#x3C;/div&#x3E;
+      &#x3C;/div&#x3E;
+      &#x3C;i class=&#x22;ti ti-chevron-left text-sm ms-2 leading-tight font-medium&#x22;&#x3E;&#x3C;/i&#x3E;
+   &#x3C;/li&#x3E;
+   &#x3C;li class=&#x22;inline-flex items-center py-1.5 px-2 text-sm font-semibold text-gray-800 truncate dark:text-gray-200&#x22; aria-current=&#x22;page&#x22;&#x3E;
+      Application
+   &#x3C;/li&#x3E;
+&#x3C;/ol&#x3E;
+            </code>
+                                                    </pre>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end -->
+                                            </div>
+                                            <p class="card-subtitle  mb-6">Icon button to indicate that there's more
+                                                links with dropdown to view the list of hidden links.</p>
+                                            <ol class="flex items-center whitespace-nowrap" aria-label="Breadcrumb">
+                                                <li class="inline-flex items-center py-1.5 px-2">
+                                                    <a class="flex items-center text-sm text-gray-500 hover:text-primary focus:outline-none focus:text-primary dark:focus:text-primary"
+                                                        href="#">
+                                                        Home
+                                                    </a>
+                                                    <i
+                                                        class="ti ti-chevron-left text-sm leading-tight font-medium ms-2"></i>
+                                                </li>
+                                                <li class="inline-flex items-center text-sm">
+                                                    <div
+                                                        class="hs-dropdown relative inline-flex [--placement:top-left]">
+                                                        <button id="hs-breadcrumb-dropdown" type="button"
+                                                            class="hs-dropdown-toggle py-1.5 px-2 inline-flex items-center gap-x-2 text-sm font-medium rounded-md border border-gray-200 text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:text-primary disabled:opacity-50 disabled:pointer-events-none dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:text-primary">
+                                                            <i
+                                                                class="ti ti-dots-vertical text-lg leading-tight font-medium"></i>
+                                                            App Center
+                                                        </button>
+                                                        <div class="hs-dropdown-menu hs-dropdown-open:opacity-100 w-48 hidden z-10 transition-[margin,opacity] opacity-0 duration-300 mb-2 bg-white shadow-md rounded-md p-2 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700"
+                                                            aria-labelledby="hs-breadcrumb-dropdown">
+                                                            <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:text-primary dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:text-primary"
+                                                                href="#">
+                                                                Projects
+                                                            </a>
+                                                            <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:text-primary dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:text-primary"
+                                                                href="#">
+                                                                Preline
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <i
+                                                        class="ti ti-chevron-left text-sm ms-2 leading-tight font-medium"></i>
+                                                </li>
+                                                <li class="inline-flex items-center py-1.5 px-2 text-sm font-semibold text-gray-800 truncate dark:text-gray-200"
+                                                    aria-current="page">
+                                                    Application
+                                                </li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=" lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="flex justify-between items-center mb-0">
+                                                <h5 class="card-title mb-0">Coloured Background</h5>
+                                                <button
+                                                    class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                                                    data-hs-overlay="#hs-focus-management-modal7">
+                                                    <i class="ti ti-code text-xl"></i>
+                                                </button>
+                                                <div id="hs-focus-management-modal7"
+                                                    class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                                                    <div
+                                                        class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                                                        <div
+                                                            class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                                            <div
+                                                                class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                                                <div class="overflow-hidden">
+                                                                    <div class="flex justify-between">
+                                                                        <h5
+                                                                            class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">
+                                                                            Coloured Background -
+                                                                            View Code</h5>
+                                                                        <button type="button"
+                                                                            class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                                                            data-hs-overlay="#hs-focus-management-modal7">
+                                                                            <span class="sr-only">Close</span>
+                                                                            <i class="ti ti-x text-xl"></i>
+                                                                        </button>
+                                                                    </div>
+
+                                                                    <div class="message-body max-h-[300px] "
+                                                                        data-simplebar="">
+                                                                        <pre class="mt-0">
+ <code class="language-html">  
+&#x3C;div class=&#x22;flex flex-col gap-4&#x22;&#x3E;
+   &#x3C;ol class=&#x22;flex items-center whitespace-nowrap py-2 px-4 rounded-md bg-lightprimary dark:bg-darkprimary&#x22; aria-label=&#x22;Breadcrumb&#x22;&#x3E;
+      &#x3C;li class=&#x22;inline-flex items-center&#x22;&#x3E;
+         &#x3C;a class=&#x22;flex items-center text-sm text-primary hover:text-primary focus:outline-none focus:text-primary dark:focus:text-primary leading-tight&#x22; href=&#x22;#&#x22;&#x3E;
+         Home
+         &#x3C;/a&#x3E;
+         &#x3C;i class=&#x22;ti ti-chevron-right text-gray-500 text-sm leading-tight font-medium mx-2&#x22;&#x3E;&#x3C;/i&#x3E;
+      &#x3C;/li&#x3E;
+      &#x3C;li class=&#x22;inline-flex items-center&#x22;&#x3E;
+         &#x3C;a class=&#x22;flex items-center text-sm text-primary hover:text-primary focus:outline-none focus:text-primary dark:focus:text-primary leading-tight&#x22; href=&#x22;#&#x22;&#x3E;
+         App Center
+         &#x3C;i class=&#x22;ti ti-chevron-right text-sm text-gray-500 leading-tight font-medium mx-2&#x22;&#x3E;&#x3C;/i&#x3E;
+         &#x3C;/a&#x3E;
+      &#x3C;/li&#x3E;
+      &#x3C;li class=&#x22;inline-flex items-center text-sm font-semibold text-primary truncate dark:text-primary leading-tight&#x22; aria-current=&#x22;page&#x22;&#x3E;
+         Application
+      &#x3C;/li&#x3E;
+   &#x3C;/ol&#x3E;
+   &#x3C;ol class=&#x22;flex items-center whitespace-nowrap py-2 px-4 rounded-md bg-lightsecondary dark:bg-darksecondary&#x22; aria-label=&#x22;Breadcrumb&#x22;&#x3E;
+      &#x3C;li class=&#x22;inline-flex items-center&#x22;&#x3E;
+         &#x3C;a class=&#x22;flex items-center text-sm text-secondary hover:text-secondary focus:outline-none focus:text-secondary dark:focus:text-secondary leading-tight&#x22; href=&#x22;#&#x22;&#x3E;
+         Home
+         &#x3C;/a&#x3E;
+         &#x3C;i class=&#x22;ti ti-chevron-right text-gray-500 text-sm leading-tight font-medium mx-2&#x22;&#x3E;&#x3C;/i&#x3E;
+      &#x3C;/li&#x3E;
+      &#x3C;li class=&#x22;inline-flex items-center&#x22;&#x3E;
+         &#x3C;a class=&#x22;flex items-center text-sm text-secondary hover:text-secondary focus:outline-none focus:text-secondary dark:focus:text-secondary leading-tight&#x22; href=&#x22;#&#x22;&#x3E;
+         App Center
+         &#x3C;i class=&#x22;ti ti-chevron-right text-sm text-gray-500 leading-tight font-medium mx-2&#x22;&#x3E;&#x3C;/i&#x3E;
+         &#x3C;/a&#x3E;
+      &#x3C;/li&#x3E;
+      &#x3C;li class=&#x22;inline-flex items-center text-sm font-semibold text-secondary truncate dark:text-secondary leading-tight&#x22; aria-current=&#x22;page&#x22;&#x3E;
+         Application
+      &#x3C;/li&#x3E;
+   &#x3C;/ol&#x3E;
+   &#x3C;ol class=&#x22;flex items-center whitespace-nowrap py-2 px-4 rounded-md bg-lightsuccess dark:bg-darksuccess&#x22; aria-label=&#x22;Breadcrumb&#x22;&#x3E;
+      &#x3C;li class=&#x22;inline-flex items-center&#x22;&#x3E;
+         &#x3C;a class=&#x22;flex items-center text-sm text-success hover:text-success focus:outline-none focus:text-success dark:focus:text-success leading-tight&#x22; href=&#x22;#&#x22;&#x3E;
+         Home
+         &#x3C;/a&#x3E;
+         &#x3C;i class=&#x22;ti ti-chevron-right text-gray-500 text-sm leading-tight font-medium mx-2&#x22;&#x3E;&#x3C;/i&#x3E;
+      &#x3C;/li&#x3E;
+      &#x3C;li class=&#x22;inline-flex items-center&#x22;&#x3E;
+         &#x3C;a class=&#x22;flex items-center text-sm text-success hover:text-success focus:outline-none focus:text-success dark:focus:text-success leading-tight&#x22; href=&#x22;#&#x22;&#x3E;
+         App Center
+         &#x3C;i class=&#x22;ti ti-chevron-right text-sm text-gray-500 leading-tight font-medium mx-2&#x22;&#x3E;&#x3C;/i&#x3E;
+         &#x3C;/a&#x3E;
+      &#x3C;/li&#x3E;
+      &#x3C;li class=&#x22;inline-flex items-center text-sm font-semibold text-success truncate dark:text-success leading-tight&#x22; aria-current=&#x22;page&#x22;&#x3E;
+         Application
+      &#x3C;/li&#x3E;
+   &#x3C;/ol&#x3E;
+   &#x3C;ol class=&#x22;flex items-center whitespace-nowrap py-2 px-4 rounded-md bg-lightwarning dark:bg-darkwarning&#x22; aria-label=&#x22;Breadcrumb&#x22;&#x3E;
+      &#x3C;li class=&#x22;inline-flex items-center&#x22;&#x3E;
+         &#x3C;a class=&#x22;flex items-center text-sm text-warning hover:text-warning focus:outline-none focus:text-warning dark:focus:text-warning leading-tight&#x22; href=&#x22;#&#x22;&#x3E;
+         Home
+         &#x3C;/a&#x3E;
+         &#x3C;i class=&#x22;ti ti-chevron-right text-gray-500 text-sm leading-tight font-medium mx-2&#x22;&#x3E;&#x3C;/i&#x3E;
+      &#x3C;/li&#x3E;
+      &#x3C;li class=&#x22;inline-flex items-center&#x22;&#x3E;
+         &#x3C;a class=&#x22;flex items-center text-sm text-warning hover:text-warning focus:outline-none focus:text-warning dark:focus:text-warning leading-tight&#x22; href=&#x22;#&#x22;&#x3E;
+         App Center
+         &#x3C;i class=&#x22;ti ti-chevron-right text-sm text-gray-500 leading-tight font-medium mx-2&#x22;&#x3E;&#x3C;/i&#x3E;
+         &#x3C;/a&#x3E;
+      &#x3C;/li&#x3E;
+      &#x3C;li class=&#x22;inline-flex items-center text-sm font-semibold text-warning truncate dark:text-warning leading-tight&#x22; aria-current=&#x22;page&#x22;&#x3E;
+         Application
+      &#x3C;/li&#x3E;
+   &#x3C;/ol&#x3E;
+   &#x3C;ol class=&#x22;flex items-center whitespace-nowrap py-2 px-4 rounded-md bg-lighterror dark:bg-darkerror&#x22; aria-label=&#x22;Breadcrumb&#x22;&#x3E;
+      &#x3C;li class=&#x22;inline-flex items-center&#x22;&#x3E;
+         &#x3C;a class=&#x22;flex items-center text-sm text-error hover:text-error focus:outline-none focus:text-error dark:focus:text-error leading-tight&#x22; href=&#x22;#&#x22;&#x3E;
+         Home
+         &#x3C;/a&#x3E;
+         &#x3C;i class=&#x22;ti ti-chevron-right text-gray-500 text-sm leading-tight font-medium mx-2&#x22;&#x3E;&#x3C;/i&#x3E;
+      &#x3C;/li&#x3E;
+      &#x3C;li class=&#x22;inline-flex items-center&#x22;&#x3E;
+         &#x3C;a class=&#x22;flex items-center text-sm text-error hover:text-error focus:outline-none focus:text-error dark:focus:text-error leading-tight&#x22; href=&#x22;#&#x22;&#x3E;
+         App Center
+         &#x3C;i class=&#x22;ti ti-chevron-right text-sm text-gray-500 leading-tight font-medium mx-2&#x22;&#x3E;&#x3C;/i&#x3E;
+         &#x3C;/a&#x3E;
+      &#x3C;/li&#x3E;
+      &#x3C;li class=&#x22;inline-flex items-center text-sm font-semibold text-error truncate dark:text-error leading-tight&#x22; aria-current=&#x22;page&#x22;&#x3E;
+         Application
+      &#x3C;/li&#x3E;
+   &#x3C;/ol&#x3E;
+&#x3C;/div&#x3E;
+            </code>
+                                                    </pre>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end -->
+                                            </div>
+                                            <p class="card-subtitle  mb-6">Light background breadcrumbs.</p>
+                                            <div class="flex flex-col gap-4">
+                                                <ol class="flex items-center whitespace-nowrap py-2 px-4 rounded-md bg-lightprimary dark:bg-darkprimary"
+                                                    aria-label="Breadcrumb">
+                                                    <li class="inline-flex items-center">
+                                                        <a class="flex items-center text-sm text-primary hover:text-primary focus:outline-none focus:text-primary dark:focus:text-primary leading-tight"
+                                                            href="#">
+                                                            Home
+                                                        </a>
+                                                        <i
+                                                            class="ti ti-chevron-right text-gray-500 text-sm leading-tight font-medium mx-2"></i>
+                                                    </li>
+                                                    <li class="inline-flex items-center">
+                                                        <a class="flex items-center text-sm text-primary hover:text-primary focus:outline-none focus:text-primary dark:focus:text-primary leading-tight"
+                                                            href="#">
+                                                            App Center
+                                                            <i
+                                                                class="ti ti-chevron-right text-sm text-gray-500 leading-tight font-medium mx-2"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li class="inline-flex items-center text-sm font-semibold text-primary truncate dark:text-primary leading-tight"
+                                                        aria-current="page">
+                                                        Application
+                                                    </li>
+                                                </ol>
+                                                <ol class="flex items-center whitespace-nowrap py-2 px-4 rounded-md bg-lightsecondary dark:bg-darksecondary"
+                                                    aria-label="Breadcrumb">
+                                                    <li class="inline-flex items-center">
+                                                        <a class="flex items-center text-sm text-secondary hover:text-secondary focus:outline-none focus:text-secondary dark:focus:text-secondary leading-tight"
+                                                            href="#">
+                                                            Home
+                                                        </a>
+                                                        <i
+                                                            class="ti ti-chevron-right text-gray-500 text-sm leading-tight font-medium mx-2"></i>
+                                                    </li>
+                                                    <li class="inline-flex items-center">
+                                                        <a class="flex items-center text-sm text-secondary hover:text-secondary focus:outline-none focus:text-secondary dark:focus:text-secondary leading-tight"
+                                                            href="#">
+                                                            App Center
+                                                            <i
+                                                                class="ti ti-chevron-right text-sm text-gray-500 leading-tight font-medium mx-2"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li class="inline-flex items-center text-sm font-semibold text-secondary truncate dark:text-secondary leading-tight"
+                                                        aria-current="page">
+                                                        Application
+                                                    </li>
+                                                </ol>
+                                                <ol class="flex items-center whitespace-nowrap py-2 px-4 rounded-md bg-lightsuccess dark:bg-darksuccess"
+                                                    aria-label="Breadcrumb">
+                                                    <li class="inline-flex items-center">
+                                                        <a class="flex items-center text-sm text-success hover:text-success focus:outline-none focus:text-success dark:focus:text-success leading-tight"
+                                                            href="#">
+                                                            Home
+                                                        </a>
+                                                        <i
+                                                            class="ti ti-chevron-right text-gray-500 text-sm leading-tight font-medium mx-2"></i>
+                                                    </li>
+                                                    <li class="inline-flex items-center">
+                                                        <a class="flex items-center text-sm text-success hover:text-success focus:outline-none focus:text-success dark:focus:text-success leading-tight"
+                                                            href="#">
+                                                            App Center
+                                                            <i
+                                                                class="ti ti-chevron-right text-sm text-gray-500 leading-tight font-medium mx-2"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li class="inline-flex items-center text-sm font-semibold text-success truncate dark:text-success leading-tight"
+                                                        aria-current="page">
+                                                        Application
+                                                    </li>
+                                                </ol>
+                                                <ol class="flex items-center whitespace-nowrap py-2 px-4 rounded-md bg-lightwarning dark:bg-darkwarning"
+                                                    aria-label="Breadcrumb">
+                                                    <li class="inline-flex items-center">
+                                                        <a class="flex items-center text-sm text-warning hover:text-warning focus:outline-none focus:text-warning dark:focus:text-warning leading-tight"
+                                                            href="#">
+                                                            Home
+                                                        </a>
+                                                        <i
+                                                            class="ti ti-chevron-right text-gray-500 text-sm leading-tight font-medium mx-2"></i>
+                                                    </li>
+                                                    <li class="inline-flex items-center">
+                                                        <a class="flex items-center text-sm text-warning hover:text-warning focus:outline-none focus:text-warning dark:focus:text-warning leading-tight"
+                                                            href="#">
+                                                            App Center
+                                                            <i
+                                                                class="ti ti-chevron-right text-sm text-gray-500 leading-tight font-medium mx-2"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li class="inline-flex items-center text-sm font-semibold text-warning truncate dark:text-warning leading-tight"
+                                                        aria-current="page">
+                                                        Application
+                                                    </li>
+                                                </ol>
+                                                <ol class="flex items-center whitespace-nowrap py-2 px-4 rounded-md bg-lighterror dark:bg-darkerror"
+                                                    aria-label="Breadcrumb">
+                                                    <li class="inline-flex items-center">
+                                                        <a class="flex items-center text-sm text-error hover:text-error focus:outline-none focus:text-error dark:focus:text-error leading-tight"
+                                                            href="#">
+                                                            Home
+                                                        </a>
+                                                        <i
+                                                            class="ti ti-chevron-right text-gray-500 text-sm leading-tight font-medium mx-2"></i>
+                                                    </li>
+                                                    <li class="inline-flex items-center">
+                                                        <a class="flex items-center text-sm text-error hover:text-error focus:outline-none focus:text-error dark:focus:text-error leading-tight"
+                                                            href="#">
+                                                            App Center
+                                                            <i
+                                                                class="ti ti-chevron-right text-sm text-gray-500 leading-tight font-medium mx-2"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li class="inline-flex items-center text-sm font-semibold text-error truncate dark:text-error leading-tight"
+                                                        aria-current="page">
+                                                        Application
+                                                    </li>
+                                                </ol>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-------------->
+
+                    </div>
+                </main>
+                <!-- Main Content End -->
+
+            </div>
+        </div>
+        <!--end of project-->
+    </main>
+    
+<script src="../assets/js/theme/app.init.js"></script>
+<script src="../assets/js/theme/app.min.js"></script>
+<script src="../assets/libs/simplebar/dist/simplebar.min.js"></script>
+<script src="../assets/libs/iconify-icon/dist/iconify-icon.min.js"></script>
+<script src="../assets/libs/preline/dist/preline.js"></script>
+<script src="../assets/libs/@preline/input-number/index.js"></script>
+<script src="../assets/libs/@preline/tooltip/index.js"></script>
+<script src="../assets/libs/@preline/stepper/index.js"></script>
+
+    <script src="../assets/libs/prismjs/prism.js"></script>
+</body>
+
+</html>

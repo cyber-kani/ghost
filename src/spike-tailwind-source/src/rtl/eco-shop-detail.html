@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-color-theme="Blue_Theme" class="light selected" data-layout="vertical"
+    data-boxed-layout="boxed" data-card="shadow">
+
+<head>
+    @@include("partials/head.html")
+    <title>Spike TailwindCSS HTML Admin Template</title>
+    <!-- Owl Carousel  -->
+    <link rel="stylesheet" href="@@webRoot/node_modules/owl.carousel/dist/assets/owl.carousel.min.css">
+</head>
+
+<body class="DEFAULT_THEME bg-lightprimary dark:bg-darkbody">
+    <main>
+        <!--start the project-->
+        <div id="main-wrapper" class="flex p-5">
+
+            <aside id="application-sidebar-brand"
+                class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full xl:rtl:-translate-x-0 rtl:translate-x-full  left-0 rtl:left-auto xl:rtl:right-5 rtl:right-0 transform hidden xl:block xl:translate-x-0 xl:end-auto xl:bottom-0 fixed top-0 with-vertical  left-sidebar transition-all duration-300 h-screen z-[2] flex-shrink-0  w-[270px] border-border dark:border-darkborder bg-white dark:bg-dark xl:top-5 xl:start-5 shadow-md xl:rounded-md">
+                @@include("partials/sidebar.html",{ "page": "eco-shop-detail","page_group": "ecomm" })
+            </aside>
+            <div class="page-wrapper w-full" role="main">
+
+                <!-- Main Content -->
+                <main class="h-full ">
+                    <div class="container full-container py-5 xl:ps-6 ps-0 pt-0 pe-0 remove-ps">
+
+                        <!--  Header Start -->
+                        <header
+                            class="sticky top-0 inset-x-0 z-[1] flex flex-wrap md:justify-start md:flex-nowrap text-fs_15 py-3 lg:py-0 mb-6 bg-white dark:bg-dark rounded-md shadow-md">
+                            <div class="with-vertical w-full">@@include("partials/header.html")</div>
+                            <div class="with-horizontal w-full">
+                                <div class="bg-white dark:bg-dark">
+                                    <div class="container">
+                                        @@include("partials/horizontal-header.html")
+                                    </div>
+                                </div>
+                            </div>
+                        </header>
+                        <!--  Header End -->
+
+                        <!-- Horizontal Sidebar Menu -->
+                        <aside
+                            class="with-horizontal lg:flex hidden left-sidebar bg-white dark:bg-dark border-t border-border dark:border-darkborder">
+                            @@include("partials/horizontal-sidebar.html", { "page": "eco-shop-detail","page_group":
+                            "ecomm"})
+                        </aside>
+                        <!-- Horizontal Sidebar Menu End -->
+
+                        <!-- Main Content -->
+                        <div class="max-w-full">
+                            <div class="container full-container ">
+                                <!----Breadcrumb Start---->
+                                @@include("partials/breadcrumb.html", {"title": "Product Detail", "subtitle": 'Home'})
+                                <!----Breadcrumb End---->
+                        <div class="shop-detail">
+                            <!---Product Slider / Product details--->
+                            <div class="card shadow-none border border-border dark:border-darkborder mb-6">
+                                <div class="card-body">
+                                    <div class="grid grid-cols-12 gap-6">
+                                        <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                                            <div id="sync1" class="owl-carousel owl-theme">
+                                                <div class="item rounded-sm overflow-hidden">
+                                                    <img src="@@webRoot/assets/images/products/s1.jpg" alt=""
+                                                        class="w-full max-w-full">
+                                                </div>
+                                                <div class="item rounded-sm overflow-hidden">
+                                                    <img src="@@webRoot/assets/images/products/s2.jpg" alt=""
+                                                        class="w-full max-w-full">
+                                                </div>
+                                                <div class="item rounded-sm overflow-hidden">
+                                                    <img src="@@webRoot/assets/images/products/s3.jpg" alt=""
+                                                        class="w-full max-w-full">
+                                                </div>
+                                                <div class="item rounded-sm overflow-hidden">
+                                                    <img src="@@webRoot/assets/images/products/s4.jpg" alt=""
+                                                        class="w-full max-w-full">
+                                                </div>
+                                                <div class="item rounded-sm overflow-hidden">
+                                                    <img src="@@webRoot/assets/images/products/s5.jpg" alt=""
+                                                        class="w-full max-w-full">
+                                                </div>
+                                                <div class="item rounded-sm overflow-hidden">
+                                                    <img src="@@webRoot/assets/images/products/s6.jpg" alt=""
+                                                        class="w-full max-w-full">
+                                                </div>
+                                                <div class="item rounded-sm overflow-hidden">
+                                                    <img src="@@webRoot/assets/images/products/s7.jpg" alt=""
+                                                        class="w-full max-w-full">
+                                                </div>
+                                                <div class="item rounded-sm overflow-hidden">
+                                                    <img src="@@webRoot/assets/images/products/s8.jpg" alt=""
+                                                        class="w-full max-w-full">
+                                                </div>
+                                                <div class="item rounded-sm overflow-hidden">
+                                                    <img src="@@webRoot/assets/images/products/s9.jpg" alt=""
+                                                        class="w-full max-w-full">
+                                                </div>
+                                                <div class="item rounded-sm overflow-hidden">
+                                                    <img src="@@webRoot/assets/images/products/s10.jpg" alt=""
+                                                        class="w-full max-w-full">
+                                                </div>
+                                                <div class="item rounded-sm overflow-hidden">
+                                                    <img src="@@webRoot/assets/images/products/s11.jpg" alt=""
+                                                        class="w-full max-w-full">
+                                                </div>
+                                                <div class="item rounded-sm overflow-hidden">
+                                                    <img src="@@webRoot/assets/images/products/s12.jpg" alt=""
+                                                        class="w-full max-w-full">
+                                                </div>
+                                            </div>
+
+                                            <div id="sync2" class="owl-carousel owl-theme">
+                                                <div class="item rounded-sm overflow-hidden">
+                                                    <img src="@@webRoot/assets/images/products/s1.jpg" alt=""
+                                                        class="w-full max-w-full">
+                                                </div>
+                                                <div class="item rounded-sm overflow-hidden">
+                                                    <img src="@@webRoot/assets/images/products/s2.jpg" alt=""
+                                                        class="w-full max-w-full">
+                                                </div>
+                                                <div class="item rounded-sm overflow-hidden">
+                                                    <img src="@@webRoot/assets/images/products/s3.jpg" alt=""
+                                                        class="w-full max-w-full">
+                                                </div>
+                                                <div class="item rounded-sm overflow-hidden">
+                                                    <img src="@@webRoot/assets/images/products/s4.jpg" alt=""
+                                                        class="w-full max-w-full">
+                                                </div>
+                                                <div class="item rounded-sm overflow-hidden">
+                                                    <img src="@@webRoot/assets/images/products/s5.jpg" alt=""
+                                                        class="w-full max-w-full">
+                                                </div>
+                                                <div class="item rounded-sm overflow-hidden">
+                                                    <img src="@@webRoot/assets/images/products/s6.jpg" alt=""
+                                                        class="w-full max-w-full">
+                                                </div>
+                                                <div class="item rounded-sm overflow-hidden">
+                                                    <img src="@@webRoot/assets/images/products/s7.jpg" alt=""
+                                                        class="w-full max-w-full">
+                                                </div>
+                                                <div class="item rounded-sm overflow-hidden">
+                                                    <img src="@@webRoot/assets/images/products/s8.jpg" alt=""
+                                                        class="w-full max-w-full">
+                                                </div>
+                                                <div class="item rounded-sm overflow-hidden">
+                                                    <img src="@@webRoot/assets/images/products/s9.jpg" alt=""
+                                                        class="w-full max-w-full">
+                                                </div>
+                                                <div class="item rounded-sm overflow-hidden">
+                                                    <img src="@@webRoot/assets/images/products/s10.jpg" alt=""
+                                                        class="w-full max-w-full">
+                                                </div>
+                                                <div class="item rounded-sm overflow-hidden">
+                                                    <img src="@@webRoot/assets/images/products/s11.jpg" alt=""
+                                                        class="w-full max-w-full">
+                                                </div>
+                                                <div class="item rounded-sm overflow-hidden">
+                                                    <img src="@@webRoot/assets/images/products/s12.jpg" alt=""
+                                                        class="w-full max-w-full">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                                            <div class="shop-content">
+                                                <div class="flex items-center gap-2 mb-2">
+                                                    <div class="badge bg-success border-success text-white w-fit text-xs leading-none">In Stock</div>
+                                                    <span class="text-xs">books</span>
+                                                </div>
+                                                <h4 class="text-xl font-semibold mb-2">How
+                                                    Innovation Works</h4>
+                                                <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                                    Sed ex arcu, tincidunt
+                                                    bibendum felis.</p>
+                                                <h4
+                                                    class="font-semibold mb-3 flex gap-2 text-xl">
+                                                    <del
+                                                        class="text-bodytext dark:text-darklink  font-normal opacity-60">$350</del>
+                                                    $275
+                                                </h4>
+                                                <div class="flex items-center gap-3 pb-4">
+                                                    <ul class="list-unstyled flex items-center mb-0">
+                                                        <li><a class="me-1" href="javascript:void(0)"><i
+                                                                    class="ti ti-star text-warning text-base"></i></a>
+                                                        </li>
+                                                        <li><a class="me-1" href="javascript:void(0)"><i
+                                                                    class="ti ti-star text-warning text-base"></i></a>
+                                                        </li>
+                                                        <li><a class="me-1" href="javascript:void(0)"><i
+                                                                    class="ti ti-star text-warning text-base"></i></a>
+                                                        </li>
+                                                        <li><a class="me-1" href="javascript:void(0)"><i
+                                                                    class="ti ti-star text-warning text-base"></i></a>
+                                                        </li>
+                                                        <li><a class="" href="javascript:void(0)"><i
+                                                                    class="ti ti-star text-warning text-base"></i></a>
+                                                        </li>
+                                                    </ul>
+                                                    <a href="javascript:void(0)"
+                                                        class="text-dark dark:text-darklink hover:text-primary">(236
+                                                        reviews)</a>
+                                                </div>
+                                                <hr class="border-b-1 border-border dark:border-darkborder my-2" />
+                                                <div class="flex items-center gap-2 py-7">
+                                                    <h6 class="   text-base">
+                                                        Colors:</h6>
+                                                    <a href="javascript:void(0)"
+                                                        class="bg-primary h-6 w-6 rounded-full"></a>
+                                                </div>
+                                                <div class="flex items-center gap-7  pb-7">
+                                                    <h6 class="   text-base">
+                                                        QTY:</h6>
+                                                    <!----Input Quantity----->
+                                                    <div class="flex" data-hs-input-number>
+                                                        <div class="flex items-center">
+                                                            <button type="button"
+                                                                class="h-9 w-10 inline-flex justify-center items-center  text-sm border border-light-dark rounded-s-sm "
+                                                                data-hs-input-number-decrement>
+                                                                <i class="ti ti-minus text-lg text-secondary"></i>
+                                                            </button>
+                                                            <input
+                                                                class="p-0 h-9 w-10 bg-transparent text-base border-y border-x-0 border-light-dark text-center text-secondary"
+                                                                type="text" value="1" data-hs-input-number-input>
+                                                            <button type="button"
+                                                                class="h-9 w-10 inline-flex justify-center items-center  text-sm border border-light-dark rounded-e-sm"
+                                                                data-hs-input-number-increment>
+                                                                <i class="ti ti-plus text-lg text-secondary"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <!-- End Input Quantity Number -->
+                                                </div>
+                                                <hr class="border-b-1 border-border dark:border-darkborder my-2" />
+                                                <div class="sm:flex items-center gap-4 pt-8 mb-7">
+                                                    <a href="javascript:void(0)"
+                                                        class="btn block px-12 py-2.5 mb-2 sm:mb-0">Buy Now</a>
+                                                    <a href="javascript:void(0)"    
+                                                        class="btn block px-7 py-2.5 bg-error btn-error">Add to Cart</a>
+                                                </div>
+                                                <p class="mb-0 font-medium">Dispatched in 2-3 weeks</p>
+                                                <a href="javascript:void(0)" class="text-dark font-medium dark:text-primary">Why
+                                                    the longer time for delivery?</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!---Product Tabs--->
+                            <div class="card shadow-none border border-border dark:border-darkborder">
+                                <div class="card-body">
+
+                                    <nav class="flex space-x-3 border-b border-border dark:border-darkborder" aria-label="Tabs" role="tablist">
+                                        <button type="button"
+                                            class="hs-tab-active:border-primary hs-tab-active:text-primary py-2 px-3 inline-flex items-center gap-2 border-b-2 border-transparent text-sm whitespace-nowrap  text-bodytext dark:text-darklink hover:text-primary focus:outline-none focus:text-primary disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:text-primary active font-medium"
+                                            id="Desc-tab" data-hs-tab="#desc" aria-controls="desc" role="tab">
+                                            <span class="">Description</span>
+                                        </button>
+                                        <button type="button"
+                                            class="hs-tab-active:border-primary hs-tab-active:text-primary py-2 px-3 inline-flex items-center gap-2 border-b-2 border-transparent text-sm whitespace-nowrap  text-bodytext dark:text-darklink hover:text-primary focus:outline-none focus:text-primary disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:text-primary font-medium"
+                                            id="Review-tab" data-hs-tab="#review" aria-controls="review" role="tab">
+                                            <span class="">Reviews</span>
+                                        </button>
+                                    </nav>
+                                    <div class="mt-6">
+                                        <div id="desc" role="tabpanel" aria-labelledby="Desc-tab">
+                                            <h5
+                                                class="card-title   mb-5 leading-none">
+                                                Sed at diam elit. Vivamus tortor odio, pellentesque eu tincidunt a,
+                                                aliquet sit amet lorem
+                                                pellentesque eu tincidunt a, aliquet sit amet lorem.
+                                            </h5>
+                                            <p class="mb-7">
+                                                Cras eget elit semper, congue sapien id, pellentesque diam. Nulla
+                                                faucibus diam nec fermentum
+                                                ullamcorper. Praesent sed ipsum ut augue vestibulum malesuada. Duis
+                                                vitae volutpat odio. Integer sit amet elit ac justo sagittis dignissim.
+                                            </p>
+                                            <p class="mb-0">
+                                                Vivamus quis metus in nunc semper efficitur eget vitae diam. Proin justo
+                                                diam, venenatis sit amet
+                                                eros in, iaculis auctor magna. Pellentesque sit amet accumsan urna, sit
+                                                amet pretium ipsum. Fusce condimentum venenatis mauris et luctus.
+                                                Vestibulum ante ipsum primis in
+                                                faucibus orci luctus et ultrices posuere cubilia curae;
+                                            </p>
+                                        </div>
+                                        <div id="review" class="hidden" role="tabpanel" aria-labelledby="Review-tab">
+                                            <div class="grid grid-cols-12 gap-6">
+                                                <div
+                                                    class="lg:col-span-4 md:col-span-4 sm:col-span-4 col-span-12 flex items-stretch">
+                                                    <div
+                                                        class="card shadow-none  border border-border dark:border-darkborder ">
+                                                        <div
+                                                            class="card-body text-center h-full flex flex-col justify-center">
+                                                            <h6 class="mb-3">Average Rating
+                                                            </h6>
+                                                            <h2 class="text-primary mb-3 font-semibold text-4xl">4/5
+                                                            </h2>
+                                                            <ul
+                                                                class="list-unstyled flex align-items-center justify-center mb-0">
+                                                                <li><a class="me-1" href="javascript:void(0)"><i
+                                                                            class="ti ti-star text-warning text-lg"></i></a>
+                                                                </li>
+                                                                <li><a class="me-1" href="javascript:void(0)"><i
+                                                                            class="ti ti-star text-warning text-lg"></i></a>
+                                                                </li>
+                                                                <li><a class="me-1" href="javascript:void(0)"><i
+                                                                            class="ti ti-star text-warning text-lg"></i></a>
+                                                                </li>
+                                                                <li><a class="me-1" href="javascript:void(0)"><i
+                                                                            class="ti ti-star text-warning text-lg"></i></a>
+                                                                </li>
+                                                                <li><a class="" href="javascript:void(0)"><i
+                                                                            class="ti ti-star text-warning text-lg"></i></a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="lg:col-span-4 md:col-span-4 sm:col-span-4 col-span-12 flex items-stretch">
+
+                                                    <div
+                                                        class="card shadow-none  border border-border dark:border-darkborder ">
+                                                        <div
+                                                            class="card-body text-center h-full  flex flex-col gap-3 justify-center">
+                                                            <div class="flex gap-4 items-center">
+                                                                <span class="shrink-0 text-xs">1 Stars</span>
+                                                                <!-- Progress -->
+                                                                <div class="flex w-full h-1 bg-lightprimary dark:bg-darkprimary rounded-md overflow-hidden"
+                                                                    role="progressbar" aria-valuenow="45"
+                                                                    aria-valuemin="0" aria-valuemax="100">
+                                                                    <div class="flex flex-col justify-center overflow-hidden bg-primary text-xs text-white   text-center whitespace-nowrap transition duration-500 "
+                                                                        style="width: 45%"></div>
+                                                                </div>
+                                                                <!-- End Progress -->
+                                                                <h6
+                                                                    class="mb-0 text-sm">
+                                                                    (485)</h6>
+                                                            </div>
+                                                            <div class="flex gap-4 items-center">
+                                                                <span class="shrink-0 text-xs">2 Stars</span>
+                                                                <!-- Progress -->
+                                                                <div class="flex w-full h-1 bg-lightprimary dark:bg-darkprimary rounded-md overflow-hidden"
+                                                                    role="progressbar" aria-valuenow="25"
+                                                                    aria-valuemin="0" aria-valuemax="100">
+                                                                    <div class="flex flex-col justify-center overflow-hidden bg-primary text-xs text-white   text-center whitespace-nowrap transition duration-500 "
+                                                                        style="width: 25%"></div>
+                                                                </div>
+                                                                <!-- End Progress -->
+                                                                <h6
+                                                                    class="mb-0 text-sm">
+                                                                    (215)</h6>
+                                                            </div>
+                                                            <div class="flex gap-4 items-center">
+                                                                <span class="shrink-0 text-xs">3 Stars</span>
+                                                                <!-- Progress -->
+                                                                <div class="flex w-full h-1 bg-lightprimary dark:bg-darkprimary rounded-md overflow-hidden"
+                                                                    role="progressbar" aria-valuenow="20"
+                                                                    aria-valuemin="0" aria-valuemax="100">
+                                                                    <div class="flex flex-col justify-center overflow-hidden bg-primary text-xs text-white   text-center whitespace-nowrap transition duration-500 "
+                                                                        style="width: 20%"></div>
+                                                                </div>
+                                                                <!-- End Progress -->
+                                                                <h6
+                                                                    class="mb-0 text-sm">
+                                                                    (110)</h6>
+                                                            </div>
+                                                            <div class="flex gap-4 items-center">
+                                                                <span class="shrink-0 text-xs">4 Stars</span>
+                                                                <!-- Progress -->
+                                                                <div class="flex w-full h-1 bg-lightprimary dark:bg-darkprimary rounded-md overflow-hidden"
+                                                                    role="progressbar" aria-valuenow="80"
+                                                                    aria-valuemin="0" aria-valuemax="100">
+                                                                    <div class="flex flex-col justify-center overflow-hidden bg-primary text-xs text-white   text-center whitespace-nowrap transition duration-500 "
+                                                                        style="width: 80%"></div>
+                                                                </div>
+                                                                <!-- End Progress -->
+                                                                <h6
+                                                                    class="mb-0 text-sm">
+                                                                    (620)</h6>
+                                                            </div>
+                                                            <div class="flex gap-4 items-center">
+                                                                <span class="shrink-0 text-xs">5 Stars</span>
+                                                                <!-- Progress -->
+                                                                <div class="flex w-full h-1 bg-lightprimary dark:bg-darkprimary rounded-md overflow-hidden"
+                                                                    role="progressbar" aria-valuenow="12"
+                                                                    aria-valuemin="0" aria-valuemax="100">
+                                                                    <div class="flex flex-col justify-center overflow-hidden bg-primary text-xs text-white   text-center whitespace-nowrap transition duration-500 "
+                                                                        style="width: 12%"></div>
+                                                                </div>
+                                                                <!-- End Progress -->
+                                                                <h6
+                                                                    class="mb-0 text-sm">
+                                                                    (160)</h6>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="lg:col-span-4 md:col-span-4 sm:col-span-4 col-span-12 flex items-stretch">
+                                                    <div
+                                                        class="card shadow-none  border border-border dark:border-darkborder ">
+                                                        <div
+                                                            class="card-body text-center h-full  flex flex-col gap-3 justify-center">
+                                                            <button type="button"
+                                                                class=" btn-outline-primary rounded-full flex items-center gap-2 py-1.5 px-6 text-fs_15 mx-auto font-medium"><i
+                                                                    class="ti ti-pencil text-2xl"></i>Write an
+                                                                Review</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!---Products Tabs End--->
+
+                            <div class="related-products mt-10">
+                                <h4 class="text-xl">Related Products</h4>
+                                <div class="grid grid-cols-12 gap-6 mt-4">
+                                    <div class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                        <div class="card overflow-hidden">
+                                            <div class="relative">
+                                                <a href="@@webRoot/rtl/eco-shop-detail.html">
+                                                    <img src="@@webRoot/assets/images/products/s2.jpg"
+                                                        class="rounded-0 w-full max-w-full" alt="..."></a>
+                                            </div>
+                                            <div class="card-body py-5 px-5">
+                                                <h6 class="   text-base mb-1">
+                                                    Psalms Book for Growth</h6>
+                                                <div class="flex items-center justify-between">
+                                                    <h6 class="   text-base">
+                                                        $89 <span
+                                                            class="ms-2 text-bodytext dark:text-darklink text-sm font-normal opacity-60"><del>$99</del></span>
+                                                    </h6>
+                                                    <ul class="flex items-center mb-0">
+                                                        <li><a class="me-1" href="javascript:void(0)"><i
+                                                                    class="ti ti-star text-warning"></i></a>
+                                                        </li>
+                                                        <li><a class="me-1" href="javascript:void(0)"><i
+                                                                    class="ti ti-star text-warning"></i></a>
+                                                        </li>
+                                                        <li><a class="me-1" href="javascript:void(0)"><i
+                                                                    class="ti ti-star text-warning"></i></a>
+                                                        </li>
+                                                        <li><a class="me-1" href="javascript:void(0)"><i
+                                                                    class="ti ti-star text-warning"></i></a>
+                                                        </li>
+                                                        <li><a class="" href="javascript:void(0)"><i
+                                                                    class="ti ti-star text-warning"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                        <div class="card overflow-hidden">
+                                            <div class="relative">
+                                                <a href="@@webRoot/rtl/eco-shop-detail.html">
+                                                    <img src="@@webRoot/assets/images/products/s4.jpg"
+                                                        class="rounded-0 w-full max-w-full" alt="..."></a>
+                                            </div>
+                                            <div class="card-body py-5 px-5">
+                                                <h6 class="   text-base mb-1">
+                                                    Boat Headphone</h6>
+                                                <div class="flex items-center justify-between">
+                                                    <h6 class="   text-base">
+                                                        $50 <span
+                                                            class="ms-2 text-bodytext dark:text-darklink text-sm font-normal opacity-60"><del>$65</del></span>
+                                                    </h6>
+                                                    <ul class="flex items-center mb-0">
+                                                        <li><a class="me-1" href="javascript:void(0)"><i
+                                                                    class="ti ti-star text-warning"></i></a>
+                                                        </li>
+                                                        <li><a class="me-1" href="javascript:void(0)"><i
+                                                                    class="ti ti-star text-warning"></i></a>
+                                                        </li>
+                                                        <li><a class="me-1" href="javascript:void(0)"><i
+                                                                    class="ti ti-star text-warning"></i></a>
+                                                        </li>
+                                                        <li><a class="me-1" href="javascript:void(0)"><i
+                                                                    class="ti ti-star text-warning"></i></a>
+                                                        </li>
+                                                        <li><a class="" href="javascript:void(0)"><i
+                                                                    class="ti ti-star text-warning"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                        <div class="card overflow-hidden">
+                                            <div class="relative">
+                                                <a href="@@webRoot/rtl/eco-shop-detail.html">
+                                                    <img src="@@webRoot/assets/images/products/s5.jpg"
+                                                        class="rounded-0 w-full max-w-full" alt="..."></a>
+                                            </div>
+                                            <div class="card-body py-5 px-5">
+                                                <h6 class="   text-base mb-1">
+                                                    MacBook Air Pro</h6>
+                                                <div class="flex items-center justify-between">
+                                                    <h6 class="   text-base">
+                                                        $650 <span
+                                                            class="ms-2 text-bodytext dark:text-darklink text-sm font-normal opacity-60"><del>$900</del></span>
+                                                    </h6>
+                                                    <ul class="flex items-center mb-0">
+                                                        <li><a class="me-1" href="javascript:void(0)"><i
+                                                                    class="ti ti-star text-warning"></i></a>
+                                                        </li>
+                                                        <li><a class="me-1" href="javascript:void(0)"><i
+                                                                    class="ti ti-star text-warning"></i></a>
+                                                        </li>
+                                                        <li><a class="me-1" href="javascript:void(0)"><i
+                                                                    class="ti ti-star text-warning"></i></a>
+                                                        </li>
+                                                        <li><a class="me-1" href="javascript:void(0)"><i
+                                                                    class="ti ti-star text-warning"></i></a>
+                                                        </li>
+                                                        <li><a class="" href="javascript:void(0)"><i
+                                                                    class="ti ti-star text-warning"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-3 md:col-span-6 sm:col-span-6 col-span-12">
+                                        <div class="card overflow-hidden">
+                                            <div class="relative">
+                                                <a href="@@webRoot/rtl/eco-shop-detail.html">
+                                                    <img src="@@webRoot/assets/images/products/s6.jpg"
+                                                        class="rounded-0 w-full max-w-full" alt="..."></a>
+                                            </div>
+                                            <div class="card-body py-5 px-5">
+                                                <h6 class="   text-base mb-1">
+                                                    Gaming Console</h6>
+                                                <div class="flex items-center justify-between">
+                                                    <h6 class="   text-base">
+                                                        $25 <span
+                                                            class="ms-2 text-bodytext dark:text-darklink text-sm font-normal opacity-60"><del>$31</del></span>
+                                                    </h6>
+                                                    <ul class="flex items-center mb-0">
+                                                        <li><a class="me-1" href="javascript:void(0)"><i
+                                                                    class="ti ti-star text-warning"></i></a>
+                                                        </li>
+                                                        <li><a class="me-1" href="javascript:void(0)"><i
+                                                                    class="ti ti-star text-warning"></i></a>
+                                                        </li>
+                                                        <li><a class="me-1" href="javascript:void(0)"><i
+                                                                    class="ti ti-star text-warning"></i></a>
+                                                        </li>
+                                                        <li><a class="me-1" href="javascript:void(0)"><i
+                                                                    class="ti ti-star text-warning"></i></a>
+                                                        </li>
+                                                        <li><a class="" href="javascript:void(0)"><i
+                                                                    class="ti ti-star text-warning"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                <!-- Main Content End -->
+
+            </div>
+        </div>
+        <!--end of project-->
+    </main>
+    @@include("partials/header-components/mobile-menu.html")
+    @@include("partials/customizer.html")
+    @@include("partials/scripts.html")
+    <script src="@@webRoot/assets/js/vendor.min.js"></script> 
+    <script src="@@webRoot/node_modules/owl.carousel/dist/owl.carousel.min.js"></script>
+    <script src="@@webRoot/assets/js/apps/productDetail.js"></script>
+</body>
+
+</html>

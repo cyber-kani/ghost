@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-color-theme="Blue_Theme" class="light selected" data-layout="vertical"
+    data-boxed-layout="boxed" data-card="shadow">
+
+<head>
+    @@include("partials/head.html")
+    <title>Spike TailwindCSS HTML Admin Template</title>
+    <link rel="stylesheet" href="@@webRoot/node_modules/prismjs/themes/prism-okaidia.min.css">
+</head>
+
+<body class="DEFAULT_THEME bg-lightprimary dark:bg-darkbody">
+    <main>
+        <!--start the project-->
+        <div id="main-wrapper" class="flex p-5">
+
+            <aside id="application-sidebar-brand"
+                class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full xl:rtl:-translate-x-0 rtl:translate-x-full  left-0 rtl:left-auto xl:rtl:right-5 rtl:right-0 transform hidden xl:block xl:translate-x-0 xl:end-auto xl:bottom-0 fixed top-0 with-vertical docs-left-sidebar transition-all duration-300 h-screen z-[2] flex-shrink-0  w-[270px] border-border dark:border-darkborder bg-white dark:bg-dark xl:top-5 xl:start-5 shadow-md xl:rounded-md">
+                @@include("partials/sidebar.html",{ "page": "docs-typography","page_group": "themeUI" })
+            </aside>
+            <div class="page-wrapper w-full" role="main">
+
+                <!-- Main Content -->
+                <main class="h-full ">
+                    <div class="container full-container py-5 xl:ps-6 ps-0 pt-0 pe-0">
+
+                        <!--  Header Start -->
+                        <header
+                            class="sticky top-0 inset-x-0 z-[1] flex flex-wrap md:justify-start md:flex-nowrap text-sm py-0 mb-6 bg-white dark:bg-dark rounded-md shadow-md">
+                            <div class="with-vertical w-full">@@include("partials/header.html")</div>
+                        </header>
+                        <!--  Header End -->
+
+                        <!-- ============================================================== -->
+                        <!-- Start Page Content -->
+                        <!-- ============================================================== -->
+                        <div class="max-w-full">
+                            <div class="d-sm-flex align-items-center justify-content-between">
+                                <h4 class="mb-8 text-lg  ">Typography</h4>
+                            </div>
+                            <div class="grid grid-cols-12 gap-6">
+                                <div class="col-span-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="mb-0 text-lg ">Google
+                                                fonts</h4>
+                                            <p class="text-sm  text-muted mb-6">
+                                                1) Customize the Google Fonts link to your preferred selection :
+                                                <span
+                                                    class="text-dark dark:text-white font-bold">packages/demos/src/main/partial/head.html</span>
+                                            </p>
+                                            <div class="bg-lightprimary p-4 rounded-md mb-6">
+                                                <h5 class="text-lg mb-1 font-medium text-dark dark:text-white">Note:
+                                                </h5>
+                                                To execute Gulp, navigate to the directory containing the package.json
+                                                file. Open a command prompt in that location and enter the command
+                                                "gulp" as indicated below. For instructions on installing Gulp, please
+                                                refer to the following link
+                                                <a href="./docs-start.html"
+                                                    class="text-link font-medium hover:text-primary dark:text-darklink dark:hover:text-primary">Gulp</a>
+                                            </div>
+                                            <pre class="language-js mb-6" tabindex="0">
+                                        <code class="language-js">
+gulp
+                                          </code>
+                                        </pre>
+                                            <div class="mt-6">
+                                                <pre class="language-html " tabindex="0">
+<code class="language-html">
+&#x3C;link href=&#x22;https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&#x26;display=swap&#x22;
+   rel=&#x22;stylesheet&#x22; /&#x3E;
+                      </code>
+                                            </pre>
+                                            </div>
+                                            <p class="text-sm  text-muted mb-0">
+                                                2) Change font-family :
+                                                <span
+                                                    class="text-dark dark:text-white font-bold">packages/demos/tailwind.config.js</span>
+                                            </p>
+                                            <div class="mt-6">
+                                                <pre class="language-html " tabindex="0">
+<code class="language-js">
+    fontFamily: {
+        sans: ['Plus Jakarta Sans', 'sans-serif'],
+    },
+                      </code>
+                                            </pre>
+                                            </div>
+                                            <div class="bg-lightsuccess border border-lightsuccess mt-6 text-sm text-successemphasis rounded-lg p-4 dark:bg-darksuccess dark:border-darksuccess dark:text-success"
+                                                role="alert">
+                                                Now, save your tailwind.config.js file and verify the changes in the
+                                                browser.
+                                            </div>
+                                            <div class="bg-lightprimary border border-lightprimary mt-6 text-sm text-primaryemphasis rounded-lg p-4 dark:bg-darkprimary dark:border-darkprimary dark:text-primary"
+                                                role="alert">To alter the font selection within the theme, insert the
+                                                URL linking to your desired fonts and update the font family attribute
+                                                accordingly within the tailwind.config.js file. Now, save your
+                                                tailwind.config.js file and verify the changes in the browser.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                        <!-------------->
+
+                    </div>
+                </main>
+                <!-- Main Content End -->
+
+            </div>
+        </div>
+        <!--end of project-->
+    </main>
+    @@include("partials/scripts.html")
+    <script src="@@webRoot/node_modules/prismjs/prism.js"></script>
+</body>
+
+</html>

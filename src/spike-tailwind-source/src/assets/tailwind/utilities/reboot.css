@@ -1,0 +1,47 @@
+img,
+video {
+  max-width: fit-content;
+  height: auto;
+}
+
+/* Overlay bg */
+.hs-overlay-backdrop{
+    left: 0;
+    top: 0;
+    background: rgba(0,0,0,0.5);
+    position: fixed;
+    height: 100%;
+    width: 100%;
+}
+
+.btn-check {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+    pointer-events: none;
+}
+
+
+html[data-card='border'].dark .card {
+  border: 1px solid var(--color-darkborder);
+} 
+
+.selected.dark {
+  color-scheme: dark;
+}
+
+.bg-stripes-indigo {
+  background-image: linear-gradient(135deg, var(--color-primary) 8.33%, #ffffff 8.33%, #ffffff 50%, var(--color-primary) 50%, var(--color-primary) 58.33%, #ffffff 58.33%, #ffffff 100%);
+  background-size: 8.49px 8.49px;
+}
+
+.mh-n100 {
+  max-height: calc(100vh - 100px);
+}
+
+@media screen and (max-width:1200px) {
+  .apps-scroll{
+    height: calc(100vh - 80px)
+  }
+}
+
+

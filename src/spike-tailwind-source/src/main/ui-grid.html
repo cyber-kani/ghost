@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-color-theme="Blue_Theme" class="light selected" data-layout="vertical"
+  data-boxed-layout="boxed" data-card="shadow">
+
+<head>
+  @@include("partials/head.html")
+  <title>Spike TailwindCSS HTML Admin Template</title>
+  <link rel="stylesheet" href="@@webRoot/node_modules/prismjs/themes/prism-okaidia.min.css">
+</head>
+
+<body class="DEFAULT_THEME bg-lightprimary dark:bg-darkbody">
+  <main>
+    <!--start the project-->
+    <div id="main-wrapper" class="flex p-5">
+
+      <aside id="application-sidebar-brand"
+        class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full xl:rtl:-translate-x-0 rtl:translate-x-full  left-0 rtl:left-auto xl:rtl:right-5 rtl:right-0 transform hidden xl:block xl:translate-x-0 xl:end-auto xl:bottom-0 fixed top-0 with-vertical  left-sidebar transition-all duration-300 h-screen z-[2] flex-shrink-0  w-[270px] border-border dark:border-darkborder bg-white dark:bg-dark xl:top-5 xl:start-5 shadow-md xl:rounded-md">
+        @@include("partials/sidebar.html",{ "page": "ui-grid","page_group": "ui" })
+      </aside>
+      <div class="page-wrapper w-full" role="main">
+
+        <!-- Main Content -->
+        <main class="h-full ">
+          <div class="container full-container py-5 xl:ps-6 ps-0 pt-0 pe-0 remove-ps">
+
+            <!--  Header Start -->
+            <header
+              class="sticky top-0 inset-x-0 z-[1] flex flex-wrap md:justify-start md:flex-nowrap text-fs_15 py-3 lg:py-0 mb-6 bg-white dark:bg-dark rounded-md shadow-md">
+              <div class="with-vertical w-full">@@include("partials/header.html")</div>
+              <div class="with-horizontal w-full">
+                <div class="bg-white dark:bg-dark">
+                  <div class="container">
+                    @@include("partials/horizontal-header.html")
+                  </div>
+                </div>
+              </div>
+            </header>
+            <!--  Header End -->
+
+            <!-- Horizontal Sidebar Menu -->
+            <aside
+              class="with-horizontal lg:flex hidden left-sidebar bg-white dark:bg-dark border-t border-border dark:border-darkborder">
+              @@include("partials/horizontal-sidebar.html", { "page": "ui-grid","page_group": "ui"})
+            </aside>
+            <!-- Horizontal Sidebar Menu End -->
+
+            <!-- Main Content -->
+            <div class="max-w-full">
+              <div class="container full-container ">
+                <!----Breadcrumb Start---->
+                @@include("partials/breadcrumb.html", {"title": "Grid", "subtitle": 'Home'})
+                <!----Breadcrumb End---->
+                <div class="grid grid-cols-12 gap-6">
+                  <div class="col-span-12">
+                      <div class="card">
+                        <div class="card-body">                                                
+                           <div class="flex justify-between items-center mb-0">
+                            <div class="flex flex-col">
+                              <h5 class="card-title">Specifying the columns in a grid</h5>
+                            </div>
+                            <button
+                              class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                              data-hs-overlay="#hs-focus-management-modal1">
+                              <i class="ti ti-code text-xl"></i>
+                            </button>
+                            <div id="hs-focus-management-modal1"
+                              class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                              <div
+                                class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                                <div
+                                  class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                  <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+      
+                                    <div class="overflow-hidden">
+                                      <div class="flex justify-between">
+                                        <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Specifying the columns in a grid -
+                                          View Code</h5>
+                                        <button type="button" class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700" data-hs-overlay="#hs-focus-management-modal1">
+                                          <span class="sr-only">Close</span>
+                                           <i class="ti ti-x text-xl"></i>
+                                        </button>
+                                      </div>
+                                        
+                                      <div class="message-body max-h-[300px] "  data-simplebar="">
+                                        <pre class="mt-0" >
+       <code class="language-html">  
+  &#x3C;div class=&#x22;grid grid-cols-4 gap-4 font-mono text-white text-sm text-center font-bold bg-stripes-indigo dark:bg-stripes-indigo rounded-md&#x22;&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md shadow-lg bg-primary&#x22;&#x3E;01&#x3C;/div&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md shadow-lg bg-primary&#x22;&#x3E;02&#x3C;/div&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md shadow-lg bg-primary&#x22;&#x3E;03&#x3C;/div&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md shadow-lg bg-primary&#x22;&#x3E;04&#x3C;/div&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md shadow-lg bg-primary&#x22;&#x3E;05&#x3C;/div&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md shadow-lg bg-primary&#x22;&#x3E;06&#x3C;/div&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md shadow-lg bg-primary&#x22;&#x3E;07&#x3C;/div&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md shadow-lg bg-primary&#x22;&#x3E;08&#x3C;/div&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md shadow-lg bg-primary&#x22;&#x3E;09&#x3C;/div&#x3E;
+  &#x3C;/div&#x3E;
+                  </code>
+                                                          </pre>  
+                                      </div>
+                                    </div>
+      
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- end -->
+                          </div>
+                          <p class="card-subtitle  mb-6">Use the <code class="text-error bg-lightwarning dark:bg-darkwarning">'grid-cols-{n}'</code> utilities to create grids with n equally sized columns.</p>
+                          <div class="grid grid-cols-4 gap-4 font-mono text-white text-sm text-center font-bold bg-stripes-indigo dark:bg-stripes-indigo rounded-md">
+                              <div class="p-4 rounded-md shadow-lg bg-primary">01</div>
+                              <div class="p-4 rounded-md shadow-lg bg-primary">02</div>
+                              <div class="p-4 rounded-md shadow-lg bg-primary">03</div>
+                              <div class="p-4 rounded-md shadow-lg bg-primary">04</div>
+                              <div class="p-4 rounded-md shadow-lg bg-primary">05</div>
+                              <div class="p-4 rounded-md shadow-lg bg-primary">06</div>
+                              <div class="p-4 rounded-md shadow-lg bg-primary">07</div>
+                              <div class="p-4 rounded-md shadow-lg bg-primary">08</div>
+                              <div class="p-4 rounded-md shadow-lg bg-primary">09</div>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="col-span-12">
+                      <div class="card">
+                        <div class="card-body">                                                
+                           <div class="flex justify-between items-center mb-0">
+                            <div class="flex flex-col">
+                              <h5 class="card-title">Spanning columns</h5>
+                            </div>
+                            <button
+                              class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                              data-hs-overlay="#hs-focus-management-modal2">
+                              <i class="ti ti-code text-xl"></i>
+                            </button>
+                            <div id="hs-focus-management-modal2"
+                              class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                              <div
+                                class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                                <div
+                                  class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                  <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+      
+                                    <div class="overflow-hidden">
+                                      <div class="flex justify-between">
+                                        <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Spanning columns -
+                                          View Code</h5>
+                                        <button type="button" class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700" data-hs-overlay="#hs-focus-management-modal2">
+                                          <span class="sr-only">Close</span>
+                                           <i class="ti ti-x text-xl"></i>
+                                        </button>
+                                      </div>
+                                        
+                                      <div class="message-body max-h-[300px] "  data-simplebar="">
+                                        <pre class="mt-0" >
+       <code class="language-html">  
+  &#x3C;div class=&#x22;grid grid-cols-3 gap-4 font-mono text-white text-sm text-center font-bold&#x22;&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md bg-primary opacity-65 dark:opacity-100 dark:bg-darkprimary dark:text-primary&#x22;&#x3E;01&#x3C;/div&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md bg-primary opacity-65 dark:opacity-100 dark:bg-darkprimary dark:text-primary&#x22;&#x3E;02&#x3C;/div&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md bg-primary opacity-65 dark:opacity-100 dark:bg-darkprimary dark:text-primary&#x22;&#x3E;03&#x3C;/div&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md shadow-lg bg-primary col-span-2&#x22;&#x3E;04&#x3C;/div&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md bg-primary opacity-65 dark:opacity-100 dark:bg-darkprimary dark:text-primary&#x22;&#x3E;05&#x3C;/div&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md bg-primary opacity-65 dark:opacity-100 dark:bg-darkprimary dark:text-primary&#x22;&#x3E;06&#x3C;/div&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md shadow-lg bg-primary col-span-2&#x22;&#x3E;07&#x3C;/div&#x3E;
+  &#x3C;/div&#x3E;
+                  </code>
+                                                          </pre>  
+                                      </div>
+                                    </div>
+      
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- end -->
+                          </div>
+                          <p class="card-subtitle  mb-6">Use the <code class="text-error bg-lightwarning dark:bg-darkwarning">'col-span-{n}'</code> utilities to make an element span n columns.</p>
+                          <div class="grid grid-cols-3 gap-4 font-mono text-white text-sm text-center font-bold">
+                              <div class="p-4 rounded-md bg-primary opacity-65 dark:opacity-100 dark:bg-darkprimary dark:text-primary">01</div>
+                              <div class="p-4 rounded-md bg-primary opacity-65 dark:opacity-100 dark:bg-darkprimary dark:text-primary">02</div>
+                              <div class="p-4 rounded-md bg-primary opacity-65 dark:opacity-100 dark:bg-darkprimary dark:text-primary">03</div>
+                              <div class="p-4 rounded-md shadow-lg bg-primary col-span-2">04</div>
+                              <div class="p-4 rounded-md bg-primary opacity-65 dark:opacity-100 dark:bg-darkprimary dark:text-primary">05</div>
+                              <div class="p-4 rounded-md bg-primary opacity-65 dark:opacity-100 dark:bg-darkprimary dark:text-primary">06</div>
+                              <div class="p-4 rounded-md shadow-lg bg-primary col-span-2">07</div>
+                            </div>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="col-span-12">
+                      <div class="card">
+                        <div class="card-body">                                                
+                           <div class="flex justify-between items-center mb-0">
+                              <h5 class="card-title mb-0">Starting and ending lines</h5>
+                            <button
+                              class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                              data-hs-overlay="#hs-focus-management-modal3">
+                              <i class="ti ti-code text-xl"></i>
+                            </button>
+                            <div id="hs-focus-management-modal3"
+                              class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                              <div
+                                class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                                <div
+                                  class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                  <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+      
+                                    <div class="overflow-hidden">
+                                      <div class="flex justify-between">
+                                        <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Starting and ending lines -
+                                          View Code</h5>
+                                        <button type="button" class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700" data-hs-overlay="#hs-focus-management-modal3">
+                                          <span class="sr-only">Close</span>
+                                           <i class="ti ti-x text-xl"></i>
+                                        </button>
+                                      </div>
+                                        
+                                      <div class="message-body max-h-[300px] "  data-simplebar="">
+                                        <pre class="mt-0" >
+       <code class="language-html">  
+  &#x3C;div class=&#x22;grid grid-cols-6 gap-4 font-mono text-white text-sm text-center font-bold&#x22;&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md bg-stripes-indigo dark:bg-stripes-indigo&#x22;&#x3E;&#x3C;/div&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md shadow-lg bg-primary col-start-2 col-span-4&#x22;&#x3E;01&#x3C;/div&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md bg-stripes-indigo dark:bg-stripes-indigo&#x22;&#x3E;&#x3C;/div&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md shadow-lg bg-primary col-start-1 col-end-3&#x22;&#x3E;02&#x3C;/div&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md bg-stripes-indigo dark:bg-stripes-indigo&#x22;&#x3E;&#x3C;/div&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md bg-stripes-indigo dark:bg-stripes-indigo&#x22;&#x3E;&#x3C;/div&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md shadow-lg bg-primary col-end-7 col-span-2&#x22;&#x3E;03&#x3C;/div&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md shadow-lg bg-primary col-start-1 col-end-7&#x22;&#x3E;04&#x3C;/div&#x3E;
+  &#x3C;/div&#x3E;
+                  </code>
+                                                          </pre>  
+                                      </div>
+                                    </div>
+      
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- end -->
+                          </div>
+                          <p class="card-subtitle  mb-6">Use the <code class="text-error bg-lightwarning dark:bg-darkwarning">'col-start-{n}'</code> and <code class="text-error bg-lightwarning dark:bg-darkwarning">'col-end-{n}'</code> utilities to make an element start or end at the nth grid line. These can also be combined with the <code class="text-error bg-lightwarning dark:bg-darkwarning">'col-span-{n}'</code> utilities to span a specific number of columns. </p>
+                          <div class="grid grid-cols-6 gap-4 font-mono text-white text-sm text-center font-bold">
+                              <div class="p-4 rounded-md bg-stripes-indigo dark:bg-stripes-indigo"></div>
+                              <div class="p-4 rounded-md shadow-lg bg-primary col-start-2 col-span-4">01</div>
+                              <div class="p-4 rounded-md bg-stripes-indigo dark:bg-stripes-indigo"></div>
+                              <div class="p-4 rounded-md shadow-lg bg-primary col-start-1 col-end-3">02</div>
+                              <div class="p-4 rounded-md bg-stripes-indigo dark:bg-stripes-indigo"></div>
+                              <div class="p-4 rounded-md bg-stripes-indigo dark:bg-stripes-indigo"></div>
+                              <div class="p-4 rounded-md shadow-lg bg-primary col-end-7 col-span-2">03</div>
+                              <div class="p-4 rounded-md shadow-lg bg-primary col-start-1 col-end-7">04</div>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="col-span-12">
+                      <div class="card">
+                        <div class="card-body">                                                
+                           <div class="flex justify-between items-center mb-0">
+                              <h5 class="card-title mb-0">Equal width</h5>
+                            <button
+                              class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                              data-hs-overlay="#hs-focus-management-modal4">
+                              <i class="ti ti-code text-xl"></i>
+                            </button>
+                            <div id="hs-focus-management-modal4"
+                              class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                              <div
+                                class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                                <div
+                                  class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                  <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+      
+                                    <div class="overflow-hidden">
+                                      <div class="flex justify-between">
+                                        <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Equal width -
+                                          View Code</h5>
+                                        <button type="button" class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700" data-hs-overlay="#hs-focus-management-modal4">
+                                          <span class="sr-only">Close</span>
+                                           <i class="ti ti-x text-xl"></i>
+                                        </button>
+                                      </div>
+                                        
+                                      <div class="message-body max-h-[300px] "  data-simplebar="">
+                                        <pre class="mt-0" >
+       <code class="language-html">  
+  &#x3C;div class=&#x22;grid grid-cols-12 gap-4 font-mono text-white text-sm text-center font-bold bg-stripes-indigo dark:bg-stripes-indigo rounded-md&#x22;&#x3E;
+     &#x3C;div class=&#x22;col-span-4 p-4 rounded-md shadow-lg bg-primary&#x22;&#x3E;Column&#x3C;/div&#x3E;
+     &#x3C;div class=&#x22;col-span-4 p-4 rounded-md shadow-lg bg-primary&#x22;&#x3E;Column&#x3C;/div&#x3E;
+     &#x3C;div class=&#x22;col-span-4 p-4 rounded-md shadow-lg bg-primary&#x22;&#x3E;Column&#x3C;/div&#x3E;
+  &#x3C;/div&#x3E;
+                  </code>
+                                                          </pre>  
+                                      </div>
+                                    </div>
+      
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- end -->
+                          </div>
+                          <p class="card-subtitle  mb-6">Every column width same size example.</p>
+                          <div class="grid grid-cols-12 gap-4 font-mono text-white text-sm text-center font-bold bg-stripes-indigo dark:bg-stripes-indigo rounded-md">
+                              <div class="col-span-4 p-4 rounded-md shadow-lg bg-primary">Column</div>
+                              <div class="col-span-4 p-4 rounded-md shadow-lg bg-primary">Column</div>
+                              <div class="col-span-4 p-4 rounded-md shadow-lg bg-primary">Column</div>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="col-span-12">
+                      <div class="card">
+                        <div class="card-body">                                                
+                           <div class="flex justify-between items-center mb-0">
+                            <div class="flex flex-col">
+                              <h5 class="card-title mb-0">Specifying the rows in a grid</h5>
+                            </div>
+                            <button
+                              class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                              data-hs-overlay="#hs-focus-management-modal5">
+                              <i class="ti ti-code text-xl"></i>
+                            </button>
+                            <div id="hs-focus-management-modal5"
+                              class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                              <div
+                                class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                                <div
+                                  class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                  <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+      
+                                    <div class="overflow-hidden">
+                                      <div class="flex justify-between">
+                                        <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Specifying the rows in a grid -
+                                          View Code</h5>
+                                        <button type="button" class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700" data-hs-overlay="#hs-focus-management-modal5">
+                                          <span class="sr-only">Close</span>
+                                           <i class="ti ti-x text-xl"></i>
+                                        </button>
+                                      </div>
+                                        
+                                      <div class="message-body max-h-[300px] "  data-simplebar="">
+                                        <pre class="mt-0" >
+       <code class="language-html">  
+  &#x3C;div class=&#x22;grid grid-rows-4 grid-flow-col gap-4 font-mono text-white text-sm text-center font-bold bg-stripes-indigo dark:bg-stripes-indigo rounded-md&#x22;&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md shadow-lg bg-primary&#x22;&#x3E;01&#x3C;/div&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md shadow-lg bg-primary&#x22;&#x3E;02&#x3C;/div&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md shadow-lg bg-primary&#x22;&#x3E;03&#x3C;/div&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md shadow-lg bg-primary&#x22;&#x3E;04&#x3C;/div&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md shadow-lg bg-primary&#x22;&#x3E;05&#x3C;/div&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md shadow-lg bg-primary&#x22;&#x3E;06&#x3C;/div&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md shadow-lg bg-primary&#x22;&#x3E;07&#x3C;/div&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md shadow-lg bg-primary&#x22;&#x3E;08&#x3C;/div&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md shadow-lg bg-primary&#x22;&#x3E;09&#x3C;/div&#x3E;
+  &#x3C;/div&#x3E;
+                  </code>
+                                                          </pre>  
+                                      </div>
+                                    </div>
+      
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- end -->
+                          </div>
+                          <p class="card-subtitle  mb-6">Use the <code class="text-error bg-lightwarning dark:bg-darkwarning">'grid-rows-{n}'</code> utilities to create grids with n equally sized rows.</p>
+                          <div class="grid grid-rows-4 grid-flow-col gap-4 font-mono text-white text-sm text-center font-bold bg-stripes-indigo dark:bg-stripes-indigo rounded-md">
+                              <div class="p-4 rounded-md shadow-lg bg-primary">01</div>
+                              <div class="p-4 rounded-md shadow-lg bg-primary">02</div>
+                              <div class="p-4 rounded-md shadow-lg bg-primary">03</div>
+                              <div class="p-4 rounded-md shadow-lg bg-primary">04</div>
+                              <div class="p-4 rounded-md shadow-lg bg-primary">05</div>
+                              <div class="p-4 rounded-md shadow-lg bg-primary">06</div>
+                              <div class="p-4 rounded-md shadow-lg bg-primary">07</div>
+                              <div class="p-4 rounded-md shadow-lg bg-primary">08</div>
+                              <div class="p-4 rounded-md shadow-lg bg-primary">09</div>
+                            </div>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="col-span-12">
+                      <div class="card">
+                        <div class="card-body">                                                
+                           <div class="flex justify-between items-center mb-0">
+                            <div class="flex flex-col">
+                              <h5 class="card-title">Spanning rows</h5>
+                            </div>
+                            <button
+                              class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                              data-hs-overlay="#hs-focus-management-modal6">
+                              <i class="ti ti-code text-xl"></i>
+                            </button>
+                            <div id="hs-focus-management-modal6"
+                              class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                              <div
+                                class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                                <div
+                                  class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                  <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+      
+                                    <div class="overflow-hidden">
+                                      <div class="flex justify-between">
+                                        <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Spanning rows -
+                                          View Code</h5>
+                                        <button type="button" class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700" data-hs-overlay="#hs-focus-management-modal6">
+                                          <span class="sr-only">Close</span>
+                                           <i class="ti ti-x text-xl"></i>
+                                        </button>
+                                      </div>
+                                        
+                                      <div class="message-body max-h-[300px] "  data-simplebar="">
+                                        <pre class="mt-0" >
+       <code class="language-html">  
+  &#x3C;div class=&#x22;grid grid-rows-3 grid-flow-col gap-4 font-mono text-white text-sm text-center font-bold bg-stripes-indigo dark:bg-stripes-indigo rounded-md&#x22;&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md shadow-lg bg-primary grid place-content-center row-span-3&#x22;&#x3E;01&#x3C;/div&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md Spanning bg-primary opacity-65 dark:opacity-100 grid place-content-center col-span-2 dark:bg-darkprimary dark:text-primary&#x22;&#x3E;02&#x3C;/div&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md shadow-lg bg-primary grid place-content-center row-span-2 col-span-2&#x22;&#x3E;03&#x3C;/div&#x3E;
+  &#x3C;/div&#x3E;
+                  </code>
+                                                          </pre>  
+                                      </div>
+                                    </div>
+      
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- end -->
+                          </div>
+                          <p class="card-subtitle  mb-6">Use the <code class="text-error bg-lightwarning dark:bg-darkwarning">'row-span-{n}'</code> utilities to make an element span n rows.</p>
+                          <div class="grid grid-rows-3 grid-flow-col gap-4 font-mono text-white text-sm text-center font-bold bg-stripes-indigo dark:bg-stripes-indigo rounded-md">
+                              <div class="p-4 rounded-md shadow-lg bg-primary grid place-content-center row-span-3">01</div>
+                              <div class="p-4 rounded-md Spanning bg-primary opacity-65 dark:opacity-100 grid place-content-center col-span-2 dark:bg-darkprimary dark:text-primary">02</div>
+                              <div class="p-4 rounded-md shadow-lg bg-primary grid place-content-center row-span-2 col-span-2">03</div>
+                            </div>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="col-span-12">
+                      <div class="card">
+                        <div class="card-body">                                                
+                           <div class="flex justify-between items-center mb-0">
+                              <h5 class="card-title mb-0">Starting and ending lines</h5>
+                            <button
+                              class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                              data-hs-overlay="#hs-focus-management-modal7">
+                              <i class="ti ti-code text-xl"></i>
+                            </button>
+                            <div id="hs-focus-management-modal7"
+                              class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                              <div
+                                class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                                <div
+                                  class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                  <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+      
+                                    <div class="overflow-hidden">
+                                      <div class="flex justify-between">
+                                        <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Starting and ending lines -
+                                          View Code</h5>
+                                        <button type="button" class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700" data-hs-overlay="#hs-focus-management-modal7">
+                                          <span class="sr-only">Close</span>
+                                           <i class="ti ti-x text-xl"></i>
+                                        </button>
+                                      </div>
+                                        
+                                      <div class="message-body max-h-[300px] "  data-simplebar="">
+                                        <pre class="mt-0" >
+       <code class="language-html">  
+  &#x3C;div class=&#x22;grid grid-rows-3 grid-flow-col gap-4 font-mono text-white text-sm text-center font-bold bg-stripes-indigo dark:bg-stripes-indigo rounded-md&#x22;&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md shadow-lg bg-primary grid place-content-center row-span-3&#x22;&#x3E;01&#x3C;/div&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md bg-lightprimary grid place-content-center col-span-2 dark:bg-darkprimary dark:text-primary&#x22;&#x3E;02&#x3C;/div&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md shadow-lg bg-primary grid place-content-center row-span-2 col-span-2&#x22;&#x3E;03&#x3C;/div&#x3E;
+  &#x3C;/div&#x3E;
+                  </code>
+                                                          </pre>  
+                                      </div>
+                                    </div>
+      
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- end -->
+                          </div>
+                          <p class="card-subtitle  mb-6">Use the <code class="text-error bg-lightwarning dark:bg-darkwarning">'row-start-{n}'</code> and <code class="text-error bg-lightwarning dark:bg-darkwarning">'row-end-{n}'</code> utilities to make an element start or end at the nth grid line. These can also be combined with the <code class="text-error bg-lightwarning dark:bg-darkwarning">'row-span-{n}'</code> utilities to span a specific number of rows. </p>
+                          <div class="grid grid-rows-3 grid-flow-col gap-4 font-mono text-white text-sm text-center font-bold bg-stripes-indigo dark:bg-stripes-indigo rounded-md">
+                              <div class="p-4 sm:p-12 rounded-md shadow-lg bg-primary grid place-content-center row-start-2 row-span-2">01</div>
+                              <div class="p-4 sm:p-12 rounded-md shadow-lg bg-primary grid place-content-center row-end-3 row-span-2">02</div>
+                              <div class="p-4 sm:p-12 rounded-md shadow-lg bg-primary grid place-content-center row-start-1 row-end-4">03</div>
+                            </div>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="col-span-12">
+                      <div class="card">
+                        <div class="card-body">                                                
+                           <div class="flex justify-between items-center mb-0">
+                            <div class="flex flex-col">
+                              <h5 class="card-title">Controlling grid element placement</h5>
+                            </div>
+                            <button
+                              class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                              data-hs-overlay="#hs-focus-management-modal8">
+                              <i class="ti ti-code text-xl"></i>
+                            </button>
+                            <div id="hs-focus-management-modal8"
+                              class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                              <div
+                                class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                                <div
+                                  class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                  <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+      
+                                    <div class="overflow-hidden">
+                                      <div class="flex justify-between">
+                                        <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Controlling grid element placement -
+                                          View Code</h5>
+                                        <button type="button" class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700" data-hs-overlay="#hs-focus-management-modal8">
+                                          <span class="sr-only">Close</span>
+                                           <i class="ti ti-x text-xl"></i>
+                                        </button>
+                                      </div>
+                                        
+                                      <div class="message-body max-h-[300px] "  data-simplebar="">
+                                        <pre class="mt-0" >
+       <code class="language-html">  
+  &#x3C;div class=&#x22;grid grid-cols-3 grid-rows-3 grid-flow-row-dense gap-4 font-mono text-white text-sm text-center font-bold bg-stripes-indigo dark:bg-stripes-indigo rounded-md&#x22;&#x3E;
+     &#x3C;div class=&#x22;p-4 col-span-2 rounded-md bg-primary opacity-65 dark:opacity-100 dark:bg-darkprimary dark:text-primary&#x22;&#x3E;01&#x3C;/div&#x3E;
+     &#x3C;div class=&#x22;p-4 col-span-2 rounded-md bg-primary opacity-65 dark:opacity-100 dark:bg-darkprimary dark:text-primary&#x22;&#x3E;02&#x3C;/div&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md shadow-lg bg-primary&#x22;&#x3E;03&#x3C;/div&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md bg-primary opacity-65 dark:opacity-100 dark:bg-darkprimary dark:text-primary&#x22;&#x3E;04&#x3C;/div&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md bg-primary opacity-65 dark:opacity-100 dark:bg-darkprimary dark:text-primary&#x22;&#x3E;05&#x3C;/div&#x3E;
+  &#x3C;/div&#x3E;
+                  </code>
+                                                          </pre>  
+                                      </div>
+                                    </div>
+      
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- end -->
+                          </div>
+                          <p class="card-subtitle  mb-6">Use the <code class="text-error bg-lightwarning dark:bg-darkwarning">'grid-flow-{keyword}'</code> utilities to control how the auto-placement algorithm works for a grid layout.</p>
+                          <div class="grid grid-cols-3 grid-rows-3 grid-flow-row-dense gap-4 font-mono text-white text-sm text-center font-bold bg-stripes-indigo dark:bg-stripes-indigo rounded-md">
+                              <div class="p-4 col-span-2 rounded-md bg-primary opacity-65 dark:opacity-100 dark:bg-darkprimary dark:text-primary">01</div>
+                              <div class="p-4 col-span-2 rounded-md bg-primary opacity-65 dark:opacity-100 dark:bg-darkprimary dark:text-primary">02</div>
+                              <div class="p-4 rounded-md shadow-lg bg-primary">03</div>
+                              <div class="p-4 rounded-md bg-primary opacity-65 dark:opacity-100 dark:bg-darkprimary dark:text-primary">04</div>
+                              <div class="p-4 rounded-md bg-primary opacity-65 dark:opacity-100 dark:bg-darkprimary dark:text-primary">05</div>
+                            </div>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="col-span-12">
+                      <div class="card">
+                        <div class="card-body">                                                
+                           <div class="flex justify-between items-center mb-0">
+                            <div class="flex flex-col">
+                              <h5 class="card-title">Setting the gap between elements</h5>
+                            </div>
+                            <button
+                              class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                              data-hs-overlay="#hs-focus-management-modal9">
+                              <i class="ti ti-code text-xl"></i>
+                            </button>
+                            <div id="hs-focus-management-modal9"
+                              class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                              <div
+                                class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                                <div
+                                  class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                  <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+      
+                                    <div class="overflow-hidden">
+                                      <div class="flex justify-between">
+                                        <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Setting the gap between elements -
+                                          View Code</h5>
+                                        <button type="button" class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700" data-hs-overlay="#hs-focus-management-modal9">
+                                          <span class="sr-only">Close</span>
+                                           <i class="ti ti-x text-xl"></i>
+                                        </button>
+                                      </div>
+                                        
+                                      <div class="message-body max-h-[300px] "  data-simplebar="">
+                                        <pre class="mt-0" >
+       <code class="language-html">  
+  &#x3C;div class=&#x22;grid grid-cols-2 gap-4 font-mono text-white text-sm text-center font-bold bg-stripes-indigo dark:bg-stripes-indigo rounded-md&#x22;&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md shadow-lg bg-primary&#x22;&#x3E;01&#x3C;/div&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md shadow-lg bg-primary&#x22;&#x3E;02&#x3C;/div&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md shadow-lg bg-primary&#x22;&#x3E;03&#x3C;/div&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md shadow-lg bg-primary&#x22;&#x3E;04&#x3C;/div&#x3E;
+  &#x3C;/div&#x3E;
+                  </code>
+                                                          </pre>  
+                                      </div>
+                                    </div>
+      
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- end -->
+                          </div>
+                          <p class="card-subtitle  mb-6">Use the <code class="text-error bg-lightwarning dark:bg-darkwarning">'gap-{size}'</code> to change the gap between both rows and columns in grid and flexbox layouts.</p>
+                          <div class="grid grid-cols-2 gap-4 font-mono text-white text-sm text-center font-bold bg-stripes-indigo dark:bg-stripes-indigo rounded-md">
+                              <div class="p-4 rounded-md shadow-lg bg-primary">01</div>
+                              <div class="p-4 rounded-md shadow-lg bg-primary">02</div>
+                              <div class="p-4 rounded-md shadow-lg bg-primary">03</div>
+                              <div class="p-4 rounded-md shadow-lg bg-primary">04</div>
+                            </div>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="col-span-12">
+                      <div class="card">
+                        <div class="card-body">                                                
+                           <div class="flex justify-between items-center mb-0">
+                              <h5 class="card-title mb-0">Changing row and column gaps independently</h5>
+                            <button
+                              class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                              data-hs-overlay="#hs-focus-management-modal10">
+                              <i class="ti ti-code text-xl"></i>
+                            </button>
+                            <div id="hs-focus-management-modal10"
+                              class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                              <div
+                                class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                                <div
+                                  class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                  <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+      
+                                    <div class="overflow-hidden">
+                                      <div class="flex justify-between">
+                                        <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Changing row and column gaps independently -
+                                          View Code</h5>
+                                        <button type="button" class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700" data-hs-overlay="#hs-focus-management-modal10">
+                                          <span class="sr-only">Close</span>
+                                           <i class="ti ti-x text-xl"></i>
+                                        </button>
+                                      </div>
+                                        
+                                      <div class="message-body max-h-[300px] "  data-simplebar="">
+                                        <pre class="mt-0" >
+       <code class="language-html">  
+  &#x3C;div class=&#x22;grid grid-cols-3 gap-x-8 gap-y-4 font-mono text-white text-sm text-center font-bold bg-stripes-indigo dark:bg-stripes-indigo rounded-md&#x22;&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md shadow-lg bg-primary&#x22;&#x3E;01&#x3C;/div&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md shadow-lg bg-primary&#x22;&#x3E;02&#x3C;/div&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md shadow-lg bg-primary&#x22;&#x3E;03&#x3C;/div&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md shadow-lg bg-primary&#x22;&#x3E;04&#x3C;/div&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md shadow-lg bg-primary&#x22;&#x3E;05&#x3C;/div&#x3E;
+     &#x3C;div class=&#x22;p-4 rounded-md shadow-lg bg-primary&#x22;&#x3E;06&#x3C;/div&#x3E;
+  &#x3C;/div&#x3E;
+                  </code>
+                                                          </pre>  
+                                      </div>
+                                    </div>
+      
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- end -->
+                          </div>
+                          <p class="card-subtitle  mb-6">Use the <code class="text-error bg-lightwarning dark:bg-darkwarning">'gap-x-{size}'</code> and <code class="text-error bg-lightwarning dark:bg-darkwarning">'gap-x-{size}'</code> to change the gap between rows and columns independently.</p>
+                          <div class="grid grid-cols-3 gap-x-8 gap-y-4 font-mono text-white text-sm text-center font-bold bg-stripes-indigo dark:bg-stripes-indigo rounded-md">
+                              <div class="p-4 rounded-md shadow-lg bg-primary">01</div>
+                              <div class="p-4 rounded-md shadow-lg bg-primary">02</div>
+                              <div class="p-4 rounded-md shadow-lg bg-primary">03</div>
+                              <div class="p-4 rounded-md shadow-lg bg-primary">04</div>
+                              <div class="p-4 rounded-md shadow-lg bg-primary">05</div>
+                              <div class="p-4 rounded-md shadow-lg bg-primary">06</div>
+                            </div>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+              </div>
+            </div>
+          </div>
+        </main>
+        <!-- Main Content End -->
+
+      </div>
+    </div>
+    <!--end of project-->
+  </main>
+  @@include("partials/header-components/mobile-menu.html")
+  @@include("partials/customizer.html")
+  @@include("partials/scripts.html")
+  <script src="@@webRoot/node_modules/prismjs/prism.js"></script>
+</body>
+
+</html>

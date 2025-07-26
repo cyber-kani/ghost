@@ -1,0 +1,2023 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-color-theme="Blue_Theme" class="light selected" data-layout="vertical"
+    data-boxed-layout="boxed" data-card="shadow">
+
+<head>
+    @@include("partials/head.html")
+    <title>Spike TailwindCSS HTML Admin Template</title>
+    <link rel="stylesheet" href="@@webRoot/node_modules/prismjs/themes/prism-okaidia.min.css">
+</head>
+
+<body class="DEFAULT_THEME bg-lightprimary dark:bg-darkbody">
+    <main>
+        <!--start the project-->
+        <div id="main-wrapper" class="flex p-5">
+
+            <aside id="application-sidebar-brand"
+                class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full xl:rtl:-translate-x-0 rtl:translate-x-full  left-0 rtl:left-auto xl:rtl:right-5 rtl:right-0 transform hidden xl:block xl:translate-x-0 xl:end-auto xl:bottom-0 fixed top-0 with-vertical  docs-left-sidebar transition-all duration-300 h-screen z-[2] flex-shrink-0  w-[270px] border-border dark:border-darkborder bg-white dark:bg-dark xl:top-5 xl:start-5 shadow-md xl:rounded-md">
+                @@include("partials/sidebar.html",{ "page": "ui-dropdowns","page_group": "ui" })
+            </aside>
+            <div class="page-wrapper w-full" role="main">
+
+                <!-- Main Content -->
+                <main class="h-full ">
+                    <div class="container full-container py-5 xl:ps-6 ps-0 pt-0 pe-0">
+
+                        <!--  Header Start -->
+                        <header
+                            class="sticky top-0 inset-x-0 z-[1] flex flex-wrap md:justify-start md:flex-nowrap text-sm py-0 mb-6 bg-white dark:bg-dark rounded-md shadow-md">
+                            <div class="with-vertical w-full">@@include("partials/header.html")</div>
+                        </header>
+                        <!--  Header End -->
+
+                        <!-- ============================================================== -->
+                        <!-- Start Page Content -->
+                        <!-- ============================================================== -->
+                        <div class="max-w-full">
+                            <div class="d-sm-flex align-items-center justify-content-between">
+                                <h4 class="mb-8 text-lg  ">Dropdowns</h4>
+                            </div>
+
+                <div class="grid grid-cols-12 gap-6">
+                  <div class=" lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-0">
+                          <h5 class="card-title">Default Dropdown</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal1">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal1"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Default
+                                        Dropdown -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal1">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+       <code class="language-html">  
+        &#x3C;div class=&#x22;hs-dropdown relative inline-flex&#x22;&#x3E;
+          &#x3C;button id=&#x22;hs-dropdown-default&#x22; type=&#x22;button&#x22; class=&#x22;hs-dropdown-toggle py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-md border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600&#x22;&#x3E;
+          &#x3C;span class=&#x22;leading-tight&#x22;&#x3E;Actions&#x3C;/span&#x3E;
+          &#x3C;i class=&#x22;ti ti-chevron-down text-base leading-tight font-medium hs-dropdown-open:rotate-180&#x22;&#x3E;&#x3C;/i&#x3E;
+          &#x3C;/button&#x3E;
+          &#x3C;div class=&#x22;hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-md p-2 mt-2 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700 after:h-4 after:absolute after:-bottom-4 after:start-0 after:w-full before:h-4 before:absolute before:-top-4 before:start-0 before:w-full z-10&#x22; aria-labelledby=&#x22;hs-dropdown-default&#x22;&#x3E;
+              &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+              Newsletter
+              &#x3C;/a&#x3E;
+              &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+              Purchases
+              &#x3C;/a&#x3E;
+              &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+              Downloads
+              &#x3C;/a&#x3E;
+              &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+              Team Account
+              &#x3C;/a&#x3E;
+          &#x3C;/div&#x3E;
+        &#x3C;/div&#x3E;
+                  </code>
+                                                          </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <p class="card-subtitle mb-6">The default dropdown menu appearance.</p>
+                        <div class="flex gap-2 flex-wrap">
+                          <div class="hs-dropdown relative inline-flex">
+                            <button id="hs-dropdown-default" type="button"
+                              class="hs-dropdown-toggle py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-md border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                              <span class="leading-tight">Actions</span>
+                              <i
+                                class="ti ti-chevron-down text-base leading-tight font-medium hs-dropdown-open:rotate-180"></i>
+                            </button>
+
+                            <div
+                              class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-md p-2 mt-2 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700 after:h-4 after:absolute after:-bottom-4 after:start-0 after:w-full before:h-4 before:absolute before:-top-4 before:start-0 before:w-full z-10"
+                              aria-labelledby="hs-dropdown-default">
+                              <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                href="#">
+                                Newsletter
+                              </a>
+                              <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                href="#">
+                                Purchases
+                              </a>
+                              <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                href="#">
+                                Downloads
+                              </a>
+                              <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                href="#">
+                                Team Account
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class=" lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-0">
+                          <h5 class="card-title">Hover event</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal2">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal2"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Hover event
+                                        -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal2">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+       <code class="language-html">  
+        &#x3C;div class=&#x22;hs-dropdown relative inline-flex [--trigger:hover]&#x22;&#x3E;
+          &#x3C;button id=&#x22;hs-dropdown2&#x22; type=&#x22;button&#x22; class=&#x22;hs-dropdown-toggle py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-md border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600&#x22;&#x3E;
+          &#x3C;span class=&#x22;leading-tight&#x22;&#x3E;Actions&#x3C;/span&#x3E;
+          &#x3C;i class=&#x22;ti ti-chevron-down text-base leading-tight font-medium hs-dropdown-open:rotate-180&#x22;&#x3E;&#x3C;/i&#x3E;
+          &#x3C;/button&#x3E;
+          &#x3C;div class=&#x22;hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-md p-2 mt-2 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700 after:h-4 after:absolute after:-bottom-4 after:start-0 after:w-full before:h-4 before:absolute before:-top-4 before:start-0 before:w-full z-10&#x22; aria-labelledby=&#x22;hs-dropdown2&#x22;&#x3E;
+              &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+              Newsletter
+              &#x3C;/a&#x3E;
+              &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+              Purchases
+              &#x3C;/a&#x3E;
+              &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+              Downloads
+              &#x3C;/a&#x3E;
+              &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+              Team Account
+              &#x3C;/a&#x3E;
+          &#x3C;/div&#x3E;
+        &#x3C;/div&#x3E;
+                  </code>
+                                                          </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <p class="card-subtitle  mb-6">You change the default trigger mode to <code
+                            class="text-error bg-lightwarning dark:bg-darkwarning">'hover'</code> .</p>
+                        <div class="flex gap-2 flex-wrap">
+                          <div class="hs-dropdown relative inline-flex [--trigger:hover]">
+                            <button id="hs-dropdown2" type="button"
+                              class="hs-dropdown-toggle py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-md border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                              <span class="leading-tight">Actions</span>
+                              <i
+                                class="ti ti-chevron-down text-base leading-tight font-medium hs-dropdown-open:rotate-180"></i>
+                            </button>
+
+                            <div
+                              class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-md p-2 mt-2 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700 after:h-4 after:absolute after:-bottom-4 after:start-0 after:w-full before:h-4 before:absolute before:-top-4 before:start-0 before:w-full z-10"
+                              aria-labelledby="hs-dropdown2">
+                              <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                href="#">
+                                Newsletter
+                              </a>
+                              <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                href="#">
+                                Purchases
+                              </a>
+                              <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                href="#">
+                                Downloads
+                              </a>
+                              <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                href="#">
+                                Team Account
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class=" lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-0">
+                          <h5 class="card-title">Dividers</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal3">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal3"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Dividers -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal3">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+       <code class="language-html">  
+      &#x3C;div class=&#x22;hs-dropdown relative inline-flex&#x22;&#x3E;
+         &#x3C;button id=&#x22;hs-dropdown-with-dividers&#x22; type=&#x22;button&#x22; class=&#x22;hs-dropdown-toggle py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-md border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600&#x22;&#x3E;
+         &#x3C;span class=&#x22;leading-tight&#x22;&#x3E;Actions&#x3C;/span&#x3E;
+         &#x3C;i class=&#x22;ti ti-chevron-down text-base leading-tight font-medium hs-dropdown-open:rotate-180&#x22;&#x3E;&#x3C;/i&#x3E;
+         &#x3C;/button&#x3E;
+         &#x3C;div class=&#x22;hs-dropdown-menu hidden transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-60 bg-white shadow-md rounded-md p-2 mt-2 divide-y divide-gray-200 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700 z-10&#x22; aria-labelledby=&#x22;hs-dropdown-with-dividers&#x22;&#x3E;
+            &#x3C;div class=&#x22;py-2 first:pt-0 last:pb-0&#x22;&#x3E;
+               &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+               Newsletter
+               &#x3C;/a&#x3E;
+               &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+               Purchases
+               &#x3C;/a&#x3E;
+               &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+               Downloads
+               &#x3C;/a&#x3E;
+               &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+               Team Account
+               &#x3C;/a&#x3E;
+            &#x3C;/div&#x3E;
+            &#x3C;div class=&#x22;py-2 first:pt-0 last:pb-0&#x22;&#x3E;
+               &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+               Upgrade License
+               &#x3C;/a&#x3E;
+            &#x3C;/div&#x3E;
+            &#x3C;div class=&#x22;py-2 first:pt-0 last:pb-0&#x22;&#x3E;
+               &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+               Account Settings
+               &#x3C;/a&#x3E;
+               &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+               Sign out
+               &#x3C;/a&#x3E;
+            &#x3C;/div&#x3E;
+         &#x3C;/div&#x3E;
+      &#x3C;/div&#x3E;
+                  </code>
+                                                          </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <p class="card-subtitle  mb-6">The default dropdown menu with dividers.</p>
+                        <div class="flex gap-2 flex-wrap">
+                          <div class="hs-dropdown relative inline-flex">
+                            <button id="hs-dropdown-with-dividers" type="button"
+                              class="hs-dropdown-toggle py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-md border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                              <span class="leading-tight">Actions</span>
+                              <i
+                                class="ti ti-chevron-down text-base leading-tight font-medium hs-dropdown-open:rotate-180"></i>
+                            </button>
+
+                            <div
+                              class="hs-dropdown-menu hidden transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-60 bg-white shadow-md rounded-md p-2 mt-2 divide-y divide-gray-200 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700 z-10"
+                              aria-labelledby="hs-dropdown-with-dividers">
+                              <div class="py-2 first:pt-0 last:pb-0">
+                                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                  href="#">
+                                  Newsletter
+                                </a>
+                                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                  href="#">
+                                  Purchases
+                                </a>
+                                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                  href="#">
+                                  Downloads
+                                </a>
+                                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                  href="#">
+                                  Team Account
+                                </a>
+                              </div>
+                              <div class="py-2 first:pt-0 last:pb-0">
+                                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                  href="#">
+                                  Upgrade License
+                                </a>
+                              </div>
+                              <div class="py-2 first:pt-0 last:pb-0">
+                                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                  href="#">
+                                  Account Settings
+                                </a>
+                                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                  href="#">
+                                  Sign out
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class=" lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-0">
+                          <h5 class="card-title">Icons</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal4">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal4"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Icons -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal4">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+       <code class="language-html">  
+      &#x3C;div class=&#x22;hs-dropdown relative inline-flex&#x22;&#x3E;
+         &#x3C;button id=&#x22;hs-dropdown-with-icons&#x22; type=&#x22;button&#x22; class=&#x22;hs-dropdown-toggle py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-md border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600&#x22;&#x3E;
+         &#x3C;span class=&#x22;leading-tight&#x22;&#x3E;Actions&#x3C;/span&#x3E;
+         &#x3C;i class=&#x22;ti ti-chevron-down text-base leading-tight font-medium hs-dropdown-open:rotate-180&#x22;&#x3E;&#x3C;/i&#x3E;
+         &#x3C;/button&#x3E;
+         &#x3C;div class=&#x22;hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-md p-2 mt-2 divide-y divide-gray-200 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700 z-10&#x22; aria-labelledby=&#x22;hs-dropdown-with-icons&#x22;&#x3E;
+            &#x3C;div class=&#x22;py-2 first:pt-0 last:pb-0&#x22;&#x3E;
+               &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+               &#x3C;i class=&#x22;ti ti-bell text-lg leading-none&#x22;&#x3E;&#x3C;/i&#x3E;
+               Newsletter
+               &#x3C;/a&#x3E;
+               &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+               &#x3C;i class=&#x22;ti ti-shopping-cart text-lg leading-none&#x22;&#x3E;&#x3C;/i&#x3E;
+               Purchases
+               &#x3C;/a&#x3E;
+               &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+               &#x3C;i class=&#x22;ti ti-cloud-download text-lg leading-none&#x22;&#x3E;&#x3C;/i&#x3E;
+               Downloads
+               &#x3C;/a&#x3E;
+               &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+               &#x3C;i class=&#x22;ti ti-users text-lg leading-none&#x22;&#x3E;&#x3C;/i&#x3E;
+               Team Account
+               &#x3C;/a&#x3E;
+            &#x3C;/div&#x3E;
+         &#x3C;/div&#x3E;
+      &#x3C;/div&#x3E;
+                  </code>
+                                                          </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <p class="card-subtitle  mb-6">The default dropdown menu with icons.</p>
+                        <div class="hs-dropdown relative inline-flex">
+                          <button id="hs-dropdown-with-icons" type="button"
+                            class="hs-dropdown-toggle py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-md border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                            <span class="leading-tight">Actions</span>
+                            <i
+                              class="ti ti-chevron-down text-base leading-tight font-medium hs-dropdown-open:rotate-180"></i>
+                          </button>
+
+                          <div
+                            class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-md p-2 mt-2 divide-y divide-gray-200 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700 z-10"
+                            aria-labelledby="hs-dropdown-with-icons">
+                            <div class="py-2 first:pt-0 last:pb-0">
+                              <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                href="#">
+                                <i class="ti ti-bell text-lg leading-none"></i>
+                                Newsletter
+                              </a>
+                              <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                href="#">
+                                <i class="ti ti-shopping-cart text-lg leading-none"></i>
+                                Purchases
+                              </a>
+                              <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                href="#">
+                                <i class="ti ti-cloud-download text-lg leading-none"></i>
+                                Downloads
+                              </a>
+                              <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                href="#">
+                                <i class="ti ti-users text-lg leading-none"></i>
+                                Team Account
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class=" lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-0">
+                          <h5 class="card-title">Title</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal5">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal5"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Title -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal5">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+       <code class="language-html">  
+      &#x3C;div class=&#x22;hs-dropdown relative inline-flex&#x22;&#x3E;
+         &#x3C;button id=&#x22;hs-dropdown-with-title&#x22; type=&#x22;button&#x22; class=&#x22;hs-dropdown-toggle py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-md border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600&#x22;&#x3E;
+         &#x3C;span class=&#x22;leading-tight&#x22;&#x3E;Actions&#x3C;/span&#x3E;
+         &#x3C;i class=&#x22;ti ti-chevron-down text-base leading-tight font-medium hs-dropdown-open:rotate-180&#x22;&#x3E;&#x3C;/i&#x3E;
+         &#x3C;/button&#x3E;
+         &#x3C;div class=&#x22;hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-md p-2 mt-2 divide-y divide-gray-200 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700 z-10&#x22; aria-labelledby=&#x22;hs-dropdown-with-title&#x22;&#x3E;
+            &#x3C;div class=&#x22;py-2 first:pt-0 last:pb-0&#x22;&#x3E;
+               &#x3C;span class=&#x22;block py-2 px-3 text-xs font-medium uppercase text-gray-400 dark:text-gray-500&#x22;&#x3E;
+               Settings
+               &#x3C;/span&#x3E;
+               &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+               &#x3C;i class=&#x22;ti ti-bell text-lg leading-none&#x22;&#x3E;&#x3C;/i&#x3E;
+               Newsletter
+               &#x3C;/a&#x3E;
+               &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+               &#x3C;i class=&#x22;ti ti-shopping-cart text-lg leading-none&#x22;&#x3E;&#x3C;/i&#x3E;
+               Purchases
+               &#x3C;/a&#x3E;
+               &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+               &#x3C;i class=&#x22;ti ti-cloud-download text-lg leading-none&#x22;&#x3E;&#x3C;/i&#x3E;
+               Downloads
+               &#x3C;/a&#x3E;
+               &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+               &#x3C;i class=&#x22;ti ti-users text-lg leading-none&#x22;&#x3E;&#x3C;/i&#x3E;
+               Team Account
+               &#x3C;/a&#x3E;
+            &#x3C;/div&#x3E;
+            &#x3C;div class=&#x22;py-2 first:pt-0 last:pb-0&#x22;&#x3E;
+               &#x3C;span class=&#x22;block py-2 px-3 text-xs font-medium uppercase text-gray-400 dark:text-gray-500&#x22;&#x3E;
+               Contacts
+               &#x3C;/span&#x3E;
+               &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+               &#x3C;i class=&#x22;ti ti-address-book text-lg leading-none&#x22;&#x3E;&#x3C;/i&#x3E;
+               Contact support
+               &#x3C;/a&#x3E;
+            &#x3C;/div&#x3E;
+         &#x3C;/div&#x3E;
+      &#x3C;/div&#x3E;
+                  </code>
+                                                          </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <p class="card-subtitle  mb-6">The default dropdown menu with title.</p>
+                        <div class="hs-dropdown relative inline-flex">
+                          <button id="hs-dropdown-with-title" type="button"
+                            class="hs-dropdown-toggle py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-md border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                            <span class="leading-tight">Actions</span>
+                            <i
+                              class="ti ti-chevron-down text-base leading-tight font-medium hs-dropdown-open:rotate-180"></i>
+                          </button>
+
+                          <div
+                            class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-md p-2 mt-2 divide-y divide-gray-200 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700 z-10"
+                            aria-labelledby="hs-dropdown-with-title">
+                            <div class="py-2 first:pt-0 last:pb-0">
+                              <span
+                                class="block py-2 px-3 text-xs font-medium uppercase text-gray-400 dark:text-gray-500">
+                                Settings
+                              </span>
+                              <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                href="#">
+                                <i class="ti ti-bell text-lg leading-none"></i>
+                                Newsletter
+                              </a>
+                              <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                href="#">
+                                <i class="ti ti-shopping-cart text-lg leading-none"></i>
+                                Purchases
+                              </a>
+                              <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                href="#">
+                                <i class="ti ti-cloud-download text-lg leading-none"></i>
+                                Downloads
+                              </a>
+                              <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                href="#">
+                                <i class="ti ti-users text-lg leading-none"></i>
+                                Team Account
+                              </a>
+                            </div>
+                            <div class="py-2 first:pt-0 last:pb-0">
+                              <span
+                                class="block py-2 px-3 text-xs font-medium uppercase text-gray-400 dark:text-gray-500">
+                                Contacts
+                              </span>
+                              <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                href="#">
+                                <i class="ti ti-address-book text-lg leading-none"></i>
+                                Contact support
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class=" lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-0">
+                          <h5 class="card-title">With header</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal6">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal6"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">With header
+                                        -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal6">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+       <code class="language-html">  
+      &#x3C;div class=&#x22;hs-dropdown relative inline-flex&#x22;&#x3E;
+         &#x3C;button id=&#x22;hs-dropdown-with-header&#x22; type=&#x22;button&#x22; class=&#x22;hs-dropdown-toggle py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-md border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600&#x22;&#x3E;
+         &#x3C;span class=&#x22;leading-tight&#x22;&#x3E;Actions&#x3C;/span&#x3E;
+         &#x3C;i class=&#x22;ti ti-chevron-down text-base leading-tight font-medium hs-dropdown-open:rotate-180&#x22;&#x3E;&#x3C;/i&#x3E;
+         &#x3C;/button&#x3E;
+         &#x3C;div class=&#x22;hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-md p-2 mt-2 dark:bg-gray-800 dark:border dark:border-gray-700 z-10&#x22; aria-labelledby=&#x22;hs-dropdown-with-header&#x22;&#x3E;
+            &#x3C;div class=&#x22;py-3 px-5 -m-2 bg-gray-100 rounded-t-lg dark:bg-gray-700&#x22;&#x3E;
+               &#x3C;p class=&#x22;text-sm text-gray-500 dark:text-gray-400&#x22;&#x3E;Signed in as&#x3C;/p&#x3E;
+               &#x3C;p class=&#x22;text-sm font-medium text-gray-800 dark:text-gray-300&#x22;&#x3E;james@site.com&#x3C;/p&#x3E;
+            &#x3C;/div&#x3E;
+            &#x3C;div class=&#x22;mt-2 py-2 first:pt-0 last:pb-0&#x22;&#x3E;
+               &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+               &#x3C;i class=&#x22;ti ti-bell text-lg leading-none&#x22;&#x3E;&#x3C;/i&#x3E;
+               Newsletter
+               &#x3C;/a&#x3E;
+               &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+               &#x3C;i class=&#x22;ti ti-shopping-cart text-lg leading-none&#x22;&#x3E;&#x3C;/i&#x3E;
+               Purchases
+               &#x3C;/a&#x3E;
+               &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+               &#x3C;i class=&#x22;ti ti-cloud-download text-lg leading-none&#x22;&#x3E;&#x3C;/i&#x3E;
+               Downloads
+               &#x3C;/a&#x3E;
+               &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+               &#x3C;i class=&#x22;ti ti-users text-lg leading-none&#x22;&#x3E;&#x3C;/i&#x3E;
+               Team Account
+               &#x3C;/a&#x3E;
+            &#x3C;/div&#x3E;
+         &#x3C;/div&#x3E;
+      &#x3C;/div&#x3E;
+                  </code>
+                                                          </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <p class="card-subtitle  mb-6">The default dropdown menu with header.</p>
+                        <div class="hs-dropdown relative inline-flex">
+                          <button id="hs-dropdown-with-header" type="button"
+                            class="hs-dropdown-toggle py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-md border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                            <span class="leading-tight">Actions</span>
+                            <i
+                              class="ti ti-chevron-down text-base leading-tight font-medium hs-dropdown-open:rotate-180"></i>
+                          </button>
+
+                          <div
+                            class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-md p-2 mt-2 dark:bg-gray-800 dark:border dark:border-gray-700 z-10"
+                            aria-labelledby="hs-dropdown-with-header">
+                            <div class="py-3 px-5 -m-2 bg-gray-100 rounded-t-lg dark:bg-gray-700">
+                              <p class="card-subtitle text-gray-500 dark:text-gray-400">Signed in as</p>
+                              <p class="card-subtitle font-medium text-gray-800 dark:text-gray-300">james@site.com</p>
+                            </div>
+                            <div class="mt-2 py-2 first:pt-0 last:pb-0">
+                              <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                href="#">
+                                <i class="ti ti-bell text-lg leading-none"></i>
+                                Newsletter
+                              </a>
+                              <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                href="#">
+                                <i class="ti ti-shopping-cart text-lg leading-none"></i>
+                                Purchases
+                              </a>
+                              <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                href="#">
+                                <i class="ti ti-cloud-download text-lg leading-none"></i>
+                                Downloads
+                              </a>
+                              <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                href="#">
+                                <i class="ti ti-users text-lg leading-none"></i>
+                                Team Account
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class=" lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-6">
+                          <h5 class="card-title">Custom trigger</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal7">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal7"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Custom
+                                        trigger -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal7">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+       <code class="language-html">  
+      &#x3C;div class=&#x22;hs-dropdown relative inline-flex&#x22;&#x3E;
+         &#x3C;button id=&#x22;hs-dropdown-custom-trigger&#x22; type=&#x22;button&#x22; class=&#x22;hs-dropdown-toggle py-1 ps-1 pe-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600&#x22;&#x3E;
+         &#x3C;img class=&#x22;w-7 h-auto rounded-full&#x22; src=&#x22;@@webRoot/assets/images/profile/user-7.jpg&#x22; alt=&#x22;Maria&#x22;&#x3E;
+         &#x3C;span class=&#x22;text-gray-600 font-medium truncate max-w-[7.5rem] dark:text-gray-400&#x22;&#x3E;John&#x3C;/span&#x3E;
+         &#x3C;i class=&#x22;ti ti-chevron-down text-base leading-tight font-medium hs-dropdown-open:rotate-180&#x22;&#x3E;&#x3C;/i&#x3E;
+         &#x3C;/button&#x3E;
+         &#x3C;div class=&#x22;hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-md p-2 mt-2 dark:bg-gray-800 dark:border dark:border-gray-700 z-10&#x22; aria-labelledby=&#x22;hs-dropdown-custom-trigger&#x22;&#x3E;
+            &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+            Newsletter
+            &#x3C;/a&#x3E;
+            &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+            Purchases
+            &#x3C;/a&#x3E;
+            &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+            Downloads
+            &#x3C;/a&#x3E;
+            &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+            Team Account
+            &#x3C;/a&#x3E;
+         &#x3C;/div&#x3E;
+      &#x3C;/div&#x3E;
+                  </code>
+                                                          </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <div class="hs-dropdown relative inline-flex">
+                          <button id="hs-dropdown-custom-trigger" type="button"
+                            class="hs-dropdown-toggle py-1 ps-1 pe-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                            <img class="w-7 h-auto rounded-full" src="@@webRoot/assets/images/profile/user-7.jpg"
+                              alt="Maria">
+                            <span
+                              class="text-gray-600 font-medium truncate max-w-[7.5rem] dark:text-gray-400">John</span>
+                            <i
+                              class="ti ti-chevron-down text-base leading-tight font-medium hs-dropdown-open:rotate-180"></i>
+                          </button>
+
+                          <div
+                            class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-md p-2 mt-2 dark:bg-gray-800 dark:border dark:border-gray-700 z-10"
+                            aria-labelledby="hs-dropdown-custom-trigger">
+                            <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                              href="#">
+                              Newsletter
+                            </a>
+                            <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                              href="#">
+                              Purchases
+                            </a>
+                            <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                              href="#">
+                              Downloads
+                            </a>
+                            <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                              href="#">
+                              Team Account
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class=" lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-6">
+                          <h5 class="card-title">Custom icon trigger</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal8">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal8"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Custom icon
+                                        trigger -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal8">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+       <code class="language-html">  
+      &#x3C;div class=&#x22;hs-dropdown relative inline-flex&#x22;&#x3E;
+         &#x3C;button id=&#x22;hs-dropdown-with-header&#x22; type=&#x22;button&#x22; class=&#x22;hs-dropdown-toggle py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-md border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600&#x22;&#x3E;
+         &#x3C;i class=&#x22;ti ti-dots-vertical text-base leading-tight font-medium&#x22;&#x3E;&#x3C;/i&#x3E;
+         &#x3C;/button&#x3E;
+         &#x3C;div class=&#x22;hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-md p-2 mt-2 dark:bg-gray-800 dark:border dark:border-gray-700 z-10&#x22; aria-labelledby=&#x22;hs-dropdown-custom-icon-trigger&#x22;&#x3E;
+            &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+            Newsletter
+            &#x3C;/a&#x3E;
+            &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+            Purchases
+            &#x3C;/a&#x3E;
+            &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+            Downloads
+            &#x3C;/a&#x3E;
+            &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+            Team Account
+            &#x3C;/a&#x3E;
+         &#x3C;/div&#x3E;
+      &#x3C;/div&#x3E;
+                  </code>
+                                                          </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <div class="hs-dropdown relative inline-flex">
+                          <button id="hs-dropdown-with-header" type="button"
+                            class="hs-dropdown-toggle py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-md border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                            <i class="ti ti-dots-vertical text-base leading-tight font-medium"></i>
+                          </button>
+
+                          <div
+                            class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-md p-2 mt-2 dark:bg-gray-800 dark:border dark:border-gray-700 z-10"
+                            aria-labelledby="hs-dropdown-custom-icon-trigger">
+                            <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                              href="#">
+                              Newsletter
+                            </a>
+                            <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                              href="#">
+                              Purchases
+                            </a>
+                            <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                              href="#">
+                              Downloads
+                            </a>
+                            <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                              href="#">
+                              Team Account
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class=" lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-6">
+                          <h5 class="card-title">Slide up animation</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal9">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal9"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Slide up
+                                        animation -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal9">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+       <code class="language-html">  
+      &#x3C;div class=&#x22;hs-dropdown relative inline-flex&#x22;&#x3E;
+         &#x3C;button id=&#x22;hs-dropdown-with-header&#x22; type=&#x22;button&#x22; class=&#x22;hs-dropdown-toggle py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-md border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600&#x22;&#x3E;
+         &#x3C;i class=&#x22;ti ti-dots-vertical text-base leading-tight font-medium&#x22;&#x3E;&#x3C;/i&#x3E;
+         &#x3C;/button&#x3E;
+         &#x3C;div class=&#x22;hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-md p-2 mt-2 dark:bg-gray-800 dark:border dark:border-gray-700 z-10&#x22; aria-labelledby=&#x22;hs-dropdown-custom-icon-trigger&#x22;&#x3E;
+            &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+            Newsletter
+            &#x3C;/a&#x3E;
+            &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+            Purchases
+            &#x3C;/a&#x3E;
+            &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+            Downloads
+            &#x3C;/a&#x3E;
+            &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+            Team Account
+            &#x3C;/a&#x3E;
+         &#x3C;/div&#x3E;
+      &#x3C;/div&#x3E;
+                  </code>
+                                                          </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <div class="hs-dropdown relative inline-flex">
+                          <button id="hs-dropdown-slideup-animation" type="button"
+                            class="hs-dropdown-toggle py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-md border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                            <span class="leading-tight">Actions</span>
+                            <i
+                              class="ti ti-chevron-down text-base leading-tight font-medium hs-dropdown-open:rotate-180"></i>
+                          </button>
+
+                          <div
+                            class="hs-dropdown-menu hs-dropdown-open:opacity-100 w-72 transition-[opacity,margin] duration   hidden z-10  opacity-0 duration-300 mt-2 min-w-60 bg-white shadow-md rounded-md p-2 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700"
+                            aria-labelledby="hs-dropdown-slideup-animation">
+                            <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                              href="#">
+                              Newsletter
+                            </a>
+                            <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                              href="#">
+                              Purchases
+                            </a>
+                            <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                              href="#">
+                              Downloads
+                            </a>
+                            <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                              href="#">
+                              Team Account
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class=" lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-0">
+                          <h5 class="card-title">Dropdown item checkbox</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal10">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal10"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Dropdown
+                                        item checkbox -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal10">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+       <code class="language-html">  
+      &#x3C;div class=&#x22;hs-dropdown relative inline-flex&#x22; data-hs-dropdown-auto-close=&#x22;inside&#x22;&#x3E;
+         &#x3C;button id=&#x22;hs-dropdown-item-checkbox&#x22; type=&#x22;button&#x22; class=&#x22;hs-dropdown-toggle py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-md border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600&#x22;&#x3E;
+         &#x3C;span class=&#x22;leading-tight&#x22;&#x3E;Actions&#x3C;/span&#x3E;
+         &#x3C;i class=&#x22;ti ti-chevron-down text-base leading-tight font-medium hs-dropdown-open:rotate-180&#x22;&#x3E;&#x3C;/i&#x3E;
+         &#x3C;/button&#x3E;
+         &#x3C;div class=&#x22;hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-md p-2 mt-2 dark:bg-gray-800 dark:border dark:border-gray-700 z-10&#x22; aria-labelledby=&#x22;hs-dropdown-item-checkbox&#x22;&#x3E;
+            &#x3C;div class=&#x22;relative flex items-start py-2 px-3 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700&#x22;&#x3E;
+               &#x3C;div class=&#x22;flex items-center h-5 mt-1&#x22;&#x3E;
+                  &#x3C;input id=&#x22;hs-dropdown-item-checkbox-delete&#x22; name=&#x22;hs-dropdown-item-checkbox-delete&#x22; type=&#x22;checkbox&#x22; class=&#x22;shrink-0 border-gray-200 rounded text-primary focus:ring-primary disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-primary dark:checked:border-primary dark:focus:ring-offset-gray-800&#x22; aria-describedby=&#x22;hs-dropdown-item-checkbox-delete-description&#x22; checked&#x3E;
+               &#x3C;/div&#x3E;
+               &#x3C;label for=&#x22;hs-dropdown-item-checkbox-delete&#x22; class=&#x22;ms-3.5&#x22;&#x3E;
+               &#x3C;span class=&#x22;block text-sm font-semibold text-gray-800 dark:text-gray-300&#x22;&#x3E;Delete&#x3C;/span&#x3E;
+               &#x3C;span id=&#x22;hs-dropdown-item-checkbox-delete-description&#x22; class=&#x22;block text-sm text-gray-600 dark:text-gray-500&#x22;&#x3E;Notify me when this action happens.&#x3C;/span&#x3E;
+               &#x3C;/label&#x3E;
+            &#x3C;/div&#x3E;
+            &#x3C;div class=&#x22;relative flex items-start py-2 px-3 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700&#x22;&#x3E;
+               &#x3C;div class=&#x22;flex items-center h-5 mt-1&#x22;&#x3E;
+                  &#x3C;input id=&#x22;hs-dropdown-item-checkbox-archive&#x22; name=&#x22;hs-dropdown-item-checkbox-archive&#x22; type=&#x22;checkbox&#x22; class=&#x22;shrink-0 border-gray-200 rounded text-primary focus:ring-primary disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-primary dark:checked:border-primary dark:focus:ring-offset-gray-800&#x22; aria-describedby=&#x22;hs-dropdown-item-checkbox-archive-description&#x22;&#x3E;
+               &#x3C;/div&#x3E;
+               &#x3C;label for=&#x22;hs-dropdown-item-checkbox-archive&#x22; class=&#x22;ms-3.5&#x22;&#x3E;
+               &#x3C;span class=&#x22;block text-sm font-semibold text-gray-800 dark:text-gray-300&#x22;&#x3E;Archive&#x3C;/span&#x3E;
+               &#x3C;span id=&#x22;hs-dropdown-item-checkbox-archive-description&#x22; class=&#x22;block text-sm text-gray-600 dark:text-gray-500&#x22;&#x3E;Notify me when this action happens.&#x3C;/span&#x3E;
+               &#x3C;/label&#x3E;
+            &#x3C;/div&#x3E;
+         &#x3C;/div&#x3E;
+      &#x3C;/div&#x3E;
+                  </code>
+                                                          </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <p class="card-subtitle mb-6">Make the dropdown item appear with checkbox.</p>
+                        <div class="hs-dropdown relative inline-flex" data-hs-dropdown-auto-close="inside">
+                          <button id="hs-dropdown-item-checkbox" type="button"
+                            class="hs-dropdown-toggle py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-md border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                            <span class="leading-tight">Actions</span>
+                            <i
+                              class="ti ti-chevron-down text-base leading-tight font-medium hs-dropdown-open:rotate-180"></i>
+                          </button>
+
+                          <div
+                            class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-md p-2 mt-2 dark:bg-gray-800 dark:border dark:border-gray-700 z-10"
+                            aria-labelledby="hs-dropdown-item-checkbox">
+                            <div
+                              class="relative flex items-start py-2 px-3 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700">
+                              <div class="flex items-center h-5 mt-1">
+                                <input id="hs-dropdown-item-checkbox-delete" name="hs-dropdown-item-checkbox-delete"
+                                  type="checkbox"
+                                  class="shrink-0 border-gray-200 rounded text-primary focus:ring-primary disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-primary dark:checked:border-primary dark:focus:ring-offset-gray-800"
+                                  aria-describedby="hs-dropdown-item-checkbox-delete-description" checked>
+                              </div>
+                              <label for="hs-dropdown-item-checkbox-delete" class="ms-3.5">
+                                <span class="block text-sm font-semibold text-gray-800 dark:text-gray-300">Delete</span>
+                                <span id="hs-dropdown-item-checkbox-delete-description"
+                                  class="block text-sm text-gray-600 dark:text-gray-500">Notify me when this action
+                                  happens.</span>
+                              </label>
+                            </div>
+                            <div
+                              class="relative flex items-start py-2 px-3 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700">
+                              <div class="flex items-center h-5 mt-1">
+                                <input id="hs-dropdown-item-checkbox-archive" name="hs-dropdown-item-checkbox-archive"
+                                  type="checkbox"
+                                  class="shrink-0 border-gray-200 rounded text-primary focus:ring-primary disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-primary dark:checked:border-primary dark:focus:ring-offset-gray-800"
+                                  aria-describedby="hs-dropdown-item-checkbox-archive-description">
+                              </div>
+                              <label for="hs-dropdown-item-checkbox-archive" class="ms-3.5">
+                                <span
+                                  class="block text-sm font-semibold text-gray-800 dark:text-gray-300">Archive</span>
+                                <span id="hs-dropdown-item-checkbox-archive-description"
+                                  class="block text-sm text-gray-600 dark:text-gray-500">Notify me when this action
+                                  happens.</span>
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class=" lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-0">
+                          <h5 class="card-title">Dropdown item radio</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal11">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal11"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Dropdown
+                                        item radio -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal11">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+       <code class="language-html">  
+      &#x3C;div class=&#x22;hs-dropdown relative inline-flex&#x22; data-hs-dropdown-auto-close=&#x22;inside&#x22;&#x3E;
+         &#x3C;button id=&#x22;hs-dropdown-item-checkbox&#x22; type=&#x22;button&#x22; class=&#x22;hs-dropdown-toggle py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-md border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600&#x22;&#x3E;
+         &#x3C;span class=&#x22;leading-tight&#x22;&#x3E;Actions&#x3C;/span&#x3E;
+         &#x3C;i class=&#x22;ti ti-chevron-down text-base leading-tight font-medium hs-dropdown-open:rotate-180&#x22;&#x3E;&#x3C;/i&#x3E;
+         &#x3C;/button&#x3E;
+         &#x3C;div class=&#x22;hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-md p-2 mt-2 dark:bg-gray-800 dark:border dark:border-gray-700 z-10&#x22; aria-labelledby=&#x22;hs-dropdown-item-checkbox&#x22;&#x3E;
+            &#x3C;div class=&#x22;relative flex items-start py-2 px-3 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700&#x22;&#x3E;
+               &#x3C;div class=&#x22;flex items-center h-5 mt-1&#x22;&#x3E;
+                  &#x3C;input id=&#x22;hs-dropdown-item-checkbox-delete&#x22; name=&#x22;hs-dropdown-item-checkbox-delete&#x22; type=&#x22;checkbox&#x22; class=&#x22;shrink-0 border-gray-200 rounded text-primary focus:ring-primary disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-primary dark:checked:border-primary dark:focus:ring-offset-gray-800&#x22; aria-describedby=&#x22;hs-dropdown-item-checkbox-delete-description&#x22; checked&#x3E;
+               &#x3C;/div&#x3E;
+               &#x3C;label for=&#x22;hs-dropdown-item-checkbox-delete&#x22; class=&#x22;ms-3.5&#x22;&#x3E;
+               &#x3C;span class=&#x22;block text-sm font-semibold text-gray-800 dark:text-gray-300&#x22;&#x3E;Delete&#x3C;/span&#x3E;
+               &#x3C;span id=&#x22;hs-dropdown-item-checkbox-delete-description&#x22; class=&#x22;block text-sm text-gray-600 dark:text-gray-500&#x22;&#x3E;Notify me when this action happens.&#x3C;/span&#x3E;
+               &#x3C;/label&#x3E;
+            &#x3C;/div&#x3E;
+            &#x3C;div class=&#x22;relative flex items-start py-2 px-3 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700&#x22;&#x3E;
+               &#x3C;div class=&#x22;flex items-center h-5 mt-1&#x22;&#x3E;
+                  &#x3C;input id=&#x22;hs-dropdown-item-checkbox-archive&#x22; name=&#x22;hs-dropdown-item-checkbox-archive&#x22; type=&#x22;checkbox&#x22; class=&#x22;shrink-0 border-gray-200 rounded text-primary focus:ring-primary disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-primary dark:checked:border-primary dark:focus:ring-offset-gray-800&#x22; aria-describedby=&#x22;hs-dropdown-item-checkbox-archive-description&#x22;&#x3E;
+               &#x3C;/div&#x3E;
+               &#x3C;label for=&#x22;hs-dropdown-item-checkbox-archive&#x22; class=&#x22;ms-3.5&#x22;&#x3E;
+               &#x3C;span class=&#x22;block text-sm font-semibold text-gray-800 dark:text-gray-300&#x22;&#x3E;Archive&#x3C;/span&#x3E;
+               &#x3C;span id=&#x22;hs-dropdown-item-checkbox-archive-description&#x22; class=&#x22;block text-sm text-gray-600 dark:text-gray-500&#x22;&#x3E;Notify me when this action happens.&#x3C;/span&#x3E;
+               &#x3C;/label&#x3E;
+            &#x3C;/div&#x3E;
+         &#x3C;/div&#x3E;
+      &#x3C;/div&#x3E;
+                  </code>
+                                                          </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <p class="card-subtitle mb-6">Make the dropdown item appear with checkbox.</p>
+                        <div class="hs-dropdown relative inline-flex" data-hs-dropdown-auto-close="inside">
+                          <button id="hs-dropdown-item-checkbox2" type="button"
+                            class="hs-dropdown-toggle py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-md border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                            <span class="leading-tight">Actions</span>
+                            <i
+                              class="ti ti-chevron-down text-base leading-tight font-medium hs-dropdown-open:rotate-180"></i>
+                          </button>
+
+                          <div
+                            class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-md p-2 mt-2 dark:bg-gray-800 dark:border dark:border-gray-700 z-10"
+                            aria-labelledby="hs-dropdown-item-checkbox2">
+                            <div
+                              class="relative flex items-start py-2 px-3 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700">
+                              <div class="flex items-center h-5 mt-1">
+                                <input id="hs-dropdown-item-radio-delete" name="hs-dropdown-item-radio" type="radio"
+                                  class="shrink-0 border-gray-200 rounded-full text-primary focus:ring-primary disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-primary dark:checked:border-primary dark:focus:ring-offset-gray-800"
+                                  aria-describedby="hs-dropdown-item-radio-delete-description" checked>
+                              </div>
+                              <label for="hs-dropdown-item-radio-delete" class="ms-3.5">
+                                <span class="block text-sm font-semibold text-gray-800 dark:text-gray-300">Delete</span>
+                                <span id="hs-dropdown-item-radio-delete-description"
+                                  class="block text-sm text-gray-600 dark:text-gray-500">Notify me when this action
+                                  happens.</span>
+                              </label>
+                            </div>
+                            <div
+                              class="relative flex items-start py-2 px-3 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700">
+                              <div class="flex items-center h-5 mt-1">
+                                <input id="hs-dropdown-item-radio-archive" name="hs-dropdown-item-radio" type="radio"
+                                  class="shrink-0 border-gray-200 rounded-full text-primary focus:ring-primary disabled:opacity-50 disabled:pointer-events-none dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-primary dark:checked:border-primary dark:focus:ring-offset-gray-800"
+                                  aria-describedby="hs-dropdown-item-radio-archive-description">
+                              </div>
+                              <label for="hs-dropdown-item-radio-archive" class="ms-3.5">
+                                <span
+                                  class="block text-sm font-semibold text-gray-800 dark:text-gray-300">Archive</span>
+                                <span id="hs-dropdown-item-radio-archive-description"
+                                  class="block text-sm text-gray-600 dark:text-gray-500">Notify me when this action
+                                  happens.</span>
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class=" lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-0">
+                          <h5 class="card-title">Split Dropdown</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal12">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal12"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Split
+                                        Dropdown -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal12">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+       <code class="language-html">  
+        &#x3C;div class=&#x22;inline-flex&#x22;&#x3E;
+          &#x3C;button type=&#x22;button&#x22; class=&#x22;relative py-2 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-s-md border border-gray-200 bg-white text-gray-800 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600&#x22;&#x3E;
+          Split dropdown
+          &#x3C;/button&#x3E;
+          &#x3C;div class=&#x22;hs-dropdown relative inline-flex&#x22;&#x3E;
+              &#x3C;button id=&#x22;hs-split-dropdown&#x22; type=&#x22;button&#x22; class=&#x22;hs-dropdown-toggle relative -ms-[.3125rem] py-2 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-e-md border border-gray-200 bg-gray-100 text-gray-800 hover:bg-gray-200 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-800 dark:hover:bg-slate-700 dark:border-gray-700 dark:text-white dark:hover:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600&#x22;&#x3E;
+              &#x3C;span class=&#x22;sr-only&#x22;&#x3E;Toggle Dropdown&#x3C;/span&#x3E;
+              &#x3C;i class=&#x22;ti ti-chevron-down text-base leading-tight font-medium hs-dropdown-open:rotate-180&#x22;&#x3E;&#x3C;/i&#x3E;
+              &#x3C;/button&#x3E;
+              &#x3C;div class=&#x22;hs-dropdown-menu w-72 transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden z-10 bg-white shadow-md rounded-md p-2 mt-2 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700&#x22; aria-labelledby=&#x22;hs-split-dropdown&#x22;&#x3E;
+                &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+                Newsletter
+                &#x3C;/a&#x3E;
+                &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+                Purchases
+                &#x3C;/a&#x3E;
+                &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+                Downloads
+                &#x3C;/a&#x3E;
+                &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+                Team Account
+                &#x3C;/a&#x3E;
+              &#x3C;/div&#x3E;
+          &#x3C;/div&#x3E;
+        &#x3C;/div&#x3E;
+                  </code>
+                                                          </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <p class="card-subtitle mb-6">The default split dropdown menu appearance.</p>
+                        <div class="inline-flex">
+                          <button type="button"
+                            class="relative py-2 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-s-md border border-gray-200 bg-white text-gray-800 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                            Split dropdown
+                          </button>
+                          <div class="hs-dropdown relative inline-flex">
+                            <button id="hs-split-dropdown" type="button"
+                              class="hs-dropdown-toggle relative -ms-[.3125rem] py-2 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-e-md border border-gray-200 bg-gray-100 text-gray-800 hover:bg-gray-200 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-800 dark:hover:bg-slate-700 dark:border-gray-700 dark:text-white dark:hover:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                              <span class="sr-only">Toggle Dropdown</span>
+                              <i
+                                class="ti ti-chevron-down text-base leading-tight font-medium hs-dropdown-open:rotate-180"></i>
+                            </button>
+
+                            <div
+                              class="hs-dropdown-menu w-72 transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden z-10 bg-white shadow-md rounded-md p-2 mt-2 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700"
+                              aria-labelledby="hs-split-dropdown">
+                              <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                href="#">
+                                Newsletter
+                              </a>
+                              <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                href="#">
+                                Purchases
+                              </a>
+                              <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                href="#">
+                                Downloads
+                              </a>
+                              <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                href="#">
+                                Team Account
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class=" lg:col-span-12 md:col-span-12 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="text-xl font-semibold text-dark dark:text-white mb-4">Direction of the dropdown</h5>
+                        <div class="grid grid-cols-12 gap-6">
+                          <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                            <div class="flex justify-between items-center mb-0">
+                              <h5 class="card-title">Dropdown Right Side</h5>
+                              <button
+                                class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                                data-hs-overlay="#hs-focus-management-modal13">
+                                <i class="ti ti-code text-xl"></i>
+                              </button>
+                              <div id="hs-focus-management-modal13"
+                                class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                                <div
+                                  class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                                  <div
+                                    class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                    <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                      <div class="overflow-hidden">
+                                        <div class="flex justify-between">
+                                          <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Dropdown
+                                            Right Side -
+                                            View Code</h5>
+                                          <button type="button"
+                                            class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                            data-hs-overlay="#hs-focus-management-modal13">
+                                            <span class="sr-only">Close</span>
+                                            <i class="ti ti-x text-xl"></i>
+                                          </button>
+                                        </div>
+
+                                        <div class="message-body max-h-[300px] " data-simplebar="">
+                                          <pre class="mt-0">
+             <code class="language-html">  
+      &#x3C;div class=&#x22;hs-dropdown relative inline-flex [--placement:right-top]&#x22;&#x3E;
+         &#x3C;button id=&#x22;hs-dropdown-defaultright&#x22; type=&#x22;button&#x22; class=&#x22;hs-dropdown-toggle py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-md border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600&#x22;&#x3E;
+         &#x3C;span class=&#x22;leading-tight&#x22;&#x3E;Actions&#x3C;/span&#x3E;
+         &#x3C;i class=&#x22;ti ti-chevron-down text-base leading-tight font-medium hs-dropdown-open:rotate-180&#x22;&#x3E;&#x3C;/i&#x3E;
+         &#x3C;/button&#x3E;
+         &#x3C;div class=&#x22;hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-md p-2 mt-2 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700 after:h-4 after:absolute after:-bottom-4 after:start-0 after:w-full before:h-4 before:absolute before:-top-4 before:start-0 before:w-full z-10&#x22; aria-labelledby=&#x22;hs-dropdown-defaultright&#x22;&#x3E;
+            &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+            Newsletter
+            &#x3C;/a&#x3E;
+            &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+            Purchases
+            &#x3C;/a&#x3E;
+            &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+            Downloads
+            &#x3C;/a&#x3E;
+            &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+            Team Account
+            &#x3C;/a&#x3E;
+         &#x3C;/div&#x3E;
+      &#x3C;/div&#x3E;
+      &#x3C;div class=&#x22;inline-flex&#x22;&#x3E;
+         &#x3C;button type=&#x22;button&#x22; class=&#x22;relative py-2 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-s-md border border-gray-200 bg-white text-gray-800 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600&#x22;&#x3E;
+         Split dropright
+         &#x3C;/button&#x3E;
+         &#x3C;div class=&#x22;hs-dropdown relative inline-flex [--placement:right-top]&#x22;&#x3E;
+            &#x3C;button id=&#x22;hs-split-dropdown&#x22; type=&#x22;button&#x22; class=&#x22;hs-dropdown-toggle relative -ms-[.3125rem] py-2 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-e-md border border-gray-200 bg-gray-100 text-gray-800 hover:bg-gray-200 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-800 dark:hover:bg-slate-700 dark:border-gray-700 dark:text-white dark:hover:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600&#x22;&#x3E;
+            &#x3C;span class=&#x22;sr-only&#x22;&#x3E;Toggle Dropdown&#x3C;/span&#x3E;
+            &#x3C;i class=&#x22;ti ti-chevron-down text-base leading-tight font-medium hs-dropdown-open:rotate-180&#x22;&#x3E;&#x3C;/i&#x3E;
+            &#x3C;/button&#x3E;
+            &#x3C;div class=&#x22;hs-dropdown-menu w-72 transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden z-10 bg-white shadow-md rounded-md p-2 mt-2 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700&#x22; aria-labelledby=&#x22;hs-split-dropdown&#x22;&#x3E;
+               &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+               Newsletter
+               &#x3C;/a&#x3E;
+               &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+               Purchases
+               &#x3C;/a&#x3E;
+               &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+               Downloads
+               &#x3C;/a&#x3E;
+               &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+               Team Account
+               &#x3C;/a&#x3E;
+            &#x3C;/div&#x3E;
+         &#x3C;/div&#x3E;
+      &#x3C;/div&#x3E;
+                        </code>
+                                                                </pre>
+                                        </div>
+                                      </div>
+
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- end -->
+                            </div>
+                            <p class="card-subtitle mb-6">Use <code
+                                class="text-error bg-lightwarning dark:bg-darkwarning">'[--placement:right | right-top | right-bottom]'</code>
+                              class to trigger dropdown menus above elements.</p>
+                            <div class="flex gap-2 flex-wrap">
+                              <div class="hs-dropdown relative inline-flex [--placement:right-top]">
+                                <button id="hs-dropdown-defaultright" type="button"
+                                  class="hs-dropdown-toggle py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-md border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                  <span class="leading-tight">Actions</span>
+                                  <i
+                                    class="ti ti-chevron-down text-base leading-tight font-medium hs-dropdown-open:rotate-180"></i>
+                                </button>
+
+                                <div
+                                  class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-md p-2 mt-2 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700 after:h-4 after:absolute after:-bottom-4 after:start-0 after:w-full before:h-4 before:absolute before:-top-4 before:start-0 before:w-full z-10"
+                                  aria-labelledby="hs-dropdown-defaultright">
+                                  <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                    href="#">
+                                    Newsletter
+                                  </a>
+                                  <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                    href="#">
+                                    Purchases
+                                  </a>
+                                  <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                    href="#">
+                                    Downloads
+                                  </a>
+                                  <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                    href="#">
+                                    Team Account
+                                  </a>
+                                </div>
+                              </div>
+                              <div class="inline-flex">
+                                <button type="button"
+                                  class="relative py-2 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-s-md border border-gray-200 bg-white text-gray-800 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                  Split dropright
+                                </button>
+                                <div class="hs-dropdown relative inline-flex [--placement:right-top]">
+                                  <button id="hs-split-dropdown" type="button"
+                                    class="hs-dropdown-toggle relative -ms-[.3125rem] py-2 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-e-md border border-gray-200 bg-gray-100 text-gray-800 hover:bg-gray-200 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-800 dark:hover:bg-slate-700 dark:border-gray-700 dark:text-white dark:hover:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                    <i class="ti ti-chevron-right text-base leading-tight font-medium"></i>
+                                  </button>
+
+                                  <div
+                                    class="hs-dropdown-menu w-72 transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden z-10 bg-white shadow-md rounded-md p-2 mt-2 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700"
+                                    aria-labelledby="hs-split-dropdown">
+                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                      href="#">
+                                      Newsletter
+                                    </a>
+                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                      href="#">
+                                      Purchases
+                                    </a>
+                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                      href="#">
+                                      Downloads
+                                    </a>
+                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                      href="#">
+                                      Team Account
+                                    </a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                            <div class="flex justify-between items-center mb-0">
+                              <h5 class="card-title">Dropdown Up Side</h5>
+                              <button
+                                class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                                data-hs-overlay="#hs-focus-management-modal14">
+                                <i class="ti ti-code text-xl"></i>
+                              </button>
+                              <div id="hs-focus-management-modal14"
+                                class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                                <div
+                                  class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                                  <div
+                                    class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                    <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                      <div class="overflow-hidden">
+                                        <div class="flex justify-between">
+                                          <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Dropdown
+                                            Up Side -
+                                            View Code</h5>
+                                          <button type="button"
+                                            class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                            data-hs-overlay="#hs-focus-management-modal14">
+                                            <span class="sr-only">Close</span>
+                                            <i class="ti ti-x text-xl"></i>
+                                          </button>
+                                        </div>
+
+                                        <div class="message-body max-h-[300px] " data-simplebar="">
+                                          <pre class="mt-0">
+             <code class="language-html">  
+      &#x3C;div class=&#x22;hs-dropdown relative inline-flex [--placement:top-left]&#x22;&#x3E;
+         &#x3C;button id=&#x22;hs-dropdown-defaultup&#x22; type=&#x22;button&#x22; class=&#x22;hs-dropdown-toggle py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-md border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600&#x22;&#x3E;
+         &#x3C;span class=&#x22;leading-tight&#x22;&#x3E;Actions&#x3C;/span&#x3E;
+         &#x3C;i class=&#x22;ti ti-chevron-down text-base leading-tight font-medium hs-dropdown-open:rotate-180&#x22;&#x3E;&#x3C;/i&#x3E;
+         &#x3C;/button&#x3E;
+         &#x3C;div class=&#x22;hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-md p-2 mt-2 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700 after:h-4 after:absolute after:-bottom-4 after:start-0 after:w-full before:h-4 before:absolute before:-top-4 before:start-0 before:w-full z-10&#x22; aria-labelledby=&#x22;hs-dropdown-defaultup&#x22;&#x3E;
+            &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+            Newsletter
+            &#x3C;/a&#x3E;
+            &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+            Purchases
+            &#x3C;/a&#x3E;
+            &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+            Downloads
+            &#x3C;/a&#x3E;
+            &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+            Team Account
+            &#x3C;/a&#x3E;
+         &#x3C;/div&#x3E;
+      &#x3C;/div&#x3E;
+      &#x3C;div class=&#x22;inline-flex&#x22;&#x3E;
+         &#x3C;button type=&#x22;button&#x22; class=&#x22;relative py-2 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-s-md border border-gray-200 bg-white text-gray-800 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600&#x22;&#x3E;
+         Split dropup
+         &#x3C;/button&#x3E;
+         &#x3C;div class=&#x22;hs-dropdown relative inline-flex [--placement:top-left]&#x22;&#x3E;
+            &#x3C;button id=&#x22;hs-split-dropdown&#x22; type=&#x22;button&#x22; class=&#x22;hs-dropdown-toggle relative -ms-[.3125rem] py-2 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-e-md border border-gray-200 bg-gray-100 text-gray-800 hover:bg-gray-200 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-800 dark:hover:bg-slate-700 dark:border-gray-700 dark:text-white dark:hover:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600&#x22;&#x3E;
+            &#x3C;span class=&#x22;sr-only&#x22;&#x3E;Toggle Dropdown&#x3C;/span&#x3E;
+            &#x3C;i class=&#x22;ti ti-chevron-down text-base leading-tight font-medium hs-dropdown-open:rotate-180&#x22;&#x3E;&#x3C;/i&#x3E;
+            &#x3C;/button&#x3E;
+            &#x3C;div class=&#x22;hs-dropdown-menu w-72 transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden z-10 bg-white shadow-md rounded-md p-2 mt-2 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700&#x22; aria-labelledby=&#x22;hs-split-dropdown&#x22;&#x3E;
+               &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+               Newsletter
+               &#x3C;/a&#x3E;
+               &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+               Purchases
+               &#x3C;/a&#x3E;
+               &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+               Downloads
+               &#x3C;/a&#x3E;
+               &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+               Team Account
+               &#x3C;/a&#x3E;
+            &#x3C;/div&#x3E;
+         &#x3C;/div&#x3E;
+      &#x3C;/div&#x3E;
+                        </code>
+                                                                </pre>
+                                        </div>
+                                      </div>
+
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- end -->
+                            </div>
+                            <p class="card-subtitle mb-6">Use <code
+                                class="text-error bg-lightwarning dark:bg-darkwarning">'[--placement:top | top-left | top-right]'</code>
+                              class to trigger dropdown menus above elements.</p>
+                            <div class="flex gap-2 flex-wrap">
+                              <div class="hs-dropdown relative inline-flex [--placement:top-left]">
+                                <button id="hs-dropdown-defaultup" type="button"
+                                  class="hs-dropdown-toggle py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-md border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                  <span class="leading-tight">Actions</span>
+                                  <i
+                                    class="ti ti-chevron-down text-base leading-tight font-medium hs-dropdown-open:rotate-180"></i>
+                                </button>
+
+                                <div
+                                  class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-md p-2 mt-2 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700 after:h-4 after:absolute after:-bottom-4 after:start-0 after:w-full before:h-4 before:absolute before:-top-4 before:start-0 before:w-full z-10"
+                                  aria-labelledby="hs-dropdown-defaultup">
+                                  <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                    href="#">
+                                    Newsletter
+                                  </a>
+                                  <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                    href="#">
+                                    Purchases
+                                  </a>
+                                  <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                    href="#">
+                                    Downloads
+                                  </a>
+                                  <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                    href="#">
+                                    Team Account
+                                  </a>
+                                </div>
+                              </div>
+                              <div class="inline-flex">
+                                <button type="button"
+                                  class="relative py-2 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-s-md border border-gray-200 bg-white text-gray-800 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                  Split dropup
+                                </button>
+                                <div class="hs-dropdown relative inline-flex [--placement:top-left]">
+                                  <button id="hs-split-dropdown" type="button"
+                                    class="hs-dropdown-toggle relative -ms-[.3125rem] py-2 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-e-md border border-gray-200 bg-gray-100 text-gray-800 hover:bg-gray-200 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-800 dark:hover:bg-slate-700 dark:border-gray-700 dark:text-white dark:hover:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                    <i
+                                      class="ti ti-chevron-down text-base leading-tight font-medium hs-dropdown-open:rotate-180"></i>
+                                  </button>
+
+                                  <div
+                                    class="hs-dropdown-menu w-72 transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden z-10 bg-white shadow-md rounded-md p-2 mt-2 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700"
+                                    aria-labelledby="hs-split-dropdown">
+                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                      href="#">
+                                      Newsletter
+                                    </a>
+                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                      href="#">
+                                      Purchases
+                                    </a>
+                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                      href="#">
+                                      Downloads
+                                    </a>
+                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                      href="#">
+                                      Team Account
+                                    </a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                            <div class="flex justify-between items-center mb-0">
+                              <h5 class="card-title">Dropdown Left Side</h5>
+                              <button
+                                class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                                data-hs-overlay="#hs-focus-management-modal15">
+                                <i class="ti ti-code text-xl"></i>
+                              </button>
+                              <div id="hs-focus-management-modal15"
+                                class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                                <div
+                                  class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                                  <div
+                                    class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                    <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                      <div class="overflow-hidden">
+                                        <div class="flex justify-between">
+                                          <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Dropdown
+                                            Left Side -
+                                            View Code</h5>
+                                          <button type="button"
+                                            class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                            data-hs-overlay="#hs-focus-management-modal15">
+                                            <span class="sr-only">Close</span>
+                                            <i class="ti ti-x text-xl"></i>
+                                          </button>
+                                        </div>
+
+                                        <div class="message-body max-h-[300px] " data-simplebar="">
+                                          <pre class="mt-0">
+             <code class="language-html">  
+      &#x3C;div class=&#x22;hs-dropdown relative inline-flex [--placement:left-top]&#x22;&#x3E;
+         &#x3C;button id=&#x22;hs-dropdown-defaultup&#x22; type=&#x22;button&#x22; class=&#x22;hs-dropdown-toggle py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-md border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600&#x22;&#x3E;
+         &#x3C;span class=&#x22;leading-tight&#x22;&#x3E;Actions&#x3C;/span&#x3E;
+         &#x3C;i class=&#x22;ti ti-chevron-down text-base leading-tight font-medium hs-dropdown-open:rotate-180&#x22;&#x3E;&#x3C;/i&#x3E;
+         &#x3C;/button&#x3E;
+         &#x3C;div class=&#x22;hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-md p-2 mt-2 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700 after:h-4 after:absolute after:-bottom-4 after:start-0 after:w-full before:h-4 before:absolute before:-top-4 before:start-0 before:w-full z-10&#x22; aria-labelledby=&#x22;hs-dropdown-defaultup&#x22;&#x3E;
+            &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+            Newsletter
+            &#x3C;/a&#x3E;
+            &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+            Purchases
+            &#x3C;/a&#x3E;
+            &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+            Downloads
+            &#x3C;/a&#x3E;
+            &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+            Team Account
+            &#x3C;/a&#x3E;
+         &#x3C;/div&#x3E;
+      &#x3C;/div&#x3E;
+      &#x3C;div class=&#x22;inline-flex&#x22;&#x3E;
+         &#x3C;button type=&#x22;button&#x22; class=&#x22;relative py-2 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-s-md border border-gray-200 bg-white text-gray-800 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600&#x22;&#x3E;
+         Split dropleft
+         &#x3C;/button&#x3E;
+         &#x3C;div class=&#x22;hs-dropdown relative inline-flex [--placement:left-top]&#x22;&#x3E;
+            &#x3C;button id=&#x22;hs-split-dropdown&#x22; type=&#x22;button&#x22; class=&#x22;hs-dropdown-toggle relative -ms-[.3125rem] py-2 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-e-md border border-gray-200 bg-gray-100 text-gray-800 hover:bg-gray-200 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-800 dark:hover:bg-slate-700 dark:border-gray-700 dark:text-white dark:hover:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600&#x22;&#x3E;
+            &#x3C;span class=&#x22;sr-only&#x22;&#x3E;Toggle Dropdown&#x3C;/span&#x3E;
+            &#x3C;i class=&#x22;ti ti-chevron-down text-base leading-tight font-medium hs-dropdown-open:rotate-180&#x22;&#x3E;&#x3C;/i&#x3E;
+            &#x3C;/button&#x3E;
+            &#x3C;div class=&#x22;hs-dropdown-menu w-72 transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden z-10 bg-white shadow-md rounded-md p-2 mt-2 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700&#x22; aria-labelledby=&#x22;hs-split-dropdown&#x22;&#x3E;
+               &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+               Newsletter
+               &#x3C;/a&#x3E;
+               &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+               Purchases
+               &#x3C;/a&#x3E;
+               &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+               Downloads
+               &#x3C;/a&#x3E;
+               &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+               Team Account
+               &#x3C;/a&#x3E;
+            &#x3C;/div&#x3E;
+         &#x3C;/div&#x3E;
+      &#x3C;/div&#x3E;
+                        </code>
+                                                                </pre>
+                                        </div>
+                                      </div>
+
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- end -->
+                            </div>
+                            <p class="card-subtitle mb-6">Use <code
+                                class="text-error bg-lightwarning dark:bg-darkwarning">'[--placement:left | left-top | left-bottom]'</code>
+                              class to trigger dropdown menus above elements.</p>
+                            <div class="flex gap-2 flex-wrap">
+                              <div class="hs-dropdown relative inline-flex [--placement:left-top]">
+                                <button id="hs-dropdown-defaultup" type="button"
+                                  class="hs-dropdown-toggle py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-md border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                  <span class="leading-tight">Actions</span>
+                                  <i
+                                    class="ti ti-chevron-down text-base leading-tight font-medium hs-dropdown-open:rotate-180"></i>
+                                </button>
+
+                                <div
+                                  class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-md p-2 mt-2 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700 after:h-4 after:absolute after:-bottom-4 after:start-0 after:w-full before:h-4 before:absolute before:-top-4 before:start-0 before:w-full z-10"
+                                  aria-labelledby="hs-dropdown-defaultup">
+                                  <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                    href="#">
+                                    Newsletter
+                                  </a>
+                                  <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                    href="#">
+                                    Purchases
+                                  </a>
+                                  <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                    href="#">
+                                    Downloads
+                                  </a>
+                                  <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                    href="#">
+                                    Team Account
+                                  </a>
+                                </div>
+                              </div>
+                              <div class="inline-flex">
+                                <button type="button"
+                                  class="relative py-2 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-s-md border border-gray-200 bg-white text-gray-800 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                  Split dropleft
+                                </button>
+                                <div class="hs-dropdown relative inline-flex [--placement:left-top]">
+                                  <button id="hs-split-dropdown" type="button"
+                                    class="hs-dropdown-toggle relative -ms-[.3125rem] py-2 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-e-md border border-gray-200 bg-gray-100 text-gray-800 hover:bg-gray-200 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-800 dark:hover:bg-slate-700 dark:border-gray-700 dark:text-white dark:hover:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                    <i class="ti ti-chevron-left text-base leading-tight font-medium"></i>
+                                  </button>
+
+                                  <div
+                                    class="hs-dropdown-menu w-72 transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden z-10 bg-white shadow-md rounded-md p-2 mt-2 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700"
+                                    aria-labelledby="hs-split-dropdown">
+                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                      href="#">
+                                      Newsletter
+                                    </a>
+                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                      href="#">
+                                      Purchases
+                                    </a>
+                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                      href="#">
+                                      Downloads
+                                    </a>
+                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                                      href="#">
+                                      Team Account
+                                    </a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class=" lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="flex justify-between items-center mb-0">
+                          <h5 class="card-title">Responsive alignment</h5>
+                          <button
+                            class="w-9 h-9 flex items-center justify-center rounded-full bg-lightprimary text-primary hover:bg-primary hover:text-white dark:bg-darkprimary dark:hover:bg-primary"
+                            data-hs-overlay="#hs-focus-management-modal16">
+                            <i class="ti ti-code text-xl"></i>
+                          </button>
+                          <div id="hs-focus-management-modal16"
+                            class="hs-overlay hs-overlay-open:opacity-100 hs-overlay-open:duration-500 hidden w-full h-full fixed top-0 start-0 z-[60] opacity-0 overflow-x-hidden transition-all overflow-y-auto pointer-events-none">
+                            <div
+                              class="hs-overlay-open:opacity-100 hs-overlay-open:duration-500 opacity-0 transition-all lg:max-w-4xl lg:w-full m-3 lg:mx-auto">
+                              <div
+                                class="flex flex-col bg-white dark:bg-dark  shadow-md dark:shadow-dark-md rounded-md pointer-events-auto">
+                                <div class="items-center gap-x-2 py-3 px-4 dark:border-darkborder">
+
+                                  <div class="overflow-hidden">
+                                    <div class="flex justify-between">
+                                      <h5 class="text-lg font-semibold mb-4 px-4 text-dark dark:text-white">Responsive
+                                        alignment -
+                                        View Code</h5>
+                                      <button type="button"
+                                        class="flex justify-center items-center size-7 text-base font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                                        data-hs-overlay="#hs-focus-management-modal16">
+                                        <span class="sr-only">Close</span>
+                                        <i class="ti ti-x text-xl"></i>
+                                      </button>
+                                    </div>
+
+                                    <div class="message-body max-h-[300px] " data-simplebar="">
+                                      <pre class="mt-0">
+       <code class="language-html">  
+      &#x3C;div class=&#x22;hs-dropdown relative inline-flex [--strategy:absolute] mb-4&#x22;&#x3E;
+         &#x3C;button id=&#x22;hs-dropdown-left-but-right-on-lg&#x22; type=&#x22;button&#x22; class=&#x22;hs-dropdown-toggle py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-md border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600&#x22;&#x3E;
+         Left aligned but right aligned when large screen
+         &#x3C;i class=&#x22;ti ti-chevron-down text-base leading-tight font-medium hs-dropdown-open:rotate-180&#x22;&#x3E;&#x3C;/i&#x3E;
+         &#x3C;/button&#x3E;
+         &#x3C;div class=&#x22;hs-dropdown-menu w-72 transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden  top-0 lg:start-auto lg:end-0 min-w-64 bg-white shadow-md rounded-md p-2 mt-2 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700 z-10&#x22; aria-labelledby=&#x22;hs-dropdown-left-but-right-on-lg&#x22;&#x3E;
+            &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+            Newsletter
+            &#x3C;/a&#x3E;
+            &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+            Purchases
+            &#x3C;/a&#x3E;
+            &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+            Downloads
+            &#x3C;/a&#x3E;
+            &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+            Team Account
+            &#x3C;/a&#x3E;
+         &#x3C;/div&#x3E;
+      &#x3C;/div&#x3E;
+      &#x3C;div class=&#x22;hs-dropdown relative inline-flex [--strategy:absolute]&#x22;&#x3E;
+         &#x3C;button id=&#x22;hs-dropdown-right-but-left-on-lg&#x22; type=&#x22;button&#x22; class=&#x22;hs-dropdown-toggle py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-md border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600&#x22;&#x3E;
+            Right aligned but left aligned when large screen
+            &#x3C;svg class=&#x22;hs-dropdown-open:rotate-180 size-4&#x22; xmlns=&#x22;http://www.w3.org/2000/svg&#x22; width=&#x22;24&#x22; height=&#x22;24&#x22; viewBox=&#x22;0 0 24 24&#x22; fill=&#x22;none&#x22; stroke=&#x22;currentColor&#x22; stroke-width=&#x22;2&#x22; stroke-linecap=&#x22;round&#x22; stroke-linejoin=&#x22;round&#x22;&#x3E;
+               &#x3C;path d=&#x22;m6 9 6 6 6-6&#x22;/&#x3E;
+            &#x3C;/svg&#x3E;
+         &#x3C;/button&#x3E;
+         &#x3C;div class=&#x22;hs-dropdown-menu w-72 transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden z-10 top-0 end-0 start-auto lg:end-auto lg:start-0 min-w-64 bg-white shadow-md rounded-md p-2 mt-2 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700 &#x22; aria-labelledby=&#x22;hs-dropdown-right-but-left-on-lg&#x22;&#x3E;
+            &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+            Newsletter
+            &#x3C;/a&#x3E;
+            &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+            Purchases
+            &#x3C;/a&#x3E;
+            &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+            Downloads
+            &#x3C;/a&#x3E;
+            &#x3C;a class=&#x22;flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700&#x22; href=&#x22;#&#x22;&#x3E;
+            Team Account
+            &#x3C;/a&#x3E;
+         &#x3C;/div&#x3E;
+      &#x3C;/div&#x3E;
+                  </code>
+                                                          </pre>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- end -->
+                        </div>
+                        <p class="card-subtitle mb-6">Control dropdown menu positions on the different breakpoints.</p>
+                        <div class="hs-dropdown relative inline-flex [--strategy:absolute] mb-4">
+                          <button id="hs-dropdown-left-but-right-on-lg" type="button"
+                            class="hs-dropdown-toggle py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-md border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                            Left aligned but right aligned when large screen
+                            <i
+                              class="ti ti-chevron-down text-base leading-tight font-medium hs-dropdown-open:rotate-180"></i>
+                          </button>
+
+                          <div
+                            class="hs-dropdown-menu w-72 transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden  top-0 lg:start-auto lg:end-0 min-w-64 bg-white shadow-md rounded-md p-2 mt-2 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700 z-10"
+                            aria-labelledby="hs-dropdown-left-but-right-on-lg">
+                            <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                              href="#">
+                              Newsletter
+                            </a>
+                            <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                              href="#">
+                              Purchases
+                            </a>
+                            <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                              href="#">
+                              Downloads
+                            </a>
+                            <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                              href="#">
+                              Team Account
+                            </a>
+                          </div>
+                        </div>
+                        <div class="hs-dropdown relative inline-flex [--strategy:absolute]">
+                          <button id="hs-dropdown-right-but-left-on-lg" type="button"
+                            class="hs-dropdown-toggle py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-md border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-slate-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                            Right aligned but left aligned when large screen
+                            <svg class="hs-dropdown-open:rotate-180 size-4" xmlns="http://www.w3.org/2000/svg"
+                              width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                              <path d="m6 9 6 6 6-6" />
+                            </svg>
+                          </button>
+
+                          <div
+                            class="hs-dropdown-menu w-72 transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden  top-0 end-0 start-auto lg:end-auto lg:start-0 min-w-64 bg-white shadow-md rounded-md p-2 mt-2 dark:bg-gray-800 dark:border dark:border-gray-700 dark:divide-gray-700 z-10"
+                            aria-labelledby="hs-dropdown-right-but-left-on-lg">
+                            <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                              href="#">
+                              Newsletter
+                            </a>
+                            <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                              href="#">
+                              Purchases
+                            </a>
+                            <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                              href="#">
+                              Downloads
+                            </a>
+                            <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:bg-gray-700"
+                              href="#">
+                              Team Account
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                        </div>
+                        <!-------------->
+
+                    </div>
+                </main>
+                <!-- Main Content End -->
+
+            </div>
+        </div>
+        <!--end of project-->
+    </main>
+    @@include("partials/scripts.html")
+    <script src="@@webRoot/node_modules/prismjs/prism.js"></script>
+</body>
+
+</html>

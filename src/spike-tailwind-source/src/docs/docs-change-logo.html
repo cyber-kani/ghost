@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-color-theme="Blue_Theme" class="light selected" data-layout="vertical"
+    data-boxed-layout="boxed" data-card="shadow">
+
+<head>
+    @@include("partials/head.html")
+    <title>Spike TailwindCSS HTML Admin Template</title>
+    <link rel="stylesheet" href="@@webRoot/node_modules/prismjs/themes/prism-okaidia.min.css">
+</head>
+
+<body class="DEFAULT_THEME bg-lightprimary dark:bg-darkbody">
+    <main>
+        <!--start the project-->
+        <div id="main-wrapper" class="flex p-5">
+
+            <aside id="application-sidebar-brand"
+                class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full xl:rtl:-translate-x-0 rtl:translate-x-full  left-0 rtl:left-auto xl:rtl:right-5 rtl:right-0 transform hidden xl:block xl:translate-x-0 xl:end-auto xl:bottom-0 fixed top-0 with-vertical docs-left-sidebar transition-all duration-300 h-screen z-[2] flex-shrink-0  w-[270px] border-border dark:border-darkborder bg-white dark:bg-dark xl:top-5 xl:start-5 shadow-md xl:rounded-md">
+                @@include("partials/sidebar.html",{ "page": "change-logo" })
+            </aside>
+            <div class="page-wrapper w-full" role="main">
+
+                <!-- Main Content -->
+                <main class="h-full ">
+                    <div class="container full-container py-5 xl:ps-6 ps-0 pt-0 pe-0">
+
+                        <!--  Header Start -->
+                        <header
+                            class="sticky top-0 inset-x-0 z-[1] flex flex-wrap md:justify-start md:flex-nowrap text-sm py-0 mb-6 bg-white dark:bg-dark rounded-md shadow-md">
+                            <div class="with-vertical w-full">@@include("partials/header.html")</div>
+                        </header>
+                        <!--  Header End -->
+
+                        <!-- ============================================================== -->
+                        <!-- Start Page Content -->
+                        <!-- ============================================================== -->
+                        <div class="max-w-full">
+                            <!-- ============================================================== -->
+                            <!-- Start Page Content -->
+                            <!-- ============================================================== -->
+                            <div class="d-sm-flex align-items-center justify-content-between">
+                                <h4 class="mb-8 text-lg  ">Change Logo</h4>
+                            </div>
+                            <div class="grid grid-cols-12 gap-6">
+                                <div class="col-span-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="mb-4 text-lg ">How to
+                                                Change Logo?</h4>
+                                            <pre class="language-html" tabindex="0">
+                                        <code class="language-html">
+<span class="token comment">// ----------------------------------------------------</span>
+<span class="token comment">// File: package/demos/src/main/partials/logo-sidebar.html</span>
+<span class="token comment">// ----------------------------------------------------    </span>
+
+&#x3C;div class=&#x22;brand-logo flex  items-center &#x22;&#x3E;
+   &#x3C;a href=&#x22;@@webRoot/main/index.html&#x22; class=&#x22;text-nowrap logo-img&#x22;&#x3E;
+   &#x3C;img
+      src=&#x22;@@webRoot/assets/images/logos/dark-logo.svg&#x22;
+      class=&#x22;dark:hidden block rtl:hidden&#x22;
+      alt=&#x22;Logo-Dark&#x22;
+      /&#x3E;
+   &#x3C;img
+      src=&#x22;@@webRoot/assets/images/logos/light-logo.svg&#x22;
+      class=&#x22;dark:block hidden rtl:hidden rtl:dark:hidden&#x22;
+      alt=&#x22;Logo-light&#x22;
+      /&#x3E;
+   &#x3C;img
+      src=&#x22;@@webRoot/assets/images/logos/dark-logo-rtl.svg&#x22;
+      class=&#x22;dark:hidden hidden rtl:block rtl:dark:hidden&#x22;
+      alt=&#x22;Logo-Dark&#x22;
+      /&#x3E;
+   &#x3C;img
+      src=&#x22;@@webRoot/assets/images/logos/light-logo-rtl.svg&#x22;
+      class=&#x22;dark:hidden hidden rtl:hidden rtl:dark:block&#x22;
+      alt=&#x22;Logo-light&#x22;
+      /&#x3E;
+   &#x3C;/a&#x3E;
+&#x3C;/div&#x3E;
+                      
+                                          </code>
+                                        </pre>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-------------->
+
+                    </div>
+                </main>
+                <!-- Main Content End -->
+
+            </div>
+        </div>
+        <!--end of project-->
+    </main>
+    @@include("partials/scripts.html")
+    <script src="@@webRoot/node_modules/prismjs/prism.js"></script>
+</body>
+
+</html>

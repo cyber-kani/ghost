@@ -1,0 +1,2279 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-color-theme="Blue_Theme" class="light selected" data-layout="vertical"
+    data-boxed-layout="boxed" data-card="shadow">
+
+<head>
+    @@include("partials/head.html")
+    <title>Spike TailwindCSS HTML Admin Template</title>
+    <link rel="stylesheet" href="@@webRoot/node_modules/prismjs/themes/prism-okaidia.min.css">
+</head>
+
+<body class="DEFAULT_THEME bg-lightprimary dark:bg-darkbody">
+    <main>
+        <!--start the project-->
+        <div id="main-wrapper" class="flex p-5">
+
+            <aside id="application-sidebar-brand"
+                class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full xl:rtl:-translate-x-0 rtl:translate-x-full  left-0 rtl:left-auto xl:rtl:right-5 rtl:right-0 transform hidden xl:block xl:translate-x-0 xl:end-auto xl:bottom-0 fixed top-0 with-vertical  left-sidebar transition-all duration-300 h-screen z-[2] flex-shrink-0  w-[270px] border-light-dark bg-white dark:bg-dark xl:top-5 xl:start-5 shadow-md xl:rounded-md">
+                @@include("partials/sidebar.html",{ "page": "base-cards","page_group": "cards" })
+            </aside>
+            <div class="page-wrapper w-full" role="main">
+
+                <!-- Main Content -->
+                <main class="h-full ">
+                    <div class="container full-container py-5 xl:ps-6 ps-0 pt-0 pe-0 remove-ps">
+
+                        <!--  Header Start -->
+                        <header
+                            class="sticky top-0 inset-x-0 z-[1] flex flex-wrap md:justify-start md:flex-nowrap text-fs_15 py-3 lg:py-0 mb-6 bg-white dark:bg-dark rounded-md shadow-md">
+                            <div class="with-vertical w-full">@@include("partials/header.html")</div>
+                            <div class="with-horizontal w-full">
+                                <div class="bg-white dark:bg-dark">
+                                    <div class="container">
+                                        @@include("partials/horizontal-header.html")
+                                    </div>
+                                </div>
+                            </div>
+                        </header>
+                        <!--  Header End -->
+
+                        <!-- Horizontal Sidebar Menu -->
+                        <aside
+                            class="with-horizontal lg:flex hidden left-sidebar bg-white dark:bg-dark border-t border-light-dark">
+                            @@include("partials/horizontal-sidebar.html", { "page": "base-cards","page_group":
+                            "cards"})
+                        </aside>
+                        <!-- Horizontal Sidebar Menu End -->
+
+                        <!-- Main Content -->
+                        <div class="max-w-full">
+                            <div class="container full-container ">
+                                <!----Breadcrumb Start---->
+                                @@include("partials/breadcrumb.html", {"title": "UI Card", "subtitle": 'Home'})
+                                <!----Breadcrumb End---->
+                            <!----Card With Image---->
+                            <div
+                                class="flex justify-between items-center border-b border-light-dark
+                            pb-3 mt-8">
+                                <h5
+                                    class="card-title">Card
+                                    with Image</h5>
+                            </div>
+                            <div class="grid grid-cols-12 gap-6 mt-6">
+                                <div class="lg:col-span-4 col-span-12">
+                                    <div class="card ">
+                                        <img
+                                            src="@@webRoot/assets/images/blog/blog-img1.jpg"
+                                            class="w-full max-w-full rounded-t-md"
+                                            alt="...">
+                                        <div class="card-body">
+                                            <h4
+                                                class="card-title">Card
+                                                title</h4>
+                                            <p class="mt-2 card-subtitle">Some quick example
+                                                text to build on the card title
+                                                and make up
+                                                the bulk of the card's content.
+                                            </p>
+                                            <button
+                                                class="btn mt-4 ">Go
+                                                somewhere</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="lg:col-span-4 col-span-12">
+                                    <div class="card ">
+                                        <img
+                                            src="@@webRoot/assets/images/blog/blog-img2.jpg"
+                                            class="w-full max-w-full rounded-t-md"
+                                            alt="...">
+                                        <div class="card-body">
+                                            <h4
+                                                class="card-title">Card
+                                                title</h4>
+                                            <p class="mt-2 card-subtitle">Some quick example
+                                                text to build on the card title
+                                                and make up
+                                                the bulk of the card's content.
+                                            </p>
+                                            <button
+                                                class="btn mt-4 ">Go
+                                                somewhere</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="lg:col-span-4 col-span-12">
+                                    <div class="card ">
+                                        <img
+                                            src="@@webRoot/assets/images/blog/blog-img3.jpg"
+                                            class="w-full max-w-full rounded-t-md"
+                                            alt="...">
+                                        <div class="card-body">
+                                            <h4
+                                                class="card-title">Card
+                                                title</h4>
+                                            <p class="mt-2 card-subtitle">Some quick example
+                                                text to build on the card title
+                                                and make up
+                                                the bulk of the card's content.
+                                            </p>
+                                            <button
+                                                class="btn mt-4 ">Go
+                                                somewhere</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="lg:col-span-4 col-span-12">
+                                    <div class="card ">
+                                        <img
+                                            src="@@webRoot/assets/images/blog/blog-img4.jpg"
+                                            class="w-full max-w-full rounded-t-md"
+                                            alt="...">
+                                        <div class="card-body">
+                                            <h4
+                                                class="card-title">Card
+                                                title</h4>
+                                            <p class="mt-2 card-subtitle">Some quick example
+                                                text to build on the card title
+                                                and make up
+                                                the bulk of the card's content.
+                                            </p>
+                                            <button
+                                                class="btn mt-4 ">Go
+                                                somewhere</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="lg:col-span-4 col-span-12">
+                                    <div class="card ">
+                                        <img
+                                            src="@@webRoot/assets/images/blog/blog-img5.jpg"
+                                            class="w-full max-w-full rounded-t-md"
+                                            alt="...">
+                                        <div class="card-body">
+                                            <h4
+                                                class="card-title">Card
+                                                title</h4>
+                                            <p class="mt-2 card-subtitle">Some quick example
+                                                text to build on the card title
+                                                and make up
+                                                the bulk of the card's content.
+                                            </p>
+                                            <button
+                                                class="btn mt-4 ">Go
+                                                somewhere</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="lg:col-span-4 col-span-12">
+                                    <div class="card ">
+                                        <img
+                                            src="@@webRoot/assets/images/blog/blog-img6.jpg"
+                                            class="w-full max-w-full rounded-t-md"
+                                            alt="...">
+                                        <div class="card-body">
+                                            <h4
+                                                class="card-title">Card
+                                                title</h4>
+                                            <p class="mt-2 card-subtitle">Some quick example
+                                                text to build on the card title
+                                                and make up
+                                                the bulk of the card's content.
+                                            </p>
+                                            <button
+                                                class="btn mt-4 ">Go
+                                                somewhere</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!----Card With Image End---->                                
+                            <!----Card Without Image---->
+                            <div
+                                class="flex justify-between items-center border-b border-light-dark
+                            pb-3 mt-8">
+                                <h5
+                                    class="card-title">Card
+                                    without Image</h5>
+                            </div>
+                            <div class="grid grid-cols-12 gap-6 mt-6">
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 col-span-12">
+                                    <div class="card ">
+                                        <div class="card-body">
+                                            <h5
+                                                class="font-medium text-lg leading-tight ">James
+                                                Smith</h5>
+                                            <h6><i
+                                                    class="ti ti-map-pin me-1 text-lg"></i>Albania</h6>
+                                            <p class="mt-3">Some quick example
+                                                text to build on the card title
+                                                and make up
+                                                the bulk of the card's
+                                                content.</p>
+                                            <div
+                                                class="flex gap-6 items-center mt-4">
+                                                <a href="#"
+                                                    class="hover:text-primary">Follow</a>
+                                                <a href="#"
+                                                    class="hover:text-primary">View
+                                                    Profile</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 col-span-12">
+                                    <div class="card ">
+                                        <div class="card-body">
+                                            <h5
+                                                class="font-medium text-lg leading-tight ">Michael
+                                                Smith</h5>
+                                            <h6><i
+                                                    class="ti ti-map-pin me-1 text-lg"></i>Belize</h6>
+                                            <p class="mt-3">Some quick example
+                                                text to build on the card title
+                                                and make up
+                                                the bulk of the card's
+                                                content.</p>
+                                            <div
+                                                class="flex gap-6 items-center mt-4">
+                                                <a href="#"
+                                                    class="hover:text-primary">Follow</a>
+                                                <a href="#"
+                                                    class="hover:text-primary">View
+                                                    Profile</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 col-span-12">
+                                    <div class="card ">
+                                        <div class="card-body">
+                                            <h5
+                                                class="font-medium text-lg leading-tight ">Maria
+                                                Hernandez</h5>
+                                            <h6><i
+                                                    class="ti ti-map-pin me-1 text-lg"></i>Colombia
+                                            </h6>
+                                            <p class="mt-3">Some quick example
+                                                text to build on the card title
+                                                and make up
+                                                the bulk of the card's
+                                                content.</p>
+                                            <div
+                                                class="flex gap-6 items-center mt-4">
+                                                <a href="#"
+                                                    class="hover:text-primary">Follow</a>
+                                                <a href="#"
+                                                    class="hover:text-primary">View
+                                                    Profile</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 col-span-12">
+                                    <div class="card ">
+                                        <div class="card-body">
+                                            <h5
+                                                class="font-medium text-lg leading-tight ">David
+                                                Margaret</h5>
+                                            <h6><i
+                                                    class="ti ti-map-pin me-1 text-lg"></i>Egypt</h6>
+                                            <p class="mt-3">Some quick example
+                                                text to build on the card title
+                                                and make up
+                                                the bulk of the card's
+                                                content.</p>
+                                            <div
+                                                class="flex gap-6 items-center mt-4">
+                                                <a href="#"
+                                                    class="hover:text-primary">Follow</a>
+                                                <a href="#"
+                                                    class="hover:text-primary">View
+                                                    Profile</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!----Card Without Image End---->
+
+                            <!----Kichen Sink Card---->
+                            <div
+                                class="flex justify-between items-center border-b border-light-dark
+                            pb-3 mt-8">
+                                <h5
+                                    class="card-title">Kichen
+                                    Sink</h5>
+                            </div>
+
+                            <div class="grid grid-cols-12 gap-6 mt-6">
+                                <div class="lg:col-span-4 col-span-12">
+                                    <div class="card ">
+                                        <img
+                                            src="@@webRoot/assets/images/blog/blog-img5.jpg"
+                                            class="w-full max-w-full rounded-t-md"
+                                            alt="...">
+                                        <div class="card-body">
+                                            <h4
+                                                class="card-title">Nancy
+                                                Henry</h4>
+                                            <p class="mt-2 card-subtitle">Some quick example
+                                                text to build on the card title
+                                                and make up
+                                                the bulk of the card's content.
+                                            </p>
+                                        </div>
+                                        <div class="">
+                                            <ul
+                                                class="divide-y divide-border dark:divide-darkborder">
+                                                <li class="px-6 py-2">Cras justo
+                                                    odio</li>
+                                                <li class="px-6 py-2">Dapibus ac
+                                                    facilisis in</li>
+                                                <li class="px-6 py-2">Vestibulum
+                                                    at eros</li>
+                                            </ul>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="flex justify-between ">
+                                                <div
+                                                    class="flex gap-3 items-center">
+                                                    <button
+                                                        class="btn py-1.5 px-4 bg-lightsecondary text-secondary hover:bg-secondaryemphasis hover:text-white dark:bg-darksecondary hover:dark:bg-secondary hover:dark:text-white h-fit flex items-center gap-1 "><i
+                                                            class="ti ti-heart text-xl"></i>Like</button>
+                                                    <button
+                                                        class="btn py-1.5 px-4 bg-lightsecondary text-secondary hover:bg-secondaryemphasis hover:text-white dark:bg-darksecondary hover:dark:bg-secondary hover:dark:text-white h-fit flex items-center gap-1 "><i
+                                                            class="ti ti-message-circle text-xl"></i>comment</button>
+                                                </div>
+                                                <button
+                                                    class="btn w-10 h-10 bg-lightsecondary text-secondary hover:bg-secondaryemphasis hover:text-white dark:bg-darksecondary hover:dark:bg-secondary hover:dark:text-white flex items-center justify-center gap-1 self-center"><i
+                                                        class="ti ti-share text-xl"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="lg:col-span-4 col-span-12">
+                                    <div class="card ">
+                                        <img
+                                            src="@@webRoot/assets/images/blog/blog-img6.jpg"
+                                            class="w-full max-w-full rounded-t-md"
+                                            alt="...">
+                                        <div class="card-body">
+                                            <h4
+                                                class="card-title">George
+                                                Jane</h4>
+                                            <p class="mt-2 card-subtitle">Some quick example
+                                                text to build on the card title
+                                                and make up
+                                                the bulk of the card's content.
+                                            </p>
+                                        </div>
+                                        <div class>
+                                            <ul
+                                                class="divide-y divide-border dark:divide-darkborder">
+                                                <li class="px-6 py-2">Cras justo
+                                                    odio</li>
+                                                <li class="px-6 py-2">Dapibus ac
+                                                    facilisis in</li>
+                                                <li class="px-6 py-2">Vestibulum
+                                                    at eros</li>
+                                            </ul>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="flex justify-between ">
+                                                <div
+                                                    class="flex gap-3 items-center">
+                                                    <button
+                                                        class="btn py-1.5 px-4 bg-lightsecondary text-secondary hover:bg-secondaryemphasis hover:text-white dark:bg-darksecondary hover:dark:bg-secondary hover:dark:text-white h-fit flex items-center gap-1 "><i
+                                                            class="ti ti-heart text-xl"></i>Like</button>
+                                                    <button
+                                                        class="btn py-1.5 px-4 bg-lightsecondary text-secondary hover:bg-secondaryemphasis hover:text-white dark:bg-darksecondary hover:dark:bg-secondary hover:dark:text-white h-fit flex items-center gap-1 "><i
+                                                            class="ti ti-message-circle text-xl"></i>comment</button>
+                                                </div>
+                                                <button
+                                                    class="btn w-10 h-10 bg-lightsecondary text-secondary hover:bg-secondaryemphasis hover:text-white dark:bg-darksecondary hover:dark:bg-secondary hover:dark:text-white justify-center flex items-center gap-1 "><i
+                                                        class="ti ti-share text-xl"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="lg:col-span-4 col-span-12">
+                                    <div class="card ">
+                                        <img
+                                            src="@@webRoot/assets/images/blog/blog-img8.jpg"
+                                            class="w-full max-w-full rounded-t-md"
+                                            alt="...">
+                                        <div class="card-body">
+                                            <h4
+                                                class="card-title">Samuel
+                                                Eliza</h4>
+                                            <p class="mt-2 card-subtitle">Some quick example
+                                                text to build on the card title
+                                                and make up
+                                                the bulk of the card's content.
+                                            </p>
+                                        </div>
+                                        <div class>
+                                            <ul
+                                                class="divide-y divide-border dark:divide-darkborder">
+                                                <li class="px-6 py-2">Cras justo
+                                                    odio</li>
+                                                <li class="px-6 py-2">Dapibus ac
+                                                    facilisis in</li>
+                                                <li class="px-6 py-2">Vestibulum
+                                                    at eros</li>
+                                            </ul>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="flex justify-between ">
+                                                <div
+                                                    class="flex gap-3 items-center">
+                                                    <button
+                                                        class="btn py-1.5 px-4 bg-lightsecondary text-secondary hover:bg-secondaryemphasis hover:text-white dark:bg-darksecondary hover:dark:bg-secondary hover:dark:text-white h-fit flex items-center gap-1 "><i
+                                                            class="ti ti-heart text-xl"></i>Like</button>
+                                                    <button
+                                                        class="btn py-1.5 px-4 bg-lightsecondary text-secondary hover:bg-secondaryemphasis hover:text-white dark:bg-darksecondary hover:dark:bg-secondary hover:dark:text-white h-fit flex items-center gap-1 "><i
+                                                            class="ti ti-message-circle text-xl"></i>comment</button>
+                                                </div>
+                                                <button
+                                                    class="w-10 h-10 rounded-full justify-center bg-lightsecondary text-secondary hover:bg-secondaryemphasis hover:text-white dark:bg-darksecondary hover:dark:bg-secondary hover:dark:text-white flex items-center gap-1 "><i
+                                                        class="ti ti-share text-xl"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!----Kichen Sink Card End---->
+
+                            <!----Header/Footer Card---->
+                            <div
+                                class="flex justify-between items-center border-b border-light-dark
+                        pb-3 mt-8">
+                                <h5
+                                    class="card-title">Header
+                                    and footer Card</h5>
+                            </div>
+                            <div class="grid grid-cols-12 gap-6 mt-6">
+                                <div class="md:col-span-6 col-span-12">
+                                    <div class="card overflow-hidden">
+                                        <div
+                                            class="card-body py-4 bg-primary/5 rounded-b-none ">
+                                            <h6
+                                                class="text-base-300">Featured</h6>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5
+                                                class="text-lg font-medium">Special
+                                                title treatment</h5>
+                                            <p class="mt-2 mb-6">With supporting
+                                                text below as a natural lead-in
+                                                to additional
+                                                content.</p>
+                                            <a href="javascript:void(0)"
+                                                class="btn mt-4 ">Go
+                                                somewhere</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="md:col-span-6 col-span-12">
+                                    <div class="card overflow-hidden">
+                                        <div
+                                            class="card-body py-4 bg-primary/5 rounded-b-none ">
+                                            <h6
+                                                class="text-base-300 text-center">Featured</h6>
+                                        </div>
+                                        <div class="card-body text-center">
+                                            <h5
+                                                class="text-lg font-medium">Special
+                                                title treatment</h5>
+                                            <p class="mt-2 mb-6">With supporting
+                                                text below as a natural lead-in
+                                                to additional
+                                                content.</p>
+                                            <a href="javascript:void(0)"
+                                                class="btn mt-4 ">Go
+                                                somewhere</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!----Header/Footer Card End---->
+
+                            <!----Card with background---->
+                            <div
+                                class="flex justify-between items-center border-b border-light-dark
+                        pb-3 mt-8">
+                                <h5
+                                    class="card-title">Card
+                                    with background</h5>
+                            </div>
+                            <div class="grid grid-cols-12 gap-6 mt-4">
+                                <div
+                                    class="xl:col-span-2 lg:col-span-4 md:col-span-4 sm:col-span-6 col-span-12">
+                                    <div class="card overflow-hidden">
+                                        <div class="p-6 bg-primary">
+                                            <i
+                                                class="ti ti-layout-grid text-3xl text-white "></i>
+                                            <h5
+                                                class="text-lg text-white mt-4 leading-none">450</h5>
+                                            <p class="text-white opacity-55">New
+                                                Products</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="xl:col-span-2 lg:col-span-4 md:col-span-4 sm:col-span-6 col-span-12">
+                                    <div class="card overflow-hidden">
+                                        <div class="p-6 bg-success">
+                                            <i
+                                                class="ti ti-archive text-3xl text-white "></i>
+                                            <h5
+                                                class="text-lg text-white mt-4 leading-none">50</h5>
+                                            <p class="text-white opacity-55">New
+                                                Products</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="xl:col-span-2 lg:col-span-4 md:col-span-4 sm:col-span-6 col-span-12">
+                                    <div class="card overflow-hidden">
+                                        <div class="p-6 bg-warning">
+                                            <i
+                                                class="ti ti-users text-3xl text-white "></i>
+                                            <h5
+                                                class="text-lg text-white mt-4 leading-none">80</h5>
+                                            <p class="text-white opacity-55">New
+                                                Customers</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="xl:col-span-2 lg:col-span-4 md:col-span-4 sm:col-span-6 col-span-12">
+                                    <div class="card overflow-hidden">
+                                        <div class="p-6 bg-error">
+                                            <i
+                                                class="ti ti-gift text-3xl text-white "></i>
+                                            <h5
+                                                class="text-lg text-white mt-4 leading-none">15</h5>
+                                            <p
+                                                class="text-white opacity-55">Birthday
+                                                Gifts</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="xl:col-span-2 lg:col-span-4 md:col-span-4 sm:col-span-6 col-span-12">
+                                    <div class="card overflow-hidden">
+                                        <div class="p-6 bg-info">
+                                            <i
+                                                class="ti ti-credit-card text-3xl text-white "></i>
+                                            <h5
+                                                class="text-lg text-white mt-4 leading-none">1800</h5>
+                                            <p
+                                                class="text-white opacity-55">Total
+                                                Budgets</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="xl:col-span-2 lg:col-span-4 md:col-span-4 sm:col-span-6 col-span-12">
+                                    <div class="card overflow-hidden">
+                                        <div class="p-6 bg-secondary">
+                                            <i
+                                                class="ti ti-brand-github text-3xl text-white "></i>
+                                            <h5
+                                                class="text-lg text-white mt-4 leading-none">90</h5>
+                                            <p
+                                                class="text-white opacity-55">Best
+                                                Designers</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!----Card with background end---->
+
+                            <!----Advertise card--->
+                            <div
+                                class="flex justify-between items-center border-b border-light-dark
+                     pb-3 mt-8">
+                                <h5
+                                    class="card-title">Advertise
+                                    card</h5>
+                            </div>
+
+                            <div class="grid grid-cols-12 gap-6 mt-6">
+                                <div
+                                    class="lg:col-span-4 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card ">
+                                        <div class="card-body p-6">
+                                            <div
+                                                class="flex gap-6 items-center">
+                                                <img
+                                                    src="@@webRoot/assets/images/products/s1.jpg"
+                                                    class="rounded-md h-16 w-16">
+                                                <div>
+                                                    <a href="javascript:void(0)"
+                                                        class="text-dark dark:text-darklink pb-2 text-base block">50%
+                                                        sell on wrist watch</a>
+                                                    <p class="text-base-300">By
+                                                        Daniel Jubile</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-4 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card ">
+                                        <div class="card-body p-6">
+                                            <div
+                                                class="flex gap-6 items-center">
+                                                <img
+                                                    src="@@webRoot/assets/images/products/s2.jpg"
+                                                    class="rounded-md h-16 w-16">
+                                                <div>
+                                                    <a href="javascript:void(0)"
+                                                        class="text-dark dark:text-darklink pb-2 text-base block">Small
+                                                        Cabin Luggage (57
+                                                        cm)</a>
+                                                    <p class="text-base-300">By
+                                                        John Smith</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-4 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card ">
+                                        <div class="card-body p-6">
+                                            <div
+                                                class="flex gap-6 items-center">
+                                                <img
+                                                    src="@@webRoot/assets/images/products/s3.jpg"
+                                                    class="rounded-md h-16 w-16">
+                                                <div>
+                                                    <a href="javascript:void(0)"
+                                                        class="text-dark dark:text-darklink pb-2 text-base block">Women
+                                                        Black Heels
+                                                        Sandal</a>
+                                                    <p class="text-base-300">By
+                                                        Nancy Deo</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-4 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card ">
+                                        <div class="card-body p-6">
+                                            <div
+                                                class="flex gap-6 items-center">
+                                                <img
+                                                    src="@@webRoot/assets/images/products/s4.jpg"
+                                                    class="rounded-md h-16 w-16">
+                                                <div>
+                                                    <a href="javascript:void(0)"
+                                                        class="text-dark dark:text-darklink pb-2 text-base block">Boat
+                                                        BassHeads 900
+                                                        Wireless Headset</a>
+                                                    <p
+                                                        class="text-base-300">Yellow
+                                                        , On the Ear</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-4 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card ">
+                                        <div class="card-body p-6">
+                                            <div
+                                                class="flex gap-6 items-center">
+                                                <img
+                                                    src="@@webRoot/assets/images/products/s5.jpg"
+                                                    class="rounded-md h-16 w-16">
+                                                <div>
+                                                    <a href="javascript:void(0)"
+                                                        class="text-dark dark:text-darklink pb-2 text-base block">Beauty
+                                                        Blender
+                                                        original makeup
+                                                        blender</a>
+                                                    <p class="text-base-300">By
+                                                        Nancy Deo</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-4 md:col-span-6 sm:col-span-6 col-span-12">
+                                    <div class="card ">
+                                        <div class="card-body p-6">
+                                            <div
+                                                class="flex gap-6 items-center">
+                                                <img
+                                                    src="@@webRoot/assets/images/products/s6.jpg"
+                                                    class="rounded-md h-16 w-16">
+                                                <div>
+                                                    <a href="javascript:void(0)"
+                                                        class="text-dark dark:text-darklink pb-2 text-base block">Canvas
+                                                        Shoes For
+                                                        Men</a>
+                                                    <p
+                                                        class="text-base-300">Absolute
+                                                        Comfort</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!----Advertise card End--->
+
+                            <!----Stats card--->
+                            <div
+                                class="flex justify-between items-center border-b border-light-dark
+                  pb-3 mt-8">
+                                <h5
+                                    class="card-title">Stats
+                                    Card</h5>
+                            </div>
+                            <div class="grid grid-cols-12 gap-6 mt-6">
+                                <div
+                                    class="lg:col-span-4 md:col-span-6 col-span-12">
+                                    <a href="javascript:void(0)" class>
+                                        <div
+                                            class="card overflow-hidden transform translate-y-0 hover:-translate-y-2 duration-500 ease-in-out">
+                                            <div class="card-body bg-success">
+                                                <div
+                                                    class="flex justify-between mb-5">
+                                                    <i
+                                                        class="ti ti-basket text-4xl text-white"></i>
+                                                    <i
+                                                        class="ti ti-arrow-right text-white text-3xl"></i>
+                                                </div>
+                                                <h5
+                                                    class="text-lg font-medium text-white">Selling
+                                                    Products</h5>
+                                                <p
+                                                    class="text-white opacity-50">Shoes,
+                                                    Jeans, Party wear,
+                                                    Watchs</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div
+                                    class="lg:col-span-4 md:col-span-6 col-span-12">
+                                    <a href="javascript:void(0)">
+                                        <div
+                                            class="card overflow-hidden transform translate-y-0 hover:-translate-y-2 duration-500 ease-in-out">
+                                            <div class="card-body bg-warning">
+                                                <div
+                                                    class="flex justify-between mb-5">
+                                                    <i
+                                                        class="ti ti-glass text-4xl text-white"></i>
+                                                    <i
+                                                        class="ti ti-arrow-right text-white text-3xl"></i>
+                                                </div>
+                                                <h5
+                                                    class="text-lg font-medium text-white">Spicy
+                                                    Food</h5>
+                                                <p
+                                                    class="text-white opacity-50">Black
+                                                    Bean and Corn Jalapeño
+                                                    Poppers</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div
+                                    class="lg:col-span-4 md:col-span-6 col-span-12">
+                                    <a href="javascript:void(0)">
+                                        <div
+                                            class="card overflow-hidden transform translate-y-0 hover:-translate-y-2 duration-500 ease-in-out">
+                                            <div class="card-body bg-error">
+                                                <div
+                                                    class="flex justify-between mb-5">
+                                                    <i
+                                                        class="ti ti-calendar text-4xl text-white"></i>
+                                                    <i
+                                                        class="ti ti-arrow-right text-white text-3xl"></i>
+                                                </div>
+                                                <h5
+                                                    class="text-lg font-medium text-white">Dispatch
+                                                    Products</h5>
+                                                <p
+                                                    class="text-white opacity-50">Shoes,
+                                                    Jeans, Party wear,
+                                                    Watchs</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div
+                                    class="lg:col-span-4 md:col-span-6 col-span-12">
+                                    <a href="javascript:void(0)">
+                                        <div
+                                            class="card overflow-hidden transform translate-y-0 hover:-translate-y-2 duration-500 ease-in-out">
+                                            <div class="card-body bg-primary">
+                                                <div
+                                                    class="flex justify-between mb-5">
+                                                    <i
+                                                        class="ti ti-brand-apple text-4xl text-white"></i>
+                                                    <i
+                                                        class="ti ti-arrow-right text-white text-3xl"></i>
+                                                </div>
+                                                <h5
+                                                    class="text-lg font-medium text-white">Apple
+                                                    Accessories</h5>
+                                                <p
+                                                    class="text-white opacity-50">
+                                                    Magsafe charger, Solo
+                                                    Loop</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div
+                                    class="lg:col-span-4 md:col-span-6 col-span-12">
+                                    <a href="javascript:void(0)">
+                                        <div
+                                            class="card overflow-hidden transform translate-y-0 hover:-translate-y-2 duration-500 ease-in-out">
+                                            <div class="card-body bg-info">
+                                                <div
+                                                    class="flex justify-between mb-5">
+                                                    <i
+                                                        class="ti ti-folders text-4xl text-white"></i>
+                                                    <i
+                                                        class="ti ti-arrow-right text-white text-3xl"></i>
+                                                </div>
+                                                <h5
+                                                    class="text-lg font-medium text-white">Manage
+                                                    Data</h5>
+                                                <p
+                                                    class="text-white opacity-50">
+                                                    on mobile, on site</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div
+                                    class="lg:col-span-4 md:col-span-6 col-span-12">
+                                    <a href="javascript:void(0)">
+                                        <div
+                                            class="card overflow-hidden transform translate-y-0 hover:-translate-y-2 duration-500 ease-in-out">
+                                            <div class="card-body bg-secondary">
+                                                <div
+                                                    class="flex justify-between mb-5">
+                                                    <i
+                                                        class="ti ti-alert-octagon text-4xl text-white"></i>
+                                                    <i
+                                                        class="ti ti-arrow-right text-white text-3xl"></i>
+                                                </div>
+                                                <h5
+                                                    class="text-lg font-medium text-white">New
+                                                    Notifications</h5>
+                                                <p
+                                                    class="text-white opacity-50">
+                                                    Facebook, Instagram</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <!----Stats cards End--->
+
+                            <!----Card heade--->
+                            <div
+                                class="flex justify-between items-center border-b border-light-dark
+               pb-3 mt-8">
+                                <h5
+                                    class="card-title">Card
+                                    Header</h5>
+                            </div>
+                            <div class="grid grid-cols-12 gap-6 mt-6">
+                                <div
+                                    class="xl:col-span-4 lg:col-span-6 md:col-span-6 col-span-12">
+                                    <div class="card overflow-hidden">
+                                        <div
+                                            class="card-body py-3 bg-primary rounded-b-none ">
+                                            <h5
+                                                class="text-white font-medium text-lg">Card
+                                                Title</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5
+                                                class="text-lg font-medium mb-2">Special
+                                                title treatment</h5>
+                                            <p>With supporting text below as a
+                                                natural lead-in to additional
+                                                content.</p>
+                                            <div class="mt-4"><a
+                                                    href="javascript:void(0)"
+                                                    class="btn mt-4 ">Go
+                                                    somewhere</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="xl:col-span-4 lg:col-span-6 md:col-span-6 col-span-12">
+                                    <div class="card overflow-hidden">
+                                        <div
+                                            class="card-body py-3 bg-success rounded-b-none ">
+                                            <h5
+                                                class="text-white font-medium text-lg">Card
+                                                Title</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5
+                                                class="text-lg font-medium mb-2">Special
+                                                title treatment</h5>
+                                            <p>With supporting text below as a
+                                                natural lead-in to additional
+                                                content.</p>
+                                            <div class="mt-4"><a
+                                                    href="javascript:void(0)"
+                                                    class="btn bg-success hover:bg-successemphasis text-white mt-4 px-4">Go
+                                                    somewhere</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="xl:col-span-4 lg:col-span-6 md:col-span-6 col-span-12">
+                                    <div class="card overflow-hidden">
+                                        <div
+                                            class="card-body py-3 bg-warning rounded-b-none ">
+                                            <h5
+                                                class="text-white font-medium text-lg">Card
+                                                Title</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5
+                                                class="text-lg font-medium mb-2">Special
+                                                title treatment</h5>
+                                            <p>With supporting text below as a
+                                                natural lead-in to additional
+                                                content.</p>
+                                            <div class="mt-4"><a
+                                                    href="javascript:void(0)"
+                                                    class="btn bg-warning hover:bg-warningemphasis text-white mt-4 px-4">Go
+                                                    somewhere</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="xl:col-span-4 lg:col-span-6 md:col-span-6 col-span-12">
+                                    <div class="card overflow-hidden">
+                                        <div
+                                            class="card-body py-3 bg-error rounded-b-none ">
+                                            <h5
+                                                class="text-white font-medium text-lg">Card
+                                                Title</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5
+                                                class="text-lg font-medium mb-2">Special
+                                                title treatment</h5>
+                                            <p>With supporting text below as a
+                                                natural lead-in to additional
+                                                content.</p>
+                                            <div class="mt-4"><a
+                                                    href="javascript:void(0)"
+                                                    class="btn bg-error hover:bg-erroremphasis text-white mt-4 px-4">Go
+                                                    somewhere</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="xl:col-span-4 lg:col-span-6 md:col-span-6 col-span-12">
+                                    <div class="card overflow-hidden">
+                                        <div
+                                            class="card-body py-3 bg-info rounded-b-none ">
+                                            <h5
+                                                class="text-white font-medium text-lg">Card
+                                                Title</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5
+                                                class="text-lg font-medium mb-2">Special
+                                                title treatment</h5>
+                                            <p>With supporting text below as a
+                                                natural lead-in to additional
+                                                content.</p>
+                                            <div class="mt-4"><a
+                                                    href="javascript:void(0)"
+                                                    class="btn bg-info hover:bg-blue-500 text-white mt-4 px-4">Go
+                                                    somewhere</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="xl:col-span-4 lg:col-span-6 md:col-span-6 col-span-12">
+                                    <div class="card overflow-hidden">
+                                        <div
+                                            class="card-body py-3 bg-secondary rounded-b-none ">
+                                            <h5
+                                                class="text-white font-medium text-lg">Card
+                                                Title</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5
+                                                class="text-lg font-medium mb-2">Special
+                                                title treatment</h5>
+                                            <p>With supporting text below as a
+                                                natural lead-in to additional
+                                                content.</p>
+                                            <div class="mt-4"><a
+                                                    href="javascript:void(0)"
+                                                    class="btn bg-secondary hover:bg-secondaryemphasis text-white mt-4 px-4">Go
+                                                    somewhere</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!----Card Header end--->
+
+                            <!----Progress Card--->
+                            <div
+                                class="flex justify-between items-center border-b border-light-dark
+               pb-3 mt-8">
+                                <h5
+                                    class="card-title">Progress
+                                    Card
+                                </h5>
+                            </div>
+                            <div class="grid grid-cols-12 gap-6 mt-6">
+                                <div
+                                    class="xl:col-span-4 lg:col-span-6 md:col-span-6 col-span-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="flex items-center mb-2">
+                                                <h4
+                                                    class="card-title">Outbound
+                                                    calls</h4>
+                                                <div class="ms-auto">
+                                                    <span class="text-error">(
+                                                        <i
+                                                            class="ti ti-caret-down"></i>
+                                                        18% High
+                                                        )</span>
+                                                </div>
+                                            </div>
+                                            <ul class="flex">
+                                                <li
+                                                    class="border-e  border-light-dark
+ pe-4">
+                                                    <p class="mb-1">Yearly</p>
+                                                    <b
+                                                        class="font-semibold">80.40%</b>
+                                                </li>
+                                                <li
+                                                    class="border-e  border-light-dark
+ px-4">
+                                                    <p class="mb-1">Montly</p>
+                                                    <b
+                                                        class="font-semibold">15.40%</b>
+                                                </li>
+                                                <li class="ps-4">
+                                                    <p class="mb-1">Day</p>
+                                                    <b
+                                                        class="font-semibold">5.50%</b>
+                                                </li>
+                                            </ul>
+                                            <a href="javascript:void(0)"
+                                                class="btn btn-light-primary block w-fit mt-4">learn
+                                                more</a>
+                                        </div>
+                                        <div
+                                            class="flex w-full h-1.5 bg-lightprimary dark:bg-darkprimary rounded-md overflow-hidden"
+                                            role="progressbar"
+                                            aria-valuenow="60" aria-valuemin="0"
+                                            aria-valuemax="100">
+                                            <div
+                                                class="flex flex-col justify-center overflow-hidden bg-primary text-xs text-white text-center whitespace-nowrap transition duration-500 "
+                                                style="width: 60%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="xl:col-span-4 lg:col-span-6 md:col-span-6 col-span-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div
+                                                class="flex items-center  mb-2">
+                                                <h4
+                                                    class="card-title">Contracts
+                                                    closed</h4>
+                                                <div class="ms-auto">
+                                                    <span class="text-success">(
+                                                        <i
+                                                            class="ti ti-caret-down"></i>
+                                                        10% Down
+                                                        )</span>
+                                                </div>
+                                            </div>
+                                            <ul class="flex">
+                                                <li
+                                                    class="border-e  border-light-dark
+ pe-4">
+                                                    <p class="mb-1">Yearly</p>
+                                                    <b
+                                                        class="font-semibold">80.40%</b>
+                                                </li>
+                                                <li
+                                                    class="border-e  border-light-dark
+ px-4">
+                                                    <p class="mb-1">Montly</p>
+                                                    <b
+                                                        class="font-semibold">15.40%</b>
+                                                </li>
+                                                <li class="ps-4">
+                                                    <p class="mb-1">Day</p>
+                                                    <b
+                                                        class="font-semibold">5.50%</b>
+                                                </li>
+                                            </ul>
+                                            <a href="javascript:void(0)"
+                                                class="btn btn-light-success block w-fit mt-4">learn
+                                                more</a>
+                                        </div>
+                                        <div
+                                            class="flex w-full h-1.5 bg-lightsuccess dark:bg-darksuccess rounded-md overflow-hidden"
+                                            role="progressbar"
+                                            aria-valuenow="60" aria-valuemin="0"
+                                            aria-valuemax="100">
+                                            <div
+                                                class="flex flex-col justify-center overflow-hidden bg-success text-xs text-white text-center whitespace-nowrap transition duration-500 "
+                                                style="width: 60%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="xl:col-span-4 lg:col-span-6 md:col-span-6 col-span-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div
+                                                class="flex items-center  mb-2">
+                                                <h4
+                                                    class="card-title">Call/Contract
+                                                    Ratio</h4>
+                                                <div class="ms-auto">
+                                                    <span class="text-success">(
+                                                        <i
+                                                            class="ti ti-caret-down"></i>
+                                                        10% Down
+                                                        )</span>
+                                                </div>
+                                            </div>
+                                            <ul class="flex">
+                                                <li
+                                                    class="border-e  border-light-dark
+ pe-4">
+                                                    <p class="mb-1">Yearly</p>
+                                                    <b
+                                                        class="font-semibold">80.40%</b>
+                                                </li>
+                                                <li
+                                                    class="border-e  border-light-dark
+ px-4">
+                                                    <p class="mb-1">Montly</p>
+                                                    <b
+                                                        class="font-semibold">15.40%</b>
+                                                </li>
+                                                <li class="ps-4">
+                                                    <p class="mb-1">Day</p>
+                                                    <b
+                                                        class="font-semibold">5.50%</b>
+                                                </li>
+                                            </ul>
+                                            <a href="javascript:void(0)"
+                                                class="btn btn-light-warning block w-fit mt-4">learn
+                                                more</a>
+                                        </div>
+                                        <div
+                                            class="flex w-full h-1.5 bg-lightwarning dark:bg-darkwarning rounded-md overflow-hidden"
+                                            role="progressbar"
+                                            aria-valuenow="60" aria-valuemin="0"
+                                            aria-valuemax="100">
+                                            <div
+                                                class="flex flex-col justify-center overflow-hidden bg-warning text-xs text-white text-center whitespace-nowrap transition duration-500 "
+                                                style="width: 60%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="xl:col-span-4 lg:col-span-6 md:col-span-6 col-span-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div
+                                                class="flex items-center  mb-2">
+                                                <h4
+                                                    class="card-title">Incoming
+                                                    Deals</h4>
+                                                <div class="ms-auto">
+                                                    <span class="text-error">(
+                                                        <i
+                                                            class="ti ti-caret-down"></i>
+                                                        06% Down
+                                                        )</span>
+                                                </div>
+                                            </div>
+                                            <ul class="flex">
+                                                <li
+                                                    class="border-e  border-light-dark
+ pe-4">
+                                                    <p class="mb-1">Yearly</p>
+                                                    <b
+                                                        class="font-semibold">80.40%</b>
+                                                </li>
+                                                <li
+                                                    class="border-e  border-light-dark
+ px-4">
+                                                    <p class="mb-1">Montly</p>
+                                                    <b
+                                                        class="font-semibold">15.40%</b>
+                                                </li>
+                                                <li class="ps-4">
+                                                    <p class="mb-1">Day</p>
+                                                    <b
+                                                        class="font-semibold">5.50%</b>
+                                                </li>
+                                            </ul>
+                                            <a href="javascript:void(0)"
+                                                class="btn btn-light-error block w-fit mt-4">learn
+                                                more</a>
+                                        </div>
+                                        <div
+                                            class="flex w-full h-1.5 bg-lighterror dark:bg-darkerror rounded-md overflow-hidden"
+                                            role="progressbar"
+                                            aria-valuenow="60" aria-valuemin="0"
+                                            aria-valuemax="100">
+                                            <div
+                                                class="flex flex-col justify-center overflow-hidden bg-error text-xs text-white text-center whitespace-nowrap transition duration-500 "
+                                                style="width: 60%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="xl:col-span-4 lg:col-span-6 md:col-span-6 col-span-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="flex items-center mb-2">
+                                                <h4
+                                                    class="text-lg font-medium ">Average
+                                                    Contract</h4>
+                                                <div class="ms-auto">
+                                                    <span class="text-error">(
+                                                        <i
+                                                            class="ti ti-caret-down"></i>
+                                                        04% Down
+                                                        )</span>
+                                                </div>
+                                            </div>
+                                            <ul class="flex">
+                                                <li
+                                                    class="border-e  border-light-dark
+ pe-4">
+                                                    <p class="mb-1">Yearly</p>
+                                                    <b
+                                                        class="font-semibold">80.40%</b>
+                                                </li>
+                                                <li
+                                                    class="border-e  border-light-dark
+ px-4">
+                                                    <p class="mb-1">Montly</p>
+                                                    <b
+                                                        class="font-semibold">15.40%</b>
+                                                </li>
+                                                <li class="ps-4">
+                                                    <p class="mb-1">Day</p>
+                                                    <b
+                                                        class="font-semibold">5.50%</b>
+                                                </li>
+                                            </ul>
+                                            <a href="javascript:void(0)"
+                                                class="btn btn-light-info block w-fit mt-4">learn
+                                                more</a>
+                                        </div>
+                                        <div
+                                            class="flex w-full h-1.5 bg-lightinfo dark:bg-darkinfo rounded-md overflow-hidden"
+                                            role="progressbar"
+                                            aria-valuenow="60" aria-valuemin="0"
+                                            aria-valuemax="100">
+                                            <div
+                                                class="flex flex-col justify-center overflow-hidden bg-info text-xs text-white text-center whitespace-nowrap transition duration-500 "
+                                                style="width: 60%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="xl:col-span-4 lg:col-span-6 md:col-span-6 col-span-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="flex items-center mb-2">
+                                                <h4
+                                                    class="text-lg font-medium ">Contract
+                                                    Rate</h4>
+                                                <div class="ms-auto">
+                                                    <span class="text-error">(
+                                                        <i
+                                                            class="ti ti-caret-down"></i>
+                                                        15% Down
+                                                        )</span>
+                                                </div>
+                                            </div>
+                                            <ul class="flex">
+                                                <li
+                                                    class="border-e  border-light-dark
+ pe-4">
+                                                    <p class="mb-1">Yearly</p>
+                                                    <b
+                                                        class="font-semibold">80.40%</b>
+                                                </li>
+                                                <li
+                                                    class="border-e  border-light-dark
+ px-4">
+                                                    <p class="mb-1">Montly</p>
+                                                    <b
+                                                        class="font-semibold">15.40%</b>
+                                                </li>
+                                                <li class="ps-4">
+                                                    <p class="mb-1">Day</p>
+                                                    <b
+                                                        class="font-semibold">5.50%</b>
+                                                </li>
+                                            </ul>
+                                            <a href="javascript:void(0)"
+                                                class="btn btn-light-secondary block w-fit mt-4">learn
+                                                more</a>
+                                        </div>
+                                        <div
+                                            class="flex w-full h-1.5 bg-lightsecondary dark:bg-darksecondary rounded-md overflow-hidden"
+                                            role="progressbar"
+                                            aria-valuenow="60" aria-valuemin="0"
+                                            aria-valuemax="100">
+                                            <div
+                                                class="flex flex-col justify-center overflow-hidden bg-secondary text-xs text-white text-center whitespace-nowrap transition duration-500 "
+                                                style="width: 60%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 col-span-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="flex justify-between">
+                                                <div
+                                                    class="px-6 py-4 bg-lightwarning dark:bg-darkwarning rounded-md">
+                                                    <i
+                                                        class="ti ti-brand-google-drive text-4xl text-warning"></i>
+                                                </div>
+
+                                                <div
+                                                    class="hs-dropdown relative inline-flex">
+                                                    <button
+                                                        id="hs-dropdown-custom-icon-trigger"
+                                                        class="-mr-2 hs-dropdown-toggle h-10 w-10 text-dark dark:text-darklink hover:text-primary light-dark-hoverbg  justify-center items-center rounded-full">
+                                                        <i
+                                                            class="ti ti-dots text-2xl"></i>
+                                                    </button>
+
+                                                    <div
+                                                        class="hs-dropdown-menu z-[1] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-40 hidden"
+                                                        aria-labelledby="hs-dropdown-custom-icon-trigger"
+                                                        style>
+                                                        <ul
+                                                            class="flex flex-col">
+                                                            <li
+                                                                class="py-2.5 px-4 hover:bg-lightprimary hover:dark:bg-darkprimary ">
+                                                                <a
+                                                                    class="font-medium flex gap-2 items-center "
+                                                                    href="#">
+                                                                    New
+                                                                </a>
+                                                            </li>
+                                                            <li
+                                                                class="py-2.5 px-4 hover:bg-lightprimary hover:dark:bg-darkprimary ">
+                                                                <a
+                                                                    class="font-medium flex gap-2 items-center "
+                                                                    href="#">
+                                                                    Folder
+                                                                </a>
+                                                            </li>
+                                                            <li
+                                                                class="py-2.5 px-4 hover:bg-lightprimary hover:dark:bg-darkprimary ">
+                                                                <a
+                                                                    class="font-medium flex gap-2 items-center "
+                                                                    href="#">
+                                                                    Google Docs
+                                                                </a>
+                                                            </li>
+                                                            <li
+                                                                class="py-2.5 px-4 hover:bg-lightprimary hover:dark:bg-darkprimary ">
+                                                                <a
+                                                                    class="font-medium flex gap-2 items-center "
+                                                                    href="#">
+                                                                    Google
+                                                                    Sheets
+                                                                </a>
+                                                            </li>
+                                                            <li
+                                                                class="py-2.5 px-4 hover:bg-lightprimary hover:dark:bg-darkprimary ">
+                                                                <a
+                                                                    class="font-medium flex gap-2 items-center "
+                                                                    href="#">
+                                                                    Google
+                                                                    Slides
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mt-8">
+                                                <h5
+                                                    class="text-lg font-medium mb-5 text-dark dark:text-white">Google
+                                                    Drive</h5>
+                                                <div
+                                                    class="flex w-full h-1.5 bg-lightwarning dark:bg-darkwarning rounded-md overflow-hidden"
+                                                    role="progressbar"
+                                                    aria-valuenow="80"
+                                                    aria-valuemin="0"
+                                                    aria-valuemax="100">
+                                                    <div
+                                                        class="flex flex-col justify-center overflow-hidden bg-warning text-xs text-white text-center whitespace-nowrap transition duration-500 "
+                                                        style="width: 80%"></div>
+                                                </div>
+                                                <div
+                                                    class="flex justify-between items-center mt-2">
+                                                    <span>13.1Gb</span>
+                                                    <span>15Gb</span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 col-span-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="flex justify-between">
+                                                <div
+                                                    class="px-6 py-4 bg-lightinfo dark:bg-darkinfo rounded-md">
+                                                    <i
+                                                        class="ti ti-brand-facebook text-4xl text-info"></i>
+                                                </div>
+                                                <div
+                                                    class="hs-dropdown relative inline-flex">
+                                                    <button
+                                                        id="hs-dropdown-custom-icon-trigger"
+                                                        class="-mr-2 hs-dropdown-toggle h-10 w-10 text-dark dark:text-darklink hover:text-primary light-dark-hoverbg  justify-center items-center rounded-full">
+                                                        <i
+                                                            class="ti ti-dots text-2xl"></i>
+                                                    </button>
+
+                                                    <div
+                                                        class="hs-dropdown-menu z-[1] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-40 hidden"
+                                                        aria-labelledby="hs-dropdown-custom-icon-trigger"
+                                                        style>
+                                                        <ul
+                                                            class="flex flex-col">
+                                                            <li
+                                                                class="py-2.5 px-4 hover:bg-lightprimary hover:dark:bg-darkprimary ">
+                                                                <a
+                                                                    class="font-medium flex gap-2 items-center "
+                                                                    href="#">
+                                                                    Upload Files
+                                                                </a>
+                                                            </li>
+                                                            <li
+                                                                class="py-2.5 px-4 hover:bg-lightprimary hover:dark:bg-darkprimary ">
+                                                                <a
+                                                                    class="font-medium flex gap-2 items-center "
+                                                                    href="#">
+                                                                    Upload
+                                                                    Folder
+                                                                </a>
+                                                            </li>
+                                                            <li
+                                                                class="py-2.5 px-4 hover:bg-lightprimary hover:dark:bg-darkprimary ">
+                                                                <a
+                                                                    class="font-medium flex gap-2 items-center "
+                                                                    href="#">
+                                                                    New Folder
+                                                                </a>
+                                                            </li>
+                                                            <li
+                                                                class="py-2.5 px-4 hover:bg-lightprimary hover:dark:bg-darkprimary ">
+                                                                <a
+                                                                    class="font-medium flex gap-2 items-center "
+                                                                    href="#">
+                                                                    New Shared
+                                                                    Folder
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mt-8">
+                                                <h5
+                                                    class="text-lg font-medium mb-3 text-dark dark:text-white">Facebook</h5>
+                                                <div
+                                                    class="flex w-full h-1.5 bg-lightinfo dark:bg-darkinfo rounded-md overflow-hidden"
+                                                    role="progressbar"
+                                                    aria-valuenow="80"
+                                                    aria-valuemin="0"
+                                                    aria-valuemax="100">
+                                                    <div
+                                                        class="flex flex-col justify-center overflow-hidden bg-info text-xs text-white text-center whitespace-nowrap transition duration-500 "
+                                                        style="width: 80%"></div>
+                                                </div>
+                                                <div
+                                                    class="flex justify-between items-center mt-2">
+                                                    <span>7.5Gb</span>
+                                                    <span>15Gb</span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 col-span-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="flex justify-between">
+                                                <div
+                                                    class="px-6 py-4 bg-lightprimary dark:bg-darkprimary rounded-md">
+                                                    <i
+                                                        class="ti ti-brand-soundcloud text-4xl text-primary"></i>
+                                                </div>
+                                                <div
+                                                    class="hs-dropdown relative inline-flex">
+                                                    <button
+                                                        id="hs-dropdown-custom-icon-trigger"
+                                                        class="-mr-2 hs-dropdown-toggle h-10 w-10 text-dark dark:text-darklink hover:text-primary light-dark-hoverbg  justify-center items-center rounded-full">
+                                                        <i
+                                                            class="ti ti-dots text-2xl"></i>
+                                                    </button>
+
+                                                    <div
+                                                        class="hs-dropdown-menu z-[1] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-40 hidden"
+                                                        aria-labelledby="hs-dropdown-custom-icon-trigger"
+                                                        style>
+                                                        <ul
+                                                            class="flex flex-col">
+                                                            <li
+                                                                class="py-2.5 px-4 hover:bg-lightprimary hover:dark:bg-darkprimary ">
+                                                                <a
+                                                                    class="font-medium flex gap-2 items-center "
+                                                                    href="#">
+                                                                    Upload Files
+                                                                </a>
+                                                            </li>
+                                                            <li
+                                                                class="py-2.5 px-4 hover:bg-lightprimary hover:dark:bg-darkprimary ">
+                                                                <a
+                                                                    class="font-medium flex gap-2 items-center "
+                                                                    href="#">
+                                                                    Upload
+                                                                    Folder
+                                                                </a>
+                                                            </li>
+                                                            <li
+                                                                class="py-2.5 px-4 hover:bg-lightprimary hover:dark:bg-darkprimary ">
+                                                                <a
+                                                                    class="font-medium flex gap-2 items-center "
+                                                                    href="#">
+                                                                    New Folder
+                                                                </a>
+                                                            </li>
+                                                            <li
+                                                                class="py-2.5 px-4 hover:bg-lightprimary hover:dark:bg-darkprimary ">
+                                                                <a
+                                                                    class="font-medium flex gap-2 items-center "
+                                                                    href="#">
+                                                                    New Shared
+                                                                    Folder
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mt-8">
+                                                <h5
+                                                    class="text-lg font-medium mb-3 text-dark dark:text-white">One
+                                                    Drive</h5>
+                                                <div
+                                                    class="flex w-full h-1.5 bg-lightprimary dark:bg-darkprimary rounded-md overflow-hidden"
+                                                    role="progressbar"
+                                                    aria-valuenow="80"
+                                                    aria-valuemin="0"
+                                                    aria-valuemax="100">
+                                                    <div
+                                                        class="flex flex-col justify-center overflow-hidden bg-primary text-xs text-white text-center whitespace-nowrap transition duration-500 "
+                                                        style="width: 80%"></div>
+                                                </div>
+                                                <div
+                                                    class="flex justify-between items-center mt-2">
+                                                    <span>2Gb</span>
+                                                    <span>15Gb</span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="lg:col-span-3 md:col-span-6 col-span-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="flex justify-between">
+                                                <div
+                                                    class="px-6 py-4 bg-lighterror dark:bg-darkerror rounded-md">
+                                                    <i
+                                                        class="ti ti-brand-amazon text-4xl text-error"></i>
+                                                </div>
+                                                <div
+                                                    class="hs-dropdown relative inline-flex">
+                                                    <button
+                                                        id="hs-dropdown-custom-icon-trigger"
+                                                        class="-mr-2 hs-dropdown-toggle h-10 w-10 text-dark dark:text-darklink hover:text-primary light-dark-hoverbg  justify-center items-center rounded-full">
+                                                        <i
+                                                            class="ti ti-dots text-2xl"></i>
+                                                    </button>
+
+                                                    <div
+                                                        class="hs-dropdown-menu z-[1] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-40 hidden"
+                                                        aria-labelledby="hs-dropdown-custom-icon-trigger"
+                                                        style>
+                                                        <ul
+                                                            class="flex flex-col">
+                                                            <li
+                                                                class="py-2.5 px-4 hover:bg-lightprimary hover:dark:bg-darkprimary ">
+                                                                <a
+                                                                    class="font-medium flex gap-2 items-center "
+                                                                    href="#">
+                                                                    Upload Files
+                                                                </a>
+                                                            </li>
+                                                            <li
+                                                                class="py-2.5 px-4 hover:bg-lightprimary hover:dark:bg-darkprimary ">
+                                                                <a
+                                                                    class="font-medium flex gap-2 items-center "
+                                                                    href="#">
+                                                                    Upload
+                                                                    Folder
+                                                                </a>
+                                                            </li>
+                                                            <li
+                                                                class="py-2.5 px-4 hover:bg-lightprimary hover:dark:bg-darkprimary ">
+                                                                <a
+                                                                    class="font-medium flex gap-2 items-center "
+                                                                    href="#">
+                                                                    New Folder
+                                                                </a>
+                                                            </li>
+                                                            <li
+                                                                class="py-2.5 px-4 hover:bg-lightprimary hover:dark:bg-darkprimary ">
+                                                                <a
+                                                                    class="font-medium flex gap-2 items-center "
+                                                                    href="#">
+                                                                    New Shared
+                                                                    Folder
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mt-8">
+                                                <h5
+                                                    class="text-lg font-medium mb-3 text-dark dark:text-white">One
+                                                    Drive</h5>
+                                                <div
+                                                    class="flex w-full h-1.5 bg-lighterror dark:bg-darkerror rounded-md overflow-hidden"
+                                                    role="progressbar"
+                                                    aria-valuenow="80"
+                                                    aria-valuemin="0"
+                                                    aria-valuemax="100">
+                                                    <div
+                                                        class="flex flex-col justify-center overflow-hidden bg-error text-xs text-white text-center whitespace-nowrap transition duration-500 "
+                                                        style="width: 80%"></div>
+                                                </div>
+                                                <div
+                                                    class="flex justify-between items-center mt-2">
+                                                    <span>4Gb</span>
+                                                    <span>15Gb</span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!----Progress Card End--->
+
+                            <!----Category Card--->
+                            <div
+                                class="flex justify-between items-center border-b border-light-dark
+            pb-3 mt-8">
+                                <h5
+                                    class="card-title">Category
+                                    Card
+                                </h5>
+                            </div>
+                            <div class="grid grid-cols-12 gap-6 mt-6">
+                                <div
+                                    class="lg:col-span-4 md:col-span-6 col-span-12">
+                                    <a href="javascript:void(0)"
+                                        class="transform translate-y-0 hover:-translate-y-2 duration-500 ease-in-out block">
+                                        <div class="card ">
+                                            <div
+                                                class="card-body ">
+                                                <div
+                                                    class="flex gap-5 items-center">
+                                                    <i
+                                                        class="ti ti-photo text-warning  text-4xl"></i>
+                                                    <div>
+                                                        <h5
+                                                            class="text-lg text-dark dark:text-darklink font-medium">My
+                                                            Photos</h5>
+                                                        <p
+                                                            class="text-xs mb-1">2.4GB
+                                                            Junk File</p>
+                                                        <p
+                                                            class="text-xs">Folder:
+                                                            26 Items: 159 Used:
+                                                            23.6GB</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div
+                                    class="lg:col-span-4 md:col-span-6 col-span-12">
+                                    <a href="javascript:void(0)"
+                                        class="transform translate-y-0 hover:-translate-y-2 duration-500 ease-in-out block">
+                                        <div class="card ">
+                                            <div
+                                                class="card-body">
+                                                <div
+                                                    class="flex gap-5 items-center">
+                                                    <i
+                                                        class="ti ti-brand-google-drive text-info  text-4xl"></i>
+                                                    <div>
+                                                        <h5
+                                                            class="text-lg text-dark dark:text-darklink font-medium">My
+                                                            Google Docs</h5>
+                                                        <p
+                                                            class="text-xs mb-1">2.4GB
+                                                            Junk File</p>
+                                                        <p
+                                                            class="text-xs">Folder:
+                                                            26 Items: 159 Used:
+                                                            23.6GB</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div
+                                    class="lg:col-span-4 md:col-span-6 col-span-12">
+                                    <a href="javascript:void(0)"
+                                        class="transform translate-y-0 hover:-translate-y-2 duration-500 ease-in-out block">
+                                        <div class="card ">
+                                            <div
+                                                class="card-body">
+                                                <div
+                                                    class="flex gap-5 items-center">
+                                                    <i
+                                                        class="ti ti-users text-success  text-4xl"></i>
+                                                    <div>
+                                                        <h5
+                                                            class="text-lg text-dark dark:text-darklink font-medium">My
+                                                            Google Contacts
+                                                        </h5>
+                                                        <p
+                                                            class="text-xs mb-1">2.4GB
+                                                            Junk File</p>
+                                                        <p
+                                                            class="text-xs">Folder:
+                                                            45 Items: 78 Used:
+                                                            3.6GB</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div
+                                    class="lg:col-span-4 md:col-span-6 col-span-12">
+                                    <a href="javascript:void(0)"
+                                        class="transform translate-y-0 hover:-translate-y-2 duration-500 ease-in-out block">
+                                        <div class="card ">
+                                            <div
+                                                class="card-body">
+                                                <div
+                                                    class="flex gap-5 items-center">
+                                                    <i
+                                                        class="ti ti-folder-down text-error text-4xl"></i>
+                                                    <div>
+                                                        <h5
+                                                            class="text-lg text-dark dark:text-darklink font-medium">My
+                                                            Folder</h5>
+                                                        <p
+                                                            class="text-xs mb-1">2.4GB
+                                                            Junk File</p>
+                                                        <p
+                                                            class="text-xs">Folder:
+                                                            45 Items: 78 Used:
+                                                            3.6GB</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div
+                                    class="lg:col-span-4 md:col-span-6 col-span-12">
+                                    <a href="javascript:void(0)"
+                                        class="transform translate-y-0 hover:-translate-y-2 duration-500 ease-in-out block">
+                                        <div class="card ">
+                                            <div
+                                                class="card-body">
+                                                <div
+                                                    class="flex gap-5 items-center">
+                                                    <i
+                                                        class="ti ti-download text-secondary text-4xl"></i>
+                                                    <div>
+                                                        <h5
+                                                            class="text-lg text-dark dark:text-darklink font-medium">My
+                                                            Downloads</h5>
+                                                        <p
+                                                            class="text-xs mb-1">2.4GB
+                                                            Junk File</p>
+                                                        <p
+                                                            class="text-xs">Folder:
+                                                            45 Items: 78 Used:
+                                                            3.6GB</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div
+                                    class="lg:col-span-4 md:col-span-6 col-span-12">
+                                    <a href="javascript:void(0)"
+                                        class="transform translate-y-0 hover:-translate-y-2 duration-500 ease-in-out block">
+                                        <div class="card ">
+                                            <div
+                                                class="card-body">
+                                                <div
+                                                    class="flex gap-5 items-center">
+                                                    <i
+                                                        class="ti ti-folder-star text-primary text-4xl"></i>
+                                                    <div>
+                                                        <h5
+                                                            class="text-lg text-dark dark:text-darklink font-medium">Office
+                                                            Work</h5>
+                                                        <p
+                                                            class="text-xs mb-1">2.4GB
+                                                            Junk File</p>
+                                                        <p
+                                                            class="text-xs">Folder:
+                                                            4 Items: 4800 Used:
+                                                            2.6GB</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <!---Category Card End--->
+
+                            <!----Notes Card--->
+                            <div
+                                class="flex justify-between items-center border-b border-light-dark
+            pb-3 mt-8">
+                                <h5
+                                    class="card-title">Category
+                                    Card
+                                </h5>
+                            </div>
+                            <div class="grid grid-cols-12 gap-6 mt-6">
+                                <div
+                                    class="xl:col-span-3 lg:col-span-6 md:col-span-6 col-span-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="flex justify-between">
+                                                <h5
+                                                    class="text-lg font-medium">Design
+                                                    Project</h5>
+                                                <div
+                                                    class="hs-dropdown relative inline-flex">
+                                                    <button
+                                                        id="hs-dropdown-custom-icon-trigger"
+                                                        class="-mr-2 hs-dropdown-toggle h-10 w-10 text-dark dark:text-darklink hover:text-primary light-dark-hoverbg  justify-center items-center rounded-full">
+                                                        <i
+                                                            class="ti ti-dots text-2xl"></i>
+                                                    </button>
+
+                                                    <div
+                                                        class="hs-dropdown-menu z-[1] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-40 hidden"
+                                                        aria-labelledby="hs-dropdown-custom-icon-trigger"
+                                                        style>
+                                                        <ul
+                                                            class="flex flex-col">
+                                                            <li
+                                                                class="py-2.5 px-4 hover:bg-lightprimary hover:dark:bg-darkprimary ">
+                                                                <a
+                                                                    class="font-medium flex gap-2 items-center "
+                                                                    href="#">
+                                                                    Add
+                                                                </a>
+                                                            </li>
+                                                            <li
+                                                                class="py-2.5 px-4 hover:bg-lightprimary hover:dark:bg-darkprimary ">
+                                                                <a
+                                                                    class="font-medium flex gap-2 items-center "
+                                                                    href="#">
+                                                                    Edit
+                                                                </a>
+                                                            </li>
+                                                            <li
+                                                                class="py-2.5 px-4 hover:bg-lightprimary hover:dark:bg-darkprimary ">
+                                                                <a
+                                                                    class="font-medium flex gap-2 items-center "
+                                                                    href="#">
+                                                                    Delete
+                                                                </a>
+                                                            </li>
+
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="grid grid-cols-2 mt-4 gap-6">
+                                                <a href="javascript:void(0)"
+                                                    class="py-4 border  border-light-dark rounded-md text-center">
+                                                    <i
+                                                        class="ti ti-file-x text-4xl text-info block mb-1"></i>
+                                                    <span>notes.zip</span>
+                                                </a>
+                                                <a href="javascript:void(0)"
+                                                    class="py-4 border  border-light-dark rounded-md text-center">
+                                                    <i
+                                                        class="ti ti-file-description text-4xl text-primary block mb-1"></i>
+                                                    <span>File 1</span>
+                                                </a>
+                                                <a href="javascript:void(0)"
+                                                    class="py-4 border  border-light-dark rounded-md text-center">
+                                                    <i
+                                                        class="ti ti-file-description text-4xl text-warning block mb-1"></i>
+                                                    <span>File 2</span>
+                                                </a>
+                                                <a href="javascript:void(0)"
+                                                    class="py-4 border  border-light-dark rounded-md text-center">
+                                                    <i
+                                                        class="ti ti-file-description text-4xl text-secondary block mb-1"></i>
+                                                    <span>File 3</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="xl:col-span-3 lg:col-span-6 md:col-span-6 col-span-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="flex justify-between">
+                                                <h5
+                                                    class="text-lg font-medium">Wedding
+                                                    Plans</h5>
+                                                <div
+                                                    class="hs-dropdown relative inline-flex">
+                                                    <button
+                                                        id="hs-dropdown-custom-icon-trigger"
+                                                        class="-mr-2 hs-dropdown-toggle h-10 w-10 text-dark dark:text-darklink hover:text-primary light-dark-hoverbg  justify-center items-center rounded-full">
+                                                        <i
+                                                            class="ti ti-dots text-2xl"></i>
+                                                    </button>
+
+                                                    <div
+                                                        class="hs-dropdown-menu z-[1] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-40 hidden"
+                                                        aria-labelledby="hs-dropdown-custom-icon-trigger"
+                                                        style>
+                                                        <ul
+                                                            class="flex flex-col">
+                                                            <li
+                                                                class="py-2.5 px-4 hover:bg-lightprimary hover:dark:bg-darkprimary ">
+                                                                <a
+                                                                    class="font-medium flex gap-2 items-center "
+                                                                    href="#">
+                                                                    Add
+                                                                </a>
+                                                            </li>
+                                                            <li
+                                                                class="py-2.5 px-4 hover:bg-lightprimary hover:dark:bg-darkprimary ">
+                                                                <a
+                                                                    class="font-medium flex gap-2 items-center "
+                                                                    href="#">
+                                                                    Edit
+                                                                </a>
+                                                            </li>
+                                                            <li
+                                                                class="py-2.5 px-4 hover:bg-lightprimary hover:dark:bg-darkprimary ">
+                                                                <a
+                                                                    class="font-medium flex gap-2 items-center "
+                                                                    href="#">
+                                                                    Delete
+                                                                </a>
+                                                            </li>
+
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="grid grid-cols-2 mt-4 gap-6">
+                                                <a href="javascript:void(0)"
+                                                    class="py-4 border  border-light-dark rounded-md text-center">
+                                                    <i
+                                                        class="ti ti-file-x text-4xl text-primary block mb-1"></i>
+                                                    <span>notes.zip</span>
+                                                </a>
+                                                <a href="javascript:void(0)"
+                                                    class="py-4 border  border-light-dark rounded-md text-center">
+                                                    <i
+                                                        class="ti ti-file-x text-4xl text-secondary block mb-1"></i>
+                                                    <span>photo.jpg</span>
+                                                </a>
+                                                <a href="javascript:void(0)"
+                                                    class="py-4 border  border-light-dark rounded-md text-center">
+                                                    <i
+                                                        class="ti ti-file-music text-4xl text-warning block mb-1"></i>
+                                                    <span>songs.mp3</span>
+                                                </a>
+                                                <a href="javascript:void(0)"
+                                                    class="py-4 border  border-light-dark rounded-md text-center">
+                                                    <i
+                                                        class="ti ti-file-x text-4xl text-error block mb-1"></i>
+                                                    <span>design.mp4</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="xl:col-span-3 lg:col-span-6 md:col-span-6 col-span-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="flex justify-between">
+                                                <h5
+                                                    class="text-lg font-medium">Finances</h5>
+                                                <div
+                                                    class="hs-dropdown relative inline-flex">
+                                                    <button
+                                                        id="hs-dropdown-custom-icon-trigger"
+                                                        class="-mr-2 hs-dropdown-toggle h-10 w-10 text-dark dark:text-darklink hover:text-primary light-dark-hoverbg  justify-center items-center rounded-full">
+                                                        <i
+                                                            class="ti ti-dots text-2xl"></i>
+                                                    </button>
+
+                                                    <div
+                                                        class="hs-dropdown-menu z-[1] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-40 hidden"
+                                                        aria-labelledby="hs-dropdown-custom-icon-trigger"
+                                                        style>
+                                                        <ul
+                                                            class="flex flex-col">
+                                                            <li
+                                                                class="py-2.5 px-4 hover:bg-lightprimary hover:dark:bg-darkprimary ">
+                                                                <a
+                                                                    class="font-medium flex gap-2 items-center "
+                                                                    href="#">
+                                                                    Add
+                                                                </a>
+                                                            </li>
+                                                            <li
+                                                                class="py-2.5 px-4 hover:bg-lightprimary hover:dark:bg-darkprimary ">
+                                                                <a
+                                                                    class="font-medium flex gap-2 items-center "
+                                                                    href="#">
+                                                                    Edit
+                                                                </a>
+                                                            </li>
+                                                            <li
+                                                                class="py-2.5 px-4 hover:bg-lightprimary hover:dark:bg-darkprimary ">
+                                                                <a
+                                                                    class="font-medium flex gap-2 items-center "
+                                                                    href="#">
+                                                                    Delete
+                                                                </a>
+                                                            </li>
+
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="grid grid-cols-2 mt-4 gap-6">
+                                                <a href="javascript:void(0)"
+                                                    class="py-4 border  border-light-dark rounded-md text-center">
+                                                    <i
+                                                        class="ti ti-file-description  text-4xl text-info block mb-1"></i>
+                                                    <span>File 1</span>
+                                                </a>
+                                                <a href="javascript:void(0)"
+                                                    class="py-4 border  border-light-dark rounded-md text-center">
+                                                    <i
+                                                        class="ti ti-file-description  text-4xl text-warning block mb-1"></i>
+                                                    <span>File 2</span>
+                                                </a>
+                                                <a href="javascript:void(0)"
+                                                    class="py-4 border  border-light-dark rounded-md text-center">
+                                                    <i
+                                                        class="ti ti-file-description  text-4xl text-primary block mb-1"></i>
+                                                    <span>File 3</span>
+                                                </a>
+                                                <a href="javascript:void(0)"
+                                                    class="py-4 border  border-light-dark rounded-md text-center">
+                                                    <i
+                                                        class="ti ti-file-description  text-4xl text-success block mb-1"></i>
+                                                    <span>File 4</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="xl:col-span-3 lg:col-span-6 md:col-span-6 col-span-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="flex justify-between">
+                                                <h5
+                                                    class="text-lg font-medium">Meal
+                                                    Plans</h5>
+                                                <div
+                                                    class="hs-dropdown relative inline-flex">
+                                                    <button
+                                                        id="hs-dropdown-custom-icon-trigger"
+                                                        class="-mr-2 hs-dropdown-toggle h-10 w-10 text-dark dark:text-darklink hover:text-primary light-dark-hoverbg  justify-center items-center rounded-full">
+                                                        <i
+                                                            class="ti ti-dots text-2xl"></i>
+                                                    </button>
+
+                                                    <div
+                                                        class="hs-dropdown-menu z-[1] transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 min-w-40 hidden"
+                                                        aria-labelledby="hs-dropdown-custom-icon-trigger"
+                                                        style>
+                                                        <ul
+                                                            class="flex flex-col">
+                                                            <li
+                                                                class="py-2.5 px-4 hover:bg-lightprimary hover:dark:bg-darkprimary ">
+                                                                <a
+                                                                    class="font-medium flex gap-2 items-center "
+                                                                    href="#">
+                                                                    Add
+                                                                </a>
+                                                            </li>
+                                                            <li
+                                                                class="py-2.5 px-4 hover:bg-lightprimary hover:dark:bg-darkprimary ">
+                                                                <a
+                                                                    class="font-medium flex gap-2 items-center "
+                                                                    href="#">
+                                                                    Edit
+                                                                </a>
+                                                            </li>
+                                                            <li
+                                                                class="py-2.5 px-4 hover:bg-lightprimary hover:dark:bg-darkprimary ">
+                                                                <a
+                                                                    class="font-medium flex gap-2 items-center "
+                                                                    href="#">
+                                                                    Delete
+                                                                </a>
+                                                            </li>
+
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="grid grid-cols-2 mt-4 gap-6">
+                                                <a href="javascript:void(0)"
+                                                    class="py-4 border  border-light-dark rounded-md text-center">
+                                                    <i
+                                                        class="ti ti-file-description  text-4xl text-info block mb-1"></i>
+                                                    <span>File 1</span>
+                                                </a>
+                                                <a href="javascript:void(0)"
+                                                    class="py-4 border  border-light-dark rounded-md text-center">
+                                                    <i
+                                                        class="ti ti-file-plus  text-4xl text-secondary block mb-1"></i>
+                                                    <span>File 2</span>
+                                                </a>
+                                                <a href="javascript:void(0)"
+                                                    class="py-4 border  border-light-dark rounded-md text-center">
+                                                    <i
+                                                        class="ti ti-file-description  text-4xl text-primary block mb-1"></i>
+                                                    <span>File 3</span>
+                                                </a>
+                                                <a href="javascript:void(0)"
+                                                    class="py-4 border  border-light-dark rounded-md text-center">
+                                                    <i
+                                                        class="ti ti-file-description  text-4xl text-error block mb-1"></i>
+                                                    <span>File 4</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!----Notes Card Ends--->
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                <!-- Main Content End -->
+
+            </div>
+        </div>
+        <!--end of project-->
+    </main>
+    @@include("partials/header-components/mobile-menu.html")
+    @@include("partials/customizer.html")
+    @@include("partials/scripts.html")
+    <script src="@@webRoot/node_modules/prismjs/prism.js"></script>
+</body>
+
+</html>

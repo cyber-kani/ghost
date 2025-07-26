@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-color-theme="Blue_Theme" class="light selected"
+	data-layout="vertical" data-boxed-layout="boxed" data-card="shadow">
+
+	<head>
+		@@include("partials/head.html")
+		<title>Spike TailwindCSS HTML Admin Template</title>
+	</head>
+
+	<body class="DEFAULT_THEME bg-lightprimary dark:bg-darkbody">
+		<main>
+			<!--start the project-->
+			<div id="main-wrapper" class="flex p-5">
+
+				<aside id="application-sidebar-brand"
+					class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full xl:rtl:-translate-x-0 rtl:translate-x-full  left-0 rtl:left-auto xl:rtl:right-5 rtl:right-0 transform hidden xl:block xl:translate-x-0 xl:end-auto xl:bottom-0 fixed top-0 with-vertical  left-sidebar transition-all duration-300 h-screen z-[2] flex-shrink-0  w-[270px] border-border dark:border-darkborder bg-white dark:bg-dark xl:top-5 xl:start-5 shadow-md xl:rounded-md">
+                    @@include("partials/sidebar.html",{ "page": "pricing","page_group": "page" })
+				</aside>
+				<div class="page-wrapper w-full" role="main">
+
+					<!-- Main Content -->
+					<main class="h-full ">
+						<div class="container full-container py-5 xl:ps-6 ps-0 pt-0 pe-0 remove-ps">
+
+							<!--  Header Start -->
+							<header
+								class="sticky top-0 inset-x-0 z-[1] flex flex-wrap md:justify-start md:flex-nowrap py-3 lg:py-0 mb-6 bg-white dark:bg-dark rounded-md shadow-md">
+								<div
+									class="with-vertical w-full">@@include("partials/header.html")</div>
+								<div class="with-horizontal w-full">
+									<div class="bg-white dark:bg-dark">
+										<div class="container">
+											@@include("partials/horizontal-header.html")
+										</div>
+									</div>
+								</div>
+							</header>
+							<!--  Header End -->
+
+							<!-- Horizontal Sidebar Menu -->
+							<aside
+								class="with-horizontal lg:flex hidden left-sidebar bg-white dark:bg-dark border-t border-border dark:border-darkborder">
+                                @@include("partials/horizontal-sidebar.html", { "page": "pricing","page_group": "page"
+                            })
+							</aside>
+							<!-- Horizontal Sidebar Menu End -->
+
+                            <!-- Main Content -->
+                            <div class="max-w-full">
+                                <div class="container full-container ">
+                                    <!----Breadcrumb Start---->
+                                    @@include("partials/breadcrumb.html", {"title": "Pricing", "subtitle": 'Home'})
+                                    <!----Breadcrumb End---->
+                                </div>
+
+                                <div class="grid lg:grid-cols-8 gap-4">
+                                    <div class="lg:col-start-3 col-span-4 text-center">
+                                        <h2 class="font-bold text-dark dark:text-white text-3xl leading-[45px]">Flexible Plans
+                                            Tailored to Fit Your Community's Unique Needs!</h2>
+                                        <div class="flex gap-3 justify-center items-center mt-6">
+                                            <label for="hs-xs-switch"
+                                                class="font-bold text-dark dark:text-darklink">Monthly</label>
+                                            <input type="checkbox" id="hs-xs-switch"
+                                                class="relative w-[35px] h-[19px] bg-white border border-border dark:border-darkborder rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-primary disabled:opacity-50 disabled:pointer-events-none checked:bg-none checked:text-primary checked:border-primary focus:checked:border-primary dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-primary dark:checked:border-primary dark:focus:ring-offset-gray-600
+                                            before:inline-block before:w-4 before:h-4 before:bg-gray-400 checked:before:bg-blue-200 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-gray-400 dark:checked:before:bg-blue-200">
+                                            <label for="hs-xs-switch"
+                                                class="font-bold text-dark dark:text-darklink">Yearly</label>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                <!---Pricing Card--->
+                                <div class="grid grid-cols-12 gap-6 mt-8">
+                                    <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <span class="font-bold text-xs text-dark dark:text-darklink uppercase
+                                                ">Silver</span>
+                                                <div class="my-7">
+                                                    <img src="@@webRoot/assets/images/backgrounds/silver.png" alt=""
+                                                        class="h-20 w-20">
+                                                </div>
+                                                <h2 class="font-bold text-5xl  text-dark dark:text-white mb-3">Free</h2>
+                                                <ul class="mb-7">
+                                                    <li class="flex items-center gap-2 py-2">
+                                                        <i class="ti ti-check text-primary text-base"></i>
+                                                        <span class="text-link font-medium dark:text-darklink
+                                                      ">3 Members</span>
+                                                    </li>
+                                                    <li class="flex items-center gap-2 py-2">
+                                                        <i class="ti ti-check text-primary text-base"></i>
+                                                        <span class="text-link font-medium dark:text-darklink
+                                                      ">Single Device</span>
+                                                    </li>
+                                                    <li class="flex items-center gap-2 py-2">
+                                                        <i
+                                                            class="ti ti-x text-link dark:text-darklink opacity-60 text-base "></i>
+                                                        <span class="text-link font-medium dark:text-darklink opacity-60
+                                                      ">50GB Storage</span>
+                                                    </li>
+                                                    <li class="flex items-center gap-2 py-2">
+                                                        <i
+                                                            class="ti ti-x text-link dark:text-darklink opacity-60 text-base"></i>
+                                                        <span class="text-link font-medium dark:text-darklink opacity-60
+                                                      ">Monthly Backups</span>
+                                                    </li>
+                                                    <li class="flex items-center gap-2 py-2">
+                                                        <i
+                                                            class="ti ti-x text-link dark:text-darklink opacity-60 text-base"></i>
+                                                        <span class="text-link font-medium dark:text-darklink opacity-60
+                                                      ">Permissions & workflows</span>
+                                                    </li>
+                                                </ul>
+                                                <button class="btn w-full  py-3.5">Choose Silver</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                                        <div class="card">
+                                            <div class="card-body relative">
+                                                <div class="absolute right-6 top-4">
+                                                    <span
+                                                        class="flex  ms-auto items-center justify-end leading-normal rounded-full bg-lightwarning dark:bg-darkwarning text-xs px-3  font-semibold text-warning w-fit">POPULAR</span>
+                                                </div>
+                                                <span class="font-bold text-xs text-dark dark:text-darklink uppercase
+                                                ">Bronze</span>
+                                                <div class="my-7">
+                                                    <img src="@@webRoot/assets/images/backgrounds/bronze.png" alt=""
+                                                        class="h-20 w-20">
+                                                </div>
+                                                <div class="flex mb-3">
+                                                    <h5 class="font-bold text-dark dark:text-white mb-0 text-lg">$</h5>
+                                                    <h2 class="font-bold text-dark dark:text-white text-5xl ms-2 mb-0">4.99</h2>
+                                                    <span class="text-link dark:text-white ms-2 text-base flex items-center">/mo</span>
+                                                  </div>
+                                                <ul class="mb-7">
+                                                    <li class="flex items-center gap-2 py-2">
+                                                        <i class="ti ti-check text-primary text-base"></i>
+                                                        <span class="text-link font-medium dark:text-darklink
+                                                      ">4 Members</span>
+                                                    </li>
+                                                    <li class="flex items-center gap-2 py-2">
+                                                        <i class="ti ti-check text-primary text-base"></i>
+                                                        <span class="text-link font-medium dark:text-darklink
+                                                      ">Single Device</span>
+                                                    </li>
+                                                    <li class="flex items-center gap-2 py-2">
+                                                        <i
+                                                            class="ti ti-check text-primary text-base"></i>
+                                                        <span class="text-link font-medium dark:text-darklink 
+                                                      ">80GB Storage</span>
+                                                    </li>
+                                                    <li class="flex items-center gap-2 py-2">
+                                                        <i
+                                                            class="ti ti-x text-link dark:text-darklink opacity-60 text-base"></i>
+                                                        <span class="text-link font-medium dark:text-darklink opacity-60
+                                                      ">Monthly Backups</span>
+                                                    </li>
+                                                    <li class="flex items-center gap-2 py-2">
+                                                        <i
+                                                            class="ti ti-x text-link dark:text-darklink opacity-60 text-base"></i>
+                                                        <span class="text-link font-medium dark:text-darklink opacity-60
+                                                      ">Permissions & workflows</span>
+                                                    </li>
+                                                </ul>
+                                                <button class="btn w-full  py-3.5">Choose Bronze</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <span class="font-bold text-xs text-dark dark:text-darklink uppercase
+                                                ">Gold</span>
+                                                <div class="my-7">
+                                                    <img src="@@webRoot/assets/images/backgrounds/gold.png" alt=""
+                                                        class="h-20 w-20">
+                                                </div>
+                                                <div class="flex mb-3">
+                                                    <h5 class="font-bold text-dark dark:text-white mb-0 text-lg">$</h5>
+                                                    <h2 class="font-bold text-dark dark:text-white text-5xl ms-2 mb-0">9.99</h2>
+                                                    <span class="text-link dark:text-white ms-2 text-base flex items-center">/mo</span>
+                                                  </div>
+                                                <ul class="mb-7">
+                                                    <li class="flex items-center gap-2 py-2">
+                                                        <i class="ti ti-check text-primary text-base"></i>
+                                                        <span class="text-link font-medium dark:text-darklink
+                                                      ">5 Members</span>
+                                                    </li>
+                                                    <li class="flex items-center gap-2 py-2">
+                                                        <i class="ti ti-check text-primary text-base"></i>
+                                                        <span class="text-link font-medium dark:text-darklink
+                                                      ">Single Device</span>
+                                                    </li>
+                                                    <li class="flex items-center gap-2 py-2">
+                                                        <i
+                                                            class="ti ti-check text-primary text-base"></i>
+                                                        <span class="text-link font-medium dark:text-darklink 
+                                                      ">120GB Storage</span>
+                                                    </li>
+                                                    <li class="flex items-center gap-2 py-2">
+                                                        <i
+                                                            class="ti ti-check text-primary text-base"></i>
+                                                        <span class="text-link font-medium dark:text-darklink 
+                                                      ">Monthly Backups</span>
+                                                    </li>
+                                                    <li class="flex items-center gap-2 py-2">
+                                                        <i
+                                                            class="ti ti-check text-primary text-base"></i>
+                                                        <span class="text-link font-medium dark:text-darklink 
+                                                      ">Permissions & workflows</span>
+                                                    </li>
+                                                </ul>
+                                                <button class="btn w-full py-3.5">Choose Gold</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!---Pricing Card End--->
+
+                            </div>    
+
+
+						</div>
+					</main>
+					<!-- Main Content End -->
+
+				</div>
+			</div>
+			<!--end of project-->
+		</main>
+		@@include("partials/header-components/mobile-menu.html")
+		@@include("partials/customizer.html")
+		@@include("partials/scripts.html")
+	</body>
+</html>

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-color-theme="Blue_Theme" class="light selected" data-layout="vertical"
+    data-boxed-layout="boxed" data-card="shadow">
+
+<head>
+    @@include("partials/head.html")
+    <title>Spike TailwindCSS HTML Admin Template</title>
+    <link rel="stylesheet" href="@@webRoot/node_modules/prismjs/themes/prism-okaidia.min.css">
+</head>
+
+<body class="DEFAULT_THEME bg-lightprimary dark:bg-darkbody">
+    <main>
+        <!--start the project-->
+        <div id="main-wrapper" class="flex p-5">
+
+            <aside id="application-sidebar-brand"
+                class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full xl:rtl:-translate-x-0 rtl:translate-x-full  left-0 rtl:left-auto xl:rtl:right-5 rtl:right-0 transform hidden xl:block xl:translate-x-0 xl:end-auto xl:bottom-0 fixed top-0 with-vertical  left-sidebar transition-all duration-300 h-screen z-[2] flex-shrink-0  w-[270px] border-border dark:border-darkborder bg-white dark:bg-dark xl:top-5 xl:start-5 shadow-md xl:rounded-md">
+                @@include("partials/sidebar.html",{ "page": "weather-cards","page_group": "cards" })
+            </aside>
+            <div class="page-wrapper w-full" role="main">
+
+                <!-- Main Content -->
+                <main class="h-full ">
+                    <div class="container full-container py-5 xl:ps-6 ps-0 pt-0 pe-0 remove-ps">
+
+                        <!--  Header Start -->
+                        <header
+                            class="sticky top-0 inset-x-0 z-[1] flex flex-wrap md:justify-start md:flex-nowrap text-fs_15 py-3 lg:py-0 mb-6 bg-white dark:bg-dark rounded-md shadow-md">
+                            <div class="with-vertical w-full">@@include("partials/header.html")</div>
+                            <div class="with-horizontal w-full">
+                                <div class="bg-white dark:bg-dark">
+                                    <div class="container">
+                                        @@include("partials/horizontal-header.html")
+                                    </div>
+                                </div>
+                            </div>
+                        </header>
+                        <!--  Header End -->
+
+                        <!-- Horizontal Sidebar Menu -->
+                        <aside
+                            class="with-horizontal lg:flex hidden left-sidebar bg-white dark:bg-dark border-t border-border dark:border-darkborder">
+                            @@include("partials/horizontal-sidebar.html", { "page": "weather-cards","page_group":
+                            "cards"})
+                        </aside>
+                        <!-- Horizontal Sidebar Menu End -->
+
+                        <!-- Main Content -->
+                        <div class="max-w-full">
+                            <div class="container full-container ">
+                                <!----Breadcrumb Start---->
+                                @@include("partials/breadcrumb.html", {"title": "UI Card", "subtitle": 'Home'})
+                                <!----Breadcrumb End---->
+                            <!----Card With Image---->
+                            <!----Custom Card With Image---->
+                             <!---Wheather Cards--->
+                             <div class="grid grid-cols-12 gap-6 mt-6">
+                                <div class="col-span-12">
+                                    <div class="card overflow-hidden">
+                                        <div class="relative">
+                                            <img src="@@webRoot/assets/images/backgrounds/weather.jpg"
+                                                class="max-w-full w-full" style="max-height: 450px" alt="Card image cap">
+                                            <div class="absolute top-6 start-6 text-white">
+                                                <i class="ti ti-sun-high text-6xl"></i>
+                                                <div class="flex mt-2">
+                                                    <span class="text-4xl">20°
+                                                        <span class="text-xl">C / 7° C</span>
+                                                    </span>
+                                                </div>
+                                                <p>THURSDAY 01.08.2018</p>
+                                            </div>
+                                        </div>
+                                        <div class="card-body py-5">
+                                            <div class="grid md:grid-cols-6 sm:grid-cols-2 grid-cols-2 text-center">
+                                                <div class="border-e border-border dark:border-darkborder sm:mb-0 mb-3">
+                                                    <div class="mb-2">TUE</div>
+                                                    <i class="ti ti-cloud text-2xl mb-2"></i>
+                                                    <div>
+                                                        24°
+                                                        <span>C</span>
+                                                    </div>
+                                                </div>
+                                                <div class="sm:border-e border-border dark:border-darkborder sm:mb-0 mb-3">
+                                                    <div class="mb-2">WED</div>
+                                                    <i class="ti ti-cloud text-2xl mb-2"></i>
+                                                    <div>
+                                                        21°
+                                                        <span>C</span>
+                                                    </div>
+                                                </div>
+                                                <div class="border-e border-border dark:border-darkborder sm:mb-0 mb-3">
+                                                    <div class="mb-2">THU</div>
+                                                    <i class="ti ti-sun-high text-2xl mb-2"></i>
+                                                    <div>
+                                                        25°
+                                                        <span>C</span>
+                                                    </div>
+                                                </div>
+                                                <div class="sm:border-e border-border dark:border-darkborder sm:mb-0 mb-3">
+                                                    <div class="mb-2">FRI</div>
+                                                    <i class="ti ti-cloud-fog text-2xl mb-2"></i>
+                                                    <div>
+                                                        20°
+                                                        <span>C</span>
+                                                    </div>
+                                                </div>
+                                                <div class="border-e border-border dark:border-darkborder sm:mb-0 mb-3">
+                                                    <div class="mb-2">SAT</div>
+                                                    <i class="ti ti-cloud-storm text-2xl mb-2"></i>
+                                                    <div>
+                                                        18°
+                                                        <span>C</span>
+                                                    </div>
+                                                </div>
+                                                <div class="sm:mb-0 mb-3">
+                                                    <div class="mb-2">SUN</div>
+                                                    <i class="ti ti-cloud-rain text-2xl mb-2"></i>
+                                                    <div>
+                                                        14°
+                                                        <span>C</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="lg:col-span-6 col-span-12">
+                                    <div class="card overflow-hidden">
+                                        <div class="card-body bg-info">
+                                            <div class="text-center">
+                                                <h4 class="text-white text-lg font-medium">Lester, London</h4>
+                                                <h5 class="text-white text-lg font-light">MONDAY May 11, 2017</h5>
+                                                <div class="mt-4">
+                                                    <h4 class="text-white text-3xl font-medium">29° C</h4>
+                                                    <h3 class="text-white text-xl font-light">Day Rain</h3>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="grid md:grid-cols-6 sm:grid-cols-2 grid-cols-2 text-center text-white mt-7">
+                                                <div class="sm:mb-0 mb-3">
+                                                    <div class="mb-2">TUE</div>
+                                                    <i class="ti ti-cloud text-2xl mb-2"></i>
+                                                    <div>
+                                                        24°
+                                                        <span>C</span>
+                                                    </div>
+                                                </div>
+                                                <div class="sm:mb-0 mb-3">
+                                                    <div class="mb-2">WED</div>
+                                                    <i class="ti ti-cloud text-2xl mb-2"></i>
+                                                    <div>
+                                                        21°
+                                                        <span>C</span>
+                                                    </div>
+                                                </div>
+                                                <div class="sm:mb-0 mb-3">
+                                                    <div class="mb-2">THU</div>
+                                                    <i class="ti ti-sun-high text-2xl mb-2"></i>
+                                                    <div>
+                                                        25°
+                                                        <span>C</span>
+                                                    </div>
+                                                </div>
+                                                <div class="sm:mb-0 mb-3">
+                                                    <div class="mb-2">FRI</div>
+                                                    <i class="ti ti-cloud-fog text-2xl mb-2"></i>
+                                                    <div>
+                                                        20°
+                                                        <span>C</span>
+                                                    </div>
+                                                </div>
+                                                <div class="sm:mb-0 mb-3">
+                                                    <div class="mb-2">SAT</div>
+                                                    <i class="ti ti-cloud-storm text-2xl mb-2"></i>
+                                                    <div>
+                                                        18°
+                                                        <span>C</span>
+                                                    </div>
+                                                </div>
+                                                <div class="sm:mb-0 mb-3">
+                                                    <div class="mb-2">SUN</div>
+                                                    <i class="ti ti-cloud-rain text-2xl mb-2"></i>
+                                                    <div>
+                                                        14°
+                                                        <span>C</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="lg:col-span-6 col-span-12">
+                                    <div class="card overflow-hidden mb-6">
+                                        <div class="px-6 py-3 bg-success flex items-center rounded--none">
+                                            <h4 class="text-lg font-semibold text-white mb-0">
+                                                <i class="ti ti-map-pin"></i> Lester
+                                            </h4>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="flex items-center justify-between">
+                                                <div>
+                                                    <h4 class=" font-light text-xl">Fri 20/5</h4>
+                                                    <h2 class="text-2xl font-medium text-dark dark:text-white">27° C</h2>
+                                                </div>
+                                                <i class="ti ti-cloud  text-4xl"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card overflow-hidden">
+                                        <div class="card-body">
+                                            <div class="flex items-center justify-between">
+                                                <div>
+                                                    <i class="ti ti-cloud-fog  text-4xl "></i>
+                                                    <h6 class="mt-2 text-dark dark:text-white ">
+                                                        <i class="ti ti-map-pin "></i> Lester
+                                                    </h6>
+                                                </div>
+                                                <div>
+                                                    <h2 class="text-2xl font-medium text-dark dark:text-white">27° C</h2>
+                                                    <h4 class=" font-light text-xl">Fri 20/5</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <div class="col-span-12">
+                                    <div class="grid md:grid-cols-2 sm:grid-cols-2 grid-cols-1">
+                                        <div class="card overflow-hidden  md:rounded-e-none">
+                                            <div class="card-body py-12 text-center bg-dark dark:bg-darkgray">
+                                                <h2 class="text-2xl font-medium text-white">27° C</h2>
+                                                <h4 class="font-light text-base text-white">Lester, London</h4>
+                                            </div>
+                                        </div>
+                                        <div class="card overflow-hidden md:rounded-s-none">
+                                            <div class="card-body ">
+                                                <i class="ti ti-cloud  text-4xl text-center mx-auto block"></i>
+                                                <div class="flex justify-between items-center">
+                                                    <h5 class="font-light text-base text-dark dark:text-white">
+                                                        <i class="ti ti-wind"></i> 10kmph
+                                                    </h5>
+                                                    <p class="text-base-content text-base text-dark dark:text-white">40%</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <div class="lg:col-span-6 md:col-span-6 col-span-12">
+                                    <div class="card overflow-hidden">
+                                        <div class="grid md:grid-cols-2 grid-cols-1 text-center bg-success">
+                                            <div class="card-body ">
+                                                <div class="p-3">
+                                                    <h2 class="text-white text-2xl">27° C</h2>
+                                                    <h5 class="font-light mt-3 text-white text-lg">Lester, London</h5>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <i class="ti ti-cloud-rain text-3xl text-white"></i>
+                                                <h5 class="font-light mt-3 text-white text-lg">12.10.2018</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <div class="lg:col-span-6 md:col-span-6 col-span-12">
+                                    <div class="card overflow-hidden relative">
+                                        <img src="@@webRoot/assets/images/backgrounds/weatherbg.jpg"
+                                            class="w-full max-w-full">
+                                        <div
+                                            class="absolute bg-secondary/5 top-0 left-0 h-full w-full px-3 py-3 text-white">
+                                            <div class="flex items-center">
+                                                <h5 class="font-medium text-white text-lg">
+                                                    Lester, London
+                                                </h5>
+                                                <div class="ms-auto">
+                                                    <span><i class="ti ti-map-pin text-white text-lg"></i></span>
+                                                </div>
+                                            </div>
+                                            <div class="flex gap-3 mt-3 mb-2">
+                                                <i class="ti ti-wind text-4xl"></i>
+                                                <div>
+                                                    <span class="text-4xl">14°</span>
+                                                    <span class="text-lg">C / 7° C</span>
+                                                </div>
+                                            </div>
+                                            <div class="text-lg">WEDNESDAY</div>
+                                            <div>1.8.2018</div>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <div class="lg:col-span-6 md:col-span-6 col-span-12">
+                                    <div class="card overflow-hidden">
+                                        <div class="p-4 bg-primary rounded-e-none">
+                                            <div class="flex justify-center gap-3 mt-3 mb-2 text-white">
+                                                <i class="ti ti-wind text-4xl"></i>
+                                                <div>
+                                                    <span class="text-4xl">14°</span>
+                                                    <span class="text-lg">C / 7° C</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="p-3 text-center text-fs_13 font-medium text-primary">5 May 2018</div>
+                                    </div>
+                                </div>
+                                <div class="lg:col-span-6 md:col-span-6 col-span-12">
+                                    <div class="card overflow-hidden">
+                                        <div class="p-4 bg-info rounded-e-none">
+                                            <div class="flex justify-center gap-3 mt-3 mb-2 text-white">
+                                                <div>
+                                                    <span class="text-4xl">4°</span>
+                                                    <span class="text-lg">C / 7° C</span>
+                                                </div>
+                                                <i class="ti ti-cloud text-4xl"></i>
+                                            </div>
+                                        </div>
+                                        <div class="p-3 text-center flex justify-between text-base-content">
+                                            <h5 class="text-base text-dark dark:text-white font-medium">
+                                                <i class="ti ti-cloud-rain me-1"></i> 15kmph
+                                            </h5>
+                                            <h5 class="text-base text-dark dark:text-white font-medium">40%</h5>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <div class="lg:col-span-6 md:col-span-6 col-span-12">
+                                    <div class="card overflow-hidden">
+                                        <div class="card-body bg-primary">
+                                            <div class="text-center text-white">
+                                                <iconify-icon icon="wi:sleet" class="text-5xl "></iconify-icon>
+                                                <div>
+                                                    <span class="text-4xl ">-9°</span> <span class="text-base">c</span>
+                                                </div>
+                                                <h5 class="text-lg text-white">Snowing</h5>
+                                            </div>
+                                        </div>
+                                        <div class="text-center p-3">
+                                            <h5 class="text-primary text-lg font-light">Lester, London</h5>
+                                            <h6 class="text-base font-light text-dark dark:text-white">Today, 04:00AM</h6>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <div class="lg:col-span-6 md:col-span-6 col-span-12">
+                                    <div class="card overflow-hidden">
+                                        <div class="card-body text-center">
+                                            <i class="ti ti-cloud  text-4xl"></i>
+                                        </div>
+                                        <div class="rounded-t-none bg-dark dark:bg-darkgray px-6 py-4 flex justify-between">
+                                            <div class="text-center">
+                                                <h3 class="font-medium text-white text-xl">
+                                                    <i class="text-success ti ti-chevron-up"></i> 14° C
+                                                </h3>
+                                                <h5 class="font-light text-white text-base mb-0">High</h5>
+                                            </div>
+                                            <div class="text-center">
+                                                <h3 class="font-medium text-white text-xl">
+                                                    <i class="text-error ti ti-chevron-down"></i> 2° C
+                                                </h3>
+                                                <h5 class="font-light text-white text-base mb-0">Low</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                            </div>
+                            <!---Wheather Cards End--->
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                <!-- Main Content End -->
+
+            </div>
+        </div>
+        <!--end of project-->
+    </main>
+    @@include("partials/header-components/mobile-menu.html")
+    @@include("partials/customizer.html")
+    @@include("partials/scripts.html")
+    <script src="@@webRoot/node_modules/prismjs/prism.js"></script>
+</body>
+
+</html>

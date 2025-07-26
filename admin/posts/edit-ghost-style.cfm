@@ -2643,6 +2643,37 @@ allTags = tagsResult.success ? tagsResult.data : [];
                                 icon: iconElement?.src || ''
                             });
                         }
+                    } else if (element.classList.contains('kg-toggle-card')) {
+                        // Toggle card
+                        const headingElement = element.querySelector('.kg-toggle-heading-text');
+                        const contentElement = element.querySelector('.kg-toggle-content');
+                        const isOpen = element.getAttribute('data-kg-toggle-state') !== 'close';
+                        
+                        addCardInternal('toggle', {
+                            heading: headingElement?.textContent || '',
+                            content: contentElement?.innerHTML || '',
+                            isOpen: isOpen,
+                            initialized: true
+                        });
+                    } else if (element.classList.contains('kg-toggle-heading')) {
+                        // Toggle card - partial HTML (heading followed by content)
+                        const headingElement = element.querySelector('.kg-toggle-heading-text');
+                        let nextElement = element.nextElementSibling;
+                        let content = '';
+                        
+                        // Check if next element is the toggle content
+                        if (nextElement && nextElement.classList.contains('kg-toggle-content')) {
+                            content = nextElement.innerHTML || '';
+                            // Skip the next element since we've processed it
+                            i++; // This will skip the content div in the main loop
+                        }
+                        
+                        addCardInternal('toggle', {
+                            heading: headingElement?.textContent || '',
+                            content: content,
+                            isOpen: true,
+                            initialized: true
+                        });
                     } else {
                         // Generic div - treat as HTML
                         addCardInternal('html', { content: element.innerHTML });
@@ -4171,6 +4202,10 @@ allTags = tagsResult.success ? tagsResult.data : [];
     // Show emoji picker for callout card
     function showEmojiPicker(cardId) {
         const card = document.getElementById(`card-${cardId}`);
+        if (!card) {
+            console.error('Card not found:', cardId);
+            return;
+        }
         const emojiPicker = card.querySelector('.ghost-emoji-picker');
         
         if (!emojiPicker) {

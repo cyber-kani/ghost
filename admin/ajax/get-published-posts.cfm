@@ -1,6 +1,17 @@
 <cfcontent type="application/json" reset="true">
 <cfheader name="X-Content-Type-Options" value="nosniff">
 
+<!--- Check if user is logged in --->
+<cfif NOT structKeyExists(session, "user") OR NOT structKeyExists(session.user, "id")>
+    <cfset response = {
+        "success": false,
+        "message": "Unauthorized access",
+        "posts": []
+    }>
+    <cfoutput>#serializeJSON(response)#</cfoutput>
+    <cfabort>
+</cfif>
+
 <cfset response = {
     "success": false,
     "message": "",
@@ -21,8 +32,7 @@
         FROM posts p
         LEFT JOIN users u ON p.author_id = u.id
         WHERE p.status = 'published'
-        AND p.type = 'post'
-        ORDER BY p.published_at DESC
+        ORDER BY p.published_at DESC, p.created_at DESC
         LIMIT 50
     </cfquery>
     
@@ -30,13 +40,18 @@
     <cfset postsArray = []>
     
     <cfloop query="qPosts">
+        <cfset publishedDate = "">
+        <cfif NOT isNull(qPosts.published_at) AND isDate(qPosts.published_at)>
+            <cfset publishedDate = dateFormat(qPosts.published_at, "yyyy-mm-dd") & " " & timeFormat(qPosts.published_at, "HH:mm:ss")>
+        </cfif>
+        
         <cfset post = {
             "id": qPosts.id,
-            "slug": qPosts.slug,
-            "title": qPosts.title,
+            "slug": qPosts.slug ?: "",
+            "title": qPosts.title ?: "Untitled",
             "excerpt": qPosts.excerpt ?: "",
             "feature_image": qPosts.feature_image ?: "",
-            "published_at": dateFormat(qPosts.published_at, "yyyy-mm-dd") & " " & timeFormat(qPosts.published_at, "HH:mm:ss"),
+            "published_at": publishedDate,
             "author": qPosts.author_name ?: ""
         }>
         
@@ -46,6 +61,7 @@
     <cfset response.success = true>
     <cfset response.posts = postsArray>
     <cfset response.message = "Posts loaded successfully">
+    <cfset response.count = qPosts.recordCount>
     
     <cfcatch>
         <cfset response.success = false>

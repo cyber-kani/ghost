@@ -6008,9 +6008,15 @@ allTags = tagsResult.success ? tagsResult.data : [];
     function showPostSelector(cardId) {
         // Fetch published posts via AJAX
         fetch('/ghost/admin/ajax/get-published-posts.cfm')
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
             .then(data => {
-                if (data.success && data.posts) {
+                console.log('Posts response:', data);
+                if (data.success && data.posts && data.posts.length > 0) {
                     let modalHtml = `
                         <div class="modal fade" id="postSelectorModal" tabindex="-1">
                             <div class="modal-dialog modal-lg">
@@ -6077,7 +6083,8 @@ allTags = tagsResult.success ? tagsResult.data : [];
                         });
                     });
                 } else {
-                    alert('No published posts found');
+                    alert('No published posts found. Please publish some posts first.');
+                    console.log('Response data:', data);
                 }
             })
             .catch(error => {

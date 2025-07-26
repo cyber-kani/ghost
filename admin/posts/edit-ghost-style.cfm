@@ -6031,10 +6031,20 @@ allTags = tagsResult.success ? tagsResult.data : [];
                     
                     data.posts.forEach(post => {
                         const postUrl = window.location.origin + '/ghost/' + post.slug;
+                        // Store post data in data attributes to avoid quote issues
+                        const postData = {
+                            url: postUrl,
+                            title: post.title || '',
+                            excerpt: post.excerpt || '',
+                            thumbnail: post.feature_image || '',
+                            id: post.id
+                        };
+                        
                         modalHtml += `
                             <div class="col-12">
                                 <div class="post-selector-item p-3 border rounded cursor-pointer" 
-                                     onclick="selectPostForBookmark('${cardId}', '${postUrl}', '${escapeHtml(post.title)}', '${escapeHtml(post.excerpt || '')}', '${post.feature_image || ''}')">
+                                     data-post='${JSON.stringify(postData).replace(/'/g, '&#39;')}'
+                                     data-card-id="${cardId}">
                                     <div class="d-flex">
                                         ${post.feature_image ? `
                                             <div class="post-selector-thumbnail me-3">
@@ -6073,8 +6083,14 @@ allTags = tagsResult.success ? tagsResult.data : [];
                     const modal = new bootstrap.Modal(document.getElementById('postSelectorModal'));
                     modal.show();
                     
-                    // Add hover effect
+                    // Add click and hover handlers
                     document.querySelectorAll('.post-selector-item').forEach(item => {
+                        item.addEventListener('click', function() {
+                            const postData = JSON.parse(this.getAttribute('data-post'));
+                            const cardId = this.getAttribute('data-card-id');
+                            selectPostForBookmark(cardId, postData.url, postData.title, postData.excerpt, postData.thumbnail);
+                        });
+                        
                         item.addEventListener('mouseenter', function() {
                             this.style.backgroundColor = '#f0f0f0';
                         });

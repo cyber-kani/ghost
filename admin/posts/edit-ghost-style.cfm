@@ -130,7 +130,7 @@ allTags = tagsResult.success ? tagsResult.data : [];
         .ghost-editor-content {
             max-width: 740px;
             margin: 0 auto;
-            padding: 4rem 2rem;
+            padding: 4rem 2rem 4rem 5rem;
         }
         
         .ghost-editor-body {
@@ -214,22 +214,51 @@ allTags = tagsResult.success ? tagsResult.data : [];
         
         .content-card-toolbar {
             position: absolute;
-            top: -2.5rem;
-            left: 0;
-            display: none;
-            background: #1f2937;
-            border-radius: 0.375rem;
-            padding: 0.25rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            gap: 0.25rem;
+            top: 50%;
+            left: -50px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            opacity: 0;
+            transition: opacity 0.2s;
         }
         
         .content-card:hover .content-card-toolbar {
-            display: flex;
+            opacity: 1;
         }
         
-        .content-card-toolbar button {
+        .toolbar-icon {
+            width: 32px;
+            height: 32px;
+            padding: 0;
+            border: 1px solid #e5e7eb;
+            background: #ffffff;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: #6b7280;
+            transition: all 0.2s;
             margin: 0;
+        }
+        
+        .toolbar-icon:hover {
+            border-color: #d1d5db;
+            background: #f9fafb;
+            color: #374151;
+        }
+        
+        .toolbar-icon-delete:hover {
+            border-color: #fecaca;
+            background: #fee2e2;
+            color: #dc2626;
+        }
+        
+        .toolbar-icon svg {
+            width: 16px;
+            height: 16px;
         }
         
         .add-card-button {
@@ -867,7 +896,7 @@ allTags = tagsResult.success ? tagsResult.data : [];
             font-size: 14px;
             font-weight: 500;
             border-radius: 4px;
-            text-decoration: none;
+            text-decoration: none !important;
             transition: all 0.2s ease;
             margin-top: auto;
             align-self: flex-start;
@@ -882,6 +911,7 @@ allTags = tagsResult.success ? tagsResult.data : [];
         .ghost-product-button.primary:hover {
             background: #0ea5e9;
             border-color: #0ea5e9;
+            text-decoration: none !important;
         }
         
         .ghost-product-button.secondary {
@@ -893,6 +923,7 @@ allTags = tagsResult.success ? tagsResult.data : [];
         .ghost-product-button.secondary:hover {
             background: #505863;
             border-color: #505863;
+            text-decoration: none !important;
         }
         
         .ghost-product-button.outline {
@@ -903,18 +934,20 @@ allTags = tagsResult.success ? tagsResult.data : [];
         
         .ghost-product-button.outline:hover {
             border-color: #c5c7c9;
+            text-decoration: none !important;
         }
         
         .ghost-product-button.link {
             background: transparent;
             color: #14b8ff;
             border: none;
-            text-decoration: underline;
+            text-decoration: none !important;
             padding: 0;
         }
         
         .ghost-product-button.link:hover {
             color: #0ea5e9;
+            text-decoration: none !important;
         }
         
         /* Ghost Product Settings */
@@ -1189,6 +1222,91 @@ allTags = tagsResult.success ? tagsResult.data : [];
         /* Spinner animation */
         .spin {
             animation: spin 1s linear infinite;
+        }
+        
+        /* Ghost Embed Card Styles */
+        .ghost-embed-wrapper {
+            position: relative;
+            width: 100%;
+            margin: 0;
+        }
+        
+        .ghost-embed-wrapper iframe,
+        .ghost-embed-wrapper embed,
+        .ghost-embed-wrapper object {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16/9;
+            border: 0;
+            border-radius: 8px;
+        }
+        
+        .ghost-embed-wrapper twitter-widget {
+            margin: 0 auto !important;
+        }
+        
+        .embed-card-content {
+            position: relative;
+        }
+        
+        .ghost-embed-settings {
+            background: #f7f8f9;
+            border-top: 1px solid #e6e9eb;
+            padding: 16px;
+            margin: 0 -1px -1px -1px;
+        }
+        
+        .ghost-embed-input {
+            width: 100%;
+            padding: 12px;
+            font-size: 14px;
+            border: 1px solid #dde1e5;
+            border-radius: 6px;
+            background: white;
+            color: #15171a;
+            outline: none;
+            font-family: inherit;
+        }
+        
+        .ghost-embed-input:focus {
+            border-color: #14b8ff;
+        }
+        
+        .ghost-embed-input::placeholder {
+            color: #626d79;
+        }
+        
+        .ghost-embed-caption {
+            width: 100%;
+            padding: 12px;
+            font-size: 14px;
+            border: 1px solid #dde1e5;
+            border-radius: 6px;
+            background: white;
+            color: #15171a;
+            outline: none;
+            font-family: inherit;
+            margin-top: 12px;
+        }
+        
+        .ghost-embed-caption:focus {
+            border-color: #14b8ff;
+        }
+        
+        .ghost-embed-loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            color: #626d79;
+            font-size: 14px;
+        }
+        
+        .ghost-embed-error {
+            text-align: center;
+            padding: 40px 20px;
+            color: #f56565;
+            font-size: 14px;
         }
         
         @keyframes spin {
@@ -1640,20 +1758,15 @@ allTags = tagsResult.success ? tagsResult.data : [];
         }
         
         .kg-toggle-card[data-kg-toggle-state="close"] .kg-toggle-content {
-            height: 0;
-            overflow: hidden;
-            transition: opacity .5s ease, top .35s ease;
-            opacity: 0;
-            top: -0.5em;
-            position: relative;
+            display: none;
         }
         
         .kg-toggle-content {
             height: auto;
             opacity: 1;
-            transition: opacity 1s ease, top .35s ease;
-            top: 0;
+            transition: opacity 0.3s ease;
             position: relative;
+            display: block;
         }
         
         .kg-toggle-card[data-kg-toggle-state="close"] svg {
@@ -1690,6 +1803,8 @@ allTags = tagsResult.success ? tagsResult.data : [];
             line-height: 1.5em;
             margin-top: 0.95em;
             outline: none;
+            min-height: 30px;
+            cursor: text;
         }
         
         .kg-toggle-content > div:empty::before {
@@ -1728,6 +1843,43 @@ allTags = tagsResult.success ? tagsResult.data : [];
         
         .editor-card.focused .kg-toggle-card {
             box-shadow: inset 0 0 0 1px #30a46c;
+        }
+        
+        /* Product card button styles */
+        .kg-product-card-button {
+            text-decoration: none !important;
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        
+        .kg-product-card-button:hover {
+            text-decoration: none !important;
+            opacity: 0.9;
+        }
+        
+        .kg-product-button-primary {
+            background: #30a46c;
+            color: white !important;
+        }
+        
+        .kg-product-button-secondary {
+            background: #f0f2f5;
+            color: #374151 !important;
+        }
+        
+        .kg-product-button-outline {
+            background: transparent;
+            border: 1px solid #e5e7eb;
+            color: #374151 !important;
+        }
+        
+        .kg-product-button-link {
+            background: transparent;
+            color: #30a46c !important;
+            padding: 0;
         }
     </style>
 </head>
@@ -2648,6 +2800,43 @@ allTags = tagsResult.success ? tagsResult.data : [];
                                 icon: iconElement?.src || ''
                             });
                         }
+                    } else if (element.classList.contains('kg-embed-card')) {
+                        // Embed card
+                        const figcaptionElement = element.querySelector('figcaption');
+                        const embedContent = element.innerHTML.replace(/<figcaption>.*?<\/figcaption>/s, '');
+                        
+                        // Try to extract URL from the embed HTML
+                        let embedUrl = '';
+                        
+                        // Check for YouTube
+                        const youtubeMatch = embedContent.match(/youtube\.com\/embed\/([a-zA-Z0-9_-]+)/);
+                        if (youtubeMatch) {
+                            embedUrl = `https://www.youtube.com/watch?v=${youtubeMatch[1]}`;
+                        }
+                        
+                        // Check for Vimeo
+                        const vimeoMatch = embedContent.match(/player\.vimeo\.com\/video\/(\d+)/);
+                        if (vimeoMatch) {
+                            embedUrl = `https://vimeo.com/${vimeoMatch[1]}`;
+                        }
+                        
+                        // Check for Twitter/X blockquote
+                        const twitterLink = element.querySelector('blockquote.twitter-tweet a[href*="twitter.com"], blockquote.twitter-tweet a[href*="x.com"]');
+                        if (twitterLink) {
+                            embedUrl = twitterLink.href;
+                        }
+                        
+                        // Check for Instagram blockquote
+                        const instagramLink = element.querySelector('blockquote.instagram-media');
+                        if (instagramLink) {
+                            embedUrl = instagramLink.getAttribute('data-instgrm-permalink') || '';
+                        }
+                        
+                        addCardInternal('embed', {
+                            html: embedContent.trim(),
+                            url: embedUrl,
+                            caption: figcaptionElement?.textContent || ''
+                        });
                     } else if (element.classList.contains('kg-toggle-card')) {
                         // Toggle card
                         const headingElement = element.querySelector('.kg-toggle-heading-text');
@@ -2749,14 +2938,20 @@ allTags = tagsResult.success ? tagsResult.data : [];
         const toolbar = document.createElement('div');
         toolbar.className = 'content-card-toolbar';
         toolbar.innerHTML = `
-            <button type="button" class="btn btn-sm btn-dark" onclick="moveCard('${card.id}', 'up')">
-                <i class="ti ti-arrow-up"></i>
+            <button type="button" class="toolbar-icon" onclick="moveCard('${card.id}', 'up')" title="Move up">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 19V5M5 12l7-7 7 7"/>
+                </svg>
             </button>
-            <button type="button" class="btn btn-sm btn-dark" onclick="moveCard('${card.id}', 'down')">
-                <i class="ti ti-arrow-down"></i>
+            <button type="button" class="toolbar-icon" onclick="moveCard('${card.id}', 'down')" title="Move down">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 5v14M19 12l-7 7-7-7"/>
+                </svg>
             </button>
-            <button type="button" class="btn btn-sm btn-dark" onclick="deleteCard('${card.id}')">
-                <i class="ti ti-trash"></i>
+            <button type="button" class="toolbar-icon toolbar-icon-delete" onclick="deleteCard('${card.id}')" title="Delete">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 6h18M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2m3 0v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6h14M10 11v6M14 11v6"/>
+                </svg>
             </button>
         `;
         div.appendChild(toolbar);
@@ -2804,6 +2999,9 @@ allTags = tagsResult.success ? tagsResult.data : [];
                 break;
             case 'bookmark':
                 div.innerHTML += createBookmarkCard(card);
+                break;
+            case 'embed':
+                div.innerHTML += createEmbedCard(card);
                 break;
             // Add more card types as needed
         }
@@ -3151,6 +3349,7 @@ allTags = tagsResult.success ? tagsResult.data : [];
                     </div>
                     <div class="kg-toggle-content" id="toggle-content-${card.id}">
                         <div contenteditable="true" 
+                             onclick="event.stopPropagation();"
                              onblur="updateCardData('${card.id}', 'content', this.innerHTML)"
                              oninput="markDirtySafe(); updateWordCount();"
                              data-placeholder="Toggle content...">${content}</div>
@@ -3692,6 +3891,101 @@ allTags = tagsResult.success ? tagsResult.data : [];
         }
     }
     
+    function createEmbedCard(card) {
+        if (card.data.html) {
+            // Show the embedded content
+            return `
+                <div class="card-content embed-card-content">
+                    <div class="ghost-embed-wrapper">
+                        ${card.data.html}
+                    </div>
+                    <div class="ghost-embed-settings" id="embedSettings-${card.id}">
+                        <input type="url" 
+                               class="ghost-embed-input" 
+                               placeholder="Paste URL to embed content"
+                               value="${card.data.url || ''}"
+                               onblur="handleEmbedUrlChange('${card.id}', this.value)"
+                               onkeypress="if(event.key==='Enter') handleEmbedUrlChange('${card.id}', this.value)"
+                               oninput="markDirtySafe();">
+                        ${card.data.caption ? `
+                            <input type="text" 
+                                   class="ghost-embed-caption" 
+                                   placeholder="Type caption for embed (optional)"
+                                   value="${card.data.caption || ''}"
+                                   onblur="updateCardData('${card.id}', 'caption', this.value)"
+                                   oninput="markDirtySafe();">
+                        ` : ''}
+                    </div>
+                </div>
+            `;
+        } else if (card.data.url) {
+            // Loading or error state
+            if (card.data.loading) {
+                return `
+                    <div class="card-content embed-card-content">
+                        <div class="ghost-embed-loading">
+                            <i class="ti ti-loader-2 spin me-2"></i>
+                            Fetching embed...
+                        </div>
+                        <div class="ghost-embed-settings" id="embedSettings-${card.id}">
+                            <input type="url" 
+                                   class="ghost-embed-input" 
+                                   placeholder="Paste URL to embed content"
+                                   value="${card.data.url || ''}"
+                                   onblur="handleEmbedUrlChange('${card.id}', this.value)"
+                                   onkeypress="if(event.key==='Enter') handleEmbedUrlChange('${card.id}', this.value)"
+                                   oninput="markDirtySafe();">
+                        </div>
+                    </div>
+                `;
+            } else {
+                return `
+                    <div class="card-content embed-card-content">
+                        <div class="ghost-embed-error">
+                            <i class="ti ti-alert-circle mb-2" style="font-size: 2rem;"></i>
+                            <div>Unable to embed this URL</div>
+                            <div class="text-sm mt-1">Try YouTube, Twitter, Instagram, Vimeo, SoundCloud, Spotify, or CodePen</div>
+                        </div>
+                        <div class="ghost-embed-settings" id="embedSettings-${card.id}">
+                            <input type="url" 
+                                   class="ghost-embed-input" 
+                                   placeholder="Paste URL to embed content"
+                                   value="${card.data.url || ''}"
+                                   onblur="handleEmbedUrlChange('${card.id}', this.value)"
+                                   onkeypress="if(event.key==='Enter') handleEmbedUrlChange('${card.id}', this.value)"
+                                   oninput="markDirtySafe();">
+                        </div>
+                    </div>
+                `;
+            }
+        } else {
+            // Empty state
+            return `
+                <div class="card-content embed-card-content">
+                    <div class="text-center py-5">
+                        <div class="mb-3">
+                            <i class="ti ti-code text-muted" style="font-size: 3rem;"></i>
+                        </div>
+                        <h5>Embed Card</h5>
+                        <p class="text-muted mb-3">
+                            Embed content from YouTube, Twitter, Instagram, Vimeo, SoundCloud, Spotify, CodePen, and more.
+                        </p>
+                    </div>
+                    <div class="ghost-embed-settings" id="embedSettings-${card.id}">
+                        <input type="url" 
+                               class="ghost-embed-input" 
+                               placeholder="Paste URL to embed content"
+                               value="${card.data.url || ''}"
+                               onblur="handleEmbedUrlChange('${card.id}', this.value)"
+                               onkeypress="if(event.key==='Enter') handleEmbedUrlChange('${card.id}', this.value)"
+                               oninput="markDirtySafe();"
+                               autofocus>
+                    </div>
+                </div>
+            `;
+        }
+    }
+    
     // Create add button
     function createAddButton() {
         const div = document.createElement('div');
@@ -3777,6 +4071,10 @@ allTags = tagsResult.success ? tagsResult.data : [];
             <div class="card-menu-item" onclick="insertCard('bookmark', this)">
                 <i class="ti ti-bookmark"></i>
                 <span>Bookmark</span>
+            </div>
+            <div class="card-menu-item" onclick="insertCard('embed', this)">
+                <i class="ti ti-code"></i>
+                <span>Embed</span>
             </div>
             <div class="card-menu-category">Commerce</div>
             <div class="card-menu-item" onclick="insertCard('product', this)">
@@ -5795,6 +6093,119 @@ allTags = tagsResult.success ? tagsResult.data : [];
         });
     }
     
+    // Handle embed URL change
+    function handleEmbedUrlChange(cardId, url) {
+        if (!url.trim()) {
+            updateCardData(cardId, 'url', '');
+            updateCardData(cardId, 'html', '');
+            return;
+        }
+        
+        // Validate URL
+        try {
+            new URL(url);
+        } catch {
+            alert('Please enter a valid URL');
+            return;
+        }
+        
+        const card = contentCards.find(c => c.id === cardId);
+        if (!card) return;
+        
+        // Update URL and show loading state
+        updateCardData(cardId, 'url', url);
+        updateCardData(cardId, 'loading', true);
+        updateCardData(cardId, 'html', '');
+        
+        // Re-render card to show loading state
+        refreshCard(cardId);
+        
+        // Determine embed type and generate HTML
+        const embedHtml = generateEmbedHtml(url);
+        
+        setTimeout(() => {
+            updateCardData(cardId, 'loading', false);
+            
+            if (embedHtml) {
+                updateCardData(cardId, 'html', embedHtml);
+                updateCardData(cardId, 'caption', ''); // Enable caption field
+            } else {
+                // Show error state
+                updateCardData(cardId, 'html', '');
+            }
+            
+            // Re-render card with embed
+            refreshCard(cardId);
+            markDirtySafe();
+        }, 1000);
+    }
+    
+    // Generate embed HTML based on URL
+    function generateEmbedHtml(url) {
+        const urlObj = new URL(url);
+        const hostname = urlObj.hostname.toLowerCase();
+        const pathname = urlObj.pathname;
+        
+        // YouTube
+        if (hostname.includes('youtube.com') || hostname.includes('youtu.be')) {
+            let videoId = '';
+            if (hostname.includes('youtube.com')) {
+                const params = new URLSearchParams(urlObj.search);
+                videoId = params.get('v');
+            } else {
+                videoId = pathname.slice(1);
+            }
+            if (videoId) {
+                return `<iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+            }
+        }
+        
+        // Twitter/X
+        if (hostname.includes('twitter.com') || hostname.includes('x.com')) {
+            // Twitter embeds require oEmbed API, for now return a placeholder
+            return `<blockquote class="twitter-tweet"><p>Loading tweet...</p><a href="${url}">${url}</a></blockquote>`;
+        }
+        
+        // Instagram
+        if (hostname.includes('instagram.com')) {
+            return `<blockquote class="instagram-media" data-instgrm-permalink="${url}" data-instgrm-version="14"><a href="${url}">View on Instagram</a></blockquote>`;
+        }
+        
+        // Vimeo
+        if (hostname.includes('vimeo.com')) {
+            const videoId = pathname.match(/\/(\d+)/)?.[1];
+            if (videoId) {
+                return `<iframe src="https://player.vimeo.com/video/${videoId}" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
+            }
+        }
+        
+        // CodePen
+        if (hostname.includes('codepen.io')) {
+            const match = pathname.match(/\/([^\/]+)\/pen\/([^\/]+)/);
+            if (match) {
+                const [, user, id] = match;
+                return `<iframe height="300" style="width: 100%;" scrolling="no" title="CodePen Embed" src="https://codepen.io/${user}/embed/${id}?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true"></iframe>`;
+            }
+        }
+        
+        // SoundCloud (requires oEmbed API in production)
+        if (hostname.includes('soundcloud.com')) {
+            return `<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=${encodeURIComponent(url)}&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>`;
+        }
+        
+        // Spotify
+        if (hostname.includes('spotify.com')) {
+            const match = pathname.match(/\/(track|album|playlist|artist)\/([a-zA-Z0-9]+)/);
+            if (match) {
+                const [, type, id] = match;
+                return `<iframe style="border-radius:12px" src="https://open.spotify.com/embed/${type}/${id}" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`;
+            }
+        }
+        
+        // No supported embed found
+        return null;
+    }
+    
     // Save post
     function savePost(status, isAutosave = false) {
         return new Promise((resolve, reject) => {
@@ -6068,6 +6479,24 @@ allTags = tagsResult.success ? tagsResult.data : [];
                             plaintext += `${card.data.description}\n`;
                         }
                         plaintext += `${card.data.url}\n\n`;
+                    }
+                    break;
+                case 'embed':
+                    if (card.data.html) {
+                        html += `<figure class="kg-card kg-embed-card">`;
+                        html += card.data.html;
+                        if (card.data.caption) {
+                            html += `<figcaption>${card.data.caption}</figcaption>`;
+                        }
+                        html += `</figure>\n`;
+                        
+                        if (card.data.url) {
+                            plaintext += `Embedded content from: ${card.data.url}\n`;
+                        }
+                        if (card.data.caption) {
+                            plaintext += card.data.caption + '\n';
+                        }
+                        plaintext += '\n';
                     }
                     break;
             }

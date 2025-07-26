@@ -44,8 +44,12 @@
         
         <!--- Fix feature image URL --->
         <cfset featureImage = qPosts.feature_image ?: "">
-        <cfif len(featureImage) AND featureImage CONTAINS "__GHOST_URL__">
-            <cfset featureImage = replace(featureImage, "__GHOST_URL__", "", "all")>
+        <cfif len(featureImage)>
+            <cfif featureImage CONTAINS "__GHOST_URL__">
+                <cfset featureImage = replace(featureImage, "__GHOST_URL__", "/ghost", "all")>
+            <cfelseif NOT featureImage CONTAINS "/ghost/" AND left(featureImage, 9) EQ "/content/">
+                <cfset featureImage = "/ghost" & featureImage>
+            </cfif>
         </cfif>
         
         <cfset post = {

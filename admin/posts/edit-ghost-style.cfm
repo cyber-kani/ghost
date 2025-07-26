@@ -1346,6 +1346,94 @@ allTags = tagsResult.success ? tagsResult.data : [];
             border-color: #14b8ff !important;
         }
         
+        /* Bootstrap modal fallback styles */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1050;
+            display: none;
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+            overflow-y: auto;
+            outline: 0;
+        }
+        
+        .modal.show {
+            display: block;
+        }
+        
+        .modal-dialog {
+            position: relative;
+            width: auto;
+            margin: 1.75rem auto;
+            max-width: 800px;
+        }
+        
+        .modal-content {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid rgba(0,0,0,.2);
+            border-radius: .3rem;
+            outline: 0;
+            box-shadow: 0 0.5rem 1rem rgba(0,0,0,.5);
+        }
+        
+        .modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .modal-title {
+            margin: 0;
+            line-height: 1.5;
+            font-size: 1.25rem;
+            font-weight: 500;
+        }
+        
+        .modal-body {
+            position: relative;
+            flex: 1 1 auto;
+            padding: 1rem;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+        
+        .btn-close {
+            padding: .25rem .25rem;
+            background: transparent;
+            border: 0;
+            font-size: 1.25rem;
+            font-weight: 700;
+            line-height: 1;
+            color: #000;
+            opacity: .5;
+            cursor: pointer;
+        }
+        
+        .btn-close:hover {
+            opacity: .75;
+        }
+        
+        .modal-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1040;
+            width: 100vw;
+            height: 100vh;
+            background-color: #000;
+            opacity: .5;
+        }
+        
         /* Ghost Callout Card Styles */
         .callout-card-content {
             padding: 0;
@@ -6012,7 +6100,15 @@ allTags = tagsResult.success ? tagsResult.data : [];
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
-                return response.json();
+                return response.text(); // Get text first to see what's returned
+            })
+            .then(text => {
+                try {
+                    return JSON.parse(text);
+                } catch (e) {
+                    console.error('Raw response:', text);
+                    throw new Error('Invalid JSON response');
+                }
             })
             .then(data => {
                 console.log('Posts response:', data);
@@ -6023,7 +6119,7 @@ allTags = tagsResult.success ? tagsResult.data : [];
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title">Select a Published Post</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal">&times;</button>
                                     </div>
                                     <div class="modal-body">
                                         <div class="row g-3">

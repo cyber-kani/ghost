@@ -1224,26 +1224,6 @@ allTags = tagsResult.success ? tagsResult.data : [];
             margin: 0 -1px -1px -1px;
         }
         
-        .ghost-bookmark-input {
-            width: 100%;
-            padding: 12px;
-            font-size: 14px;
-            border: 1px solid #dde1e5;
-            border-radius: 6px;
-            background: white;
-            color: #15171a;
-            outline: none;
-            font-family: inherit;
-        }
-        
-        .ghost-bookmark-input:focus {
-            border-color: #14b8ff;
-        }
-        
-        .ghost-bookmark-input::placeholder {
-            color: #626d79;
-        }
-        
         .ghost-bookmark-loading {
             display: flex;
             align-items: center;
@@ -3869,59 +3849,14 @@ allTags = tagsResult.success ? tagsResult.data : [];
                             </a>
                         </figure>
                         <div class="ghost-bookmark-settings" id="bookmarkSettings-${card.id}">
-                            <input type="url" 
-                                   class="ghost-bookmark-input" 
-                                   placeholder="Paste URL to create bookmark"
-                                   value="${card.data.url || ''}"
-                                   onblur="handleBookmarkUrlChange('${card.id}', this.value)"
-                                   onkeypress="if(event.key==='Enter') handleBookmarkUrlChange('${card.id}', this.value)"
-                                   oninput="markDirtySafe();">
-                            <div class="mt-3">
+                            <div class="text-center py-3">
                                 <button type="button" class="btn btn-sm btn-primary" onclick="showPostSelector('${card.id}')">
-                                    <i class="ti ti-file-text me-2"></i>Select from published posts
+                                    <i class="ti ti-file-text me-2"></i>Change published post
                                 </button>
                             </div>
                         </div>
                     </div>
                 `;
-            } else if (card.data.loading) {
-                return `
-                    <div class="card-content bookmark-card-content">
-                        <div class="ghost-bookmark-loading">
-                            <i class="ti ti-loader-2 spin me-2"></i>
-                            Loading bookmark preview...
-                        </div>
-                        <div class="ghost-bookmark-settings" id="bookmarkSettings-${card.id}">
-                            <input type="url" 
-                                   class="ghost-bookmark-input" 
-                                   placeholder="Paste URL to create bookmark"
-                                   value="${card.data.url || ''}"
-                                   onblur="handleBookmarkUrlChange('${card.id}', this.value)"
-                                   onkeypress="if(event.key==='Enter') handleBookmarkUrlChange('${card.id}', this.value)"
-                                   oninput="markDirtySafe();">
-                        </div>
-                    </div>
-                `;
-            } else {
-                return `
-                    <div class="card-content bookmark-card-content">
-                        <div class="ghost-bookmark-error">
-                            <i class="ti ti-alert-circle mb-2" style="font-size: 2rem;"></i>
-                            <div>Unable to embed this URL</div>
-                            <div class="text-sm mt-1">Check that the URL is correct and try again</div>
-                        </div>
-                        <div class="ghost-bookmark-settings" id="bookmarkSettings-${card.id}">
-                            <input type="url" 
-                                   class="ghost-bookmark-input" 
-                                   placeholder="Paste URL to create bookmark"
-                                   value="${card.data.url || ''}"
-                                   onblur="handleBookmarkUrlChange('${card.id}', this.value)"
-                                   onkeypress="if(event.key==='Enter') handleBookmarkUrlChange('${card.id}', this.value)"
-                                   oninput="markDirtySafe();">
-                        </div>
-                    </div>
-                `;
-            }
         } else {
             return `
                 <div class="card-content bookmark-card-content">
@@ -3931,22 +3866,11 @@ allTags = tagsResult.success ? tagsResult.data : [];
                         </div>
                         <h5>Bookmark Card</h5>
                         <p class="text-muted mb-3">
-                            Capture and share links with rich previews including title, description, and images.
+                            Select a published post to create an internal bookmark.
                         </p>
-                    </div>
-                    <div class="ghost-bookmark-settings" id="bookmarkSettings-${card.id}">
-                        <input type="url" 
-                               class="ghost-bookmark-input" 
-                               placeholder="Paste URL to create bookmark"
-                               value="${card.data.url || ''}"
-                               onblur="handleBookmarkUrlChange('${card.id}', this.value)"
-                               onkeypress="if(event.key==='Enter') handleBookmarkUrlChange('${card.id}', this.value)"
-                               oninput="markDirtySafe();">
-                        <div class="mt-3">
-                            <button type="button" class="btn btn-sm btn-primary" onclick="showPostSelector('${card.id}')">
-                                <i class="ti ti-file-text me-2"></i>Select from published posts
-                            </button>
-                        </div>
+                        <button type="button" class="btn btn-primary" onclick="showPostSelector('${card.id}')">
+                            <i class="ti ti-file-text me-2"></i>Select from published posts
+                        </button>
                     </div>
                 </div>
             `;
@@ -6062,6 +5986,13 @@ allTags = tagsResult.success ? tagsResult.data : [];
         return 'ti-file';
     }
     
+    // Helper function to escape HTML
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+    
     function formatFileSize(bytes) {
         if (bytes === 0) return '0 Bytes';
         
@@ -6075,7 +6006,7 @@ allTags = tagsResult.success ? tagsResult.data : [];
     // Show post selector modal for bookmark card
     function showPostSelector(cardId) {
         // Fetch published posts via AJAX
-        fetch('ajax/get-published-posts.cfm')
+        fetch('/ghost/admin/ajax/get-published-posts.cfm')
             .then(response => response.json())
             .then(data => {
                 if (data.success && data.posts) {
@@ -6173,7 +6104,8 @@ allTags = tagsResult.success ? tagsResult.data : [];
         markDirtySafe();
     }
     
-    // Handle bookmark URL change
+    // Handle bookmark URL change - Not used for internal bookmarks
+    /*
     function handleBookmarkUrlChange(cardId, url) {
         if (!url.trim()) {
             updateCardData(cardId, 'url', '');
@@ -6226,8 +6158,10 @@ allTags = tagsResult.success ? tagsResult.data : [];
                 renderCard(cardId);
             });
     }
+    */
     
-    // Fetch URL metadata (mock implementation)
+    // Fetch URL metadata (mock implementation) - Not used for internal bookmarks
+    /*
     function fetchUrlMetadata(url) {
         return new Promise((resolve, reject) => {
             // In a real implementation, this would call a backend service
@@ -6255,6 +6189,7 @@ allTags = tagsResult.success ? tagsResult.data : [];
             }, 1000); // Simulate network delay
         });
     }
+    */
     
     // Handle embed URL change
     function handleEmbedUrlChange(cardId, url) {

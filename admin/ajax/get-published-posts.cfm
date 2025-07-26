@@ -25,14 +25,11 @@
             p.id,
             p.slug,
             p.title,
-            p.custom_excerpt as excerpt,
             p.feature_image,
-            p.published_at,
-            u.name as author_name
+            p.published_at
         FROM posts p
-        LEFT JOIN users u ON p.author_id = u.id
         WHERE p.status = 'published'
-        ORDER BY p.published_at DESC, p.created_at DESC
+        ORDER BY p.created_at DESC
         LIMIT 50
     </cfquery>
     
@@ -49,10 +46,10 @@
             "id": qPosts.id,
             "slug": qPosts.slug ?: "",
             "title": qPosts.title ?: "Untitled",
-            "excerpt": qPosts.excerpt ?: "",
+            "excerpt": "",
             "feature_image": qPosts.feature_image ?: "",
             "published_at": publishedDate,
-            "author": qPosts.author_name ?: ""
+            "author": ""
         }>
         
         <cfset arrayAppend(postsArray, post)>
@@ -66,6 +63,11 @@
     <cfcatch>
         <cfset response.success = false>
         <cfset response.message = "Failed to load posts: #cfcatch.message#">
+        <cfset response.error = {
+            "type": cfcatch.type,
+            "message": cfcatch.message,
+            "detail": cfcatch.detail
+        }>
     </cfcatch>
 </cftry>
 

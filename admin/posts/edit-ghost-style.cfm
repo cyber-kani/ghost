@@ -1082,66 +1082,64 @@ allTags = tagsResult.success ? tagsResult.data : [];
         }
         
         /* Ghost Bookmark Card Styles */
-        .ghost-bookmark-card {
-            border: 1px solid #e6e9eb;
-            border-radius: 8px;
-            overflow: hidden;
+        .kg-bookmark-card,
+        .kg-bookmark-card * {
+            box-sizing: border-box;
+        }
+        
+        .kg-bookmark-card a.kg-bookmark-container,
+        .kg-bookmark-card a.kg-bookmark-container:hover {
+            display: flex;
             background: #fff;
             text-decoration: none;
-            color: inherit;
-            display: block;
-            transition: all 0.2s ease;
+            border-radius: 6px;
+            border: 1px solid rgb(124 139 154 / 25%);
+            overflow: hidden;
+            color: #222;
         }
         
-        .ghost-bookmark-card:hover {
-            border-color: #c5c7c9;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            text-decoration: none;
-            color: inherit;
-        }
-        
-        .ghost-bookmark-content {
-            display: flex;
-            min-height: 120px;
-        }
-        
-        .ghost-bookmark-info {
-            flex: 1;
-            padding: 20px;
+        .kg-bookmark-content {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            flex-grow: 1;
+            flex-basis: 100%;
+            align-items: flex-start;
+            justify-content: flex-start;
+            padding: 20px;
+            overflow: hidden;
         }
         
-        .ghost-bookmark-title {
-            font-size: 16px;
+        .kg-bookmark-title {
+            font-size: 15px;
+            line-height: 1.4em;
             font-weight: 600;
-            line-height: 1.3;
-            color: #15171a;
-            margin: 0 0 8px 0;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
         }
         
-        .ghost-bookmark-description {
+        .kg-bookmark-description {
+            display: -webkit-box;
             font-size: 14px;
-            line-height: 1.4;
-            color: #626d79;
-            margin: 0 0 12px 0;
-            display: -webkit-box;
+            line-height: 1.5em;
+            margin-top: 3px;
+            font-weight: 400;
+            max-height: 44px;
+            overflow-y: hidden;
+            opacity: 0.7;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
-            overflow: hidden;
         }
         
-        .ghost-bookmark-metadata {
+        .kg-bookmark-metadata {
             display: flex;
             align-items: center;
-            gap: 8px;
-            font-size: 13px;
-            color: #626d79;
+            margin-top: 22px;
+            width: 100%;
+            font-size: 14px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        
+        .kg-bookmark-metadata > *:not(img) {
+            opacity: 0.7;
         }
         
         .ghost-bookmark-publisher {
@@ -1165,11 +1163,54 @@ allTags = tagsResult.success ? tagsResult.data : [];
             object-fit: cover;
         }
         
-        .ghost-bookmark-icon {
-            width: 16px;
-            height: 16px;
-            margin-right: 8px;
-            border-radius: 2px;
+        .kg-bookmark-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 6px;
+        }
+        
+        .kg-bookmark-author,
+        .kg-bookmark-publisher {
+            display: inline;
+        }
+        
+        .kg-bookmark-publisher {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            max-width: 240px;
+            white-space: nowrap;
+            display: block;
+            line-height: 1.65em;
+        }
+        
+        .kg-bookmark-metadata > span:nth-of-type(2) {
+            font-weight: 400;
+        }
+        
+        .kg-bookmark-metadata > span:nth-of-type(2):before {
+            content: "•";
+            margin: 0 6px;
+        }
+        
+        .kg-bookmark-metadata > span:last-of-type {
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .kg-bookmark-thumbnail {
+            position: relative;
+            flex-grow: 1;
+            min-width: 33%;
+        }
+        
+        .kg-bookmark-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 0 2px 2px 0;
         }
         
         .bookmark-card-content {
@@ -1312,6 +1353,17 @@ allTags = tagsResult.success ? tagsResult.data : [];
         @keyframes spin {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
+        }
+        
+        /* Post Selector Modal Styles */
+        .post-selector-item {
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .post-selector-item:hover {
+            background-color: #f8f9fa;
+            border-color: #14b8ff !important;
         }
         
         /* Ghost Callout Card Styles */
@@ -3798,24 +3850,24 @@ allTags = tagsResult.success ? tagsResult.data : [];
             if (hasMetadata) {
                 return `
                     <div class="card-content bookmark-card-content">
-                        <a href="${card.data.url}" target="_blank" class="ghost-bookmark-card">
-                            <div class="ghost-bookmark-content">
-                                <div class="ghost-bookmark-info">
-                                    <div class="ghost-bookmark-title">${card.data.title || 'Untitled'}</div>
-                                    ${card.data.description ? `<div class="ghost-bookmark-description">${card.data.description}</div>` : ''}
-                                    <div class="ghost-bookmark-metadata">
-                                        ${card.data.icon ? `<img src="${card.data.icon}" alt="" class="ghost-bookmark-icon">` : ''}
-                                        ${card.data.publisher ? `<span class="ghost-bookmark-publisher">${card.data.publisher}</span>` : ''}
-                                        ${card.data.author ? `<span class="ghost-bookmark-author">${card.data.author}</span>` : ''}
+                        <figure class="kg-card kg-bookmark-card">
+                            <a class="kg-bookmark-container" href="${card.data.url}" target="_blank">
+                                <div class="kg-bookmark-content">
+                                    <div class="kg-bookmark-title">${card.data.title || 'Untitled'}</div>
+                                    ${card.data.description ? `<div class="kg-bookmark-description">${card.data.description}</div>` : ''}
+                                    <div class="kg-bookmark-metadata">
+                                        ${card.data.icon ? `<img class="kg-bookmark-icon" src="${card.data.icon}" alt="">` : ''}
+                                        ${card.data.publisher ? `<span class="kg-bookmark-author">${card.data.publisher}</span>` : ''}
+                                        ${card.data.author ? `<span class="kg-bookmark-publisher">${card.data.author}</span>` : ''}
                                     </div>
                                 </div>
                                 ${card.data.thumbnail ? `
-                                    <div class="ghost-bookmark-thumbnail">
-                                        <img src="${card.data.thumbnail}" alt="">
+                                    <div class="kg-bookmark-thumbnail">
+                                        <img src="${card.data.thumbnail}" alt="" onerror="this.style.display='none'">
                                     </div>
                                 ` : ''}
-                            </div>
-                        </a>
+                            </a>
+                        </figure>
                         <div class="ghost-bookmark-settings" id="bookmarkSettings-${card.id}">
                             <input type="url" 
                                    class="ghost-bookmark-input" 
@@ -3824,6 +3876,11 @@ allTags = tagsResult.success ? tagsResult.data : [];
                                    onblur="handleBookmarkUrlChange('${card.id}', this.value)"
                                    onkeypress="if(event.key==='Enter') handleBookmarkUrlChange('${card.id}', this.value)"
                                    oninput="markDirtySafe();">
+                            <div class="mt-3">
+                                <button type="button" class="btn btn-sm btn-primary" onclick="showPostSelector('${card.id}')">
+                                    <i class="ti ti-file-text me-2"></i>Select from published posts
+                                </button>
+                            </div>
                         </div>
                     </div>
                 `;
@@ -3885,6 +3942,11 @@ allTags = tagsResult.success ? tagsResult.data : [];
                                onblur="handleBookmarkUrlChange('${card.id}', this.value)"
                                onkeypress="if(event.key==='Enter') handleBookmarkUrlChange('${card.id}', this.value)"
                                oninput="markDirtySafe();">
+                        <div class="mt-3">
+                            <button type="button" class="btn btn-sm btn-primary" onclick="showPostSelector('${card.id}')">
+                                <i class="ti ti-file-text me-2"></i>Select from published posts
+                            </button>
+                        </div>
                     </div>
                 </div>
             `;
@@ -6010,6 +6072,107 @@ allTags = tagsResult.success ? tagsResult.data : [];
         return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
     }
     
+    // Show post selector modal for bookmark card
+    function showPostSelector(cardId) {
+        // Fetch published posts via AJAX
+        fetch('ajax/get-published-posts.cfm')
+            .then(response => response.json())
+            .then(data => {
+                if (data.success && data.posts) {
+                    let modalHtml = `
+                        <div class="modal fade" id="postSelectorModal" tabindex="-1">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Select a Published Post</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row g-3">
+                    `;
+                    
+                    data.posts.forEach(post => {
+                        const postUrl = window.location.origin + '/ghost/' + post.slug;
+                        modalHtml += `
+                            <div class="col-12">
+                                <div class="post-selector-item p-3 border rounded cursor-pointer" 
+                                     onclick="selectPostForBookmark('${cardId}', '${postUrl}', '${escapeHtml(post.title)}', '${escapeHtml(post.excerpt || '')}', '${post.feature_image || ''}')">
+                                    <div class="d-flex">
+                                        ${post.feature_image ? `
+                                            <div class="post-selector-thumbnail me-3">
+                                                <img src="${post.feature_image}" alt="${escapeHtml(post.title)}" style="width: 100px; height: 70px; object-fit: cover; border-radius: 4px;">
+                                            </div>
+                                        ` : ''}
+                                        <div class="flex-grow-1">
+                                            <h6 class="mb-1">${escapeHtml(post.title)}</h6>
+                                            ${post.excerpt ? `<p class="text-muted small mb-1">${escapeHtml(post.excerpt)}</p>` : ''}
+                                            <small class="text-muted">${post.published_at ? new Date(post.published_at).toLocaleDateString() : ''}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    
+                    modalHtml += `
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    // Remove existing modal if any
+                    const existingModal = document.getElementById('postSelectorModal');
+                    if (existingModal) {
+                        existingModal.remove();
+                    }
+                    
+                    // Add modal to page
+                    document.body.insertAdjacentHTML('beforeend', modalHtml);
+                    
+                    // Show modal
+                    const modal = new bootstrap.Modal(document.getElementById('postSelectorModal'));
+                    modal.show();
+                    
+                    // Add hover effect
+                    document.querySelectorAll('.post-selector-item').forEach(item => {
+                        item.addEventListener('mouseenter', function() {
+                            this.style.backgroundColor = '#f0f0f0';
+                        });
+                        item.addEventListener('mouseleave', function() {
+                            this.style.backgroundColor = '';
+                        });
+                    });
+                } else {
+                    alert('No published posts found');
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching posts:', error);
+                alert('Failed to load published posts');
+            });
+    }
+    
+    // Select a post for bookmark
+    function selectPostForBookmark(cardId, url, title, excerpt, thumbnail) {
+        // Close modal
+        const modal = bootstrap.Modal.getInstance(document.getElementById('postSelectorModal'));
+        modal.hide();
+        
+        // Update card data
+        updateCardData(cardId, 'url', url);
+        updateCardData(cardId, 'title', title);
+        updateCardData(cardId, 'description', excerpt);
+        updateCardData(cardId, 'thumbnail', thumbnail);
+        updateCardData(cardId, 'publisher', window.location.hostname);
+        updateCardData(cardId, 'icon', '/favicon.ico');
+        
+        // Re-render card
+        refreshCard(cardId);
+        markDirtySafe();
+    }
+    
     // Handle bookmark URL change
     function handleBookmarkUrlChange(cardId, url) {
         if (!url.trim()) {
@@ -6441,38 +6604,36 @@ allTags = tagsResult.success ? tagsResult.data : [];
                     break;
                 case 'bookmark':
                     if (card.data.url) {
-                        html += `<div class="kg-card kg-bookmark-card">`;
-                        html += `<a href="${card.data.url}" class="kg-bookmark-container" target="_blank">`;
+                        html += `<figure class="kg-card kg-bookmark-card">`;
+                        html += `<a class="kg-bookmark-container" href="${card.data.url}">`;
                         html += `<div class="kg-bookmark-content">`;
-                        html += `<div class="kg-bookmark-info">`;
                         if (card.data.title) {
-                            html += `<h4 class="kg-bookmark-title">${card.data.title}</h4>`;
+                            html += `<div class="kg-bookmark-title">${card.data.title}</div>`;
                         }
                         if (card.data.description) {
-                            html += `<p class="kg-bookmark-description">${card.data.description}</p>`;
+                            html += `<div class="kg-bookmark-description">${card.data.description}</div>`;
                         }
-                        if (card.data.publisher || card.data.author || card.data.icon) {
-                            html += `<div class="kg-bookmark-metadata">`;
-                            if (card.data.icon) {
-                                html += `<img src="${card.data.icon}" class="kg-bookmark-icon" alt="">`;
-                            }
-                            if (card.data.publisher) {
-                                html += `<span class="kg-bookmark-publisher">${card.data.publisher}</span>`;
-                            }
-                            if (card.data.author) {
-                                html += `<span class="kg-bookmark-author">${card.data.author}</span>`;
-                            }
-                            html += `</div>`;
+                        html += `<div class="kg-bookmark-metadata">`;
+                        if (card.data.icon) {
+                            html += `<img class="kg-bookmark-icon" src="${card.data.icon}" alt="">`;
                         }
+                        if (card.data.publisher) {
+                            // NOTE: Classes are reversed for theme backwards-compatibility
+                            html += `<span class="kg-bookmark-author">${card.data.publisher}</span>`;
+                        }
+                        if (card.data.author) {
+                            // NOTE: Classes are reversed for theme backwards-compatibility
+                            html += `<span class="kg-bookmark-publisher">${card.data.author}</span>`;
+                        }
+                        html += `</div>`;
                         html += `</div>`;
                         if (card.data.thumbnail) {
                             html += `<div class="kg-bookmark-thumbnail">`;
-                            html += `<img src="${card.data.thumbnail}" alt="">`;
+                            html += `<img src="${card.data.thumbnail}" alt="" onerror="this.style.display='none'">`;
                             html += `</div>`;
                         }
-                        html += `</div>`;
                         html += `</a>`;
-                        html += `</div>\n`;
+                        html += `</figure>\n`;
                         
                         plaintext += `${card.data.title || card.data.url}\n`;
                         if (card.data.description) {

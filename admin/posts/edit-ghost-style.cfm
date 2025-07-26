@@ -3081,7 +3081,7 @@ allTags = tagsResult.success ? tagsResult.data : [];
         return `
             <div class="card-content callout-card-content">
                 <div class="ghost-callout-card kg-callout-card-${color}">
-                    <div class="ghost-callout-emoji" onclick="showEmojiPicker('${card.id}')">${emoji}</div>
+                    <div class="ghost-callout-emoji" onclick="event.stopPropagation(); showEmojiPicker('${card.id}')">${emoji}</div>
                     <div class="ghost-callout-text" 
                          contenteditable="true" 
                          onblur="updateCardData('${card.id}', 'content', this.innerHTML)"
@@ -4201,12 +4201,15 @@ allTags = tagsResult.success ? tagsResult.data : [];
     // Toggle the toggle card open/closed
     // Show emoji picker for callout card
     function showEmojiPicker(cardId) {
-        const card = document.getElementById(`card-${cardId}`);
+        // Find the card element
+        const card = document.getElementById(cardId);
         if (!card) {
             console.error('Card not found:', cardId);
             return;
         }
-        const emojiPicker = card.querySelector('.ghost-emoji-picker');
+        
+        // Check if picker already exists
+        let emojiPicker = card.querySelector('.ghost-emoji-picker');
         
         if (!emojiPicker) {
             const emojis = ['💡', '💙', '💚', '💛', '🚨', '💕', '💜', '✨', '🔥', '⭐', '✅', '❓', '❗', '💬', '📝', '🎯', '🚀', '💪', '👍', '⚡', '🌟', '🎉', '🔑', '📌'];
@@ -4221,8 +4224,14 @@ allTags = tagsResult.success ? tagsResult.data : [];
                 </div>
             `;
             
-            card.querySelector('.ghost-callout-card').style.position = 'relative';
-            card.querySelector('.ghost-callout-card').appendChild(picker);
+            const calloutCard = card.querySelector('.ghost-callout-card');
+            if (calloutCard) {
+                calloutCard.style.position = 'relative';
+                calloutCard.appendChild(picker);
+            } else {
+                console.error('Callout card container not found');
+                return;
+            }
         }
         
         // Toggle picker visibility
@@ -4246,9 +4255,12 @@ allTags = tagsResult.success ? tagsResult.data : [];
     function selectEmoji(cardId, emoji) {
         updateCardData(cardId, 'emoji', emoji);
         refreshCard(cardId);
-        const picker = document.querySelector(`#card-${cardId} .ghost-emoji-picker`);
-        if (picker) {
-            picker.classList.remove('active');
+        const card = document.getElementById(cardId);
+        if (card) {
+            const picker = card.querySelector('.ghost-emoji-picker');
+            if (picker) {
+                picker.classList.remove('active');
+            }
         }
     }
     

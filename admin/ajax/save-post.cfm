@@ -73,8 +73,17 @@
     </cfif>
     
     <!--- Parse tags and authors JSON --->
-    <cfset tagArray = deserializeJSON(tags)>
-    <cfset authorArray = deserializeJSON(authors)>
+    <cfif len(trim(tags))>
+        <cfset tagArray = deserializeJSON(tags)>
+    <cfelse>
+        <cfset tagArray = []>
+    </cfif>
+    
+    <cfif len(trim(authors))>
+        <cfset authorArray = deserializeJSON(authors)>
+    <cfelse>
+        <cfset authorArray = []>
+    </cfif>
     
     <!--- Check if post exists --->
     <cfquery name="checkPost" datasource="#request.dsn#">

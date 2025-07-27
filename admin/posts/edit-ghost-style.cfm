@@ -11763,9 +11763,7 @@ allTags = tagsResult.success ? tagsResult.data : [];
         document.getElementById('formStatus').value = status;
         
         // Add authors to form data
-        if (selectedAuthors.length > 0) {
-            document.getElementById('formAuthors').value = JSON.stringify(selectedAuthors);
-        }
+        document.getElementById('formAuthors').value = JSON.stringify(selectedAuthors);
         
         // Add additional settings fields
         document.getElementById('formCustomTemplate').value = document.getElementById('postTemplate')?.value || '';
@@ -11787,9 +11785,6 @@ allTags = tagsResult.success ? tagsResult.data : [];
         
         // Get form data
         const formData = new FormData(document.getElementById('postForm'));
-        
-        // Debug: Log the postId being sent
-        console.log('Saving post with ID:', formData.get('postId'), 'Length:', formData.get('postId').length);
         
         // Send AJAX request
         fetch('/ghost/admin/ajax/save-post.cfm', {

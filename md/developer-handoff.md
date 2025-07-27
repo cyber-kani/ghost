@@ -219,6 +219,31 @@ rewrite ^/ghost/(.*)$ /ghost/index.cfm?originalPath=$1&$args last;
 - Function properly defined in editor code
 - May require cache clear to see fix
 
+### 9. **Auto-save and Real-time Updates (RESOLVED)**
+**Issue**: Settings changes not saving automatically, social previews not updating.
+
+**Root Cause**:
+- No auto-save functionality for settings fields
+- Preview functions not connected to field changes
+- Incorrect field IDs in JavaScript
+
+**Solution Applied**:
+- Implemented debounced auto-save for all settings fields
+- Added real-time preview updates for social media cards
+- Fixed field ID mappings (postExcerpt vs customExcerpt)
+- Added server-side fallback for first paragraph extraction
+
+### 10. **Data Source Configuration (RESOLVED)**
+**Issue**: Hardcoded datasource names causing errors.
+
+**Root Cause**:
+- Direct datasource references instead of using application configuration
+- Inconsistent datasource naming
+
+**Solution Applied**:
+- Changed all datasource references to use `#request.dsn#`
+- Standardized datasource configuration across all files
+
 ### 4. **Datasource Mismatch**
 **Issue**: Posts page showing "Service Error: Datasource [ghost_prod] doesn't exist".
 
@@ -699,5 +724,64 @@ The foundation is solid and ready for advanced features like:
 - Newsletter functionality
 - API development
 - Theme system implementation
+
+## Completed Tasks Summary (July 27, 2025)
+
+### Apple HIG Settings Panel Implementation
+The following tasks were completed during the Apple HIG redesign session:
+
+1. **Redesign settings panel following Apple HIG** ✅
+   - Implemented SF Pro font family with proper weights
+   - Applied iOS-style color scheme and spacing
+   - Created smooth animations and transitions
+   - Updated all UI components to match Apple design language
+
+2. **Redesign all subview panels with Apple HIG** ✅
+   - Code Injection panel with native styling
+   - Meta Data panel with character counters
+   - Twitter/X Card panel with real-time preview
+   - Facebook Card panel with live updates
+   - Post History panel with timeline view
+
+3. **Implement multi-author support** ✅
+   - Database-driven author dropdown
+   - Apple-style tag UI for selected authors
+   - Default author (Yalu) loaded from database
+   - Dynamic filtering of already selected authors
+
+4. **Connect settings to database** ✅
+   - All settings fields save to posts and posts_meta tables
+   - Load existing data on page load
+   - Handle JSON serialization for tags and authors
+
+5. **Implement auto-save for all settings** ✅
+   - Debounced saving on field changes
+   - Visual feedback during save operations
+   - Fixed field ID mismatches
+   - Handle all settings fields including social media
+
+6. **Add real-time social preview updates** ✅
+   - Facebook card preview updates as you type
+   - Twitter/X card preview with character limits
+   - Search result preview with meta data
+   - Canonical URL preview display
+
+7. **Fix social preview fallback logic** ✅
+   - Implemented Ghost's fallback hierarchy
+   - Server-side first paragraph extraction
+   - Client-side content extraction from editor
+   - Placeholder text showing fallback content
+
+8. **Update all datasource references** ✅
+   - Changed all queries to use request.dsn
+   - Removed hardcoded datasource names
+   - Standardized configuration across all files
+
+9. **Fix various bugs and issues** ✅
+   - Fixed ID column length errors (24-character IDs)
+   - Fixed empty JSON deserialization
+   - Fixed social preview showing only 2 words
+   - Fixed auto-save field ID mismatches
+   - Fixed excerpt and featured post fields
 
 This handoff document provides a complete overview of the current CFGhost CMS implementation, including all technical decisions, resolved issues, security implementations, and production readiness status. The project has evolved from a basic CMS prototype to a fully functional, secure, and professional content management system ready for production use.

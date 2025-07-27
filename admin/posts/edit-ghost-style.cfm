@@ -8086,6 +8086,14 @@ allTags = tagsResult.success ? tagsResult.data : [];
                     // Strip HTML tags and return plain text
                     const temp = document.createElement('div');
                     temp.innerHTML = card.data.content;
+                    
+                    // If content has <br><br>, it means multiple paragraphs were combined
+                    // Split by <br><br> and get the first part
+                    if (card.data.content.includes('<br><br>')) {
+                        const parts = card.data.content.split('<br><br>');
+                        temp.innerHTML = parts[0];
+                    }
+                    
                     const text = temp.textContent || temp.innerText || '';
                     if (text.trim()) {
                         return text.trim();

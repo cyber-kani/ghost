@@ -68,6 +68,22 @@ if (len(url.id)) {
 // Get all tags for the tags selector
 tagsResult = getTags(1, 100);
 allTags = tagsResult.success ? tagsResult.data : [];
+
+// Extract first paragraph for placeholder text
+firstParagraphText = "";
+if (len(postData.html)) {
+    firstP = reMatch("<p[^>]*>(.*?)</p>", postData.html);
+    if (arrayLen(firstP) gt 0) {
+        // Strip HTML tags from first paragraph
+        firstParagraphText = reReplace(firstP[1], "<[^>]*>", "", "all");
+        firstParagraphText = replace(firstParagraphText, "&nbsp;", " ", "all");
+        firstParagraphText = replace(firstParagraphText, "&amp;", "&", "all");
+        firstParagraphText = replace(firstParagraphText, "&lt;", "<", "all");
+        firstParagraphText = replace(firstParagraphText, "&gt;", ">", "all");
+        firstParagraphText = replace(firstParagraphText, "&quot;", '"', "all");
+        firstParagraphText = trim(firstParagraphText);
+    }
+}
 </cfscript>
 
 <!DOCTYPE html>
@@ -4331,7 +4347,7 @@ allTags = tagsResult.success ? tagsResult.data : [];
                             <textarea id="twitterDescription" 
                                       class="apple-form-control" 
                                       rows="3"
-                                      placeholder="<cfoutput>#htmlEditFormat(len(postData.meta_description) ? postData.meta_description : postData.custom_excerpt)#</cfoutput>"><cfoutput>#htmlEditFormat(structKeyExists(postData, "twitter_description") ? postData.twitter_description : "")#</cfoutput></textarea>
+                                      placeholder="<cfoutput>#htmlEditFormat(len(postData.meta_description) ? postData.meta_description : (len(postData.custom_excerpt) ? postData.custom_excerpt : left(firstParagraphText, 125)))#</cfoutput>"><cfoutput>#htmlEditFormat(structKeyExists(postData, "twitter_description") ? postData.twitter_description : "")#</cfoutput></textarea>
                             <div class="char-counter" id="twitterDescriptionCounter">
                                 <span class="text-gray-500">Recommended: 125 characters</span>
                                 <span class="ms-2">•</span>
@@ -4427,7 +4443,7 @@ allTags = tagsResult.success ? tagsResult.data : [];
                             <textarea id="facebookDescription" 
                                       class="apple-form-control" 
                                       rows="3"
-                                      placeholder="<cfoutput>#htmlEditFormat(len(postData.meta_description) ? postData.meta_description : postData.custom_excerpt)#</cfoutput>"><cfoutput>#htmlEditFormat(structKeyExists(postData, "og_description") ? postData.og_description : "")#</cfoutput></textarea>
+                                      placeholder="<cfoutput>#htmlEditFormat(len(postData.meta_description) ? postData.meta_description : (len(postData.custom_excerpt) ? postData.custom_excerpt : left(firstParagraphText, 160)))#</cfoutput>"><cfoutput>#htmlEditFormat(structKeyExists(postData, "og_description") ? postData.og_description : "")#</cfoutput></textarea>
                             <div class="char-counter" id="facebookDescriptionCounter">
                                 <span class="text-gray-500">Recommended: 160 characters</span>
                                 <span class="ms-2">•</span>

@@ -57,7 +57,8 @@
     <title>CFGhost Admin - Login</title>
     
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/png" href="/ghost/admin/assets/images/logos/favicon.png">
+    <link rel="icon" type="image/x-icon" href="/ghost/admin/assets/images/logos/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="/ghost/admin/assets/images/logos/favicon.svg">
     
     <!-- Core CSS -->
     <link rel="stylesheet" href="/ghost/admin/assets/css/theme.css">

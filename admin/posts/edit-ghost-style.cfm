@@ -79,7 +79,8 @@ allTags = tagsResult.success ? tagsResult.data : [];
     <title><cfoutput>#pageTitle# - CFGhost Admin</cfoutput></title>
     
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/png" href="/ghost/admin/assets/images/logos/favicon.png">
+    <link rel="icon" type="image/x-icon" href="/ghost/admin/assets/images/logos/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="/ghost/admin/assets/images/logos/favicon.svg">
     
     <!-- Core CSS -->
     <link rel="stylesheet" href="/ghost/admin/assets/css/theme.css">
@@ -968,6 +969,38 @@ allTags = tagsResult.success ? tagsResult.data : [];
             margin-bottom: 0;
         }
         
+        /* General card settings panel styles */
+        .ghost-card-settings {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+            padding: 16px;
+            margin-top: 10px;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+            display: none;
+        }
+        
+        /* Show settings panel when active */
+        .ghost-card-settings.active {
+            display: block;
+        }
+        
+        /* Add margin to cards when settings are open */
+        .content-card:has(.ghost-card-settings.active) {
+            margin-bottom: 20px;
+        }
+        
+        .toolbar-icon-settings {
+            border-color: #14b8ff;
+            color: #14b8ff;
+        }
+        
+        .toolbar-icon-settings:hover {
+            background: #f0feff;
+            border-color: #0ea5e9;
+            color: #0ea5e9;
+        }
+        
         .ghost-setting-group {
             flex: 1;
         }
@@ -1035,23 +1068,26 @@ allTags = tagsResult.success ? tagsResult.data : [];
         .ghost-button-preview.primary {
             background: #14b8ff;
             color: white;
+            border: none;
         }
         
         .ghost-button-preview.secondary {
             background: #626d79;
             color: white;
+            border: none;
         }
         
         .ghost-button-preview.outline {
             background: transparent;
             color: #15171a;
-            border: 1px solid #dde1e5;
+            border: 1px solid #15171a;
         }
         
         .ghost-button-preview.link {
             background: transparent;
             color: #14b8ff;
-            text-decoration: underline;
+            text-decoration: none;
+            border: none;
         }
         
         .ghost-rating-selector {
@@ -1526,10 +1562,8 @@ allTags = tagsResult.success ? tagsResult.data : [];
             color: #aaa;
         }
         
-        .ghost-callout-settings {
-            margin-top: 16px;
-            padding-top: 16px;
-            border-top: 1px solid #e6e9eb;
+        .callout-card-content {
+            cursor: pointer;
         }
         
         .ghost-callout-colors {
@@ -1650,6 +1684,130 @@ allTags = tagsResult.success ? tagsResult.data : [];
         
         .ghost-image-settings.hidden {
             display: none;
+        }
+        
+        /* Button card styles */
+        .button-card-content {
+            cursor: pointer;
+        }
+        
+        .kg-button-card {
+            margin: 1.5em 0;
+            text-align: center;
+        }
+        
+        .kg-button-card.kg-align-left {
+            text-align: left;
+        }
+        
+        .kg-button-card.kg-align-center {
+            text-align: center;
+        }
+        
+        .kg-btn {
+            display: inline-block;
+            padding: 8px 16px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none !important;
+            border-radius: 5px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        
+        /* Custom button class that doesn't inherit default styles */
+        .kg-btn-custom {
+            all: unset;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        
+        .kg-btn-primary {
+            background: #14b8ff;
+            color: #fff;
+        }
+        
+        .kg-btn-primary:hover {
+            background: #0ea5e9;
+            color: #fff;
+        }
+        
+        .kg-btn-secondary {
+            background: #626d79;
+            color: #fff;
+        }
+        
+        .kg-btn-secondary:hover {
+            background: #515961;
+            color: #fff;
+        }
+        
+        .kg-btn-outline {
+            background: transparent;
+            color: #15171a;
+            border: 1px solid #dde1e5;
+        }
+        
+        .kg-btn-outline:hover {
+            border-color: #c5c7c9;
+            color: #15171a;
+        }
+        
+        .kg-btn-link {
+            background: transparent;
+            color: #14b8ff;
+            text-decoration: none;
+        }
+        
+        .kg-btn-link:hover {
+            color: #0ea5e9;
+        }
+        
+        /* Ghost button settings panel */
+        .ghost-button-settings {
+            min-width: 300px;
+        }
+        
+        /* Color picker styles */
+        .ghost-color-picker-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 8px;
+        }
+        
+        .ghost-color-input-group {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        
+        .ghost-color-label {
+            font-size: 12px;
+            color: #626d79;
+            font-weight: 500;
+        }
+        
+        .ghost-color-picker {
+            width: 100%;
+            height: 36px;
+            border: 1px solid #dde1e5;
+            border-radius: 4px;
+            cursor: pointer;
+            padding: 2px;
+        }
+        
+        .ghost-color-picker:hover {
+            border-color: #c5c7c9;
+        }
+        
+        .ghost-color-picker:focus {
+            outline: none;
+            border-color: #14b8ff;
+            box-shadow: 0 0 0 2px rgba(20, 184, 255, 0.2);
         }
         
         .ghost-image-toolbar {
@@ -2612,6 +2770,21 @@ allTags = tagsResult.success ? tagsResult.data : [];
                     editableElement.focus();
                 }
             }
+            
+            // Close settings panels when clicking outside, unless actively editing
+            const clickedOnSettings = e.target.closest('.ghost-card-settings');
+            const clickedOnCard = e.target.closest('.card-content');
+            
+            if (!clickedOnSettings && !clickedOnCard) {
+                // Close all settings panels if clicked outside any card
+                document.querySelectorAll('.ghost-card-settings.active').forEach(panel => {
+                    // Check if any input/button in this panel has focus
+                    const hasFocus = panel.contains(document.activeElement);
+                    if (!hasFocus) {
+                        panel.classList.remove('active');
+                    }
+                });
+            }
         });
     });
     
@@ -2777,8 +2950,18 @@ allTags = tagsResult.success ? tagsResult.data : [];
                         const link = img.closest('a');
                         const href = link ? link.href : '';
                         
+                        // Clean up image URL
+                        let imageSrc = img.src;
+                        if (imageSrc.includes('__GHOST_URL__')) {
+                            imageSrc = imageSrc.replace('__GHOST_URL__', '');
+                        }
+                        // Ensure /ghost prefix for content images
+                        if (imageSrc.includes('/content/') && !imageSrc.includes('/ghost/')) {
+                            imageSrc = '/ghost' + imageSrc;
+                        }
+                        
                         addCardInternal('image', {
-                            src: img.src,
+                            src: imageSrc,
                             alt: img.alt || '',
                             caption: element.querySelector('figcaption')?.textContent || '',
                             cardWidth: cardWidth,
@@ -2788,8 +2971,18 @@ allTags = tagsResult.success ? tagsResult.data : [];
                     break;
                     
                 case 'img':
+                    // Clean up image URL
+                    let imgSrc = element.src;
+                    if (imgSrc.includes('__GHOST_URL__')) {
+                        imgSrc = imgSrc.replace('__GHOST_URL__', '');
+                    }
+                    // Ensure /ghost prefix for content images
+                    if (imgSrc.includes('/content/') && !imgSrc.includes('/ghost/')) {
+                        imgSrc = '/ghost' + imgSrc;
+                    }
+                    
                     addCardInternal('image', {
-                        src: element.src,
+                        src: imgSrc,
                         alt: element.alt || '',
                         caption: ''
                     });
@@ -3083,6 +3276,7 @@ allTags = tagsResult.success ? tagsResult.data : [];
         // Create toolbar
         const toolbar = document.createElement('div');
         toolbar.className = 'content-card-toolbar';
+        
         toolbar.innerHTML = `
             <button type="button" class="toolbar-icon" onclick="moveCard('${card.id}', 'up')" title="Move up">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -3363,30 +3557,224 @@ allTags = tagsResult.success ? tagsResult.data : [];
     }
     
     function createButtonCard(card) {
+        // Set defaults
+        if (!card.data.buttonAlignment) {
+            card.data.buttonAlignment = 'center';
+        }
+        if (!card.data.buttonStyle) {
+            card.data.buttonStyle = 'primary';
+        }
+        if (!card.data.text) {
+            card.data.text = '';
+        }
+        if (!card.data.url) {
+            card.data.url = '';
+        }
+        // Set default colors based on button style
+        if (!card.data.backgroundColor) {
+            switch(card.data.buttonStyle) {
+                case 'secondary':
+                    card.data.backgroundColor = '#626d79';
+                    break;
+                case 'outline':
+                case 'link':
+                    card.data.backgroundColor = '#15171a';
+                    break;
+                default:
+                    card.data.backgroundColor = '#14b8ff';
+            }
+        }
+        if (!card.data.textColor) {
+            card.data.textColor = '#ffffff';
+        }
+
+        // Get button class and style based on button style
+        let buttonClass = 'kg-btn kg-btn-custom';
+        let buttonStyle = '';
+        
+        // Apply custom styles based on button style
+        switch(card.data.buttonStyle) {
+            case 'primary':
+                buttonStyle = `
+                    background-color: ${card.data.backgroundColor} !important; 
+                    color: ${card.data.textColor} !important; 
+                    border: 2px solid ${card.data.backgroundColor} !important;
+                    padding: 8px 16px !important;
+                    font-size: 16px !important;
+                    font-weight: 600 !important;
+                    text-decoration: none !important;
+                    border-radius: 5px !important;
+                    display: inline-block !important;
+                    transition: all 0.2s ease !important;
+                `;
+                break;
+            case 'secondary': 
+                buttonStyle = `
+                    background-color: ${card.data.backgroundColor} !important; 
+                    color: ${card.data.textColor} !important; 
+                    border: 2px solid ${card.data.backgroundColor} !important;
+                    padding: 8px 16px !important;
+                    font-size: 16px !important;
+                    font-weight: 600 !important;
+                    text-decoration: none !important;
+                    border-radius: 5px !important;
+                    display: inline-block !important;
+                    transition: all 0.2s ease !important;
+                `;
+                break;
+            case 'outline':
+                buttonStyle = `
+                    border: 2px solid ${card.data.backgroundColor} !important; 
+                    color: ${card.data.backgroundColor} !important; 
+                    background-color: transparent !important;
+                    padding: 8px 16px !important;
+                    font-size: 16px !important;
+                    font-weight: 600 !important;
+                    text-decoration: none !important;
+                    border-radius: 5px !important;
+                    display: inline-block !important;
+                    transition: all 0.2s ease !important;
+                `;
+                break;
+            case 'link':
+                buttonStyle = `
+                    color: ${card.data.backgroundColor} !important; 
+                    background-color: transparent !important; 
+                    border: none !important;
+                    text-decoration: none !important;
+                    padding: 8px 16px !important;
+                    font-size: 16px !important;
+                    font-weight: 600 !important;
+                    display: inline-block !important;
+                    transition: all 0.2s ease !important;
+                `;
+                break;
+            default:
+                buttonStyle = `
+                    background-color: ${card.data.backgroundColor} !important; 
+                    color: ${card.data.textColor} !important; 
+                    border: 2px solid ${card.data.backgroundColor} !important;
+                    padding: 8px 16px !important;
+                    font-size: 16px !important;
+                    font-weight: 600 !important;
+                    text-decoration: none !important;
+                    border-radius: 5px !important;
+                    display: inline-block !important;
+                    transition: all 0.2s ease !important;
+                `;
+        }
+
+        // Focus on text input for new cards
+        if (!card.data.text && !card.data.initialized) {
+            setTimeout(() => {
+                const textInput = document.querySelector(`#card-${card.id} .ghost-button-text-input`);
+                if (textInput) {
+                    textInput.focus();
+                }
+                updateCardData(card.id, 'initialized', true);
+            }, 50);
+        }
+
         return `
-            <div class="card-content">
-                <div class="flex gap-4 items-end">
-                    <div class="flex-1">
-                        <label class="form-label text-sm">Button Text</label>
-                        <input type="text" 
-                               class="form-control" 
-                               value="${card.data.text || ''}"
-                               onblur="updateCardData('${card.id}', 'text', this.value)"
-                               placeholder="Click me">
-                    </div>
-                    <div class="flex-1">
-                        <label class="form-label text-sm">Button URL</label>
-                        <input type="url" 
-                               class="form-control" 
-                               value="${card.data.url || ''}"
-                               onblur="updateCardData('${card.id}', 'url', this.value)"
-                               placeholder="https://example.com">
-                    </div>
-                </div>
-                <div class="mt-4 text-center">
+            <div class="card-content button-card-content" onclick="toggleCardSettings('${card.id}')">
+                <div class="kg-card kg-button-card kg-align-${card.data.buttonAlignment}">
                     <a href="${card.data.url || '#'}" 
-                       class="btn btn-primary" 
-                       target="_blank">${card.data.text || 'Button'}</a>
+                       class="${buttonClass}" 
+                       id="button-${card.id}"
+                       style="${buttonStyle}"
+                       onclick="event.stopPropagation();"
+                       onmouseover="handleButtonHover('${card.id}', true)"
+                       onmouseout="handleButtonHover('${card.id}', false)"
+                       ${card.data.url ? 'target="_blank"' : ''}>${card.data.text || 'Button'}</a>
+                </div>
+                
+                <!-- Ghost-style Button Settings Panel -->
+                <div class="ghost-card-settings ghost-button-settings" id="buttonSettings-${card.id}" onclick="event.stopPropagation();">
+                    <div class="ghost-setting-group">
+                        <input type="text" 
+                               class="ghost-input ghost-button-text-input" 
+                               value="${card.data.text || ''}"
+                               onclick="event.stopPropagation();"
+                               onblur="updateCardData('${card.id}', 'text', this.value); refreshCard('${card.id}')"
+                               oninput="markDirtySafe();"
+                               placeholder="Button text">
+                    </div>
+                    
+                    <div class="ghost-setting-group">
+                        <input type="url" 
+                               class="ghost-input" 
+                               value="${card.data.url || ''}"
+                               onclick="event.stopPropagation();"
+                               onblur="updateCardData('${card.id}', 'url', this.value); refreshCard('${card.id}')"
+                               oninput="markDirtySafe();"
+                               placeholder="Button URL">
+                    </div>
+                    
+                    <div class="ghost-setting-group">
+                        <label>Button style</label>
+                        <div class="ghost-button-style-group">
+                            <button type="button" 
+                                    class="ghost-style-button ${card.data.buttonStyle === 'primary' ? 'active' : ''}"
+                                    onclick="event.stopPropagation(); updateButtonStyle('${card.id}', 'primary');">
+                                <span class="ghost-button-preview primary">Button</span>
+                            </button>
+                            <button type="button" 
+                                    class="ghost-style-button ${card.data.buttonStyle === 'secondary' ? 'active' : ''}"
+                                    onclick="event.stopPropagation(); updateButtonStyle('${card.id}', 'secondary');">
+                                <span class="ghost-button-preview secondary">Button</span>
+                            </button>
+                            <button type="button" 
+                                    class="ghost-style-button ${card.data.buttonStyle === 'outline' ? 'active' : ''}"
+                                    onclick="event.stopPropagation(); updateButtonStyle('${card.id}', 'outline');">
+                                <span class="ghost-button-preview outline">Button</span>
+                            </button>
+                            <button type="button" 
+                                    class="ghost-style-button ${card.data.buttonStyle === 'link' ? 'active' : ''}"
+                                    onclick="event.stopPropagation(); updateButtonStyle('${card.id}', 'link');">
+                                <span class="ghost-button-preview link">Button</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="ghost-setting-group">
+                        <label>Alignment</label>
+                        <div class="ghost-alignment-selector">
+                            <button type="button" 
+                                    class="ghost-alignment-btn ${card.data.buttonAlignment === 'left' ? 'active' : ''}"
+                                    onclick="event.stopPropagation(); updateCardData('${card.id}', 'buttonAlignment', 'left'); refreshCard('${card.id}')"
+                                    title="Align left">
+                                <i class="ti ti-align-left"></i>
+                            </button>
+                            <button type="button" 
+                                    class="ghost-alignment-btn ${card.data.buttonAlignment === 'center' ? 'active' : ''}"
+                                    onclick="event.stopPropagation(); updateCardData('${card.id}', 'buttonAlignment', 'center'); refreshCard('${card.id}')"
+                                    title="Align center">
+                                <i class="ti ti-align-center"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="ghost-setting-group">
+                        <label>Colors</label>
+                        <div class="ghost-color-picker-row">
+                            <div class="ghost-color-input-group">
+                                <label class="ghost-color-label">Background</label>
+                                <input type="color" 
+                                       class="ghost-color-picker" 
+                                       value="${card.data.backgroundColor || '#14b8ff'}"
+                                       onclick="event.stopPropagation();"
+                                       onchange="updateCardData('${card.id}', 'backgroundColor', this.value); refreshCard('${card.id}')">
+                            </div>
+                            <div class="ghost-color-input-group">
+                                <label class="ghost-color-label">Text</label>
+                                <input type="color" 
+                                       class="ghost-color-picker" 
+                                       value="${card.data.textColor || '#ffffff'}"
+                                       onclick="event.stopPropagation();"
+                                       onchange="updateCardData('${card.id}', 'textColor', this.value); refreshCard('${card.id}')">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         `;
@@ -3428,7 +3816,7 @@ allTags = tagsResult.success ? tagsResult.data : [];
         }
         
         return `
-            <div class="card-content callout-card-content">
+            <div class="card-content callout-card-content" onclick="toggleCardSettings('${card.id}')">
                 <div class="ghost-callout-card kg-callout-card-${color}">
                     <div class="ghost-callout-emoji" onclick="event.stopPropagation(); showEmojiPicker('${card.id}')">${emoji}</div>
                     <div class="ghost-callout-text" 
@@ -3438,7 +3826,7 @@ allTags = tagsResult.success ? tagsResult.data : [];
                          data-placeholder="Add a callout message..."
                          onclick="event.stopPropagation();">${card.data.content || ''}</div>
                 </div>
-                <div class="ghost-callout-settings">
+                <div class="ghost-callout-settings" id="calloutSettings-${card.id}" onclick="event.stopPropagation();">
                     <div class="ghost-callout-colors">
                         ${Object.entries(colors).map(([key, value]) => `
                             <button type="button" 
@@ -4321,8 +4709,21 @@ allTags = tagsResult.success ? tagsResult.data : [];
         const card = contentCards.find(c => c.id === cardId);
         if (card) {
             const oldElement = document.getElementById(cardId);
+            
+            // Check if settings panel was active
+            const settingsPanel = oldElement.querySelector('.ghost-card-settings');
+            const wasSettingsActive = settingsPanel && settingsPanel.classList.contains('active');
+            
             const newElement = createCardElement(card);
             oldElement.parentNode.replaceChild(newElement, oldElement);
+            
+            // Restore settings panel state if it was active
+            if (wasSettingsActive) {
+                const newSettingsPanel = newElement.querySelector('.ghost-card-settings');
+                if (newSettingsPanel) {
+                    newSettingsPanel.classList.add('active');
+                }
+            }
         }
     }
     
@@ -5471,6 +5872,128 @@ allTags = tagsResult.success ? tagsResult.data : [];
         document.getElementById('imageInput-' + cardId).click();
     }
     
+    // Handle button hover effects with custom colors
+    function handleButtonHover(cardId, isHover) {
+        const card = contentCards.find(c => c.id === cardId);
+        if (!card) return;
+        
+        const button = document.getElementById('button-' + cardId);
+        if (!button) return;
+        
+        const bgColor = card.data.backgroundColor || '#14b8ff';
+        const textColor = card.data.textColor || '#ffffff';
+        
+        if (isHover) {
+            // Darken background color for hover effect
+            const darkerBg = darkenColor(bgColor, 0.1);
+            
+            switch(card.data.buttonStyle) {
+                case 'primary':
+                case 'secondary':
+                    button.style.backgroundColor = darkerBg + ' !important';
+                    button.style.borderColor = darkerBg + ' !important';
+                    break;
+                case 'outline':
+                    button.style.borderColor = darkerBg + ' !important';
+                    button.style.color = darkerBg + ' !important';
+                    button.style.backgroundColor = 'rgba(0,0,0,0.05) !important';
+                    break;
+                case 'link':
+                    const darkerLinkColor = darkenColor(bgColor, 0.2);
+                    button.style.color = darkerLinkColor + ' !important';
+                    break;
+            }
+        } else {
+            // Restore original colors
+            switch(card.data.buttonStyle) {
+                case 'primary':
+                case 'secondary':
+                    button.style.backgroundColor = bgColor + ' !important';
+                    button.style.color = textColor + ' !important';
+                    button.style.borderColor = bgColor + ' !important';
+                    break;
+                case 'outline':
+                    button.style.borderColor = bgColor + ' !important';
+                    button.style.color = bgColor + ' !important';
+                    button.style.backgroundColor = 'transparent !important';
+                    break;
+                case 'link':
+                    button.style.color = bgColor + ' !important';
+                    button.style.backgroundColor = 'transparent !important';
+                    button.style.border = 'none !important';
+                    break;
+            }
+        }
+    }
+    
+    // Helper function to darken a color
+    function darkenColor(color, percent) {
+        const num = parseInt(color.replace("#",""), 16);
+        const amt = Math.round(2.55 * percent * 100);
+        const R = (num >> 16) - amt;
+        const G = (num >> 8 & 0x00FF) - amt;
+        const B = (num & 0x0000FF) - amt;
+        return "#" + (0x1000000 + (R<255?R<1?0:R:255)*0x10000 + (G<255?G<1?0:G:255)*0x100 + (B<255?B<1?0:B:255)).toString(16).slice(1);
+    }
+    
+    // Update button style and reset colors to defaults for that style
+    function updateButtonStyle(cardId, newStyle) {
+        const card = contentCards.find(c => c.id === cardId);
+        if (!card) return;
+        
+        // Update the button style
+        updateCardData(cardId, 'buttonStyle', newStyle);
+        
+        // Reset colors to defaults for the new style
+        let newBgColor = '#14b8ff';
+        let newTextColor = '#ffffff';
+        
+        switch(newStyle) {
+            case 'secondary':
+                newBgColor = '#626d79';
+                break;
+            case 'outline':
+            case 'link':
+                newBgColor = '#15171a';
+                break;
+        }
+        
+        updateCardData(cardId, 'backgroundColor', newBgColor);
+        updateCardData(cardId, 'textColor', newTextColor);
+        
+        // Refresh the card
+        refreshCard(cardId);
+    }
+    
+    // Toggle card settings panel
+    function toggleCardSettings(cardId) {
+        const card = document.getElementById(cardId);
+        if (!card) return;
+        
+        // Find the settings panel within this card
+        const settingsPanel = card.querySelector('.ghost-card-settings');
+        if (!settingsPanel) return;
+        
+        // Check if we're currently editing within this settings panel
+        const activeElement = document.activeElement;
+        const isEditingSettings = settingsPanel.contains(activeElement);
+        
+        // If we're editing settings, don't close the panel
+        if (isEditingSettings) {
+            return;
+        }
+        
+        // Toggle active class
+        settingsPanel.classList.toggle('active');
+        
+        // Close all other settings panels
+        document.querySelectorAll('.ghost-card-settings').forEach(panel => {
+            if (panel !== settingsPanel) {
+                panel.classList.remove('active');
+            }
+        });
+    }
+    
     // Show image settings panel
     function showImageSettings(cardId) {
         const panel = document.getElementById('imageSettings-' + cardId);
@@ -6601,7 +7124,28 @@ allTags = tagsResult.success ? tagsResult.data : [];
                     break;
                 case 'button':
                     if (card.data.text && card.data.url) {
-                        html += `<div class="button-wrapper"><a href="${card.data.url}" class="btn">${card.data.text}</a></div>\n`;
+                        const buttonAlignment = card.data.buttonAlignment || 'center';
+                        const buttonStyle = card.data.buttonStyle || 'primary';
+                        let buttonClass = 'kg-btn';
+                        
+                        switch(buttonStyle) {
+                            case 'primary':
+                                buttonClass += ' kg-btn-accent';
+                                break;
+                            case 'secondary':
+                                buttonClass += ' kg-btn-secondary';
+                                break;
+                            case 'outline':
+                                buttonClass += ' kg-btn-outline';
+                                break;
+                            case 'link':
+                                buttonClass += ' kg-btn-link';
+                                break;
+                        }
+                        
+                        html += `<div class="kg-card kg-button-card kg-align-${buttonAlignment}">`;
+                        html += `<a href="${card.data.url}" class="${buttonClass}">${card.data.text}</a>`;
+                        html += `</div>\n`;
                     }
                     break;
                 case 'callout':

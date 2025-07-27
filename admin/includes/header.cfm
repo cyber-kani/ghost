@@ -85,7 +85,8 @@
     <title>Ghost Admin - <cfoutput>#pageTitle#</cfoutput></title>
     
     <!-- Favicon icon-->
-    <link rel="shortcut icon" type="image/png" href="/ghost/admin/assets/images/logos/favicon.png" />
+    <link rel="icon" type="image/x-icon" href="/ghost/admin/assets/images/logos/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="/ghost/admin/assets/images/logos/favicon.svg">
     
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />

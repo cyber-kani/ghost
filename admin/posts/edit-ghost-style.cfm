@@ -1771,7 +1771,1063 @@ allTags = tagsResult.success ? tagsResult.data : [];
             min-width: 300px;
         }
         
-        /* Color picker styles */
+        /* Gallery card styles - matching Ghost exactly */
+        .gallery-card-content {
+            cursor: pointer;
+        }
+        
+        .kg-gallery-card {
+            margin: 0 0 1.5em;
+        }
+        
+        .kg-gallery-card,
+        .kg-gallery-card * {
+            box-sizing: border-box;
+        }
+        
+        .kg-gallery-card figcaption {
+            margin: 1.0em 0 0;
+            text-align: center;
+            font-size: 0.85em;
+            line-height: 1.4;
+            color: rgba(0,0,0,0.5);
+        }
+        
+        .kg-gallery-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+        
+        .kg-gallery-row {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 1.2rem;
+        }
+        
+        .kg-gallery-image {
+            flex: 1 1 0;
+            position: relative;
+            overflow: hidden;
+            border-radius: 3px;
+            min-height: 100px;
+            cursor: move;
+        }
+        
+        .kg-gallery-image img {
+            display: block;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .kg-gallery-image:hover .kg-gallery-image-toolbar {
+            opacity: 1;
+        }
+        
+        .kg-gallery-image-toolbar {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            display: flex;
+            gap: 4px;
+            opacity: 0;
+            transition: opacity 0.2s;
+            background: rgba(0,0,0,0.3);
+            border-radius: 3px;
+            padding: 4px;
+        }
+        
+        .kg-gallery-image-btn {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .kg-gallery-image-btn:hover {
+            background: rgba(0,0,0,0.7);
+        }
+        
+        /* Ghost gallery settings */
+        .ghost-gallery-settings {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            display: none;
+        }
+        
+        .ghost-gallery-settings.active {
+            display: block;
+        }
+        
+        .ghost-gallery-toolbar {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        
+        .ghost-gallery-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 12px;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #374151;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .ghost-gallery-btn:hover {
+            background: #f3f4f6;
+            border-color: #d1d5db;
+        }
+        
+        .ghost-gallery-images-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 12px;
+            margin-top: 16px;
+        }
+        
+        .ghost-gallery-image-item {
+            position: relative;
+            aspect-ratio: 1;
+            border-radius: 6px;
+            overflow: hidden;
+            background: #f3f4f6;
+        }
+        
+        .ghost-gallery-image-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .ghost-gallery-image-item:hover .ghost-gallery-image-actions {
+            opacity: 1;
+        }
+        
+        .ghost-gallery-image-actions {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        
+        .ghost-gallery-action-btn {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.9);
+            border: none;
+            border-radius: 6px;
+            color: #374151;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .ghost-gallery-action-btn:hover {
+            background: white;
+            transform: scale(1.05);
+        }
+        
+        .ghost-gallery-action-delete {
+            color: #ef4444;
+        }
+        
+        /* Empty gallery state */
+        .kg-gallery-empty {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+            background: #f9fafb;
+            border: 2px dashed #e5e7eb;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .kg-gallery-empty:hover {
+            background: #f3f4f6;
+            border-color: #d1d5db;
+        }
+        
+        .kg-gallery-empty i {
+            font-size: 48px;
+            color: #9ca3af;
+            margin-bottom: 12px;
+        }
+        
+        .kg-gallery-empty p {
+            color: #6b7280;
+            font-size: 16px;
+            margin: 0;
+        }
+        
+        /* Ghost modal styles */
+        .ghost-modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+        
+        .ghost-modal {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .ghost-modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 24px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .ghost-modal-header h3 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 600;
+            color: #111827;
+        }
+        
+        .ghost-modal-close {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            border: none;
+            border-radius: 6px;
+            color: #6b7280;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .ghost-modal-close:hover {
+            background: #f3f4f6;
+            color: #374151;
+        }
+        
+        .ghost-modal-body {
+            padding: 24px;
+            overflow-y: auto;
+            flex: 1;
+        }
+        
+        .ghost-modal-footer {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 12px;
+            padding: 20px 24px;
+            border-top: 1px solid #e5e7eb;
+        }
+        
+        /* Header Card v2 Styles - Matching Ghost exactly */
+        .header-card-content {
+            position: relative;
+            max-width: 100%;
+            overflow: visible;
+        }
+        
+        /* Settings button for header card */
+        .ghost-card-settings-button {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            z-index: 10;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.2s;
+        }
+        
+        .header-card-content:hover .ghost-card-settings-button {
+            opacity: 1;
+        }
+        
+        .ghost-card-settings-button:hover {
+            background: #f3f4f6;
+            border-color: #d1d5db;
+        }
+        
+        .ghost-card-settings-button i {
+            font-size: 16px;
+            color: #374151;
+        }
+        
+        .kg-header-card.kg-v2 {
+            position: relative;
+            padding: 0;
+            min-height: initial;
+            text-align: initial;
+            margin: 0 0 1.5em;
+            cursor: pointer;
+            transition: box-shadow 0.2s ease;
+        }
+        
+        .kg-header-card.kg-v2:hover {
+            box-shadow: 0 0 0 2px var(--ghost-accent-color);
+        }
+        
+        .kg-header-card.kg-v2,
+        .kg-header-card.kg-v2 * {
+            box-sizing: border-box;
+        }
+        
+        .kg-header-card.kg-v2 a,
+        .kg-header-card.kg-v2 a span {
+            color: currentColor;
+        }
+        
+        .kg-header-card.kg-style-accent.kg-v2 {
+            background-color: var(--ghost-accent-color);
+        }
+        
+        .kg-header-card-content {
+            width: 100%;
+        }
+        
+        .kg-layout-split .kg-header-card-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            max-width: 100%;
+        }
+        
+        /* Ensure split layout doesn't overflow */
+        .kg-header-card.kg-layout-split {
+            max-width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+        }
+        
+        .kg-header-card.kg-layout-split.kg-width-full {
+            width: 100%;
+            max-width: 100%;
+        }
+        
+        .kg-header-card-text {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            height: 100%;
+            padding: min(6.4vmax, 120px) min(4vmax, 80px);
+            background-size: cover;
+            background-position: center;
+            text-align: left;
+        }
+        
+        .kg-width-wide .kg-header-card-text {
+            padding: min(10vmax, 220px) min(6.4vmax, 140px);
+        }
+        
+        .kg-width-full .kg-header-card-text {
+            padding: min(12vmax, 260px) 0;
+        }
+        
+        .kg-layout-split .kg-header-card-text {
+            padding: min(12vmax, 260px) min(4vmax, 80px);
+        }
+        
+        .kg-layout-split.kg-content-wide .kg-header-card-text {
+            padding: min(10vmax, 220px) 0 min(10vmax, 220px) min(4vmax, 80px);
+        }
+        
+        .kg-layout-split.kg-content-wide.kg-swapped .kg-header-card-text {
+            padding: min(10vmax, 220px) min(4vmax, 80px) min(10vmax, 220px) 0;
+        }
+        
+        .kg-swapped .kg-header-card-text {
+            grid-row: 1;
+        }
+        
+        .kg-header-card-text.kg-align-center {
+            align-items: center;
+            text-align: center;
+        }
+        
+        .kg-header-card.kg-style-image h2.kg-header-card-heading,
+        .kg-header-card.kg-style-image .kg-header-card-subheading,
+        .kg-header-card.kg-style-image.kg-v2 .kg-header-card-button {
+            z-index: 999;
+        }
+        
+        /* Background image */
+        .kg-header-card > picture > .kg-header-card-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            background-color: #FFFFFF;
+            pointer-events: none;
+        }
+        
+        /* Split layout image */
+        .kg-header-card-content .kg-header-card-image {
+            width: 100%;
+            height: 0;
+            min-height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+        
+        .kg-layout-split .kg-header-card-image {
+            max-width: 100%;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .kg-header-card-image-placeholder {
+            background: #f3f4f6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+        }
+        
+        .kg-header-image-upload-placeholder {
+            text-align: center;
+            color: #71717a;
+        }
+        
+        .kg-header-image-upload-placeholder i {
+            font-size: 48px;
+            color: #a1a1aa;
+            display: block;
+            margin-bottom: 12px;
+        }
+        
+        .kg-header-image-upload-placeholder p {
+            margin: 0;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .kg-layout-split picture.kg-header-card-image {
+            display: block;
+            height: 100%;
+            min-height: 400px;
+        }
+        
+        .kg-layout-split picture.kg-header-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .kg-content-wide .kg-header-card-content .kg-header-card-image {
+            height: 100%;
+            padding: 5.6em 0;
+            object-fit: contain;
+        }
+        
+        /* Heading */
+        .kg-header-card h2.kg-header-card-heading {
+            margin: 0;
+            font-size: clamp(1.7em, 4vw, 2.5em);
+            font-weight: 700;
+            line-height: 1.05em;
+            letter-spacing: -0.01em;
+        }
+        
+        .kg-header-card h2.kg-header-card-heading[contenteditable]:empty:before {
+            content: attr(data-placeholder);
+            color: currentColor;
+            opacity: 0.3;
+        }
+        
+        .kg-header-card.kg-width-wide h2.kg-header-card-heading {
+            font-size: clamp(1.7em, 5vw, 3.3em);
+        }
+        
+        .kg-header-card.kg-width-full h2.kg-header-card-heading {
+            font-size: clamp(1.9em, 5.6vw, 4.2em);
+        }
+        
+        .kg-header-card.kg-width-full.kg-layout-split h2.kg-header-card-heading {
+            font-size: clamp(1.9em, 4vw, 3.3em);
+        }
+        
+        /* Subheading */
+        .kg-header-card-subheading {
+            margin: 0 0 2em;
+        }
+        
+        .kg-header-card .kg-header-card-subheading {
+            max-width: 40em;
+            margin: 0;
+            font-size: clamp(1.05em, 2vw, 1.4em);
+            font-weight: 500;
+            line-height: 1.2em;
+        }
+        
+        .kg-header-card .kg-header-card-subheading[contenteditable]:empty:before {
+            content: attr(data-placeholder);
+            color: currentColor;
+            opacity: 0.3;
+        }
+        
+        .kg-header-card h2 + .kg-header-card-subheading {
+            margin: 0.6em 0 0;
+        }
+        
+        .kg-header-card .kg-header-card-subheading strong {
+            font-weight: 600;
+        }
+        
+        .kg-header-card.kg-width-wide .kg-header-card-subheading {
+            font-size: clamp(1.05em, 2vw, 1.55em);
+        }
+        
+        .kg-header-card.kg-width-full .kg-header-card-subheading:not(.kg-layout-split .kg-header-card-subheading) {
+            max-width: min(65vmax, 1200px);
+            font-size: clamp(1.05em, 2vw, 1.7em);
+        }
+        
+        .kg-header-card.kg-width-full.kg-layout-split .kg-header-card-subheading {
+            font-size: clamp(1.05em, 2vw, 1.55em);
+        }
+        
+        /* Button */
+        .kg-header-card.kg-v2 .kg-header-card-button {
+            display: flex;
+            position: relative;
+            align-items: center;
+            height: 2.9em;
+            min-height: 46px;
+            padding: 0 1.2em;
+            outline: none;
+            border: none;
+            font-size: 1em;
+            font-weight: 600;
+            line-height: 1em;
+            text-align: center;
+            text-decoration: none;
+            letter-spacing: .2px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            border-radius: 3px;
+            transition: opacity .2s ease;
+            cursor: pointer;
+        }
+        
+        .kg-header-card.kg-v2 .kg-header-card-button.kg-style-accent {
+            background-color: var(--ghost-accent-color);
+        }
+        
+        .kg-header-card.kg-v2 h2 + .kg-header-card-button,
+        .kg-header-card.kg-v2 p + .kg-header-card-button {
+            margin: 1.5em 0 0;
+        }
+        
+        .kg-header-card.kg-v2 .kg-header-card-button:hover {
+            opacity: 0.85;
+        }
+        
+        .kg-header-card.kg-v2.kg-width-wide .kg-header-card-button {
+            font-size: 1.05em;
+        }
+        
+        .kg-header-card.kg-v2.kg-width-wide h2 + .kg-header-card-button,
+        .kg-header-card.kg-v2.kg-width-wide p + .kg-header-card-button {
+            margin-top: 1.75em;
+        }
+        
+        .kg-header-card.kg-v2.kg-width-full .kg-header-card-button {
+            font-size: 1.1em;
+        }
+        
+        .kg-header-card.kg-v2.kg-width-full h2 + .kg-header-card-button,
+        .kg-header-card.kg-v2.kg-width-full p + .kg-header-card-button {
+            margin-top: 2em;
+        }
+        
+        /* Header settings panel */
+        .ghost-header-settings {
+            margin: 16px auto;
+            display: none;
+            width: 100%;
+            max-width: 680px;
+        }
+        
+        .ghost-header-settings:not(.hidden) {
+            display: block !important;
+        }
+        
+        .ghost-header-settings .ghost-settings-panel {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 20px;
+            width: 100%;
+            max-height: 500px;
+            overflow-y: auto;
+            margin: 0 auto;
+        }
+        
+        .ghost-settings-group {
+            margin-bottom: 16px;
+        }
+        
+        .ghost-settings-group:last-child {
+            margin-bottom: 0;
+        }
+        
+        .ghost-settings-label {
+            display: block;
+            font-size: 13px;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 8px;
+        }
+        
+        .ghost-button-group {
+            display: flex;
+            gap: 4px;
+        }
+        
+        .ghost-button-small {
+            padding: 6px 12px;
+            font-size: 13px;
+            border: 1px solid #e5e7eb;
+            background: white;
+            color: #374151;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .ghost-button-small:hover {
+            background: #f3f4f6;
+        }
+        
+        .ghost-button-small.active {
+            background: #1f2937;
+            color: white;
+            border-color: #1f2937;
+        }
+        
+        .ghost-color-picker-row {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .ghost-color-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s;
+        }
+        
+        .ghost-color-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        .ghost-color-btn.active {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+        
+        .ghost-color-btn.ghost-color-custom {
+            background: linear-gradient(45deg, #e5e7eb 25%, transparent 25%, transparent 75%, #e5e7eb 75%, #e5e7eb),
+                        linear-gradient(45deg, #e5e7eb 25%, transparent 25%, transparent 75%, #e5e7eb 75%, #e5e7eb);
+            background-size: 10px 10px;
+            background-position: 0 0, 5px 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .ghost-input {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: border-color 0.2s;
+        }
+        
+        .ghost-input:focus {
+            outline: none;
+            border-color: #3b82f6;
+        }
+        
+        /* Responsive */
+        @media (max-width: 640px) {
+            .kg-layout-split .kg-header-card-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .kg-width-wide .kg-header-card-text {
+                padding: min(6.4vmax, 120px) min(4vmax, 80px);
+            }
+            
+            .kg-layout-split.kg-content-wide .kg-header-card-text,
+            .kg-layout-split.kg-content-wide.kg-swapped .kg-header-card-text {
+                padding: min(9.6vmax, 180px) 0;
+            }
+            
+            .kg-header-card.kg-width-full .kg-header-card-subheading:not(.kg-layout-split .kg-header-card-subheading) {
+                max-width: unset;
+            }
+            
+            .kg-header-card-content .kg-header-card-image:not(.kg-content-wide .kg-header-card-content .kg-header-card-image) {
+                height: auto;
+                min-height: unset;
+                aspect-ratio: 1 / 1;
+            }
+            
+            .kg-content-wide .kg-header-card-content .kg-header-card-image {
+                padding: 1.7em 0 0;
+            }
+            
+            .kg-content-wide.kg-swapped .kg-header-card-content .kg-header-card-image {
+                padding: 0 0 1.7em;
+            }
+            
+            .kg-header-card.kg-v2 .kg-header-card-button {
+                height: 2.9em;
+            }
+            
+            .kg-header-card.kg-v2.kg-width-wide .kg-header-card-button,
+            .kg-header-card.kg-v2.kg-width-full .kg-header-card-button {
+                font-size: 1em;
+            }
+        }
+        
+        /* Ghost Settings Panel Styles (from koenig.css) */
+        .kg-settings-panel {
+            position: relative;
+            margin: 1rem auto;
+            padding: 1rem;
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            max-width: 680px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .kg-settings-panel-header {
+            border-color: #dde1e7;
+        }
+        
+        .kg-settings-panel-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .kg-settings-panel-control {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .kg-settings-panel-control-layout {
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 1.5rem;
+        }
+        
+        .kg-settings-panel-control-label {
+            font-size: 13px;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 8px;
+        }
+        
+        .kg-settings-panel-control-input .gh-input,
+        .kg-settings-panel-control-input .gh-select {
+            font-size: 1.0rem !important;
+            padding: 5px 10px;
+            font-weight: 500;
+        }
+        
+        /* Ghost button groups */
+        .gh-btn-group {
+            display: inline-flex;
+            border-radius: 4px;
+            background: #f5f5f5;
+        }
+        
+        .gh-btn-group.icons {
+            background: transparent;
+            gap: 0.5rem;
+        }
+        
+        .gh-btn {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem 1rem;
+            border: none;
+            background: transparent;
+            color: #15171a;
+            font-size: 1.3rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+        
+        .gh-btn-icon {
+            width: 32px;
+            height: 32px;
+            padding: 0;
+        }
+        
+        .gh-btn-group .gh-btn:first-child {
+            border-radius: 4px 0 0 4px;
+        }
+        
+        .gh-btn-group .gh-btn:last-child {
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .gh-btn-group .gh-btn-group-selected {
+            background: #ffffff;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+        
+        .gh-btn-outline {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+        }
+        
+        /* Header style buttons */
+        .kg-settings-headerstyle-btn-group {
+            background: none !important;
+        }
+        
+        .kg-settings-headerstyle-btn-group .gh-btn {
+            background: var(--white) !important;
+            width: 26px;
+            height: 26px;
+            border: 1px solid var(--whitegrey);
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+        
+        .kg-settings-headerstyle-btn-group .kg-headerstyle-btn-dark {
+            background: #08090c !important;
+        }
+        
+        .kg-settings-headerstyle-btn-group .kg-headerstyle-btn-light {
+            background: #F9F9F9 !important;
+        }
+        
+        .kg-settings-headerstyle-btn-group .kg-headerstyle-btn-accent {
+            background: var(--accent-color, #FF1A75) !important;
+        }
+        
+        /* Remove old custom button styles since we're using image button now */
+        
+        .kg-settings-headerstyle-btn-group .kg-headerstyle-btn-image {
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjYiIGhlaWdodD0iMjYiIHZpZXdCb3g9IjAgMCAyNiAyNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjI2IiBoZWlnaHQ9IjI2IiByeD0iMTMiIGZpbGw9IiNFNUU3RUIiLz4KPHBhdGggZD0iTTE4LjUgMTguNVY5LjVDMTguNSA4LjM5NTQzIDE3LjYwNDYgNy41IDE2LjUgNy41SDkuNUM4LjM5NTQzIDcuNSA3LjUgOC4zOTU0MyA3LjUgOS41VjE4LjUiIHN0cm9rZT0iIzZCNzI4MCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8Y2lyY2xlIGN4PSIxMS41IiBjeT0iMTEuNSIgcj0iMS41IiBmaWxsPSIjNkI3MjgwIi8+CjxwYXRoIGQ9Ik03LjUgMTguNUwxMSAxNUwxNS41IDE5LjUiIHN0cm9rZT0iIzZCNzI4MCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4=') !important;
+            background-size: cover !important;
+            background-position: center !important;
+            margin-right: 0;
+        }
+        
+        .kg-settings-headerstyle-btn-group .kg-headerstyle-btn-image.has-image {
+            background-size: cover !important;
+            background-position: center !important;
+        }
+        
+        .kg-settings-headerstyle-btn-group .kg-headerstyle-btn-custom {
+            background: conic-gradient(from 0deg, #FF1A75, #F59E0B, #10B981, #0EA5E9, #8B5CF6, #FF1A75) !important;
+            border-radius: 50% !important;
+            margin-right: 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .kg-settings-headerstyle-btn-group .kg-headerstyle-btn-custom::after {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            right: 3px;
+            bottom: 3px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+        
+        .kg-settings-headerstyle-btn-group .kg-headerstyle-btn-custom:not(.gh-btn-group-selected):hover::after {
+            opacity: 0.2;
+        }
+        
+        .kg-settings-headerstyle-btn-group .gh-btn-group-selected {
+            position: relative;
+        }
+        
+        .kg-settings-headerstyle-btn-group .gh-btn-group-selected::before {
+            position: absolute;
+            content: "";
+            display: block;
+            top: -4px;
+            right: -4px;
+            bottom: -4px;
+            left: -4px;
+            border: 2px solid var(--green, #30cf43);
+            border-radius: 50%;
+        }
+        
+        /* Fix button alignment in settings panel */
+        .kg-settings-panel-control-input .gh-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            max-width: 100%;
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            padding: 8px 12px;
+            font-size: 13px;
+        }
+        
+        .kg-settings-panel-control-input .gh-btn span {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .kg-settings-panel-control-input .gh-btn svg {
+            flex-shrink: 0;
+            width: 14px;
+            height: 14px;
+        }
+        
+        /* Color picker styles - matching Ghost exactly */
+        .kg-color-picker-swatch-group {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+        
+        .kg-color-swatch {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 1px solid var(--whitegrey);
+            transition: all 0.2s ease;
+            position: relative;
+            box-sizing: border-box;
+            padding: 0;
+            background: none;
+        }
+        
+        .kg-color-swatch:hover {
+            transform: scale(1.1);
+        }
+        
+        .kg-color-swatch.active {
+            position: relative;
+        }
+        
+        .kg-color-swatch.active::before {
+            position: absolute;
+            content: "";
+            display: block;
+            top: -4px;
+            right: -4px;
+            bottom: -4px;
+            left: -4px;
+            border: 2px solid var(--green);
+            border-radius: 50%;
+        }
+        
+        .kg-color-swatch-custom {
+            background: transparent !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .kg-color-swatch-custom svg {
+            width: 12px;
+            height: 12px;
+            pointer-events: none;
+            color: #737373;
+        }
+        
+        .kg-color-swatch-custom svg path {
+            stroke-width: 1.5;
+        }
+        
+        .kg-color-picker-input {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+        
         .ghost-color-picker-row {
             display: flex;
             gap: 12px;
@@ -2501,10 +3557,10 @@ allTags = tagsResult.success ? tagsResult.data : [];
     <div class="link-hover-menu" id="linkHoverMenu">
         <div class="link-hover-url" id="linkHoverUrl"></div>
         <div class="link-hover-actions">
-            <button type="button" class="link-hover-btn" onclick="editExistingLink()" title="Edit link">
+            <button type="button" class="link-hover-btn" onclick="if(currentHoveredLink) editExistingLink()" title="Edit link">
                 <i class="ti ti-edit"></i>
             </button>
-            <button type="button" class="link-hover-btn" onclick="removeExistingLink()" title="Remove link">
+            <button type="button" class="link-hover-btn" onclick="if(currentHoveredLink) removeExistingLink()" title="Remove link">
                 <i class="ti ti-unlink"></i>
             </button>
             <button type="button" class="link-hover-btn" onclick="openLinkInNewTab()" title="Open link">
@@ -2572,6 +3628,7 @@ allTags = tagsResult.success ? tagsResult.data : [];
         <input type="hidden" name="published_at" id="formPublishedAt">
         <input type="hidden" name="tags" id="formTags">
         <input type="hidden" name="status" id="formStatus">
+        <input type="hidden" name="card_data" id="formCardData">
     </form>
     
     <!-- Core JS -->
@@ -2666,8 +3723,43 @@ allTags = tagsResult.success ? tagsResult.data : [];
         
         // ColdFusion returns uppercase keys, so check both
         const htmlContent = postData.html || postData.HTML;
+        const cardData = postData.card_data || postData.CARD_DATA;
         
-        if (htmlContent) {
+        // Try to load card data first
+        if (cardData) {
+            try {
+                // Parse the card data if it's a string
+                const parsedCardData = typeof cardData === 'string' ? JSON.parse(cardData) : cardData;
+                if (Array.isArray(parsedCardData) && parsedCardData.length > 0) {
+                    contentCards = parsedCardData;
+                    
+                    // Recreate the cards in the editor
+                    isCreatingCards = true;
+                    contentCards.forEach(card => {
+                        const cardElement = createCardElement(card);
+                        document.getElementById('editorContent').appendChild(cardElement);
+                    });
+                    isCreatingCards = false;
+                    
+                    // Add the add button at the end
+                    const addButton = createAddButton();
+                    document.getElementById('editorContent').appendChild(addButton);
+                } else if (htmlContent) {
+                    parseHtmlToCards(htmlContent, true); // true = initial load
+                } else {
+                    // Add initial paragraph card for new posts
+                    addCardInternal('paragraph', {});
+                }
+            } catch (e) {
+                console.error('Error parsing card data:', e);
+                // Fall back to HTML parsing
+                if (htmlContent) {
+                    parseHtmlToCards(htmlContent, true);
+                } else {
+                    addCardInternal('paragraph', {});
+                }
+            }
+        } else if (htmlContent) {
             parseHtmlToCards(htmlContent, true); // true = initial load
         } else {
             // Add initial paragraph card for new posts
@@ -2890,7 +3982,41 @@ allTags = tagsResult.success ? tagsResult.data : [];
                     break;
                     
                 case 'figure':
-                    // Check for bookmark card first
+                    // Check for gallery card
+                    if (element.classList.contains('kg-gallery-card')) {
+                        // Gallery card
+                        const galleryContainer = element.querySelector('.kg-gallery-container');
+                        if (galleryContainer) {
+                            const images = [];
+                            const galleryImages = galleryContainer.querySelectorAll('.kg-gallery-image img');
+                            
+                            galleryImages.forEach(img => {
+                                // Clean up image URL
+                                let imgSrc = img.src;
+                                if (imgSrc.includes('__GHOST_URL__')) {
+                                    imgSrc = imgSrc.replace('__GHOST_URL__', '');
+                                }
+                                // Ensure /ghost prefix for content images
+                                if (imgSrc.includes('/content/') && !imgSrc.includes('/ghost/')) {
+                                    imgSrc = '/ghost' + imgSrc;
+                                }
+                                
+                                images.push({
+                                    src: imgSrc,
+                                    alt: img.alt || '',
+                                    width: img.getAttribute('width') || '',
+                                    height: img.getAttribute('height') || ''
+                                });
+                            });
+                            
+                            if (images.length > 0) {
+                                addCardInternal('gallery', { images: images });
+                            }
+                        }
+                        break;
+                    }
+                    
+                    // Check for bookmark card
                     if (element.classList.contains('kg-bookmark-card')) {
                         // console.log('Found bookmark card in figure element');
                         // Bookmark card
@@ -3036,6 +4162,108 @@ allTags = tagsResult.success ? tagsResult.data : [];
                     break;
                     
                 case 'div':
+                    // Check for header card
+                    if (element.classList.contains('kg-header-card')) {
+                        const textContainer = element.querySelector('.kg-header-card-text');
+                        const headingElement = element.querySelector('.kg-header-card-heading');
+                        const subheadingElement = element.querySelector('.kg-header-card-subheading');
+                        const buttonElement = element.querySelector('.kg-header-card-button');
+                        const backgroundImage = element.querySelector('.kg-header-card-image') || element.querySelector('img.kg-header-card-image');
+                        
+                        // Determine size and layout based on classes
+                        let size = 'small';
+                        let layout = 'regular';
+                        
+                        if (element.classList.contains('kg-layout-split')) {
+                            layout = 'split';
+                        } else if (element.classList.contains('kg-width-wide')) {
+                            size = 'medium';
+                        } else if (element.classList.contains('kg-width-full')) {
+                            size = 'large';
+                        }
+                        
+                        // Determine style (background type)
+                        let style = 'light';
+                        let backgroundColor = '#F9F9F9';
+                        let backgroundImageSrc = '';
+                        let splitImageSrc = '';
+                        
+                        // For split layout, the image is part of the layout, not background
+                        if (layout === 'split' && backgroundImage) {
+                            splitImageSrc = backgroundImage.src || '';
+                        }
+                        
+                        if (element.classList.contains('kg-style-accent')) {
+                            style = 'accent';
+                            backgroundColor = 'accent';
+                        } else if (element.classList.contains('kg-style-image') && layout !== 'split') {
+                            style = 'image';
+                            backgroundImageSrc = backgroundImage?.src || '';
+                            // Check for background image in style attribute
+                            const bgImageMatch = element.style.backgroundImage?.match(/url\(["']?([^"']+)["']?\)/);
+                            if (bgImageMatch) {
+                                backgroundImageSrc = bgImageMatch[1];
+                            }
+                            backgroundColor = element.dataset.backgroundColor || '#000000';
+                        } else if (element.dataset.backgroundColor || element.style.backgroundColor) {
+                            backgroundColor = element.dataset.backgroundColor || element.style.backgroundColor;
+                            // Determine style based on background color
+                            if (backgroundColor === '#08090c' || backgroundColor === '#000000') {
+                                style = 'dark';
+                            } else if (backgroundColor === '#F9F9F9' || backgroundColor === '#FFFFFF') {
+                                style = 'light';
+                            } else {
+                                style = 'custom';
+                            }
+                        }
+                        
+                        // Get alignment
+                        const alignment = textContainer?.classList.contains('kg-align-center') ? 'center' : 'left';
+                        
+                        // Get text color
+                        const textColor = headingElement?.dataset.textColor || headingElement?.style.color || '#15171A';
+                        
+                        // Check for swapped layout
+                        const swapped = element.classList.contains('kg-swapped');
+                        
+                        // Button data
+                        let buttonEnabled = false;
+                        let buttonText = '';
+                        let buttonUrl = '';
+                        let buttonColor = '#ffffff';
+                        let buttonTextColor = '#000000';
+                        
+                        if (buttonElement) {
+                            buttonEnabled = true;
+                            buttonText = buttonElement.textContent || '';
+                            buttonUrl = buttonElement.href || '#';
+                            buttonColor = buttonElement.dataset.buttonColor || (buttonElement.classList.contains('kg-style-accent') ? 'accent' : '#ffffff');
+                            buttonTextColor = buttonElement.dataset.buttonTextColor || buttonElement.style.color || '#000000';
+                        }
+                        
+                        addCardInternal('header', {
+                            version: 2,
+                            header: headingElement?.textContent || '',
+                            subheader: subheadingElement?.textContent || '',
+                            size: size,
+                            style: style,
+                            layout: layout,
+                            backgroundColor: backgroundColor,
+                            backgroundImageSrc: backgroundImageSrc,
+                            splitImageSrc: splitImageSrc,
+                            backgroundSize: 'cover',
+                            swapped: swapped,
+                            alignment: alignment,
+                            textColor: textColor,
+                            buttonEnabled: buttonEnabled,
+                            buttonText: buttonText,
+                            buttonUrl: buttonUrl,
+                            buttonColor: buttonColor,
+                            buttonTextColor: buttonTextColor
+                        });
+                        break;
+                    }
+                    
                     // Skip empty divs or those with only whitespace/br tags
                     const divCleanedContent = element.innerHTML.replace(/<br\s*\/?>/gi, '').trim();
                     if (!divCleanedContent || divCleanedContent === '&nbsp;') {
@@ -3214,6 +4442,110 @@ allTags = tagsResult.success ? tagsResult.data : [];
                     break;
                     
                 default:
+                    // Check if this element contains a header card as a child
+                    const childHeaderCard = element.querySelector('.kg-header-card');
+                    if (childHeaderCard) {
+                        // Process the header card
+                        const textContainer = childHeaderCard.querySelector('.kg-header-card-text');
+                        const headingElement = childHeaderCard.querySelector('.kg-header-card-heading');
+                        const subheadingElement = childHeaderCard.querySelector('.kg-header-card-subheading');
+                        const buttonElement = childHeaderCard.querySelector('.kg-header-card-button');
+                        const backgroundImage = childHeaderCard.querySelector('.kg-header-card-image') || childHeaderCard.querySelector('img.kg-header-card-image');
+                        
+                        // Determine layout based on classes
+                        let layout = 'regular';
+                        if (childHeaderCard.classList.contains('kg-layout-split')) {
+                            layout = 'split';
+                        } else if (childHeaderCard.classList.contains('kg-width-wide')) {
+                            layout = 'wide';
+                        } else if (childHeaderCard.classList.contains('kg-width-full')) {
+                            layout = 'full';
+                        }
+                        
+                        // Determine background
+                        let background = 'transparent';
+                        let backgroundColor = '#FFFFFF';
+                        let backgroundImageSrc = '';
+                        
+                        if (childHeaderCard.classList.contains('kg-style-accent')) {
+                            background = 'accent';
+                            backgroundColor = 'accent';
+                        } else if (childHeaderCard.classList.contains('kg-style-image') && backgroundImage) {
+                            background = 'image';
+                            backgroundImageSrc = backgroundImage.src || '';
+                            // Also get background color if it exists
+                            if (childHeaderCard.dataset.backgroundColor || childHeaderCard.style.backgroundColor) {
+                                backgroundColor = childHeaderCard.dataset.backgroundColor || childHeaderCard.style.backgroundColor || '#FFFFFF';
+                            }
+                        } else if (childHeaderCard.dataset.backgroundColor || childHeaderCard.style.backgroundColor) {
+                            background = 'color';
+                            backgroundColor = childHeaderCard.dataset.backgroundColor || childHeaderCard.style.backgroundColor || '#FFFFFF';
+                        }
+                        
+                        // Get alignment
+                        const alignment = textContainer?.classList.contains('kg-align-center') ? 'center' : 'left';
+                        
+                        // Get text color
+                        const textColor = headingElement?.dataset.textColor || '#FFFFFF';
+                        
+                        // Button data
+                        let buttonEnabled = false;
+                        let buttonText = '';
+                        let buttonUrl = '';
+                        let buttonColor = '#000000';
+                        let buttonTextColor = '#FFFFFF';
+                        
+                        if (buttonElement) {
+                            buttonEnabled = true;
+                            buttonText = buttonElement.textContent || '';
+                            buttonUrl = buttonElement.href || '#';
+                            buttonColor = buttonElement.dataset.buttonColor || (buttonElement.classList.contains('kg-style-accent') ? 'accent' : '#000000');
+                            buttonTextColor = buttonElement.dataset.buttonTextColor || '#FFFFFF';
+                        }
+                        
+                        // Reprocess with the same logic for consistency
+                        let childSize = 'small';
+                        let childLayout = 'regular';
+                        
+                        if (childHeaderCard.classList.contains('kg-layout-split')) {
+                            childLayout = 'split';
+                        } else if (childHeaderCard.classList.contains('kg-width-wide')) {
+                            childSize = 'medium';
+                        } else if (childHeaderCard.classList.contains('kg-width-full')) {
+                            childSize = 'large';
+                        }
+                        
+                        let childStyle = 'light';
+                        if (childHeaderCard.classList.contains('kg-style-accent')) {
+                            childStyle = 'accent';
+                        } else if (childHeaderCard.classList.contains('kg-style-image') && backgroundImageSrc) {
+                            childStyle = 'image';
+                        } else if (backgroundColor === '#08090c' || backgroundColor === '#000000') {
+                            childStyle = 'dark';
+                        }
+                        
+                        addCardInternal('header', {
+                            version: 2,
+                            header: headingElement?.textContent || '',
+                            subheader: subheadingElement?.textContent || '',
+                            size: childSize,
+                            style: childStyle,
+                            layout: childLayout,
+                            backgroundColor: backgroundColor,
+                            backgroundImageSrc: backgroundImageSrc,
+                            backgroundSize: 'cover',
+                            swapped: childHeaderCard.classList.contains('kg-swapped'),
+                            alignment: alignment,
+                            textColor: textColor,
+                            buttonEnabled: buttonEnabled,
+                            buttonText: buttonText,
+                            buttonUrl: buttonUrl,
+                            buttonColor: buttonColor,
+                            buttonTextColor: buttonTextColor
+                        });
+                        break;
+                    }
+                    
                     // For any other tags, use HTML card
                     addCardInternal('html', { content: element.outerHTML });
                     break;
@@ -3307,6 +4639,9 @@ allTags = tagsResult.success ? tagsResult.data : [];
             case 'image':
                 div.innerHTML += createImageCard(card);
                 break;
+            case 'header':
+                div.innerHTML += createHeaderCard(card);
+                break;
             case 'html':
                 div.innerHTML += createHtmlCard(card);
                 break;
@@ -3342,6 +4677,9 @@ allTags = tagsResult.success ? tagsResult.data : [];
                 break;
             case 'embed':
                 div.innerHTML += createEmbedCard(card);
+                break;
+            case 'gallery':
+                div.innerHTML += createGalleryCard(card);
                 break;
             // Add more card types as needed
         }
@@ -3491,6 +4829,414 @@ allTags = tagsResult.success ? tagsResult.data : [];
                 </div>
             `;
         }
+    }
+    
+    function createHeaderCard(card) {
+        // Initialize with Ghost Header Card v2 defaults based on test data
+        const defaults = {
+            version: 2,
+            header: '',
+            subheader: '',
+            size: 'small',
+            style: 'light',
+            alignment: 'center',
+            backgroundColor: '#F9F9F9',
+            textColor: '#15171A',
+            buttonEnabled: false,
+            buttonText: 'Add button text',
+            buttonUrl: '',
+            buttonColor: '#ffffff',
+            buttonTextColor: '#000000',
+            backgroundImageSrc: '',
+            splitImageSrc: '', // Separate image for split layout
+            backgroundImageWidth: null,
+            backgroundImageHeight: null,
+            backgroundSize: 'cover',
+            layout: 'regular',
+            swapped: false,
+            accentColor: '#FF1A75'
+        };
+        
+        // Merge defaults with card data
+        card.data = { ...defaults, ...card.data };
+        
+        // Determine the style and apply proper defaults
+        if (card.data.style === 'dark') {
+            card.data.backgroundColor = '#08090c';
+            card.data.textColor = '#FFFFFF';
+        } else if (card.data.style === 'light') {
+            card.data.backgroundColor = '#F9F9F9';
+            card.data.textColor = '#15171A';
+        } else if (card.data.style === 'accent') {
+            card.data.backgroundColor = 'accent';
+            card.data.textColor = '#FFFFFF';
+        } else if (card.data.style === 'image' && card.data.backgroundImageSrc) {
+            card.data.backgroundColor = '#000000';
+            card.data.textColor = '#FFFFFF';
+        }
+        
+        // Build card classes based on Ghost's exact structure
+        let cardClasses = ['kg-card', 'kg-header-card', 'kg-v2'];
+        
+        // Add width class based on size/layout
+        if (card.data.size === 'small' && card.data.layout !== 'split') {
+            // Default width for small
+        } else if (card.data.size === 'medium' && card.data.layout !== 'split') {
+            cardClasses.push('kg-width-wide');
+        } else if (card.data.size === 'large' && card.data.layout !== 'split') {
+            cardClasses.push('kg-width-full');
+        }
+        
+        // Add layout classes for split
+        if (card.data.layout === 'split') {
+            cardClasses.push('kg-layout-split');
+            cardClasses.push('kg-width-full');
+            if (card.data.swapped) {
+                cardClasses.push('kg-swapped');
+            }
+        }
+        
+        // Add content-wide for full layouts
+        if ((card.data.size === 'large' || card.data.layout === 'split') && card.data.layout !== 'regular') {
+            cardClasses.push('kg-content-wide');
+        }
+        
+        // Apply style class
+        if (card.data.style === 'accent') {
+            cardClasses.push('kg-style-accent');
+        }
+        
+        // Add image style class if background image is present (not for split layout)
+        if (card.data.backgroundImageSrc && card.data.layout !== 'split') {
+            cardClasses.push('kg-style-image');
+        }
+        
+        // Build background style - handle both image and color
+        let backgroundStyle = '';
+        if (card.data.backgroundImageSrc && card.data.layout !== 'split') {
+            backgroundStyle = `background-image: url(${card.data.backgroundImageSrc}); background-size: ${card.data.backgroundSize || 'cover'}; background-position: center;`;
+            // Add background color as fallback
+            if (card.data.style !== 'accent') {
+                backgroundStyle += ` background-color: ${card.data.backgroundColor};`;
+            }
+        } else if (card.data.style !== 'accent') {
+            backgroundStyle = `background-color: ${card.data.backgroundColor};`;
+        }
+        
+        return `
+            <div class="card-content header-card-content">
+                <div class="${cardClasses.join(' ')}" 
+                     id="headerCard-${card.id}"
+                     style="${backgroundStyle}"
+                     data-background-color="${card.data.backgroundColor}"
+                     onclick="event.preventDefault(); showHeaderSettings('${card.id}')">
+                    ${card.data.backgroundImageSrc && card.data.layout !== 'split' ? `
+                        <picture>
+                            <img class="kg-header-card-image" 
+                                 src="${card.data.backgroundImageSrc}" 
+                                 loading="lazy" 
+                                 alt="" />
+                        </picture>
+                    ` : ''}
+                    <div class="kg-header-card-content">
+                        ${card.data.layout === 'split' ? `
+                            <div class="kg-header-card-text kg-align-${card.data.alignment}">
+                                <h2 class="kg-header-card-heading" 
+                                    contenteditable="true"
+                                    style="color: ${card.data.textColor};"
+                                    data-text-color="${card.data.textColor}"
+                                    onblur="updateCardData('${card.id}', 'header', this.innerText)"
+                                    oninput="markDirtySafe(); updateWordCount();"
+                                    onclick="event.stopPropagation();"
+                                    data-placeholder="Add header text">${card.data.header}</h2>
+                                <p class="kg-header-card-subheading" 
+                                   contenteditable="true"
+                                   style="color: ${card.data.textColor};"
+                                   data-text-color="${card.data.textColor}"
+                                   onblur="updateCardData('${card.id}', 'subheader', this.innerText)"
+                                   oninput="markDirtySafe(); updateWordCount();"
+                                   onclick="event.stopPropagation();"
+                                   data-placeholder="Add subheading text">${card.data.subheader}</p>
+                                ${card.data.buttonEnabled ? `
+                                    <a href="${card.data.buttonUrl || '#'}" 
+                                       class="kg-header-card-button${card.data.buttonColor === 'accent' ? ' kg-style-accent' : ''}"
+                                       style="${card.data.buttonColor !== 'accent' ? `background-color: ${card.data.buttonColor}; color: ${card.data.buttonTextColor};` : ''}"
+                                       data-button-color="${card.data.buttonColor}"
+                                       data-button-text-color="${card.data.buttonTextColor}"
+                                       onclick="event.preventDefault(); event.stopPropagation();">
+                                       ${card.data.buttonText}
+                                    </a>
+                                ` : ''}
+                            </div>
+                            ${card.data.splitImageSrc ? `
+                                <img class="kg-header-card-image" src="${card.data.splitImageSrc}" alt="" onclick="event.stopPropagation(); selectHeaderSplitImage('${card.id}')" style="cursor: pointer;">
+                            ` : `
+                                <div class="kg-header-card-image kg-header-card-image-placeholder" onclick="event.stopPropagation(); selectHeaderSplitImage('${card.id}')">
+                                    <div class="kg-header-image-upload-placeholder">
+                                        <i class="ti ti-photo-plus"></i>
+                                        <p>Click to add image</p>
+                                    </div>
+                                </div>
+                            `}
+                        ` : `
+                            <div class="kg-header-card-text kg-align-${card.data.alignment}">
+                                <h2 class="kg-header-card-heading" 
+                                    contenteditable="true"
+                                    style="color: ${card.data.textColor};"
+                                    data-text-color="${card.data.textColor}"
+                                    onblur="updateCardData('${card.id}', 'header', this.innerText)"
+                                    oninput="markDirtySafe(); updateWordCount();"
+                                    onclick="event.stopPropagation();"
+                                    data-placeholder="Add header text">${card.data.header}</h2>
+                                <p class="kg-header-card-subheading" 
+                                   contenteditable="true"
+                                   style="color: ${card.data.textColor};"
+                                   data-text-color="${card.data.textColor}"
+                                   onblur="updateCardData('${card.id}', 'subheader', this.innerText)"
+                                   oninput="markDirtySafe(); updateWordCount();"
+                                   onclick="event.stopPropagation();"
+                                   data-placeholder="Add subheading text">${card.data.subheader}</p>
+                                ${card.data.buttonEnabled ? `
+                                    <a href="${card.data.buttonUrl || '#'}" 
+                                       class="kg-header-card-button${card.data.buttonColor === 'accent' ? ' kg-style-accent' : ''}"
+                                       style="${card.data.buttonColor !== 'accent' ? `background-color: ${card.data.buttonColor}; color: ${card.data.buttonTextColor};` : ''}"
+                                       data-button-color="${card.data.buttonColor}"
+                                       data-button-text-color="${card.data.buttonTextColor}"
+                                       onclick="event.preventDefault(); event.stopPropagation();">
+                                       ${card.data.buttonText}
+                                    </a>
+                                ` : ''}
+                            </div>
+                        `}
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Ghost Header Card Settings Panel -->
+            <div class="kg-settings-panel kg-settings-panel-header" id="headerSettings-${card.id}" style="display: none;">
+                <div class="kg-settings-panel-content">
+                    <!-- Size/Layout Options -->
+                    <div class="kg-settings-panel-control kg-settings-panel-control-layout">
+                        <label class="kg-settings-panel-control-label">Size</label>
+                        <div class="kg-settings-panel-control-input">
+                            <div class="gh-btn-group icons" role="group">
+                                <button type="button" class="gh-btn gh-btn-icon ${card.data.size === 'small' && card.data.layout !== 'split' ? 'gh-btn-group-selected' : ''}" 
+                                        onclick="updateHeaderSize('${card.id}', 'small')" title="Small">
+                                    <span>S</span>
+                                </button>
+                                <button type="button" class="gh-btn gh-btn-icon ${card.data.size === 'medium' && card.data.layout !== 'split' ? 'gh-btn-group-selected' : ''}" 
+                                        onclick="updateHeaderSize('${card.id}', 'medium')" title="Medium">
+                                    <span>M</span>
+                                </button>
+                                <button type="button" class="gh-btn gh-btn-icon ${card.data.size === 'large' && card.data.layout !== 'split' ? 'gh-btn-group-selected' : ''}" 
+                                        onclick="updateHeaderSize('${card.id}', 'large')" title="Large">
+                                    <span>L</span>
+                                </button>
+                                <button type="button" class="gh-btn gh-btn-icon ${card.data.layout === 'split' ? 'gh-btn-group-selected' : ''}" 
+                                        onclick="updateHeaderLayout('${card.id}', 'split')" title="Split">
+                                    <span>Split</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Background Options -->
+                    <div class="kg-settings-panel-control">
+                        <label class="kg-settings-panel-control-label">Background style</label>
+                        <div class="kg-settings-panel-control-input">
+                            <div class="gh-btn-group kg-settings-headerstyle-btn-group" role="group">
+                                <button type="button" class="gh-btn gh-btn-icon kg-headerstyle-btn-light ${card.data.style === 'light' ? 'gh-btn-group-selected' : ''}" 
+                                        onclick="updateHeaderStyle('${card.id}', 'light')" title="Light"></button>
+                                <button type="button" class="gh-btn gh-btn-icon kg-headerstyle-btn-dark ${card.data.style === 'dark' ? 'gh-btn-group-selected' : ''}" 
+                                        onclick="updateHeaderStyle('${card.id}', 'dark')" title="Dark"></button>
+                                <button type="button" class="gh-btn gh-btn-icon kg-headerstyle-btn-accent ${card.data.style === 'accent' ? 'gh-btn-group-selected' : ''}" 
+                                        onclick="updateHeaderStyle('${card.id}', 'accent')" title="Accent"></button>
+                                <button type="button" class="gh-btn gh-btn-icon kg-headerstyle-btn-image ${card.data.style === 'image' ? 'gh-btn-group-selected' : ''} ${card.data.backgroundImageSrc ? 'has-image' : ''}" 
+                                        onclick="updateHeaderStyle('${card.id}', 'image')" 
+                                        title="Image"
+                                        ${card.data.backgroundImageSrc ? `style="background-image: url('${card.data.backgroundImageSrc}');"` : ''}></button>
+                                <button type="button" class="gh-btn gh-btn-icon kg-headerstyle-btn-custom ${card.data.style === 'custom' ? 'gh-btn-group-selected' : ''}" 
+                                        onclick="updateHeaderStyle('${card.id}', 'custom')" title="Custom"></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Background Image Upload (shown when image style is selected) -->
+                    ${card.data.style === 'image' && card.data.layout !== 'split' ? `
+                        <div class="kg-settings-panel-control">
+                            <div class="kg-settings-panel-control-input">
+                                <button type="button" class="gh-btn gh-btn-outline gh-btn-icon" onclick="selectHeaderBackgroundImage('${card.id}')">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+                                    </svg>
+                                    <span>${card.data.backgroundImageSrc ? 'Replace' : 'Upload'}</span>
+                                </button>
+                            </div>
+                        </div>
+                    ` : ''}
+                    
+                    <!-- Custom Colors (shown for custom style) -->
+                    ${card.data.style === 'custom' ? `
+                        <div class="kg-settings-panel-control">
+                            <label class="kg-settings-panel-control-label">Background color</label>
+                            <div class="kg-settings-panel-control-input">
+                                <div class="kg-color-picker-swatch-group">
+                                    <!-- Preset colors -->
+                                    <button type="button" 
+                                            class="kg-color-swatch ${card.data.backgroundColor === '#FFFFFF' ? 'active' : ''}"
+                                            style="background-color: #FFFFFF;"
+                                            onclick="updateHeaderBackground('${card.id}', '#FFFFFF', '#15171A')"
+                                            title="White"></button>
+                                    <button type="button" 
+                                            class="kg-color-swatch ${card.data.backgroundColor === '#F9F9F9' ? 'active' : ''}"
+                                            style="background-color: #F9F9F9;"
+                                            onclick="updateHeaderBackground('${card.id}', '#F9F9F9', '#15171A')"
+                                            title="Light Gray"></button>
+                                    <button type="button" 
+                                            class="kg-color-swatch ${card.data.backgroundColor === '#15171A' ? 'active' : ''}"
+                                            style="background-color: #15171A;"
+                                            onclick="updateHeaderBackground('${card.id}', '#15171A', '#FFFFFF')"
+                                            title="Dark"></button>
+                                    <button type="button" 
+                                            class="kg-color-swatch ${card.data.backgroundColor === '#FF1A75' ? 'active' : ''}"
+                                            style="background-color: #FF1A75;"
+                                            onclick="updateHeaderBackground('${card.id}', '#FF1A75', '#FFFFFF')"
+                                            title="Pink"></button>
+                                    <button type="button" 
+                                            class="kg-color-swatch ${card.data.backgroundColor === '#0EA5E9' ? 'active' : ''}"
+                                            style="background-color: #0EA5E9;"
+                                            onclick="updateHeaderBackground('${card.id}', '#0EA5E9', '#FFFFFF')"
+                                            title="Blue"></button>
+                                    <button type="button" 
+                                            class="kg-color-swatch ${card.data.backgroundColor === '#10B981' ? 'active' : ''}"
+                                            style="background-color: #10B981;"
+                                            onclick="updateHeaderBackground('${card.id}', '#10B981', '#FFFFFF')"
+                                            title="Green"></button>
+                                    <button type="button" 
+                                            class="kg-color-swatch ${card.data.backgroundColor === '#F59E0B' ? 'active' : ''}"
+                                            style="background-color: #F59E0B;"
+                                            onclick="updateHeaderBackground('${card.id}', '#F59E0B', '#FFFFFF')"
+                                            title="Amber"></button>
+                                    <button type="button" 
+                                            class="kg-color-swatch ${card.data.backgroundColor === '#8B5CF6' ? 'active' : ''}"
+                                            style="background-color: #8B5CF6;"
+                                            onclick="updateHeaderBackground('${card.id}', '#8B5CF6', '#FFFFFF')"
+                                            title="Purple"></button>
+                                    
+                                    <!-- Custom color picker -->
+                                    <button type="button" class="kg-color-swatch kg-color-swatch-custom ${!['#FFFFFF', '#F9F9F9', '#15171A', '#FF1A75', '#0EA5E9', '#10B981', '#F59E0B', '#8B5CF6'].includes(card.data.backgroundColor) ? 'active' : ''}">
+                                        <input type="color" 
+                                               class="kg-color-picker-input"
+                                               value="${card.data.backgroundColor !== 'accent' ? card.data.backgroundColor : '#FF1A75'}"
+                                               onchange="updateHeaderBackground('${card.id}', this.value, null)"
+                                               title="Custom color">
+                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                            <path d="M1 11L11 1M6 1H11V6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="kg-settings-panel-control">
+                            <label class="kg-settings-panel-control-label">Text color</label>
+                            <div class="kg-settings-panel-control-input">
+                                <div class="kg-color-picker-swatch-group">
+                                    <!-- Text color presets -->
+                                    <button type="button" 
+                                            class="kg-color-swatch ${card.data.textColor === '#FFFFFF' ? 'active' : ''}"
+                                            style="background-color: #FFFFFF; border: 1px solid #e5e7eb;"
+                                            onclick="updateHeaderTextColor('${card.id}', '#FFFFFF')"
+                                            title="White"></button>
+                                    <button type="button" 
+                                            class="kg-color-swatch ${card.data.textColor === '#F9F9F9' ? 'active' : ''}"
+                                            style="background-color: #F9F9F9;"
+                                            onclick="updateHeaderTextColor('${card.id}', '#F9F9F9')"
+                                            title="Light Gray"></button>
+                                    <button type="button" 
+                                            class="kg-color-swatch ${card.data.textColor === '#71717A' ? 'active' : ''}"
+                                            style="background-color: #71717A;"
+                                            onclick="updateHeaderTextColor('${card.id}', '#71717A')"
+                                            title="Gray"></button>
+                                    <button type="button" 
+                                            class="kg-color-swatch ${card.data.textColor === '#15171A' ? 'active' : ''}"
+                                            style="background-color: #15171A;"
+                                            onclick="updateHeaderTextColor('${card.id}', '#15171A')"
+                                            title="Black"></button>
+                                    
+                                    <!-- Custom text color picker -->
+                                    <button type="button" class="kg-color-swatch kg-color-swatch-custom ${!['#FFFFFF', '#F9F9F9', '#71717A', '#15171A'].includes(card.data.textColor) ? 'active' : ''}">
+                                        <input type="color" 
+                                               class="kg-color-picker-input"
+                                               value="${card.data.textColor}"
+                                               onchange="updateHeaderTextColor('${card.id}', this.value)"
+                                               title="Custom color">
+                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                            <path d="M1 11L11 1M6 1H11V6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    ` : ''}
+                    
+                    <!-- Alignment Options -->
+                    <div class="kg-settings-panel-control">
+                        <label class="kg-settings-panel-control-label">Alignment</label>
+                        <div class="kg-settings-panel-control-input">
+                            <div class="gh-btn-group icons" role="group">
+                                <button type="button" class="gh-btn gh-btn-icon ${card.data.alignment === 'left' ? 'gh-btn-group-selected' : ''}" 
+                                        onclick="updateHeaderAlignment('${card.id}', 'left')">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                        <path d="M2 4h12M2 8h8M2 12h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                    </svg>
+                                </button>
+                                <button type="button" class="gh-btn gh-btn-icon ${card.data.alignment === 'center' ? 'gh-btn-group-selected' : ''}" 
+                                        onclick="updateHeaderAlignment('${card.id}', 'center')">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                        <path d="M4 4h8M2 8h12M3 12h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Button Settings -->
+                    <div class="kg-settings-panel-control">
+                        <label class="kg-settings-panel-control-label">Button</label>
+                        <div class="kg-settings-panel-control-input">
+                            <div class="gh-btn-group" role="group">
+                                <button type="button" class="gh-btn ${!card.data.buttonEnabled ? 'gh-btn-group-selected' : ''}" 
+                                        onclick="updateHeaderButton('${card.id}', false)">Hide</button>
+                                <button type="button" class="gh-btn ${card.data.buttonEnabled ? 'gh-btn-group-selected' : ''}" 
+                                        onclick="updateHeaderButton('${card.id}', true)">Show</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    ${card.data.buttonEnabled ? `
+                        <div class="kg-settings-panel-control">
+                            <label class="kg-settings-panel-control-label">Button text</label>
+                            <div class="kg-settings-panel-control-input">
+                                <input type="text" class="gh-input" value="${card.data.buttonText || ''}" 
+                                       onclick="event.stopPropagation();"
+                                       onchange="updateCardData('${card.id}', 'buttonText', this.value);"
+                                       oninput="markDirtySafe();" />
+                            </div>
+                        </div>
+                        <div class="kg-settings-panel-control">
+                            <label class="kg-settings-panel-control-label">Button URL</label>
+                            <div class="kg-settings-panel-control-input">
+                                <input type="url" class="gh-input" value="${card.data.buttonUrl || ''}" 
+                                       onclick="event.stopPropagation();"
+                                       onchange="updateCardData('${card.id}', 'buttonUrl', this.value);"
+                                       oninput="markDirtySafe();" />
+                            </div>
+                        </div>
+                    ` : ''}
+                </div>
+            </div>
+        `;
     }
     
     function createHtmlCard(card) {
@@ -3775,6 +5521,80 @@ allTags = tagsResult.success ? tagsResult.data : [];
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        `;
+    }
+    
+    function createGalleryCard(card) {
+        // Initialize gallery data if not present
+        if (!card.data.images) {
+            card.data.images = [];
+        }
+        if (!card.data.caption) {
+            card.data.caption = '';
+        }
+        
+        return `
+            <div class="card-content gallery-card-content" onclick="toggleCardSettings('${card.id}')">
+                <div class="kg-card kg-gallery-card kg-width-wide">
+                    <div class="kg-gallery-container" id="gallery-container-${card.id}">
+                        ${renderGalleryImages(card)}
+                    </div>
+                    ${card.data.caption ? `<figcaption>${card.data.caption}</figcaption>` : ''}
+                </div>
+                
+                <!-- Ghost-style Gallery Settings Panel -->
+                <div class="ghost-card-settings ghost-gallery-settings" id="gallerySettings-${card.id}" onclick="event.stopPropagation();">
+                    <div class="ghost-gallery-toolbar">
+                        <button type="button" 
+                                class="ghost-gallery-btn"
+                                onclick="event.stopPropagation(); document.getElementById('galleryImages-${card.id}').click();"
+                                title="Add images">
+                            <i class="ti ti-photo-plus"></i>
+                            <span>Add images</span>
+                        </button>
+                        <input type="file" 
+                               id="galleryImages-${card.id}" 
+                               accept="image/*" 
+                               multiple
+                               style="display: none;" 
+                               onchange="uploadGalleryImages('${card.id}', this)">
+                    </div>
+                    
+                    <div class="ghost-setting-group">
+                        <input type="text" 
+                               class="ghost-input" 
+                               value="${card.data.caption || ''}"
+                               onclick="event.stopPropagation();"
+                               onblur="updateCardData('${card.id}', 'caption', this.value); refreshGalleryCard('${card.id}')"
+                               oninput="markDirtySafe();"
+                               placeholder="Type caption for gallery (optional)">
+                    </div>
+                    
+                    ${card.data.images.length > 0 ? `
+                        <div class="ghost-gallery-images-list">
+                            ${card.data.images.map((image, index) => `
+                                <div class="ghost-gallery-image-item" data-index="${index}">
+                                    <img src="${image.src}" alt="${image.alt || ''}">
+                                    <div class="ghost-gallery-image-actions">
+                                        <button type="button" 
+                                                class="ghost-gallery-action-btn"
+                                                onclick="event.stopPropagation(); editGalleryImage('${card.id}', ${index})"
+                                                title="Edit">
+                                            <i class="ti ti-pencil"></i>
+                                        </button>
+                                        <button type="button" 
+                                                class="ghost-gallery-action-btn ghost-gallery-action-delete"
+                                                onclick="event.stopPropagation(); removeGalleryImage('${card.id}', ${index})"
+                                                title="Remove">
+                                            <i class="ti ti-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    ` : ''}
                 </div>
             </div>
         `;
@@ -4567,6 +6387,14 @@ allTags = tagsResult.success ? tagsResult.data : [];
             </div>
             
             <div class="card-menu-category">Media</div>
+            <div class="card-menu-item" onclick="insertCard('header', this)">
+                <i class="ti ti-heading"></i>
+                <span>Header</span>
+            </div>
+            <div class="card-menu-item" onclick="insertCard('gallery', this)">
+                <i class="ti ti-layout-grid"></i>
+                <span>Gallery</span>
+            </div>
             <div class="card-menu-item" onclick="insertCard('video', this)">
                 <i class="ti ti-movie"></i>
                 <span>Video</span>
@@ -4623,6 +6451,36 @@ allTags = tagsResult.success ? tagsResult.data : [];
             data: {}
         };
         
+        // Initialize data based on card type
+        if (type === 'header') {
+            card.data = {
+                version: 2,
+                header: '',
+                subheader: '',
+                size: 'small',
+                style: 'light',
+                alignment: 'center',
+                backgroundColor: '#F9F9F9',
+                textColor: '#15171A',
+                buttonEnabled: false,
+                buttonText: 'Add button text',
+                buttonUrl: '',
+                buttonColor: '#ffffff',
+                buttonTextColor: '#000000',
+                backgroundImageSrc: '',
+                backgroundImageWidth: null,
+                backgroundImageHeight: null,
+                backgroundSize: 'cover',
+                layout: 'regular',
+                swapped: false,
+                accentColor: '#FF1A75'
+            };
+        } else if (type === 'gallery') {
+            card.data = {
+                images: []
+            };
+        }
+        
         contentCards.push(card);
         
         const cardElement = createCardElement(card);
@@ -4635,6 +6493,13 @@ allTags = tagsResult.success ? tagsResult.data : [];
         
         // Close menu
         closeCardMenu();
+        
+        // For header cards, automatically show the settings panel
+        if (type === 'header') {
+            setTimeout(() => {
+                showHeaderSettings(card.id);
+            }, 100);
+        }
         
         // Only mark dirty if we're not initializing
         if (!isInitializing && !isCreatingCards) {
@@ -4710,14 +6575,28 @@ allTags = tagsResult.success ? tagsResult.data : [];
         if (card) {
             const oldElement = document.getElementById(cardId);
             
-            // Check if settings panel was active
+            // Check if header settings panel was visible
+            let headerSettingsWasVisible = false;
+            if (card.type === 'header') {
+                const headerSettings = document.getElementById('headerSettings-' + cardId);
+                headerSettingsWasVisible = headerSettings && headerSettings.style.display === 'block';
+            }
+            
+            // Check if other settings panels were active
             const settingsPanel = oldElement.querySelector('.ghost-card-settings');
             const wasSettingsActive = settingsPanel && settingsPanel.classList.contains('active');
             
             const newElement = createCardElement(card);
             oldElement.parentNode.replaceChild(newElement, oldElement);
             
-            // Restore settings panel state if it was active
+            // Restore header settings panel state
+            if (headerSettingsWasVisible) {
+                setTimeout(() => {
+                    showHeaderSettings(cardId);
+                }, 50);
+            }
+            
+            // Restore other settings panel state if it was active
             if (wasSettingsActive) {
                 const newSettingsPanel = newElement.querySelector('.ghost-card-settings');
                 if (newSettingsPanel) {
@@ -5869,7 +7748,22 @@ allTags = tagsResult.success ? tagsResult.data : [];
     
     // Image handling for content cards
     function selectImage(cardId) {
-        document.getElementById('imageInput-' + cardId).click();
+        let input = document.getElementById('imageInput-' + cardId);
+        
+        // If input doesn't exist, create it dynamically
+        if (!input) {
+            input = document.createElement('input');
+            input.type = 'file';
+            input.id = 'imageInput-' + cardId;
+            input.accept = 'image/*';
+            input.style.display = 'none';
+            input.onchange = function() {
+                uploadImage(cardId, this);
+            };
+            document.body.appendChild(input);
+        }
+        
+        input.click();
     }
     
     // Handle button hover effects with custom colors
@@ -5963,6 +7857,275 @@ allTags = tagsResult.success ? tagsResult.data : [];
         
         // Refresh the card
         refreshCard(cardId);
+    }
+    
+    // Gallery card functions
+    function renderGalleryImages(card) {
+        if (!card.data.images || card.data.images.length === 0) {
+            return `
+                <div class="kg-gallery-empty" onclick="event.stopPropagation(); document.getElementById('galleryImages-${card.id}').click();">
+                    <i class="ti ti-photo-plus"></i>
+                    <p>Click to add images</p>
+                </div>
+            `;
+        }
+        
+        // Build rows based on Ghost's algorithm (max 3 images per row)
+        const rows = [];
+        const images = card.data.images;
+        const maxPerRow = 3;
+        
+        images.forEach((image, idx) => {
+            let row = Math.floor(idx / maxPerRow);
+            
+            // Special case: if odd number of images and more than 1, put last 2 in their own row
+            if (images.length > 1 && (images.length % maxPerRow === 1) && (idx === images.length - 2)) {
+                row = row + 1;
+            }
+            
+            if (!rows[row]) {
+                rows[row] = [];
+            }
+            rows[row].push({...image, index: idx});
+        });
+        
+        return rows.map(row => `
+            <div class="kg-gallery-row">
+                ${row.map(image => `
+                    <div class="kg-gallery-image" data-index="${image.index}">
+                        <img src="${image.src}" 
+                             alt="${image.alt || ''}" 
+                             loading="lazy"
+                             ${image.width ? `width="${image.width}"` : ''}
+                             ${image.height ? `height="${image.height}"` : ''}>
+                        <div class="kg-gallery-image-toolbar">
+                            <button type="button" 
+                                    class="kg-gallery-image-btn"
+                                    onclick="event.stopPropagation(); editGalleryImage('${card.id}', ${image.index})"
+                                    title="Edit">
+                                <i class="ti ti-pencil"></i>
+                            </button>
+                            <button type="button" 
+                                    class="kg-gallery-image-btn"
+                                    onclick="event.stopPropagation(); removeGalleryImage('${card.id}', ${image.index})"
+                                    title="Remove">
+                                <i class="ti ti-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+        `).join('');
+    }
+    
+    function uploadGalleryImages(cardId, input) {
+        const files = Array.from(input.files);
+        if (!files.length) return;
+        
+        const card = contentCards.find(c => c.id === cardId);
+        if (!card) return;
+        
+        let uploadedCount = 0;
+        let totalFiles = files.length;
+        
+        showMessage(`Uploading ${totalFiles} image${totalFiles > 1 ? 's' : ''}...`, 'info');
+        
+        // Process each file
+        files.forEach(file => {
+            if (!file.type.match('image.*')) {
+                showMessage(`${file.name} is not an image`, 'error');
+                return;
+            }
+            
+            if (file.size > 5 * 1024 * 1024) {
+                showMessage(`${file.name} is too large (max 5MB)`, 'error');
+                return;
+            }
+            
+            const formData = new FormData();
+            formData.append('file', file);
+            formData.append('type', 'content');
+            
+            fetch('/ghost/admin/ajax/upload-image.cfm', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success || data.SUCCESS) {
+                    const imageUrl = data.url || data.URL;
+                    
+                    // Add image to gallery
+                    if (!card.data.images) {
+                        card.data.images = [];
+                    }
+                    
+                    card.data.images.push({
+                        src: imageUrl,
+                        width: data.width || data.WIDTH || null,
+                        height: data.height || data.HEIGHT || null,
+                        fileName: file.name,
+                        alt: '',
+                        title: '',
+                        row: 0 // Will be recalculated on render
+                    });
+                    
+                    uploadedCount++;
+                    
+                    // Refresh card when all uploads complete
+                    if (uploadedCount === totalFiles) {
+                        refreshGalleryCard(cardId);
+                        showMessage('Images uploaded successfully', 'success');
+                    }
+                } else {
+                    showMessage(`Failed to upload ${file.name}`, 'error');
+                }
+            })
+            .catch(error => {
+                showMessage(`Failed to upload ${file.name}: ${error.message}`, 'error');
+            });
+        });
+        
+        // Clear input
+        input.value = '';
+    }
+    
+    function removeGalleryImage(cardId, index) {
+        const card = contentCards.find(c => c.id === cardId);
+        if (!card || !card.data.images) return;
+        
+        // Remove image
+        card.data.images.splice(index, 1);
+        
+        // Update card data
+        updateCardData(cardId, 'images', card.data.images);
+        
+        // Refresh gallery
+        refreshGalleryCard(cardId);
+    }
+    
+    function editGalleryImage(cardId, index) {
+        const card = contentCards.find(c => c.id === cardId);
+        if (!card || !card.data.images || !card.data.images[index]) return;
+        
+        const image = card.data.images[index];
+        
+        // Create edit modal
+        const modal = document.createElement('div');
+        modal.className = 'ghost-modal-backdrop';
+        modal.innerHTML = `
+            <div class="ghost-modal">
+                <div class="ghost-modal-header">
+                    <h3>Edit image</h3>
+                    <button type="button" class="ghost-modal-close" onclick="closeGalleryImageModal()">
+                        <i class="ti ti-x"></i>
+                    </button>
+                </div>
+                <div class="ghost-modal-body">
+                    <div class="form-group">
+                        <label>Alt text</label>
+                        <input type="text" 
+                               id="galleryImageAlt" 
+                               class="form-control" 
+                               value="${image.alt || ''}"
+                               placeholder="Description of image">
+                    </div>
+                    <div class="form-group">
+                        <label>Link URL</label>
+                        <input type="url" 
+                               id="galleryImageHref" 
+                               class="form-control" 
+                               value="${image.href || ''}"
+                               placeholder="https://example.com">
+                    </div>
+                </div>
+                <div class="ghost-modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeGalleryImageModal()">Cancel</button>
+                    <button type="button" class="btn btn-primary" onclick="saveGalleryImageEdit('${cardId}', ${index})">Save</button>
+                </div>
+            </div>
+        `;
+        
+        document.body.appendChild(modal);
+    }
+    
+    function closeGalleryImageModal() {
+        const modal = document.querySelector('.ghost-modal-backdrop');
+        if (modal) modal.remove();
+    }
+    
+    function saveGalleryImageEdit(cardId, index) {
+        const card = contentCards.find(c => c.id === cardId);
+        if (!card || !card.data.images || !card.data.images[index]) return;
+        
+        const alt = document.getElementById('galleryImageAlt').value;
+        const href = document.getElementById('galleryImageHref').value;
+        
+        // Update image data
+        card.data.images[index].alt = alt;
+        card.data.images[index].href = href;
+        
+        // Update card data
+        updateCardData(cardId, 'images', card.data.images);
+        
+        // Close modal
+        closeGalleryImageModal();
+        
+        // Refresh gallery
+        refreshGalleryCard(cardId);
+    }
+    
+    function refreshGalleryCard(cardId) {
+        const card = contentCards.find(c => c.id === cardId);
+        if (!card) return;
+        
+        const container = document.getElementById('gallery-container-' + cardId);
+        if (container) {
+            container.innerHTML = renderGalleryImages(card);
+        }
+        
+        // Update caption if it exists
+        const captionElement = document.querySelector(`#${cardId} .kg-gallery-card figcaption`);
+        if (card.data.caption) {
+            if (!captionElement) {
+                const galleryCard = document.querySelector(`#${cardId} .kg-gallery-card`);
+                if (galleryCard) {
+                    const newCaption = document.createElement('figcaption');
+                    newCaption.textContent = card.data.caption;
+                    galleryCard.appendChild(newCaption);
+                }
+            } else {
+                captionElement.textContent = card.data.caption;
+            }
+        } else if (captionElement) {
+            captionElement.remove();
+        }
+        
+        // Update images list in settings
+        const imagesList = document.querySelector(`#gallerySettings-${cardId} .ghost-gallery-images-list`);
+        if (imagesList && card.data.images.length > 0) {
+            imagesList.innerHTML = card.data.images.map((image, index) => `
+                <div class="ghost-gallery-image-item" data-index="${index}">
+                    <img src="${image.src}" alt="${image.alt || ''}">
+                    <div class="ghost-gallery-image-actions">
+                        <button type="button" 
+                                class="ghost-gallery-action-btn"
+                                onclick="event.stopPropagation(); editGalleryImage('${cardId}', ${index})"
+                                title="Edit">
+                            <i class="ti ti-pencil"></i>
+                        </button>
+                        <button type="button" 
+                                class="ghost-gallery-action-btn ghost-gallery-action-delete"
+                                onclick="event.stopPropagation(); removeGalleryImage('${cardId}', ${index})"
+                                title="Remove">
+                            <i class="ti ti-trash"></i>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        markDirtySafe();
     }
     
     // Toggle card settings panel
@@ -6099,6 +8262,491 @@ allTags = tagsResult.success ? tagsResult.data : [];
     function replaceImage(cardId) {
         hideImageSettings(cardId);
         selectImage(cardId);
+    }
+    
+    // Header Card Functions
+    function updateHeaderCardInPlace(cardId) {
+        const card = contentCards.find(c => c.id === cardId);
+        if (!card) return;
+        
+        const headerCard = document.getElementById('headerCard-' + cardId);
+        if (!headerCard) {
+            // Fallback to full refresh if element not found
+            refreshCard(cardId);
+            return;
+        }
+        
+        // Update classes
+        let cardClasses = ['kg-card', 'kg-header-card', 'kg-v2'];
+        
+        // Add width class based on size/layout
+        if (card.data.size === 'small' && card.data.layout !== 'split') {
+            // Default width for small
+        } else if (card.data.size === 'medium' && card.data.layout !== 'split') {
+            cardClasses.push('kg-width-wide');
+        } else if (card.data.size === 'large' && card.data.layout !== 'split') {
+            cardClasses.push('kg-width-full');
+        }
+        
+        // Add layout classes for split
+        if (card.data.layout === 'split') {
+            cardClasses.push('kg-layout-split', 'kg-width-full');
+            if (card.data.swapped) {
+                cardClasses.push('kg-swapped');
+            }
+        }
+        
+        // Add content-wide for full layouts
+        if ((card.data.size === 'large' || card.data.layout === 'split') && card.data.layout !== 'regular') {
+            cardClasses.push('kg-content-wide');
+        }
+        
+        // Apply style class
+        if (card.data.style === 'accent') {
+            cardClasses.push('kg-style-accent');
+        }
+        
+        // Add image style class if background image is present (not for split layout)
+        if (card.data.backgroundImageSrc && card.data.layout !== 'split') {
+            cardClasses.push('kg-style-image');
+        }
+        
+        // Update the header card element
+        headerCard.className = cardClasses.join(' ');
+        
+        // Update background style - handle both image and color
+        if (card.data.backgroundImageSrc && card.data.layout !== 'split') {
+            headerCard.style.backgroundImage = `url(${card.data.backgroundImageSrc})`;
+            headerCard.style.backgroundSize = card.data.backgroundSize || 'cover';
+            headerCard.style.backgroundPosition = 'center';
+            // Still apply background color as fallback
+            if (card.data.style !== 'accent') {
+                headerCard.style.backgroundColor = card.data.backgroundColor;
+            }
+        } else if (card.data.style !== 'accent') {
+            headerCard.style.backgroundColor = card.data.backgroundColor;
+            headerCard.style.backgroundImage = '';
+        } else {
+            headerCard.style.backgroundColor = '';
+            headerCard.style.backgroundImage = '';
+        }
+        
+        // Update text colors
+        const heading = headerCard.querySelector('.kg-header-card-heading');
+        const subheading = headerCard.querySelector('.kg-header-card-subheading');
+        const button = headerCard.querySelector('.kg-header-card-button');
+        
+        if (heading) {
+            heading.style.color = card.data.textColor;
+            heading.setAttribute('data-text-color', card.data.textColor);
+        }
+        
+        if (subheading) {
+            subheading.style.color = card.data.textColor;
+            subheading.setAttribute('data-text-color', card.data.textColor);
+        }
+        
+        // Update alignment
+        const textContainer = headerCard.querySelector('.kg-header-card-text');
+        if (textContainer) {
+            textContainer.className = `kg-header-card-text kg-align-${card.data.alignment}`;
+        }
+        
+        // Update button if needed
+        if (button && card.data.buttonEnabled) {
+            button.textContent = card.data.buttonText;
+            button.href = card.data.buttonUrl || '#';
+            
+            if (card.data.buttonColor === 'accent') {
+                button.className = 'kg-header-card-button kg-style-accent';
+                button.style.backgroundColor = '';
+                button.style.color = '';
+            } else {
+                button.className = 'kg-header-card-button';
+                button.style.backgroundColor = card.data.buttonColor;
+                button.style.color = card.data.buttonTextColor;
+            }
+            
+            button.setAttribute('data-button-color', card.data.buttonColor);
+            button.setAttribute('data-button-text-color', card.data.buttonTextColor);
+        }
+        
+        // Handle split layout structure changes if needed
+        if (card.data.layout === 'split' && !headerCard.querySelector('.kg-header-card-content > .kg-header-card-text')) {
+            // Need to restructure for split layout
+            refreshCard(cardId);
+            return;
+        } else if (card.data.layout !== 'split' && headerCard.querySelector('.kg-header-card-content > .kg-header-card-text')) {
+            // Need to restructure from split layout
+            refreshCard(cardId);
+            return;
+        }
+        
+        // Update split image if in split layout
+        if (card.data.layout === 'split') {
+            const splitImage = headerCard.querySelector('.kg-header-card-image');
+            if (splitImage && card.data.splitImageSrc) {
+                splitImage.src = card.data.splitImageSrc;
+            }
+        }
+    }
+    
+    // Store active header settings handlers
+    let activeHeaderSettingsHandlers = {};
+    
+    // Header Card Functions
+    function showHeaderSettings(cardId) {
+        // Close any other open settings panels
+        document.querySelectorAll('.kg-settings-panel-header').forEach(panel => {
+            if (panel.id !== 'headerSettings-' + cardId) {
+                panel.style.display = 'none';
+                // Remove handler for other panels
+                const otherId = panel.id.replace('headerSettings-', '');
+                if (activeHeaderSettingsHandlers[otherId]) {
+                    document.removeEventListener('click', activeHeaderSettingsHandlers[otherId]);
+                    delete activeHeaderSettingsHandlers[otherId];
+                }
+            }
+        });
+        
+        const settings = document.getElementById('headerSettings-' + cardId);
+        
+        if (settings) {
+            // Always show the settings panel when header is clicked
+            settings.style.display = 'block';
+            
+            // Remove any existing handler for this card
+            if (activeHeaderSettingsHandlers[cardId]) {
+                document.removeEventListener('click', activeHeaderSettingsHandlers[cardId]);
+            }
+            
+            // Add click outside listener to close settings when clicking outside
+            setTimeout(() => {
+                const closeHandler = (event) => {
+                    const card = document.getElementById('card-' + cardId);
+                    const settingsPanel = document.getElementById('headerSettings-' + cardId);
+                    
+                    // Skip if elements don't exist or panel is already hidden
+                    if (!settingsPanel || settingsPanel.style.display === 'none') {
+                        return;
+                    }
+                    
+                    // Check if click is outside both the card and settings panel
+                    const clickedInsideCard = card && card.contains(event.target);
+                    const clickedInsideSettings = settingsPanel.contains(event.target);
+                    const clickedColorPicker = event.target.closest('.kg-color-picker-input');
+                    const clickedFileInput = event.target.closest('input[type="file"]');
+                    
+                    if (!clickedInsideCard && 
+                        !clickedInsideSettings &&
+                        !clickedColorPicker &&
+                        !clickedFileInput) {
+                        
+                        settingsPanel.style.display = 'none';
+                        document.removeEventListener('click', closeHandler);
+                        delete activeHeaderSettingsHandlers[cardId];
+                    }
+                };
+                
+                activeHeaderSettingsHandlers[cardId] = closeHandler;
+                document.addEventListener('click', closeHandler);
+            }, 100);
+        }
+    }
+    
+    function hideHeaderSettings(cardId) {
+        const settings = document.getElementById('headerSettings-' + cardId);
+        if (settings) {
+            settings.classList.add('hidden');
+        }
+    }
+    
+    function updateHeaderLayout(cardId, layout) {
+        const card = contentCards.find(c => c.id === cardId);
+        if (card) {
+            card.data.layout = layout;
+            
+            // Preserve settings panel state
+            const settingsPanel = document.getElementById('headerSettings-' + cardId);
+            const wasVisible = settingsPanel && settingsPanel.style.display === 'block';
+            
+            // Need to refresh for structural changes
+            refreshCard(cardId);
+            
+            if (wasVisible) {
+                setTimeout(() => {
+                    showHeaderSettings(cardId);
+                }, 50);
+            }
+            
+            markDirtySafe();
+        }
+    }
+    
+    function updateHeaderBackground(cardId, color, textColor) {
+        const card = contentCards.find(c => c.id === cardId);
+        if (card) {
+            card.data.backgroundColor = color;
+            if (textColor) {
+                card.data.textColor = textColor;
+            }
+            
+            // Set style to custom when manually changing colors
+            if (card.data.style !== 'custom' && color !== 'accent') {
+                card.data.style = 'custom';
+            }
+            
+            updateHeaderCardInPlace(cardId);
+            markDirtySafe();
+        }
+    }
+    
+    function updateHeaderAlignment(cardId, alignment) {
+        const card = contentCards.find(c => c.id === cardId);
+        if (card) {
+            card.data.alignment = alignment;
+            updateHeaderCardInPlace(cardId);
+            markDirtySafe();
+        }
+    }
+    
+    function updateHeaderSwapped(cardId, swapped) {
+        const card = contentCards.find(c => c.id === cardId);
+        if (card) {
+            card.data.swapped = swapped;
+            updateHeaderCardInPlace(cardId);
+            markDirtySafe();
+        }
+    }
+    
+    function updateHeaderButton(cardId, enabled) {
+        const card = contentCards.find(c => c.id === cardId);
+        if (card) {
+            card.data.buttonEnabled = enabled;
+            // Button toggle requires structural changes, so we need a full refresh
+            // But preserve the settings panel state
+            const settingsPanel = document.getElementById('headerSettings-' + cardId);
+            const wasVisible = settingsPanel && settingsPanel.style.display === 'block';
+            
+            refreshCard(cardId);
+            
+            if (wasVisible) {
+                setTimeout(() => {
+                    showHeaderSettings(cardId);
+                }, 50);
+            }
+            
+            markDirtySafe();
+        }
+    }
+    
+    function updateHeaderButtonColor(cardId, color, textColor) {
+        const card = contentCards.find(c => c.id === cardId);
+        if (card) {
+            card.data.buttonColor = color;
+            card.data.buttonTextColor = textColor;
+            updateHeaderCardInPlace(cardId);
+            markDirtySafe();
+        }
+    }
+    
+    function showHeaderColorPicker(cardId) {
+        document.getElementById('headerColorPicker-' + cardId).click();
+    }
+    
+    function showHeaderButtonColorPicker(cardId) {
+        document.getElementById('headerButtonColorPicker-' + cardId).click();
+    }
+    
+    function selectHeaderBackgroundImage(cardId) {
+        // Create input dynamically if it doesn't exist
+        let input = document.getElementById('headerBgImageInput-' + cardId);
+        if (!input) {
+            input = document.createElement('input');
+            input.type = 'file';
+            input.id = 'headerBgImageInput-' + cardId;
+            input.accept = 'image/*';
+            input.style.display = 'none';
+            input.onchange = function() {
+                uploadHeaderBackgroundImage(cardId, this);
+            };
+            document.body.appendChild(input);
+        }
+        input.click();
+    }
+    
+    function selectHeaderSplitImage(cardId) {
+        // Create input dynamically if it doesn't exist
+        let input = document.getElementById('headerSplitImageInput-' + cardId);
+        if (!input) {
+            input = document.createElement('input');
+            input.type = 'file';
+            input.id = 'headerSplitImageInput-' + cardId;
+            input.accept = 'image/*';
+            input.style.display = 'none';
+            input.onchange = function() {
+                uploadHeaderSplitImage(cardId, this);
+            };
+            document.body.appendChild(input);
+        }
+        input.click();
+    }
+    
+    function updateHeaderSize(cardId, size) {
+        const card = contentCards.find(c => c.id === cardId);
+        if (card) {
+            card.data.size = size;
+            // Reset layout if changing size
+            if (card.data.layout === 'split') {
+                card.data.layout = 'regular';
+            }
+            updateHeaderCardInPlace(cardId);
+            markDirtySafe();
+        }
+    }
+    
+    function updateHeaderStyle(cardId, style) {
+        const card = contentCards.find(c => c.id === cardId);
+        if (card) {
+            card.data.style = style;
+            
+            // Apply style-specific defaults
+            if (style === 'dark') {
+                card.data.backgroundColor = '#08090c';
+                card.data.textColor = '#FFFFFF';
+            } else if (style === 'light') {
+                card.data.backgroundColor = '#F9F9F9';
+                card.data.textColor = '#15171A';
+            } else if (style === 'accent') {
+                card.data.backgroundColor = 'accent';
+                card.data.textColor = '#FFFFFF';
+            } else if (style === 'image') {
+                // Image style - prompt for image if none exists
+                card.data.backgroundColor = '#000000';
+                card.data.textColor = '#FFFFFF';
+                if (!card.data.backgroundImageSrc) {
+                    setTimeout(() => {
+                        selectHeaderBackgroundImage(cardId);
+                    }, 100);
+                }
+            } else if (style === 'custom') {
+                // Keep current colors or set defaults
+                if (card.data.backgroundColor === 'accent' || !card.data.backgroundColor) {
+                    card.data.backgroundColor = '#F9F9F9';
+                }
+                if (!card.data.textColor) {
+                    card.data.textColor = '#15171A';
+                }
+            }
+            
+            // Always preserve settings panel state  
+            const settingsPanel = document.getElementById('headerSettings-' + cardId);
+            const wasVisible = settingsPanel && settingsPanel.style.display === 'block';
+            
+            refreshCard(cardId);
+            
+            if (wasVisible) {
+                setTimeout(() => {
+                    showHeaderSettings(cardId);
+                }, 50);
+            }
+            
+            markDirtySafe();
+        }
+    }
+    
+    function updateHeaderTextColor(cardId, color) {
+        const card = contentCards.find(c => c.id === cardId);
+        if (card) {
+            card.data.textColor = color;
+            updateHeaderCardInPlace(cardId);
+            markDirtySafe();
+        }
+    }
+    
+    function toggleHeaderBackgroundImage(cardId, enabled) {
+        const card = contentCards.find(c => c.id === cardId);
+        if (card) {
+            if (enabled && !card.data.backgroundImageSrc) {
+                // Trigger image selection
+                selectHeaderBackgroundImage(cardId);
+            } else if (!enabled) {
+                card.data.backgroundImageSrc = '';
+                // Preserve settings panel state
+                const settingsPanel = document.getElementById('headerSettings-' + cardId);
+                const wasVisible = settingsPanel && settingsPanel.style.display === 'block';
+                
+                refreshCard(cardId);
+                
+                if (wasVisible) {
+                    setTimeout(() => {
+                        showHeaderSettings(cardId);
+                    }, 50);
+                }
+                markDirtySafe();
+            }
+        }
+    }
+    
+    function uploadHeaderBackgroundImage(cardId, input) {
+        if (input.files && input.files[0]) {
+            const file = input.files[0];
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                const card = contentCards.find(c => c.id === cardId);
+                if (card) {
+                    card.data.backgroundImageSrc = e.target.result;
+                    
+                    // Preserve settings panel state
+                    const settingsPanel = document.getElementById('headerSettings-' + cardId);
+                    const wasVisible = settingsPanel && settingsPanel.style.display === 'block';
+                    
+                    refreshCard(cardId);
+                    
+                    if (wasVisible) {
+                        setTimeout(() => {
+                            showHeaderSettings(cardId);
+                        }, 50);
+                    }
+                    
+                    markDirtySafe();
+                }
+            };
+            
+            reader.readAsDataURL(file);
+        }
+    }
+    
+    function uploadHeaderSplitImage(cardId, input) {
+        if (input.files && input.files[0]) {
+            const file = input.files[0];
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                const card = contentCards.find(c => c.id === cardId);
+                if (card) {
+                    card.data.splitImageSrc = e.target.result;
+                    updateHeaderCardInPlace(cardId);
+                    markDirtySafe();
+                }
+            };
+            
+            reader.readAsDataURL(file);
+        }
+    }
+    
+    function getContrastColor(hexcolor) {
+        // Convert hex to RGB
+        const r = parseInt(hexcolor.substr(1,2), 16);
+        const g = parseInt(hexcolor.substr(3,2), 16);
+        const b = parseInt(hexcolor.substr(5,2), 16);
+        
+        // Calculate luminance
+        const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+        
+        // Return black or white based on luminance
+        return luminance > 0.5 ? '#000000' : '#FFFFFF';
     }
     
     function uploadImage(cardId, input) {
@@ -6511,7 +9159,7 @@ allTags = tagsResult.success ? tagsResult.data : [];
             card.data.price = '';
             card.data.url = '';
             card.data.initialized = true; // Flag to show the form
-            refreshCard(cardId);
+            updateHeaderCardInPlace(cardId);
             markDirtySafe();
         }
     }
@@ -6521,7 +9169,7 @@ allTags = tagsResult.success ? tagsResult.data : [];
         const card = contentCards.find(c => c.id === cardId);
         if (card) {
             card.data.rating = rating > 0 ? rating : null;
-            refreshCard(cardId);
+            updateHeaderCardInPlace(cardId);
             markDirtySafe();
         }
     }
@@ -6979,7 +9627,7 @@ allTags = tagsResult.success ? tagsResult.data : [];
             }
             
             // Re-render card with embed
-            refreshCard(cardId);
+            updateHeaderCardInPlace(cardId);
             markDirtySafe();
         }, 1000);
     }
@@ -7110,6 +9758,134 @@ allTags = tagsResult.success ? tagsResult.data : [];
                         }
                         html += '</figure>\n';
                     }
+                    break;
+                case 'header':
+                    // Build header card HTML using v2 structure - matching Ghost source
+                    let headerClasses = ['kg-card', 'kg-header-card', 'kg-v2'];
+                    
+                    // Determine layout based on size and layout properties
+                    const size = card.data.size || 'small';
+                    const layout = card.data.layout || 'regular';
+                    
+                    if (size === 'small' && layout !== 'split') {
+                        // Default width for small
+                    } else if (size === 'medium' && layout !== 'split') {
+                        headerClasses.push('kg-width-wide');
+                    } else if (size === 'large' && layout !== 'split') {
+                        headerClasses.push('kg-width-full');
+                    }
+                    
+                    if (layout === 'split') {
+                        headerClasses.push('kg-layout-split', 'kg-width-full');
+                    }
+                    
+                    if (card.data.swapped && layout === 'split') {
+                        headerClasses.push('kg-swapped');
+                    }
+                    
+                    if ((size === 'large' || layout === 'split') && layout !== 'regular') {
+                        headerClasses.push('kg-content-wide');
+                    }
+                    
+                    // Apply style class
+                    if (card.data.style === 'accent') {
+                        headerClasses.push('kg-style-accent');
+                    } else if (card.data.style === 'image' && card.data.backgroundImageSrc) {
+                        headerClasses.push('kg-style-image');
+                    }
+                    
+                    const headerClass = headerClasses.join(' ');
+                    html += `<div class="${headerClass}"`;
+                    
+                    // Add background style
+                    if (card.data.style === 'image' && card.data.backgroundImageSrc) {
+                        html += ` style="background-image: url(${card.data.backgroundImageSrc}); background-size: ${card.data.backgroundSize || 'cover'}; background-position: center;"`;
+                    } else if (card.data.style !== 'accent') {
+                        html += ` style="background-color: ${card.data.backgroundColor};"`;
+                    }
+                    
+                    html += ` data-background-color="${card.data.backgroundColor}">`;
+                    
+                    // Background image for non-split layouts
+                    if (card.data.style === 'image' && card.data.backgroundImageSrc && layout !== 'split') {
+                        html += `<picture><img class="kg-header-card-image" src="${card.data.backgroundImageSrc}" loading="lazy" alt="" /></picture>`;
+                    }
+                    
+                    html += `<div class="kg-header-card-content">`;
+                    
+                    // For split layout, structure is different
+                    if (layout === 'split') {
+                        // Text content first
+                        const alignmentClass = card.data.alignment === 'center' ? 'kg-align-center' : '';
+                        html += `<div class="kg-header-card-text ${alignmentClass}">`;
+                        
+                        if (card.data.header) {
+                            html += `<h2 class="kg-header-card-heading" style="color: ${card.data.textColor};" data-text-color="${card.data.textColor}">`;
+                            html += card.data.header;
+                            html += `</h2>`;
+                            plaintext += card.data.header + '\n';
+                        }
+                        
+                        if (card.data.subheader) {
+                            html += `<p class="kg-header-card-subheading" style="color: ${card.data.textColor};" data-text-color="${card.data.textColor}">`;
+                            html += card.data.subheader;
+                            html += `</p>`;
+                            plaintext += card.data.subheader + '\n';
+                        }
+                        
+                        if (card.data.buttonEnabled && card.data.buttonText && card.data.buttonUrl) {
+                            const buttonAccent = card.data.buttonColor === 'accent' ? ' kg-style-accent' : '';
+                            const buttonStyle = card.data.buttonColor !== 'accent' ? `background-color: ${card.data.buttonColor}; color: ${card.data.buttonTextColor};` : '';
+                            
+                            html += `<a href="${card.data.buttonUrl}" class="kg-header-card-button${buttonAccent}" `;
+                            html += `style="${buttonStyle}" `;
+                            html += `data-button-color="${card.data.buttonColor}" data-button-text-color="${card.data.buttonTextColor}">`;
+                            html += card.data.buttonText;
+                            html += `</a>`;
+                        }
+                        
+                        html += `</div>`;
+                        
+                        // Then image
+                        if (card.data.backgroundImageSrc) {
+                            html += `<img class="kg-header-card-image" src="${card.data.backgroundImageSrc}" alt="">`;
+                        }
+                    } else {
+                        // Regular layout - text only
+                        const alignmentClass = card.data.alignment === 'center' ? 'kg-align-center' : '';
+                        html += `<div class="kg-header-card-text ${alignmentClass}">`;
+                        
+                        if (card.data.header) {
+                            html += `<h2 class="kg-header-card-heading" style="color: ${card.data.textColor};" data-text-color="${card.data.textColor}">`;
+                            html += card.data.header;
+                            html += `</h2>`;
+                            plaintext += card.data.header + '\n';
+                        }
+                        
+                        if (card.data.subheader) {
+                            html += `<p class="kg-header-card-subheading" style="color: ${card.data.textColor};" data-text-color="${card.data.textColor}">`;
+                            html += card.data.subheader;
+                            html += `</p>`;
+                            plaintext += card.data.subheader + '\n';
+                        }
+                        
+                        if (card.data.buttonEnabled && card.data.buttonText && card.data.buttonUrl) {
+                            const buttonAccent = card.data.buttonColor === 'accent' ? ' kg-style-accent' : '';
+                            const buttonStyle = card.data.buttonColor !== 'accent' ? `background-color: ${card.data.buttonColor}; color: ${card.data.buttonTextColor};` : '';
+                            
+                            html += `<a href="${card.data.buttonUrl}" class="kg-header-card-button${buttonAccent}" `;
+                            html += `style="${buttonStyle}" `;
+                            html += `data-button-color="${card.data.buttonColor}" data-button-text-color="${card.data.buttonTextColor}">`;
+                            html += card.data.buttonText;
+                            html += `</a>`;
+                        }
+                        
+                        html += `</div>`;
+                    }
+                    
+                    html += `</div>`;
+                    html += `</div>\n`;
+                    plaintext += '\n';
                     break;
                 case 'html':
                     html += (card.data.content || '') + '\n';
@@ -7362,6 +10138,72 @@ allTags = tagsResult.success ? tagsResult.data : [];
                         plaintext += '\n';
                     }
                     break;
+                case 'gallery':
+                    if (card.data.images && card.data.images.length > 0) {
+                        html += `<figure class="kg-card kg-gallery-card kg-width-wide${card.data.caption ? ' kg-card-hascaption' : ''}">`;
+                        html += `<div class="kg-gallery-container">`;
+                        
+                        // Build gallery structure using Ghost's algorithm
+                        const images = card.data.images;
+                        const rows = [];
+                        const MAX_IMG_PER_ROW = 3;
+                        const noOfImages = images.length;
+                        
+                        images.forEach((image, idx) => {
+                            let row = Math.floor(idx / MAX_IMG_PER_ROW);
+                            
+                            // Special case: if we have an odd number of images and we're at the second-to-last image
+                            if (noOfImages > 1 && (noOfImages % MAX_IMG_PER_ROW === 1) && (idx === (noOfImages - 2))) {
+                                row = row + 1;
+                            }
+                            
+                            if (!rows[row]) {
+                                rows[row] = [];
+                            }
+                            rows[row].push(image);
+                        });
+                        
+                        // Generate HTML for each row
+                        rows.forEach(row => {
+                            html += `<div class="kg-gallery-row">`;
+                            row.forEach(image => {
+                                html += `<div class="kg-gallery-image">`;
+                                if (image.href) {
+                                    html += `<a href="${image.href}">`;
+                                }
+                                html += `<img src="${image.src}" `;
+                                if (image.width) html += `width="${image.width}" `;
+                                if (image.height) html += `height="${image.height}" `;
+                                html += `loading="lazy" `;
+                                html += `alt="${image.alt || ''}"`;
+                                if (image.title) {
+                                    html += ` title="${image.title}"`;
+                                }
+                                html += `>`;
+                                if (image.href) {
+                                    html += `</a>`;
+                                }
+                                html += `</div>`;
+                            });
+                            html += `</div>`;
+                        });
+                        
+                        html += `</div>`;
+                        
+                        if (card.data.caption) {
+                            html += `<figcaption>${card.data.caption}</figcaption>`;
+                        }
+                        
+                        html += `</figure>\n`;
+                        
+                        // Add to plaintext
+                        plaintext += 'Gallery: ' + images.length + ' images\n';
+                        if (card.data.caption) {
+                            plaintext += card.data.caption + '\n';
+                        }
+                        plaintext += '\n';
+                    }
+                    break;
             }
         });
         
@@ -7379,6 +10221,9 @@ allTags = tagsResult.success ? tagsResult.data : [];
         document.getElementById('formPublishedAt').value = publishDate;
         document.getElementById('formTags').value = JSON.stringify(selectedTags);
         document.getElementById('formStatus').value = status;
+        
+        // Save card data to preserve all card settings
+        document.getElementById('formCardData').value = JSON.stringify(contentCards);
         
         // Get form data
         const formData = new FormData(document.getElementById('postForm'));

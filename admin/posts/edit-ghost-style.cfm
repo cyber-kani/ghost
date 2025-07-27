@@ -3227,6 +3227,486 @@ allTags = tagsResult.success ? tagsResult.data : [];
             color: #30a46c !important;
             padding: 0;
         }
+    
+    /* Apple HIG-inspired styles */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    
+    :root {
+        --apple-bg-primary: #ffffff;
+        --apple-bg-secondary: #f5f5f7;
+        --apple-bg-tertiary: #fafafa;
+        --apple-text-primary: #1d1d1f;
+        --apple-text-secondary: #86868b;
+        --apple-text-tertiary: #515154;
+        --apple-border: #d2d2d7;
+        --apple-border-light: #e8e8ed;
+        --apple-blue: #0071e3;
+        --apple-blue-hover: #0077ed;
+        --apple-green: #34c759;
+        --apple-red: #ff3b30;
+        --apple-yellow: #ffcc00;
+        --apple-shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+        --apple-shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+        --apple-shadow-lg: 0 10px 40px rgba(0,0,0,0.12);
+        --apple-radius-sm: 8px;
+        --apple-radius-md: 12px;
+        --apple-radius-lg: 16px;
+        --apple-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    /* Settings panel - Apple style */
+    .ghost-settings-panel {
+        position: fixed;
+        top: 0;
+        right: -420px;
+        width: 420px;
+        height: 100vh;
+        background: var(--apple-bg-primary);
+        border-left: 1px solid var(--apple-border-light);
+        transition: var(--apple-transition);
+        z-index: 1050;
+        display: flex;
+        flex-direction: column;
+        font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+    }
+    
+    .ghost-settings-panel.active {
+        right: 0;
+    }
+    
+    .ghost-settings-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 24px;
+        background: var(--apple-bg-primary);
+        border-bottom: 1px solid var(--apple-border-light);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+    }
+    
+    .ghost-settings-header h3 {
+        font-size: 20px;
+        font-weight: 600;
+        color: var(--apple-text-primary);
+        margin: 0;
+        letter-spacing: -0.02em;
+    }
+    
+    .ghost-settings-content {
+        flex: 1;
+        overflow-y: auto;
+        padding: 24px;
+        background: var(--apple-bg-secondary);
+    }
+    
+    .ghost-settings-content::-webkit-scrollbar {
+        width: 0;
+    }
+    
+    /* Form sections */
+    .settings-section {
+        background: var(--apple-bg-primary);
+        border-radius: var(--apple-radius-md);
+        padding: 20px;
+        margin-bottom: 16px;
+        box-shadow: var(--apple-shadow-sm);
+    }
+    
+    .settings-section-title {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--apple-text-secondary);
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
+        margin-bottom: 16px;
+        padding: 0 4px;
+    }
+    
+    /* Form controls */
+    .apple-form-label {
+        display: block;
+        font-size: 15px;
+        font-weight: 500;
+        color: var(--apple-text-primary);
+        margin-bottom: 8px;
+        letter-spacing: -0.01em;
+    }
+    
+    .apple-form-control {
+        width: 100%;
+        padding: 10px 12px;
+        font-size: 15px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+        background: var(--apple-bg-tertiary);
+        border: 1px solid var(--apple-border);
+        border-radius: var(--apple-radius-sm);
+        color: var(--apple-text-primary);
+        transition: var(--apple-transition);
+        -webkit-appearance: none;
+    }
+    
+    .apple-form-control:focus {
+        outline: none;
+        border-color: var(--apple-blue);
+        box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.1);
+        background: var(--apple-bg-primary);
+    }
+    
+    .apple-form-control::placeholder {
+        color: var(--apple-text-tertiary);
+    }
+    
+    .apple-form-helper {
+        font-size: 13px;
+        color: var(--apple-text-secondary);
+        margin-top: 6px;
+        line-height: 1.4;
+    }
+    
+    /* Toggle switches - iOS style */
+    .apple-switch {
+        position: relative;
+        display: inline-block;
+        width: 51px;
+        height: 31px;
+    }
+    
+    .apple-switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+    
+    .apple-switch-slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #e9e9eb;
+        transition: var(--apple-transition);
+        border-radius: 31px;
+    }
+    
+    .apple-switch-slider:before {
+        position: absolute;
+        content: "";
+        height: 27px;
+        width: 27px;
+        left: 2px;
+        bottom: 2px;
+        background-color: white;
+        transition: var(--apple-transition);
+        border-radius: 50%;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    
+    .apple-switch input:checked + .apple-switch-slider {
+        background-color: var(--apple-green);
+    }
+    
+    .apple-switch input:checked + .apple-switch-slider:before {
+        transform: translateX(20px);
+    }
+    
+    /* Segmented control */
+    .apple-segmented-control {
+        display: flex;
+        background: var(--apple-bg-tertiary);
+        border-radius: var(--apple-radius-sm);
+        padding: 2px;
+        gap: 2px;
+    }
+    
+    .apple-segment {
+        flex: 1;
+        padding: 8px 16px;
+        font-size: 14px;
+        font-weight: 500;
+        text-align: center;
+        background: transparent;
+        border: none;
+        border-radius: 6px;
+        color: var(--apple-text-primary);
+        cursor: pointer;
+        transition: var(--apple-transition);
+    }
+    
+    .apple-segment.active {
+        background: var(--apple-bg-primary);
+        box-shadow: var(--apple-shadow-sm);
+    }
+    
+    /* List items */
+    .apple-list-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 0;
+        border-bottom: 1px solid var(--apple-border-light);
+    }
+    
+    .apple-list-item:last-child {
+        border-bottom: none;
+    }
+    
+    .apple-list-item-content {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+    
+    .apple-list-item-icon {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--apple-bg-tertiary);
+        border-radius: var(--apple-radius-sm);
+        color: var(--apple-text-secondary);
+    }
+    
+    .apple-list-item-text h4 {
+        font-size: 15px;
+        font-weight: 500;
+        color: var(--apple-text-primary);
+        margin: 0 0 2px 0;
+    }
+    
+    .apple-list-item-text p {
+        font-size: 13px;
+        color: var(--apple-text-secondary);
+        margin: 0;
+    }
+    
+    /* Buttons */
+    .apple-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 20px;
+        font-size: 15px;
+        font-weight: 500;
+        font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+        border-radius: var(--apple-radius-sm);
+        border: none;
+        cursor: pointer;
+        transition: var(--apple-transition);
+        gap: 6px;
+    }
+    
+    .apple-btn-primary {
+        background: var(--apple-blue);
+        color: white;
+    }
+    
+    .apple-btn-primary:hover {
+        background: var(--apple-blue-hover);
+        transform: translateY(-1px);
+    }
+    
+    .apple-btn-secondary {
+        background: var(--apple-bg-tertiary);
+        color: var(--apple-text-primary);
+        border: 1px solid var(--apple-border);
+    }
+    
+    .apple-btn-secondary:hover {
+        background: var(--apple-bg-secondary);
+    }
+    
+    .apple-btn-danger {
+        background: transparent;
+        color: var(--apple-red);
+        border: 1px solid var(--apple-red);
+    }
+    
+    .apple-btn-danger:hover {
+        background: var(--apple-red);
+        color: white;
+    }
+    
+    /* Icon buttons */
+    .apple-icon-btn {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        border: none;
+        border-radius: 50%;
+        color: var(--apple-text-secondary);
+        cursor: pointer;
+        transition: var(--apple-transition);
+    }
+    
+    .apple-icon-btn:hover {
+        background: var(--apple-bg-tertiary);
+        color: var(--apple-text-primary);
+    }
+    
+    /* Subview panel styles */
+    .subview-panel {
+        position: fixed;
+        top: 0;
+        right: -420px;
+        width: 420px;
+        height: 100vh;
+        background: var(--apple-bg-primary);
+        border-left: 1px solid var(--apple-border-light);
+        transition: var(--apple-transition);
+        z-index: 1060;
+        display: flex;
+        flex-direction: column;
+        font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+    }
+    
+    .subview-panel.active {
+        right: 0;
+    }
+    
+    .subview-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 24px;
+        background: var(--apple-bg-primary);
+        border-bottom: 1px solid var(--apple-border-light);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+    }
+    
+    .subview-content {
+        flex: 1;
+        overflow-y: auto;
+        padding: 24px;
+        background: var(--apple-bg-secondary);
+    }
+    
+    /* Character counter */
+    .char-counter {
+        font-size: 13px;
+        font-weight: 500;
+        margin-top: 6px;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+    
+    .char-counter-good {
+        color: var(--apple-green);
+    }
+    
+    .char-counter-warning {
+        color: var(--apple-yellow);
+    }
+    
+    .char-counter-danger {
+        color: var(--apple-red);
+    }
+    
+    /* Social preview cards */
+    .social-preview {
+        border: 1px solid var(--apple-border);
+        border-radius: var(--apple-radius-md);
+        overflow: hidden;
+        margin-top: 16px;
+        background: var(--apple-bg-primary);
+        box-shadow: var(--apple-shadow-sm);
+    }
+    
+    .social-preview-image {
+        height: 200px;
+        background: var(--apple-bg-tertiary);
+        background-size: cover;
+        background-position: center;
+    }
+    
+    .social-preview-content {
+        padding: 16px;
+    }
+    
+    .social-preview-domain {
+        font-size: 12px;
+        color: var(--apple-text-secondary);
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
+        margin-bottom: 4px;
+    }
+    
+    .social-preview-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--apple-text-primary);
+        margin-bottom: 4px;
+        line-height: 1.3;
+    }
+    
+    .social-preview-description {
+        font-size: 14px;
+        color: var(--apple-text-secondary);
+        line-height: 1.4;
+    }
+    
+    /* Tags */
+    .apple-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 12px;
+        background: var(--apple-blue);
+        color: white;
+        border-radius: 20px;
+        font-size: 14px;
+        font-weight: 500;
+    }
+    
+    .apple-tag-remove {
+        background: none;
+        border: none;
+        color: white;
+        opacity: 0.7;
+        cursor: pointer;
+        padding: 0;
+        transition: opacity 0.2s;
+    }
+    
+    .apple-tag-remove:hover {
+        opacity: 1;
+    }
+    
+    /* Animations */
+    @keyframes slideIn {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    
+    .animate-slide-in {
+        animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .animate-fade-in {
+        animation: fadeIn 0.3s ease-in-out;
+    }
     </style>
 </head>
 <body class="DEFAULT_THEME">
@@ -3360,130 +3840,582 @@ allTags = tagsResult.success ? tagsResult.data : [];
             <!-- Settings panel -->
             <div class="ghost-settings-panel" id="settingsPanel">
                 <div class="ghost-settings-header">
-                    <div class="flex items-center justify-between">
-                        <h3 class="text-lg font-semibold">Post Settings</h3>
-                        <button type="button" class="btn btn-icon btn-sm" onclick="toggleSettings()">
-                            <i class="ti ti-x"></i>
-                        </button>
-                    </div>
+                    <h3>Post Settings</h3>
+                    <button type="button" class="apple-icon-btn" onclick="toggleSettings()">
+                        <i class="ti ti-x text-xl"></i>
+                    </button>
                 </div>
                 
                 <div class="ghost-settings-content">
-                    <!-- URL Slug -->
-                    <div class="mb-6">
-                        <label class="form-label font-semibold">URL Slug</label>
-                        <div class="input-group">
-                            <span class="input-group-text text-sm">/ghost/</span>
-                            <input type="text" 
-                                   id="postSlug" 
-                                   class="form-control" 
-                                   value="<cfoutput>#htmlEditFormat(postData.slug)#</cfoutput>"
-                                   placeholder="post-url">
-                        </div>
-                        <small class="text-gray-500">The URL for this post</small>
-                    </div>
-                    
-                    <!-- Publish Date -->
-                    <div class="mb-6">
-                        <label class="form-label font-semibold">Publish Date</label>
-                        <input type="datetime-local" 
-                               id="publishDate" 
-                               class="form-control"
-                               value="<cfif isDate(postData.published_at)><cfoutput>#dateFormat(postData.published_at, 'yyyy-mm-dd')#T#timeFormat(postData.published_at, 'HH:mm')#</cfoutput></cfif>">
-                        <small class="text-gray-500">Set a future date to schedule this post</small>
-                    </div>
-                    
-                    <!-- Tags -->
-                    <div class="mb-6">
-                        <label class="form-label font-semibold">Tags</label>
-                        <div class="mb-2">
-                            <div id="selectedTags" class="flex flex-wrap gap-2 mb-2">
-                                <cfloop array="#postData.tags#" index="tag">
-                                    <span class="badge bg-primary text-white">
-                                        <cfoutput>#tag.name#</cfoutput>
-                                        <button type="button" class="ms-2" onclick="removeTag('<cfoutput>#tag.id#</cfoutput>')">
-                                            <i class="ti ti-x text-xs"></i>
-                                        </button>
-                                    </span>
-                                </cfloop>
+                    <!-- Post Details Section -->
+                    <div class="settings-section">
+                        <div class="settings-section-title">Post Details</div>
+                        
+                        <!-- URL Slug -->
+                        <div class="mb-4">
+                            <label class="apple-form-label">Post URL</label>
+                            <div class="flex items-center gap-2">
+                                <span class="text-sm text-gray-500">/ghost/</span>
+                                <input type="text" 
+                                       id="postSlug" 
+                                       class="apple-form-control" 
+                                       value="<cfoutput>#htmlEditFormat(postData.slug)#</cfoutput>"
+                                       placeholder="post-url">
                             </div>
-                            <select id="tagSelector" class="form-select" onchange="addTag()">
-                                <option value="">Add a tag...</option>
-                                <cfloop array="#allTags#" index="tag">
-                                    <option value="<cfoutput>#tag.id#</cfoutput>" data-name="<cfoutput>#tag.name#</cfoutput>">
-                                        <cfoutput>#tag.name#</cfoutput>
-                                    </option>
-                                </cfloop>
-                            </select>
+                            <p class="apple-form-helper">The URL for this post</p>
+                        </div>
+                    
+                        <!-- Publish Date -->
+                        <div class="mb-4">
+                            <label class="apple-form-label">Publish date</label>
+                            <input type="datetime-local" 
+                                   id="publishDate" 
+                                   class="apple-form-control"
+                                   value="<cfif isDate(postData.published_at)><cfoutput>#dateFormat(postData.published_at, 'yyyy-mm-dd')#T#timeFormat(postData.published_at, 'HH:mm')#</cfoutput></cfif>">
+                            <p class="apple-form-helper">Set a future date to schedule this post</p>
                         </div>
                     </div>
                     
-                    <!-- Excerpt -->
-                    <div class="mb-6">
-                        <label class="form-label font-semibold">Excerpt</label>
-                        <textarea id="postExcerpt" 
-                                  class="form-control" 
-                                  rows="3"
-                                  placeholder="A short description of your post"><cfoutput>#htmlEditFormat(postData.custom_excerpt)#</cfoutput></textarea>
-                        <small class="text-gray-500">Excerpts are optional hand-crafted summaries of your content</small>
-                    </div>
-                    
-                    <!-- SEO Settings -->
-                    <div class="mb-6">
-                        <h4 class="font-semibold mb-3">Search Engine Optimization</h4>
+                    <!-- Tags & Metadata Section -->
+                    <div class="settings-section">
+                        <div class="settings-section-title">Tags & Metadata</div>
                         
-                        <!-- Meta Title -->
+                        <!-- Tags -->
                         <div class="mb-4">
-                            <label class="form-label">Meta Title</label>
-                            <input type="text" 
-                                   id="metaTitle" 
-                                   class="form-control" 
-                                   value="<cfoutput>#htmlEditFormat(postData.meta_title)#</cfoutput>"
-                                   placeholder="<cfoutput>#htmlEditFormat(postData.title)#</cfoutput>">
-                            <small class="text-gray-500">Recommended: 60 characters</small>
+                            <label class="apple-form-label">Tags</label>
+                            <div class="mb-3">
+                                <div id="selectedTags" class="flex flex-wrap gap-2 mb-3">
+                                    <cfloop array="#postData.tags#" index="tag">
+                                        <span class="apple-tag">
+                                            <cfoutput>#tag.name#</cfoutput>
+                                            <button type="button" class="apple-tag-remove" onclick="removeTag('<cfoutput>#tag.id#</cfoutput>')">
+                                                <i class="ti ti-x text-sm"></i>
+                                            </button>
+                                        </span>
+                                    </cfloop>
+                                </div>
+                                <select id="tagSelector" class="apple-form-control" onchange="addTag()">
+                                    <option value="">Add a tag...</option>
+                                    <cfloop array="#allTags#" index="tag">
+                                        <option value="<cfoutput>#tag.id#</cfoutput>" data-name="<cfoutput>#tag.name#</cfoutput>">
+                                            <cfoutput>#tag.name#</cfoutput>
+                                        </option>
+                                    </cfloop>
+                                </select>
+                            </div>
                         </div>
-                        
-                        <!-- Meta Description -->
+                    
+                        <!-- Post Access -->
                         <div class="mb-4">
-                            <label class="form-label">Meta Description</label>
-                            <textarea id="metaDescription" 
-                                      class="form-control" 
+                            <label class="apple-form-label">Post access</label>
+                            <div class="apple-segmented-control">
+                                <button type="button" class="apple-segment <cfif postData.visibility eq 'public'>active</cfif>" onclick="setVisibility('public')">
+                                    Public
+                                </button>
+                                <button type="button" class="apple-segment <cfif postData.visibility eq 'members'>active</cfif>" onclick="setVisibility('members')">
+                                    Members
+                                </button>
+                                <button type="button" class="apple-segment <cfif postData.visibility eq 'paid'>active</cfif>" onclick="setVisibility('paid')">
+                                    Paid only
+                                </button>
+                            </div>
+                            <p class="apple-form-helper">Control who can see this post</p>
+                        </div>
+                    
+                        <!-- Excerpt -->
+                        <div>
+                            <label class="apple-form-label">Excerpt</label>
+                            <textarea id="postExcerpt" 
+                                      class="apple-form-control" 
                                       rows="3"
-                                      placeholder="A description of your post for search engines"><cfoutput>#htmlEditFormat(postData.meta_description)#</cfoutput></textarea>
-                            <small class="text-gray-500">Recommended: 160 characters</small>
+                                      placeholder="A short description of your post"><cfoutput>#htmlEditFormat(postData.custom_excerpt)#</cfoutput></textarea>
+                            <p class="apple-form-helper">Excerpts are optional hand-crafted summaries of your content</p>
                         </div>
                     </div>
                     
-                    <!-- Post Access -->
-                    <div class="mb-6">
-                        <label class="form-label font-semibold">Post Access</label>
-                        <select id="postVisibility" class="form-select">
-                            <option value="public" <cfif postData.visibility eq "public">selected</cfif>>Public</option>
-                            <option value="members" <cfif postData.visibility eq "members">selected</cfif>>Members only</option>
-                            <option value="paid" <cfif postData.visibility eq "paid">selected</cfif>>Paid members only</option>
-                        </select>
-                    </div>
+                    <!-- Publishing Options Section -->
+                    <div class="settings-section">
+                        <div class="settings-section-title">Publishing Options</div>
+                        
+                        <!-- Authors -->
+                        <div class="mb-4">
+                            <label class="apple-form-label">Authors</label>
+                            <div class="mb-3">
+                                <div id="selectedAuthors" class="flex flex-wrap gap-2 mb-3">
+                                    <!--- Show current author(s) from posts_authors table --->
+                                    <cfquery name="postAuthors" datasource="blog">
+                                        SELECT u.id, u.name 
+                                        FROM posts_authors pa
+                                        INNER JOIN users u ON pa.author_id = u.id
+                                        WHERE pa.post_id = <cfqueryparam value="#postData.id#" cfsqltype="cf_sql_varchar">
+                                        ORDER BY pa.sort_order
+                                    </cfquery>
+                                    
+                                    <cfif postAuthors.recordCount gt 0>
+                                        <cfloop query="postAuthors">
+                                            <span class="apple-tag" data-author-id="<cfoutput>#postAuthors.id#</cfoutput>">
+                                                <cfoutput>#postAuthors.name#</cfoutput>
+                                                <button type="button" class="apple-tag-remove" onclick="removeAuthor('<cfoutput>#postAuthors.id#</cfoutput>')">
+                                                    <i class="ti ti-x text-sm"></i>
+                                                </button>
+                                            </span>
+                                        </cfloop>
+                                    <cfelse>
+                                        <!--- If no authors, use the created_by user --->
+                                        <cfquery name="defaultAuthor" datasource="blog">
+                                            SELECT id, name FROM users WHERE id = <cfqueryparam value="#postData.created_by#" cfsqltype="cf_sql_varchar">
+                                        </cfquery>
+                                        <cfif defaultAuthor.recordCount gt 0>
+                                            <span class="apple-tag" data-author-id="<cfoutput>#defaultAuthor.id#</cfoutput>">
+                                                <cfoutput>#defaultAuthor.name#</cfoutput>
+                                                <button type="button" class="apple-tag-remove" onclick="removeAuthor('<cfoutput>#defaultAuthor.id#</cfoutput>')">
+                                                    <i class="ti ti-x text-sm"></i>
+                                                </button>
+                                            </span>
+                                        </cfif>
+                                    </cfif>
+                                </div>
+                                <select id="authorSelector" class="apple-form-control" onchange="addAuthor()">
+                                    <option value="">Add an author...</option>
+                                    <cfquery name="allUsers" datasource="blog">
+                                        SELECT id, name FROM users WHERE status = 'active' ORDER BY name
+                                    </cfquery>
+                                    <cfloop query="allUsers">
+                                        <option value="<cfoutput>#allUsers.id#</cfoutput>" 
+                                                data-name="<cfoutput>#allUsers.name#</cfoutput>"
+                                                class="author-option-<cfoutput>#allUsers.id#</cfoutput>"
+                                                <cfif postAuthors.recordCount gt 0>
+                                                    <cfloop query="postAuthors">
+                                                        <cfif postAuthors.id eq allUsers.id>style="display: none;"</cfif>
+                                                    </cfloop>
+                                                <cfelseif defaultAuthor.recordCount gt 0 and defaultAuthor.id eq allUsers.id>
+                                                    style="display: none;"
+                                                </cfif>>
+                                            <cfoutput>#allUsers.name#</cfoutput>
+                                        </option>
+                                    </cfloop>
+                                </select>
+                            </div>
+                            <p class="apple-form-helper">Add multiple authors to this post</p>
+                        </div>
                     
-                    <!-- Featured Post -->
-                    <div class="mb-6">
-                        <div class="form-check">
-                            <input type="checkbox" 
-                                   id="featuredPost" 
-                                   class="form-check-input"
-                                   <cfif postData.featured>checked</cfif>>
-                            <label class="form-check-label" for="featuredPost">
-                                Feature this post
+                        <!-- Post Template -->
+                        <div class="mb-4">
+                            <label class="apple-form-label">Template</label>
+                            <select id="postTemplate" class="apple-form-control">
+                                <option value="">Default</option>
+                                <option value="custom" <cfif structKeyExists(postData, "custom_template") and postData.custom_template eq "custom">selected</cfif>>Custom</option>
+                                <option value="page" <cfif structKeyExists(postData, "custom_template") and postData.custom_template eq "page">selected</cfif>>Page</option>
+                            </select>
+                            <p class="apple-form-helper">Select a custom template for this post</p>
+                        </div>
+                    
+                        <!-- Feature Options -->
+                        <cfif postData.type eq "page">
+                        <div class="apple-list-item">
+                            <div class="apple-list-item-content">
+                                <div class="apple-list-item-icon">
+                                    <i class="ti ti-eye"></i>
+                                </div>
+                                <div class="apple-list-item-text">
+                                    <h4>Show title and feature image</h4>
+                                </div>
+                            </div>
+                            <label class="apple-switch">
+                                <input type="checkbox" 
+                                       id="showTitleAndFeatureImage"
+                                       <cfif not structKeyExists(postData, "show_title_and_feature_image") or postData.show_title_and_feature_image>checked</cfif>>
+                                <span class="apple-switch-slider"></span>
                             </label>
                         </div>
-                        <small class="text-gray-500">Featured posts are displayed prominently on your site</small>
+                        </cfif>
+                        
+                        <div class="apple-list-item">
+                            <div class="apple-list-item-content">
+                                <div class="apple-list-item-icon">
+                                    <i class="ti ti-star"></i>
+                                </div>
+                                <div class="apple-list-item-text">
+                                    <h4>Feature this post</h4>
+                                    <p>Display prominently on your site</p>
+                                </div>
+                            </div>
+                            <label class="apple-switch">
+                                <input type="checkbox" 
+                                       id="featuredPost"
+                                       <cfif postData.featured>checked</cfif>>
+                                <span class="apple-switch-slider"></span>
+                            </label>
+                        </div>
                     </div>
                     
-                    <!-- Delete Post -->
-                    <div class="pt-6 border-t">
-                        <button type="button" class="btn btn-outline-danger w-full" onclick="confirmDeletePost()">
-                            <i class="ti ti-trash me-2"></i>
-                            Delete Post
+                    <!-- Advanced Settings Section -->
+                    <div class="settings-section">
+                        <div class="settings-section-title">Advanced Settings</div>
+                        
+                        <div class="apple-list-item" onclick="showSubview('postHistory')" style="cursor: pointer;">
+                            <div class="apple-list-item-content">
+                                <div class="apple-list-item-icon">
+                                    <i class="ti ti-history"></i>
+                                </div>
+                                <div class="apple-list-item-text">
+                                    <h4>Post history</h4>
+                                    <p>View and restore previous versions</p>
+                                </div>
+                            </div>
+                            <i class="ti ti-chevron-right text-gray-400"></i>
+                        </div>
+                        
+                        <div class="apple-list-item" onclick="showSubview('codeInjection')" style="cursor: pointer;">
+                            <div class="apple-list-item-content">
+                                <div class="apple-list-item-icon">
+                                    <i class="ti ti-code"></i>
+                                </div>
+                                <div class="apple-list-item-text">
+                                    <h4>Code injection</h4>
+                                    <p>Add custom code to this post</p>
+                                </div>
+                            </div>
+                            <i class="ti ti-chevron-right text-gray-400"></i>
+                        </div>
+                        
+                        <div class="apple-list-item" onclick="showSubview('metaData')" style="cursor: pointer;">
+                            <div class="apple-list-item-content">
+                                <div class="apple-list-item-icon">
+                                    <i class="ti ti-search"></i>
+                                </div>
+                                <div class="apple-list-item-text">
+                                    <h4>Meta data</h4>
+                                    <p>SEO title, description and URL</p>
+                                </div>
+                            </div>
+                            <i class="ti ti-chevron-right text-gray-400"></i>
+                        </div>
+                        
+                        <div class="apple-list-item" onclick="showSubview('twitterData')" style="cursor: pointer;">
+                            <div class="apple-list-item-content">
+                                <div class="apple-list-item-icon">
+                                    <i class="ti ti-brand-x"></i>
+                                </div>
+                                <div class="apple-list-item-text">
+                                    <h4>X card</h4>
+                                    <p>Customize X/Twitter preview</p>
+                                </div>
+                            </div>
+                            <i class="ti ti-chevron-right text-gray-400"></i>
+                        </div>
+                        
+                        <div class="apple-list-item" onclick="showSubview('facebookData')" style="cursor: pointer;">
+                            <div class="apple-list-item-content">
+                                <div class="apple-list-item-icon">
+                                    <i class="ti ti-brand-facebook"></i>
+                                </div>
+                                <div class="apple-list-item-text">
+                                    <h4>Facebook card</h4>
+                                    <p>Customize Facebook preview</p>
+                                </div>
+                            </div>
+                            <i class="ti ti-chevron-right text-gray-400"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Delete Post Button -->
+                    <div class="settings-section">
+                        <button type="button" class="apple-btn apple-btn-danger w-100" onclick="confirmDeletePost()">
+                            <i class="ti ti-trash"></i>
+                            Delete post
                         </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Subview Panels -->
+            <!-- Code Injection Subview -->
+            <div class="subview-panel" id="codeInjectionSubview">
+                <div class="subview-header">
+                    <button type="button" class="apple-icon-btn" onclick="closeSubview('codeInjection')">
+                        <i class="ti ti-arrow-left text-xl"></i>
+                    </button>
+                    <h3>Code injection</h3>
+                    <button type="button" class="apple-icon-btn" onclick="toggleSettings()">
+                        <i class="ti ti-x text-xl"></i>
+                    </button>
+                </div>
+                <div class="subview-content">
+                    <div class="settings-section">
+                        <div class="mb-4">
+                            <label class="apple-form-label">Post header</label>
+                            <textarea id="codeinjectionHead" 
+                                      class="apple-form-control" 
+                                      style="font-family: 'SF Mono', Monaco, monospace; font-size: 13px;"
+                                      rows="10"
+                                      placeholder="Code injected into the header of this post"><cfoutput>#htmlEditFormat(structKeyExists(postData, "codeinjection_head") ? postData.codeinjection_head : "")#</cfoutput></textarea>
+                            <p class="apple-form-helper">Code here will be injected into the <code style="background: var(--apple-bg-tertiary); padding: 2px 6px; border-radius: 4px;">&lt;head&gt;</code> tag</p>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-section">
+                        <div>
+                            <label class="apple-form-label">Post footer</label>
+                            <textarea id="codeinjectionFoot" 
+                                      class="apple-form-control" 
+                                      style="font-family: 'SF Mono', Monaco, monospace; font-size: 13px;"
+                                      rows="10"
+                                      placeholder="Code injected into the footer of this post"><cfoutput>#htmlEditFormat(structKeyExists(postData, "codeinjection_foot") ? postData.codeinjection_foot : "")#</cfoutput></textarea>
+                            <p class="apple-form-helper">Code here will be injected before the closing <code style="background: var(--apple-bg-tertiary); padding: 2px 6px; border-radius: 4px;">&lt;/body&gt;</code> tag</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Meta Data Subview -->
+            <div class="subview-panel" id="metaDataSubview">
+                <div class="subview-header">
+                    <button type="button" class="apple-icon-btn" onclick="closeSubview('metaData')">
+                        <i class="ti ti-arrow-left text-xl"></i>
+                    </button>
+                    <h3>Meta data</h3>
+                    <button type="button" class="apple-icon-btn" onclick="toggleSettings()">
+                        <i class="ti ti-x text-xl"></i>
+                    </button>
+                </div>
+                <div class="subview-content">
+                    <div class="settings-section">
+                        <div class="settings-section-title">Search Engine Optimization</div>
+                        
+                        <div class="mb-4">
+                            <label class="apple-form-label">Meta title</label>
+                            <input type="text" 
+                                   id="metaTitle" 
+                                   class="apple-form-control" 
+                                   value="<cfoutput>#htmlEditFormat(postData.meta_title)#</cfoutput>"
+                                   placeholder="<cfoutput>#htmlEditFormat(postData.title)#</cfoutput>">
+                            <div class="char-counter" id="metaTitleCounter">
+                                <span class="text-gray-500">Recommended: 60 characters</span>
+                                <span class="ms-2">•</span>
+                                <span class="ms-2">You've used <strong id="metaTitleCount">0</strong></span>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="apple-form-label">Meta description</label>
+                            <textarea id="metaDescription" 
+                                      class="apple-form-control" 
+                                      rows="3"
+                                      placeholder="A description of your post for search engines"><cfoutput>#htmlEditFormat(postData.meta_description)#</cfoutput></textarea>
+                            <div class="char-counter" id="metaDescriptionCounter">
+                                <span class="text-gray-500">Recommended: 160 characters</span>
+                                <span class="ms-2">•</span>
+                                <span class="ms-2">You've used <strong id="metaDescriptionCount">0</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-section">
+                        <div>
+                            <label class="apple-form-label">Canonical URL</label>
+                            <input type="url" 
+                                   id="canonicalUrl" 
+                                   class="apple-form-control"
+                                   value="<cfoutput>#htmlEditFormat(structKeyExists(postData, "canonical_url") ? postData.canonical_url : "")#</cfoutput>"
+                                   placeholder="https://example.com/original-post">
+                            <p class="apple-form-helper">Set a canonical URL if this post was first published elsewhere</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Search Preview -->
+                    <div class="settings-section">
+                        <div class="settings-section-title">Search Result Preview</div>
+                        <div class="p-4 bg-white rounded-lg border">
+                            <h4 class="text-blue-600 text-lg mb-1" id="searchPreviewTitle"><cfoutput>#postData.title#</cfoutput></h4>
+                            <p class="text-green-700 text-sm mb-1">clitools.app/ghost/<span id="searchPreviewSlug"><cfoutput>#postData.slug#</cfoutput></span></p>
+                            <p class="text-gray-600 text-sm" id="searchPreviewDesc"><cfoutput>#left(postData.meta_description, 160)#</cfoutput></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Twitter/X Card Subview -->
+            <div class="subview-panel" id="twitterDataSubview">
+                <div class="subview-header">
+                    <button type="button" class="apple-icon-btn" onclick="closeSubview('twitterData')">
+                        <i class="ti ti-arrow-left text-xl"></i>
+                    </button>
+                    <h3>X card</h3>
+                    <button type="button" class="apple-icon-btn" onclick="toggleSettings()">
+                        <i class="ti ti-x text-xl"></i>
+                    </button>
+                </div>
+                <div class="subview-content">
+                    <!-- Twitter Preview -->
+                    <div class="settings-section">
+                        <div class="settings-section-title">Preview</div>
+                        <div class="social-preview">
+                            <div id="twitterPreviewImage" class="social-preview-image"></div>
+                            <div class="social-preview-content">
+                                <p class="social-preview-domain">CLITOOLS.APP</p>
+                                <h4 id="twitterPreviewTitle" class="social-preview-title"><cfoutput>#postData.title#</cfoutput></h4>
+                                <p id="twitterPreviewDesc" class="social-preview-description"><cfoutput>#left(postData.custom_excerpt, 125)#</cfoutput></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-section">
+                        <div class="settings-section-title">X/Twitter Settings</div>
+                        
+                        <div class="mb-4">
+                            <label class="apple-form-label">X title</label>
+                            <input type="text" 
+                                   id="twitterTitle" 
+                                   class="apple-form-control"
+                                   value="<cfoutput>#htmlEditFormat(structKeyExists(postData, "twitter_title") ? postData.twitter_title : "")#</cfoutput>"
+                                   placeholder="<cfoutput>#htmlEditFormat(postData.title)#</cfoutput>">
+                            <div class="char-counter" id="twitterTitleCounter">
+                                <span class="text-gray-500">Recommended: 70 characters</span>
+                                <span class="ms-2">•</span>
+                                <span class="ms-2">You've used <strong id="twitterTitleCount">0</strong></span>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="apple-form-label">X description</label>
+                            <textarea id="twitterDescription" 
+                                      class="apple-form-control" 
+                                      rows="3"
+                                      placeholder="<cfoutput>#htmlEditFormat(postData.custom_excerpt)#</cfoutput>"><cfoutput>#htmlEditFormat(structKeyExists(postData, "twitter_description") ? postData.twitter_description : "")#</cfoutput></textarea>
+                            <div class="char-counter" id="twitterDescriptionCounter">
+                                <span class="text-gray-500">Recommended: 125 characters</span>
+                                <span class="ms-2">•</span>
+                                <span class="ms-2">You've used <strong id="twitterDescriptionCount">0</strong></span>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="apple-form-label">X image</label>
+                            <div class="mb-2">
+                                <input type="url" 
+                                       id="twitterImage" 
+                                       class="apple-form-control"
+                                       value="<cfoutput>#htmlEditFormat(structKeyExists(postData, "twitter_image") ? postData.twitter_image : "")#</cfoutput>"
+                                       placeholder="URL of image for X/Twitter card">
+                            </div>
+                            <button type="button" class="apple-btn apple-btn-secondary">
+                                <i class="ti ti-upload"></i>
+                                Upload image
+                            </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Facebook Card Subview -->
+            <div class="subview-panel" id="facebookDataSubview">
+                <div class="subview-header">
+                    <button type="button" class="apple-icon-btn" onclick="closeSubview('facebookData')">
+                        <i class="ti ti-arrow-left text-xl"></i>
+                    </button>
+                    <h3>Facebook card</h3>
+                    <button type="button" class="apple-icon-btn" onclick="toggleSettings()">
+                        <i class="ti ti-x text-xl"></i>
+                    </button>
+                </div>
+                <div class="subview-content">
+                    <!-- Facebook Preview -->
+                    <div class="settings-section">
+                        <div class="settings-section-title">Preview</div>
+                        <div class="social-preview">
+                            <div id="fbPreviewImage" class="social-preview-image"></div>
+                            <div class="social-preview-content">
+                                <p class="social-preview-domain">CLITOOLS.APP</p>
+                                <h4 id="fbPreviewTitle" class="social-preview-title"><cfoutput>#postData.title#</cfoutput></h4>
+                                <p id="fbPreviewDesc" class="social-preview-description"><cfoutput>#left(postData.custom_excerpt, 160)#</cfoutput></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-section">
+                        <div class="settings-section-title">Facebook Settings</div>
+                        
+                        <div class="mb-4">
+                            <label class="apple-form-label">Facebook title</label>
+                            <input type="text" 
+                                   id="facebookTitle" 
+                                   class="apple-form-control"
+                                   value="<cfoutput>#htmlEditFormat(structKeyExists(postData, "og_title") ? postData.og_title : "")#</cfoutput>"
+                                   placeholder="<cfoutput>#htmlEditFormat(postData.title)#</cfoutput>">
+                            <div class="char-counter" id="facebookTitleCounter">
+                                <span class="text-gray-500">Recommended: 60 characters</span>
+                                <span class="ms-2">•</span>
+                                <span class="ms-2">You've used <strong id="facebookTitleCount">0</strong></span>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="apple-form-label">Facebook description</label>
+                            <textarea id="facebookDescription" 
+                                      class="apple-form-control" 
+                                      rows="3"
+                                      placeholder="<cfoutput>#htmlEditFormat(postData.custom_excerpt)#</cfoutput>"><cfoutput>#htmlEditFormat(structKeyExists(postData, "og_description") ? postData.og_description : "")#</cfoutput></textarea>
+                            <div class="char-counter" id="facebookDescriptionCounter">
+                                <span class="text-gray-500">Recommended: 160 characters</span>
+                                <span class="ms-2">•</span>
+                                <span class="ms-2">You've used <strong id="facebookDescriptionCount">0</strong></span>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="apple-form-label">Facebook image</label>
+                            <div class="mb-2">
+                                <input type="url" 
+                                       id="facebookImage" 
+                                       class="apple-form-control"
+                                       value="<cfoutput>#htmlEditFormat(structKeyExists(postData, "og_image") ? postData.og_image : "")#</cfoutput>"
+                                       placeholder="URL of image for Facebook card">
+                            </div>
+                            <button type="button" class="apple-btn apple-btn-secondary">
+                                <i class="ti ti-upload"></i>
+                                Upload image
+                            </button>
+                            <p class="apple-form-helper mt-2">Recommended size: 1200x630px (1.91:1 ratio)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Post History Subview -->
+            <div class="subview-panel" id="postHistorySubview">
+                <div class="subview-header">
+                    <button type="button" class="apple-icon-btn" onclick="closeSubview('postHistory')">
+                        <i class="ti ti-arrow-left text-xl"></i>
+                    </button>
+                    <h3>Post history</h3>
+                    <button type="button" class="apple-icon-btn" onclick="toggleSettings()">
+                        <i class="ti ti-x text-xl"></i>
+                    </button>
+                </div>
+                <div class="subview-content">
+                    <div class="settings-section">
+                        <div class="text-center py-5">
+                            <div class="w-20 h-20 mx-auto mb-4 bg-gray-100 rounded-full flex items-center justify-center">
+                                <i class="ti ti-history text-3xl text-gray-400"></i>
+                            </div>
+                            <h4 class="text-lg font-semibold text-gray-900 mb-2">Post history</h4>
+                            <p class="text-gray-500 mb-1">Version history is coming soon</p>
+                            <p class="text-sm text-gray-400">You'll be able to view and restore previous versions of this post</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Placeholder for future history items -->
+                    <div class="settings-section" style="display: none;">
+                        <div class="settings-section-title">Recent Versions</div>
+                        <div class="history-item">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h5 class="font-medium text-gray-900">Current version</h5>
+                                    <p class="history-meta">Edited just now</p>
+                                </div>
+                                <span class="text-sm text-green-600">Current</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -3624,9 +4556,11 @@ allTags = tagsResult.success ? tagsResult.data : [];
         <input type="hidden" name="meta_title" id="formMetaTitle">
         <input type="hidden" name="meta_description" id="formMetaDescription">
         <input type="hidden" name="visibility" id="formVisibility">
+        <input type="hidden" id="postVisibility" value="<cfoutput>#postData.visibility#</cfoutput>">
         <input type="hidden" name="featured" id="formFeatured">
         <input type="hidden" name="published_at" id="formPublishedAt">
         <input type="hidden" name="tags" id="formTags">
+        <input type="hidden" name="authors" id="formAuthors">
         <input type="hidden" name="status" id="formStatus">
         <input type="hidden" name="card_data" id="formCardData">
     </form>
@@ -7042,7 +7976,149 @@ allTags = tagsResult.success ? tagsResult.data : [];
     function toggleSettings() {
         const panel = document.getElementById('settingsPanel');
         panel.classList.toggle('active');
+        if (panel.classList.contains('active')) {
+            panel.classList.add('animate-slide-in');
+        }
     }
+    
+    // Set post visibility
+    function setVisibility(visibility) {
+        // Update segmented control
+        document.querySelectorAll('.apple-segment').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        event.target.classList.add('active');
+        
+        // Update hidden field value
+        document.getElementById('postVisibility').value = visibility;
+        markDirty();
+    }
+    
+    // Settings panel subview functions
+    window.showSubview = function(viewName) {
+        const subview = document.getElementById(viewName + 'Subview');
+        if (subview) {
+            subview.classList.add('active');
+        }
+    };
+    
+    window.closeSubview = function(viewName) {
+        const subview = document.getElementById(viewName + 'Subview');
+        if (subview) {
+            subview.classList.remove('active');
+        }
+    };
+    
+    // Character counter for meta fields
+    function updateCharCount(inputId, counterId, maxLength) {
+        const input = document.getElementById(inputId);
+        const counter = document.getElementById(counterId);
+        if (input && counter) {
+            const remaining = maxLength - input.value.length;
+            counter.textContent = remaining;
+            counter.style.color = remaining < 0 ? '#e74c3c' : '#6c757d';
+        }
+    }
+    
+    // Initialize character counters when DOM is ready
+    document.addEventListener('DOMContentLoaded', function() {
+        // Meta title counter
+        const metaTitle = document.getElementById('metaTitle');
+        if (metaTitle) {
+            metaTitle.addEventListener('input', function() {
+                updateCharCount('metaTitle', 'metaTitleCount', 60);
+                markDirty();
+            });
+            updateCharCount('metaTitle', 'metaTitleCount', 60);
+        }
+        
+        // Meta description counter
+        const metaDescription = document.getElementById('metaDescription');
+        if (metaDescription) {
+            metaDescription.addEventListener('input', function() {
+                updateCharCount('metaDescription', 'metaDescriptionCount', 160);
+                markDirty();
+            });
+            updateCharCount('metaDescription', 'metaDescriptionCount', 160);
+        }
+        
+        // Twitter title counter
+        const twitterTitle = document.getElementById('twitterTitle');
+        if (twitterTitle) {
+            twitterTitle.addEventListener('input', function() {
+                updateCharCount('twitterTitle', 'twitterTitleCount', 70);
+                markDirty();
+            });
+            updateCharCount('twitterTitle', 'twitterTitleCount', 70);
+        }
+        
+        // Twitter description counter
+        const twitterDescription = document.getElementById('twitterDescription');
+        if (twitterDescription) {
+            twitterDescription.addEventListener('input', function() {
+                updateCharCount('twitterDescription', 'twitterDescriptionCount', 125);
+                markDirty();
+            });
+            updateCharCount('twitterDescription', 'twitterDescriptionCount', 125);
+        }
+        
+        // Facebook title counter
+        const facebookTitle = document.getElementById('facebookTitle');
+        if (facebookTitle) {
+            facebookTitle.addEventListener('input', function() {
+                updateCharCount('facebookTitle', 'facebookTitleCount', 60);
+                markDirty();
+            });
+            updateCharCount('facebookTitle', 'facebookTitleCount', 60);
+        }
+        
+        // Facebook description counter
+        const facebookDescription = document.getElementById('facebookDescription');
+        if (facebookDescription) {
+            facebookDescription.addEventListener('input', function() {
+                updateCharCount('facebookDescription', 'facebookDescriptionCount', 160);
+                markDirty();
+            });
+            updateCharCount('facebookDescription', 'facebookDescriptionCount', 160);
+        }
+        
+        // Initialize all settings field handlers
+        const settingsFields = [
+            'postSlug', 'publishDate', 'postAccess', 'customExcerpt', 
+            'postTemplate', 'codeinjectionHead', 'codeinjectionFoot',
+            'canonicalUrl', 'twitterImage', 'facebookImage'
+        ];
+        
+        settingsFields.forEach(fieldId => {
+            const field = document.getElementById(fieldId);
+            if (field) {
+                field.addEventListener('change', markDirty);
+                field.addEventListener('blur', function() {
+                    // Auto-save will be implemented with database connection
+                    console.log('Field changed:', fieldId, field.value);
+                });
+            }
+        });
+        
+        // Handle checkboxes
+        const checkboxes = ['featurePost', 'showTitleAndFeatureImage'];
+        checkboxes.forEach(checkboxId => {
+            const checkbox = document.getElementById(checkboxId);
+            if (checkbox) {
+                checkbox.addEventListener('change', function() {
+                    markDirty();
+                    // Auto-save will be implemented with database connection
+                    console.log('Checkbox changed:', checkboxId, checkbox.checked);
+                });
+            }
+        });
+        
+        // Initialize tooltips
+        const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+    });
     
     // Tag management
     function addTag() {
@@ -7063,11 +8139,11 @@ allTags = tagsResult.success ? tagsResult.data : [];
                 // Add tag badge
                 const tagsContainer = document.getElementById('selectedTags');
                 const badge = document.createElement('span');
-                badge.className = 'badge bg-primary text-white';
+                badge.className = 'apple-tag';
                 badge.innerHTML = `
                     ${tagName}
-                    <button type="button" class="ms-2" onclick="removeTag('${tagId}')">
-                        <i class="ti ti-x text-xs"></i>
+                    <button type="button" class="apple-tag-remove" onclick="removeTag('${tagId}')">
+                        <i class="ti ti-x text-sm"></i>
                     </button>
                 `;
                 tagsContainer.appendChild(badge);
@@ -7089,15 +8165,105 @@ allTags = tagsResult.success ? tagsResult.data : [];
         
         selectedTags.forEach(tag => {
             const badge = document.createElement('span');
-            badge.className = 'badge bg-primary text-white';
+            badge.className = 'apple-tag';
             badge.innerHTML = `
                 ${tag.name}
-                <button type="button" class="ms-2" onclick="removeTag('${tag.id}')">
-                    <i class="ti ti-x text-xs"></i>
+                <button type="button" class="apple-tag-remove" onclick="removeTag('${tag.id}')">
+                    <i class="ti ti-x text-sm"></i>
                 </button>
             `;
             tagsContainer.appendChild(badge);
         });
+        
+        markDirtySafe();
+    }
+    
+    // Author management
+    let selectedAuthors = [];
+    
+    // Initialize selectedAuthors from existing data
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get existing authors from the DOM
+        const existingAuthors = document.querySelectorAll('#selectedAuthors .apple-tag');
+        existingAuthors.forEach(authorTag => {
+            const authorId = authorTag.getAttribute('data-author-id');
+            const authorName = authorTag.textContent.trim();
+            if (authorId) {
+                selectedAuthors.push({
+                    id: authorId,
+                    name: authorName
+                });
+            }
+        });
+    });
+    
+    function addAuthor() {
+        const selector = document.getElementById('authorSelector');
+        const selectedOption = selector.options[selector.selectedIndex];
+        
+        if (selectedOption.value) {
+            const authorId = selectedOption.value;
+            const authorName = selectedOption.getAttribute('data-name');
+            
+            // Check if author already selected
+            if (!selectedAuthors.find(a => a.id === authorId)) {
+                selectedAuthors.push({
+                    id: authorId,
+                    name: authorName
+                });
+                
+                // Add author badge
+                const authorsContainer = document.getElementById('selectedAuthors');
+                const badge = document.createElement('span');
+                badge.className = 'apple-tag';
+                badge.setAttribute('data-author-id', authorId);
+                badge.innerHTML = `
+                    ${authorName}
+                    <button type="button" class="apple-tag-remove" onclick="removeAuthor('${authorId}')">
+                        <i class="ti ti-x text-sm"></i>
+                    </button>
+                `;
+                authorsContainer.appendChild(badge);
+                
+                // Hide this author from the dropdown
+                const optionToHide = document.querySelector('.author-option-' + authorId);
+                if (optionToHide) {
+                    optionToHide.style.display = 'none';
+                }
+                
+                markDirtySafe();
+            }
+            
+            // Reset selector
+            selector.value = '';
+        }
+    }
+    
+    function removeAuthor(authorId) {
+        selectedAuthors = selectedAuthors.filter(a => a.id !== authorId);
+        
+        // Rebuild authors display
+        const authorsContainer = document.getElementById('selectedAuthors');
+        authorsContainer.innerHTML = '';
+        
+        selectedAuthors.forEach(author => {
+            const badge = document.createElement('span');
+            badge.className = 'apple-tag';
+            badge.setAttribute('data-author-id', author.id);
+            badge.innerHTML = `
+                ${author.name}
+                <button type="button" class="apple-tag-remove" onclick="removeAuthor('${author.id}')">
+                    <i class="ti ti-x text-sm"></i>
+                </button>
+            `;
+            authorsContainer.appendChild(badge);
+        });
+        
+        // Show this author back in the dropdown
+        const optionToShow = document.querySelector('.author-option-' + authorId);
+        if (optionToShow) {
+            optionToShow.style.display = '';
+        }
         
         markDirtySafe();
     }
@@ -10221,6 +11387,11 @@ allTags = tagsResult.success ? tagsResult.data : [];
         document.getElementById('formPublishedAt').value = publishDate;
         document.getElementById('formTags').value = JSON.stringify(selectedTags);
         document.getElementById('formStatus').value = status;
+        
+        // Add authors to form data
+        if (selectedAuthors.length > 0) {
+            document.getElementById('formAuthors').value = JSON.stringify(selectedAuthors);
+        }
         
         // Save card data to preserve all card settings
         document.getElementById('formCardData').value = JSON.stringify(contentCards);

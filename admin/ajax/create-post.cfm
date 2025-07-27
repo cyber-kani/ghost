@@ -115,26 +115,26 @@
     
     <cftry>
         <!--- First, remove existing tags for this post --->
-        <cfset deleteQuery = queryExecute("DELETE FROM posts_tags WHERE post_id = ?", [arguments.postId], {datasource: "blog"})>
+        <cfset deleteQuery = queryExecute("DELETE FROM posts_tags WHERE post_id = ?", [arguments.postId], {datasource: request.dsn})>
         
         <!--- Add each tag --->
         <cfloop array="#arguments.tags#" index="tagName">
             <cfif len(trim(tagName)) gt 0>
                 <!--- Check if tag exists --->
-                <cfset tagQuery = queryExecute("SELECT id FROM tags WHERE name = ?", [trim(tagName)], {datasource: "blog"})>
+                <cfset tagQuery = queryExecute("SELECT id FROM tags WHERE name = ?", [trim(tagName)], {datasource: request.dsn})>
                 
                 <cfif tagQuery.recordCount eq 0>
                     <!--- Create new tag --->
                     <cfset tagId = createUUID()>
                     <cfset insertTagQuery = queryExecute("INSERT INTO tags (id, name, slug, created_at, updated_at) VALUES (?, ?, ?, ?, ?)", 
-                        [tagId, trim(tagName), generateSlugFromTitle(tagName), now(), now()], {datasource: "blog"})>
+                        [tagId, trim(tagName), generateSlugFromTitle(tagName), now(), now()], {datasource: request.dsn})>
                 <cfelse>
                     <cfset tagId = tagQuery.id[1]>
                 </cfif>
                 
                 <!--- Link tag to post --->
                 <cfset linkQuery = queryExecute("INSERT INTO posts_tags (id, post_id, tag_id) VALUES (?, ?, ?)", 
-                    [createUUID(), arguments.postId, tagId], {datasource: "blog"})>
+                    [createUUID(), arguments.postId, tagId], {datasource: request.dsn})>
             </cfif>
         </cfloop>
         

@@ -3943,7 +3943,7 @@ allTags = tagsResult.success ? tagsResult.data : [];
                             <div class="mb-3">
                                 <div id="selectedAuthors" class="flex flex-wrap gap-2 mb-3">
                                     <!--- Show current author(s) from posts_authors table --->
-                                    <cfquery name="postAuthors" datasource="blog">
+                                    <cfquery name="postAuthors" datasource="#request.dsn#">
                                         SELECT u.id, u.name 
                                         FROM posts_authors pa
                                         INNER JOIN users u ON pa.author_id = u.id
@@ -3962,7 +3962,7 @@ allTags = tagsResult.success ? tagsResult.data : [];
                                         </cfloop>
                                     <cfelse>
                                         <!--- If no authors, use the created_by user --->
-                                        <cfquery name="defaultAuthor" datasource="blog">
+                                        <cfquery name="defaultAuthor" datasource="#request.dsn#">
                                             SELECT id, name FROM users WHERE id = <cfqueryparam value="#postData.created_by#" cfsqltype="cf_sql_varchar">
                                         </cfquery>
                                         <cfif defaultAuthor.recordCount gt 0>
@@ -3977,7 +3977,7 @@ allTags = tagsResult.success ? tagsResult.data : [];
                                 </div>
                                 <select id="authorSelector" class="apple-form-control" onchange="addAuthor()">
                                     <option value="">Add an author...</option>
-                                    <cfquery name="allUsers" datasource="blog">
+                                    <cfquery name="allUsers" datasource="#request.dsn#">
                                         SELECT id, name FROM users WHERE status = 'active' ORDER BY name
                                     </cfquery>
                                     <cfloop query="allUsers">
@@ -4220,6 +4220,9 @@ allTags = tagsResult.success ? tagsResult.data : [];
                                    value="<cfoutput>#htmlEditFormat(structKeyExists(postData, "canonical_url") ? postData.canonical_url : "")#</cfoutput>"
                                    placeholder="https://example.com/original-post">
                             <p class="apple-form-helper">Set a canonical URL if this post was first published elsewhere</p>
+                            <div id="canonicalUrlPreview" class="mt-2 text-sm text-blue-600" style="display: none;">
+                                <i class="ti ti-link"></i> <span id="canonicalUrlText"></span>
+                            </div>
                         </div>
                     </div>
                     
@@ -4254,8 +4257,8 @@ allTags = tagsResult.success ? tagsResult.data : [];
                             <div id="twitterPreviewImage" class="social-preview-image"></div>
                             <div class="social-preview-content">
                                 <p class="social-preview-domain">CLITOOLS.APP</p>
-                                <h4 id="twitterPreviewTitle" class="social-preview-title"><cfoutput>#postData.title#</cfoutput></h4>
-                                <p id="twitterPreviewDesc" class="social-preview-description"><cfoutput>#left(postData.custom_excerpt, 125)#</cfoutput></p>
+                                <h4 id="twitterPreviewTitle" class="social-preview-title"><cfoutput>#len(postData.twitter_title) ? postData.twitter_title : postData.title#</cfoutput></h4>
+                                <p id="twitterPreviewDesc" class="social-preview-description"><cfoutput>#left(len(postData.twitter_description) ? postData.twitter_description : (len(postData.meta_description) ? postData.meta_description : postData.custom_excerpt), 125)#</cfoutput></p>
                             </div>
                         </div>
                     </div>
@@ -4282,7 +4285,7 @@ allTags = tagsResult.success ? tagsResult.data : [];
                             <textarea id="twitterDescription" 
                                       class="apple-form-control" 
                                       rows="3"
-                                      placeholder="<cfoutput>#htmlEditFormat(postData.custom_excerpt)#</cfoutput>"><cfoutput>#htmlEditFormat(structKeyExists(postData, "twitter_description") ? postData.twitter_description : "")#</cfoutput></textarea>
+                                      placeholder="<cfoutput>#htmlEditFormat(len(postData.meta_description) ? postData.meta_description : postData.custom_excerpt)#</cfoutput>"><cfoutput>#htmlEditFormat(structKeyExists(postData, "twitter_description") ? postData.twitter_description : "")#</cfoutput></textarea>
                             <div class="char-counter" id="twitterDescriptionCounter">
                                 <span class="text-gray-500">Recommended: 125 characters</span>
                                 <span class="ms-2">•</span>
@@ -4326,8 +4329,8 @@ allTags = tagsResult.success ? tagsResult.data : [];
                             <div id="fbPreviewImage" class="social-preview-image"></div>
                             <div class="social-preview-content">
                                 <p class="social-preview-domain">CLITOOLS.APP</p>
-                                <h4 id="fbPreviewTitle" class="social-preview-title"><cfoutput>#postData.title#</cfoutput></h4>
-                                <p id="fbPreviewDesc" class="social-preview-description"><cfoutput>#left(postData.custom_excerpt, 160)#</cfoutput></p>
+                                <h4 id="fbPreviewTitle" class="social-preview-title"><cfoutput>#len(postData.og_title) ? postData.og_title : postData.title#</cfoutput></h4>
+                                <p id="fbPreviewDesc" class="social-preview-description"><cfoutput>#left(len(postData.og_description) ? postData.og_description : (len(postData.meta_description) ? postData.meta_description : postData.custom_excerpt), 160)#</cfoutput></p>
                             </div>
                         </div>
                     </div>
@@ -4354,7 +4357,7 @@ allTags = tagsResult.success ? tagsResult.data : [];
                             <textarea id="facebookDescription" 
                                       class="apple-form-control" 
                                       rows="3"
-                                      placeholder="<cfoutput>#htmlEditFormat(postData.custom_excerpt)#</cfoutput>"><cfoutput>#htmlEditFormat(structKeyExists(postData, "og_description") ? postData.og_description : "")#</cfoutput></textarea>
+                                      placeholder="<cfoutput>#htmlEditFormat(len(postData.meta_description) ? postData.meta_description : postData.custom_excerpt)#</cfoutput>"><cfoutput>#htmlEditFormat(structKeyExists(postData, "og_description") ? postData.og_description : "")#</cfoutput></textarea>
                             <div class="char-counter" id="facebookDescriptionCounter">
                                 <span class="text-gray-500">Recommended: 160 characters</span>
                                 <span class="ms-2">•</span>
@@ -4563,6 +4566,21 @@ allTags = tagsResult.success ? tagsResult.data : [];
         <input type="hidden" name="authors" id="formAuthors">
         <input type="hidden" name="status" id="formStatus">
         <input type="hidden" name="card_data" id="formCardData">
+        
+        <!--- Additional settings fields --->
+        <input type="hidden" name="custom_template" id="formCustomTemplate">
+        <input type="hidden" name="codeinjection_head" id="formCodeinjectionHead">
+        <input type="hidden" name="codeinjection_foot" id="formCodeinjectionFoot">
+        <input type="hidden" name="canonical_url" id="formCanonicalUrl">
+        <input type="hidden" name="show_title_and_feature_image" id="formShowTitleAndFeatureImage">
+        
+        <!--- Social media fields --->
+        <input type="hidden" name="og_title" id="formOgTitle">
+        <input type="hidden" name="og_description" id="formOgDescription">
+        <input type="hidden" name="og_image" id="formOgImage">
+        <input type="hidden" name="twitter_title" id="formTwitterTitle">
+        <input type="hidden" name="twitter_description" id="formTwitterDescription">
+        <input type="hidden" name="twitter_image" id="formTwitterImage">
     </form>
     
     <!-- Core JS -->
@@ -4611,6 +4629,15 @@ allTags = tagsResult.success ? tagsResult.data : [];
     let isProgrammaticChange = false; // Flag to prevent marking dirty when setting values programmatically
     let lastFocusedElement = null; // Track last focused element to detect real blur events
     let isCreatingCards = false; // Flag to track when cards are being created initially
+    
+    // Toggle settings panel - defined early to be available for onclick handlers
+    function toggleSettings() {
+        const panel = document.getElementById('settingsPanel');
+        panel.classList.toggle('active');
+        if (panel.classList.contains('active')) {
+            panel.classList.add('animate-slide-in');
+        }
+    }
     
     // Initialize editor with existing content
     // Auto-resize title textarea
@@ -4722,6 +4749,12 @@ allTags = tagsResult.success ? tagsResult.data : [];
             isInitializing = false; // Allow marking dirty from now on
             // console.log('Initialization complete - isDirty:', isDirty, 'isInitializing:', isInitializing);
             
+            // Update all previews now that content is loaded
+            updateTwitterPreview();
+            updateFacebookPreview();
+            updateSearchPreview();
+            updateCanonicalUrlPreview();
+            
             // Update save status based on original post status
             const saveStatus = document.getElementById('saveStatus');
             if (saveStatus) {
@@ -4751,6 +4784,11 @@ allTags = tagsResult.success ? tagsResult.data : [];
                 // console.log('Values changed during init:', initialValues, 'vs', currentValues);
             }
             
+            // Update all previews after content is loaded
+            updateSearchPreview();
+            updateTwitterPreview();
+            updateFacebookPreview();
+            
         }, 2000); // Increased timeout to ensure all initialization is complete including blur events
         
         // Auto-generate slug from title
@@ -4761,6 +4799,10 @@ allTags = tagsResult.success ? tagsResult.data : [];
                 document.getElementById('postSlug').value = slug;
                 setTimeout(() => { isProgrammaticChange = false; }, 10);
             }
+            // Update search preview when title changes
+            updateSearchPreview();
+            updateTwitterPreview();
+            updateFacebookPreview();
             markDirtySafe();
         });
         
@@ -5499,7 +5541,14 @@ allTags = tagsResult.success ? tagsResult.data : [];
         
         // Reset flag after creating cards
         if (isInitialLoad) {
-            setTimeout(() => { isCreatingCards = false; }, 100);
+            setTimeout(() => { 
+                isCreatingCards = false;
+                // Update previews after content is parsed
+                updateTwitterPreview();
+                updateFacebookPreview();
+                updateSearchPreview();
+                updateCanonicalUrlPreview();
+            }, 100);
         }
     }
     
@@ -7466,6 +7515,17 @@ allTags = tagsResult.success ? tagsResult.data : [];
             if (card.data.content !== content) {
                 card.data.content = content;
                 markDirtySafe();
+                
+                // Update social previews if this is the first paragraph
+                if (card.type === 'paragraph') {
+                    const firstPara = contentCards.find(c => c.type === 'paragraph' && c.data.content);
+                    if (firstPara && firstPara.id === cardId) {
+                        // Update all previews
+                        updateSearchPreview();
+                        updateTwitterPreview();
+                        updateFacebookPreview();
+                    }
+                }
             }
         }
     }
@@ -7972,15 +8032,6 @@ allTags = tagsResult.success ? tagsResult.data : [];
         }
     }
     
-    // Toggle settings panel
-    function toggleSettings() {
-        const panel = document.getElementById('settingsPanel');
-        panel.classList.toggle('active');
-        if (panel.classList.contains('active')) {
-            panel.classList.add('animate-slide-in');
-        }
-    }
-    
     // Set post visibility
     function setVisibility(visibility) {
         // Update segmented control
@@ -7992,6 +8043,12 @@ allTags = tagsResult.success ? tagsResult.data : [];
         // Update hidden field value
         document.getElementById('postVisibility').value = visibility;
         markDirty();
+        
+        // Trigger auto-save for visibility changes
+        if (autosaveTimer) {
+            clearTimeout(autosaveTimer);
+        }
+        autosaveTimer = setTimeout(autosave, 500); // Quick save for visibility
     }
     
     // Settings panel subview functions
@@ -8020,6 +8077,171 @@ allTags = tagsResult.success ? tagsResult.data : [];
         }
     }
     
+    // Get first paragraph from content
+    function getFirstParagraph() {
+        // First try to get from contentCards array
+        if (contentCards && contentCards.length > 0) {
+            for (let card of contentCards) {
+                if (card.type === 'paragraph' && card.data && card.data.content) {
+                    // Strip HTML tags and return plain text
+                    const temp = document.createElement('div');
+                    temp.innerHTML = card.data.content;
+                    const text = temp.textContent || temp.innerText || '';
+                    if (text.trim()) {
+                        return text.trim();
+                    }
+                }
+            }
+        }
+        
+        // If no cards yet, try to get from DOM directly
+        const paragraphCards = document.querySelectorAll('.card-paragraph .card-content');
+        for (let i = 0; i < paragraphCards.length; i++) {
+            const content = paragraphCards[i].innerHTML;
+            if (content) {
+                const temp = document.createElement('div');
+                temp.innerHTML = content;
+                const text = temp.textContent || temp.innerText || '';
+                if (text.trim()) {
+                    return text.trim();
+                }
+            }
+        }
+        
+        // If still no content, check if we have HTML content from postData
+        const htmlContent = postData.html || postData.HTML;
+        if (htmlContent) {
+            const temp = document.createElement('div');
+            temp.innerHTML = htmlContent;
+            // Find first paragraph tag
+            const firstP = temp.querySelector('p');
+            if (firstP) {
+                const text = firstP.textContent || firstP.innerText || '';
+                if (text.trim()) {
+                    return text.trim();
+                }
+            }
+            // If no p tag, just get first text content
+            const text = temp.textContent || temp.innerText || '';
+            if (text.trim()) {
+                // Return first 200 characters as a paragraph
+                return text.trim().substring(0, 200);
+            }
+        }
+        
+        // If no paragraph found, return empty string
+        return '';
+    }
+    
+    // Update social media previews
+    function updateTwitterPreview() {
+        const titleEl = document.getElementById('twitterTitle');
+        const descEl = document.getElementById('twitterDescription');
+        const metaDescEl = document.getElementById('metaDescription');
+        const excerptEl = document.getElementById('postExcerpt');
+        const postTitleEl = document.getElementById('postTitle');
+        
+        // Update preview title
+        const previewTitle = document.getElementById('twitterPreviewTitle');
+        if (previewTitle) {
+            previewTitle.textContent = titleEl.value || postTitleEl.value || 'Untitled';
+        }
+        
+        // Update preview description
+        const previewDesc = document.getElementById('twitterPreviewDesc');
+        if (previewDesc) {
+            let desc = descEl.value || metaDescEl.value || excerptEl.value;
+            
+            // If no description set, use first paragraph from content
+            if (!desc) {
+                const firstParagraph = getFirstParagraph();
+                desc = firstParagraph;
+            }
+            
+            previewDesc.textContent = desc.substring(0, 125);
+        }
+    }
+    
+    function updateFacebookPreview() {
+        const titleEl = document.getElementById('facebookTitle');
+        const descEl = document.getElementById('facebookDescription');
+        const metaDescEl = document.getElementById('metaDescription');
+        const excerptEl = document.getElementById('postExcerpt');
+        const postTitleEl = document.getElementById('postTitle');
+        
+        // Update preview title
+        const previewTitle = document.getElementById('fbPreviewTitle');
+        if (previewTitle) {
+            previewTitle.textContent = titleEl.value || postTitleEl.value || 'Untitled';
+        }
+        
+        // Update preview description
+        const previewDesc = document.getElementById('fbPreviewDesc');
+        if (previewDesc) {
+            let desc = descEl.value || metaDescEl.value || excerptEl.value;
+            
+            // If no description set, use first paragraph from content
+            if (!desc) {
+                const firstParagraph = getFirstParagraph();
+                desc = firstParagraph;
+            }
+            
+            previewDesc.textContent = desc.substring(0, 160);
+        }
+    }
+    
+    // Update search result preview
+    function updateSearchPreview() {
+        const metaTitleEl = document.getElementById('metaTitle');
+        const metaDescEl = document.getElementById('metaDescription');
+        const postTitleEl = document.getElementById('postTitle');
+        const excerptEl = document.getElementById('postExcerpt');
+        const slugEl = document.getElementById('postSlug');
+        
+        // Update preview title
+        const previewTitle = document.getElementById('searchPreviewTitle');
+        if (previewTitle) {
+            previewTitle.textContent = metaTitleEl.value || postTitleEl.value || 'Untitled';
+        }
+        
+        // Update preview description
+        const previewDesc = document.getElementById('searchPreviewDesc');
+        if (previewDesc) {
+            let desc = metaDescEl.value || excerptEl.value;
+            
+            // If no description set, use first paragraph from content
+            if (!desc) {
+                const firstParagraph = getFirstParagraph();
+                desc = firstParagraph;
+            }
+            
+            previewDesc.textContent = desc.substring(0, 160);
+        }
+        
+        // Update preview slug
+        const previewSlug = document.getElementById('searchPreviewSlug');
+        if (previewSlug && slugEl) {
+            previewSlug.textContent = slugEl.value || 'untitled';
+        }
+    }
+    
+    // Update canonical URL preview
+    function updateCanonicalUrlPreview() {
+        const canonicalUrlEl = document.getElementById('canonicalUrl');
+        const previewContainer = document.getElementById('canonicalUrlPreview');
+        const previewText = document.getElementById('canonicalUrlText');
+        
+        if (canonicalUrlEl && previewContainer && previewText) {
+            const url = canonicalUrlEl.value.trim();
+            if (url) {
+                previewText.textContent = url;
+                previewContainer.style.display = 'block';
+            } else {
+                previewContainer.style.display = 'none';
+            }
+        }
+    }
+    
     // Initialize character counters when DOM is ready
     document.addEventListener('DOMContentLoaded', function() {
         // Meta title counter
@@ -8028,6 +8250,18 @@ allTags = tagsResult.success ? tagsResult.data : [];
             metaTitle.addEventListener('input', function() {
                 updateCharCount('metaTitle', 'metaTitleCount', 60);
                 markDirty();
+                // Update search preview
+                updateSearchPreview();
+                // Trigger auto-save with debounce
+                if (autosaveTimer) {
+                    clearTimeout(autosaveTimer);
+                }
+                autosaveTimer = setTimeout(autosave, 2000); // 2 second delay for typing
+            });
+            metaTitle.addEventListener('blur', function() {
+                if (isDirty) {
+                    autosave();
+                }
             });
             updateCharCount('metaTitle', 'metaTitleCount', 60);
         }
@@ -8038,6 +8272,20 @@ allTags = tagsResult.success ? tagsResult.data : [];
             metaDescription.addEventListener('input', function() {
                 updateCharCount('metaDescription', 'metaDescriptionCount', 160);
                 markDirty();
+                // Update all previews
+                updateSearchPreview();
+                updateTwitterPreview();
+                updateFacebookPreview();
+                // Trigger auto-save with debounce
+                if (autosaveTimer) {
+                    clearTimeout(autosaveTimer);
+                }
+                autosaveTimer = setTimeout(autosave, 2000); // 2 second delay for typing
+            });
+            metaDescription.addEventListener('blur', function() {
+                if (isDirty) {
+                    autosave();
+                }
             });
             updateCharCount('metaDescription', 'metaDescriptionCount', 160);
         }
@@ -8048,6 +8296,18 @@ allTags = tagsResult.success ? tagsResult.data : [];
             twitterTitle.addEventListener('input', function() {
                 updateCharCount('twitterTitle', 'twitterTitleCount', 70);
                 markDirty();
+                // Update Twitter preview
+                updateTwitterPreview();
+                // Trigger auto-save with debounce
+                if (autosaveTimer) {
+                    clearTimeout(autosaveTimer);
+                }
+                autosaveTimer = setTimeout(autosave, 2000); // 2 second delay for typing
+            });
+            twitterTitle.addEventListener('blur', function() {
+                if (isDirty) {
+                    autosave();
+                }
             });
             updateCharCount('twitterTitle', 'twitterTitleCount', 70);
         }
@@ -8058,6 +8318,18 @@ allTags = tagsResult.success ? tagsResult.data : [];
             twitterDescription.addEventListener('input', function() {
                 updateCharCount('twitterDescription', 'twitterDescriptionCount', 125);
                 markDirty();
+                // Update Twitter preview
+                updateTwitterPreview();
+                // Trigger auto-save with debounce
+                if (autosaveTimer) {
+                    clearTimeout(autosaveTimer);
+                }
+                autosaveTimer = setTimeout(autosave, 2000); // 2 second delay for typing
+            });
+            twitterDescription.addEventListener('blur', function() {
+                if (isDirty) {
+                    autosave();
+                }
             });
             updateCharCount('twitterDescription', 'twitterDescriptionCount', 125);
         }
@@ -8068,6 +8340,18 @@ allTags = tagsResult.success ? tagsResult.data : [];
             facebookTitle.addEventListener('input', function() {
                 updateCharCount('facebookTitle', 'facebookTitleCount', 60);
                 markDirty();
+                // Update Facebook preview
+                updateFacebookPreview();
+                // Trigger auto-save with debounce
+                if (autosaveTimer) {
+                    clearTimeout(autosaveTimer);
+                }
+                autosaveTimer = setTimeout(autosave, 2000); // 2 second delay for typing
+            });
+            facebookTitle.addEventListener('blur', function() {
+                if (isDirty) {
+                    autosave();
+                }
             });
             updateCharCount('facebookTitle', 'facebookTitleCount', 60);
         }
@@ -8078,13 +8362,25 @@ allTags = tagsResult.success ? tagsResult.data : [];
             facebookDescription.addEventListener('input', function() {
                 updateCharCount('facebookDescription', 'facebookDescriptionCount', 160);
                 markDirty();
+                // Update Facebook preview
+                updateFacebookPreview();
+                // Trigger auto-save with debounce
+                if (autosaveTimer) {
+                    clearTimeout(autosaveTimer);
+                }
+                autosaveTimer = setTimeout(autosave, 2000); // 2 second delay for typing
+            });
+            facebookDescription.addEventListener('blur', function() {
+                if (isDirty) {
+                    autosave();
+                }
             });
             updateCharCount('facebookDescription', 'facebookDescriptionCount', 160);
         }
         
         // Initialize all settings field handlers
         const settingsFields = [
-            'postSlug', 'publishDate', 'postAccess', 'customExcerpt', 
+            'postSlug', 'publishDate', 'postAccess', 'postExcerpt', 
             'postTemplate', 'codeinjectionHead', 'codeinjectionFoot',
             'canonicalUrl', 'twitterImage', 'facebookImage'
         ];
@@ -8092,23 +8388,61 @@ allTags = tagsResult.success ? tagsResult.data : [];
         settingsFields.forEach(fieldId => {
             const field = document.getElementById(fieldId);
             if (field) {
-                field.addEventListener('change', markDirty);
+                field.addEventListener('change', function() {
+                    markDirty();
+                    // Update previews if excerpt changed
+                    if (fieldId === 'postExcerpt') {
+                        updateSearchPreview();
+                        updateTwitterPreview();
+                        updateFacebookPreview();
+                    }
+                    // Update search preview if slug changed
+                    if (fieldId === 'postSlug') {
+                        updateSearchPreview();
+                    }
+                    // Trigger auto-save after change
+                    if (autosaveTimer) {
+                        clearTimeout(autosaveTimer);
+                    }
+                    autosaveTimer = setTimeout(autosave, 1000); // 1 second delay for settings
+                });
+                field.addEventListener('input', function() {
+                    // Update previews on input for excerpt
+                    if (fieldId === 'postExcerpt') {
+                        updateSearchPreview();
+                        updateTwitterPreview();
+                        updateFacebookPreview();
+                    }
+                    // Update search preview on slug input
+                    if (fieldId === 'postSlug') {
+                        updateSearchPreview();
+                    }
+                    // Update canonical URL preview
+                    if (fieldId === 'canonicalUrl') {
+                        updateCanonicalUrlPreview();
+                    }
+                });
                 field.addEventListener('blur', function() {
-                    // Auto-save will be implemented with database connection
-                    console.log('Field changed:', fieldId, field.value);
+                    // Immediate save on blur
+                    if (isDirty) {
+                        autosave();
+                    }
                 });
             }
         });
         
         // Handle checkboxes
-        const checkboxes = ['featurePost', 'showTitleAndFeatureImage'];
+        const checkboxes = ['featuredPost', 'showTitleAndFeatureImage'];
         checkboxes.forEach(checkboxId => {
             const checkbox = document.getElementById(checkboxId);
             if (checkbox) {
                 checkbox.addEventListener('change', function() {
                     markDirty();
-                    // Auto-save will be implemented with database connection
-                    console.log('Checkbox changed:', checkboxId, checkbox.checked);
+                    // Trigger auto-save immediately for checkboxes
+                    if (autosaveTimer) {
+                        clearTimeout(autosaveTimer);
+                    }
+                    autosaveTimer = setTimeout(autosave, 500); // Quick save for checkboxes
                 });
             }
         });
@@ -8118,6 +8452,14 @@ allTags = tagsResult.success ? tagsResult.data : [];
         tooltipTriggerList.map(function (tooltipTriggerEl) {
             return new bootstrap.Tooltip(tooltipTriggerEl);
         });
+        
+        // Initialize canonical URL preview
+        updateCanonicalUrlPreview();
+        
+        // Initialize all social previews
+        updateSearchPreview();
+        updateTwitterPreview();
+        updateFacebookPreview();
     });
     
     // Tag management
@@ -8149,6 +8491,12 @@ allTags = tagsResult.success ? tagsResult.data : [];
                 tagsContainer.appendChild(badge);
                 
                 markDirtySafe();
+                
+                // Trigger auto-save for tag changes
+                if (autosaveTimer) {
+                    clearTimeout(autosaveTimer);
+                }
+                autosaveTimer = setTimeout(autosave, 1000); // Quick save for tags
             }
             
             // Reset selector
@@ -8176,6 +8524,12 @@ allTags = tagsResult.success ? tagsResult.data : [];
         });
         
         markDirtySafe();
+        
+        // Trigger auto-save for tag changes
+        if (autosaveTimer) {
+            clearTimeout(autosaveTimer);
+        }
+        autosaveTimer = setTimeout(autosave, 1000); // Quick save for tags
     }
     
     // Author management
@@ -8232,6 +8586,12 @@ allTags = tagsResult.success ? tagsResult.data : [];
                 }
                 
                 markDirtySafe();
+                
+                // Trigger auto-save for author changes
+                if (autosaveTimer) {
+                    clearTimeout(autosaveTimer);
+                }
+                autosaveTimer = setTimeout(autosave, 1000); // Quick save for authors
             }
             
             // Reset selector
@@ -8266,6 +8626,12 @@ allTags = tagsResult.success ? tagsResult.data : [];
         }
         
         markDirtySafe();
+        
+        // Trigger auto-save for author changes
+        if (autosaveTimer) {
+            clearTimeout(autosaveTimer);
+        }
+        autosaveTimer = setTimeout(autosave, 1000); // Quick save for authors
     }
     
     // Feature image handling
@@ -11393,11 +11759,29 @@ allTags = tagsResult.success ? tagsResult.data : [];
             document.getElementById('formAuthors').value = JSON.stringify(selectedAuthors);
         }
         
+        // Add additional settings fields
+        document.getElementById('formCustomTemplate').value = document.getElementById('postTemplate')?.value || '';
+        document.getElementById('formCodeinjectionHead').value = document.getElementById('codeinjectionHead')?.value || '';
+        document.getElementById('formCodeinjectionFoot').value = document.getElementById('codeinjectionFoot')?.value || '';
+        document.getElementById('formCanonicalUrl').value = document.getElementById('canonicalUrl')?.value || '';
+        document.getElementById('formShowTitleAndFeatureImage').value = document.getElementById('showTitleAndFeatureImage')?.checked ? '1' : '0';
+        
+        // Add social media fields
+        document.getElementById('formOgTitle').value = document.getElementById('facebookTitle')?.value || '';
+        document.getElementById('formOgDescription').value = document.getElementById('facebookDescription')?.value || '';
+        document.getElementById('formOgImage').value = document.getElementById('facebookImage')?.value || '';
+        document.getElementById('formTwitterTitle').value = document.getElementById('twitterTitle')?.value || '';
+        document.getElementById('formTwitterDescription').value = document.getElementById('twitterDescription')?.value || '';
+        document.getElementById('formTwitterImage').value = document.getElementById('twitterImage')?.value || '';
+        
         // Save card data to preserve all card settings
         document.getElementById('formCardData').value = JSON.stringify(contentCards);
         
         // Get form data
         const formData = new FormData(document.getElementById('postForm'));
+        
+        // Debug: Log the postId being sent
+        console.log('Saving post with ID:', formData.get('postId'), 'Length:', formData.get('postId').length);
         
         // Send AJAX request
         fetch('/ghost/admin/ajax/save-post.cfm', {

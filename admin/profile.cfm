@@ -124,7 +124,7 @@ try {
             
             <!--- Update database --->
             <cftry>
-                <cfquery datasource="blog" result="updateResult">
+                <cfquery datasource="#request.dsn#" result="updateResult">
                     UPDATE users 
                     SET name = <cfqueryparam value="#newUserName#" cfsqltype="cf_sql_varchar">,
                         email = <cfqueryparam value="#newEmail#" cfsqltype="cf_sql_varchar">,

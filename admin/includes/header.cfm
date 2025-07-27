@@ -12,7 +12,7 @@
 <!--- Get user from session or database (use uppercase session variables) --->
 <cfif structKeyExists(session, "USERID") and len(session.USERID)>
     <cftry>
-        <cfquery name="headerUserQuery" datasource="blog">
+        <cfquery name="headerUserQuery" datasource="#request.dsn#">
             SELECT u.id, u.name, u.email, u.slug, u.profile_image,
                    r.name as role_name
             FROM users u

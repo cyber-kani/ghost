@@ -58,11 +58,11 @@ function getPosts(
         // Debug output (comment out for production)    
         // writeOutput("<!-- DEBUG getPosts: status='" & arguments.status & "', whereClause='" & whereClause & "' -->");
             
-        var result = queryExecute(sql, queryParams, {datasource: "blog"});
+        var result = queryExecute(sql, queryParams, {datasource: request.dsn});
         
         // Get total count
         var countSql = "SELECT COUNT(DISTINCT p.id) as total FROM posts p LEFT JOIN posts_authors pa ON p.id = pa.post_id WHERE " & whereClause;
-        var countResult = queryExecute(countSql, queryParams, {datasource: "blog"});
+        var countResult = queryExecute(countSql, queryParams, {datasource: request.dsn});
         var totalRecords = countResult.total;
         
         // Convert query to array of structs
@@ -143,7 +143,7 @@ function deletePost(required string id) {
         // Check if post exists
         var checkResult = queryExecute("SELECT title FROM posts WHERE id = :id", {
             id: {value: arguments.id, cfsqltype: "cf_sql_varchar"}
-        }, {datasource: "blog"});
+        }, {datasource: request.dsn});
         
         if (checkResult.recordCount == 0) {
             return {
@@ -156,7 +156,7 @@ function deletePost(required string id) {
         var postTitle = checkResult.title;
         
         // Begin transaction for safe deletion
-        var transaction = queryExecute("START TRANSACTION", {}, {datasource: "blog"});
+        var transaction = queryExecute("START TRANSACTION", {}, {datasource: request.dsn});
         
         try {
             // Delete related records first (cascade deletion)
@@ -178,13 +178,13 @@ function deletePost(required string id) {
                     // Check if table exists and has records
                     var countResult = queryExecute("SELECT COUNT(*) as count FROM " & rel.table & " WHERE " & rel.column & " = :id", {
                         id: {value: arguments.id, cfsqltype: "cf_sql_varchar"}
-                    }, {datasource: "blog"});
+                    }, {datasource: request.dsn});
                     
                     if (countResult.count > 0) {
                         // Delete related records
                         queryExecute("DELETE FROM " & rel.table & " WHERE " & rel.column & " = :id", {
                             id: {value: arguments.id, cfsqltype: "cf_sql_varchar"}
-                        }, {datasource: "blog"});
+                        }, {datasource: request.dsn});
                         
                         arrayAppend(deletedRelated, rel.table & " (" & countResult.count & " records)");
                     }
@@ -197,10 +197,10 @@ function deletePost(required string id) {
             // Now delete the main post
             queryExecute("DELETE FROM posts WHERE id = :id", {
                 id: {value: arguments.id, cfsqltype: "cf_sql_varchar"}
-            }, {datasource: "blog"});
+            }, {datasource: request.dsn});
             
             // Commit transaction
-            queryExecute("COMMIT", {}, {datasource: "blog"});
+            queryExecute("COMMIT", {}, {datasource: request.dsn});
             
             var message = "Post deleted successfully";
             if (arrayLen(deletedRelated) > 0) {
@@ -219,7 +219,7 @@ function deletePost(required string id) {
             
         } catch (any deleteError) {
             // Rollback transaction on error
-            queryExecute("ROLLBACK", {}, {datasource: "blog"});
+            queryExecute("ROLLBACK", {}, {datasource: request.dsn});
             throw deleteError;
         }
         
@@ -248,7 +248,7 @@ function getPostStats() {
                 0 as pages
             FROM posts
             WHERE type = 'post'
-        ", {}, {datasource: "blog"});
+        ", {}, {datasource: request.dsn});
         
         var stats = {
             total: result.total,
@@ -317,7 +317,7 @@ function getPageStats() {
                 0 as posts
             FROM posts
             WHERE type = 'page'
-        ", {}, {datasource: "blog"});
+        ", {}, {datasource: request.dsn});
         
         var stats = {
             total: result.total,
@@ -372,11 +372,11 @@ function getTags(
             ORDER BY t.name ASC
             LIMIT " & arguments.limit & " OFFSET " & offset;
             
-        var result = queryExecute(sql, {}, {datasource: "blog"});
+        var result = queryExecute(sql, {}, {datasource: request.dsn});
         
         // Get total count
         var countSql = "SELECT COUNT(*) as total FROM tags";
-        var countResult = queryExecute(countSql, {}, {datasource: "blog"});
+        var countResult = queryExecute(countSql, {}, {datasource: request.dsn});
         var totalRecords = countResult.total;
         
         // Convert query to array of structs
@@ -429,7 +429,7 @@ function deleteTag(required string id) {
         // Check if tag exists
         var checkResult = queryExecute("SELECT name FROM tags WHERE id = :id", {
             id: {value: arguments.id, cfsqltype: "cf_sql_varchar"}
-        }, {datasource: "blog"});
+        }, {datasource: request.dsn});
         
         if (checkResult.recordCount == 0) {
             return {
@@ -442,27 +442,27 @@ function deleteTag(required string id) {
         var tagName = checkResult.name;
         
         // Begin transaction for safe deletion
-        var transaction = queryExecute("START TRANSACTION", {}, {datasource: "blog"});
+        var transaction = queryExecute("START TRANSACTION", {}, {datasource: request.dsn});
         
         try {
             // Delete related records first (posts_tags)
             var postsTagsCount = queryExecute("SELECT COUNT(*) as count FROM posts_tags WHERE tag_id = :id", {
                 id: {value: arguments.id, cfsqltype: "cf_sql_varchar"}
-            }, {datasource: "blog"});
+            }, {datasource: request.dsn});
             
             if (postsTagsCount.count > 0) {
                 queryExecute("DELETE FROM posts_tags WHERE tag_id = :id", {
                     id: {value: arguments.id, cfsqltype: "cf_sql_varchar"}
-                }, {datasource: "blog"});
+                }, {datasource: request.dsn});
             }
             
             // Now delete the tag
             queryExecute("DELETE FROM tags WHERE id = :id", {
                 id: {value: arguments.id, cfsqltype: "cf_sql_varchar"}
-            }, {datasource: "blog"});
+            }, {datasource: request.dsn});
             
             // Commit transaction
-            queryExecute("COMMIT", {}, {datasource: "blog"});
+            queryExecute("COMMIT", {}, {datasource: request.dsn});
             
             var message = "Tag deleted successfully";
             if (postsTagsCount.count > 0) {
@@ -480,7 +480,7 @@ function deleteTag(required string id) {
             
         } catch (any deleteError) {
             // Rollback transaction on error
-            queryExecute("ROLLBACK", {}, {datasource: "blog"});
+            queryExecute("ROLLBACK", {}, {datasource: request.dsn});
             throw deleteError;
         }
         
@@ -498,19 +498,22 @@ function deleteTag(required string id) {
  */
 function getPostById(required string id) {
     try {
-        // Get the post (only selecting columns that exist in the table)
+        // Get the post with all fields including code injection and templates
         var postQuery = queryExecute("
             SELECT p.id, p.title, p.html, p.plaintext, p.feature_image, p.featured, p.status, 
                    p.visibility, p.slug, p.custom_excerpt, p.canonical_url, p.type, p.published_at, 
                    p.created_at, p.updated_at, p.created_by, p.updated_by,
-                   u.name as author_name, u.slug as author_slug, u.profile_image as author_avatar
+                   p.codeinjection_head, p.codeinjection_foot, p.custom_template,
+                   p.show_title_and_feature_image,
+                   pm.meta_title, pm.meta_description,
+                   pm.og_title, pm.og_description, pm.og_image,
+                   pm.twitter_title, pm.twitter_description, pm.twitter_image
             FROM posts p
-            LEFT JOIN posts_authors pa ON p.id = pa.post_id AND pa.sort_order = 0
-            LEFT JOIN users u ON pa.author_id = u.id
+            LEFT JOIN posts_meta pm ON p.id = pm.post_id
             WHERE p.id = :id
         ", {
             id: {value: arguments.id, cfsqltype: "cf_sql_varchar"}
-        }, {datasource: "blog"});
+        }, {datasource: request.dsn});
         
         if (postQuery.recordCount == 0) {
             return {
@@ -532,18 +535,52 @@ function getPostById(required string id) {
             visibility: postQuery.visibility[1] ?: "public",
             slug: postQuery.slug[1] ?: "",
             custom_excerpt: postQuery.custom_excerpt[1] ?: "",
-            meta_title: "", // Column doesn't exist in this table, set default
-            meta_description: "", // Column doesn't exist in this table, set default
             canonical_url: postQuery.canonical_url[1] ?: "",
             type: postQuery.type[1] ?: "post",
             published_at: postQuery.published_at[1],
             created_at: postQuery.created_at[1],
             updated_at: postQuery.updated_at[1],
             created_by: postQuery.created_by[1] ?: "",
-            updated_by: postQuery.updated_by[1] ?: ""
+            updated_by: postQuery.updated_by[1] ?: "",
+            // Additional fields from posts table
+            codeinjection_head: postQuery.codeinjection_head[1] ?: "",
+            codeinjection_foot: postQuery.codeinjection_foot[1] ?: "",
+            custom_template: postQuery.custom_template[1] ?: "",
+            show_title_and_feature_image: postQuery.show_title_and_feature_image[1] ?: true,
+            // Fields from posts_meta table
+            meta_title: postQuery.meta_title[1] ?: "",
+            meta_description: postQuery.meta_description[1] ?: "",
+            og_title: postQuery.og_title[1] ?: "",
+            og_description: postQuery.og_description[1] ?: "",
+            og_image: postQuery.og_image[1] ?: "",
+            twitter_title: postQuery.twitter_title[1] ?: "",
+            twitter_description: postQuery.twitter_description[1] ?: "",
+            twitter_image: postQuery.twitter_image[1] ?: ""
         };
         
-        // Add author info from database
+        // Get all authors for this post
+        var authorsQuery = queryExecute("
+            SELECT u.id, u.name, u.slug, u.profile_image
+            FROM posts_authors pa
+            INNER JOIN users u ON pa.author_id = u.id
+            WHERE pa.post_id = :postId
+            ORDER BY pa.sort_order
+        ", {
+            postId: {value: arguments.id, cfsqltype: "cf_sql_varchar"}
+        }, {datasource: request.dsn});
+        
+        // Build authors array
+        var authors = [];
+        for (var i = 1; i <= authorsQuery.recordCount; i++) {
+            arrayAppend(authors, {
+                id: authorsQuery.id[i],
+                name: authorsQuery.name[i],
+                slug: authorsQuery.slug[i] ?: "",
+                avatar: authorsQuery.profile_image[i] ?: "https://ui-avatars.com/api/?name=" & URLEncodedFormat(authorsQuery.name[i]) & "&background=5D87FF&color=fff"
+            });
+        }
+        
+        // Set primary author (for backward compatibility)
         var authorName = "";
         var authorAvatar = "";
         
@@ -571,7 +608,7 @@ function getPostById(required string id) {
             ORDER BY t.name
         ", {
             postId: {value: arguments.id, cfsqltype: "cf_sql_varchar"}
-        }, {datasource: "blog"});
+        }, {datasource: request.dsn});
         
         var tags = [];
         for (var i = 1; i <= tagsQuery.recordCount; i++) {
@@ -639,7 +676,7 @@ function createPost(required struct postData) {
             params.published_at = {value: "", cfsqltype: "cf_sql_timestamp", null: true};
         }
         
-        queryExecute(sql, params, {datasource: "blog"});
+        queryExecute(sql, params, {datasource: request.dsn});
         
         return {
             success: true,
@@ -693,7 +730,7 @@ function updatePost(required struct postData) {
         
         sql &= " WHERE id = :id";
         
-        queryExecute(sql, params, {datasource: "blog"});
+        queryExecute(sql, params, {datasource: request.dsn});
         
         return {
             success: true,
@@ -735,7 +772,7 @@ function getPostTags(required string postId) {
             ORDER BY t.name
         ", {
             postId: {value: arguments.postId, cfsqltype: "cf_sql_varchar"}
-        }, {datasource: "blog"});
+        }, {datasource: request.dsn});
         
         var tags = [];
         for (var i = 1; i <= tagsQuery.recordCount; i++) {

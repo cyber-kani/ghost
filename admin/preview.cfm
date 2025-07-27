@@ -22,7 +22,7 @@
 
 <!--- Get post data --->
 <cftry>
-    <cfquery name="postData" datasource="blog">
+    <cfquery name="postData" datasource="#request.dsn#">
         SELECT 
             p.id,
             p.title,

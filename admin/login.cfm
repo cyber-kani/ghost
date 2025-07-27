@@ -12,7 +12,7 @@
 <cfif structKeyExists(form, "email") and structKeyExists(form, "password")>
     <cftry>
         <!--- Query database for user --->
-        <cfquery name="userLogin" datasource="blog">
+        <cfquery name="userLogin" datasource="#request.dsn#">
             SELECT u.id, u.name, u.email, u.password, u.status, 
                    r.name as role_name
             FROM users u

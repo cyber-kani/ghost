@@ -20,7 +20,7 @@
 
 <cftry>
     <!--- Get published posts --->
-    <cfquery name="qPosts" datasource="blog">
+    <cfquery name="qPosts" datasource="#request.dsn#">
         SELECT 
             p.id,
             p.slug,

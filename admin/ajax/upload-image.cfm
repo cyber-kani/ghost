@@ -126,7 +126,7 @@
             <!--- Update user's profile image in database --->
             <cftry>
                 <cfif uploadType eq "profile">
-                    <cfquery datasource="blog">
+                    <cfquery datasource="#request.dsn#">
                         UPDATE users 
                         SET profile_image = <cfqueryparam value="#imageUrl#" cfsqltype="cf_sql_varchar">,
                             updated_at = <cfqueryparam value="#now()#" cfsqltype="cf_sql_timestamp">,
@@ -134,7 +134,7 @@
                         WHERE id = <cfqueryparam value="#userId#" cfsqltype="cf_sql_varchar">
                     </cfquery>
                 <cfelseif uploadType eq "cover">
-                    <cfquery datasource="blog">
+                    <cfquery datasource="#request.dsn#">
                         UPDATE users 
                         SET cover_image = <cfqueryparam value="#imageUrl#" cfsqltype="cf_sql_varchar">,
                             updated_at = <cfqueryparam value="#now()#" cfsqltype="cf_sql_timestamp">,

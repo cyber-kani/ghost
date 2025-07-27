@@ -7538,6 +7538,15 @@ allTags = tagsResult.success ? tagsResult.data : [];
             if (card.data[property] !== value) {
                 card.data[property] = value;
                 markDirtySafe();
+                
+                // Update previews if content changed and it's a paragraph card
+                if (property === 'content' && card.type === 'paragraph') {
+                    // Update social previews in case this is the first paragraph
+                    setTimeout(() => {
+                        updateTwitterPreview();
+                        updateFacebookPreview();
+                    }, 100);
+                }
             }
             
             // Update button active states based on property changed
@@ -8103,7 +8112,7 @@ allTags = tagsResult.success ? tagsResult.data : [];
         }
         
         // If no cards yet, try to get from DOM directly
-        const paragraphCards = document.querySelectorAll('.card-paragraph .card-content');
+        const paragraphCards = document.querySelectorAll('[data-card-type="paragraph"] .card-content');
         for (let i = 0; i < paragraphCards.length; i++) {
             const content = paragraphCards[i].innerHTML;
             if (content) {
@@ -8161,9 +8170,14 @@ allTags = tagsResult.success ? tagsResult.data : [];
             let desc = descEl.value || metaDescEl.value || excerptEl.value;
             
             // If no description set, use first paragraph from content
-            if (!desc) {
+            if (!desc || desc.trim() === '') {
                 const firstParagraph = getFirstParagraph();
                 desc = firstParagraph;
+            }
+            
+            // Ensure we have something to show
+            if (!desc || desc === 'No paragraph found') {
+                desc = 'No description available';
             }
             
             previewDesc.textContent = desc.substring(0, 125);
@@ -8189,9 +8203,14 @@ allTags = tagsResult.success ? tagsResult.data : [];
             let desc = descEl.value || metaDescEl.value || excerptEl.value;
             
             // If no description set, use first paragraph from content
-            if (!desc) {
+            if (!desc || desc.trim() === '') {
                 const firstParagraph = getFirstParagraph();
                 desc = firstParagraph;
+            }
+            
+            // Ensure we have something to show
+            if (!desc || desc === 'No paragraph found') {
+                desc = 'No description available';
             }
             
             previewDesc.textContent = desc.substring(0, 160);

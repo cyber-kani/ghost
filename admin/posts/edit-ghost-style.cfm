@@ -4232,7 +4232,29 @@ allTags = tagsResult.success ? tagsResult.data : [];
                         <div class="p-4 bg-white rounded-lg border">
                             <h4 class="text-blue-600 text-lg mb-1" id="searchPreviewTitle"><cfoutput>#postData.title#</cfoutput></h4>
                             <p class="text-green-700 text-sm mb-1">clitools.app/ghost/<span id="searchPreviewSlug"><cfoutput>#postData.slug#</cfoutput></span></p>
-                            <p class="text-gray-600 text-sm" id="searchPreviewDesc"><cfoutput>#left(postData.meta_description, 160)#</cfoutput></p>
+                            <p class="text-gray-600 text-sm" id="searchPreviewDesc"><cfoutput><cfscript>
+                                // Search preview description fallback logic
+                                searchDesc = "";
+                                if (len(postData.meta_description)) {
+                                    searchDesc = postData.meta_description;
+                                } else if (len(postData.custom_excerpt)) {
+                                    searchDesc = postData.custom_excerpt;
+                                } else if (len(postData.html)) {
+                                    // Extract first paragraph from HTML content
+                                    firstP = reMatch("<p[^>]*>(.*?)</p>", postData.html);
+                                    if (arrayLen(firstP) gt 0) {
+                                        // Strip HTML tags from first paragraph
+                                        searchDesc = reReplace(firstP[1], "<[^>]*>", "", "all");
+                                        searchDesc = replace(searchDesc, "&nbsp;", " ", "all");
+                                        searchDesc = replace(searchDesc, "&amp;", "&", "all");
+                                        searchDesc = replace(searchDesc, "&lt;", "<", "all");
+                                        searchDesc = replace(searchDesc, "&gt;", ">", "all");
+                                        searchDesc = replace(searchDesc, "&quot;", '"', "all");
+                                        searchDesc = trim(searchDesc);
+                                    }
+                                }
+                                writeOutput(left(searchDesc, 160));
+                            </cfscript></cfoutput></p>
                         </div>
                     </div>
                 </div>
@@ -4258,7 +4280,31 @@ allTags = tagsResult.success ? tagsResult.data : [];
                             <div class="social-preview-content">
                                 <p class="social-preview-domain">CLITOOLS.APP</p>
                                 <h4 id="twitterPreviewTitle" class="social-preview-title"><cfoutput>#len(postData.twitter_title) ? postData.twitter_title : postData.title#</cfoutput></h4>
-                                <p id="twitterPreviewDesc" class="social-preview-description"><cfoutput>#left(len(postData.twitter_description) ? postData.twitter_description : (len(postData.meta_description) ? postData.meta_description : postData.custom_excerpt), 125)#</cfoutput></p>
+                                <p id="twitterPreviewDesc" class="social-preview-description"><cfoutput><cfscript>
+                                    // Twitter/X description fallback logic
+                                    twitterDesc = "";
+                                    if (len(postData.twitter_description)) {
+                                        twitterDesc = postData.twitter_description;
+                                    } else if (len(postData.meta_description)) {
+                                        twitterDesc = postData.meta_description;
+                                    } else if (len(postData.custom_excerpt)) {
+                                        twitterDesc = postData.custom_excerpt;
+                                    } else if (len(postData.html)) {
+                                        // Extract first paragraph from HTML content
+                                        firstP = reMatch("<p[^>]*>(.*?)</p>", postData.html);
+                                        if (arrayLen(firstP) gt 0) {
+                                            // Strip HTML tags from first paragraph
+                                            twitterDesc = reReplace(firstP[1], "<[^>]*>", "", "all");
+                                            twitterDesc = replace(twitterDesc, "&nbsp;", " ", "all");
+                                            twitterDesc = replace(twitterDesc, "&amp;", "&", "all");
+                                            twitterDesc = replace(twitterDesc, "&lt;", "<", "all");
+                                            twitterDesc = replace(twitterDesc, "&gt;", ">", "all");
+                                            twitterDesc = replace(twitterDesc, "&quot;", '"', "all");
+                                            twitterDesc = trim(twitterDesc);
+                                        }
+                                    }
+                                    writeOutput(left(twitterDesc, 125));
+                                </cfscript></cfoutput></p>
                             </div>
                         </div>
                     </div>
@@ -4330,7 +4376,31 @@ allTags = tagsResult.success ? tagsResult.data : [];
                             <div class="social-preview-content">
                                 <p class="social-preview-domain">CLITOOLS.APP</p>
                                 <h4 id="fbPreviewTitle" class="social-preview-title"><cfoutput>#len(postData.og_title) ? postData.og_title : postData.title#</cfoutput></h4>
-                                <p id="fbPreviewDesc" class="social-preview-description"><cfoutput>#left(len(postData.og_description) ? postData.og_description : (len(postData.meta_description) ? postData.meta_description : postData.custom_excerpt), 160)#</cfoutput></p>
+                                <p id="fbPreviewDesc" class="social-preview-description"><cfoutput><cfscript>
+                                    // Facebook description fallback logic
+                                    fbDesc = "";
+                                    if (len(postData.og_description)) {
+                                        fbDesc = postData.og_description;
+                                    } else if (len(postData.meta_description)) {
+                                        fbDesc = postData.meta_description;
+                                    } else if (len(postData.custom_excerpt)) {
+                                        fbDesc = postData.custom_excerpt;
+                                    } else if (len(postData.html)) {
+                                        // Extract first paragraph from HTML content
+                                        firstP = reMatch("<p[^>]*>(.*?)</p>", postData.html);
+                                        if (arrayLen(firstP) gt 0) {
+                                            // Strip HTML tags from first paragraph
+                                            fbDesc = reReplace(firstP[1], "<[^>]*>", "", "all");
+                                            fbDesc = replace(fbDesc, "&nbsp;", " ", "all");
+                                            fbDesc = replace(fbDesc, "&amp;", "&", "all");
+                                            fbDesc = replace(fbDesc, "&lt;", "<", "all");
+                                            fbDesc = replace(fbDesc, "&gt;", ">", "all");
+                                            fbDesc = replace(fbDesc, "&quot;", '"', "all");
+                                            fbDesc = trim(fbDesc);
+                                        }
+                                    }
+                                    writeOutput(left(fbDesc, 160));
+                                </cfscript></cfoutput></p>
                             </div>
                         </div>
                     </div>
@@ -8065,6 +8135,22 @@ allTags = tagsResult.success ? tagsResult.data : [];
         const subview = document.getElementById(viewName + 'Subview');
         if (subview) {
             subview.classList.add('active');
+            
+            // Update previews when social media tabs are opened
+            if (viewName === 'twitterData') {
+                setTimeout(() => {
+                    updateTwitterPreview();
+                }, 100);
+            } else if (viewName === 'facebookData') {
+                setTimeout(() => {
+                    updateFacebookPreview();
+                }, 100);
+            } else if (viewName === 'metaData') {
+                setTimeout(() => {
+                    updateSearchPreview();
+                    updateCanonicalUrlPreview();
+                }, 100);
+            }
         }
     };
     

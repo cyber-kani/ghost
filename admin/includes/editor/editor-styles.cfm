@@ -1937,6 +1937,9 @@
             max-height: 90vh;
             display: flex;
             flex-direction: column;
+            transform: scale(0.95);
+            opacity: 0;
+            transition: all 0.2s ease-out;
         }
         
         .ghost-modal-header {

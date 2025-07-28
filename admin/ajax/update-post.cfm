@@ -32,6 +32,13 @@
         <cfabort>
     </cfif>
     
+    <!--- Determine post type --->
+    <cfset postType = structKeyExists(postData, "type") ? postData.type : "post">
+    
+    <!--- Generate and ensure unique slug --->
+    <cfset baseSlug = structKeyExists(postData, "slug") and len(trim(postData.slug)) ? postData.slug : generateSlugFromTitle(postData.title)>
+    <cfset uniqueSlug = ensureUniqueSlug(baseSlug, postType, trim(postData.id))>
+    
     <!--- Prepare post data for database --->
     <cfset postRecord = {
         id: trim(postData.id),
@@ -42,12 +49,12 @@
         featured: structKeyExists(postData, "featured") ? postData.featured : false,
         status: structKeyExists(postData, "status") ? postData.status : "draft",
         visibility: structKeyExists(postData, "visibility") ? postData.visibility : "public",
-        slug: structKeyExists(postData, "slug") ? postData.slug : generateSlugFromTitle(postData.title),
+        slug: uniqueSlug,
         custom_excerpt: structKeyExists(postData, "custom_excerpt") ? postData.custom_excerpt : "",
         meta_title: structKeyExists(postData, "meta_title") ? postData.meta_title : "",
         meta_description: structKeyExists(postData, "meta_description") ? postData.meta_description : "",
         canonical_url: structKeyExists(postData, "canonical_url") ? postData.canonical_url : "",
-        type: structKeyExists(postData, "type") ? postData.type : "post",
+        type: postType,
         updated_by: "1",
         updated_at: now()
     }>
@@ -112,6 +119,39 @@
     <cfset slug = reReplace(slug, "\-+", "-", "all")>
     <!--- Remove leading/trailing hyphens --->
     <cfset slug = reReplace(slug, "^-|-$", "", "all")>
+    
+    <cfreturn slug>
+</cffunction>
+
+<!--- Helper function to ensure unique slug --->
+<cffunction name="ensureUniqueSlug" access="private" returntype="string">
+    <cfargument name="baseSlug" type="string" required="true">
+    <cfargument name="postType" type="string" required="true">
+    <cfargument name="excludeId" type="string" required="false" default="">
+    
+    <cfset var slug = arguments.baseSlug>
+    <cfset var counter = 1>
+    <cfset var checkQuery = "">
+    
+    <!--- Keep checking until we find a unique slug --->
+    <cfloop condition="true">
+        <cfquery name="checkQuery" datasource="blog">
+            SELECT id FROM posts 
+            WHERE slug = <cfqueryparam value="#slug#" cfsqltype="cf_sql_varchar">
+            AND type = <cfqueryparam value="#arguments.postType#" cfsqltype="cf_sql_varchar">
+            <cfif len(arguments.excludeId)>
+                AND id != <cfqueryparam value="#arguments.excludeId#" cfsqltype="cf_sql_varchar">
+            </cfif>
+        </cfquery>
+        
+        <cfif checkQuery.recordCount eq 0>
+            <cfbreak>
+        </cfif>
+        
+        <!--- Add or increment counter --->
+        <cfset counter = counter + 1>
+        <cfset slug = arguments.baseSlug & "-" & counter>
+    </cfloop>
     
     <cfreturn slug>
 </cffunction>

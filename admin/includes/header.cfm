@@ -157,6 +157,20 @@
             border: none !important;
             outline: none !important;
         }
+        
+        /* Fix theme toggle visibility */
+        html.dark #dark-layout {
+            display: none !important;
+        }
+        html.dark #light-layout {
+            display: flex !important;
+        }
+        html:not(.dark) #dark-layout {
+            display: flex !important;
+        }
+        html:not(.dark) #light-layout {
+            display: none !important;
+        }
     </style>
     
     <!-- Ghost Favicon -->

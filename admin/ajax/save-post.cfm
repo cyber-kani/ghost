@@ -39,6 +39,7 @@
     <cfset tags = form.tags ?: "[]">
     <cfset authors = form.authors ?: "[]">
     <cfset status = form.status ?: "draft">
+    <cfset type = form.type ?: "post">
     
     <!--- Additional fields from settings --->
     <cfset customTemplate = form.custom_template ?: "">
@@ -185,7 +186,7 @@
                 <cfqueryparam value="#visibility#" cfsqltype="cf_sql_varchar">,
                 <cfqueryparam value="#featured eq '1' ? 1 : 0#" cfsqltype="cf_sql_bit">,
                 <cfqueryparam value="#status#" cfsqltype="cf_sql_varchar">,
-                <cfqueryparam value="post" cfsqltype="cf_sql_varchar">,
+                <cfqueryparam value="#type#" cfsqltype="cf_sql_varchar">,
                 <cfqueryparam value="#session.USERID#" cfsqltype="cf_sql_varchar">,
                 <cfqueryparam value="#now()#" cfsqltype="cf_sql_timestamp">,
                 <cfqueryparam value="#now()#" cfsqltype="cf_sql_timestamp">,

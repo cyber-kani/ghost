@@ -8005,13 +8005,11 @@ if (len(postData.html)) {
         document.getElementById('saveStatus').textContent = 'Unsaved changes';
         document.getElementById('saveStatus').className = 'text-sm text-orange-600';
         
-        // Reset autosave timer for draft posts only
-        if (originalStatus !== 'published') {
-            if (autosaveTimer) {
-                clearTimeout(autosaveTimer);
-            }
-            autosaveTimer = setTimeout(autosave, 3000); // 3 seconds
+        // Reset autosave timer for all posts (autosave will maintain the correct status)
+        if (autosaveTimer) {
+            clearTimeout(autosaveTimer);
         }
+        autosaveTimer = setTimeout(autosave, 3000); // 3 seconds
     }
     
     // Safe wrapper for markDirty that respects initialization state
@@ -8089,8 +8087,8 @@ if (len(postData.html)) {
         // Show saving message
         showMessage('Saving...', 'info');
         
-        // Save as draft for unpublished posts, or maintain status for published posts
-        const saveStatus = originalStatus === 'published' ? 'published' : 'draft';
+        // Maintain the original status for published/scheduled posts, or save as draft for unpublished posts
+        const saveStatus = (originalStatus === 'published' || originalStatus === 'scheduled') ? originalStatus : 'draft';
         savePost(saveStatus, false).then(() => {
             console.log('Save successful, navigateToUrl:', navigateToUrl);
             isDirty = false;
@@ -8117,8 +8115,8 @@ if (len(postData.html)) {
         // Show saving message
         showMessage('Saving...', 'info');
         
-        // Save as draft for unpublished posts, or maintain status for published posts
-        const saveStatus = originalStatus === 'published' ? 'published' : 'draft';
+        // Maintain the original status for published/scheduled posts, or save as draft for unpublished posts
+        const saveStatus = (originalStatus === 'published' || originalStatus === 'scheduled') ? originalStatus : 'draft';
         savePost(saveStatus, false).then(() => {
             isDirty = false;
             showMessage('Post saved successfully', 'success');
@@ -8232,9 +8230,13 @@ if (len(postData.html)) {
     function autosave() {
         if (!isDirty) return;
         
-        // Only autosave draft posts (don't autosave published posts)
-        if (originalStatus !== 'published') {
+        // Autosave with the current status (maintain published/scheduled/draft status)
+        if (originalStatus !== 'published' && originalStatus !== 'scheduled') {
+            // Only save as draft if it's currently a draft
             savePost('draft', true);
+        } else {
+            // Maintain the current status for published and scheduled posts
+            savePost(originalStatus, true);
         }
     }
     
@@ -12463,14 +12465,6 @@ if (len(postData.html)) {
         executePublishWithOptions();
     }
     
-    // Update post
-    function updatePost() {
-        // Keep the original status for published posts
-        // console.log('updatePost called, originalStatus:', originalStatus);
-        const statusToSave = originalStatus === 'published' ? 'published' : 'draft';
-        // console.log('Saving with status:', statusToSave);
-        savePost(statusToSave);
-    }
     
     // Unpublish post
     function unpublishPost() {
@@ -12662,6 +12656,8 @@ if (len(postData.html)) {
     function showPreviewModal() {
         const postId = '<cfoutput>#postData.id#</cfoutput>';
         
+        console.log('showPreviewModal called with postId:', postId);
+        
         if (!postId) {
             showMessage('Post ID not found. Please save the post first.', 'error');
             return;
@@ -12697,13 +12693,16 @@ if (len(postData.html)) {
         `;
         
         // Create iframe for preview modal with loading state
+        const iframeSrc = `/ghost/admin/preview-modal.cfm?id=${postId}`;
+        console.log('Preview iframe src:', iframeSrc);
+        
         modal.innerHTML = `
             <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; z-index: 1;">
                 <div style="width: 40px; height: 40px; border: 3px solid #f3f3f3; border-top: 3px solid #14b8ff; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto;"></div>
                 <p style="margin-top: 10px; color: #666;">Loading preview...</p>
             </div>
             <iframe 
-                src="/ghost/admin/preview-modal.cfm?id=${postId}" 
+                src="${iframeSrc}" 
                 style="width: 100%; height: 100%; border: none; display: block; flex: 1; opacity: 0; transition: opacity 0.3s ease;"
                 id="previewFrame"
                 onload="this.style.opacity = '1'; this.previousElementSibling.style.display = 'none';"

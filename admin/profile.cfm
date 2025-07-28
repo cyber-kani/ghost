@@ -543,22 +543,42 @@ function removeAvatar() {
         // Update database to remove profile image
         const formData = new FormData();
         formData.append('action', 'removeAvatar');
-        formData.append('userId', '<cfoutput>#currentUser.id#</cfoutput>');
+        
+        // Show loading state
+        const profileImg = document.getElementById('profileImage');
+        profileImg.style.opacity = '0.5';
         
         fetch('/ghost/admin/ajax/update-profile.cfm', {
             method: 'POST',
             body: formData
         })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                location.reload();
-            } else {
-                alert('Failed to remove avatar');
+        .then(response => {
+            console.log('Response status:', response.status);
+            console.log('Response headers:', response.headers.get('content-type'));
+            return response.text();
+        })
+        .then(text => {
+            console.log('Raw response:', text);
+            try {
+                const data = JSON.parse(text);
+                console.log('Parsed data:', data);
+                if (data.success || data.SUCCESS) {
+                    showMessage('Profile image removed successfully', 'success');
+                    setTimeout(() => location.reload(), 1000);
+                } else {
+                    profileImg.style.opacity = '1';
+                    showMessage(data.message || data.MESSAGE || 'Failed to remove avatar', 'error');
+                }
+            } catch (e) {
+                console.error('JSON parse error:', e);
+                profileImg.style.opacity = '1';
+                showMessage('Invalid response from server', 'error');
             }
         })
         .catch(error => {
-            alert('Error: ' + error.message);
+            console.error('Fetch error:', error);
+            profileImg.style.opacity = '1';
+            showMessage('Error: ' + error.message, 'error');
         });
     }
 }

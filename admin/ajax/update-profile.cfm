@@ -3,7 +3,9 @@ Profile Update Action Page
 Handles AJAX requests for user profile updates based on Ghost CMS architecture
 --->
 
+<cfsetting enablecfoutputonly="true">
 <cfheader name="Content-Type" value="application/json">
+<cfcontent reset="true">
 <cfsetting requestTimeout="30">
 
 <cfscript>
@@ -270,7 +272,9 @@ response = {success: false, message: "Invalid request"};
 if (cgi.request_method == "POST") {
     
     // Get current user ID from session
-    if (structKeyExists(session, "userId") and len(session.userId)) {
+    if (structKeyExists(session, "USERID") and len(session.USERID)) {
+        currentUserId = session.USERID;
+    } else if (structKeyExists(session, "userId") and len(session.userId)) {
         currentUserId = session.userId;
     } else {
         response = {success: false, message: "User not logged in"};
@@ -280,6 +284,8 @@ if (cgi.request_method == "POST") {
     
     if (structKeyExists(variables, "currentUserId")) {
         if (structKeyExists(form, "action")) {
+            // Log the action for debugging
+            writeLog(file="ghost-profile", text="Action received: " & form.action & ", UserId: " & currentUserId);
             
             switch (form.action) {
                 case "updateProfile":
@@ -376,22 +382,46 @@ if (cgi.request_method == "POST") {
                             userId: {value: currentUserId, cfsqltype: "cf_sql_varchar"}
                         }, {datasource: "blog"});
                         
-                        response = {success: true, message: "Profile image removed successfully"};
+                        // Update session if needed
+                        if (structKeyExists(session, "user") && isStruct(session.user)) {
+                            session.user.profile_image = "";
+                        }
+                        
+                        response = {
+                            success: true, 
+                            message: "Profile image removed successfully"
+                        };
                     } catch (any e) {
-                        response = {success: false, message: "Error removing profile image: " & e.message};
+                        response = {
+                            success: false, 
+                            message: "Error removing profile image: " & e.message,
+                            SUCCESS: false,
+                            MESSAGE: "Error removing profile image: " & e.message
+                        };
                     }
                     break;
                     
                 default:
-                    response = {success: false, message: "Unknown action"};
+                    response = {success: false, message: "Unknown action: " & form.action};
             }
             
         } else {
             response = {success: false, message: "No action specified"};
         }
+    } else {
+        response = {success: false, message: "currentUserId not set properly"};
     }
+} else {
+    response = {success: false, message: "Not a POST request"};
 }
 
 // Output JSON response
-writeOutput(serializeJSON(response));
+jsonResponse = serializeJSON(response);
+// Log for debugging
+if (structKeyExists(form, "action") && form.action == "removeAvatar") {
+    writeLog(file="ghost-profile", text="RemoveAvatar response: " & jsonResponse);
+}
+
+// Output the response
+writeOutput(jsonResponse);
 </cfscript>

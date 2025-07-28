@@ -1,7 +1,8 @@
-<!--- Ghost-style New Post Editor for CFGHOST CMS --->
-<!--- This creates new posts using the modern Ghost editor with card-based content blocks --->
+<!--- Ghost-style New Post/Page Editor for CFGHOST CMS --->
+<!--- This creates new posts/pages using the modern Ghost editor with card-based content blocks --->
 
-<cfset pageTitle = "New Post">
+<cfparam name="url.type" default="post">
+<cfset pageTitle = url.type eq "page" ? "New Page" : "New Post">
 
 <!--- Check login status --->
 <cfif not structKeyExists(session, "ISLOGGEDIN") or not session.ISLOGGEDIN>
@@ -38,7 +39,7 @@ postData = {
     twitter_title: "",
     twitter_description: "",
     twitter_image: "",
-    type: "post",
+    type: url.type,
     published_at: "",
     created_at: now(),
     updated_at: now(),

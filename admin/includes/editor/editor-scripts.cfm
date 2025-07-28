@@ -8418,6 +8418,9 @@
     
     // Show delete confirmation modal
     function showDeleteModal() {
+        // Get post title
+        const postTitle = document.getElementById('postTitle') ? document.getElementById('postTitle').value : 'this post';
+        
         // Create modal backdrop
         const backdrop = document.createElement('div');
         backdrop.className = 'ghost-modal-backdrop';
@@ -8429,14 +8432,15 @@
         modal.className = 'ghost-modal';
         modal.innerHTML = `
             <div class="ghost-modal-header">
-                <h3>Delete this post?</h3>
+                <h3>Are you sure you want to delete this post?</h3>
                 <button type="button" class="ghost-modal-close" onclick="closeDeleteModal()">
                     <i class="ti ti-x text-xl"></i>
                 </button>
             </div>
             <div class="ghost-modal-body">
-                <p class="text-gray-600 text-base">
-                    Are you sure you want to delete this post? This action cannot be undone.
+                <p class="text-gray-600 text-base mb-2">
+                    You're about to delete "<strong>${postTitle || 'this post'}</strong>". 
+                    This action cannot be undone.
                 </p>
             </div>
             <div class="ghost-modal-footer">
@@ -8451,6 +8455,12 @@
         
         backdrop.appendChild(modal);
         document.body.appendChild(backdrop);
+        
+        // Animate in
+        setTimeout(() => {
+            modal.style.transform = 'scale(1)';
+            modal.style.opacity = '1';
+        }, 10);
         
         // Close on backdrop click
         backdrop.addEventListener('click', function(e) {
@@ -8487,16 +8497,21 @@
         .then(response => response.json())
         .then(data => {
             if (data.success || data.SUCCESS) {
-                showMessage('Post deleted', 'success');
+                // Get the success message from server or use default
+                const message = data.message || data.MESSAGE || 'Post deleted successfully';
+                showMessage(message, 'success');
+                
+                // Redirect immediately after showing message
                 setTimeout(() => {
                     window.location.href = '/ghost/admin/posts';
-                }, 1000);
+                }, 500); // Reduced delay for faster redirect
             } else {
-                showMessage(data.message || data.MESSAGE || 'Delete failed', 'error');
+                showMessage(data.message || data.MESSAGE || 'Failed to delete post', 'error');
             }
         })
         .catch(error => {
-            showMessage('Delete failed: ' + error.message, 'error');
+            console.error('Delete error:', error);
+            showMessage('Failed to delete post. Please try again.', 'error');
         });
     }
     
@@ -9187,7 +9202,7 @@
         if (!container) {
             container = document.createElement('div');
             container.id = 'toastContainer';
-            container.style.cssText = 'position: fixed; top: 1rem; right: 1rem; z-index: 9999; display: flex; flex-direction: column; gap: 0.5rem;';
+            container.style.cssText = 'position: fixed; bottom: 1rem; right: 1rem; z-index: 9999; display: flex; flex-direction: column-reverse; gap: 0.5rem;';
             document.body.appendChild(container);
         }
         container.appendChild(toast);

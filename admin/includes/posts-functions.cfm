@@ -46,7 +46,7 @@ function getPosts(
         var sql = "
             SELECT p.id, p.title, p.status, p.created_at, p.updated_at, p.published_at, 
                    p.featured, p.created_by, p.plaintext, p.html, p.slug, p.type, p.visibility,
-                   p.feature_image,
+                   p.feature_image, p.custom_excerpt,
                    u.name as author_name, u.slug as author_slug, u.profile_image as author_avatar
             FROM posts p
             LEFT JOIN posts_authors pa ON p.id = pa.post_id AND pa.sort_order = 0
@@ -82,7 +82,8 @@ function getPosts(
                 slug: result.slug[i] ?: "",
                 type: result.type[i] ?: "post",
                 visibility: result.visibility[i] ?: "public",
-                feature_image: result.feature_image[i] ?: ""
+                feature_image: result.feature_image[i] ?: "",
+                custom_excerpt: result.custom_excerpt[i] ?: ""
             };
             
             // Add author info from database
@@ -103,6 +104,9 @@ function getPosts(
                 avatar: authorAvatar,
                 slug: result.author_slug[i] ?: ""
             };
+            
+            // Also add author_name at top level for compatibility
+            post.author_name = authorName;
             
             arrayAppend(posts, post);
         }

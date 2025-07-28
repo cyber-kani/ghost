@@ -15,6 +15,7 @@
         <input type="hidden" id="formPublishedAt" name="published_at">
         <input type="hidden" id="formTags" name="tags">
         <input type="hidden" id="formStatus" name="status">
+        <input type="hidden" id="formType" name="type" value="<cfoutput>#postData.type#</cfoutput>">
         <input type="hidden" id="formAuthors" name="authors">
         <input type="hidden" id="formCustomTemplate" name="custom_template">
         <input type="hidden" id="formCodeinjectionHead" name="codeinjection_head">
@@ -34,10 +35,17 @@
                 <div class="flex items-center justify-between">
                     <div class="flex items-center gap-4">
                         <!-- Back button -->
-                        <a href="/ghost/admin/posts" class="flex items-center gap-2 text-gray-600 hover:text-gray-900">
-                            <i class="ti ti-arrow-left text-xl"></i>
-                            <span>Posts</span>
-                        </a>
+                        <cfif postData.type eq "page">
+                            <a href="/ghost/admin/pages" class="flex items-center gap-2 text-gray-600 hover:text-gray-900">
+                                <i class="ti ti-arrow-left text-xl"></i>
+                                <span>Pages</span>
+                            </a>
+                        <cfelse>
+                            <a href="/ghost/admin/posts" class="flex items-center gap-2 text-gray-600 hover:text-gray-900">
+                                <i class="ti ti-arrow-left text-xl"></i>
+                                <span>Posts</span>
+                            </a>
+                        </cfif>
                         
                         <!-- Post status -->
                         <cfif len(postData.status)>

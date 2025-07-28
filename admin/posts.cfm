@@ -16,6 +16,11 @@
 </cfswitch>
 <cfinclude template="includes/header.cfm">
 
+<!--- Ensure userRole is available --->
+<cfif NOT structKeyExists(session, "userRole")>
+    <cfset session.userRole = "Author">
+</cfif>
+
 <!--- Include posts functions (no components needed) --->
 <cfinclude template="includes/posts-functions.cfm">
 
@@ -195,6 +200,31 @@
         ];
     }
     
+    // Get tags from database
+    tags = [];
+    if (!hasServiceError) {
+        try {
+            // Get all active tags used in posts
+            tagsQuery = queryExecute("
+                SELECT DISTINCT t.id, t.name, t.slug
+                FROM tags t
+                INNER JOIN posts_tags pt ON t.id = pt.tag_id
+                ORDER BY t.name ASC
+            ", {}, {datasource: request.dsn});
+            
+            for (row = 1; row <= tagsQuery.recordCount; row++) {
+                tagStruct = {
+                    id: tagsQuery.id[row],
+                    name: tagsQuery.name[row],
+                    slug: tagsQuery.slug[row]
+                };
+                arrayAppend(tags, tagStruct);
+            }
+        } catch (any e) {
+            // If tags fetch fails, continue with empty array
+        }
+    }
+    
     // Available filter options - use variables scope for accessibility
     variables.availableTypes = [
         {value: "", label: "All posts"},
@@ -268,15 +298,14 @@
                                    autocomplete="off">
                             <i class="ti ti-search absolute top-1.5 start-0 translate-middle-y text-lg text-dark dark:text-darklink ms-3"></i>
                             <!-- Search Results Dropdown -->
-                            <div id="searchDropdown" class="absolute top-full left-0 right-0 bg-white border border-gray-200 rounded-lg shadow-lg mt-1 max-h-96 overflow-y-auto" style="display: none; z-index: 1000;">
+                            <div id="searchDropdown" class="absolute top-full left-0 bg-white border border-gray-200 rounded-lg shadow-lg mt-1 max-h-96 overflow-y-auto" style="display: none; z-index: 1000; width: 600px; max-width: 90vw;">
                                 <div id="searchResults"></div>
                             </div>
                         </form>
-                        <!-- Debug button -->
-                        <button type="button" onclick="if(window.searchPosts) { searchPosts(document.getElementById('text-srh').value); } else { console.error('searchPosts not defined'); }" class="btn btn-sm btn-primary ms-2">Test Search</button>
                         
                         <!-- Filter Dropdowns -->
                         <div class="flex gap-3">
+                            <!-- Type Filter -->
                             <select class="form-select" id="typeFilter" onchange="applyFilters()">
                                 <cfoutput>
                                 <cfloop array="#variables.availableTypes#" index="type">
@@ -285,11 +314,46 @@
                                 </cfoutput>
                             </select>
                             
-                            <select class="form-select" id="authorFilter" onchange="applyFilters()">
-                                <option value="">All authors</option>
+                            <!-- Visibility Filter -->
+                            <cfif NOT (structKeyExists(session, "userRole") AND session.userRole EQ "Contributor")>
+                                <select class="form-select" id="visibilityFilter" onchange="applyFilters()">
+                                    <cfoutput>
+                                    <cfloop array="#variables.availableVisibilities#" index="visibility">
+                                        <option value="#visibility.value#" <cfif url.visibility eq visibility.value>selected</cfif>>#visibility.label#</option>
+                                    </cfloop>
+                                    </cfoutput>
+                                </select>
+                            </cfif>
+                            
+                            <!-- Author Filter -->
+                            <cfif NOT (structKeyExists(session, "userRole") AND (session.userRole EQ "Author" OR session.userRole EQ "Contributor"))>
+                                <select class="form-select" id="authorFilter" onchange="applyFilters()">
+                                    <option value="">All authors</option>
+                                    <cfoutput>
+                                    <cfloop array="#authors#" index="author">
+                                        <option value="#author.id#" <cfif url.author eq author.id>selected</cfif>>#author.name#</option>
+                                    </cfloop>
+                                    </cfoutput>
+                                </select>
+                            </cfif>
+                            
+                            <!-- Tag Filter -->
+                            <cfif NOT (structKeyExists(session, "userRole") AND session.userRole EQ "Contributor")>
+                                <select class="form-select" id="tagFilter" onchange="applyFilters()">
+                                    <option value="">All tags</option>
+                                    <cfoutput>
+                                    <cfloop array="#tags#" index="tag">
+                                        <option value="#tag.id#" <cfif url.tag eq tag.id>selected</cfif>>#tag.name#</option>
+                                    </cfloop>
+                                    </cfoutput>
+                                </select>
+                            </cfif>
+                            
+                            <!-- Sort Order -->
+                            <select class="form-select" id="orderFilter" onchange="applyFilters()">
                                 <cfoutput>
-                                <cfloop array="#authors#" index="author">
-                                    <option value="#author.id#" <cfif url.author eq author.id>selected</cfif>>#author.name#</option>
+                                <cfloop array="#variables.availableOrders#" index="order">
+                                    <option value="#order.value#" <cfif url.order eq order.value>selected</cfif>>#order.label#</option>
                                 </cfloop>
                                 </cfoutput>
                             </select>
@@ -298,9 +362,6 @@
                     
                     <!-- Right Side - Action Buttons -->
                     <div class="flex gap-2">
-                        <button class="btn btn-outline-secondary">
-                            <i class="ti ti-file-export me-2"></i>Export
-                        </button>
                         <a href="/ghost/admin/posts/new" class="btn btn-primary">
                             <i class="ti ti-plus me-2"></i>Add New Post
                         </a>
@@ -1721,38 +1782,79 @@ document.addEventListener('click', function(e) {
 
 // Show message function
 function showMessage(message, type) {
-    // Remove any existing messages
-    const existingMessage = document.querySelector('.alert-message');
-    if (existingMessage) {
-        existingMessage.remove();
-    }
-    
-    // Create message element
-    const messageEl = document.createElement('div');
-    messageEl.className = `alert-message fixed top-4 right-4 px-4 py-3 rounded-md shadow-lg z-50 max-w-md`;
+    // Create toast notification
+    const toast = document.createElement('div');
+    toast.className = 'bg-white rounded-lg shadow-lg p-4 max-w-sm transform transition-all duration-300 translate-x-full border';
     
     if (type === 'success') {
-        messageEl.className += ' bg-success text-white';
-        messageEl.innerHTML = `<i class="ti ti-check-circle me-2"></i>${message}`;
+        toast.className += ' border-green-200';
+        toast.innerHTML = `
+            <div class="flex items-center">
+                <div class="flex-shrink-0">
+                    <i class="ti ti-check-circle text-green-500 text-xl"></i>
+                </div>
+                <div class="ml-3">
+                    <p class="text-sm text-gray-700">${message}</p>
+                </div>
+                <button class="ml-auto flex-shrink-0" onclick="this.parentElement.parentElement.remove()">
+                    <i class="ti ti-x text-gray-400 hover:text-gray-600"></i>
+                </button>
+            </div>
+        `;
     } else if (type === 'error') {
-        messageEl.className += ' bg-error text-white';
-        messageEl.innerHTML = `<i class="ti ti-alert-circle me-2"></i>${message}`;
+        toast.className += ' border-red-200';
+        toast.innerHTML = `
+            <div class="flex items-center">
+                <div class="flex-shrink-0">
+                    <i class="ti ti-alert-circle text-red-500 text-xl"></i>
+                </div>
+                <div class="ml-3">
+                    <p class="text-sm text-gray-700">${message}</p>
+                </div>
+                <button class="ml-auto flex-shrink-0" onclick="this.parentElement.parentElement.remove()">
+                    <i class="ti ti-x text-gray-400 hover:text-gray-600"></i>
+                </button>
+            </div>
+        `;
+    } else {
+        toast.className += ' border-blue-200';
+        toast.innerHTML = `
+            <div class="flex items-center">
+                <div class="flex-shrink-0">
+                    <i class="ti ti-info-circle text-blue-500 text-xl"></i>
+                </div>
+                <div class="ml-3">
+                    <p class="text-sm text-gray-700">${message}</p>
+                </div>
+                <button class="ml-auto flex-shrink-0" onclick="this.parentElement.parentElement.remove()">
+                    <i class="ti ti-x text-gray-400 hover:text-gray-600"></i>
+                </button>
+            </div>
+        `;
     }
     
-    // Add close button
-    messageEl.innerHTML += `<button onclick="this.parentElement.remove()" class="ml-3 text-white hover:text-gray-200"><i class="ti ti-x"></i></button>`;
+    // Get or create toast container
+    let container = document.getElementById('toastContainer');
+    if (!container) {
+        container = document.createElement('div');
+        container.id = 'toastContainer';
+        container.style.cssText = 'position: fixed; bottom: 1rem; right: 1rem; z-index: 9999; display: flex; flex-direction: column-reverse; gap: 0.5rem;';
+        document.body.appendChild(container);
+    }
+    container.appendChild(toast);
     
-    // Add to page
-    document.body.appendChild(messageEl);
-    
-    // Auto remove after 5 seconds
+    // Animate in
     setTimeout(() => {
-        if (messageEl.parentElement) {
-            messageEl.style.transition = 'opacity 0.3s ease';
-            messageEl.style.opacity = '0';
-            setTimeout(() => messageEl.remove(), 300);
-        }
-    }, 5000);
+        toast.classList.remove('translate-x-full');
+    }, 100);
+    
+    // Remove after 3 seconds
+    setTimeout(() => {
+        toast.classList.add('translate-x-full');
+        setTimeout(() => {
+            toast.remove();
+        }, 300);
+    }, 3000);
 }
 
 // Update scheduled post countdowns

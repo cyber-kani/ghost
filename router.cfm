@@ -103,8 +103,31 @@
     <cfset templateFile = "admin/pages.cfm">
     <cfset routeFound = true>
 
+<cfelseif requestPath eq "admin/pages/new">
+    <cfset templateFile = "admin/pages/new.cfm">
+    <cfset routeFound = true>
+
+<!--- Pages edit with ID parameter - handles both /admin/pages/edit/ID and /admin/pages/edit/ID/ --->
+<cfelseif reFindNoCase("^admin/pages/edit/([a-zA-Z0-9-]+)/?$", requestPath)>
+    <cfset pageId = reReplaceNoCase(requestPath, "^admin/pages/edit/([a-zA-Z0-9-]+)/?$", "\1")>
+    <cfset url.id = pageId>
+    <cfset url.type = "page">
+    <cfset templateFile = "admin/posts/edit-ghost-style.cfm">
+    <cfset routeFound = true>
+
 <cfelseif requestPath eq "admin/tags">
     <cfset templateFile = "admin/tags.cfm">
+    <cfset routeFound = true>
+
+<cfelseif requestPath eq "admin/tags/new">
+    <cfset templateFile = "admin/tags/new.cfm">
+    <cfset routeFound = true>
+
+<!--- Tags edit with ID parameter - handles both /admin/tags/edit/ID and /admin/tags/edit/ID/ --->
+<cfelseif reFindNoCase("^admin/tags/edit/([a-zA-Z0-9-]+)/?$", requestPath)>
+    <cfset tagId = reReplaceNoCase(requestPath, "^admin/tags/edit/([a-zA-Z0-9-]+)/?$", "\1")>
+    <cfset url.id = tagId>
+    <cfset templateFile = "admin/tags/edit.cfm">
     <cfset routeFound = true>
 
 <cfelseif requestPath eq "admin/members">
@@ -129,6 +152,10 @@
 
 <cfelseif requestPath eq "admin/setup-test-user">
     <cfset templateFile = "admin/setup-test-user.cfm">
+    <cfset routeFound = true>
+
+<cfelseif requestPath eq "admin/preview-modal">
+    <cfset templateFile = "admin/preview-modal.cfm">
     <cfset routeFound = true>
 
 <!--- Settings with section parameter --->

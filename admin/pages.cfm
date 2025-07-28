@@ -1,6 +1,31 @@
-<cfset pageTitle = "Pages">
+<cfparam name="url.type" default="">
 <cfparam name="request.dsn" default="blog">
+<cfparam name="url.visibility" default="">
+<cfparam name="url.author" default="">
+<cfparam name="url.tag" default="">
+<cfparam name="url.order" default="newest">
+<cfparam name="url.search" default="">
+
+<cfswitch expression="#url.type#">
+    <cfcase value="draft">
+        <cfset pageTitle = "Draft Pages">
+    </cfcase>
+    <cfcase value="published">
+        <cfset pageTitle = "Published Pages">
+    </cfcase>
+    <cfcase value="scheduled">
+        <cfset pageTitle = "Scheduled Pages">
+    </cfcase>
+    <cfdefaultcase>
+        <cfset pageTitle = "Pages">
+    </cfdefaultcase>
+</cfswitch>
 <cfinclude template="includes/header.cfm">
+
+<!--- Ensure userRole is available --->
+<cfif NOT structKeyExists(session, "userRole")>
+    <cfset session.userRole = "Author">
+</cfif>
 
 <!--- Include posts functions (no components needed) --->
 <cfinclude template="includes/posts-functions.cfm">
@@ -13,7 +38,8 @@
     serviceErrorMessage = "";
     
     try {
-        // No components needed - functions are included directly
+        // Test database connection and function availability
+        testQuery = queryExecute("SELECT 1 as test", {}, {datasource: request.dsn});
         hasServiceError = false;
     } catch (any e) {
         hasServiceError = true;
@@ -23,15 +49,13 @@
     
     // Get request parameters
     param name="url.page" default="1";
-    param name="url.type" default=""; // all, draft, published, scheduled
-    param name="url.author" default="";
-    param name="url.search" default=""; // search query
     
     // Convert filters to our system
     statusFilter = "";
     if (url.type == "draft") statusFilter = "draft";
     else if (url.type == "published") statusFilter = "published";
     else if (url.type == "scheduled") statusFilter = "scheduled";
+    else if (url.type == "featured") statusFilter = "featured";
     
     // Get pages with filters - use direct function calls
     if (!hasServiceError) {
@@ -40,7 +64,11 @@
                 page = val(url.page),
                 limit = 15,
                 status = statusFilter,
-                author = url.author
+                author = url.author,
+                tag = url.tag,
+                visibility = url.visibility,
+                order = url.order,
+                search = url.search
             );
             
             // Get page statistics
@@ -48,46 +76,39 @@
         } catch (any e) {
             hasServiceError = true;
             serviceErrorMessage = e.message;
+            writeOutput("<!-- Pages query error: " & e.message & " -->");
+            
+            // Create empty result structure
+            pagesResult = {
+                success: false,
+                data: [],
+                recordCount: 0,
+                totalPages: 0,
+                currentPage: 1
+            };
+            
+            statsResult = {
+                total: 0,
+                published: 0,
+                draft: 0,
+                scheduled: 0
+            };
         }
-    }
-    
-    // Provide fallback data if service failed
-    if (hasServiceError) {
+    } else {
+        // Create empty result structure
         pagesResult = {
-            success: true,
-            data: [
-                {
-                    id: "1",
-                    title: "About",
-                    status: "published",
-                    created_at: now(),
-                    updated_at: now(),
-                    published_at: now(),
-                    featured: false,
-                    created_by: "1",
-                    feature_image: "",
-                    plaintext: "Learn more about our website and mission..."
-                }
-            ],
-            recordCount: 1,
-            totalRecords: 1,
-            currentPage: 1,
-            totalPages: 1,
-            startRecord: 1,
-            endRecord: 1
+            success: false,
+            data: [],
+            recordCount: 0,
+            totalPages: 0,
+            currentPage: 1
         };
         
         statsResult = {
-            success: true,
-            stats: {
-                total: 1,
-                published: 1,
-                draft: 0,
-                scheduled: 0,
-                posts: 0,
-                pages: 1,
-                featured: 0
-            }
+            total: 0,
+            published: 0,
+            draft: 0,
+            scheduled: 0
         };
     }
     
@@ -95,50 +116,86 @@
     authors = [];
     if (!hasServiceError) {
         try {
-            // Get all active users who have created pages
+            // Get all users who have created pages
             authorsQuery = queryExecute("
                 SELECT DISTINCT u.id, u.name, u.email, u.profile_image
                 FROM users u
                 INNER JOIN posts p ON u.id = p.created_by
-                WHERE u.status = 'active' AND p.type = 'page'
+                WHERE u.status = 'active'
+                AND p.type = 'page'
                 ORDER BY u.name ASC
             ", {}, {datasource: request.dsn});
             
             for (row = 1; row <= authorsQuery.recordCount; row++) {
-                // Create avatar URL - use profile image if available, otherwise generate from name
-                avatarUrl = "";
-                if (len(authorsQuery.profile_image[row])) {
-                    avatarUrl = authorsQuery.profile_image[row];
-                } else {
-                    cleanName = replace(authorsQuery.name[row], " ", "+", "all");
-                    avatarUrl = "https://ui-avatars.com/api/?name=" & cleanName & "&background=5D87FF&color=fff";
-                }
-                
                 authorStruct = {
                     id: authorsQuery.id[row],
                     name: authorsQuery.name[row],
-                    avatar: avatarUrl
+                    email: authorsQuery.email[row],
+                    profile_image: authorsQuery.profile_image[row]
                 };
                 arrayAppend(authors, authorStruct);
             }
         } catch (any e) {
-            // If author fetch fails, continue with empty array
+            // If authors fetch fails, continue with empty array
         }
     }
     
-    // Fallback authors if database fetch fails
+    // Add sample authors if none found
     if (arrayLen(authors) == 0) {
         authors = [
-            {id: "1", name: "John Doe", avatar: "https://ui-avatars.com/api/?name=John+Doe&background=5D87FF&color=fff"}
+            {id: "1", name: "Admin User", email: "admin@example.com", profile_image: ""},
+            {id: "2", name: "Jane Doe", email: "jane@example.com", profile_image: ""},
+            {id: "3", name: "John Smith", email: "john@example.com", profile_image: ""}
         ];
     }
     
-    // Available filter options
+    // Get tags from database
+    tags = [];
+    if (!hasServiceError) {
+        try {
+            // Get all active tags used in pages
+            tagsQuery = queryExecute("
+                SELECT DISTINCT t.id, t.name, t.slug
+                FROM tags t
+                INNER JOIN posts_tags pt ON t.id = pt.tag_id
+                INNER JOIN posts p ON pt.post_id = p.id
+                WHERE p.type = 'page'
+                ORDER BY t.name ASC
+            ", {}, {datasource: request.dsn});
+            
+            for (row = 1; row <= tagsQuery.recordCount; row++) {
+                tagStruct = {
+                    id: tagsQuery.id[row],
+                    name: tagsQuery.name[row],
+                    slug: tagsQuery.slug[row]
+                };
+                arrayAppend(tags, tagStruct);
+            }
+        } catch (any e) {
+            // If tags fetch fails, continue with empty array
+        }
+    }
+    
+    // Available filter options - use variables scope for accessibility
     variables.availableTypes = [
         {value: "", label: "All pages"},
         {value: "draft", label: "Draft"},
         {value: "published", label: "Published"},
-        {value: "scheduled", label: "Scheduled"}
+        {value: "scheduled", label: "Scheduled"},
+        {value: "featured", label: "Featured"}
+    ];
+    
+    variables.availableVisibilities = [
+        {value: "", label: "All access"},
+        {value: "public", label: "Public"},
+        {value: "members", label: "Members only"},
+        {value: "paid", label: "Paid members only"}
+    ];
+    
+    variables.availableOrders = [
+        {value: "newest", label: "Newest first"},
+        {value: "oldest", label: "Oldest first"},
+        {value: "recently-updated", label: "Recently updated"}
     ];
 </cfscript>
 
@@ -151,7 +208,7 @@
             <div class="card-body p-6">
                 <div class="sm:flex items-center justify-between">
                     <div>
-                        <h4 class="font-semibold text-xl text-dark dark:text-white">Pages</h4>
+                        <h4 class="font-semibold text-xl text-dark dark:text-white"><cfoutput>#pageTitle#</cfoutput></h4>
                         <cfif hasServiceError>
                             <div class="mt-2 flex items-center">
                                 <i class="ti ti-alert-circle text-error me-2"></i>
@@ -168,7 +225,7 @@
                         <li>
                             <div class="h-1 w-1 rounded-full bg-bodytext mx-2.5 flex items-center mt-1"></div>
                         </li>
-                        <li class="flex items-center text-sm font-medium" aria-current="page">Pages</li>
+                        <li class="flex items-center text-sm font-medium" aria-current="page"><cfoutput>#pageTitle#</cfoutput></li>
                     </ol>
                 </div>
             </div>
@@ -192,13 +249,14 @@
                                    autocomplete="off">
                             <i class="ti ti-search absolute top-1.5 start-0 translate-middle-y text-lg text-dark dark:text-darklink ms-3"></i>
                             <!-- Search Results Dropdown -->
-                            <div id="searchDropdown" class="absolute top-full left-0 right-0 bg-white border border-gray-200 rounded-lg shadow-lg mt-1 max-h-96 overflow-y-auto" style="display: none; z-index: 1000;">
+                            <div id="searchDropdown" class="absolute top-full left-0 bg-white border border-gray-200 rounded-lg shadow-lg mt-1 max-h-96 overflow-y-auto" style="display: none; z-index: 1000; width: 600px; max-width: 90vw;">
                                 <div id="searchResults"></div>
                             </div>
                         </form>
                         
                         <!-- Filter Dropdowns -->
                         <div class="flex gap-3">
+                            <!-- Type Filter -->
                             <select class="form-select" id="typeFilter" onchange="applyFilters()">
                                 <cfoutput>
                                 <cfloop array="#variables.availableTypes#" index="type">
@@ -207,11 +265,46 @@
                                 </cfoutput>
                             </select>
                             
-                            <select class="form-select" id="authorFilter" onchange="applyFilters()">
-                                <option value="">All authors</option>
+                            <!-- Visibility Filter -->
+                            <cfif NOT (structKeyExists(session, "userRole") AND session.userRole EQ "Contributor")>
+                                <select class="form-select" id="visibilityFilter" onchange="applyFilters()">
+                                    <cfoutput>
+                                    <cfloop array="#variables.availableVisibilities#" index="visibility">
+                                        <option value="#visibility.value#" <cfif url.visibility eq visibility.value>selected</cfif>>#visibility.label#</option>
+                                    </cfloop>
+                                    </cfoutput>
+                                </select>
+                            </cfif>
+                            
+                            <!-- Author Filter -->
+                            <cfif NOT (structKeyExists(session, "userRole") AND (session.userRole EQ "Author" OR session.userRole EQ "Contributor"))>
+                                <select class="form-select" id="authorFilter" onchange="applyFilters()">
+                                    <option value="">All authors</option>
+                                    <cfoutput>
+                                    <cfloop array="#authors#" index="author">
+                                        <option value="#author.id#" <cfif url.author eq author.id>selected</cfif>>#author.name#</option>
+                                    </cfloop>
+                                    </cfoutput>
+                                </select>
+                            </cfif>
+                            
+                            <!-- Tag Filter -->
+                            <cfif NOT (structKeyExists(session, "userRole") AND session.userRole EQ "Contributor")>
+                                <select class="form-select" id="tagFilter" onchange="applyFilters()">
+                                    <option value="">All tags</option>
+                                    <cfoutput>
+                                    <cfloop array="#tags#" index="tag">
+                                        <option value="#tag.id#" <cfif url.tag eq tag.id>selected</cfif>>#tag.name#</option>
+                                    </cfloop>
+                                    </cfoutput>
+                                </select>
+                            </cfif>
+                            
+                            <!-- Sort Order -->
+                            <select class="form-select" id="orderFilter" onchange="applyFilters()">
                                 <cfoutput>
-                                <cfloop array="#authors#" index="author">
-                                    <option value="#author.id#" <cfif url.author eq author.id>selected</cfif>>#author.name#</option>
+                                <cfloop array="#variables.availableOrders#" index="order">
+                                    <option value="#order.value#" <cfif url.order eq order.value>selected</cfif>>#order.label#</option>
                                 </cfloop>
                                 </cfoutput>
                             </select>
@@ -220,573 +313,588 @@
                     
                     <!-- Right Side - Action Buttons -->
                     <div class="flex gap-2">
-                        <button class="btn btn-outline-secondary">
-                            <i class="ti ti-file-export me-2"></i>Export
-                        </button>
                         <a href="/ghost/admin/pages/new" class="btn btn-primary">
                             <i class="ti ti-plus me-2"></i>Add New Page
                         </a>
                     </div>
                 </div>
 
-                <!-- Pages Table - Exact Spike Datatable -->
+                <!-- Ghost-style Pages Cards Layout -->
                 <cfif pagesResult.success and pagesResult.recordCount gt 0>
-                    <div class="datatable border border-light-dark overflow-hidden rounded-md">
-                        <table class="w-full" id="example">
-                            <thead class="border border-b-0 border-t border-light-dark">
-                                <tr>
-                                    <th class="py-4 px-6 text-start">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="selectAll">
-                                        </div>
-                                    </th>
-                                    <th class="py-4 px-6 text-start font-semibold">Title</th>
-                                    <th class="py-4 px-6 text-start font-semibold">Status</th>
-                                    <th class="py-4 px-6 text-start font-semibold">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-border dark:divide-darkborder">
-                                <cfoutput>
-                                <cfloop array="#pagesResult.data#" index="page">
-                                    <tr class="hover:bg-lightgray dark:hover:bg-darkgray transition-colors">
-                                        <!-- Checkbox -->
-                                        <td class="py-4 px-6">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="#page.id#">
-                                            </div>
-                                        </td>
-                                        
-                                        <!-- Title -->
-                                        <td class="py-4 px-6">
-                                            <div class="flex items-start">
-                                                <div class="flex-1">
-                                                    <h6 class="font-semibold text-dark dark:text-white mb-1 hover:text-primary transition-colors">
-                                                        <a href="/ghost/admin/pages/edit/#page.id#">#page.title#</a>
-                                                    </h6>
-                                                    <cfif structKeyExists(page, "plaintext") and len(trim(page.plaintext)) gt 0>
-                                                        <p class="text-bodytext text-sm mb-2">
-                                                            #left(page.plaintext, 80)#<cfif len(page.plaintext) gt 80>...</cfif>
-                                                        </p>
-                                                    </cfif>
-                                                    
-                                                    <!-- Author and Updated Info -->
-                                                    <div class="flex items-center gap-4 text-xs text-bodytext">
-                                                        <!-- Author Info -->
-                                                        <div class="flex items-center gap-2">
-                                                            <cfif structKeyExists(page, "author")>
-                                                                <cfif len(trim(page.author.avatar)) gt 0>
-                                                                    <img src="#page.author.avatar#" class="rounded-full" width="20" height="20" alt="Author">
-                                                                </cfif>
-                                                                <span>By #page.author.name#</span>
-                                                            <cfelse>
-                                                                <!-- Fallback for pages without enhanced author data -->
-                                                                <cfset authorInfo = "">
-                                                                <cfset authorAvatar = "">
-                                                                <cfloop array="#authors#" index="author">
-                                                                    <cfif author.id eq page.created_by>
-                                                                        <cfset authorInfo = author.name>
-                                                                        <cfset authorAvatar = author.avatar>
-                                                                        <cfbreak>
-                                                                    </cfif>
-                                                                </cfloop>
-                                                                <cfif len(authorAvatar) gt 0>
-                                                                    <img src="#authorAvatar#" class="rounded-full" width="20" height="20" alt="Author">
-                                                                </cfif>
-                                                                <span>By 
-                                                                    <cfif len(authorInfo) gt 0>
-                                                                        #authorInfo#
-                                                                    <cfelse>
-                                                                        Unknown Author
-                                                                    </cfif>
-                                                                </span>
-                                                            </cfif>
-                                                        </div>
-                                                        
-                                                        <!-- Separator -->
-                                                        <span>•</span>
-                                                        
-                                                        <!-- Updated Date -->
-                                                        <div class="flex items-center gap-1">
-                                                            <i class="ti ti-clock text-xs"></i>
-                                                            <span>
-                                                                <cfif isDate(page.updated_at)>
-                                                                    Updated #dateFormat(page.updated_at, "mmm d, yyyy")# at #timeFormat(page.updated_at, "h:mm tt")#
-                                                                <cfelse>
-                                                                    No update date
-                                                                </cfif>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        
-                                        <!-- Status -->
-                                        <td class="py-4 px-6">
-                                            <cfswitch expression="#page.status#">
-                                                <cfcase value="published">
-                                                    <span class="badge text-bg-success">
-                                                        <i class="ti ti-check me-1"></i>Published
-                                                    </span>
-                                                </cfcase>
-                                                <cfcase value="draft">
-                                                    <span class="badge text-bg-warning">
-                                                        <i class="ti ti-edit me-1"></i>Draft
-                                                    </span>
-                                                </cfcase>
-                                                <cfcase value="scheduled">
-                                                    <span class="badge text-bg-info">
-                                                        <i class="ti ti-clock me-1"></i>Scheduled
-                                                    </span>
-                                                </cfcase>
-                                                <cfdefaultcase>
-                                                    <span class="badge text-bg-secondary">#page.status#</span>
-                                                </cfdefaultcase>
-                                            </cfswitch>
-                                        </td>
-                                        
-                                        <!-- Actions -->
-                                        <td class="py-4 px-6">
-                                            <div class="action-btn flex gap-2">
-                                                <a href="/ghost/admin/pages/edit/#page.id#" class="btn btn-light-primary btn-sm" title="Edit">
-                                                    <i class="ti ti-edit"></i>
-                                                </a>
-                                                <cfif page.status eq "published">
-                                                    <a href="/page/#page.id#" target="_blank" class="btn btn-light-success btn-sm" title="View">
-                                                        <i class="ti ti-eye"></i>
-                                                    </a>
-                                                </cfif>
-                                                <button onclick="deletePage('#page.id#', '#escapeForJS(page.title)#')" class="btn btn-light-error btn-sm" title="Delete">
-                                                    <i class="ti ti-trash"></i>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </cfloop>
-                                </cfoutput>
-                            </tbody>
-                        </table>
+                    
+                    <!-- Bulk Actions Bar (Initially Hidden) -->
+                    <div id="bulkActionsBar" class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6 hidden">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <span class="text-sm font-medium text-blue-800">
+                                    <span id="selectedCount">0</span> pages selected
+                                </span>
+                                <button class="text-blue-600 hover:text-blue-800 text-sm underline" onclick="clearSelection()">
+                                    Clear selection
+                                </button>
+                            </div>
+                            <div class="flex gap-2">
+                                <button class="btn btn-sm btn-outline-primary">
+                                    <i class="ti ti-edit me-1"></i>Bulk Edit
+                                </button>
+                                <button class="btn btn-sm btn-outline-danger" onclick="bulkDelete()">
+                                    <i class="ti ti-trash me-1"></i>Delete Selected
+                                </button>
+                            </div>
+                        </div>
                     </div>
                     
-                    <!-- Pagination - Spike Style -->
-                    <cfoutput>
-                    <cfif pagesResult.totalPages gt 1>
-                        <div class="flex items-center justify-between mt-6">
-                            <div>
-                                <p class="text-sm text-bodytext">
-                                    Showing #pagesResult.startRecord# to #pagesResult.endRecord# of #pagesResult.totalRecords# entries
-                                </p>
-                            </div>
-                            
-                            <nav aria-label="Page navigation">
-                                <ul class="pagination justify-content-center mb-0">
-                                    <cfif pagesResult.currentPage gt 1>
-                                        <li class="page-item">
-                                            <a class="page-link" href="?page=#pagesResult.currentPage - 1#&type=#url.type#&author=#url.author#&search=#url.search#">
-                                                <i class="ti ti-chevron-left"></i>
-                                            </a>
-                                        </li>
-                                    </cfif>
+                    <!-- Pages List -->
+                    <div class="ghost-posts-list">
+                        <cfoutput>
+                        <cfloop array="#pagesResult.data#" index="page">
+                            <div class="ghost-post-card" data-post-id="#page.id#">
+                                <div class="ghost-post-card-content">
+                                    <!-- Checkbox for bulk selection -->
+                                    <div class="ghost-post-checkbox">
+                                        <input type="checkbox" 
+                                               id="post-#page.id#" 
+                                               value="#page.id#"
+                                               onchange="updateBulkSelection()"
+                                               class="form-check-input">
+                                    </div>
                                     
-                                    <cfloop from="1" to="#pagesResult.totalPages#" index="pageNum">
-                                        <cfif pageNum eq pagesResult.currentPage>
-                                            <li class="page-item active">
-                                                <span class="page-link">#pageNum#</span>
-                                            </li>
-                                        <cfelse>
-                                            <li class="page-item">
-                                                <a class="page-link" href="?page=#pageNum#&type=#url.type#&author=#url.author#&search=#url.search#">#pageNum#</a>
-                                            </li>
+                                    <!-- Post Metadata -->
+                                    <div class="ghost-post-meta">
+                                        <!-- Title and Feature Image -->
+                                        <div class="flex items-start gap-4">
+                                            <cfif len(page.feature_image)>
+                                                <div class="ghost-post-image">
+                                                    <img src="#page.feature_image#" alt="#page.title#" class="rounded">
+                                                </div>
+                                            </cfif>
+                                            
+                                            <div class="flex-1">
+                                                <h3 class="ghost-post-title">
+                                                    <a href="/ghost/admin/pages/edit/#page.id#">#page.title#</a>
+                                                    <cfif page.featured>
+                                                        <i class="ti ti-star-filled text-amber-500 ms-1" title="Featured"></i>
+                                                    </cfif>
+                                                </h3>
+                                                
+                                                <cfif len(page.custom_excerpt)>
+                                                    <p class="ghost-post-excerpt">#page.custom_excerpt#</p>
+                                                </cfif>
+                                                
+                                                <div class="ghost-post-details">
+                                                    <span class="ghost-post-author">
+                                                        <i class="ti ti-user text-sm me-1"></i>
+                                                        #page.author_name#
+                                                    </span>
+                                                    
+                                                    <cfif page.status eq "published">
+                                                        <span class="ghost-post-date">
+                                                            <i class="ti ti-calendar text-sm me-1"></i>
+                                                            Published #dateFormat(page.published_at, "dd mmm yyyy")#
+                                                        </span>
+                                                    <cfelseif page.status eq "scheduled">
+                                                        <span class="ghost-post-date text-blue-600">
+                                                            <i class="ti ti-clock text-sm me-1"></i>
+                                                            Scheduled for #dateFormat(page.published_at, "dd mmm yyyy")# at #timeFormat(page.published_at, "HH:mm")#
+                                                        </span>
+                                                    <cfelse>
+                                                        <span class="ghost-post-date text-gray-500">
+                                                            <i class="ti ti-edit text-sm me-1"></i>
+                                                            Draft - Updated #dateFormat(page.updated_at, "dd mmm yyyy")#
+                                                        </span>
+                                                    </cfif>
+                                                    
+                                                    <cfif page.visibility neq "public">
+                                                        <span class="ghost-post-visibility">
+                                                            <cfswitch expression="#page.visibility#">
+                                                                <cfcase value="members">
+                                                                    <i class="ti ti-users text-sm me-1"></i>Members only
+                                                                </cfcase>
+                                                                <cfcase value="paid">
+                                                                    <i class="ti ti-currency-dollar text-sm me-1"></i>Paid members only
+                                                                </cfcase>
+                                                                <cfdefaultcase>
+                                                                    <i class="ti ti-lock text-sm me-1"></i>#page.visibility#
+                                                                </cfdefaultcase>
+                                                            </cfswitch>
+                                                        </span>
+                                                    </cfif>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Action Buttons -->
+                                    <div class="ghost-post-actions">
+                                        <a href="/ghost/admin/pages/edit/#page.id#" class="ghost-post-action-link" title="Edit">
+                                            <i class="ti ti-pencil"></i>
+                                        </a>
+                                        <cfif page.status eq "published">
+                                            <a href="/#page.slug#" target="_blank" class="ghost-post-action-link" title="View">
+                                                <i class="ti ti-external-link"></i>
+                                            </a>
                                         </cfif>
+                                        <button type="button" 
+                                                class="ghost-post-action-link text-danger" 
+                                                onclick="deletePost('#page.id#', 'page')"
+                                                title="Delete">
+                                            <i class="ti ti-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </cfloop>
+                        </cfoutput>
+                    </div>
+                    
+                    <!-- Pagination -->
+                    <cfif pagesResult.totalPages gt 1>
+                        <div class="flex justify-center mt-8">
+                            <nav aria-label="Page navigation">
+                                <ul class="pagination">
+                                    <cfoutput>
+                                    <!-- Previous Button -->
+                                    <li class="page-item <cfif url.page eq 1>disabled</cfif>">
+                                        <a class="page-link" href="?page=#max(1, url.page - 1)#&type=#url.type#&author=#url.author#&search=#url.search#&visibility=#url.visibility#&tag=#url.tag#&order=#url.order#" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                    
+                                    <!-- Page Numbers -->
+                                    <cfloop from="1" to="#pagesResult.totalPages#" index="pageNum">
+                                        <li class="page-item <cfif url.page eq pageNum>active</cfif>">
+                                            <a class="page-link" href="?page=#pageNum#&type=#url.type#&author=#url.author#&search=#url.search#&visibility=#url.visibility#&tag=#url.tag#&order=#url.order#">#pageNum#</a>
+                                        </li>
                                     </cfloop>
                                     
-                                    <cfif pagesResult.currentPage lt pagesResult.totalPages>
-                                        <li class="page-item">
-                                            <a class="page-link" href="?page=#pagesResult.currentPage + 1#&type=#url.type#&author=#url.author#&search=#url.search#">
-                                                <i class="ti ti-chevron-right"></i>
-                                            </a>
-                                        </li>
-                                    </cfif>
+                                    <!-- Next Button -->
+                                    <li class="page-item <cfif url.page eq pagesResult.totalPages>disabled</cfif>">
+                                        <a class="page-link" href="?page=#min(pagesResult.totalPages, url.page + 1)#&type=#url.type#&author=#url.author#&search=#url.search#&visibility=#url.visibility#&tag=#url.tag#&order=#url.order#" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                    </cfoutput>
                                 </ul>
                             </nav>
                         </div>
                     </cfif>
-                    </cfoutput>
                     
                 <cfelse>
-                    <!-- Empty State - Spike Style -->
-                    <div class="text-center py-16">
-                        <div class="d-flex justify-content-center mb-4">
-                            <i class="ti ti-file-text display-6 text-bodytext"></i>
+                    <!-- Empty State -->
+                    <div class="text-center py-12">
+                        <div class="mb-6">
+                            <i class="ti ti-file-text text-6xl text-gray-300"></i>
                         </div>
-                        <h4 class="font-semibold text-dark dark:text-white mb-3">No pages found</h4>
-                        <p class="text-bodytext mb-4">
-                            <cfif url.type eq "" and url.author eq "" and url.search eq "">
-                                Get started by creating your first page.
+                        <h3 class="text-xl font-semibold mb-2">No pages found</h3>
+                        <p class="text-gray-600 mb-6">
+                            <cfif len(url.type) or len(url.author) or len(url.search) or len(url.visibility) or len(url.tag)>
+                                Try adjusting your filters or search query
                             <cfelse>
-                                Try adjusting your search or filter criteria.
+                                Get started by creating your first page
                             </cfif>
                         </p>
-                        <cfif url.type eq "" and url.author eq "" and url.search eq "">
-                            <a href="/ghost/admin/pages/new" class="btn btn-primary">
-                                <i class="ti ti-plus me-2"></i>Create Your First Page
-                            </a>
-                        <cfelse>
-                            <a href="/ghost/admin/pages" class="btn btn-outline-primary">
-                                <i class="ti ti-refresh me-2"></i>Clear Filters
-                            </a>
-                        </cfif>
+                        <a href="/ghost/admin/pages/new" class="btn btn-primary">
+                            <i class="ti ti-plus me-2"></i>Create New Page
+                        </a>
                     </div>
                 </cfif>
+                
             </div>
         </div>
+        
     </div>
 </div>
 
-<!-- Alert Message Styles -->
 <style>
-.alert-message {
-    animation: slideInRight 0.3s ease-out;
-    font-weight: 500;
+/* Ghost-style post card styling */
+.ghost-posts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: #e5e7eb;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.ghost-post-card {
+    background: white;
+    transition: all 0.2s ease;
+}
+
+.ghost-post-card:hover {
+    background: #f9fafb;
+}
+
+.ghost-post-card-content {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    padding: 1.25rem;
+    gap: 1rem;
 }
 
-@keyframes slideInRight {
-    from {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
+.ghost-post-checkbox {
+    flex-shrink: 0;
 }
 
-.bg-success {
-    background-color: #22c55e;
+.ghost-post-meta {
+    flex: 1;
+    min-width: 0;
 }
 
-.bg-error {
-    background-color: #ef4444;
+.ghost-post-image {
+    width: 60px;
+    height: 45px;
+    flex-shrink: 0;
 }
 
-.animate-spin {
-    animation: spin 1s linear infinite;
+.ghost-post-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-@keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-/* Search Dropdown Styles */
-#searchDropdown {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.search-result-item {
-    padding: 12px 16px;
-    cursor: pointer;
-    border-bottom: 1px solid #f0f0f0;
-    transition: background-color 0.2s;
-}
-
-.search-result-item:hover {
-    background-color: #f8f9fa;
-}
-
-.search-result-item:last-child {
-    border-bottom: none;
-}
-
-.search-result-title {
+.ghost-post-title {
+    font-size: 1rem;
     font-weight: 600;
-    color: #2c3e50;
-    margin-bottom: 4px;
+    color: #1f2937;
+    margin-bottom: 0.25rem;
+    display: flex;
+    align-items: center;
 }
 
-.search-result-meta {
-    font-size: 0.85rem;
-    color: #6c757d;
+.ghost-post-title a {
+    color: inherit;
+    text-decoration: none;
 }
 
-.search-result-status {
-    display: inline-block;
-    padding: 2px 8px;
-    border-radius: 12px;
+.ghost-post-title a:hover {
+    color: #14b8ff;
+}
+
+.ghost-post-excerpt {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-bottom: 0.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.ghost-post-details {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
     font-size: 0.75rem;
-    font-weight: 500;
-    margin-left: 8px;
+    color: #9ca3af;
+    flex-wrap: wrap;
 }
 
-.search-result-status.draft {
-    background-color: #fff3cd;
-    color: #856404;
+.ghost-post-details span {
+    display: flex;
+    align-items: center;
 }
 
-.search-result-status.published {
-    background-color: #d4edda;
-    color: #155724;
+.ghost-post-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
 }
 
-.search-no-results {
-    padding: 20px;
-    text-align: center;
-    color: #6c757d;
+.ghost-post-action-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.25rem;
+    color: #6b7280;
+    transition: all 0.2s ease;
+}
+
+.ghost-post-action-link:hover {
+    background: #f3f4f6;
+    color: #1f2937;
+}
+
+.ghost-post-action-link.text-danger:hover {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .ghost-post-card-content {
+        flex-wrap: wrap;
+    }
+    
+    .ghost-post-actions {
+        width: 100%;
+        justify-content: flex-end;
+        margin-top: 0.5rem;
+    }
 }
 </style>
 
-<!-- JavaScript -->
 <script>
-// Debug: Check if script is loading
-console.log('Pages page JavaScript loading...');
+// Selected items tracking
+let selectedItems = new Set();
 
-// Define deletePage function first to ensure it's available
-function deletePage(pageId, pageTitle) {
-    console.log('deletePage called:', {pageId: pageId, pageTitle: pageTitle});
+// Update bulk selection
+function updateBulkSelection() {
+    const checkboxes = document.querySelectorAll('.ghost-posts-list input[type="checkbox"]');
+    selectedItems.clear();
     
-    if (confirm('Are you sure you want to delete "' + pageTitle + '"? This action cannot be undone.')) {
+    checkboxes.forEach(checkbox => {
+        if (checkbox.checked) {
+            selectedItems.add(checkbox.value);
+        }
+    });
+    
+    // Update UI
+    document.getElementById('selectedCount').textContent = selectedItems.size;
+    document.getElementById('bulkActionsBar').classList.toggle('hidden', selectedItems.size === 0);
+}
+
+// Clear selection
+function clearSelection() {
+    document.querySelectorAll('.ghost-posts-list input[type="checkbox"]').forEach(checkbox => {
+        checkbox.checked = false;
+    });
+    updateBulkSelection();
+}
+
+// Delete post function
+function deletePost(pageId, type = 'page') {
+    if (confirm('Are you sure you want to delete this ' + type + '?')) {
         // Show loading state
-        const deleteButton = document.querySelector(`button[onclick*="${pageId}"]`);
-        if (!deleteButton) {
-            console.error('Delete button not found for page:', pageId);
-            return;
+        const card = document.querySelector(`[data-post-id="${pageId}"]`);
+        if (card) {
+            card.style.opacity = '0.5';
         }
         
-        const originalContent = deleteButton.innerHTML;
-        deleteButton.innerHTML = '<i class="ti ti-loader animate-spin"></i>';
-        deleteButton.disabled = true;
-        
-        // Create form data
-        const formData = new FormData();
-        formData.append('postId', pageId); // Using 'postId' since pages are stored in posts table
-        
-        console.log('Making AJAX request to delete page:', pageId);
-        
-        // Make AJAX request (using same endpoint as posts since pages are in posts table)
+        // Make delete request
         fetch('/ghost/admin/ajax/delete-post.cfm', {
             method: 'POST',
-            body: formData
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `id=${pageId}`
         })
-        .then(response => {
-            console.log('Delete response received:', response.status);
-            return response.json();
-        })
+        .then(response => response.json())
         .then(data => {
-            console.log('Delete response data:', data);
-            
             if (data.success) {
-                // Show success message
-                const message = data.message || data.MESSAGE || 'Page deleted successfully';
-                showMessage(message, 'success');
-                
-                // Remove the row from the table with animation
-                const row = deleteButton.closest('tr');
-                row.style.transition = 'opacity 0.3s ease';
-                row.style.opacity = '0';
-                
-                setTimeout(() => {
-                    row.remove();
-                    // Update page if no pages remain
-                    const remainingRows = document.querySelectorAll('tbody tr').length;
-                    if (remainingRows === 0) {
-                        location.reload();
-                    }
-                }, 300);
-                
+                // Remove the card with animation
+                if (card) {
+                    card.style.transition = 'all 0.3s ease';
+                    card.style.transform = 'translateX(-100%)';
+                    card.style.opacity = '0';
+                    setTimeout(() => {
+                        card.remove();
+                        // Check if list is empty
+                        if (document.querySelectorAll('.ghost-post-card').length === 0) {
+                            location.reload();
+                        }
+                    }, 300);
+                }
             } else {
-                // Show error message
-                const errorMessage = data.message || data.MESSAGE || 'An error occurred while deleting the page';
-                showMessage(errorMessage, 'error');
-                
-                // Restore button state
-                deleteButton.innerHTML = originalContent;
-                deleteButton.disabled = false;
+                alert('Error deleting ' + type + ': ' + (data.message || 'Unknown error'));
+                if (card) {
+                    card.style.opacity = '1';
+                }
             }
         })
         .catch(error => {
-            console.error('Delete error:', error);
-            showMessage('An error occurred while deleting the page. Please try again.', 'error');
-            
-            // Restore button state
-            deleteButton.innerHTML = originalContent;
-            deleteButton.disabled = false;
+            console.error('Error:', error);
+            alert('Error deleting ' + type);
+            if (card) {
+                card.style.opacity = '1';
+            }
         });
     }
 }
 
-console.log('deletePage function defined');
+// Bulk delete function
+function bulkDelete() {
+    if (selectedItems.size === 0) return;
+    
+    if (confirm(`Are you sure you want to delete ${selectedItems.size} pages?`)) {
+        // Implementation for bulk delete
+        console.log('Bulk delete:', Array.from(selectedItems));
+    }
+}
 
-// Ensure deletePage is globally accessible
-window.deletePage = deletePage;
-
-// Filter and Search Functions
+// Apply filters function
 function applyFilters() {
     const type = document.getElementById('typeFilter').value;
-    const author = document.getElementById('authorFilter').value;
+    const visibility = document.getElementById('visibilityFilter')?.value || '';
+    const author = document.getElementById('authorFilter')?.value || '';
+    const tag = document.getElementById('tagFilter')?.value || '';
+    const order = document.getElementById('orderFilter').value;
     const search = document.getElementById('text-srh').value;
     
+    // Build URL with filters
     const params = new URLSearchParams();
-    if (type) params.set('type', type);
-    if (author) params.set('author', author);
-    if (search) params.set('search', search);
+    if (type) params.append('type', type);
+    if (visibility) params.append('visibility', visibility);
+    if (author) params.append('author', author);
+    if (tag) params.append('tag', tag);
+    if (order) params.append('order', order);
+    if (search) params.append('search', search);
     
+    // Navigate to filtered URL
     window.location.href = '/ghost/admin/pages' + (params.toString() ? '?' + params.toString() : '');
 }
 
-// Show message function
-function showMessage(message, type) {
-    // Remove any existing messages
-    const existingMessage = document.querySelector('.alert-message');
-    if (existingMessage) {
-        existingMessage.remove();
+// Search functionality
+window.searchPages = function(query) {
+    console.log('Searching for:', query);
+    
+    if (!query || query.trim().length < 2) {
+        document.getElementById('searchDropdown').style.display = 'none';
+        return;
     }
     
-    // Create message element
-    const messageEl = document.createElement('div');
-    messageEl.className = `alert-message fixed top-4 right-4 px-4 py-3 rounded-md shadow-lg z-50 max-w-md`;
+    // Show loading state
+    document.getElementById('searchResults').innerHTML = '<div class="p-4 text-center"><i class="ti ti-loader-2 animate-spin"></i> Searching...</div>';
+    document.getElementById('searchDropdown').style.display = 'block';
     
-    if (type === 'success') {
-        messageEl.className += ' bg-success text-white';
-        messageEl.innerHTML = `<i class="ti ti-check-circle me-2"></i>${message}`;
-    } else if (type === 'error') {
-        messageEl.className += ' bg-error text-white';
-        messageEl.innerHTML = `<i class="ti ti-alert-circle me-2"></i>${message}`;
-    }
-    
-    // Add close button
-    messageEl.innerHTML += `<button onclick="this.parentElement.remove()" class="ml-3 text-white hover:text-gray-200"><i class="ti ti-x"></i></button>`;
-    
-    // Add to page
-    document.body.appendChild(messageEl);
-    
-    // Auto remove after 5 seconds
-    setTimeout(() => {
-        if (messageEl.parentElement) {
-            messageEl.style.transition = 'opacity 0.3s ease';
-            messageEl.style.opacity = '0';
-            setTimeout(() => messageEl.remove(), 300);
-        }
-    }, 5000);
+    // Fetch search results
+    fetch(`/ghost/admin/ajax/search-posts.cfm?q=${encodeURIComponent(query)}&type=page`)
+        .then(response => response.json())
+        .then(data => {
+            const success = data.success || data.SUCCESS;
+            const pages = data.posts || data.POSTS || [];
+            
+            if (success && pages.length > 0) {
+                showSearchResults(pages);
+            } else {
+                document.getElementById('searchResults').innerHTML = '<div class="p-4 text-center text-gray-500">No pages found</div>';
+            }
+        })
+        .catch(error => {
+            console.error('Search error:', error);
+            document.getElementById('searchResults').innerHTML = '<div class="p-4 text-center text-red-500">Search error</div>';
+        });
 }
 
-// Initialize DataTable if needed
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('Pages page loaded');
+function showSearchResults(pages) {
+    let html = '<div class="search-results-list">';
     
-    // Search input with debounce
-    let searchTimeout;
-    const searchInput = document.getElementById('text-srh');
-    if (searchInput) {
-        let searchDebounce = null;
+    pages.forEach(page => {
+        const pageData = {
+            id: page.id || page.ID,
+            title: page.title || page.TITLE,
+            status: page.status || page.STATUS,
+            author_name: page.author_name || page.AUTHOR_NAME,
+            published_at: page.published_at || page.PUBLISHED_AT,
+            created_at: page.created_at || page.CREATED_AT
+        };
         
-        // Handle search for filtering existing pages
-        searchInput.addEventListener('input', function() {
+        const date = pageData.status === 'published' ? pageData.published_at : pageData.created_at;
+        const statusBadge = pageData.status === 'published' ? 
+            '<span class="badge bg-success">Published</span>' : 
+            '<span class="badge bg-secondary">Draft</span>';
+        
+        html += `
+            <a href="/ghost/admin/pages/edit/${pageData.id}" class="search-result-item">
+                <div>
+                    <div class="font-medium">${pageData.title}</div>
+                    <div class="text-sm text-gray-600">
+                        ${statusBadge}
+                        <span class="ms-2">by ${pageData.author_name}</span>
+                        <span class="ms-2">${new Date(date).toLocaleDateString()}</span>
+                    </div>
+                </div>
+            </a>
+        `;
+    });
+    
+    html += '</div>';
+    document.getElementById('searchResults').innerHTML = html;
+}
+
+// Initialize search with debouncing
+let searchTimeout;
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('text-srh');
+    
+    if (searchInput) {
+        searchInput.addEventListener('input', function(e) {
             clearTimeout(searchTimeout);
-            searchTimeout = setTimeout(applyFilters, 500);
-            
-            // Handle search dropdown
-            clearTimeout(searchDebounce);
-            const query = this.value.trim();
+            const query = e.target.value.trim();
             
             if (query.length >= 2) {
-                searchDebounce = setTimeout(() => searchPages(query), 300);
+                searchTimeout = setTimeout(() => {
+                    window.searchPages(query);
+                }, 300);
             } else {
-                hideSearchDropdown();
+                document.getElementById('searchDropdown').style.display = 'none';
             }
         });
         
         // Hide dropdown when clicking outside
         document.addEventListener('click', function(e) {
             if (!e.target.closest('.relative')) {
-                hideSearchDropdown();
+                document.getElementById('searchDropdown').style.display = 'none';
             }
         });
         
-        // Hide dropdown on escape key
-        searchInput.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                hideSearchDropdown();
-                this.blur();
+        // Handle enter key to submit search
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                applyFilters();
             }
         });
     }
-    
-    // Search pages function
-    function searchPages(query) {
-        fetch(`/ghost/admin/ajax/search-posts.cfm?q=${encodeURIComponent(query)}&type=page`)
-            .then(response => response.json())
-            .then(data => {
-                if (data.success && data.posts.length > 0) {
-                    showSearchResults(data.posts);
-                } else {
-                    showNoResults();
-                }
-            })
-            .catch(error => {
-                console.error('Search error:', error);
-                hideSearchDropdown();
-            });
-    }
-    
-    // Show search results
-    function showSearchResults(pages) {
-        const resultsContainer = document.getElementById('searchResults');
-        let html = '';
-        
-        pages.forEach(page => {
-            const statusClass = page.status.toLowerCase();
-            const displayDate = page.status === 'published' && page.published_at ? page.published_at : page.created_at;
-            
-            html += `
-                <div class="search-result-item" onclick="window.location.href='${page.url}'">
-                    <div class="search-result-title">
-                        ${page.title}
-                        <span class="search-result-status ${statusClass}">${page.status}</span>
-                    </div>
-                    <div class="search-result-meta">
-                        ${page.author} • ${displayDate}
-                    </div>
-                </div>
-            `;
-        });
-        
-        resultsContainer.innerHTML = html;
-        document.getElementById('searchDropdown').style.display = 'block';
-    }
-    
-    // Show no results message
-    function showNoResults() {
-        const resultsContainer = document.getElementById('searchResults');
-        resultsContainer.innerHTML = '<div class="search-no-results">No pages found</div>';
-        document.getElementById('searchDropdown').style.display = 'block';
-    }
-    
-    // Hide search dropdown
-    function hideSearchDropdown() {
-        document.getElementById('searchDropdown').style.display = 'none';
-    }
-
-    // Select all functionality
-    const selectAllCheckbox = document.getElementById('selectAll');
-    if (selectAllCheckbox) {
-        selectAllCheckbox.addEventListener('change', function() {
-            const checkboxes = document.querySelectorAll('tbody input[type="checkbox"]');
-            checkboxes.forEach(checkbox => {
-                checkbox.checked = this.checked;
-            });
-        });
-    }
-    
-    // Verify deletePage function is available
-    console.log('deletePage function available:', typeof deletePage);
 });
 </script>
+
+<style>
+/* Search dropdown styles */
+.search-results-list {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.search-result-item {
+    display: block;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #e5e7eb;
+    text-decoration: none;
+    color: inherit;
+    transition: background-color 0.2s;
+}
+
+.search-result-item:hover {
+    background-color: #f3f4f6;
+}
+
+.search-result-item:last-child {
+    border-bottom: none;
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1;
+    border-radius: 0.25rem;
+}
+
+.bg-success {
+    background-color: #10b981;
+    color: white;
+}
+
+.bg-secondary {
+    background-color: #6b7280;
+    color: white;
+}
+</style>
 
 <cfinclude template="includes/footer.cfm">

@@ -8,30 +8,40 @@
     
     <!-- Theme Toggle Script (without Preline) -->
     <script>
-        // Theme toggle functionality
-        const themeToggleBtn = document.getElementById('theme-toggle');
-        const htmlElement = document.documentElement;
-        
-        // Check for saved theme preference or default to 'light'
-        const currentTheme = localStorage.getItem('theme') || 'light';
-        if (currentTheme === 'dark') {
-            htmlElement.classList.remove('light');
-            htmlElement.classList.add('dark');
+        // Function to apply theme
+        function applyTheme(theme) {
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('hs-theme', 'dark');
+                localStorage.setItem('theme', 'dark'); // Keep both for compatibility
+            } else {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('hs-theme', 'light');
+                localStorage.setItem('theme', 'light'); // Keep both for compatibility
+            }
         }
         
-        if (themeToggleBtn) {
-            themeToggleBtn.addEventListener('click', function() {
-                if (htmlElement.classList.contains('dark')) {
-                    htmlElement.classList.remove('dark');
-                    htmlElement.classList.add('light');
-                    localStorage.setItem('theme', 'light');
-                } else {
-                    htmlElement.classList.remove('light');
-                    htmlElement.classList.add('dark');
-                    localStorage.setItem('theme', 'dark');
-                }
-            });
-        }
+        // Check current theme and apply on page load
+        const currentTheme = localStorage.getItem('hs-theme') || localStorage.getItem('theme') || 'light';
+        applyTheme(currentTheme);
+        
+        // Add click handlers for theme toggle buttons
+        document.addEventListener('DOMContentLoaded', () => {
+            const darkButton = document.getElementById('dark-layout');
+            const lightButton = document.getElementById('light-layout');
+            
+            if (darkButton) {
+                darkButton.addEventListener('click', () => {
+                    applyTheme('dark');
+                });
+            }
+            
+            if (lightButton) {
+                lightButton.addEventListener('click', () => {
+                    applyTheme('light');
+                });
+            }
+        });
     </script>
 </body>
 </html>

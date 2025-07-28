@@ -3,6 +3,8 @@
 <cfheader name="Content-Type" value="application/json">
 <cfcontent reset="true">
 
+<cfparam name="request.dsn" default="blog">
+
 <cfset response = {success: false, message: "", url: ""}>
 
 <cftry>
@@ -126,7 +128,7 @@
             <!--- Update user's profile image in database --->
             <cftry>
                 <cfif uploadType eq "profile">
-                    <cfquery datasource="#request.dsn#">
+                    <cfquery datasource="blog">
                         UPDATE users 
                         SET profile_image = <cfqueryparam value="#imageUrl#" cfsqltype="cf_sql_varchar">,
                             updated_at = <cfqueryparam value="#now()#" cfsqltype="cf_sql_timestamp">,
@@ -134,7 +136,7 @@
                         WHERE id = <cfqueryparam value="#userId#" cfsqltype="cf_sql_varchar">
                     </cfquery>
                 <cfelseif uploadType eq "cover">
-                    <cfquery datasource="#request.dsn#">
+                    <cfquery datasource="blog">
                         UPDATE users 
                         SET cover_image = <cfqueryparam value="#imageUrl#" cfsqltype="cf_sql_varchar">,
                             updated_at = <cfqueryparam value="#now()#" cfsqltype="cf_sql_timestamp">,
@@ -142,6 +144,12 @@
                         WHERE id = <cfqueryparam value="#userId#" cfsqltype="cf_sql_varchar">
                     </cfquery>
                 </cfif>
+                
+                <!--- Update session if needed --->
+                <cfif uploadType eq "profile" and structKeyExists(session, "user") and isStruct(session.user)>
+                    <cfset session.user.profile_image = imageUrl>
+                </cfif>
+                
                 <cflog file="ghost-upload" text="Database updated for #uploadType# image">
                 <cfcatch>
                     <cflog file="ghost-upload" text="Failed to update database: #cfcatch.message#">

@@ -3,6 +3,7 @@
 <cfparam name="url.initialFormat" default="browser">
 <cfparam name="url.initialSize" default="desktop">
 <cfparam name="url.initialSegment" default="public">
+<cfparam name="request.dsn" default="blog">
 
 <!--- Check authentication --->
 <cfif NOT structKeyExists(session, "ISLOGGEDIN") OR NOT session.ISLOGGEDIN>

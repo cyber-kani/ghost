@@ -1151,6 +1151,115 @@
     border: 2px solid red !important;
     background: yellow !important;
 }
+/* Ghost Modal Styles */
+.ghost-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ghost-modal {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    max-width: 32rem;
+    width: 100%;
+    margin: 1rem;
+}
+
+.ghost-modal-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.ghost-modal-header h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #111827;
+    margin: 0;
+    padding-right: 1rem;
+}
+
+.ghost-modal-close {
+    background: none;
+    border: none;
+    color: #6b7280;
+    cursor: pointer;
+    padding: 0.25rem;
+    margin: -0.25rem -0.25rem -0.25rem 0;
+    border-radius: 0.25rem;
+    transition: color 0.15s ease-in-out;
+}
+
+.ghost-modal-close:hover {
+    color: #111827;
+}
+
+.ghost-modal-body {
+    padding: 1.5rem;
+}
+
+.ghost-modal-body p {
+    margin: 0;
+}
+
+.ghost-modal-footer {
+    padding: 1.5rem;
+    border-top: 1px solid #e5e7eb;
+    display: flex;
+    gap: 0.75rem;
+    justify-content: flex-end;
+}
+
+/* Ghost Button Styles */
+.ghost-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 0.375rem;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.15s ease-in-out;
+    text-decoration: none;
+}
+
+.ghost-btn-link {
+    background: transparent;
+    color: #6b7280;
+    border-color: transparent;
+}
+
+.ghost-btn-link:hover {
+    color: #111827;
+}
+
+.ghost-btn-red {
+    background-color: #dc2626;
+    color: white;
+}
+
+.ghost-btn-red:hover {
+    background-color: #b91c1c;
+}
+
+.ghost-btn-black {
+    background-color: #111827;
+    color: white;
+}
+
+.ghost-btn-black:hover {
+    background-color: #000000;
+}
 </style>
 
 <!-- JavaScript -->
@@ -1182,40 +1291,32 @@ function deletePost(postId, postTitle) {
 function showDeleteModal(postTitle) {
     // Create modal backdrop
     const backdrop = document.createElement('div');
-    backdrop.className = 'fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center';
+    backdrop.className = 'ghost-modal-backdrop';
     backdrop.id = 'deleteModalBackdrop';
     
     // Create modal
     const modal = document.createElement('div');
-    modal.className = 'bg-white rounded-lg shadow-xl max-w-sm w-full mx-4 transform transition-all border-2 border-gray-200';
+    modal.className = 'ghost-modal';
     modal.innerHTML = `
-        <div class="p-5">
-            <div class="flex items-center justify-center w-10 h-10 mx-auto bg-red-100 rounded-full mb-3">
-                <i class="ti ti-trash text-red-600 text-lg"></i>
-            </div>
-            <h3 class="text-base font-semibold text-center text-gray-900 mb-2">Delete Post</h3>
-            <p class="text-sm text-gray-600 text-center mb-1">
-                Are you sure you want to delete:
-            </p>
-            <p class="text-sm font-medium text-gray-900 text-center mb-3 px-2 truncate">
-                "${postTitle}"
-            </p>
-            <p class="text-xs text-gray-500 text-center mb-4">
+        <div class="ghost-modal-header">
+            <h3>Are you sure you want to delete this post?</h3>
+            <button type="button" class="ghost-modal-close" onclick="closeDeleteModal()">
+                <i class="ti ti-x text-xl"></i>
+            </button>
+        </div>
+        <div class="ghost-modal-body">
+            <p class="text-gray-600 text-base mb-2">
+                You're about to delete "<strong>${postTitle}</strong>". 
                 This action cannot be undone.
             </p>
-            <div class="flex gap-2">
-                <button type="button" 
-                        class="flex-1 btn btn-sm btn-outline-secondary" 
-                        onclick="closeDeleteModal()">
-                    Cancel
-                </button>
-                <button type="button" 
-                        class="flex-1 btn btn-sm btn-danger" 
-                        onclick="executeDelete()">
-                    <i class="ti ti-trash me-1"></i>
-                    Delete
-                </button>
-            </div>
+        </div>
+        <div class="ghost-modal-footer">
+            <button type="button" class="ghost-btn ghost-btn-link" onclick="closeDeleteModal()">
+                Cancel
+            </button>
+            <button type="button" class="ghost-btn ghost-btn-red" onclick="executeDelete()">
+                <span>Delete</span>
+            </button>
         </div>
     `;
     

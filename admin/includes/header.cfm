@@ -97,6 +97,9 @@
     <!-- Core Css -->
     <link rel="stylesheet" href="/ghost/admin/assets/css/theme.css" />
     
+    <!-- Ghost Publish Modal CSS -->
+    <link rel="stylesheet" href="/ghost/admin/assets/css/ghost-publish-modal.css?v=<cfoutput>#dateFormat(now(), 'yyyymmdd')##timeFormat(now(), 'HHmmss')#</cfoutput>" />
+    
     <!-- Iconify -->
     <script src="/ghost/admin/assets/libs/iconify-icon/dist/iconify-icon.min.js"></script>
     <!-- Fallback CDN -->

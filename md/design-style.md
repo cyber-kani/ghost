@@ -681,4 +681,264 @@ Update the CFGhost sidebar to use Spike's accordion navigation:
 - [ ] **Dark Mode**: Implement dark theme toggle functionality
 - [ ] **Accessibility**: Ensure all Spike components meet accessibility standards
 
+## Modal Design System
+
+### **Ghost Modal Components**
+
+CFGhost implements a consistent modal design system based on Ghost CMS patterns. All modals use the same structure and styling for a cohesive user experience.
+
+#### Modal Structure
+```html
+<div class="ghost-modal-backdrop" style="display: none;">
+    <div class="ghost-modal">
+        <div class="ghost-modal-header">
+            <h3>Modal Title</h3>
+            <button type="button" class="ghost-modal-close" onclick="closeModal()">
+                <i class="ti ti-x text-xl"></i>
+            </button>
+        </div>
+        <div class="ghost-modal-body">
+            <p class="text-gray-600 text-base">
+                Modal content and description
+            </p>
+        </div>
+        <div class="ghost-modal-footer">
+            <!-- Modal buttons -->
+        </div>
+    </div>
+</div>
+```
+
+#### Modal Styles
+```css
+/* Ghost Modal Styles */
+.ghost-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ghost-modal {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    max-width: 32rem;
+    width: 100%;
+    margin: 1rem;
+}
+
+.ghost-modal-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.ghost-modal-body {
+    padding: 1.5rem;
+}
+
+.ghost-modal-footer {
+    padding: 1.5rem;
+    border-top: 1px solid #e5e7eb;
+    display: flex;
+    gap: 0.75rem;
+    justify-content: flex-end;
+}
+```
+
+#### Button Styles
+```css
+/* Ghost Button Styles */
+.ghost-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 0.375rem;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.15s ease-in-out;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.ghost-btn-link {
+    background: transparent;
+    color: #6b7280;
+    border-color: transparent;
+}
+
+.ghost-btn-link:hover {
+    color: #111827;
+}
+
+.ghost-btn-red {
+    background-color: #dc2626;
+    color: white;
+}
+
+.ghost-btn-red:hover {
+    background-color: #b91c1c;
+}
+
+.ghost-btn-black {
+    background-color: #111827;
+    color: white;
+}
+
+.ghost-btn-black:hover {
+    background-color: #000000;
+}
+```
+
+### **Modal Types and Usage**
+
+#### 1. Unsaved Changes Modal
+Used when user tries to navigate away with unsaved changes.
+
+```html
+<div class="ghost-modal-body">
+    <p class="text-gray-600 text-base">
+        You have unsaved changes. Do you want to save before leaving?
+    </p>
+</div>
+<div class="ghost-modal-footer">
+    <button type="button" class="ghost-btn ghost-btn-link" onclick="leaveWithoutSaving()">
+        <span>Leave without saving</span>
+    </button>
+    <button type="button" class="ghost-btn ghost-btn-link" onclick="saveAndStay()">
+        <span>Save & stay</span>
+    </button>
+    <button type="button" class="ghost-btn ghost-btn-black" onclick="saveAndLeave()">
+        <span>Save & leave</span>
+    </button>
+</div>
+```
+
+#### 2. Delete Confirmation Modal
+Used for destructive actions requiring confirmation.
+
+```html
+<div class="ghost-modal-body">
+    <p class="text-gray-600 text-base">
+        You're about to delete "<strong>Item Name</strong>". 
+        This action cannot be undone.
+    </p>
+</div>
+<div class="ghost-modal-footer">
+    <button type="button" class="ghost-btn ghost-btn-link" onclick="closeModal()">
+        <span>Cancel</span>
+    </button>
+    <button type="button" class="ghost-btn ghost-btn-red" onclick="confirmDelete()">
+        <span>Delete</span>
+    </button>
+</div>
+```
+
+#### 3. Publish/Unpublish Modal
+Used for content state changes.
+
+```html
+<!-- Publish -->
+<div class="ghost-modal-body">
+    <p class="text-gray-600 text-base">
+        Publishing will make this post visible to your audience.
+    </p>
+</div>
+<div class="ghost-modal-footer">
+    <button type="button" class="ghost-btn ghost-btn-link" onclick="closeModal()">
+        <span>Cancel</span>
+    </button>
+    <button type="button" class="ghost-btn ghost-btn-black" onclick="publish()">
+        <span>Publish now</span>
+    </button>
+</div>
+```
+
+### **Modal Implementation Guidelines**
+
+#### JavaScript Functions
+```javascript
+// Show modal
+function showModal() {
+    const modal = document.getElementById('modalId');
+    if (modal) {
+        modal.style.display = 'flex';
+    }
+}
+
+// Hide modal
+function hideModal() {
+    const modal = document.getElementById('modalId');
+    if (modal) {
+        modal.style.display = 'none';
+    }
+}
+
+// Prevent multiple modal displays
+let modalShowing = false;
+function showModalOnce() {
+    if (modalShowing) return;
+    modalShowing = true;
+    // Show modal
+}
+```
+
+#### Navigation Handling
+```javascript
+// Store navigation URL before modal clears it
+function saveAndLeave() {
+    const navigateToUrl = pendingNavigation;
+    hideModal(); // This clears pendingNavigation
+    
+    savePost().then(() => {
+        if (navigateToUrl) {
+            window.location.href = navigateToUrl;
+        }
+    });
+}
+```
+
+### **Modal Button Conventions**
+
+1. **Button Order**: Left to right from least to most prominent action
+2. **Button Styles**:
+   - `ghost-btn-link`: Secondary/cancel actions
+   - `ghost-btn-black`: Primary actions (save, publish)
+   - `ghost-btn-red`: Destructive actions (delete, remove)
+3. **Button Text**: Always wrap in `<span>` tags
+4. **Multiple Options**: For complex decisions, provide all relevant options
+
+### **Accessibility Considerations**
+
+1. **Focus Management**: Return focus to trigger element after modal closes
+2. **Keyboard Support**: ESC key to close, Tab to navigate buttons
+3. **ARIA Labels**: Proper labeling for screen readers
+4. **Click Outside**: Backdrop click to close (optional)
+
+### **Implementation Checklist**
+
+- [ ] Use consistent modal structure across all modals
+- [ ] Include all required CSS classes
+- [ ] Implement proper show/hide functions
+- [ ] Add keyboard navigation support
+- [ ] Test across different screen sizes
+- [ ] Ensure proper z-index layering
+- [ ] Add animation transitions (optional)
+- [ ] Implement focus management
+- [ ] Test with screen readers
+- [ ] Document any custom modal variations
+
+This modal design system ensures consistency across all CFGhost modal interactions while maintaining the clean, professional aesthetic of the Ghost CMS interface.
+
+---
+
 This design system provides a solid foundation for creating a modern, professional, and user-friendly CFGhost CMS admin interface that maintains consistency while offering the flexibility needed for content management workflows.

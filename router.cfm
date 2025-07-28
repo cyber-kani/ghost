@@ -89,7 +89,7 @@
     <cfset routeFound = true>
 
 <cfelseif requestPath eq "admin/posts/new">
-    <cfset templateFile = "admin/post/new/index.cfm">
+    <cfset templateFile = "admin/posts/new.cfm">
     <cfset routeFound = true>
 
 <!--- Posts edit with ID parameter - handles both /admin/posts/edit/ID and /admin/posts/edit/ID/ --->

@@ -119,6 +119,7 @@ All 15+ Ghost card types have been fully implemented:
 - **CSS**: TailwindCSS 3.4.3
 - **Design Pattern**: CFGhost CMS interface
 - **Responsive**: Mobile-first with lg: breakpoints
+- **Modal System**: Ghost-style modals with consistent structure (see design-style.md)
 
 ### Alert/Error Message Patterns
 Use consistent styling for all alert messages:
@@ -195,6 +196,11 @@ tail -f /var/www/sites/cloudcoder.dev/wwwroot/ghost/logs/error.log
 8. **Header Integration**: Dynamic user data display with profile images
 9. **Form Features**: Auto-slug generation, character counters, live previews
 10. **Session Fixes**: Resolved authentication issues in iframe context
+11. **Modal Design System**: Standardized Ghost-style modals with consistent styling
+    - Unsaved changes modal with 3 options (leave/save & stay/save & leave)
+    - Delete confirmation modals
+    - Publish/unpublish modals
+    - Consistent button styling (ghost-btn classes)
 
 ## Common Issues & Solutions
 

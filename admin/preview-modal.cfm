@@ -602,7 +602,7 @@
                             </svg>
                             <span>Copy preview link</span>
                         </button>
-                        <a href="/ghost/admin/preview-public.cfm?id=#postData.id#" target="_blank">
+                        <a href="/ghost/preview-public.cfm?id=#postData.id#" target="_blank">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M11 7h-5a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-5"></path>
                                 <line x1="10" y1="14" x2="20" y2="4"></line>
@@ -760,7 +760,7 @@
         
         // Copy preview link
         function copyPreviewLink() {
-            const url = window.location.origin + '/ghost/admin/preview-public.cfm?id=' + postId + '&member_status=' + currentVisibility;
+            const url = window.location.origin + '/ghost/preview-public.cfm?id=' + postId + '&member_status=' + currentVisibility;
             
             navigator.clipboard.writeText(url).then(() => {
                 // Show success message
@@ -803,7 +803,7 @@
         // Load browser preview
         function loadBrowserPreview() {
             const container = document.getElementById('previewContent');
-            const previewUrl = '/ghost/admin/preview-public.cfm?id=' + postId + '&member_status=' + currentVisibility;
+            const previewUrl = '/ghost/preview-public.cfm?id=' + postId + '&member_status=' + currentVisibility;
             
             if (currentSize === 'desktop') {
                 container.innerHTML = `

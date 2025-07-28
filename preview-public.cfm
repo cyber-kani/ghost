@@ -2,6 +2,9 @@
 <cfparam name="url.id" default="0">
 <cfparam name="url.member_status" default="public">
 
+<!--- Include site configuration --->
+<cfinclude template="/ghost/config/site.cfm">
+
 <!--- Get post data --->
 <cftry>
     <cfquery name="postData" datasource="blog">

@@ -1,0 +1,607 @@
+/* Ghost Publish Modal Styles - Redesigned for Better UX */
+
+/* Import Tabler Icons if not already loaded */
+@import url('https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css');
+
+/* Modal container */
+.gh-publish-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 5000;
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+    background: #fff;
+    animation: modalFadeIn 0.2s ease-out;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.gh-publish-modal-inner {
+    width: 100%;
+    height: 100vh;
+    background: #fbfbfb;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    animation: modalSlideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes modalSlideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.gh-publish-modal-inner .flex-column {
+    overflow-y: auto;
+    flex: 1;
+}
+
+/* CSS Variables for Ghost colors */
+:root {
+    --green: #30cf43;
+    --green-d1: #26a641;
+    --green-l1: #e6f9e9;
+    --black: #15171A;
+    --white: #ffffff;
+    --whitegrey: #f4f5f6;
+    --whitegrey-l1: #e5e7eb;
+    --whitegrey-l2: #f9fafb;
+    --whitegrey-d1: #e0e1e3;
+    --lightgrey: #dde1e5;
+    --lightgrey-l1: #e5e7eb;
+    --midgrey: #738393;
+    --midlightgrey: #9baeb8;
+    --middarkgrey: #54666d;
+    --darkgrey: #343f44;
+    --red: #f50b23;
+    --red-d1: #dc2626;
+    --input-border: 1px solid #dde1e5;
+    --input-bg-color: #ffffff;
+    --border-radius: 4px;
+}
+
+/* Publish Header */
+.gh-publish-header {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    padding: 24px 32px;
+    z-index: 10;
+}
+
+.gh-publish-header h2 {
+    display: none; /* Hide the title since we have it in the main content */
+}
+
+.gh-btn-group-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.gh-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 38px;
+    padding: 0 18px;
+    border: 1px solid #dee2e6;
+    background: #fff;
+    color: #495057;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.gh-btn:hover {
+    background: #f8f9fa;
+    border-color: #adb5bd;
+}
+
+.gh-btn.gh-btn-editor {
+    background: #fff;
+    color: #495057;
+    border: 1px solid #dee2e6;
+}
+
+.gh-btn.gh-btn-editor.gh-editor-preview-trigger {
+    background: #fff;
+    border-color: #dee2e6;
+}
+
+.gh-btn.gh-btn-editor.gh-editor-preview-trigger:hover {
+    background: #f8f9fa;
+    border-color: #adb5bd;
+}
+
+/* Blue primary buttons for Close and Preview */
+.gh-btn-primary {
+    background: #0d6efd;
+    color: #fff;
+    border: 1px solid #0d6efd;
+    font-weight: 500;
+}
+
+.gh-btn-primary:hover {
+    background: #0b5ed7;
+    border-color: #0a58ca;
+    box-shadow: 0 2px 8px rgba(13, 110, 253, 0.25);
+}
+
+.gh-btn-primary i,
+.gh-btn i {
+    font-size: 16px;
+    line-height: 1;
+}
+
+/* Outline button style for Close */
+.gh-btn-outline-secondary {
+    background: transparent;
+    color: #6c757d;
+    border: 1px solid #dee2e6;
+}
+
+.gh-btn-outline-secondary:hover {
+    background: #6c757d;
+    color: #fff;
+    border-color: #6c757d;
+}
+
+/* Publish Settings Container */
+.gh-publish-settings-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 100px 24px 40px;
+    overflow-y: auto;
+}
+
+.gh-publish-settings-container > * {
+    width: 100%;
+    max-width: 540px;
+}
+
+/* Publish Title */
+.gh-publish-title {
+    margin: 0 0 48px;
+    color: var(--black);
+    text-align: center;
+}
+
+.gh-publish-title > div:first-child,
+.gh-publish-title .green {
+    color: var(--green);
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    margin-bottom: 8px;
+}
+
+.gh-publish-title > div:last-child {
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--midgrey);
+    letter-spacing: -0.01em;
+}
+
+/* Publish Settings */
+.gh-publish-settings {
+    margin: 0;
+    width: 100%;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+}
+
+.gh-publish-setting {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 0;
+    border-bottom: 1px solid var(--whitegrey-d1);
+}
+
+.gh-publish-setting.last {
+    border-bottom: 0;
+}
+
+.gh-publish-setting-title {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 20px 24px;
+    background: none;
+    border: none;
+    text-align: left;
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.gh-publish-setting-title:hover {
+    background: var(--whitegrey-l2);
+    position: relative;
+    z-index: 0;
+}
+
+.gh-publish-setting-title.disabled {
+    opacity: .3;
+    cursor: default;
+}
+
+.gh-publish-setting-title.disabled:hover {
+    background: none;
+}
+
+.gh-publish-setting-title svg {
+    width: 20px;
+    height: 20px;
+    margin-right: 16px;
+    color: var(--midgrey);
+}
+
+.gh-publish-setting-title .icon-expand {
+    position: absolute;
+    right: 24px;
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    fill: var(--midlightgrey);
+    transition: transform 0.2s ease;
+}
+
+.gh-publish-setting-title.expanded .icon-expand {
+    transform: rotate(180deg);
+}
+
+.gh-publish-setting-trigger {
+    flex: 1;
+    text-align: left;
+    color: var(--black);
+    font-size: 0.9375rem;
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+}
+
+.gh-publish-setting-form {
+    margin: 0;
+    padding: 12px 24px 20px 60px;
+    background-color: var(--white);
+    position: relative;
+    z-index: 1;
+}
+
+.gh-publish-setting-form.last {
+    padding-bottom: 24px;
+}
+
+.gh-publish-setting-form.hidden {
+    display: none;
+}
+
+/* Publish Types and Schedule */
+.gh-publish-types,
+.gh-publish-schedule {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 8px 0 0 0;
+}
+
+.gh-radio-button {
+    display: none;
+}
+
+.gh-publish-types label,
+.gh-publish-schedule label {
+    display: inline-block;
+    height: 32px;
+    padding: 0 16px;
+    border: 1px solid var(--lightgrey);
+    color: var(--darkgrey);
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 30px;
+    letter-spacing: 0;
+    cursor: pointer;
+    background: var(--white);
+    border-radius: 16px;
+    white-space: nowrap;
+    transition: all 0.15s ease;
+}
+
+.gh-publish-types label:hover,
+.gh-publish-schedule label:hover {
+    border-color: var(--black);
+    background: var(--whitegrey-l2);
+}
+
+.gh-radio-button:checked + label {
+    padding: 0 15px;
+    border: 2px solid var(--black);
+    color: var(--black);
+    line-height: 28px;
+    background: var(--black);
+    color: var(--white);
+    font-weight: 600;
+}
+
+/* Publish Send To Options */
+.gh-publish-send-to {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.gh-publish-send-to-option {
+    display: flex;
+    align-items: center;
+}
+
+.gh-publish-send-to-option .for-checkbox {
+    position: relative;
+    width: 100%;
+}
+
+.gh-publish-send-to-option .for-checkbox input {
+    position: absolute;
+    opacity: 0;
+}
+
+.gh-publish-send-to-option .for-checkbox .flex {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 4px 0;
+}
+
+.gh-publish-send-to-option .for-checkbox .input-toggle-component {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    border: 2px solid var(--lightgrey);
+    border-radius: 4px;
+    transition: all 0.2s;
+    flex-shrink: 0;
+    background: var(--white);
+}
+
+.gh-publish-send-to-option .for-checkbox input:checked + .flex .input-toggle-component {
+    border-color: var(--green);
+    background: var(--green);
+}
+
+.gh-publish-send-to-option .for-checkbox input:checked + .flex .input-toggle-component::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 6px;
+    width: 6px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.gh-publish-send-to-option label p {
+    margin: 0;
+    font-size: 0.9375rem;
+    color: var(--black);
+    line-height: 1.4;
+    font-weight: 400;
+}
+
+/* Date Time Picker */
+.gh-date-time-picker {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 12px;
+    margin-top: 12px;
+}
+
+.gh-date-time-picker-date,
+.gh-date-time-picker-time {
+    height: 40px;
+    padding: 8px 12px;
+    font-size: 0.9375rem;
+    border: 1px solid var(--lightgrey);
+    border-radius: 6px;
+    background: var(--white);
+    transition: all 0.15s ease;
+    color: var(--black);
+}
+
+.gh-date-time-picker-date:focus,
+.gh-date-time-picker-time:focus {
+    outline: none;
+    border-color: var(--green);
+    box-shadow: 0 0 0 3px rgba(48, 207, 67, 0.15);
+}
+
+.gh-date-time-picker-error {
+    grid-column: span 2;
+    margin-top: 8px;
+    font-size: 0.8125rem;
+    font-weight: 400;
+    color: var(--red-d1);
+}
+
+/* Publish CTA */
+.gh-publish-cta {
+    display: flex;
+    justify-content: center;
+    padding-top: 40px;
+    margin-top: 0;
+}
+
+/* Override Bootstrap button colors for publish button */
+.gh-publish-cta .btn-success {
+    background-color: #30cf43 !important;
+    border-color: #30cf43 !important;
+    color: #fff !important;
+    font-weight: 600;
+}
+
+.gh-publish-cta .btn-success:hover {
+    background-color: #26a641 !important;
+    border-color: #26a641 !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(48, 207, 67, 0.25);
+}
+
+.gh-publish-cta .btn-success:active,
+.gh-publish-cta .btn-success:focus {
+    background-color: #26a641 !important;
+    border-color: #26a641 !important;
+    box-shadow: 0 0 0 0.25rem rgba(48, 207, 67, 0.25) !important;
+}
+
+.gh-btn-large {
+    height: 44px;
+    padding: 0 40px;
+    font-size: 1rem;
+    letter-spacing: -0.01em;
+    min-width: 200px;
+}
+
+.gh-btn-black {
+    background: var(--black);
+    color: var(--white);
+    border: 1px solid var(--black);
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.gh-btn-black:hover {
+    background: var(--darkgrey);
+    border-color: var(--darkgrey);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.gh-btn-green {
+    background: var(--green);
+    color: var(--white);
+    border: 1px solid var(--green);
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.gh-btn-green:hover {
+    background: var(--green-d1);
+    border-color: var(--green-d1);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(48, 207, 67, 0.25);
+}
+
+/* Utility */
+.hidden {
+    display: none !important;
+}
+
+/* Animations */
+.fade-in {
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Scrollbar styling */
+.gh-publish-settings-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.gh-publish-settings-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.gh-publish-settings-container::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+.gh-publish-settings-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .gh-publish-settings-container {
+        padding: 80px 16px 24px;
+    }
+    
+    .gh-publish-header {
+        padding: 16px;
+    }
+    
+    .gh-publish-title {
+        margin: 0 0 32px;
+    }
+    
+    .gh-publish-title > div:first-child,
+    .gh-publish-title .green {
+        font-size: 2rem;
+    }
+    
+    .gh-publish-title > div:last-child {
+        font-size: 1.125rem;
+    }
+    
+    .gh-btn {
+        height: 36px;
+        padding: 0 14px;
+        font-size: 13px;
+    }
+    
+    .gh-publish-setting-title {
+        padding: 16px 20px;
+    }
+    
+    .gh-publish-setting-form {
+        padding: 0 20px 16px 52px;
+    }
+    
+    .gh-btn-large {
+        height: 40px;
+        padding: 0 24px;
+        font-size: 0.9375rem;
+    }
+}

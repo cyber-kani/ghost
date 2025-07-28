@@ -1,4779 +1,4 @@
-<!--- Ghost-style Post Editor for CFGHOST CMS --->
-<!--- This implements the modern Ghost editor with card-based content blocks --->
-
-<cfparam name="url.id" default="">
-<cfset pageTitle = "Edit Post">
-
-<!--- Check login status --->
-<cfif not structKeyExists(session, "ISLOGGEDIN") or not session.ISLOGGEDIN>
-    <cflocation url="/ghost/admin/login" addtoken="false">
-</cfif>
-
-<!--- Include the posts functions --->
-<cfinclude template="../includes/posts-functions.cfm">
-
-<!--- Get the post data --->
-<cfscript>
-postData = [];
-postId = "";
-errorMessage = "";
-
-// Clean up the ID parameter
-if (len(url.id)) {
-    postId = trim(url.id);
-    
-    // Get the post data
-    try {
-        postResult = getPostById(postId);
-        if (postResult.success and arrayLen(postResult.data) gt 0) {
-            postData = postResult.data[1];
-        } else {
-            errorMessage = "Post not found";
-        }
-    } catch (any e) {
-        errorMessage = "Error loading post: " & e.message;
-    }
-} else {
-    // New post - Create Ghost-style ID (24 character hex string)
-    postData = {
-        id: lcase(left(replace(createUUID(), "-", "", "all"), 24)),
-        title: "",
-        html: "",
-        plaintext: "",
-        feature_image: "",
-        featured: false,
-        status: "draft",
-        visibility: "public",
-        slug: "",
-        custom_excerpt: "",
-        meta_title: "",
-        meta_description: "",
-        canonical_url: "",
-        type: "post",
-        published_at: "",
-        created_at: now(),
-        updated_at: now(),
-        created_by: session.USERID ?: "1",
-        updated_by: session.USERID ?: "1",
-        tags: [],
-        author: {
-            id: session.USERID ?: "1",
-            name: session.USERNAME ?: "Admin User",
-            avatar: "",
-            slug: ""
-        }
-    };
-}
-
-// Get all tags for the tags selector
-tagsResult = getTags(1, 100);
-allTags = tagsResult.success ? tagsResult.data : [];
-
-// Extract first paragraph for placeholder text
-firstParagraphText = "";
-if (len(postData.html)) {
-    firstP = reMatch("<p[^>]*>(.*?)</p>", postData.html);
-    if (arrayLen(firstP) gt 0) {
-        // Strip HTML tags from first paragraph
-        firstParagraphText = reReplace(firstP[1], "<[^>]*>", "", "all");
-        firstParagraphText = replace(firstParagraphText, "&nbsp;", " ", "all");
-        firstParagraphText = replace(firstParagraphText, "&amp;", "&", "all");
-        firstParagraphText = replace(firstParagraphText, "&lt;", "<", "all");
-        firstParagraphText = replace(firstParagraphText, "&gt;", ">", "all");
-        firstParagraphText = replace(firstParagraphText, "&quot;", '"', "all");
-        firstParagraphText = trim(firstParagraphText);
-    }
-}
-</cfscript>
-
-<!DOCTYPE html>
-<html lang="en" dir="ltr" data-color-theme="Blue_Theme" class="light">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><cfoutput>#pageTitle# - CFGHOST</cfoutput></title>
-    
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="/favicon.ico?v=ghost" type="image/x-icon">
-    <link rel="icon" href="/favicon.ico?v=ghost" type="image/x-icon">
-    <link rel="icon" type="image/svg+xml" href="/ghost/favicon.svg?v=ghost">
-    <link rel="apple-touch-icon" href="/ghost/admin/assets/images/logos/favicon-ghost.png?v=ghost">
-    
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="/ghost/admin/assets/css/styles.min.css">
-    
-    <!-- Core CSS -->
-    <link rel="stylesheet" href="/ghost/admin/assets/css/theme.css">
-    
-    <!-- Ghost Publish Modal CSS -->
-    <link rel="stylesheet" href="/ghost/admin/assets/css/ghost-publish-modal.css?v=<cfoutput>#dateFormat(now(), 'yyyymmdd')##timeFormat(now(), 'HHmmss')#</cfoutput>" />
-    
-    <!-- Tabler Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
-    
-    <!-- TipTap Editor CSS -->
-    <style>
-        /* Ghost Editor Styles */
-        .ghost-editor {
-            min-height: 100vh;
-            background: #ffffff;
-        }
-        
-        .ghost-editor-header {
-            background: #ffffff;
-            border-bottom: 1px solid #e5e7eb;
-            padding: 1rem 2rem;
-            position: sticky;
-            top: 0;
-            z-index: 40;
-        }
-        
-        .ghost-editor-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            border: none;
-            outline: none;
-            width: 100%;
-            padding: 0;
-            margin: 0;
-            line-height: 1.2;
-            color: #171717;
-            background: transparent;
-            resize: none;
-            overflow: hidden;
-            min-height: 3rem;
-            max-height: 6rem;
-            font-family: inherit;
-        }
-        
-        .ghost-editor-title::placeholder {
-            color: #9ca3af;
-            font-weight: 300;
-        }
-        
-        .ghost-editor-content {
-            max-width: 740px;
-            margin: 0 auto;
-            padding: 4rem 2rem 4rem 5rem;
-        }
-        
-        .ghost-editor-body {
-            min-height: 300px;
-            font-size: 1.125rem;
-            line-height: 1.75;
-            color: #374151;
-        }
-        
-        .ghost-editor-wordcount {
-            position: fixed;
-            bottom: 2rem;
-            left: 2rem;
-            background: #f3f4f6;
-            padding: 0.5rem 1rem;
-            border-radius: 0.375rem;
-            font-size: 0.875rem;
-            color: #6b7280;
-            z-index: 30;
-        }
-        
-        .ghost-settings-toggle {
-            position: fixed;
-            top: 50%;
-            right: 0;
-            transform: translateY(-50%);
-            background: #ffffff;
-            border: 1px solid #e5e7eb;
-            border-right: none;
-            border-radius: 0.375rem 0 0 0.375rem;
-            padding: 0.75rem;
-            cursor: pointer;
-            z-index: 30;
-            transition: all 0.2s ease;
-        }
-        
-        .ghost-settings-toggle:hover {
-            background: #f9fafb;
-        }
-        
-        .ghost-settings-panel {
-            position: fixed;
-            top: 0;
-            right: -400px;
-            width: 400px;
-            height: 100vh;
-            background: #ffffff;
-            border-left: 1px solid #e5e7eb;
-            transition: right 0.3s ease;
-            z-index: 50;
-            overflow-y: auto;
-        }
-        
-        .ghost-settings-panel.active {
-            right: 0;
-        }
-        
-        .ghost-settings-header {
-            padding: 1.5rem;
-            border-bottom: 1px solid #e5e7eb;
-        }
-        
-        .ghost-settings-content {
-            padding: 1.5rem;
-        }
-        
-        /* Card Styles */
-        .content-card {
-            position: relative;
-            margin: 1.5rem 0;
-            padding: 1rem;
-            border: 1px solid transparent;
-            border-radius: 0.375rem;
-            transition: all 0.2s ease;
-        }
-        
-        .content-card:hover {
-            border-color: #3b82f6;
-            background: #f0f9ff;
-        }
-        
-        .content-card-toolbar {
-            position: absolute;
-            top: 50%;
-            left: -50px;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            opacity: 0;
-            transition: opacity 0.2s;
-        }
-        
-        .content-card:hover .content-card-toolbar {
-            opacity: 1;
-        }
-        
-        .toolbar-icon {
-            width: 32px;
-            height: 32px;
-            padding: 0;
-            border: 1px solid #e5e7eb;
-            background: #ffffff;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            color: #6b7280;
-            transition: all 0.2s;
-            margin: 0;
-        }
-        
-        .toolbar-icon:hover {
-            border-color: #d1d5db;
-            background: #f9fafb;
-            color: #374151;
-        }
-        
-        .toolbar-icon-delete:hover {
-            border-color: #fecaca;
-            background: #fee2e2;
-            color: #dc2626;
-        }
-        
-        .toolbar-icon svg {
-            width: 16px;
-            height: 16px;
-        }
-        
-        .add-card-button {
-            position: relative;
-            width: 100%;
-            height: 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 1rem 0;
-            cursor: pointer;
-            opacity: 0;
-            transition: opacity 0.2s ease;
-        }
-        
-        .add-card-button:hover {
-            opacity: 1;
-        }
-        
-        .add-card-button::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: #e5e7eb;
-        }
-        
-        .add-card-button-icon {
-            background: #ffffff;
-            border: 1px solid #e5e7eb;
-            border-radius: 50%;
-            width: 2rem;
-            height: 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1;
-        }
-        
-        /* Feature Image Styles */
-        .feature-image-container {
-            position: relative;
-            margin-bottom: 3rem;
-            cursor: pointer;
-            border-radius: 0.5rem;
-            overflow: hidden;
-            background: #f9fafb;
-            border: 2px dashed #e5e7eb;
-            transition: all 0.2s ease;
-        }
-        
-        .feature-image-container:hover {
-            border-color: #3b82f6;
-            background: #f0f9ff;
-        }
-        
-        .feature-image-placeholder {
-            padding: 4rem 2rem;
-            text-align: center;
-        }
-        
-        .feature-image-preview {
-            position: relative;
-            max-height: 400px;
-            overflow: hidden;
-        }
-        
-        .feature-image-preview img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        .feature-image-actions {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            display: flex;
-            gap: 0.5rem;
-            opacity: 0;
-            transition: opacity 0.2s ease;
-        }
-        
-        .feature-image-container:hover .feature-image-actions {
-            opacity: 1;
-        }
-        
-        /* Autosave indicator */
-        .autosave-indicator {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: #10b981;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 0.375rem;
-            font-size: 0.875rem;
-            opacity: 0;
-            transform: translateY(1rem);
-            transition: all 0.2s ease;
-        }
-        
-        .autosave-indicator.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Card menu */
-        .card-menu {
-            position: absolute;
-            background: white;
-            border: 1px solid #e5e7eb;
-            border-radius: 0.5rem;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            padding: 0.5rem 0;
-            min-width: 200px;
-            max-height: 400px;
-            overflow-y: auto;
-            z-index: 100;
-        }
-        
-        .card-menu-item {
-            padding: 0.75rem 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            cursor: pointer;
-            transition: background 0.2s ease;
-        }
-        
-        .card-menu-item:hover {
-            background: #f3f4f6;
-        }
-        
-        .card-menu-category {
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            color: #6b7280;
-            padding: 0.5rem 1rem;
-            margin-top: 0.5rem;
-        }
-        
-        .card-menu-category:first-child {
-            margin-top: 0;
-        }
-        
-        /* Formatting Popup Styles */
-        .formatting-popup {
-            position: fixed;
-            background: #1e293b;
-            border-radius: 6px;
-            padding: 4px;
-            display: flex;
-            gap: 2px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            z-index: 10000;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(5px);
-            transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
-        }
-        
-        .formatting-popup.show {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-        
-        .format-btn {
-            width: 32px;
-            height: 32px;
-            border: none;
-            background: transparent;
-            color: white;
-            border-radius: 4px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.2s;
-        }
-        
-        .format-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-        
-        .format-btn.active {
-            background: rgba(255, 255, 255, 0.2);
-        }
-        
-        .format-separator {
-            width: 1px;
-            height: 20px;
-            background: rgba(255, 255, 255, 0.2);
-            margin: 0 4px;
-        }
-        
-        .format-select {
-            padding: 4px 8px;
-            border: none;
-            background: transparent;
-            color: white;
-            font-size: 0.875rem;
-            cursor: pointer;
-            outline: none;
-            min-width: 100px;
-        }
-        
-        .format-select:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-        
-        .format-select option {
-            background: #374151;
-            color: white;
-        }
-        
-        .format-btn i {
-            font-size: 18px;
-        }
-        
-        /* Link Editor Popup Styles */
-        .link-editor-popup {
-            position: fixed;
-            background: white;
-            border: 1px solid #e5e7eb;
-            border-radius: 6px;
-            padding: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            z-index: 10001;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(5px);
-            transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
-        }
-        
-        .link-editor-popup.show {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-        
-        .link-editor-input-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-        
-        .link-editor-input {
-            width: 300px;
-            padding: 6px 12px;
-            border: 1px solid #e5e7eb;
-            border-radius: 4px;
-            font-size: 14px;
-            outline: none;
-            transition: border-color 0.2s;
-        }
-        
-        .link-editor-input:focus {
-            border-color: #3b82f6;
-        }
-        
-        .link-editor-btn {
-            width: 32px;
-            height: 32px;
-            border: 1px solid #e5e7eb;
-            background: white;
-            color: #6b7280;
-            border-radius: 4px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s;
-        }
-        
-        .link-editor-btn:hover {
-            background: #f3f4f6;
-            color: #374151;
-        }
-        
-        .link-editor-btn i {
-            font-size: 16px;
-        }
-        
-        /* Link hover menu */
-        .link-hover-menu {
-            position: fixed;
-            background: #1f2937;
-            color: white;
-            padding: 8px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            z-index: 10000;
-            display: none;
-            min-width: 200px;
-            border: 1px solid #374151;
-        }
-        
-        .link-hover-menu.show {
-            display: block;
-        }
-        
-        .link-hover-url {
-            font-size: 12px;
-            color: #9ca3af;
-            margin-bottom: 8px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            padding: 0 4px;
-        }
-        
-        .link-hover-actions {
-            display: flex;
-            gap: 4px;
-        }
-        
-        .link-hover-btn {
-            background: transparent;
-            border: none;
-            color: white;
-            padding: 6px 10px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: background 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .link-hover-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-        
-        .link-hover-btn i {
-            font-size: 16px;
-        }
-        
-        /* Highlight links on hover */
-        .card-content a {
-            text-decoration: underline;
-            color: inherit;
-            position: relative;
-            cursor: pointer;
-        }
-        
-        .card-content a:hover {
-            background: rgba(59, 130, 246, 0.1);
-            border-radius: 2px;
-        }
-        
-        /* Image card width styles */
-        .image-card-content {
-            position: relative;
-        }
-        
-        .image-card-content .image-wrapper {
-            position: relative;
-            transition: all 0.3s ease;
-        }
-        
-        /* Wide width */
-        .image-card-content[data-card-width="wide"] .image-wrapper {
-            margin-left: calc(-12.5vw + 50%);
-            margin-right: calc(-12.5vw + 50%);
-            max-width: none;
-        }
-        
-        /* Full width */
-        .image-card-content[data-card-width="full"] .image-wrapper {
-            margin-left: calc(-50vw + 50%);
-            margin-right: calc(-50vw + 50%);
-            max-width: none;
-        }
-        
-        /* Responsive adjustments */
-        @media (max-width: 1024px) {
-            .image-card-content[data-card-width="wide"] .image-wrapper,
-            .image-card-content[data-card-width="full"] .image-wrapper {
-                margin-left: -1rem;
-                margin-right: -1rem;
-            }
-        }
-        
-        /* Ghost-style video settings */
-        .ghost-video-toolbar {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px;
-            background: #fafafa;
-            border-radius: 8px;
-            border: 1px solid #e5e7eb;
-        }
-        
-        .ghost-video-width-selector {
-            display: flex;
-            gap: 4px;
-        }
-        
-        .ghost-video-separator {
-            width: 1px;
-            height: 20px;
-            background: #e5e7eb;
-        }
-        
-        .ghost-video-loop-btn {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 12px;
-            background: white;
-            border: 1px solid #e5e7eb;
-            border-radius: 6px;
-            cursor: pointer;
-            color: #374151;
-            font-size: 14px;
-            transition: all 0.2s;
-        }
-        
-        .ghost-video-loop-btn:hover {
-            background: #f3f4f6;
-        }
-        
-        .ghost-video-loop-btn.active {
-            background: #10b981;
-            color: white;
-            border-color: #10b981;
-        }
-        
-        .ghost-video-loop-btn svg {
-            width: 16px;
-            height: 16px;
-        }
-        
-        .ghost-replace-btn {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 12px;
-            background: white;
-            border: 1px solid #e5e7eb;
-            border-radius: 6px;
-            cursor: pointer;
-            color: #374151;
-            font-size: 14px;
-            transition: all 0.2s;
-        }
-        
-        .ghost-replace-btn:hover {
-            background: #f3f4f6;
-        }
-        
-        .ghost-replace-btn svg {
-            width: 16px;
-            height: 16px;
-        }
-        
-        /* Ghost-style audio settings */
-        .ghost-audio-toolbar {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px;
-            background: #fafafa;
-            border-radius: 8px;
-            border: 1px solid #e5e7eb;
-        }
-        
-        .audio-wrapper {
-            padding: 16px;
-            background: #f9fafb;
-            border-radius: 8px;
-            border: 1px solid #e5e7eb;
-        }
-        
-        .audio-wrapper audio {
-            width: 100%;
-            height: 40px;
-        }
-        
-        .audio-duration {
-            font-size: 12px;
-            color: #6b7280;
-            margin-top: 4px;
-        }
-        
-        /* File card styles */
-        .file-card-content {
-            position: relative;
-        }
-        
-        .file-wrapper {
-            transition: all 0.2s ease;
-            border: 1px solid #e5e7eb !important;
-        }
-        
-        .file-wrapper:hover {
-            border-color: #d1d5db !important;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        
-        .file-icon {
-            flex-shrink: 0;
-        }
-        
-        .file-info {
-            min-width: 0;
-        }
-        
-        .file-name a {
-            color: #374151;
-            font-weight: 500;
-        }
-        
-        .file-name a:hover {
-            color: #059669;
-            text-decoration: underline !important;
-        }
-        
-        .file-size {
-            font-size: 0.875rem;
-            color: #6b7280;
-        }
-        
-        .ghost-file-toolbar {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px;
-            background: #fafafa;
-            border-radius: 8px;
-            border: 1px solid #e5e7eb;
-        }
-        
-        /* Ghost Product Card Styles */
-        .ghost-product-card {
-            background: #fff;
-            border: 1px solid #e6e9eb;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        
-        .ghost-product-card-inner {
-            display: flex;
-            min-height: 180px;
-        }
-        
-        .ghost-product-image-container {
-            width: 40%;
-            background: #f7f8f9;
-            position: relative;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .ghost-product-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .ghost-product-image-placeholder {
-            color: #c5c7c9;
-            text-align: center;
-        }
-        
-        .ghost-product-image-placeholder svg {
-            width: 48px;
-            height: 48px;
-        }
-        
-        .ghost-product-content {
-            flex: 1;
-            padding: 24px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-        
-        .ghost-product-title {
-            font-size: 18px;
-            font-weight: 600;
-            line-height: 1.3;
-            color: #15171a;
-            border: none;
-            background: transparent;
-            padding: 0;
-            margin: 0;
-            width: 100%;
-            outline: none;
-        }
-        
-        .ghost-product-title:focus {
-            outline: none;
-        }
-        
-        .ghost-product-description {
-            font-size: 14px;
-            line-height: 1.5;
-            color: #626d79;
-            border: none;
-            background: transparent;
-            padding: 0;
-            margin: 0;
-            width: 100%;
-            resize: none;
-            outline: none;
-        }
-        
-        .ghost-product-rating {
-            display: flex;
-            gap: 2px;
-            color: #f97316;
-        }
-        
-        .ghost-product-rating .ti {
-            font-size: 16px;
-        }
-        
-        .ghost-product-rating .ti:not(.ti-star-filled) {
-            color: #e6e9eb;
-        }
-        
-        .ghost-product-button {
-            display: inline-block;
-            padding: 8px 16px;
-            font-size: 14px;
-            font-weight: 500;
-            border-radius: 4px;
-            text-decoration: none !important;
-            transition: all 0.2s ease;
-            margin-top: auto;
-            align-self: flex-start;
-        }
-        
-        .ghost-product-button.primary {
-            background: #14b8ff;
-            color: white;
-            border: 1px solid #14b8ff;
-        }
-        
-        .ghost-product-button.primary:hover {
-            background: #0ea5e9;
-            border-color: #0ea5e9;
-            text-decoration: none !important;
-        }
-        
-        .ghost-product-button.secondary {
-            background: #626d79;
-            color: white;
-            border: 1px solid #626d79;
-        }
-        
-        .ghost-product-button.secondary:hover {
-            background: #505863;
-            border-color: #505863;
-            text-decoration: none !important;
-        }
-        
-        .ghost-product-button.outline {
-            background: transparent;
-            color: #15171a;
-            border: 1px solid #e6e9eb;
-        }
-        
-        .ghost-product-button.outline:hover {
-            border-color: #c5c7c9;
-            text-decoration: none !important;
-        }
-        
-        .ghost-product-button.link {
-            background: transparent;
-            color: #14b8ff;
-            border: none;
-            text-decoration: none !important;
-            padding: 0;
-        }
-        
-        .ghost-product-button.link:hover {
-            color: #0ea5e9;
-            text-decoration: none !important;
-        }
-        
-        /* Ghost Product Settings */
-        .ghost-product-settings {
-            background: #f7f8f9;
-            border-top: 1px solid #e6e9eb;
-            padding: 16px;
-            margin: 0 -1px -1px -1px;
-        }
-        
-        .ghost-product-settings-row {
-            display: flex;
-            gap: 16px;
-            margin-bottom: 16px;
-        }
-        
-        .ghost-product-settings-row:last-child {
-            margin-bottom: 0;
-        }
-        
-        /* General card settings panel styles */
-        .ghost-card-settings {
-            background: white;
-            border: 1px solid #e5e7eb;
-            border-radius: 4px;
-            padding: 16px;
-            margin-top: 10px;
-            box-shadow: 0 1px 5px rgba(0,0,0,0.1);
-            display: none;
-        }
-        
-        /* Show settings panel when active */
-        .ghost-card-settings.active {
-            display: block;
-        }
-        
-        /* Add margin to cards when settings are open */
-        .content-card:has(.ghost-card-settings.active) {
-            margin-bottom: 20px;
-        }
-        
-        .toolbar-icon-settings {
-            border-color: #14b8ff;
-            color: #14b8ff;
-        }
-        
-        .toolbar-icon-settings:hover {
-            background: #f0feff;
-            border-color: #0ea5e9;
-            color: #0ea5e9;
-        }
-        
-        .ghost-setting-group {
-            flex: 1;
-        }
-        
-        .ghost-setting-group.full-width {
-            flex: 1 0 100%;
-        }
-        
-        .ghost-setting-group label {
-            display: block;
-            font-size: 13px;
-            font-weight: 500;
-            color: #15171a;
-            margin-bottom: 8px;
-        }
-        
-        .ghost-input {
-            width: 100%;
-            padding: 8px 12px;
-            font-size: 14px;
-            border: 1px solid #dde1e5;
-            border-radius: 4px;
-            background: white;
-            color: #15171a;
-            outline: none;
-        }
-        
-        .ghost-input:focus {
-            border-color: #14b8ff;
-        }
-        
-        .ghost-button-style-group {
-            display: flex;
-            gap: 8px;
-        }
-        
-        .ghost-style-button {
-            flex: 1;
-            padding: 8px;
-            background: white;
-            border: 1px solid #dde1e5;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        
-        .ghost-style-button:hover {
-            border-color: #c5c7c9;
-        }
-        
-        .ghost-style-button.active {
-            border-color: #14b8ff;
-            background: #f0feff;
-        }
-        
-        .ghost-button-preview {
-            display: block;
-            padding: 4px 12px;
-            font-size: 13px;
-            font-weight: 500;
-            border-radius: 3px;
-            text-align: center;
-        }
-        
-        .ghost-button-preview.primary {
-            background: #14b8ff;
-            color: white;
-            border: none;
-        }
-        
-        .ghost-button-preview.secondary {
-            background: #626d79;
-            color: white;
-            border: none;
-        }
-        
-        .ghost-button-preview.outline {
-            background: transparent;
-            color: #15171a;
-            border: 1px solid #15171a;
-        }
-        
-        .ghost-button-preview.link {
-            background: transparent;
-            color: #14b8ff;
-            text-decoration: none;
-            border: none;
-        }
-        
-        .ghost-rating-selector {
-            display: flex;
-            gap: 4px;
-        }
-        
-        .ghost-rating-toggle {
-            padding: 6px 12px;
-            background: white;
-            border: 1px solid #dde1e5;
-            border-radius: 4px;
-            font-size: 13px;
-            font-weight: 500;
-            color: #626d79;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        
-        .ghost-rating-toggle:hover {
-            border-color: #c5c7c9;
-        }
-        
-        .ghost-rating-toggle.active {
-            border-color: #14b8ff;
-            background: #f0feff;
-            color: #14b8ff;
-        }
-        
-        /* Ghost Bookmark Card Styles */
-        .kg-bookmark-card,
-        .kg-bookmark-card * {
-            box-sizing: border-box;
-        }
-        
-        .kg-bookmark-card a.kg-bookmark-container,
-        .kg-bookmark-card a.kg-bookmark-container:hover {
-            display: flex;
-            background: #fff;
-            text-decoration: none;
-            border-radius: 6px;
-            border: 1px solid rgb(124 139 154 / 25%);
-            overflow: hidden;
-            color: #222;
-            min-height: 148px;
-        }
-        
-        .kg-bookmark-content {
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-            flex-basis: 100%;
-            align-items: flex-start;
-            justify-content: flex-start;
-            padding: 20px;
-            overflow: hidden;
-        }
-        
-        .kg-bookmark-title {
-            font-size: 15px;
-            line-height: 1.4em;
-            font-weight: 600;
-        }
-        
-        .kg-bookmark-description {
-            display: -webkit-box;
-            font-size: 14px;
-            line-height: 1.5em;
-            margin-top: 3px;
-            font-weight: 400;
-            max-height: 44px;
-            overflow-y: hidden;
-            opacity: 0.7;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-        }
-        
-        .kg-bookmark-metadata {
-            display: flex;
-            align-items: center;
-            margin-top: 22px;
-            width: 100%;
-            font-size: 14px;
-            font-weight: 500;
-            white-space: nowrap;
-        }
-        
-        .kg-bookmark-metadata > *:not(img) {
-            opacity: 0.7;
-        }
-        
-        .ghost-bookmark-publisher {
-            font-weight: 500;
-        }
-        
-        .ghost-bookmark-author::before {
-            content: "•";
-            margin-right: 8px;
-        }
-        
-        .ghost-bookmark-thumbnail {
-            width: 180px;
-            background: #f7f8f9;
-            flex-shrink: 0;
-        }
-        
-        .ghost-bookmark-thumbnail img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .kg-bookmark-icon {
-            width: 20px;
-            height: 20px;
-            margin-right: 6px;
-        }
-        
-        .kg-bookmark-author,
-        .kg-bookmark-publisher {
-            display: inline;
-        }
-        
-        .kg-bookmark-publisher {
-            text-overflow: ellipsis;
-            overflow: hidden;
-            max-width: 240px;
-            white-space: nowrap;
-            display: block;
-            line-height: 1.65em;
-        }
-        
-        .kg-bookmark-metadata > span:nth-of-type(2) {
-            font-weight: 400;
-        }
-        
-        .kg-bookmark-metadata > span:nth-of-type(2):before {
-            content: "•";
-            margin: 0 6px;
-        }
-        
-        .kg-bookmark-metadata > span:last-of-type {
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        
-        .kg-bookmark-thumbnail {
-            position: relative;
-            flex-basis: 24rem;
-            flex-grow: 1;
-            min-width: 33%;
-        }
-        
-        .kg-bookmark-thumbnail::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            display: block;
-        }
-        
-        .kg-bookmark-thumbnail img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            top: 0;
-            left: 0;
-            border-radius: 0 4px 4px 0;
-        }
-        
-        .bookmark-card-content {
-            position: relative;
-        }
-        
-        .ghost-bookmark-settings {
-            background: #f7f8f9;
-            border-top: 1px solid #e6e9eb;
-            padding: 16px;
-            margin: 0 -1px -1px -1px;
-        }
-        
-        .ghost-bookmark-loading {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 40px 20px;
-            color: #626d79;
-            font-size: 14px;
-        }
-        
-        .ghost-bookmark-error {
-            text-align: center;
-            padding: 40px 20px;
-            color: #f56565;
-            font-size: 14px;
-        }
-        
-        /* Spinner animation */
-        .spin {
-            animation: spin 1s linear infinite;
-        }
-        
-        /* Ghost Embed Card Styles */
-        .ghost-embed-wrapper {
-            position: relative;
-            width: 100%;
-            margin: 0;
-        }
-        
-        .ghost-embed-wrapper iframe,
-        .ghost-embed-wrapper embed,
-        .ghost-embed-wrapper object {
-            width: 100%;
-            height: auto;
-            aspect-ratio: 16/9;
-            border: 0;
-            border-radius: 8px;
-        }
-        
-        .ghost-embed-wrapper twitter-widget {
-            margin: 0 auto !important;
-        }
-        
-        .embed-card-content {
-            position: relative;
-        }
-        
-        .ghost-embed-settings {
-            background: #f7f8f9;
-            border-top: 1px solid #e6e9eb;
-            padding: 16px;
-            margin: 0 -1px -1px -1px;
-        }
-        
-        .ghost-embed-input {
-            width: 100%;
-            padding: 12px;
-            font-size: 14px;
-            border: 1px solid #dde1e5;
-            border-radius: 6px;
-            background: white;
-            color: #15171a;
-            outline: none;
-            font-family: inherit;
-        }
-        
-        .ghost-embed-input:focus {
-            border-color: #14b8ff;
-        }
-        
-        .ghost-embed-input::placeholder {
-            color: #626d79;
-        }
-        
-        .ghost-embed-caption {
-            width: 100%;
-            padding: 12px;
-            font-size: 14px;
-            border: 1px solid #dde1e5;
-            border-radius: 6px;
-            background: white;
-            color: #15171a;
-            outline: none;
-            font-family: inherit;
-            margin-top: 12px;
-        }
-        
-        .ghost-embed-caption:focus {
-            border-color: #14b8ff;
-        }
-        
-        .ghost-embed-loading {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 40px 20px;
-            color: #626d79;
-            font-size: 14px;
-        }
-        
-        .ghost-embed-error {
-            text-align: center;
-            padding: 40px 20px;
-            color: #f56565;
-            font-size: 14px;
-        }
-        
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        
-        /* Post Selector Modal Styles */
-        .post-selector-item {
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        
-        .post-selector-item:hover {
-            background-color: #f8f9fa;
-            border-color: #14b8ff !important;
-        }
-        
-        /* Bootstrap modal fallback styles */
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 1050;
-            display: none;
-            width: 100%;
-            height: 100%;
-            overflow-x: hidden;
-            overflow-y: auto;
-            outline: 0;
-        }
-        
-        .modal.show {
-            display: block;
-        }
-        
-        .modal-dialog {
-            position: relative;
-            width: auto;
-            margin: 1.75rem auto;
-            max-width: 800px;
-        }
-        
-        .modal-content {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            background-color: #fff;
-            background-clip: padding-box;
-            border: 1px solid rgba(0,0,0,.2);
-            border-radius: .3rem;
-            outline: 0;
-            box-shadow: 0 0.5rem 1rem rgba(0,0,0,.5);
-        }
-        
-        .modal-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 1rem;
-            border-bottom: 1px solid #dee2e6;
-        }
-        
-        .modal-title {
-            margin: 0;
-            line-height: 1.5;
-            font-size: 1.25rem;
-            font-weight: 500;
-        }
-        
-        .modal-body {
-            position: relative;
-            flex: 1 1 auto;
-            padding: 1rem;
-            max-height: 70vh;
-            overflow-y: auto;
-        }
-        
-        .btn-close {
-            padding: .25rem .25rem;
-            background: transparent;
-            border: 0;
-            font-size: 1.25rem;
-            font-weight: 700;
-            line-height: 1;
-            color: #000;
-            opacity: .5;
-            cursor: pointer;
-        }
-        
-        .btn-close:hover {
-            opacity: .75;
-        }
-        
-        .modal-backdrop {
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 1040;
-            width: 100vw;
-            height: 100vh;
-            background-color: #000;
-            opacity: .5;
-        }
-        
-        /* Ghost Callout Card Styles */
-        .callout-card-content {
-            padding: 0;
-        }
-        
-        .ghost-callout-card {
-            padding: 1.2em 1.6em;
-            border-radius: 8px;
-            margin: 0;
-            position: relative;
-            display: flex;
-            gap: 0.8em;
-        }
-        
-        /* Callout card color styles - matching Ghost exactly */
-        .ghost-callout-card.kg-callout-card-grey {
-            background: rgba(124, 139, 154, 0.13);
-        }
-        
-        .ghost-callout-card.kg-callout-card-white {
-            background: transparent;
-            box-shadow: inset 0 0 0 1px rgba(124, 139, 154, 0.2);
-        }
-        
-        .ghost-callout-card.kg-callout-card-blue {
-            background: rgba(33, 172, 232, 0.12);
-        }
-        
-        .ghost-callout-card.kg-callout-card-green {
-            background: rgba(52, 183, 67, 0.12);
-        }
-        
-        .ghost-callout-card.kg-callout-card-yellow {
-            background: rgba(240, 165, 15, 0.13);
-        }
-        
-        .ghost-callout-card.kg-callout-card-red {
-            background: rgba(209, 46, 46, 0.11);
-        }
-        
-        .ghost-callout-card.kg-callout-card-pink {
-            background: rgba(225, 71, 174, 0.11);
-        }
-        
-        .ghost-callout-card.kg-callout-card-purple {
-            background: rgba(135, 85, 236, 0.12);
-        }
-        
-        .ghost-callout-card.kg-callout-card-accent {
-            background: #15171a;
-            color: #fff;
-        }
-        
-        .ghost-callout-card.kg-callout-card-accent .ghost-callout-text {
-            color: #fff;
-        }
-        
-        
-        .ghost-callout-emoji {
-            font-size: 1.15em;
-            line-height: 1.25em;
-            padding-right: 0.8em;
-            flex-shrink: 0;
-            cursor: pointer;
-            user-select: none;
-        }
-        
-        .ghost-callout-text {
-            flex: 1;
-            font-size: 0.95em;
-            line-height: 1.5em;
-            outline: none;
-            min-height: 24px;
-        }
-        
-        .ghost-callout-text:empty:before {
-            content: attr(data-placeholder);
-            color: #aaa;
-        }
-        
-        .callout-card-content {
-            cursor: pointer;
-        }
-        
-        .ghost-callout-colors {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-        
-        .ghost-color-button {
-            width: 32px;
-            height: 32px;
-            border-radius: 6px;
-            border: 2px solid transparent;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            position: relative;
-        }
-        
-        .ghost-color-button:hover {
-            transform: scale(1.1);
-        }
-        
-        .ghost-color-button.active {
-            border-color: #15171a;
-            box-shadow: 0 0 0 2px white, 0 0 0 4px #15171a;
-        }
-        
-        .ghost-callout-card.kg-callout-card-white {
-            box-shadow: inset 0 0 0 1px rgba(124, 139, 154, 0.2);
-        }
-        
-        .ghost-callout-card.kg-callout-card-accent .ghost-callout-text {
-            color: white;
-        }
-        
-        .ghost-callout-card.kg-callout-card-accent .ghost-callout-text:empty:before {
-            color: rgba(255, 255, 255, 0.7);
-        }
-        
-        /* Emoji picker styles */
-        .ghost-emoji-picker {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            z-index: 1000;
-            background: white;
-            border: 1px solid #e6e9eb;
-            border-radius: 8px;
-            padding: 12px;
-            margin-top: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            display: none;
-        }
-        
-        .ghost-emoji-picker.active {
-            display: block;
-        }
-        
-        .ghost-emoji-grid {
-            display: grid;
-            grid-template-columns: repeat(8, 1fr);
-            gap: 4px;
-        }
-        
-        .ghost-emoji-option {
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            cursor: pointer;
-            border-radius: 4px;
-            transition: background-color 0.2s ease;
-        }
-        
-        .ghost-emoji-option:hover {
-            background-color: #f5f5f5;
-        }
-        
-        .ghost-color-picker {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-        }
-        
-        .ghost-color-button {
-            width: 32px;
-            height: 32px;
-            border-radius: 6px;
-            border: 2px solid transparent;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            position: relative;
-        }
-        
-        .ghost-color-button:hover {
-            transform: scale(1.1);
-        }
-        
-        .ghost-color-button.active {
-            box-shadow: 0 0 0 2px #fff, 0 0 0 4px #14b8ff;
-        }
-        
-        .ghost-color-button:focus {
-            outline: none;
-            box-shadow: 0 0 0 2px #fff, 0 0 0 4px #14b8ff;
-        }
-        
-        /* Ghost-style image settings */
-        .ghost-image-settings {
-            margin-top: 12px;
-            background: white;
-            border: 1px solid #e5e7eb;
-            border-radius: 4px;
-            overflow: hidden;
-        }
-        
-        .ghost-image-settings.hidden {
-            display: none;
-        }
-        
-        /* Button card styles */
-        .button-card-content {
-            cursor: pointer;
-        }
-        
-        .kg-button-card {
-            margin: 1.5em 0;
-            text-align: center;
-        }
-        
-        .kg-button-card.kg-align-left {
-            text-align: left;
-        }
-        
-        .kg-button-card.kg-align-center {
-            text-align: center;
-        }
-        
-        .kg-btn {
-            display: inline-block;
-            padding: 8px 16px;
-            font-size: 16px;
-            font-weight: 600;
-            text-decoration: none !important;
-            border-radius: 5px;
-            transition: all 0.2s ease;
-            cursor: pointer;
-        }
-        
-        /* Custom button class that doesn't inherit default styles */
-        .kg-btn-custom {
-            all: unset;
-            cursor: pointer;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
-        
-        .kg-btn-primary {
-            background: #14b8ff;
-            color: #fff;
-        }
-        
-        .kg-btn-primary:hover {
-            background: #0ea5e9;
-            color: #fff;
-        }
-        
-        .kg-btn-secondary {
-            background: #626d79;
-            color: #fff;
-        }
-        
-        .kg-btn-secondary:hover {
-            background: #515961;
-            color: #fff;
-        }
-        
-        .kg-btn-outline {
-            background: transparent;
-            color: #15171a;
-            border: 1px solid #dde1e5;
-        }
-        
-        .kg-btn-outline:hover {
-            border-color: #c5c7c9;
-            color: #15171a;
-        }
-        
-        .kg-btn-link {
-            background: transparent;
-            color: #14b8ff;
-            text-decoration: none;
-        }
-        
-        .kg-btn-link:hover {
-            color: #0ea5e9;
-        }
-        
-        /* Ghost button settings panel */
-        .ghost-button-settings {
-            min-width: 300px;
-        }
-        
-        /* Gallery card styles - matching Ghost exactly */
-        .gallery-card-content {
-            cursor: pointer;
-        }
-        
-        .kg-gallery-card {
-            margin: 0 0 1.5em;
-        }
-        
-        .kg-gallery-card,
-        .kg-gallery-card * {
-            box-sizing: border-box;
-        }
-        
-        .kg-gallery-card figcaption {
-            margin: 1.0em 0 0;
-            text-align: center;
-            font-size: 0.85em;
-            line-height: 1.4;
-            color: rgba(0,0,0,0.5);
-        }
-        
-        .kg-gallery-container {
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-        }
-        
-        .kg-gallery-row {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            gap: 1.2rem;
-        }
-        
-        .kg-gallery-image {
-            flex: 1 1 0;
-            position: relative;
-            overflow: hidden;
-            border-radius: 3px;
-            min-height: 100px;
-            cursor: move;
-        }
-        
-        .kg-gallery-image img {
-            display: block;
-            margin: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .kg-gallery-image:hover .kg-gallery-image-toolbar {
-            opacity: 1;
-        }
-        
-        .kg-gallery-image-toolbar {
-            position: absolute;
-            top: 8px;
-            right: 8px;
-            display: flex;
-            gap: 4px;
-            opacity: 0;
-            transition: opacity 0.2s;
-            background: rgba(0,0,0,0.3);
-            border-radius: 3px;
-            padding: 4px;
-        }
-        
-        .kg-gallery-image-btn {
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(0,0,0,0.5);
-            color: white;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-        
-        .kg-gallery-image-btn:hover {
-            background: rgba(0,0,0,0.7);
-        }
-        
-        /* Ghost gallery settings */
-        .ghost-gallery-settings {
-            background: #f9fafb;
-            border: 1px solid #e5e7eb;
-            border-radius: 8px;
-            padding: 16px;
-            margin-top: 12px;
-            display: none;
-        }
-        
-        .ghost-gallery-settings.active {
-            display: block;
-        }
-        
-        .ghost-gallery-toolbar {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 12px;
-        }
-        
-        .ghost-gallery-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 8px 12px;
-            background: white;
-            border: 1px solid #e5e7eb;
-            border-radius: 6px;
-            font-size: 14px;
-            font-weight: 500;
-            color: #374151;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        
-        .ghost-gallery-btn:hover {
-            background: #f3f4f6;
-            border-color: #d1d5db;
-        }
-        
-        .ghost-gallery-images-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            gap: 12px;
-            margin-top: 16px;
-        }
-        
-        .ghost-gallery-image-item {
-            position: relative;
-            aspect-ratio: 1;
-            border-radius: 6px;
-            overflow: hidden;
-            background: #f3f4f6;
-        }
-        
-        .ghost-gallery-image-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .ghost-gallery-image-item:hover .ghost-gallery-image-actions {
-            opacity: 1;
-        }
-        
-        .ghost-gallery-image-actions {
-            position: absolute;
-            inset: 0;
-            background: rgba(0,0,0,0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            opacity: 0;
-            transition: opacity 0.2s;
-        }
-        
-        .ghost-gallery-action-btn {
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255,255,255,0.9);
-            border: none;
-            border-radius: 6px;
-            color: #374151;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        
-        .ghost-gallery-action-btn:hover {
-            background: white;
-            transform: scale(1.05);
-        }
-        
-        .ghost-gallery-action-delete {
-            color: #ef4444;
-        }
-        
-        /* Empty gallery state */
-        .kg-gallery-empty {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 60px 20px;
-            background: #f9fafb;
-            border: 2px dashed #e5e7eb;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        
-        .kg-gallery-empty:hover {
-            background: #f3f4f6;
-            border-color: #d1d5db;
-        }
-        
-        .kg-gallery-empty i {
-            font-size: 48px;
-            color: #9ca3af;
-            margin-bottom: 12px;
-        }
-        
-        .kg-gallery-empty p {
-            color: #6b7280;
-            font-size: 16px;
-            margin: 0;
-        }
-        
-        /* Ghost modal styles */
-        .ghost-modal-backdrop {
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-        }
-        
-        .ghost-modal {
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
-            max-width: 500px;
-            width: 90%;
-            max-height: 90vh;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .ghost-modal-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 20px 24px;
-            border-bottom: 1px solid #e5e7eb;
-        }
-        
-        .ghost-modal-header h3 {
-            margin: 0;
-            font-size: 18px;
-            font-weight: 600;
-            color: #111827;
-        }
-        
-        .ghost-modal-close {
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: transparent;
-            border: none;
-            border-radius: 6px;
-            color: #6b7280;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        
-        .ghost-modal-close:hover {
-            background: #f3f4f6;
-            color: #374151;
-        }
-        
-        .ghost-modal-body {
-            padding: 24px;
-            overflow-y: auto;
-            flex: 1;
-        }
-        
-        .ghost-modal-footer {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            gap: 12px;
-            padding: 20px 24px;
-            border-top: 1px solid #e5e7eb;
-        }
-        
-        /* Ghost Button Styles */
-        .ghost-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.5rem 1rem;
-            font-size: 0.875rem;
-            font-weight: 500;
-            border-radius: 0.375rem;
-            border: 1px solid transparent;
-            cursor: pointer;
-            transition: all 0.15s ease-in-out;
-            text-decoration: none;
-            white-space: nowrap;
-        }
-        
-        .ghost-btn span {
-            display: inline-block;
-        }
-        
-        .ghost-btn-link {
-            background: transparent;
-            color: #6b7280;
-            border-color: transparent;
-        }
-        
-        .ghost-btn-link:hover {
-            color: #111827;
-        }
-        
-        .ghost-btn-red {
-            background-color: #dc2626;
-            color: white;
-        }
-        
-        .ghost-btn-red:hover {
-            background-color: #b91c1c;
-        }
-        
-        .ghost-btn-black {
-            background-color: #111827;
-            color: white;
-        }
-        
-        .ghost-btn-black:hover {
-            background-color: #000000;
-        }
-        
-        /* Publish modal styles */
-        .ghost-modal input[type="radio"] {
-            flex-shrink: 0;
-            width: 1rem;
-            height: 1rem;
-            margin-top: 0.125rem;
-            cursor: pointer;
-        }
-        
-        .ghost-modal input[type="date"],
-        .ghost-modal input[type="time"] {
-            padding: 0.5rem 0.75rem;
-            border: 1px solid #e5e7eb;
-            border-radius: 0.375rem;
-            font-size: 0.875rem;
-            transition: border-color 0.15s ease-in-out;
-        }
-        
-        .ghost-modal input[type="date"]:focus,
-        .ghost-modal input[type="time"]:focus {
-            outline: none;
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-        }
-        
-        .ghost-modal label {
-            display: flex;
-            cursor: pointer;
-        }
-        
-        .ghost-modal .form-control {
-            display: block;
-            width: 100%;
-            padding: 0.5rem 0.75rem;
-            font-size: 0.875rem;
-            line-height: 1.25rem;
-            color: #374151;
-            background-color: #ffffff;
-            background-clip: padding-box;
-            border: 1px solid #d1d5db;
-            border-radius: 0.375rem;
-            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-        }
-        
-        /* Header Card v2 Styles - Matching Ghost exactly */
-        .header-card-content {
-            position: relative;
-            max-width: 100%;
-            overflow: visible;
-        }
-        
-        /* Settings button for header card */
-        .ghost-card-settings-button {
-            position: absolute;
-            top: 8px;
-            right: 8px;
-            z-index: 10;
-            background: white;
-            border: 1px solid #e5e7eb;
-            border-radius: 6px;
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            opacity: 0;
-            transition: all 0.2s;
-        }
-        
-        .header-card-content:hover .ghost-card-settings-button {
-            opacity: 1;
-        }
-        
-        .ghost-card-settings-button:hover {
-            background: #f3f4f6;
-            border-color: #d1d5db;
-        }
-        
-        .ghost-card-settings-button i {
-            font-size: 16px;
-            color: #374151;
-        }
-        
-        .kg-header-card.kg-v2 {
-            position: relative;
-            padding: 0;
-            min-height: initial;
-            text-align: initial;
-            margin: 0 0 1.5em;
-            cursor: pointer;
-            transition: box-shadow 0.2s ease;
-        }
-        
-        .kg-header-card.kg-v2:hover {
-            box-shadow: 0 0 0 2px var(--ghost-accent-color);
-        }
-        
-        .kg-header-card.kg-v2,
-        .kg-header-card.kg-v2 * {
-            box-sizing: border-box;
-        }
-        
-        .kg-header-card.kg-v2 a,
-        .kg-header-card.kg-v2 a span {
-            color: currentColor;
-        }
-        
-        .kg-header-card.kg-style-accent.kg-v2 {
-            background-color: var(--ghost-accent-color);
-        }
-        
-        .kg-header-card-content {
-            width: 100%;
-        }
-        
-        .kg-layout-split .kg-header-card-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            max-width: 100%;
-        }
-        
-        /* Ensure split layout doesn't overflow */
-        .kg-header-card.kg-layout-split {
-            max-width: 100%;
-            margin-left: 0;
-            margin-right: 0;
-        }
-        
-        .kg-header-card.kg-layout-split.kg-width-full {
-            width: 100%;
-            max-width: 100%;
-        }
-        
-        .kg-header-card-text {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: center;
-            height: 100%;
-            padding: min(6.4vmax, 120px) min(4vmax, 80px);
-            background-size: cover;
-            background-position: center;
-            text-align: left;
-        }
-        
-        .kg-width-wide .kg-header-card-text {
-            padding: min(10vmax, 220px) min(6.4vmax, 140px);
-        }
-        
-        .kg-width-full .kg-header-card-text {
-            padding: min(12vmax, 260px) 0;
-        }
-        
-        .kg-layout-split .kg-header-card-text {
-            padding: min(12vmax, 260px) min(4vmax, 80px);
-        }
-        
-        .kg-layout-split.kg-content-wide .kg-header-card-text {
-            padding: min(10vmax, 220px) 0 min(10vmax, 220px) min(4vmax, 80px);
-        }
-        
-        .kg-layout-split.kg-content-wide.kg-swapped .kg-header-card-text {
-            padding: min(10vmax, 220px) min(4vmax, 80px) min(10vmax, 220px) 0;
-        }
-        
-        .kg-swapped .kg-header-card-text {
-            grid-row: 1;
-        }
-        
-        .kg-header-card-text.kg-align-center {
-            align-items: center;
-            text-align: center;
-        }
-        
-        .kg-header-card.kg-style-image h2.kg-header-card-heading,
-        .kg-header-card.kg-style-image .kg-header-card-subheading,
-        .kg-header-card.kg-style-image.kg-v2 .kg-header-card-button {
-            z-index: 999;
-        }
-        
-        /* Background image */
-        .kg-header-card > picture > .kg-header-card-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            background-color: #FFFFFF;
-            pointer-events: none;
-        }
-        
-        /* Split layout image */
-        .kg-header-card-content .kg-header-card-image {
-            width: 100%;
-            height: 0;
-            min-height: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
-        
-        .kg-layout-split .kg-header-card-image {
-            max-width: 100%;
-            overflow: hidden;
-            cursor: pointer;
-        }
-        
-        .kg-header-card-image-placeholder {
-            background: #f3f4f6;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 400px;
-        }
-        
-        .kg-header-image-upload-placeholder {
-            text-align: center;
-            color: #71717a;
-        }
-        
-        .kg-header-image-upload-placeholder i {
-            font-size: 48px;
-            color: #a1a1aa;
-            display: block;
-            margin-bottom: 12px;
-        }
-        
-        .kg-header-image-upload-placeholder p {
-            margin: 0;
-            font-size: 14px;
-            font-weight: 500;
-        }
-        
-        .kg-layout-split picture.kg-header-card-image {
-            display: block;
-            height: 100%;
-            min-height: 400px;
-        }
-        
-        .kg-layout-split picture.kg-header-card-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .kg-content-wide .kg-header-card-content .kg-header-card-image {
-            height: 100%;
-            padding: 5.6em 0;
-            object-fit: contain;
-        }
-        
-        /* Heading */
-        .kg-header-card h2.kg-header-card-heading {
-            margin: 0;
-            font-size: clamp(1.7em, 4vw, 2.5em);
-            font-weight: 700;
-            line-height: 1.05em;
-            letter-spacing: -0.01em;
-        }
-        
-        .kg-header-card h2.kg-header-card-heading[contenteditable]:empty:before {
-            content: attr(data-placeholder);
-            color: currentColor;
-            opacity: 0.3;
-        }
-        
-        .kg-header-card.kg-width-wide h2.kg-header-card-heading {
-            font-size: clamp(1.7em, 5vw, 3.3em);
-        }
-        
-        .kg-header-card.kg-width-full h2.kg-header-card-heading {
-            font-size: clamp(1.9em, 5.6vw, 4.2em);
-        }
-        
-        .kg-header-card.kg-width-full.kg-layout-split h2.kg-header-card-heading {
-            font-size: clamp(1.9em, 4vw, 3.3em);
-        }
-        
-        /* Subheading */
-        .kg-header-card-subheading {
-            margin: 0 0 2em;
-        }
-        
-        .kg-header-card .kg-header-card-subheading {
-            max-width: 40em;
-            margin: 0;
-            font-size: clamp(1.05em, 2vw, 1.4em);
-            font-weight: 500;
-            line-height: 1.2em;
-        }
-        
-        .kg-header-card .kg-header-card-subheading[contenteditable]:empty:before {
-            content: attr(data-placeholder);
-            color: currentColor;
-            opacity: 0.3;
-        }
-        
-        .kg-header-card h2 + .kg-header-card-subheading {
-            margin: 0.6em 0 0;
-        }
-        
-        .kg-header-card .kg-header-card-subheading strong {
-            font-weight: 600;
-        }
-        
-        .kg-header-card.kg-width-wide .kg-header-card-subheading {
-            font-size: clamp(1.05em, 2vw, 1.55em);
-        }
-        
-        .kg-header-card.kg-width-full .kg-header-card-subheading:not(.kg-layout-split .kg-header-card-subheading) {
-            max-width: min(65vmax, 1200px);
-            font-size: clamp(1.05em, 2vw, 1.7em);
-        }
-        
-        .kg-header-card.kg-width-full.kg-layout-split .kg-header-card-subheading {
-            font-size: clamp(1.05em, 2vw, 1.55em);
-        }
-        
-        /* Button */
-        .kg-header-card.kg-v2 .kg-header-card-button {
-            display: flex;
-            position: relative;
-            align-items: center;
-            height: 2.9em;
-            min-height: 46px;
-            padding: 0 1.2em;
-            outline: none;
-            border: none;
-            font-size: 1em;
-            font-weight: 600;
-            line-height: 1em;
-            text-align: center;
-            text-decoration: none;
-            letter-spacing: .2px;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            border-radius: 3px;
-            transition: opacity .2s ease;
-            cursor: pointer;
-        }
-        
-        .kg-header-card.kg-v2 .kg-header-card-button.kg-style-accent {
-            background-color: var(--ghost-accent-color);
-        }
-        
-        .kg-header-card.kg-v2 h2 + .kg-header-card-button,
-        .kg-header-card.kg-v2 p + .kg-header-card-button {
-            margin: 1.5em 0 0;
-        }
-        
-        .kg-header-card.kg-v2 .kg-header-card-button:hover {
-            opacity: 0.85;
-        }
-        
-        .kg-header-card.kg-v2.kg-width-wide .kg-header-card-button {
-            font-size: 1.05em;
-        }
-        
-        .kg-header-card.kg-v2.kg-width-wide h2 + .kg-header-card-button,
-        .kg-header-card.kg-v2.kg-width-wide p + .kg-header-card-button {
-            margin-top: 1.75em;
-        }
-        
-        .kg-header-card.kg-v2.kg-width-full .kg-header-card-button {
-            font-size: 1.1em;
-        }
-        
-        .kg-header-card.kg-v2.kg-width-full h2 + .kg-header-card-button,
-        .kg-header-card.kg-v2.kg-width-full p + .kg-header-card-button {
-            margin-top: 2em;
-        }
-        
-        /* Header settings panel */
-        .ghost-header-settings {
-            margin: 16px auto;
-            display: none;
-            width: 100%;
-            max-width: 680px;
-        }
-        
-        .ghost-header-settings:not(.hidden) {
-            display: block !important;
-        }
-        
-        .ghost-header-settings .ghost-settings-panel {
-            background: #f9fafb;
-            border: 1px solid #e5e7eb;
-            border-radius: 8px;
-            padding: 20px;
-            width: 100%;
-            max-height: 500px;
-            overflow-y: auto;
-            margin: 0 auto;
-        }
-        
-        .ghost-settings-group {
-            margin-bottom: 16px;
-        }
-        
-        .ghost-settings-group:last-child {
-            margin-bottom: 0;
-        }
-        
-        .ghost-settings-label {
-            display: block;
-            font-size: 13px;
-            font-weight: 500;
-            color: #374151;
-            margin-bottom: 8px;
-        }
-        
-        .ghost-button-group {
-            display: flex;
-            gap: 4px;
-        }
-        
-        .ghost-button-small {
-            padding: 6px 12px;
-            font-size: 13px;
-            border: 1px solid #e5e7eb;
-            background: white;
-            color: #374151;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-        
-        .ghost-button-small:hover {
-            background: #f3f4f6;
-        }
-        
-        .ghost-button-small.active {
-            background: #1f2937;
-            color: white;
-            border-color: #1f2937;
-        }
-        
-        .ghost-color-picker-row {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-        
-        .ghost-color-btn {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            border: 2px solid transparent;
-            cursor: pointer;
-            position: relative;
-            transition: all 0.2s;
-        }
-        
-        .ghost-color-btn:hover {
-            transform: scale(1.1);
-        }
-        
-        .ghost-color-btn.active {
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
-        }
-        
-        .ghost-color-btn.ghost-color-custom {
-            background: linear-gradient(45deg, #e5e7eb 25%, transparent 25%, transparent 75%, #e5e7eb 75%, #e5e7eb),
-                        linear-gradient(45deg, #e5e7eb 25%, transparent 25%, transparent 75%, #e5e7eb 75%, #e5e7eb);
-            background-size: 10px 10px;
-            background-position: 0 0, 5px 5px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .ghost-input {
-            width: 100%;
-            padding: 8px 12px;
-            border: 1px solid #e5e7eb;
-            border-radius: 4px;
-            font-size: 14px;
-            transition: border-color 0.2s;
-        }
-        
-        .ghost-input:focus {
-            outline: none;
-            border-color: #3b82f6;
-        }
-        
-        /* Responsive */
-        @media (max-width: 640px) {
-            .kg-layout-split .kg-header-card-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .kg-width-wide .kg-header-card-text {
-                padding: min(6.4vmax, 120px) min(4vmax, 80px);
-            }
-            
-            .kg-layout-split.kg-content-wide .kg-header-card-text,
-            .kg-layout-split.kg-content-wide.kg-swapped .kg-header-card-text {
-                padding: min(9.6vmax, 180px) 0;
-            }
-            
-            .kg-header-card.kg-width-full .kg-header-card-subheading:not(.kg-layout-split .kg-header-card-subheading) {
-                max-width: unset;
-            }
-            
-            .kg-header-card-content .kg-header-card-image:not(.kg-content-wide .kg-header-card-content .kg-header-card-image) {
-                height: auto;
-                min-height: unset;
-                aspect-ratio: 1 / 1;
-            }
-            
-            .kg-content-wide .kg-header-card-content .kg-header-card-image {
-                padding: 1.7em 0 0;
-            }
-            
-            .kg-content-wide.kg-swapped .kg-header-card-content .kg-header-card-image {
-                padding: 0 0 1.7em;
-            }
-            
-            .kg-header-card.kg-v2 .kg-header-card-button {
-                height: 2.9em;
-            }
-            
-            .kg-header-card.kg-v2.kg-width-wide .kg-header-card-button,
-            .kg-header-card.kg-v2.kg-width-full .kg-header-card-button {
-                font-size: 1em;
-            }
-        }
-        
-        /* Ghost Settings Panel Styles (from koenig.css) */
-        .kg-settings-panel {
-            position: relative;
-            margin: 1rem auto;
-            padding: 1rem;
-            background: #f9fafb;
-            border: 1px solid #e5e7eb;
-            border-radius: 8px;
-            max-width: 680px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-        
-        .kg-settings-panel-header {
-            border-color: #dde1e7;
-        }
-        
-        .kg-settings-panel-content {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-        
-        .kg-settings-panel-control {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-        
-        .kg-settings-panel-control-layout {
-            border-bottom: 1px solid #e5e7eb;
-            padding-bottom: 1.5rem;
-        }
-        
-        .kg-settings-panel-control-label {
-            font-size: 13px;
-            font-weight: 500;
-            color: #374151;
-            margin-bottom: 8px;
-        }
-        
-        .kg-settings-panel-control-input .gh-input,
-        .kg-settings-panel-control-input .gh-select {
-            font-size: 1.0rem !important;
-            padding: 5px 10px;
-            font-weight: 500;
-        }
-        
-        /* Ghost button groups */
-        .gh-btn-group {
-            display: inline-flex;
-            border-radius: 4px;
-            background: #f5f5f5;
-        }
-        
-        .gh-btn-group.icons {
-            background: transparent;
-            gap: 0.5rem;
-        }
-        
-        .gh-btn {
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.5rem 1rem;
-            border: none;
-            background: transparent;
-            color: #15171a;
-            font-size: 1.3rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            white-space: nowrap;
-        }
-        
-        .gh-btn-icon {
-            width: 32px;
-            height: 32px;
-            padding: 0;
-        }
-        
-        .gh-btn-group .gh-btn:first-child {
-            border-radius: 4px 0 0 4px;
-        }
-        
-        .gh-btn-group .gh-btn:last-child {
-            border-radius: 0 4px 4px 0;
-        }
-        
-        .gh-btn-group .gh-btn-group-selected {
-            background: #ffffff;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-        }
-        
-        .gh-btn-outline {
-            background: #ffffff;
-            border: 1px solid #e5e7eb;
-            border-radius: 4px;
-        }
-        
-        /* Header style buttons */
-        .kg-settings-headerstyle-btn-group {
-            background: none !important;
-        }
-        
-        .kg-settings-headerstyle-btn-group .gh-btn {
-            background: var(--white) !important;
-            width: 26px;
-            height: 26px;
-            border: 1px solid var(--whitegrey);
-            border-radius: 50%;
-            margin-right: 5px;
-        }
-        
-        .kg-settings-headerstyle-btn-group .kg-headerstyle-btn-dark {
-            background: #08090c !important;
-        }
-        
-        .kg-settings-headerstyle-btn-group .kg-headerstyle-btn-light {
-            background: #F9F9F9 !important;
-        }
-        
-        .kg-settings-headerstyle-btn-group .kg-headerstyle-btn-accent {
-            background: var(--accent-color, #FF1A75) !important;
-        }
-        
-        /* Remove old custom button styles since we're using image button now */
-        
-        .kg-settings-headerstyle-btn-group .kg-headerstyle-btn-image {
-            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjYiIGhlaWdodD0iMjYiIHZpZXdCb3g9IjAgMCAyNiAyNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjI2IiBoZWlnaHQ9IjI2IiByeD0iMTMiIGZpbGw9IiNFNUU3RUIiLz4KPHBhdGggZD0iTTE4LjUgMTguNVY5LjVDMTguNSA4LjM5NTQzIDE3LjYwNDYgNy41IDE2LjUgNy41SDkuNUM4LjM5NTQzIDcuNSA3LjUgOC4zOTU0MyA3LjUgOS41VjE4LjUiIHN0cm9rZT0iIzZCNzI4MCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8Y2lyY2xlIGN4PSIxMS41IiBjeT0iMTEuNSIgcj0iMS41IiBmaWxsPSIjNkI3MjgwIi8+CjxwYXRoIGQ9Ik03LjUgMTguNUwxMSAxNUwxNS41IDE5LjUiIHN0cm9rZT0iIzZCNzI4MCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4=') !important;
-            background-size: cover !important;
-            background-position: center !important;
-            margin-right: 0;
-        }
-        
-        .kg-settings-headerstyle-btn-group .kg-headerstyle-btn-image.has-image {
-            background-size: cover !important;
-            background-position: center !important;
-        }
-        
-        .kg-settings-headerstyle-btn-group .kg-headerstyle-btn-custom {
-            background: conic-gradient(from 0deg, #FF1A75, #F59E0B, #10B981, #0EA5E9, #8B5CF6, #FF1A75) !important;
-            border-radius: 50% !important;
-            margin-right: 0;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .kg-settings-headerstyle-btn-group .kg-headerstyle-btn-custom::after {
-            content: '';
-            position: absolute;
-            top: 3px;
-            left: 3px;
-            right: 3px;
-            bottom: 3px;
-            background: white;
-            border-radius: 50%;
-            opacity: 0;
-            transition: opacity 0.2s ease;
-        }
-        
-        .kg-settings-headerstyle-btn-group .kg-headerstyle-btn-custom:not(.gh-btn-group-selected):hover::after {
-            opacity: 0.2;
-        }
-        
-        .kg-settings-headerstyle-btn-group .gh-btn-group-selected {
-            position: relative;
-        }
-        
-        .kg-settings-headerstyle-btn-group .gh-btn-group-selected::before {
-            position: absolute;
-            content: "";
-            display: block;
-            top: -4px;
-            right: -4px;
-            bottom: -4px;
-            left: -4px;
-            border: 2px solid var(--green, #30cf43);
-            border-radius: 50%;
-        }
-        
-        /* Fix button alignment in settings panel */
-        .kg-settings-panel-control-input .gh-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            max-width: 100%;
-            width: 100%;
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            padding: 8px 12px;
-            font-size: 13px;
-        }
-        
-        .kg-settings-panel-control-input .gh-btn span {
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            flex: 1;
-            min-width: 0;
-        }
-        
-        .kg-settings-panel-control-input .gh-btn svg {
-            flex-shrink: 0;
-            width: 14px;
-            height: 14px;
-        }
-        
-        /* Color picker styles - matching Ghost exactly */
-        .kg-color-picker-swatch-group {
-            display: flex;
-            gap: 5px;
-            flex-wrap: wrap;
-        }
-        
-        .kg-color-swatch {
-            width: 26px;
-            height: 26px;
-            border-radius: 50%;
-            cursor: pointer;
-            border: 1px solid var(--whitegrey);
-            transition: all 0.2s ease;
-            position: relative;
-            box-sizing: border-box;
-            padding: 0;
-            background: none;
-        }
-        
-        .kg-color-swatch:hover {
-            transform: scale(1.1);
-        }
-        
-        .kg-color-swatch.active {
-            position: relative;
-        }
-        
-        .kg-color-swatch.active::before {
-            position: absolute;
-            content: "";
-            display: block;
-            top: -4px;
-            right: -4px;
-            bottom: -4px;
-            left: -4px;
-            border: 2px solid var(--green);
-            border-radius: 50%;
-        }
-        
-        .kg-color-swatch-custom {
-            background: transparent !important;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-        
-        .kg-color-swatch-custom svg {
-            width: 12px;
-            height: 12px;
-            pointer-events: none;
-            color: #737373;
-        }
-        
-        .kg-color-swatch-custom svg path {
-            stroke-width: 1.5;
-        }
-        
-        .kg-color-picker-input {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            cursor: pointer;
-        }
-        
-        .ghost-color-picker-row {
-            display: flex;
-            gap: 12px;
-            margin-top: 8px;
-        }
-        
-        .ghost-color-input-group {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-        
-        .ghost-color-label {
-            font-size: 12px;
-            color: #626d79;
-            font-weight: 500;
-        }
-        
-        .ghost-color-picker {
-            width: 100%;
-            height: 36px;
-            border: 1px solid #dde1e5;
-            border-radius: 4px;
-            cursor: pointer;
-            padding: 2px;
-        }
-        
-        .ghost-color-picker:hover {
-            border-color: #c5c7c9;
-        }
-        
-        .ghost-color-picker:focus {
-            outline: none;
-            border-color: #14b8ff;
-            box-shadow: 0 0 0 2px rgba(20, 184, 255, 0.2);
-        }
-        
-        .ghost-image-toolbar {
-            display: flex;
-            align-items: center;
-            padding: 8px;
-            gap: 4px;
-            background: #fafafa;
-        }
-        
-        .ghost-image-width-selector {
-            display: flex;
-            gap: 4px;
-        }
-        
-        .ghost-width-btn, .ghost-video-toolbar .ghost-width-btn {
-            width: 32px;
-            height: 32px;
-            padding: 0;
-            border: none;
-            background: transparent;
-            color: #6b7280;
-            border-radius: 3px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s;
-        }
-        
-        .ghost-width-btn:hover {
-            background: #f3f4f6;
-            color: #374151;
-        }
-        
-        .ghost-width-btn.active {
-            background: #374151;
-            color: white;
-        }
-        
-        .ghost-width-btn svg {
-            width: 24px;
-            height: 18px;
-        }
-        
-        .ghost-image-toolbar-divider {
-            width: 1px;
-            height: 24px;
-            background: #e5e7eb;
-            margin: 0 8px;
-        }
-        
-        .ghost-image-btn {
-            width: 32px;
-            height: 32px;
-            padding: 0;
-            border: none;
-            background: transparent;
-            color: #6b7280;
-            border-radius: 3px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s;
-            font-size: 18px;
-        }
-        
-        .ghost-image-btn:hover {
-            background: #f3f4f6;
-            color: #374151;
-        }
-        
-        .ghost-image-btn.active {
-            color: #10b981;
-        }
-        
-        .ghost-alt-icon {
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-        
-        .ghost-image-input-row {
-            padding: 12px;
-            border-bottom: 1px solid #e5e7eb;
-        }
-        
-        .ghost-image-input-row.hidden {
-            display: none;
-        }
-        
-        .ghost-image-input-row:last-child {
-            border-bottom: none;
-        }
-        
-        .ghost-image-input {
-            width: 100%;
-            padding: 8px 12px;
-            border: 1px solid #e5e7eb;
-            border-radius: 3px;
-            font-size: 14px;
-            outline: none;
-            transition: border-color 0.2s;
-        }
-        
-        .ghost-image-input:focus {
-            border-color: #10b981;
-        }
-        
-        /* Image hover effect for settings */
-        .image-card-content .image-wrapper img {
-            transition: opacity 0.2s;
-        }
-        
-        .image-card-content .image-wrapper:hover img {
-            opacity: 0.9;
-            cursor: pointer;
-        }
-        
-        /* Video card width styles */
-        .video-card-content {
-            position: relative;
-        }
-        
-        .video-card-content .video-wrapper {
-            position: relative;
-            transition: all 0.3s ease;
-        }
-        
-        /* Wide width */
-        .video-card-content[data-card-width="wide"] .video-wrapper {
-            margin-left: calc(-12.5vw + 50%);
-            margin-right: calc(-12.5vw + 50%);
-            max-width: none;
-        }
-        
-        /* Full width */
-        .video-card-content[data-card-width="full"] .video-wrapper {
-            margin-left: calc(-50vw + 50%);
-            margin-right: calc(-50vw + 50%);
-            max-width: none;
-        }
-        
-        /* Responsive adjustments for video */
-        @media (max-width: 1024px) {
-            .video-card-content[data-card-width="wide"] .video-wrapper,
-            .video-card-content[data-card-width="full"] .video-wrapper {
-                margin-left: -1rem;
-                margin-right: -1rem;
-            }
-        }
-        
-        /* Markdown card styles */
-        .markdown-card-content {
-            padding: 0;
-        }
-        
-        .ghost-markdown-card {
-            border: 1px solid #e5e7eb;
-            border-radius: 8px;
-            overflow: hidden;
-            background: #fafafa;
-        }
-        
-        .ghost-markdown-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 12px 16px;
-            background: #f5f5f5;
-            border-bottom: 1px solid #e5e7eb;
-        }
-        
-        .ghost-markdown-label {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: #666;
-            font-size: 13px;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.03em;
-        }
-        
-        .ghost-markdown-label svg {
-            color: #999;
-        }
-        
-        .ghost-markdown-help-link {
-            color: #999;
-            text-decoration: none;
-            font-size: 18px;
-            transition: color 0.2s ease;
-        }
-        
-        .ghost-markdown-help-link:hover {
-            color: #666;
-        }
-        
-        .ghost-markdown-editor {
-            width: 100%;
-            min-height: 200px;
-            padding: 16px;
-            border: none;
-            background: transparent;
-            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
-            font-size: 14px;
-            line-height: 1.6;
-            color: #333;
-            resize: none;
-            outline: none;
-        }
-        
-        .ghost-markdown-editor::placeholder {
-            color: #999;
-        }
-        
-        .editor-card.focused .ghost-markdown-card {
-            border-color: #30a46c;
-        }
-        
-        .editor-card.focused .ghost-markdown-header {
-            background: #eef8f3;
-            border-bottom-color: #30a46c;
-        }
-        
-        /* Toggle card styles */
-        .toggle-card-content {
-            padding: 0;
-        }
-        
-        .kg-toggle-card {
-            background: transparent;
-            box-shadow: inset 0 0 0 1px rgba(124, 139, 154, 0.25);
-            border-radius: 4px;
-            padding: 1.2em;
-        }
-        
-        .kg-toggle-card[data-kg-toggle-state="close"] .kg-toggle-content {
-            display: none;
-        }
-        
-        .kg-toggle-content {
-            height: auto;
-            opacity: 1;
-            transition: opacity 0.3s ease;
-            position: relative;
-            display: block;
-        }
-        
-        .kg-toggle-card[data-kg-toggle-state="close"] svg {
-            transform: unset;
-        }
-        
-        .kg-toggle-heading {
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-        }
-        
-        .kg-toggle-card h4.kg-toggle-heading-text {
-            font-size: 1.15em;
-            font-weight: 700;
-            line-height: 1.3em;
-            margin: 0;
-            flex: 1;
-            outline: none;
-        }
-        
-        .kg-toggle-heading-text:empty::before {
-            content: attr(data-placeholder);
-            color: #999;
-        }
-        
-        .kg-toggle-content p:first-of-type {
-            margin-top: 0.5em;
-        }
-        
-        .kg-toggle-content > div {
-            font-size: 0.95em;
-            line-height: 1.5em;
-            margin-top: 0.95em;
-            outline: none;
-            min-height: 30px;
-            cursor: text;
-        }
-        
-        .kg-toggle-content > div:empty::before {
-            content: attr(data-placeholder);
-            color: #999;
-        }
-        
-        .kg-toggle-card-icon {
-            height: 24px;
-            width: 24px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-left: 1em;
-            padding: 0;
-            background: none;
-            border: 0;
-            cursor: pointer;
-        }
-        
-        .kg-toggle-heading svg {
-            width: 14px;
-            color: rgba(124, 139, 154, 0.5);
-            transition: all 0.3s;
-            transform: rotate(-180deg);
-        }
-        
-        .kg-toggle-heading path {
-            fill: none;
-            stroke: currentcolor;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-            stroke-width: 1.5;
-            fill-rule: evenodd;
-        }
-        
-        .editor-card.focused .kg-toggle-card {
-            box-shadow: inset 0 0 0 1px #30a46c;
-        }
-        
-        /* Product card button styles */
-        .kg-product-card-button {
-            text-decoration: none !important;
-            display: inline-block;
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-weight: 500;
-            transition: all 0.2s ease;
-        }
-        
-        .kg-product-card-button:hover {
-            text-decoration: none !important;
-            opacity: 0.9;
-        }
-        
-        .kg-product-button-primary {
-            background: #30a46c;
-            color: white !important;
-        }
-        
-        .kg-product-button-secondary {
-            background: #f0f2f5;
-            color: #374151 !important;
-        }
-        
-        .kg-product-button-outline {
-            background: transparent;
-            border: 1px solid #e5e7eb;
-            color: #374151 !important;
-        }
-        
-        .kg-product-button-link {
-            background: transparent;
-            color: #30a46c !important;
-            padding: 0;
-        }
-    
-    /* Apple HIG-inspired styles */
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-    
-    :root {
-        --apple-bg-primary: #ffffff;
-        --apple-bg-secondary: #f5f5f7;
-        --apple-bg-tertiary: #fafafa;
-        --apple-text-primary: #1d1d1f;
-        --apple-text-secondary: #86868b;
-        --apple-text-tertiary: #515154;
-        --apple-border: #d2d2d7;
-        --apple-border-light: #e8e8ed;
-        --apple-blue: #0071e3;
-        --apple-blue-hover: #0077ed;
-        --apple-green: #34c759;
-        --apple-red: #ff3b30;
-        --apple-yellow: #ffcc00;
-        --apple-shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
-        --apple-shadow-md: 0 4px 16px rgba(0,0,0,0.08);
-        --apple-shadow-lg: 0 10px 40px rgba(0,0,0,0.12);
-        --apple-radius-sm: 8px;
-        --apple-radius-md: 12px;
-        --apple-radius-lg: 16px;
-        --apple-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    
-    /* Settings panel - Apple style */
-    .ghost-settings-panel {
-        position: fixed;
-        top: 0;
-        right: -420px;
-        width: 420px;
-        height: 100vh;
-        background: var(--apple-bg-primary);
-        border-left: 1px solid var(--apple-border-light);
-        transition: var(--apple-transition);
-        z-index: 1050;
-        display: flex;
-        flex-direction: column;
-        font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
-    }
-    
-    .ghost-settings-panel.active {
-        right: 0;
-    }
-    
-    .ghost-settings-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 20px 24px;
-        background: var(--apple-bg-primary);
-        border-bottom: 1px solid var(--apple-border-light);
-        -webkit-backdrop-filter: blur(10px);
-        backdrop-filter: blur(10px);
-    }
-    
-    .ghost-settings-header h3 {
-        font-size: 20px;
-        font-weight: 600;
-        color: var(--apple-text-primary);
-        margin: 0;
-        letter-spacing: -0.02em;
-    }
-    
-    .ghost-settings-content {
-        flex: 1;
-        overflow-y: auto;
-        padding: 24px;
-        background: var(--apple-bg-secondary);
-    }
-    
-    .ghost-settings-content::-webkit-scrollbar {
-        width: 0;
-    }
-    
-    /* Form sections */
-    .settings-section {
-        background: var(--apple-bg-primary);
-        border-radius: var(--apple-radius-md);
-        padding: 20px;
-        margin-bottom: 16px;
-        box-shadow: var(--apple-shadow-sm);
-    }
-    
-    .settings-section-title {
-        font-size: 13px;
-        font-weight: 600;
-        color: var(--apple-text-secondary);
-        text-transform: uppercase;
-        letter-spacing: 0.02em;
-        margin-bottom: 16px;
-        padding: 0 4px;
-    }
-    
-    /* Form controls */
-    .apple-form-label {
-        display: block;
-        font-size: 15px;
-        font-weight: 500;
-        color: var(--apple-text-primary);
-        margin-bottom: 8px;
-        letter-spacing: -0.01em;
-    }
-    
-    .apple-form-control {
-        width: 100%;
-        padding: 10px 12px;
-        font-size: 15px;
-        font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
-        background: var(--apple-bg-tertiary);
-        border: 1px solid var(--apple-border);
-        border-radius: var(--apple-radius-sm);
-        color: var(--apple-text-primary);
-        transition: var(--apple-transition);
-        -webkit-appearance: none;
-    }
-    
-    .apple-form-control:focus {
-        outline: none;
-        border-color: var(--apple-blue);
-        box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.1);
-        background: var(--apple-bg-primary);
-    }
-    
-    .apple-form-control::placeholder {
-        color: var(--apple-text-tertiary);
-    }
-    
-    .apple-form-helper {
-        font-size: 13px;
-        color: var(--apple-text-secondary);
-        margin-top: 6px;
-        line-height: 1.4;
-    }
-    
-    /* Toggle switches - iOS style */
-    .apple-switch {
-        position: relative;
-        display: inline-block;
-        width: 51px;
-        height: 31px;
-    }
-    
-    .apple-switch input {
-        opacity: 0;
-        width: 0;
-        height: 0;
-    }
-    
-    .apple-switch-slider {
-        position: absolute;
-        cursor: pointer;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: #e9e9eb;
-        transition: var(--apple-transition);
-        border-radius: 31px;
-    }
-    
-    .apple-switch-slider:before {
-        position: absolute;
-        content: "";
-        height: 27px;
-        width: 27px;
-        left: 2px;
-        bottom: 2px;
-        background-color: white;
-        transition: var(--apple-transition);
-        border-radius: 50%;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    }
-    
-    .apple-switch input:checked + .apple-switch-slider {
-        background-color: var(--apple-green);
-    }
-    
-    .apple-switch input:checked + .apple-switch-slider:before {
-        transform: translateX(20px);
-    }
-    
-    /* Segmented control */
-    .apple-segmented-control {
-        display: flex;
-        background: var(--apple-bg-tertiary);
-        border-radius: var(--apple-radius-sm);
-        padding: 2px;
-        gap: 2px;
-    }
-    
-    .apple-segment {
-        flex: 1;
-        padding: 8px 16px;
-        font-size: 14px;
-        font-weight: 500;
-        text-align: center;
-        background: transparent;
-        border: none;
-        border-radius: 6px;
-        color: var(--apple-text-primary);
-        cursor: pointer;
-        transition: var(--apple-transition);
-    }
-    
-    .apple-segment.active {
-        background: var(--apple-bg-primary);
-        box-shadow: var(--apple-shadow-sm);
-    }
-    
-    /* List items */
-    .apple-list-item {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 12px 0;
-        border-bottom: 1px solid var(--apple-border-light);
-    }
-    
-    .apple-list-item:last-child {
-        border-bottom: none;
-    }
-    
-    .apple-list-item-content {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-    }
-    
-    .apple-list-item-icon {
-        width: 32px;
-        height: 32px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: var(--apple-bg-tertiary);
-        border-radius: var(--apple-radius-sm);
-        color: var(--apple-text-secondary);
-    }
-    
-    .apple-list-item-text h4 {
-        font-size: 15px;
-        font-weight: 500;
-        color: var(--apple-text-primary);
-        margin: 0 0 2px 0;
-    }
-    
-    .apple-list-item-text p {
-        font-size: 13px;
-        color: var(--apple-text-secondary);
-        margin: 0;
-    }
-    
-    /* Buttons */
-    .apple-btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 10px 20px;
-        font-size: 15px;
-        font-weight: 500;
-        font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
-        border-radius: var(--apple-radius-sm);
-        border: none;
-        cursor: pointer;
-        transition: var(--apple-transition);
-        gap: 6px;
-    }
-    
-    .apple-btn-primary {
-        background: var(--apple-blue);
-        color: white;
-    }
-    
-    .apple-btn-primary:hover {
-        background: var(--apple-blue-hover);
-        transform: translateY(-1px);
-    }
-    
-    .apple-btn-secondary {
-        background: var(--apple-bg-tertiary);
-        color: var(--apple-text-primary);
-        border: 1px solid var(--apple-border);
-    }
-    
-    .apple-btn-secondary:hover {
-        background: var(--apple-bg-secondary);
-    }
-    
-    .apple-btn-danger {
-        background: transparent;
-        color: var(--apple-red);
-        border: 1px solid var(--apple-red);
-    }
-    
-    .apple-btn-danger:hover {
-        background: var(--apple-red);
-        color: white;
-    }
-    
-    /* Icon buttons */
-    .apple-icon-btn {
-        width: 32px;
-        height: 32px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: transparent;
-        border: none;
-        border-radius: 50%;
-        color: var(--apple-text-secondary);
-        cursor: pointer;
-        transition: var(--apple-transition);
-    }
-    
-    .apple-icon-btn:hover {
-        background: var(--apple-bg-tertiary);
-        color: var(--apple-text-primary);
-    }
-    
-    /* Subview panel styles */
-    .subview-panel {
-        position: fixed;
-        top: 0;
-        right: -420px;
-        width: 420px;
-        height: 100vh;
-        background: var(--apple-bg-primary);
-        border-left: 1px solid var(--apple-border-light);
-        transition: var(--apple-transition);
-        z-index: 1060;
-        display: flex;
-        flex-direction: column;
-        font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
-    }
-    
-    .subview-panel.active {
-        right: 0;
-    }
-    
-    .subview-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 20px 24px;
-        background: var(--apple-bg-primary);
-        border-bottom: 1px solid var(--apple-border-light);
-        -webkit-backdrop-filter: blur(10px);
-        backdrop-filter: blur(10px);
-    }
-    
-    .subview-content {
-        flex: 1;
-        overflow-y: auto;
-        padding: 24px;
-        background: var(--apple-bg-secondary);
-    }
-    
-    /* Character counter */
-    .char-counter {
-        font-size: 13px;
-        font-weight: 500;
-        margin-top: 6px;
-        display: flex;
-        align-items: center;
-        gap: 4px;
-    }
-    
-    .char-counter-good {
-        color: var(--apple-green);
-    }
-    
-    .char-counter-warning {
-        color: var(--apple-yellow);
-    }
-    
-    .char-counter-danger {
-        color: var(--apple-red);
-    }
-    
-    /* Social preview cards */
-    .social-preview {
-        border: 1px solid var(--apple-border);
-        border-radius: var(--apple-radius-md);
-        overflow: hidden;
-        margin-top: 16px;
-        background: var(--apple-bg-primary);
-        box-shadow: var(--apple-shadow-sm);
-    }
-    
-    .social-preview-image {
-        height: 200px;
-        background: var(--apple-bg-tertiary);
-        background-size: cover;
-        background-position: center;
-    }
-    
-    .social-preview-content {
-        padding: 16px;
-    }
-    
-    .social-preview-domain {
-        font-size: 12px;
-        color: var(--apple-text-secondary);
-        text-transform: uppercase;
-        letter-spacing: 0.02em;
-        margin-bottom: 4px;
-    }
-    
-    .social-preview-title {
-        font-size: 16px;
-        font-weight: 600;
-        color: var(--apple-text-primary);
-        margin-bottom: 4px;
-        line-height: 1.3;
-    }
-    
-    .social-preview-description {
-        font-size: 14px;
-        color: var(--apple-text-secondary);
-        line-height: 1.4;
-    }
-    
-    /* Tags */
-    .apple-tag {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        padding: 6px 12px;
-        background: var(--apple-blue);
-        color: white;
-        border-radius: 20px;
-        font-size: 14px;
-        font-weight: 500;
-    }
-    
-    .apple-tag-remove {
-        background: none;
-        border: none;
-        color: white;
-        opacity: 0.7;
-        cursor: pointer;
-        padding: 0;
-        transition: opacity 0.2s;
-    }
-    
-    .apple-tag-remove:hover {
-        opacity: 1;
-    }
-    
-    /* Animations */
-    @keyframes slideIn {
-        from {
-            transform: translateX(100%);
-            opacity: 0;
-        }
-        to {
-            transform: translateX(0);
-            opacity: 1;
-        }
-    }
-    
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-        }
-        to {
-            opacity: 1;
-        }
-    }
-    
-    .animate-slide-in {
-        animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    
-    .animate-fade-in {
-        animation: fadeIn 0.3s ease-in-out;
-    }
-    </style>
-</head>
-<body class="DEFAULT_THEME">
-    <main>
-        <div class="ghost-editor">
-            <!-- Editor Header -->
-            <header class="ghost-editor-header">
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center gap-4">
-                        <!-- Back button -->
-                        <a href="/ghost/admin/posts" class="flex items-center gap-2 text-gray-600 hover:text-gray-900">
-                            <i class="ti ti-arrow-left text-xl"></i>
-                            <span>Posts</span>
-                        </a>
-                        
-                        <!-- Post status -->
-                        <cfif len(postData.status)>
-                            <cfswitch expression="#postData.status#">
-                                <cfcase value="published">
-                                    <span class="badge bg-success text-white">Published</span>
-                                </cfcase>
-                                <cfcase value="draft">
-                                    <span class="badge bg-gray-200 text-gray-700">Draft</span>
-                                </cfcase>
-                                <cfcase value="scheduled">
-                                    <span class="badge bg-info text-white">Scheduled</span>
-                                </cfcase>
-                            </cfswitch>
-                        </cfif>
-                        
-                        <!-- Autosave status -->
-                        <span id="saveStatus" class="text-sm text-gray-500"><cfif postData.status neq "published">Saved</cfif></span>
-                    </div>
-                    
-                    <div class="flex items-center gap-3">
-                        <cfif postData.status eq "published">
-                            <!-- Unpublish button for published posts -->
-                            <button type="button" class="btn btn-outline-secondary" onclick="unpublishPost()">
-                                <i class="ti ti-eye-off me-2"></i>
-                                Unpublish
-                            </button>
-                            
-                            <!-- Update button for published posts -->
-                            <button type="button" class="btn btn-primary" onclick="updatePost()">
-                                <i class="ti ti-refresh me-2"></i>
-                                Update
-                            </button>
-                        <cfelseif postData.status eq "scheduled">
-                            <!-- Unpublish button for scheduled posts -->
-                            <button type="button" class="btn btn-outline-secondary" onclick="unpublishPost()">
-                                <i class="ti ti-eye-off me-2"></i>
-                                Unschedule
-                            </button>
-                            
-                            <!-- Update button for scheduled posts -->
-                            <button type="button" class="btn btn-primary" onclick="updatePost()">
-                                <i class="ti ti-refresh me-2"></i>
-                                Update
-                            </button>
-                        <cfelse>
-                            <!-- Preview button for non-published posts -->
-                            <button type="button" class="btn btn-outline-secondary" onclick="previewPost()">
-                                <i class="ti ti-eye me-2"></i>
-                                Preview
-                            </button>
-                            
-                            <!-- Publish button -->
-                            <button type="button" class="btn btn-primary" onclick="publishPost()">
-                                <i class="ti ti-send me-2"></i>
-                                Publish
-                            </button>
-                        </cfif>
-                    </div>
-                </div>
-            </header>
-            
-            <!-- Editor Content -->
-            <div class="ghost-editor-content">
-                <!-- Feature Image -->
-                <div class="feature-image-container" id="featureImageContainer" onclick="selectFeatureImage()">
-                    <cfif len(postData.feature_image)>
-                        <div class="feature-image-preview">
-                            <cfset imageUrl = postData.feature_image>
-                            <cfif findNoCase("__GHOST_URL__", imageUrl)>
-                                <cfset imageUrl = replace(imageUrl, "__GHOST_URL__", "", "all")>
-                            </cfif>
-                            <cfif not findNoCase("/ghost/", imageUrl) and findNoCase("/content/", imageUrl)>
-                                <cfset imageUrl = "/ghost" & imageUrl>
-                            </cfif>
-                            <img src="<cfoutput>#imageUrl#</cfoutput>" alt="Feature image" id="featureImagePreview" onerror="removeFeatureImage()">
-                            <div class="feature-image-actions">
-                                <button type="button" class="btn btn-sm btn-light" onclick="event.stopPropagation(); changeFeatureImage()">
-                                    <i class="ti ti-refresh"></i>
-                                </button>
-                                <button type="button" class="btn btn-sm btn-light" onclick="event.stopPropagation(); removeFeatureImage()">
-                                    <i class="ti ti-trash"></i>
-                                </button>
-                            </div>
-                        </div>
-                    <cfelse>
-                        <div class="feature-image-placeholder">
-                            <i class="ti ti-photo-plus text-4xl text-gray-400 mb-2"></i>
-                            <p class="text-gray-600">Add feature image</p>
-                            <p class="text-sm text-gray-500">Click to upload or drag and drop</p>
-                        </div>
-                    </cfif>
-                </div>
-                
-                <!-- Hidden file input for feature image -->
-                <input type="file" id="featureImageInput" accept="image/*" style="display: none;" onchange="uploadFeatureImage(this)">
-                
-                <!-- Title -->
-                <textarea id="postTitle" 
-                          class="ghost-editor-title" 
-                          placeholder="Post title" 
-                          autocomplete="off"
-                          rows="1"
-                          oninput="autoResizeTitle(this)"><cfoutput>#htmlEditFormat(postData.title)#</cfoutput></textarea>
-                
-                <!-- Editor Body -->
-                <div id="editorContainer" class="ghost-editor-body">
-                    <!-- Content cards will be dynamically inserted here -->
-                </div>
-                
-                <!-- Add card button (initially hidden, shown on hover) -->
-                <div class="add-card-button" onclick="showCardMenu(this)">
-                    <div class="add-card-button-icon">
-                        <i class="ti ti-plus"></i>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Word count -->
-            <div class="ghost-editor-wordcount">
-                <span id="wordCount">0</span> words
-            </div>
-            
-            <!-- Settings toggle button -->
-            <button type="button" class="ghost-settings-toggle" onclick="toggleSettings()">
-                <i class="ti ti-settings text-xl"></i>
-            </button>
-            
-            <!-- Settings panel -->
-            <div class="ghost-settings-panel" id="settingsPanel">
-                <div class="ghost-settings-header">
-                    <h3>Post Settings</h3>
-                    <button type="button" class="apple-icon-btn" onclick="toggleSettings()">
-                        <i class="ti ti-x text-xl"></i>
-                    </button>
-                </div>
-                
-                <div class="ghost-settings-content">
-                    <!-- Post Details Section -->
-                    <div class="settings-section">
-                        <div class="settings-section-title">Post Details</div>
-                        
-                        <!-- URL Slug -->
-                        <div class="mb-4">
-                            <label class="apple-form-label">Post URL</label>
-                            <div class="flex items-center gap-2">
-                                <span class="text-sm text-gray-500">/ghost/</span>
-                                <input type="text" 
-                                       id="postSlug" 
-                                       class="apple-form-control" 
-                                       value="<cfoutput>#htmlEditFormat(postData.slug)#</cfoutput>"
-                                       placeholder="post-url">
-                            </div>
-                            <p class="apple-form-helper">The URL for this post</p>
-                        </div>
-                    
-                        <!-- Publish Date -->
-                        <div class="mb-4">
-                            <label class="apple-form-label">Publish date</label>
-                            <input type="datetime-local" 
-                                   id="publishDate" 
-                                   class="apple-form-control"
-                                   value="<cfif isDate(postData.published_at)><cfoutput>#dateFormat(postData.published_at, 'yyyy-mm-dd')#T#timeFormat(postData.published_at, 'HH:mm')#</cfoutput></cfif>">
-                            <p class="apple-form-helper">Set a future date to schedule this post</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Tags & Metadata Section -->
-                    <div class="settings-section">
-                        <div class="settings-section-title">Tags & Metadata</div>
-                        
-                        <!-- Tags -->
-                        <div class="mb-4">
-                            <label class="apple-form-label">Tags</label>
-                            <div class="mb-3">
-                                <div id="selectedTags" class="flex flex-wrap gap-2 mb-3">
-                                    <cfloop array="#postData.tags#" index="tag">
-                                        <span class="apple-tag">
-                                            <cfoutput>#tag.name#</cfoutput>
-                                            <button type="button" class="apple-tag-remove" onclick="removeTag('<cfoutput>#tag.id#</cfoutput>')">
-                                                <i class="ti ti-x text-sm"></i>
-                                            </button>
-                                        </span>
-                                    </cfloop>
-                                </div>
-                                <select id="tagSelector" class="apple-form-control" onchange="addTag()">
-                                    <option value="">Add a tag...</option>
-                                    <cfloop array="#allTags#" index="tag">
-                                        <option value="<cfoutput>#tag.id#</cfoutput>" data-name="<cfoutput>#tag.name#</cfoutput>">
-                                            <cfoutput>#tag.name#</cfoutput>
-                                        </option>
-                                    </cfloop>
-                                </select>
-                            </div>
-                        </div>
-                    
-                        <!-- Post Access -->
-                        <div class="mb-4">
-                            <label class="apple-form-label">Post access</label>
-                            <div class="apple-segmented-control">
-                                <button type="button" class="apple-segment <cfif postData.visibility eq 'public'>active</cfif>" onclick="setVisibility('public')">
-                                    Public
-                                </button>
-                                <button type="button" class="apple-segment <cfif postData.visibility eq 'members'>active</cfif>" onclick="setVisibility('members')">
-                                    Members
-                                </button>
-                                <button type="button" class="apple-segment <cfif postData.visibility eq 'paid'>active</cfif>" onclick="setVisibility('paid')">
-                                    Paid only
-                                </button>
-                            </div>
-                            <p class="apple-form-helper">Control who can see this post</p>
-                        </div>
-                    
-                        <!-- Excerpt -->
-                        <div>
-                            <label class="apple-form-label">Excerpt</label>
-                            <textarea id="postExcerpt" 
-                                      class="apple-form-control" 
-                                      rows="3"
-                                      placeholder="A short description of your post"><cfoutput>#htmlEditFormat(postData.custom_excerpt)#</cfoutput></textarea>
-                            <p class="apple-form-helper">Excerpts are optional hand-crafted summaries of your content</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Publishing Options Section -->
-                    <div class="settings-section">
-                        <div class="settings-section-title">Publishing Options</div>
-                        
-                        <!-- Authors -->
-                        <div class="mb-4">
-                            <label class="apple-form-label">Authors</label>
-                            <div class="mb-3">
-                                <div id="selectedAuthors" class="flex flex-wrap gap-2 mb-3">
-                                    <!--- Show current author(s) from posts_authors table --->
-                                    <cfquery name="postAuthors" datasource="#request.dsn#">
-                                        SELECT u.id, u.name 
-                                        FROM posts_authors pa
-                                        INNER JOIN users u ON pa.author_id = u.id
-                                        WHERE pa.post_id = <cfqueryparam value="#postData.id#" cfsqltype="cf_sql_varchar">
-                                        ORDER BY pa.sort_order
-                                    </cfquery>
-                                    
-                                    <cfif postAuthors.recordCount gt 0>
-                                        <cfloop query="postAuthors">
-                                            <span class="apple-tag" data-author-id="<cfoutput>#postAuthors.id#</cfoutput>">
-                                                <cfoutput>#postAuthors.name#</cfoutput>
-                                                <button type="button" class="apple-tag-remove" onclick="removeAuthor('<cfoutput>#postAuthors.id#</cfoutput>')">
-                                                    <i class="ti ti-x text-sm"></i>
-                                                </button>
-                                            </span>
-                                        </cfloop>
-                                    <cfelse>
-                                        <!--- If no authors, use the created_by user --->
-                                        <cfquery name="defaultAuthor" datasource="#request.dsn#">
-                                            SELECT id, name FROM users WHERE id = <cfqueryparam value="#postData.created_by#" cfsqltype="cf_sql_varchar">
-                                        </cfquery>
-                                        <cfif defaultAuthor.recordCount gt 0>
-                                            <span class="apple-tag" data-author-id="<cfoutput>#defaultAuthor.id#</cfoutput>">
-                                                <cfoutput>#defaultAuthor.name#</cfoutput>
-                                                <button type="button" class="apple-tag-remove" onclick="removeAuthor('<cfoutput>#defaultAuthor.id#</cfoutput>')">
-                                                    <i class="ti ti-x text-sm"></i>
-                                                </button>
-                                            </span>
-                                        </cfif>
-                                    </cfif>
-                                </div>
-                                <select id="authorSelector" class="apple-form-control" onchange="addAuthor()">
-                                    <option value="">Add an author...</option>
-                                    <cfquery name="allUsers" datasource="#request.dsn#">
-                                        SELECT id, name FROM users WHERE status = 'active' ORDER BY name
-                                    </cfquery>
-                                    <cfloop query="allUsers">
-                                        <option value="<cfoutput>#allUsers.id#</cfoutput>" 
-                                                data-name="<cfoutput>#allUsers.name#</cfoutput>"
-                                                class="author-option-<cfoutput>#allUsers.id#</cfoutput>"
-                                                <cfif postAuthors.recordCount gt 0>
-                                                    <cfloop query="postAuthors">
-                                                        <cfif postAuthors.id eq allUsers.id>style="display: none;"</cfif>
-                                                    </cfloop>
-                                                <cfelseif defaultAuthor.recordCount gt 0 and defaultAuthor.id eq allUsers.id>
-                                                    style="display: none;"
-                                                </cfif>>
-                                            <cfoutput>#allUsers.name#</cfoutput>
-                                        </option>
-                                    </cfloop>
-                                </select>
-                            </div>
-                            <p class="apple-form-helper">Add multiple authors to this post</p>
-                        </div>
-                    
-                        <!-- Post Template -->
-                        <div class="mb-4">
-                            <label class="apple-form-label">Template</label>
-                            <select id="postTemplate" class="apple-form-control">
-                                <option value="">Default</option>
-                                <option value="custom" <cfif structKeyExists(postData, "custom_template") and postData.custom_template eq "custom">selected</cfif>>Custom</option>
-                                <option value="page" <cfif structKeyExists(postData, "custom_template") and postData.custom_template eq "page">selected</cfif>>Page</option>
-                            </select>
-                            <p class="apple-form-helper">Select a custom template for this post</p>
-                        </div>
-                    
-                        <!-- Feature Options -->
-                        <cfif postData.type eq "page">
-                        <div class="apple-list-item">
-                            <div class="apple-list-item-content">
-                                <div class="apple-list-item-icon">
-                                    <i class="ti ti-eye"></i>
-                                </div>
-                                <div class="apple-list-item-text">
-                                    <h4>Show title and feature image</h4>
-                                </div>
-                            </div>
-                            <label class="apple-switch">
-                                <input type="checkbox" 
-                                       id="showTitleAndFeatureImage"
-                                       <cfif not structKeyExists(postData, "show_title_and_feature_image") or postData.show_title_and_feature_image>checked</cfif>>
-                                <span class="apple-switch-slider"></span>
-                            </label>
-                        </div>
-                        </cfif>
-                        
-                        <div class="apple-list-item">
-                            <div class="apple-list-item-content">
-                                <div class="apple-list-item-icon">
-                                    <i class="ti ti-star"></i>
-                                </div>
-                                <div class="apple-list-item-text">
-                                    <h4>Feature this post</h4>
-                                    <p>Display prominently on your site</p>
-                                </div>
-                            </div>
-                            <label class="apple-switch">
-                                <input type="checkbox" 
-                                       id="featuredPost"
-                                       <cfif postData.featured>checked</cfif>>
-                                <span class="apple-switch-slider"></span>
-                            </label>
-                        </div>
-                    </div>
-                    
-                    <!-- Advanced Settings Section -->
-                    <div class="settings-section">
-                        <div class="settings-section-title">Advanced Settings</div>
-                        
-                        <div class="apple-list-item" onclick="showSubview('postHistory')" style="cursor: pointer;">
-                            <div class="apple-list-item-content">
-                                <div class="apple-list-item-icon">
-                                    <i class="ti ti-history"></i>
-                                </div>
-                                <div class="apple-list-item-text">
-                                    <h4>Post history</h4>
-                                    <p>View and restore previous versions</p>
-                                </div>
-                            </div>
-                            <i class="ti ti-chevron-right text-gray-400"></i>
-                        </div>
-                        
-                        <div class="apple-list-item" onclick="showSubview('codeInjection')" style="cursor: pointer;">
-                            <div class="apple-list-item-content">
-                                <div class="apple-list-item-icon">
-                                    <i class="ti ti-code"></i>
-                                </div>
-                                <div class="apple-list-item-text">
-                                    <h4>Code injection</h4>
-                                    <p>Add custom code to this post</p>
-                                </div>
-                            </div>
-                            <i class="ti ti-chevron-right text-gray-400"></i>
-                        </div>
-                        
-                        <div class="apple-list-item" onclick="showSubview('metaData')" style="cursor: pointer;">
-                            <div class="apple-list-item-content">
-                                <div class="apple-list-item-icon">
-                                    <i class="ti ti-search"></i>
-                                </div>
-                                <div class="apple-list-item-text">
-                                    <h4>Meta data</h4>
-                                    <p>SEO title, description and URL</p>
-                                </div>
-                            </div>
-                            <i class="ti ti-chevron-right text-gray-400"></i>
-                        </div>
-                        
-                        <div class="apple-list-item" onclick="showSubview('twitterData')" style="cursor: pointer;">
-                            <div class="apple-list-item-content">
-                                <div class="apple-list-item-icon">
-                                    <i class="ti ti-brand-x"></i>
-                                </div>
-                                <div class="apple-list-item-text">
-                                    <h4>X card</h4>
-                                    <p>Customize X/Twitter preview</p>
-                                </div>
-                            </div>
-                            <i class="ti ti-chevron-right text-gray-400"></i>
-                        </div>
-                        
-                        <div class="apple-list-item" onclick="showSubview('facebookData')" style="cursor: pointer;">
-                            <div class="apple-list-item-content">
-                                <div class="apple-list-item-icon">
-                                    <i class="ti ti-brand-facebook"></i>
-                                </div>
-                                <div class="apple-list-item-text">
-                                    <h4>Facebook card</h4>
-                                    <p>Customize Facebook preview</p>
-                                </div>
-                            </div>
-                            <i class="ti ti-chevron-right text-gray-400"></i>
-                        </div>
-                    </div>
-                    
-                    <!-- Delete Post Button -->
-                    <div class="settings-section">
-                        <button type="button" class="apple-btn apple-btn-danger w-100" onclick="confirmDeletePost()">
-                            <i class="ti ti-trash"></i>
-                            Delete post
-                        </button>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Subview Panels -->
-            <!-- Code Injection Subview -->
-            <div class="subview-panel" id="codeInjectionSubview">
-                <div class="subview-header">
-                    <button type="button" class="apple-icon-btn" onclick="closeSubview('codeInjection')">
-                        <i class="ti ti-arrow-left text-xl"></i>
-                    </button>
-                    <h3>Code injection</h3>
-                    <button type="button" class="apple-icon-btn" onclick="toggleSettings()">
-                        <i class="ti ti-x text-xl"></i>
-                    </button>
-                </div>
-                <div class="subview-content">
-                    <div class="settings-section">
-                        <div class="mb-4">
-                            <label class="apple-form-label">Post header</label>
-                            <textarea id="codeinjectionHead" 
-                                      class="apple-form-control" 
-                                      style="font-family: 'SF Mono', Monaco, monospace; font-size: 13px;"
-                                      rows="10"
-                                      placeholder="Code injected into the header of this post"><cfoutput>#htmlEditFormat(structKeyExists(postData, "codeinjection_head") ? postData.codeinjection_head : "")#</cfoutput></textarea>
-                            <p class="apple-form-helper">Code here will be injected into the <code style="background: var(--apple-bg-tertiary); padding: 2px 6px; border-radius: 4px;">&lt;head&gt;</code> tag</p>
-                        </div>
-                    </div>
-                    
-                    <div class="settings-section">
-                        <div>
-                            <label class="apple-form-label">Post footer</label>
-                            <textarea id="codeinjectionFoot" 
-                                      class="apple-form-control" 
-                                      style="font-family: 'SF Mono', Monaco, monospace; font-size: 13px;"
-                                      rows="10"
-                                      placeholder="Code injected into the footer of this post"><cfoutput>#htmlEditFormat(structKeyExists(postData, "codeinjection_foot") ? postData.codeinjection_foot : "")#</cfoutput></textarea>
-                            <p class="apple-form-helper">Code here will be injected before the closing <code style="background: var(--apple-bg-tertiary); padding: 2px 6px; border-radius: 4px;">&lt;/body&gt;</code> tag</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Meta Data Subview -->
-            <div class="subview-panel" id="metaDataSubview">
-                <div class="subview-header">
-                    <button type="button" class="apple-icon-btn" onclick="closeSubview('metaData')">
-                        <i class="ti ti-arrow-left text-xl"></i>
-                    </button>
-                    <h3>Meta data</h3>
-                    <button type="button" class="apple-icon-btn" onclick="toggleSettings()">
-                        <i class="ti ti-x text-xl"></i>
-                    </button>
-                </div>
-                <div class="subview-content">
-                    <div class="settings-section">
-                        <div class="settings-section-title">Search Engine Optimization</div>
-                        
-                        <div class="mb-4">
-                            <label class="apple-form-label">Meta title</label>
-                            <input type="text" 
-                                   id="metaTitle" 
-                                   class="apple-form-control" 
-                                   value="<cfoutput>#htmlEditFormat(postData.meta_title)#</cfoutput>"
-                                   placeholder="<cfoutput>#htmlEditFormat(postData.title)#</cfoutput>">
-                            <div class="char-counter" id="metaTitleCounter">
-                                <span class="text-gray-500">Recommended: 60 characters</span>
-                                <span class="ms-2">•</span>
-                                <span class="ms-2">You've used <strong id="metaTitleCount">0</strong></span>
-                            </div>
-                        </div>
-                        
-                        <div class="mb-4">
-                            <label class="apple-form-label">Meta description</label>
-                            <textarea id="metaDescription" 
-                                      class="apple-form-control" 
-                                      rows="3"
-                                      placeholder="A description of your post for search engines"><cfoutput>#htmlEditFormat(postData.meta_description)#</cfoutput></textarea>
-                            <div class="char-counter" id="metaDescriptionCounter">
-                                <span class="text-gray-500">Recommended: 160 characters</span>
-                                <span class="ms-2">•</span>
-                                <span class="ms-2">You've used <strong id="metaDescriptionCount">0</strong></span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="settings-section">
-                        <div>
-                            <label class="apple-form-label">Canonical URL</label>
-                            <input type="url" 
-                                   id="canonicalUrl" 
-                                   class="apple-form-control"
-                                   value="<cfoutput>#htmlEditFormat(structKeyExists(postData, "canonical_url") ? postData.canonical_url : "")#</cfoutput>"
-                                   placeholder="https://example.com/original-post">
-                            <p class="apple-form-helper">Set a canonical URL if this post was first published elsewhere</p>
-                            <div id="canonicalUrlPreview" class="mt-2 text-sm text-blue-600" style="display: none;">
-                                <i class="ti ti-link"></i> <span id="canonicalUrlText"></span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Search Preview -->
-                    <div class="settings-section">
-                        <div class="settings-section-title">Search Result Preview</div>
-                        <div class="p-4 bg-white rounded-lg border">
-                            <h4 class="text-blue-600 text-lg mb-1" id="searchPreviewTitle"><cfoutput>#postData.title#</cfoutput></h4>
-                            <p class="text-green-700 text-sm mb-1">clitools.app/ghost/<span id="searchPreviewSlug"><cfoutput>#postData.slug#</cfoutput></span></p>
-                            <p class="text-gray-600 text-sm" id="searchPreviewDesc"><cfoutput><cfscript>
-                                // Search preview description fallback logic
-                                searchDesc = "";
-                                if (len(postData.meta_description)) {
-                                    searchDesc = postData.meta_description;
-                                } else if (len(postData.custom_excerpt)) {
-                                    searchDesc = postData.custom_excerpt;
-                                } else if (len(postData.html)) {
-                                    // Extract first paragraph from HTML content
-                                    firstP = reMatch("<p[^>]*>(.*?)</p>", postData.html);
-                                    if (arrayLen(firstP) gt 0) {
-                                        // Strip HTML tags from first paragraph
-                                        searchDesc = reReplace(firstP[1], "<[^>]*>", "", "all");
-                                        searchDesc = replace(searchDesc, "&nbsp;", " ", "all");
-                                        searchDesc = replace(searchDesc, "&amp;", "&", "all");
-                                        searchDesc = replace(searchDesc, "&lt;", "<", "all");
-                                        searchDesc = replace(searchDesc, "&gt;", ">", "all");
-                                        searchDesc = replace(searchDesc, "&quot;", '"', "all");
-                                        searchDesc = trim(searchDesc);
-                                    }
-                                }
-                                writeOutput(left(searchDesc, 160));
-                            </cfscript></cfoutput></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Twitter/X Card Subview -->
-            <div class="subview-panel" id="twitterDataSubview">
-                <div class="subview-header">
-                    <button type="button" class="apple-icon-btn" onclick="closeSubview('twitterData')">
-                        <i class="ti ti-arrow-left text-xl"></i>
-                    </button>
-                    <h3>X card</h3>
-                    <button type="button" class="apple-icon-btn" onclick="toggleSettings()">
-                        <i class="ti ti-x text-xl"></i>
-                    </button>
-                </div>
-                <div class="subview-content">
-                    <!-- Twitter Preview -->
-                    <div class="settings-section">
-                        <div class="settings-section-title">Preview</div>
-                        <div class="social-preview">
-                            <div id="twitterPreviewImage" class="social-preview-image"></div>
-                            <div class="social-preview-content">
-                                <p class="social-preview-domain">CLITOOLS.APP</p>
-                                <h4 id="twitterPreviewTitle" class="social-preview-title"><cfoutput>#len(postData.twitter_title) ? postData.twitter_title : postData.title#</cfoutput></h4>
-                                <p id="twitterPreviewDesc" class="social-preview-description"><cfoutput><cfscript>
-                                    // Twitter/X description fallback logic
-                                    twitterDesc = "";
-                                    if (len(postData.twitter_description)) {
-                                        twitterDesc = postData.twitter_description;
-                                    } else if (len(postData.meta_description)) {
-                                        twitterDesc = postData.meta_description;
-                                    } else if (len(postData.custom_excerpt)) {
-                                        twitterDesc = postData.custom_excerpt;
-                                    } else if (len(postData.html)) {
-                                        // Extract first paragraph from HTML content
-                                        firstP = reMatch("<p[^>]*>(.*?)</p>", postData.html);
-                                        if (arrayLen(firstP) gt 0) {
-                                            // Strip HTML tags from first paragraph
-                                            twitterDesc = reReplace(firstP[1], "<[^>]*>", "", "all");
-                                            twitterDesc = replace(twitterDesc, "&nbsp;", " ", "all");
-                                            twitterDesc = replace(twitterDesc, "&amp;", "&", "all");
-                                            twitterDesc = replace(twitterDesc, "&lt;", "<", "all");
-                                            twitterDesc = replace(twitterDesc, "&gt;", ">", "all");
-                                            twitterDesc = replace(twitterDesc, "&quot;", '"', "all");
-                                            twitterDesc = trim(twitterDesc);
-                                        }
-                                    }
-                                    writeOutput(left(twitterDesc, 125));
-                                </cfscript></cfoutput></p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="settings-section">
-                        <div class="settings-section-title">X/Twitter Settings</div>
-                        
-                        <div class="mb-4">
-                            <label class="apple-form-label">X title</label>
-                            <input type="text" 
-                                   id="twitterTitle" 
-                                   class="apple-form-control"
-                                   value="<cfoutput>#htmlEditFormat(structKeyExists(postData, "twitter_title") ? postData.twitter_title : "")#</cfoutput>"
-                                   placeholder="<cfoutput>#htmlEditFormat(postData.title)#</cfoutput>">
-                            <div class="char-counter" id="twitterTitleCounter">
-                                <span class="text-gray-500">Recommended: 70 characters</span>
-                                <span class="ms-2">•</span>
-                                <span class="ms-2">You've used <strong id="twitterTitleCount">0</strong></span>
-                            </div>
-                        </div>
-                        
-                        <div class="mb-4">
-                            <label class="apple-form-label">X description</label>
-                            <textarea id="twitterDescription" 
-                                      class="apple-form-control" 
-                                      rows="3"
-                                      placeholder="<cfoutput>#htmlEditFormat(len(postData.meta_description) ? postData.meta_description : (len(postData.custom_excerpt) ? postData.custom_excerpt : left(firstParagraphText, 125)))#</cfoutput>"><cfoutput>#htmlEditFormat(structKeyExists(postData, "twitter_description") ? postData.twitter_description : "")#</cfoutput></textarea>
-                            <div class="char-counter" id="twitterDescriptionCounter">
-                                <span class="text-gray-500">Recommended: 125 characters</span>
-                                <span class="ms-2">•</span>
-                                <span class="ms-2">You've used <strong id="twitterDescriptionCount">0</strong></span>
-                            </div>
-                        </div>
-                        
-                        <div>
-                            <label class="apple-form-label">X image</label>
-                            <div class="mb-2">
-                                <input type="url" 
-                                       id="twitterImage" 
-                                       class="apple-form-control"
-                                       value="<cfoutput>#htmlEditFormat(structKeyExists(postData, "twitter_image") ? postData.twitter_image : "")#</cfoutput>"
-                                       placeholder="URL of image for X/Twitter card">
-                            </div>
-                            <button type="button" class="apple-btn apple-btn-secondary">
-                                <i class="ti ti-upload"></i>
-                                Upload image
-                            </button>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Facebook Card Subview -->
-            <div class="subview-panel" id="facebookDataSubview">
-                <div class="subview-header">
-                    <button type="button" class="apple-icon-btn" onclick="closeSubview('facebookData')">
-                        <i class="ti ti-arrow-left text-xl"></i>
-                    </button>
-                    <h3>Facebook card</h3>
-                    <button type="button" class="apple-icon-btn" onclick="toggleSettings()">
-                        <i class="ti ti-x text-xl"></i>
-                    </button>
-                </div>
-                <div class="subview-content">
-                    <!-- Facebook Preview -->
-                    <div class="settings-section">
-                        <div class="settings-section-title">Preview</div>
-                        <div class="social-preview">
-                            <div id="fbPreviewImage" class="social-preview-image"></div>
-                            <div class="social-preview-content">
-                                <p class="social-preview-domain">CLITOOLS.APP</p>
-                                <h4 id="fbPreviewTitle" class="social-preview-title"><cfoutput>#len(postData.og_title) ? postData.og_title : postData.title#</cfoutput></h4>
-                                <p id="fbPreviewDesc" class="social-preview-description"><cfoutput><cfscript>
-                                    // Facebook description fallback logic
-                                    fbDesc = "";
-                                    if (len(postData.og_description)) {
-                                        fbDesc = postData.og_description;
-                                    } else if (len(postData.meta_description)) {
-                                        fbDesc = postData.meta_description;
-                                    } else if (len(postData.custom_excerpt)) {
-                                        fbDesc = postData.custom_excerpt;
-                                    } else if (len(postData.html)) {
-                                        // Extract first paragraph from HTML content
-                                        firstP = reMatch("<p[^>]*>(.*?)</p>", postData.html);
-                                        if (arrayLen(firstP) gt 0) {
-                                            // Strip HTML tags from first paragraph
-                                            fbDesc = reReplace(firstP[1], "<[^>]*>", "", "all");
-                                            fbDesc = replace(fbDesc, "&nbsp;", " ", "all");
-                                            fbDesc = replace(fbDesc, "&amp;", "&", "all");
-                                            fbDesc = replace(fbDesc, "&lt;", "<", "all");
-                                            fbDesc = replace(fbDesc, "&gt;", ">", "all");
-                                            fbDesc = replace(fbDesc, "&quot;", '"', "all");
-                                            fbDesc = trim(fbDesc);
-                                        }
-                                    }
-                                    writeOutput(left(fbDesc, 160));
-                                </cfscript></cfoutput></p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="settings-section">
-                        <div class="settings-section-title">Facebook Settings</div>
-                        
-                        <div class="mb-4">
-                            <label class="apple-form-label">Facebook title</label>
-                            <input type="text" 
-                                   id="facebookTitle" 
-                                   class="apple-form-control"
-                                   value="<cfoutput>#htmlEditFormat(structKeyExists(postData, "og_title") ? postData.og_title : "")#</cfoutput>"
-                                   placeholder="<cfoutput>#htmlEditFormat(postData.title)#</cfoutput>">
-                            <div class="char-counter" id="facebookTitleCounter">
-                                <span class="text-gray-500">Recommended: 60 characters</span>
-                                <span class="ms-2">•</span>
-                                <span class="ms-2">You've used <strong id="facebookTitleCount">0</strong></span>
-                            </div>
-                        </div>
-                        
-                        <div class="mb-4">
-                            <label class="apple-form-label">Facebook description</label>
-                            <textarea id="facebookDescription" 
-                                      class="apple-form-control" 
-                                      rows="3"
-                                      placeholder="<cfoutput>#htmlEditFormat(len(postData.meta_description) ? postData.meta_description : (len(postData.custom_excerpt) ? postData.custom_excerpt : left(firstParagraphText, 160)))#</cfoutput>"><cfoutput>#htmlEditFormat(structKeyExists(postData, "og_description") ? postData.og_description : "")#</cfoutput></textarea>
-                            <div class="char-counter" id="facebookDescriptionCounter">
-                                <span class="text-gray-500">Recommended: 160 characters</span>
-                                <span class="ms-2">•</span>
-                                <span class="ms-2">You've used <strong id="facebookDescriptionCount">0</strong></span>
-                            </div>
-                        </div>
-                        
-                        <div>
-                            <label class="apple-form-label">Facebook image</label>
-                            <div class="mb-2">
-                                <input type="url" 
-                                       id="facebookImage" 
-                                       class="apple-form-control"
-                                       value="<cfoutput>#htmlEditFormat(structKeyExists(postData, "og_image") ? postData.og_image : "")#</cfoutput>"
-                                       placeholder="URL of image for Facebook card">
-                            </div>
-                            <button type="button" class="apple-btn apple-btn-secondary">
-                                <i class="ti ti-upload"></i>
-                                Upload image
-                            </button>
-                            <p class="apple-form-helper mt-2">Recommended size: 1200x630px (1.91:1 ratio)</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Post History Subview -->
-            <div class="subview-panel" id="postHistorySubview">
-                <div class="subview-header">
-                    <button type="button" class="apple-icon-btn" onclick="closeSubview('postHistory')">
-                        <i class="ti ti-arrow-left text-xl"></i>
-                    </button>
-                    <h3>Post history</h3>
-                    <button type="button" class="apple-icon-btn" onclick="toggleSettings()">
-                        <i class="ti ti-x text-xl"></i>
-                    </button>
-                </div>
-                <div class="subview-content">
-                    <div class="settings-section">
-                        <div class="text-center py-5">
-                            <div class="w-20 h-20 mx-auto mb-4 bg-gray-100 rounded-full flex items-center justify-center">
-                                <i class="ti ti-history text-3xl text-gray-400"></i>
-                            </div>
-                            <h4 class="text-lg font-semibold text-gray-900 mb-2">Post history</h4>
-                            <p class="text-gray-500 mb-1">Version history is coming soon</p>
-                            <p class="text-sm text-gray-400">You'll be able to view and restore previous versions of this post</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Placeholder for future history items -->
-                    <div class="settings-section" style="display: none;">
-                        <div class="settings-section-title">Recent Versions</div>
-                        <div class="history-item">
-                            <div class="flex items-center justify-between">
-                                <div>
-                                    <h5 class="font-medium text-gray-900">Current version</h5>
-                                    <p class="history-meta">Edited just now</p>
-                                </div>
-                                <span class="text-sm text-green-600">Current</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-    </main>
-    
-    <!-- Global Formatting Popup -->
-    <div class="formatting-popup" id="formattingPopup">
-        <button type="button" class="format-btn" onclick="formatText('bold')" title="Bold (Cmd/Ctrl+B)">
-            <i class="ti ti-bold"></i>
-        </button>
-        <button type="button" class="format-btn" onclick="formatText('italic')" title="Italic (Cmd/Ctrl+I)">
-            <i class="ti ti-italic"></i>
-        </button>
-        <button type="button" class="format-btn" onclick="showLinkEditor()" title="Link (Cmd/Ctrl+K)">
-            <i class="ti ti-link"></i>
-        </button>
-        <button type="button" class="format-btn" onclick="formatText('code')" title="Code">
-            <i class="ti ti-code"></i>
-        </button>
-        <button type="button" class="format-btn" onclick="formatText('strikethrough')" title="Strikethrough">
-            <i class="ti ti-strikethrough"></i>
-        </button>
-        <button type="button" class="format-btn" onclick="formatText('underline')" title="Underline">
-            <i class="ti ti-underline"></i>
-        </button>
-        <button type="button" class="format-btn" onclick="formatText('removeFormat')" title="Clear formatting">
-            <i class="ti ti-clear-formatting"></i>
-        </button>
-        <div class="format-separator"></div>
-        <select class="format-select" onchange="formatHeading(this.value); this.value=''">
-            <option value="">Text</option>
-            <option value="h1">Large heading</option>
-            <option value="h2">Medium heading</option>
-            <option value="h3">Small heading</option>
-            <option value="p">Paragraph</option>
-        </select>
-    </div>
-    
-    <!-- Link Editor Popup -->
-    <div class="link-editor-popup" id="linkEditorPopup">
-        <div class="link-editor-input-wrapper">
-            <input type="text" 
-                   id="linkUrlInput" 
-                   class="link-editor-input" 
-                   placeholder="Enter URL" 
-                   onkeyup="handleLinkInputKeyup(event)">
-            <button type="button" 
-                    class="link-editor-btn" 
-                    onclick="applyLink()"
-                    title="Apply">
-                <i class="ti ti-check"></i>
-            </button>
-            <button type="button" 
-                    class="link-editor-btn" 
-                    onclick="removeLink()"
-                    title="Remove link">
-                <i class="ti ti-unlink"></i>
-            </button>
-            <button type="button" 
-                    class="link-editor-btn" 
-                    onclick="closeLinkEditor()"
-                    title="Cancel">
-                <i class="ti ti-x"></i>
-            </button>
-        </div>
-    </div>
-    
-    <!-- Link Hover Menu -->
-    <div class="link-hover-menu" id="linkHoverMenu">
-        <div class="link-hover-url" id="linkHoverUrl"></div>
-        <div class="link-hover-actions">
-            <button type="button" class="link-hover-btn" onclick="if(currentHoveredLink) editExistingLink()" title="Edit link">
-                <i class="ti ti-edit"></i>
-            </button>
-            <button type="button" class="link-hover-btn" onclick="if(currentHoveredLink) removeExistingLink()" title="Remove link">
-                <i class="ti ti-unlink"></i>
-            </button>
-            <button type="button" class="link-hover-btn" onclick="openLinkInNewTab()" title="Open link">
-                <i class="ti ti-external-link"></i>
-            </button>
-        </div>
-    </div>
-    
-    <!-- Unsaved Changes Modal -->
-    <div id="unsavedChangesModal" class="ghost-modal-backdrop" style="display: none;">
-        <div class="ghost-modal">
-            <div class="ghost-modal-header">
-                <h3>Are you sure you want to leave this page?</h3>
-                <button type="button" class="ghost-modal-close" onclick="hideUnsavedChangesModal()">
-                    <i class="ti ti-x text-xl"></i>
-                </button>
-            </div>
-            <div class="ghost-modal-body">
-                <p class="text-gray-600 text-base">
-                    You have unsaved changes. Do you want to save before leaving?
-                </p>
-            </div>
-            <div class="ghost-modal-footer">
-                <button type="button" class="ghost-btn ghost-btn-link" onclick="leaveWithoutSaving()">
-                    <span>Leave without saving</span>
-                </button>
-                <button type="button" class="ghost-btn ghost-btn-link" onclick="saveAndStay()">
-                    <span>Save & stay</span>
-                </button>
-                <button type="button" class="ghost-btn ghost-btn-black" onclick="saveAndLeave()">
-                    <span>Save & leave</span>
-                </button>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Toast notification container -->
-    <div id="toastContainer" class="fixed bottom-4 right-4 z-50 space-y-2"></div>
-    
-    <!-- Hidden form for data submission -->
-    <form id="postForm" method="post" style="display: none;">
-        <input type="hidden" name="postId" value="<cfoutput>#postData.id#</cfoutput>">
-        <input type="hidden" name="title" id="formTitle">
-        <input type="hidden" name="content" id="formContent">
-        <input type="hidden" name="plaintext" id="formPlaintext">
-        <input type="hidden" name="feature_image" id="formFeatureImage">
-        <input type="hidden" name="slug" id="formSlug">
-        <input type="hidden" name="excerpt" id="formExcerpt">
-        <input type="hidden" name="meta_title" id="formMetaTitle">
-        <input type="hidden" name="meta_description" id="formMetaDescription">
-        <input type="hidden" name="visibility" id="formVisibility">
-        <input type="hidden" id="postVisibility" value="<cfoutput>#postData.visibility#</cfoutput>">
-        <input type="hidden" name="featured" id="formFeatured">
-        <input type="hidden" name="published_at" id="formPublishedAt">
-        <input type="hidden" name="tags" id="formTags">
-        <input type="hidden" name="authors" id="formAuthors">
-        <input type="hidden" name="status" id="formStatus">
-        <input type="hidden" name="card_data" id="formCardData">
-        
-        <!--- Additional settings fields --->
-        <input type="hidden" name="custom_template" id="formCustomTemplate">
-        <input type="hidden" name="codeinjection_head" id="formCodeinjectionHead">
-        <input type="hidden" name="codeinjection_foot" id="formCodeinjectionFoot">
-        <input type="hidden" name="canonical_url" id="formCanonicalUrl">
-        <input type="hidden" name="show_title_and_feature_image" id="formShowTitleAndFeatureImage">
-        
-        <!--- Social media fields --->
-        <input type="hidden" name="og_title" id="formOgTitle">
-        <input type="hidden" name="og_description" id="formOgDescription">
-        <input type="hidden" name="og_image" id="formOgImage">
-        <input type="hidden" name="twitter_title" id="formTwitterTitle">
-        <input type="hidden" name="twitter_description" id="formTwitterDescription">
-        <input type="hidden" name="twitter_image" id="formTwitterImage">
-    </form>
-    
-    <!-- Core JS -->
-    <script src="/ghost/admin/assets/js/vendor.min.js"></script>
-    <script src="/ghost/admin/assets/js/app.init.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/preline@2.0.2/dist/preline.js"></script>
-    
+<!--- Shared Ghost Editor Scripts - Complete JavaScript from edit-ghost-style.cfm --->
     <!-- Editor JS -->
     <script>
     // Global variables
@@ -4842,30 +67,23 @@ if (len(postData.html)) {
             autoResizeTitle(titleElement, false); // Don't mark dirty on initial load
         }
         
-        // Only enable text formatting popup on edit/new pages
-        const currentPath = window.location.pathname;
-        const isEditPage = currentPath.includes('/posts/edit') || currentPath.includes('/posts/new') || 
-                          currentPath.includes('/pages/edit') || currentPath.includes('/pages/new');
+        // Global text selection handler
+        document.addEventListener('selectionchange', function() {
+            checkTextSelection();
+        });
         
-        if (isEditPage) {
-            // Global text selection handler
-            document.addEventListener('selectionchange', function() {
-                checkTextSelection();
-            });
-            
-            // Also check on mouseup for better responsiveness
-            document.addEventListener('mouseup', function(e) {
-                // Only check if mouseup is within a content editable area
-                if (e.target.closest('.card-content')) {
-                    setTimeout(() => checkTextSelection(), 10);
-                }
-            });
-        }
+        // Also check on mouseup for better responsiveness
+        document.addEventListener('mouseup', function(e) {
+            // Only check if mouseup is within a content editable area
+            if (e.target.closest('.card-content')) {
+                setTimeout(() => checkTextSelection(), 10);
+            }
+        });
         
         // Hide popup when clicking outside
         document.addEventListener('mousedown', function(e) {
             const popup = document.getElementById('formattingPopup');
-            if (!popup.contains(e.target) && !e.target.closest('.card-content')) {
+            if (popup && !popup.contains(e.target) && !e.target.closest('.card-content')) {
                 popup.classList.remove('show');
             }
         });
@@ -4891,18 +109,18 @@ if (len(postData.html)) {
                     isCreatingCards = true;
                     contentCards.forEach(card => {
                         const cardElement = createCardElement(card);
-                        document.getElementById('editorContent').appendChild(cardElement);
+                        document.getElementById('editorContainer').appendChild(cardElement);
                     });
                     isCreatingCards = false;
                     
                     // Add the add button at the end
                     const addButton = createAddButton();
-                    document.getElementById('editorContent').appendChild(addButton);
+                    document.getElementById('editorContainer').appendChild(addButton);
                 } else if (htmlContent) {
                     parseHtmlToCards(htmlContent, true); // true = initial load
                 } else {
                     // Add initial paragraph card for new posts
-                    addCardInternal('paragraph', {});
+                    addCard('paragraph', {}, false);
                 }
             } catch (e) {
                 console.error('Error parsing card data:', e);
@@ -4910,14 +128,14 @@ if (len(postData.html)) {
                 if (htmlContent) {
                     parseHtmlToCards(htmlContent, true);
                 } else {
-                    addCardInternal('paragraph', {});
+                    addCard('paragraph', {}, false);
                 }
             }
         } else if (htmlContent) {
             parseHtmlToCards(htmlContent, true); // true = initial load
         } else {
             // Add initial paragraph card for new posts
-            addCardInternal('paragraph', {});
+            addCard('paragraph', {}, false);
         }
         
         // Set up autosave
@@ -4941,6 +159,13 @@ if (len(postData.html)) {
             isDirty = false;
             isInitializing = false; // Allow marking dirty from now on
             console.log('Initialization complete - isDirty:', isDirty, 'isInitializing:', isInitializing);
+            
+            // Double-check modal is hidden
+            const modal = document.getElementById('unsavedChangesModal');
+            if (modal && !modal.classList.contains('hidden')) {
+                console.log('Modal was visible on init - hiding it');
+                modal.classList.add('hidden');
+            }
             
             // Update all previews now that content is loaded
             updateTwitterPreview();
@@ -5873,7 +1098,7 @@ if (len(postData.html)) {
                      id="content-${card.id}"
                      onblur="updateCard('${card.id}', this.innerHTML)"
                      oninput="markDirtySafe(); updateWordCount();"
-                     placeholder="Start writing...">${card.data.content || ''}</div>`;
+                     placeholder="Begin writing your post...">${card.data.content || ''}</div>`;
     }
     
     function createHeadingCard(card) {
@@ -7976,29 +3201,29 @@ if (len(postData.html)) {
     function markDirty() {
         // Don't mark dirty during initialization
         if (isInitializing) {
-            console.log('markDirty called during initialization - ignoring');
+            // console.log('markDirty called during initialization - ignoring');
             return;
         }
         
         // Don't mark dirty during programmatic changes
         if (isProgrammaticChange) {
-            console.log('markDirty called during programmatic change - ignoring');
+            // console.log('markDirty called during programmatic change - ignoring');
             return;
         }
         
         // Don't mark dirty when creating cards initially
         if (isCreatingCards) {
-            console.log('markDirty called during card creation - ignoring');
+            // console.log('markDirty called during card creation - ignoring');
             return;
         }
         
         // Don't mark dirty if content hasn't been initialized yet
         if (contentCards.length === 0 && !document.getElementById('postTitle').value.trim()) {
-            console.log('markDirty called with no content - ignoring');
+            // console.log('markDirty called with no content - ignoring');
             return;
         }
         
-        console.log('markDirty called - setting isDirty to true');
+        // console.log('markDirty called - setting isDirty to true', new Error().stack);
         isDirty = true;
         
         // Show unsaved changes for all posts
@@ -8024,19 +3249,29 @@ if (len(postData.html)) {
     // Navigation handling
     let pendingNavigation = null;
     
+    // Flag to track if navigation handling is ready
+    let navigationHandlingReady = false;
+    
     // Setup autosave and navigation handling
     function setupAutosave() {
         // Auto-save is handled by the autosave timer
         
-        // Handle navigation with custom modal
+        // Delay navigation handling to avoid initial false triggers
+        setTimeout(() => {
+            navigationHandlingReady = true;
+        }, 2500); // Give extra time after initialization
+        
+        // Handle browser close/refresh with native dialog
+        // Only use this for actual browser navigation (close tab, refresh, etc)
         window.addEventListener('beforeunload', function(e) {
-            if (isDirty) {
-                // Show custom modal instead of browser popup
-                e.preventDefault();
-                // For modern browsers
-                e.returnValue = '';
-                // We'll handle this with our custom modal
-                return '';
+            if (isDirty && navigationHandlingReady) {
+                // Only show browser dialog for non-link navigation
+                // (browser close, refresh, back button, etc)
+                if (!pendingNavigation) {
+                    e.preventDefault();
+                    e.returnValue = 'You have unsaved changes. Are you sure you want to leave?';
+                    return 'You have unsaved changes. Are you sure you want to leave?';
+                }
             }
         });
         
@@ -8044,9 +3279,19 @@ if (len(postData.html)) {
         document.addEventListener('click', function(e) {
             const link = e.target.closest('a');
             if (link && !link.target) {
-                console.log('Link clicked:', link.href, 'isDirty:', isDirty, 'isInitializing:', isInitializing);
-                if (isDirty && !isInitializing) {
+                console.log('Link clicked:', link.href, 'isDirty:', isDirty, 'isInitializing:', isInitializing, 'navigationHandlingReady:', navigationHandlingReady, 'target:', e.target);
+                
+                // Skip if it's the same page or just a hash change
+                const currentUrl = window.location.href.split('#')[0];
+                const linkUrl = link.href.split('#')[0];
+                if (currentUrl === linkUrl) {
+                    return;
+                }
+                
+                if (isDirty && !isInitializing && navigationHandlingReady) {
                     e.preventDefault();
+                    e.stopPropagation();
+                    // Set pending navigation immediately to prevent beforeunload
                     pendingNavigation = link.href;
                     showUnsavedChangesModal();
                 }
@@ -8055,15 +3300,32 @@ if (len(postData.html)) {
     }
     
     // Show unsaved changes modal
+    let modalShowing = false;
     function showUnsavedChangesModal() {
-        console.log('showUnsavedChangesModal called');
+        console.log('showUnsavedChangesModal called - isDirty:', isDirty, 'navigationHandlingReady:', navigationHandlingReady, 'isInitializing:', isInitializing);
+        
+        // Don't show if still initializing or navigation handling not ready
+        if (isInitializing || !navigationHandlingReady) {
+            console.log('Skipping modal - still initializing or not ready');
+            return;
+        }
+        
+        // Prevent showing modal multiple times
+        if (modalShowing) {
+            console.log('Modal already showing, skipping');
+            return;
+        }
+        
         const modal = document.getElementById('unsavedChangesModal');
         if (modal) {
+            modalShowing = true;
             modal.classList.remove('hidden');
-            modal.style.display = 'flex';
-            console.log('Modal shown');
+            modal.style.display = 'flex'; // Ensure it's visible
         } else {
-            console.error('Unsaved changes modal not found!');
+            // If modal doesn't exist, use native confirm dialog
+            if (confirm('You have unsaved changes. Are you sure you want to leave?')) {
+                leaveWithoutSaving();
+            }
         }
     }
     
@@ -8071,15 +3333,15 @@ if (len(postData.html)) {
     function hideUnsavedChangesModal() {
         const modal = document.getElementById('unsavedChangesModal');
         if (modal) {
-            modal.style.display = 'none';
+            modal.classList.add('hidden');
+            modal.style.display = 'none'; // Ensure it's hidden
         }
+        modalShowing = false;
         pendingNavigation = null;
     }
-    window.hideUnsavedChangesModal = hideUnsavedChangesModal;
     
     // Save and leave
     function saveAndLeave() {
-        console.log('saveAndLeave called, pendingNavigation:', pendingNavigation);
         // Store the navigation URL before hiding modal clears it
         const navigateToUrl = pendingNavigation;
         
@@ -8092,13 +3354,9 @@ if (len(postData.html)) {
         // Save as draft for unpublished posts, or maintain status for published posts
         const saveStatus = originalStatus === 'published' ? 'published' : 'draft';
         savePost(saveStatus, false).then(() => {
-            console.log('Save successful, navigateToUrl:', navigateToUrl);
             isDirty = false;
             if (navigateToUrl) {
-                console.log('Navigating to:', navigateToUrl);
                 window.location.href = navigateToUrl;
-            } else {
-                console.log('No navigation URL available');
             }
         }).catch(error => {
             showMessage('Save failed: ' + error.message, 'error');
@@ -8106,11 +3364,9 @@ if (len(postData.html)) {
             showUnsavedChangesModal();
         });
     }
-    window.saveAndLeave = saveAndLeave;
     
     // Save and stay on page
     function saveAndStay() {
-        console.log('saveAndStay called');
         // Hide modal immediately
         hideUnsavedChangesModal();
         
@@ -8128,18 +3384,17 @@ if (len(postData.html)) {
             showMessage('Save failed: ' + error.message, 'error');
         });
     }
-    window.saveAndStay = saveAndStay;
     
     // Leave without saving
     function leaveWithoutSaving() {
-        console.log('leaveWithoutSaving called, pendingNavigation:', pendingNavigation);
         isDirty = false;
-        if (pendingNavigation) {
-            window.location.href = pendingNavigation;
-        }
+        const navUrl = pendingNavigation;
+        pendingNavigation = null; // Clear immediately to prevent beforeunload
         hideUnsavedChangesModal();
+        if (navUrl) {
+            window.location.href = navUrl;
+        }
     }
-    window.leaveWithoutSaving = leaveWithoutSaving;
     
     // Cancel navigation
     function cancelLeave() {
@@ -11147,15 +6402,16 @@ if (len(postData.html)) {
                 // console.log('Posts response:', data);
                 if (data.success && data.posts && data.posts.length > 0) {
                     let modalHtml = `
-                        <div class="modal fade" id="postSelectorModal" tabindex="-1">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">Select a Published Post</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal">&times;</button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="row g-3">
+                        <div class="ghost-modal-backdrop" id="postSelectorModalBackdrop" style="display: flex;">
+                            <div class="ghost-modal" style="max-width: 48rem;">
+                                <div class="ghost-modal-header">
+                                    <h3>Select a Published Post</h3>
+                                    <button type="button" class="ghost-modal-close" onclick="closePostSelectorModal()">
+                                        <i class="ti ti-x text-xl"></i>
+                                    </button>
+                                </div>
+                                <div class="ghost-modal-body" style="max-height: 60vh; overflow-y: auto;">
+                                    <div class="space-y-3">
                     `;
                     
                     data.posts.forEach(post => {
@@ -11192,7 +6448,6 @@ if (len(postData.html)) {
                     });
                     
                     modalHtml += `
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -11200,7 +6455,7 @@ if (len(postData.html)) {
                     `;
                     
                     // Remove existing modal if any
-                    const existingModal = document.getElementById('postSelectorModal');
+                    const existingModal = document.getElementById('postSelectorModalBackdrop');
                     if (existingModal) {
                         existingModal.remove();
                     }
@@ -11208,37 +6463,7 @@ if (len(postData.html)) {
                     // Add modal to page
                     document.body.insertAdjacentHTML('beforeend', modalHtml);
                     
-                    // Show modal
-                    try {
-                        if (typeof bootstrap === 'undefined') {
-                            console.error('Bootstrap is not loaded');
-                            // Use basic modal display
-                            const modalElement = document.getElementById('postSelectorModal');
-                            modalElement.style.display = 'block';
-                            modalElement.classList.add('show');
-                            document.body.classList.add('modal-open');
-                            
-                            // Add backdrop
-                            const backdrop = document.createElement('div');
-                            backdrop.className = 'modal-backdrop fade show';
-                            document.body.appendChild(backdrop);
-                            
-                            // Close button handler
-                            modalElement.querySelector('.btn-close').addEventListener('click', function() {
-                                modalElement.style.display = 'none';
-                                modalElement.classList.remove('show');
-                                document.body.classList.remove('modal-open');
-                                backdrop.remove();
-                            });
-                        } else {
-                            const modal = new bootstrap.Modal(document.getElementById('postSelectorModal'));
-                            modal.show();
-                        }
-                    } catch (e) {
-                        console.error('Error showing modal:', e);
-                        // Fallback to simple display
-                        document.getElementById('postSelectorModal').style.display = 'block';
-                    }
+                    // Modal is already visible (display: flex in inline style)
                     
                     // Add click and hover handlers
                     document.querySelectorAll('.post-selector-item').forEach(item => {
@@ -11267,34 +6492,18 @@ if (len(postData.html)) {
             });
     }
     
+    // Close post selector modal
+    function closePostSelectorModal() {
+        const modal = document.getElementById('postSelectorModalBackdrop');
+        if (modal) {
+            modal.remove();
+        }
+    }
+    
     // Select a post for bookmark
     function selectPostForBookmark(cardId, url, title, excerpt, thumbnail) {
         // Close modal
-        try {
-            if (typeof bootstrap !== 'undefined') {
-                const modal = bootstrap.Modal.getInstance(document.getElementById('postSelectorModal'));
-                if (modal) {
-                    modal.hide();
-                }
-            } else {
-                // Manual close
-                const modalElement = document.getElementById('postSelectorModal');
-                modalElement.style.display = 'none';
-                modalElement.classList.remove('show');
-                document.body.classList.remove('modal-open');
-                const backdrop = document.querySelector('.modal-backdrop');
-                if (backdrop) backdrop.remove();
-                modalElement.remove();
-            }
-        } catch (e) {
-            console.error('Error closing modal:', e);
-            // Force remove
-            const modalElement = document.getElementById('postSelectorModal');
-            if (modalElement) modalElement.remove();
-            const backdrop = document.querySelector('.modal-backdrop');
-            if (backdrop) backdrop.remove();
-            document.body.classList.remove('modal-open');
-        }
+        closePostSelectorModal();
         
         // Update card data
         updateCardData(cardId, 'url', url);
@@ -11517,15 +6726,30 @@ if (len(postData.html)) {
             saveResolve = resolve;
             saveReject = reject;
             
-            // Collect all data
-            const title = document.getElementById('postTitle').value;
-            const slug = document.getElementById('postSlug').value || generateSlug(title);
-            const excerpt = document.getElementById('postExcerpt').value;
-            const metaTitle = document.getElementById('metaTitle').value;
-            const metaDescription = document.getElementById('metaDescription').value;
-            const visibility = document.getElementById('postVisibility').value;
-            const featured = document.getElementById('featuredPost').checked;
-            const publishDate = document.getElementById('publishDate').value;
+            // Collect all data with null checks
+            const titleEl = document.getElementById('postTitle');
+            const title = titleEl ? titleEl.value : '';
+            
+            const slugEl = document.getElementById('postSlug');
+            const slug = slugEl ? slugEl.value : generateSlug(title);
+            
+            const excerptEl = document.getElementById('postExcerpt');
+            const excerpt = excerptEl ? excerptEl.value : '';
+            
+            const metaTitleEl = document.getElementById('metaTitle');
+            const metaTitle = metaTitleEl ? metaTitleEl.value : '';
+            
+            const metaDescriptionEl = document.getElementById('metaDescription');
+            const metaDescription = metaDescriptionEl ? metaDescriptionEl.value : '';
+            
+            const visibilityEl = document.getElementById('postVisibility');
+            const visibility = visibilityEl ? visibilityEl.value : 'public';
+            
+            const featuredEl = document.getElementById('featuredPost');
+            const featured = featuredEl ? featuredEl.checked : false;
+            
+            const publishDateEl = document.getElementById('publishDate');
+            const publishDate = publishDateEl ? publishDateEl.value : '';
         
         // Build HTML content from cards
         let html = '';
@@ -12020,51 +7244,65 @@ if (len(postData.html)) {
             }
         });
         
-        // Prepare form data
-        document.getElementById('formTitle').value = title;
-        document.getElementById('formContent').value = html;
-        document.getElementById('formPlaintext').value = plaintext.trim();
-        document.getElementById('formFeatureImage').value = postData.feature_image || '';
-        document.getElementById('formSlug').value = slug;
-        document.getElementById('formExcerpt').value = excerpt;
-        document.getElementById('formMetaTitle').value = metaTitle;
-        document.getElementById('formMetaDescription').value = metaDescription;
-        document.getElementById('formVisibility').value = visibility;
-        document.getElementById('formFeatured').value = featured ? '1' : '0';
+        // Prepare form data with null checks
+        const setFormValue = (id, value) => {
+            const el = document.getElementById(id);
+            if (el) el.value = value;
+        };
+        
+        setFormValue('formTitle', title);
+        setFormValue('formContent', html);
+        setFormValue('formPlaintext', plaintext.trim());
+        setFormValue('formFeatureImage', postData.feature_image || '');
+        setFormValue('formSlug', slug);
+        setFormValue('formExcerpt', excerpt);
+        setFormValue('formMetaTitle', metaTitle);
+        setFormValue('formMetaDescription', metaDescription);
+        setFormValue('formVisibility', visibility);
+        setFormValue('formFeatured', featured ? '1' : '0');
         
         // Use scheduledAt from publishData if provided, otherwise use the publishDate field
         let publishedAt = publishDate;
         if (publishData && publishData.scheduledAt) {
             publishedAt = publishData.scheduledAt;
         }
-        document.getElementById('formPublishedAt').value = publishedAt;
+        setFormValue('formPublishedAt', publishedAt);
         
-        document.getElementById('formTags').value = JSON.stringify(selectedTags);
-        document.getElementById('formStatus').value = status;
+        setFormValue('formTags', JSON.stringify(selectedTags));
+        setFormValue('formStatus', status);
         
         // Add authors to form data
-        document.getElementById('formAuthors').value = JSON.stringify(selectedAuthors);
+        setFormValue('formAuthors', JSON.stringify(selectedAuthors || []));
         
         // Add additional settings fields
-        document.getElementById('formCustomTemplate').value = document.getElementById('postTemplate')?.value || '';
-        document.getElementById('formCodeinjectionHead').value = document.getElementById('codeinjectionHead')?.value || '';
-        document.getElementById('formCodeinjectionFoot').value = document.getElementById('codeinjectionFoot')?.value || '';
-        document.getElementById('formCanonicalUrl').value = document.getElementById('canonicalUrl')?.value || '';
-        document.getElementById('formShowTitleAndFeatureImage').value = document.getElementById('showTitleAndFeatureImage')?.checked ? '1' : '0';
+        setFormValue('formCustomTemplate', document.getElementById('postTemplate')?.value || '');
+        setFormValue('formCodeinjectionHead', document.getElementById('codeinjectionHead')?.value || '');
+        setFormValue('formCodeinjectionFoot', document.getElementById('codeinjectionFoot')?.value || '');
+        setFormValue('formCanonicalUrl', document.getElementById('canonicalUrl')?.value || '');
+        setFormValue('formShowTitleAndFeatureImage', document.getElementById('showTitleAndFeatureImage')?.checked ? '1' : '0');
         
         // Add social media fields
-        document.getElementById('formOgTitle').value = document.getElementById('facebookTitle')?.value || '';
-        document.getElementById('formOgDescription').value = document.getElementById('facebookDescription')?.value || '';
-        document.getElementById('formOgImage').value = document.getElementById('facebookImage')?.value || '';
-        document.getElementById('formTwitterTitle').value = document.getElementById('twitterTitle')?.value || '';
-        document.getElementById('formTwitterDescription').value = document.getElementById('twitterDescription')?.value || '';
-        document.getElementById('formTwitterImage').value = document.getElementById('twitterImage')?.value || '';
+        setFormValue('formOgTitle', document.getElementById('facebookTitle')?.value || '');
+        setFormValue('formOgDescription', document.getElementById('facebookDescription')?.value || '');
+        setFormValue('formOgImage', document.getElementById('facebookImage')?.value || '');
+        setFormValue('formTwitterTitle', document.getElementById('twitterTitle')?.value || '');
+        setFormValue('formTwitterDescription', document.getElementById('twitterDescription')?.value || '');
+        setFormValue('formTwitterImage', document.getElementById('twitterImage')?.value || '');
         
         // Save card data to preserve all card settings
-        document.getElementById('formCardData').value = JSON.stringify(contentCards);
+        setFormValue('formCardData', JSON.stringify(contentCards));
+        
+        // Ensure postId is set
+        setFormValue('formPostId', postData.id || postData.ID || postId || '');
         
         // Get form data
-        const formData = new FormData(document.getElementById('postForm'));
+        const postForm = document.getElementById('postForm');
+        if (!postForm) {
+            console.error('Post form not found');
+            reject('Post form not found');
+            return;
+        }
+        const formData = new FormData(postForm);
         
         // Send AJAX request
         fetch('/ghost/admin/ajax/save-post.cfm', {
@@ -12111,11 +7349,6 @@ if (len(postData.html)) {
                         setTimeout(() => {
                             window.location.href = '/ghost/admin/posts';
                         }, 1000);
-                    } else if (status === 'scheduled') {
-                        showMessage('Post scheduled successfully', 'success');
-                        setTimeout(() => {
-                            window.location.href = '/ghost/admin/posts';
-                        }, 1000);
                     } else {
                         showMessage('Post saved', 'success');
                     }
@@ -12133,7 +7366,10 @@ if (len(postData.html)) {
                     saveReject = null;
                 }
                 
-                // Note: callback functionality removed - use promise instead
+                // Call callback if provided
+                if (callback && typeof callback === 'function') {
+                    callback(data);
+                }
             } else {
                 showMessage(data.message || data.MESSAGE || 'Save failed', 'error');
                 
@@ -12160,118 +7396,286 @@ if (len(postData.html)) {
     
     // Publish post
     function publishPost() {
-        // Use the new Ghost-style publish modal from editor-scripts.cfm
-        if (typeof showPublishModal === 'function') {
-            showPublishModal();
-        } else {
-            console.error('showPublishModal function not found. Make sure editor-scripts.cfm is included.');
-        }
+        showPublishModal();
     }
     
-    // Old publish modal functions commented out to avoid conflicts
-    /*
     // Show publish confirmation modal
     function showPublishModal() {
-        // Create modal backdrop
+        console.log('showPublishModal called');
         const backdrop = document.createElement('div');
-        backdrop.className = 'ghost-modal-backdrop';
+        backdrop.className = 'gh-publish-modal';
         backdrop.id = 'publishModalBackdrop';
-        backdrop.style.display = 'flex';
         
-        // Create modal
-        const modal = document.createElement('div');
-        modal.className = 'ghost-modal ghost-publish-modal';
-        modal.innerHTML = `
-            <div class="ghost-modal-header">
-                <h3>Ready to publish?</h3>
-                <button type="button" class="ghost-modal-close" onclick="closePublishModal()">
-                    <i class="ti ti-x text-xl"></i>
-                </button>
-            </div>
-            <div class="ghost-modal-body p-0">
-                <!-- Simplified Options -->
-                <div class="publish-options">
-                    <!-- Publish Settings -->
-                    <div class="publish-setting-group">
-                        <div class="publish-setting-item">
-                            <div class="publish-setting-label">
-                                <i class="ti ti-world text-gray-500 mr-3"></i>
-                                <div>
-                                    <div class="font-medium text-gray-900">Post visibility</div>
-                                    <div class="text-sm text-gray-600">Public - visible to everyone</div>
-                                </div>
+        const modalInner = document.createElement('div');
+        modalInner.className = 'gh-publish-modal-inner';
+        
+        const modalContainer = document.createElement('div');
+        modalContainer.className = 'flex flex-column h-100';
+        
+        modalContainer.innerHTML = `
+            <header class="gh-publish-header">
+                <h2>Publish</h2>
+                <div class="gh-btn-group-right">
+                    <button type="button" class="gh-btn gh-btn-editor gh-editor-preview-trigger" onclick="closePublishModal()">
+                        <span>Close</span>
+                    </button>
+                    <button type="button" class="gh-btn" onclick="previewPost()">
+                        <span>Preview</span>
+                    </button>
+                </div>
+            </header>
+            
+            <div class="gh-publish-settings-container fade-in">
+                <div class="gh-publish-title">
+                    <div class="green">Ready, set, publish.</div>
+                    <div>Share it with the world.</div>
+                </div>
+                <div class="gh-publish-settings">
+                    <!-- Publish Type Setting -->
+                    <div class="gh-publish-setting">
+                        <button class="gh-publish-setting-title" onclick="togglePublishType()">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M14.4 1.6H1.6C0.72 1.6 0 2.32 0 3.2V12C0 12.88 0.72 13.6 1.6 13.6H14.4C15.28 13.6 16 12.88 16 12V3.2C16 2.32 15.28 1.6 14.4 1.6ZM14.4 3.2L8 7.2L1.6 3.2H14.4ZM14.4 12H1.6V4.8L8 8.8L14.4 4.8V12Z" fill="currentColor"/>
+                            </svg>
+                            <div class="gh-publish-setting-trigger">
+                                <span id="publishTypeDisplay">Publish and email</span>
                             </div>
+                            <span id="publishTypeArrow">
+                                <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-expand">
+                                    <path d="M1.41 0L6 4.58L10.59 0L12 1.41L6 7.41L0 1.41L1.41 0Z" fill="currentColor"/>
+                                </svg>
+                            </span>
+                        </button>
+                        <div id="publishTypeOptions" class="gh-publish-setting-form hidden">
+                            <fieldset class="gh-publish-types">
+                                <span>
+                                    <input type="radio" name="publishType" id="publish-type-publish+send" class="gh-radio-button" value="publish+send" checked onchange="updatePublishOptions()">
+                                    <label for="publish-type-publish+send">Publish and email</label>
+                                </span>
+                                <span>
+                                    <input type="radio" name="publishType" id="publish-type-publish" class="gh-radio-button" value="publish" onchange="updatePublishOptions()">
+                                    <label for="publish-type-publish">Publish only</label>
+                                </span>
+                                <span>
+                                    <input type="radio" name="publishType" id="publish-type-send" class="gh-radio-button" value="send" onchange="updatePublishOptions()">
+                                    <label for="publish-type-send">Email only</label>
+                                </span>
+                            </fieldset>
                         </div>
-                        
-                        <div class="publish-setting-item">
-                            <div class="publish-setting-label">
-                                <i class="ti ti-clock text-gray-500 mr-3"></i>
-                                <div>
-                                    <div class="font-medium text-gray-900">Publish time</div>
-                                    <div class="text-sm text-gray-600">
-                                        <button type="button" class="text-primary hover:text-primary-dark inline-flex items-center" onclick="toggleSchedule()">
-                                            <span id="scheduleDisplayText">Right now</span>
-                                            <i class="ti ti-chevron-down ml-1 text-xs"></i>
-                                        </button>
-                                    </div>
-                                </div>
+                    </div>
+                    
+                    <!-- Email Recipients Setting -->
+                    <div id="emailRecipientsSection" class="gh-publish-setting">
+                        <button class="gh-publish-setting-title" onclick="toggleEmailRecipients()">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M11 9C12.66 9 13.99 7.66 13.99 6C13.99 4.34 12.66 3 11 3C9.34 3 8 4.34 8 6C8 7.66 9.34 9 11 9ZM5 9C6.66 9 7.99 7.66 7.99 6C7.99 4.34 6.66 3 5 3C3.34 3 2 4.34 2 6C2 7.66 3.34 9 5 9ZM5 11C2.67 11 0 12.17 0 14.5V16H10V14.5C10 12.17 7.33 11 5 11ZM11 11C10.67 11 10.3 11.02 9.91 11.05C10.95 11.81 11.5 12.96 11.5 14.5V16H16V14.5C16 12.17 13.33 11 11 11Z" fill="currentColor"/>
+                            </svg>
+                            <div class="gh-publish-setting-trigger">
+                                <span id="emailRecipientsDisplay">All 7 subscribers</span>
                             </div>
-                        </div>
-                        
-                        <!-- Schedule Options (Hidden by default) -->
-                        <div id="scheduleSection" class="publish-schedule-section hidden">
-                            <div class="flex gap-3 mt-3">
-                                <input type="date" id="scheduleDate" class="ghost-input flex-1" 
-                                       min="${new Date().toISOString().split('T')[0]}"
-                                       value="${new Date().toISOString().split('T')[0]}"
-                                       onchange="updateScheduleDisplay()">
-                                <input type="time" id="scheduleTime" class="ghost-input flex-1" 
-                                       value="${new Date(Date.now() + 600000).toTimeString().slice(0,5)}"
-                                       onchange="updateScheduleDisplay()">
-                            </div>
-                        </div>
-                        
-                        <!-- Email Options -->
-                        <div class="publish-setting-item border-t border-gray-100 pt-4 mt-4">
-                            <label class="flex items-start cursor-pointer">
-                                <input type="checkbox" id="sendEmail" class="mt-1 mr-3" checked onchange="toggleEmailOptions()">
-                                <div class="flex-1">
-                                    <div class="font-medium text-gray-900">Send as email newsletter</div>
-                                    <div class="text-sm text-gray-600">Deliver this post to <span id="subscriberCount">all subscribers</span></div>
+                            <span>
+                                <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-expand">
+                                    <path d="M1.41 0L6 4.58L10.59 0L12 1.41L6 7.41L0 1.41L1.41 0Z" fill="currentColor"/>
+                                </svg>
+                            </span>
+                        </button>
+                        <div id="emailRecipientsOptions" class="gh-publish-setting-form hidden">
+                            <div class="gh-publish-send-to">
+                                <div class="gh-publish-send-to-option">
+                                    <label class="for-checkbox">
+                                        <input type="checkbox" id="send-to-all" checked onchange="updateEmailRecipients()" />
+                                        <div class="flex">
+                                            <div class="input-toggle-component"></div>
+                                            <p>All subscribers</p>
+                                        </div>
+                                    </label>
                                 </div>
-                            </label>
-                            
-                            <!-- Email Recipients (shown when email is checked) -->
-                            <div id="emailOptions" class="mt-4 pl-7">
-                                <select id="emailRecipients" class="ghost-input w-full" onchange="updateSubscriberCount()">
-                                    <option value="all">All subscribers</option>
-                                    <option value="free">Free subscribers only</option>
-                                    <option value="paid">Paid subscribers only</option>
-                                </select>
+                                <div class="gh-publish-send-to-option">
+                                    <label class="for-checkbox">
+                                        <input type="checkbox" id="send-to-free" checked onchange="updateEmailRecipients()" />
+                                        <div class="flex">
+                                            <div class="input-toggle-component"></div>
+                                            <p>Free subscribers</p>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="gh-publish-send-to-option">
+                                    <label class="for-checkbox">
+                                        <input type="checkbox" id="send-to-paid" checked onchange="updateEmailRecipients()" />
+                                        <div class="flex">
+                                            <div class="input-toggle-component"></div>
+                                            <p>Paid subscribers</p>
+                                        </div>
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    
+                    <!-- Schedule Setting -->
+                    <div class="gh-publish-setting last">
+                        <button class="gh-publish-setting-title" onclick="toggleScheduleOptions()">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 0C3.58 0 0 3.58 0 8C0 12.42 3.58 16 8 16C12.42 16 16 12.42 16 8C16 3.58 12.42 0 8 0ZM8 14.4C4.47 14.4 1.6 11.53 1.6 8C1.6 4.47 4.47 1.6 8 1.6C11.53 1.6 14.4 4.47 14.4 8C14.4 11.53 11.53 14.4 8 14.4ZM8.4 4H7.2V8.8L11.2 11.04L11.84 10.08L8.4 8.2V4Z" fill="currentColor"/>
+                            </svg>
+                            <div class="gh-publish-setting-trigger">
+                                <span id="scheduleDisplay">Right now</span>
+                            </div>
+                            <span>
+                                <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-expand">
+                                    <path d="M1.41 0L6 4.58L10.59 0L12 1.41L6 7.41L0 1.41L1.41 0Z" fill="currentColor"/>
+                                </svg>
+                            </span>
+                        </button>
+                        <div id="scheduleOptions" class="gh-publish-setting-form last hidden">
+                            <fieldset class="gh-publish-schedule">
+                                <div class="gh-radio">
+                                    <input type="radio" name="publishTime" id="publish-at-now" class="gh-radio-button" value="now" checked onchange="updateScheduleDisplay()">
+                                    <label for="publish-at-now">Right now</label>
+                                </div>
+                                <div class="gh-radio">
+                                    <input type="radio" name="publishTime" id="publish-at-schedule" class="gh-radio-button" value="schedule" onchange="updateScheduleDisplay()">
+                                    <label for="publish-at-schedule">Schedule for later</label>
+                                </div>
+                            </fieldset>
+                            <div id="scheduleDateTimeSection" class="gh-date-time-picker hidden">
+                                <input type="date" id="scheduleDate" class="gh-date-time-picker-date" 
+                                       min="${new Date().toISOString().split('T')[0]}"
+                                       value="${new Date().toISOString().split('T')[0]}"
+                                       onchange="updateScheduleDisplay()">
+                                <input type="time" id="scheduleTime" class="gh-date-time-picker-time" 
+                                       value="${new Date(Date.now() + 600000).toTimeString().slice(0,5)}"
+                                       onchange="updateScheduleDisplay()">
+                                <p class="gh-date-time-picker-error hidden" id="scheduleError">
+                                    Must be at least 5 minutes in the future
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
-            </div>
-            <div class="ghost-modal-footer">
-                <button type="button" class="ghost-btn ghost-btn-link" onclick="closePublishModal()">
-                    <span>Cancel</span>
-                </button>
-                <button type="button" class="ghost-btn ghost-btn-black" onclick="executePublishWithOptions()">
-                    <span id="publishButtonText">Publish now</span>
-                    <i class="ti ti-arrow-right ml-2"></i>
-                </button>
+                
+                <div class="gh-publish-cta">
+                    <button type="button" class="gh-btn gh-btn-black gh-btn-large" onclick="confirmPublish()">
+                        <span>Continue, final review →</span>
+                    </button>
+                </div>
             </div>
         `;
         
-        backdrop.appendChild(modal);
-        document.body.appendChild(backdrop);
+        // Add styles
+        const style = document.createElement('style');
+        style.textContent = `
+            .ghost-publish-modal {
+                max-width: 480px !important;
+            }
+            
+            .ghost-publish-settings {
+                padding: 0;
+            }
+            
+            .ghost-publish-setting {
+                border-bottom: 1px solid #e5e7eb;
+            }
+            
+            .ghost-publish-setting.last {
+                border-bottom: none;
+            }
+            
+            .ghost-publish-setting-title {
+                display: flex;
+                align-items: center;
+                width: 100%;
+                padding: 1.5rem 2rem;
+                background: none;
+                border: none;
+                text-align: left;
+                font-size: 1rem;
+                color: #15171A;
+                cursor: pointer;
+                transition: background-color 0.2s;
+            }
+            
+            .ghost-publish-setting-title:hover {
+                background-color: #f9fafb;
+            }
+            
+            .ghost-publish-setting-title i {
+                font-size: 1.25rem;
+                color: #6b7280;
+            }
+            
+            .ghost-publish-setting-title i.ml-auto {
+                transition: transform 0.2s;
+            }
+            
+            .ghost-publish-setting-title.expanded i.ml-auto {
+                transform: rotate(180deg);
+            }
+            
+            .ghost-publish-options {
+                padding: 0 2rem 1.5rem 3.5rem;
+            }
+            
+            .ghost-publish-options.hidden {
+                display: none;
+            }
+            
+            .ghost-publish-options label {
+                display: flex;
+                align-items: center;
+                padding: 0.5rem 0;
+                cursor: pointer;
+                font-size: 0.9rem;
+                color: #4b5563;
+            }
+            
+            .ghost-publish-options label:hover {
+                color: #15171A;
+            }
+            
+            .ghost-publish-options input[type="radio"] {
+                margin-right: 0.75rem;
+            }
+            
+            .ghost-publish-checkbox {
+                padding: 1.5rem 2rem;
+                border-top: 1px solid #e5e7eb;
+            }
+            
+            .ghost-publish-checkbox label {
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+                font-size: 0.9rem;
+                color: #4b5563;
+            }
+            
+            .ghost-publish-checkbox input[type="checkbox"] {
+                margin-right: 0.75rem;
+            }
+            
+            .ghost-input {
+                padding: 0.5rem 0.75rem;
+                border: 1px solid #e5e7eb;
+                border-radius: 0.375rem;
+                font-size: 0.875rem;
+                width: 100%;
+            }
+            
+            .ghost-input:focus {
+                outline: none;
+                border-color: #15171A;
+                box-shadow: 0 0 0 3px rgba(21, 23, 26, 0.1);
+            }
+        `;
+        modalContainer.appendChild(style);
         
-        // Animate in
-        setTimeout(() => {
-            modal.style.transform = 'scale(1)';
-            modal.style.opacity = '1';
-        }, 10);
+        modalInner.appendChild(modalContainer);
+        backdrop.appendChild(modalInner);
+        document.body.appendChild(backdrop);
+        console.log('Publish modal added to DOM');
+        console.log('Modal classes:', backdrop.className, modalInner.className);
         
         // Close on backdrop click
         backdrop.addEventListener('click', function(e) {
@@ -12279,6 +7683,9 @@ if (len(postData.html)) {
                 closePublishModal();
             }
         });
+        
+        // Initialize display
+        updatePublishOptions();
     }
     
     // Close publish modal
@@ -12289,111 +7696,171 @@ if (len(postData.html)) {
         }
     }
     
-    // Toggle schedule section
-    function toggleSchedule() {
-        const scheduleSection = document.getElementById('scheduleSection');
-        const scheduleText = document.getElementById('scheduleDisplayText');
+    // Update publish options visibility
+    function updatePublishOptions() {
+        const publishType = document.querySelector('input[name="publishType"]:checked').value;
+        const emailSection = document.getElementById('emailRecipientsSection');
+        const publishTypeDisplay = document.getElementById('publishTypeDisplay');
         
-        if (scheduleSection.classList.contains('hidden')) {
-            scheduleSection.classList.remove('hidden');
-            updateScheduleDisplay();
+        // Update display text
+        const typeLabels = {
+            'publish+send': 'Publish and email',
+            'publish': 'Publish only',
+            'send': 'Email only'
+        };
+        
+        publishTypeDisplay.textContent = typeLabels[publishType] || 'Publish and email';
+        
+        // Show/hide email recipients section
+        if (publishType === 'publish') {
+            emailSection.querySelector('.gh-publish-setting-title').classList.add('disabled');
+            emailSection.querySelector('.gh-publish-setting-trigger span').textContent = 'Not sent as newsletter';
         } else {
-            scheduleSection.classList.add('hidden');
-            scheduleText.textContent = 'Right now';
-            updatePublishButton();
+            emailSection.querySelector('.gh-publish-setting-title').classList.remove('disabled');
+            updateEmailRecipients();
         }
+        
+        // Update button text based on publish type and schedule
+        updatePublishButtonText();
+    }
+    
+    // Toggle publish type dropdown
+    function togglePublishType() {
+        console.log('togglePublishType called');
+        const options = document.getElementById('publishTypeOptions');
+        const button = options.previousElementSibling;
+        options.classList.toggle('hidden');
+        button.classList.toggle('expanded');
+        console.log('Options hidden:', options.classList.contains('hidden'));
+    }
+    
+    // Toggle email recipients dropdown
+    function toggleEmailRecipients() {
+        const options = document.getElementById('emailRecipientsOptions');
+        const button = options.previousElementSibling;
+        options.classList.toggle('hidden');
+        button.classList.toggle('expanded');
+    }
+    
+    // Toggle schedule options dropdown
+    function toggleScheduleOptions() {
+        const options = document.getElementById('scheduleOptions');
+        const button = options.previousElementSibling;
+        options.classList.toggle('hidden');
+        button.classList.toggle('expanded');
+    }
+    
+    // Update email recipients
+    function updateEmailRecipients() {
+        const display = document.getElementById('emailRecipientsDisplay');
+        const sendToAll = document.getElementById('send-to-all').checked;
+        const sendToFree = document.getElementById('send-to-free').checked;
+        const sendToPaid = document.getElementById('send-to-paid').checked;
+        
+        let recipientText = '';
+        let count = 0;
+        
+        if (!sendToAll && !sendToFree && !sendToPaid) {
+            recipientText = 'Not sent as newsletter';
+        } else if (sendToAll || (sendToFree && sendToPaid)) {
+            count = 7; // Total subscribers
+            recipientText = `All ${count} subscribers`;
+        } else if (sendToFree) {
+            count = 3; // Free subscribers
+            recipientText = `${count} free subscribers`;
+        } else if (sendToPaid) {
+            count = 4; // Paid subscribers
+            recipientText = `${count} paid subscribers`;
+        }
+        
+        display.textContent = recipientText;
+        updatePublishButtonText();
     }
     
     // Update schedule display
     function updateScheduleDisplay() {
-        const scheduleDate = document.getElementById('scheduleDate').value;
-        const scheduleTime = document.getElementById('scheduleTime').value;
-        const scheduleText = document.getElementById('scheduleDisplayText');
+        const publishTime = document.querySelector('input[name="publishTime"]:checked').value;
+        const scheduleDateTimeSection = document.getElementById('scheduleDateTimeSection');
+        const display = document.getElementById('scheduleDisplay');
         
-        if (scheduleDate && scheduleTime) {
-            const scheduledDate = new Date(`${scheduleDate}T${scheduleTime}`);
-            const now = new Date();
+        if (publishTime === 'schedule') {
+            scheduleDateTimeSection.classList.remove('hidden');
+            const date = document.getElementById('scheduleDate').value;
+            const time = document.getElementById('scheduleTime').value;
             
-            // Format the display text
-            if (scheduledDate.toDateString() === now.toDateString()) {
-                scheduleText.textContent = `Today at ${formatTime(scheduleTime)}`;
+            if (date && time) {
+                const scheduleDate = new Date(`${date}T${time}`);
+                const now = new Date();
+                const diffDays = Math.floor((scheduleDate - now) / (1000 * 60 * 60 * 24));
+                
+                if (diffDays === 0) {
+                    display.textContent = `Today at ${time}`;
+                } else if (diffDays === 1) {
+                    display.textContent = `Tomorrow at ${time}`;
+                } else {
+                    display.textContent = `${scheduleDate.toLocaleDateString()} at ${time}`;
+                }
             } else {
-                scheduleText.textContent = `${formatDate(scheduledDate)} at ${formatTime(scheduleTime)}`;
+                display.textContent = 'Schedule for later';
             }
-            
-            updatePublishButton();
-        }
-    }
-    
-    // Toggle email options
-    function toggleEmailOptions() {
-        const sendEmail = document.getElementById('sendEmail').checked;
-        const emailOptions = document.getElementById('emailOptions');
-        
-        if (sendEmail) {
-            emailOptions.style.display = 'block';
         } else {
-            emailOptions.style.display = 'none';
+            scheduleDateTimeSection.classList.add('hidden');
+            display.textContent = 'Right now';
         }
         
-        updatePublishButton();
-    }
-    
-    // Update subscriber count display
-    function updateSubscriberCount() {
-        const recipients = document.getElementById('emailRecipients').value;
-        const countSpan = document.getElementById('subscriberCount');
-        
-        switch(recipients) {
-            case 'free':
-                countSpan.textContent = 'free subscribers';
-                break;
-            case 'paid':
-                countSpan.textContent = 'paid subscribers';
-                break;
-            default:
-                countSpan.textContent = 'all subscribers';
-        }
+        updatePublishButtonText();
     }
     
     // Update publish button text
-    function updatePublishButton() {
+    function updatePublishButtonText() {
+        const publishType = document.querySelector('input[name="publishType"]:checked').value;
+        const publishTime = document.querySelector('input[name="publishTime"]:checked')?.value || 'now';
+        const sendEmail = document.getElementById('sendEmailCheckbox')?.checked;
         const publishButton = document.getElementById('publishButtonText');
-        const scheduleSection = document.getElementById('scheduleSection');
-        const sendEmail = document.getElementById('sendEmail').checked;
-        const isScheduled = !scheduleSection.classList.contains('hidden');
         
-        if (isScheduled) {
-            publishButton.textContent = sendEmail ? 'Schedule' : 'Schedule post';
+        let buttonText = '';
+        
+        if (publishTime === 'schedule') {
+            if (publishType === 'publish+send') {
+                buttonText = 'Schedule';
+            } else if (publishType === 'send') {
+                buttonText = 'Schedule email';
+            } else if (publishType === 'publish' && sendEmail) {
+                buttonText = 'Schedule';
+            } else {
+                buttonText = 'Schedule';
+            }
         } else {
-            publishButton.textContent = sendEmail ? 'Publish & send' : 'Publish now';
+            if (publishType === 'publish+send') {
+                buttonText = 'Publish & send';
+            } else if (publishType === 'send') {
+                buttonText = 'Send email';
+            } else if (publishType === 'publish' && sendEmail) {
+                buttonText = 'Publish & send';
+            } else {
+                buttonText = 'Publish';
+            }
         }
+        
+        publishButton.textContent = buttonText;
     }
     
-    // Format time helper
-    function formatTime(timeString) {
-        const [hours, minutes] = timeString.split(':');
-        const hour = parseInt(hours);
-        const ampm = hour >= 12 ? 'PM' : 'AM';
-        const displayHour = hour % 12 || 12;
-        return `${displayHour}:${minutes} ${ampm}`;
-    }
     
-    // Format date helper
-    function formatDate(date) {
-        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-        return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+    // Confirm publish - shows the second step
+    function confirmPublish() {
+        // For now, just execute the publish
+        executePublishWithOptions();
     }
     
     // Execute publish with options
     function executePublishWithOptions() {
-        const scheduleSection = document.getElementById('scheduleSection');
-        const isScheduled = !scheduleSection.classList.contains('hidden');
-        const sendEmail = document.getElementById('sendEmail').checked;
-        const emailRecipients = document.getElementById('emailRecipients').value;
+        const publishType = document.querySelector('input[name="publishType"]:checked').value;
+        const publishTime = document.querySelector('input[name="publishTime"]:checked')?.value || 'now';
+        const emailRecipients = document.querySelector('input[name="emailRecipients"]:checked')?.value || 'all';
+        const sendEmail = document.getElementById('sendEmailCheckbox')?.checked;
         
         let scheduledAt = null;
-        if (isScheduled) {
+        if (publishTime === 'schedule') {
             const scheduleDate = document.getElementById('scheduleDate').value;
             const scheduleTime = document.getElementById('scheduleTime').value;
             
@@ -12416,7 +7883,7 @@ if (len(postData.html)) {
         closePublishModal();
         
         // Show appropriate message
-        if (isScheduled) {
+        if (publishTime === 'schedule') {
             showMessage('Scheduling post...', 'info');
         } else {
             showMessage('Publishing post...', 'info');
@@ -12424,21 +7891,23 @@ if (len(postData.html)) {
         
         // Save post with publish status
         const publishData = {
-            status: isScheduled ? 'scheduled' : 'published',
-            sendEmail: sendEmail,
+            status: publishTime === 'schedule' ? 'scheduled' : 'published',
+            publishType: publishType,
             emailRecipients: emailRecipients,
             scheduledAt: scheduledAt ? scheduledAt.toISOString() : null
         };
         
         // Save with the correct status (scheduled or published)
-        const postStatus = isScheduled ? 'scheduled' : 'published';
+        const postStatus = publishTime === 'schedule' ? 'scheduled' : 'published';
         savePost(postStatus, true, publishData).then(() => {
-            if (isScheduled) {
+            if (publishTime === 'schedule') {
                 showMessage('Post scheduled successfully', 'success');
             } else {
                 let successMsg = 'Post published successfully';
-                if (sendEmail) {
+                if (publishType === 'publish+send') {
                     successMsg = 'Post published and email sent successfully';
+                } else if (publishType === 'send') {
+                    successMsg = 'Email sent successfully';
                 }
                 showMessage(successMsg, 'success');
             }
@@ -12453,7 +7922,7 @@ if (len(postData.html)) {
     
     // Update UI after publishing
     function updateUIAfterPublish() {
-        // Hide publish button, show update button by reloading the page
+        // Reload the page to update the UI with the new status
         // Since the buttons are rendered server-side based on post status
         window.location.reload();
     }
@@ -12514,6 +7983,12 @@ if (len(postData.html)) {
         backdrop.appendChild(modal);
         document.body.appendChild(backdrop);
         
+        // Animate in
+        setTimeout(() => {
+            modal.style.transform = 'scale(1)';
+            modal.style.opacity = '1';
+        }, 10);
+        
         // Close on backdrop click
         backdrop.addEventListener('click', function(e) {
             if (e.target === backdrop) {
@@ -12559,102 +8034,6 @@ if (len(postData.html)) {
         }).catch(error => {
             console.error('Preview error:', error);
             showMessage('Failed to save draft for preview: ' + error.message, 'error');
-        });
-    }
-    */
-    
-    // Unpublish post - extracted from commented block
-    function unpublishPost() {
-        showUnpublishModal();
-    }
-    
-    // Show unpublish confirmation modal
-    function showUnpublishModal() {
-        const backdrop = document.createElement('div');
-        backdrop.className = 'ghost-modal-backdrop';
-        backdrop.id = 'unpublishModalBackdrop';
-        backdrop.style.display = 'flex';
-        
-        const modal = document.createElement('div');
-        modal.className = 'ghost-modal';
-        modal.innerHTML = `
-            <div class="ghost-modal-header">
-                <h3>${originalStatus === 'scheduled' ? 'Unschedule' : 'Unpublish'} this post?</h3>
-                <button type="button" class="ghost-modal-close" onclick="closeUnpublishModal()">
-                    <i class="ti ti-x text-xl"></i>
-                </button>
-            </div>
-            <div class="ghost-modal-body">
-                <p class="text-gray-600 text-base">
-                    ${originalStatus === 'scheduled' 
-                        ? 'This will cancel the scheduled publish and revert the post to draft status.' 
-                        : 'This will revert the post to draft status and remove it from your site.'}
-                </p>
-            </div>
-            <div class="ghost-modal-footer">
-                <button type="button" class="ghost-btn ghost-btn-link" onclick="closeUnpublishModal()">
-                    Cancel
-                </button>
-                <button type="button" class="ghost-btn ghost-btn-red" onclick="executeUnpublish()">
-                    <i class="ti ti-eye-off me-2"></i>
-                    ${originalStatus === 'scheduled' ? 'Unschedule' : 'Unpublish'}
-                </button>
-            </div>
-        `;
-        
-        backdrop.appendChild(modal);
-        document.body.appendChild(backdrop);
-        
-        // Close on backdrop click
-        backdrop.addEventListener('click', function(e) {
-            if (e.target === backdrop) {
-                closeUnpublishModal();
-            }
-        });
-    }
-    
-    // Close unpublish modal
-    function closeUnpublishModal() {
-        const backdrop = document.getElementById('unpublishModalBackdrop');
-        if (backdrop) {
-            backdrop.remove();
-        }
-    }
-    
-    // Execute unpublish
-    function executeUnpublish() {
-        closeUnpublishModal();
-        
-        // Show message
-        showMessage('Reverting to draft...', 'info');
-        
-        // Save as draft
-        savePost('draft', false).then(() => {
-            showMessage('Post reverted to draft', 'success');
-            // Reload page to update UI
-            setTimeout(() => {
-                window.location.reload();
-            }, 500);
-        }).catch(error => {
-            console.error('Unpublish error:', error);
-            showMessage('Failed to unpublish post: ' + error.message, 'error');
-        });
-    }
-    
-    // Update post - extracted from commented block
-    function updatePost() {
-        // Keep the original status for published/scheduled posts
-        const statusToSave = originalStatus === 'published' ? 'published' : (originalStatus === 'scheduled' ? 'scheduled' : 'draft');
-        showMessage('Updating post...', 'info');
-        savePost(statusToSave, false).then(() => {
-            showMessage('Post updated successfully', 'success');
-            // Refresh any UI elements if needed
-            if (typeof updateTwitterPreview === 'function') updateTwitterPreview();
-            if (typeof updateFacebookPreview === 'function') updateFacebookPreview();
-            if (typeof updateSearchPreview === 'function') updateSearchPreview();
-        }).catch(error => {
-            console.error('Update error:', error);
-            showMessage('Failed to update post: ' + error.message, 'error');
         });
     }
     
@@ -13128,17 +8507,13 @@ if (len(postData.html)) {
     
     // Text selection and formatting functions
     function checkTextSelection() {
-        // Check if we're on an edit page
-        const currentPath = window.location.pathname;
-        const isEditPage = currentPath.includes('/posts/edit') || currentPath.includes('/posts/new') || 
-                          currentPath.includes('/pages/edit') || currentPath.includes('/pages/new');
-        
-        if (!isEditPage) {
-            return; // Don't show formatting popup on non-edit pages
-        }
-        
         const selection = window.getSelection();
         const popup = document.getElementById('formattingPopup');
+        
+        // Early return if popup doesn't exist
+        if (!popup) {
+            return;
+        }
         
         if (selection.toString().length > 0 && selection.rangeCount > 0) {
             // Store the currently focused element
@@ -13287,7 +8662,10 @@ if (len(postData.html)) {
         currentRange = selection.getRangeAt(0);
         
         // Hide formatting popup
-        document.getElementById('formattingPopup').classList.remove('show');
+        const formattingPopup = document.getElementById('formattingPopup');
+        if (formattingPopup) {
+            formattingPopup.classList.remove('show');
+        }
         
         // Position link editor
         const linkEditor = document.getElementById('linkEditorPopup');
@@ -13576,7 +8954,7 @@ if (len(postData.html)) {
                 // Delay hiding to allow moving to the menu
                 linkHoverTimeout = setTimeout(() => {
                     const menu = document.getElementById('linkHoverMenu');
-                    if (!menu.matches(':hover')) {
+                    if (menu && !menu.matches(':hover')) {
                         hideLinkHoverMenu();
                     }
                 }, 300);
@@ -13585,15 +8963,17 @@ if (len(postData.html)) {
         
         // Keep menu open when hovering over it
         const menu = document.getElementById('linkHoverMenu');
-        menu.addEventListener('mouseenter', function() {
-            if (linkHoverTimeout) {
-                clearTimeout(linkHoverTimeout);
-            }
-        });
-        
-        menu.addEventListener('mouseleave', function() {
-            hideLinkHoverMenu();
-        });
+        if (menu) {
+            menu.addEventListener('mouseenter', function() {
+                if (linkHoverTimeout) {
+                    clearTimeout(linkHoverTimeout);
+                }
+            });
+            
+            menu.addEventListener('mouseleave', function() {
+                hideLinkHoverMenu();
+            });
+        }
     }
     
     // Show link hover menu
@@ -13601,6 +8981,11 @@ if (len(postData.html)) {
         currentHoveredLink = link;
         const menu = document.getElementById('linkHoverMenu');
         const urlDisplay = document.getElementById('linkHoverUrl');
+        
+        // Early return if menu or urlDisplay doesn't exist
+        if (!menu || !urlDisplay) {
+            return;
+        }
         
         // Clear any existing timeout
         if (linkHoverTimeout) {
@@ -13638,7 +9023,9 @@ if (len(postData.html)) {
     // Hide link hover menu
     function hideLinkHoverMenu() {
         const menu = document.getElementById('linkHoverMenu');
-        menu.style.display = 'none';
+        if (menu) {
+            menu.style.display = 'none';
+        }
         // Don't clear currentHoveredLink immediately - let the click handlers use it first
         setTimeout(() => {
             currentHoveredLink = null;
@@ -13795,7 +9182,14 @@ if (len(postData.html)) {
             `;
         }
         
-        const container = document.getElementById('toastContainer');
+        // Get or create toast container
+        let container = document.getElementById('toastContainer');
+        if (!container) {
+            container = document.createElement('div');
+            container.id = 'toastContainer';
+            container.style.cssText = 'position: fixed; top: 1rem; right: 1rem; z-index: 9999; display: flex; flex-direction: column; gap: 0.5rem;';
+            document.body.appendChild(container);
+        }
         container.appendChild(toast);
         
         // Animate in
@@ -13837,8 +9231,3 @@ if (len(postData.html)) {
         }, 2000);
     }
     </script>
-    
-    <!-- Include Ghost publish modal functions -->
-    <cfinclude template="../includes/editor/publish-modal.cfm">
-</body>
-</html>

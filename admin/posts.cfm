@@ -1,4 +1,5 @@
 <cfparam name="url.type" default="">
+<cfparam name="request.dsn" default="blog">
 <cfswitch expression="#url.type#">
     <cfcase value="draft">
         <cfset pageTitle = "Drafts">
@@ -149,17 +150,33 @@
         };
     }
     
-    // Get authors from database - simplified approach
+    // Get authors from database
     authors = [];
     if (!hasServiceError) {
         try {
-            // Get unique authors from posts table
-            authorsQuery = queryExecute("SELECT DISTINCT created_by FROM posts WHERE created_by IS NOT NULL", {}, {datasource: "blog"});
+            // Get all active users who have created posts
+            authorsQuery = queryExecute("
+                SELECT DISTINCT u.id, u.name, u.email, u.profile_image
+                FROM users u
+                INNER JOIN posts p ON u.id = p.created_by
+                WHERE u.status = 'active'
+                ORDER BY u.name ASC
+            ", {}, {datasource: request.dsn});
+            
             for (row = 1; row <= authorsQuery.recordCount; row++) {
+                // Create avatar URL - use profile image if available, otherwise generate from name
+                avatarUrl = "";
+                if (len(authorsQuery.profile_image[row])) {
+                    avatarUrl = authorsQuery.profile_image[row];
+                } else {
+                    cleanName = replace(authorsQuery.name[row], " ", "+", "all");
+                    avatarUrl = "https://ui-avatars.com/api/?name=" & cleanName & "&background=5D87FF&color=fff";
+                }
+                
                 authorStruct = {
-                    id: authorsQuery.created_by[row],
-                    name: "Author " & authorsQuery.created_by[row],
-                    avatar: "https://ui-avatars.com/api/?name=Author+" & authorsQuery.created_by[row] & "&background=5D87FF&color=fff"
+                    id: authorsQuery.id[row],
+                    name: authorsQuery.name[row],
+                    avatar: avatarUrl
                 };
                 arrayAppend(authors, authorStruct);
             }
@@ -247,9 +264,16 @@
                         <form class="relative">
                             <input type="text" class="form-control search-chat py-2 ps-10" 
                                    id="text-srh" placeholder="Search Posts..." 
-                                   value="<cfoutput>#url.search#</cfoutput>">
+                                   value="<cfoutput>#url.search#</cfoutput>"
+                                   autocomplete="off">
                             <i class="ti ti-search absolute top-1.5 start-0 translate-middle-y text-lg text-dark dark:text-darklink ms-3"></i>
+                            <!-- Search Results Dropdown -->
+                            <div id="searchDropdown" class="absolute top-full left-0 right-0 bg-white border border-gray-200 rounded-lg shadow-lg mt-1 max-h-96 overflow-y-auto" style="display: none; z-index: 1000;">
+                                <div id="searchResults"></div>
+                            </div>
                         </form>
+                        <!-- Debug button -->
+                        <button type="button" onclick="if(window.searchPosts) { searchPosts(document.getElementById('text-srh').value); } else { console.error('searchPosts not defined'); }" class="btn btn-sm btn-primary ms-2">Test Search</button>
                         
                         <!-- Filter Dropdowns -->
                         <div class="flex gap-3">
@@ -1260,6 +1284,67 @@
 .ghost-btn-black:hover {
     background-color: #000000;
 }
+
+/* Search Dropdown Styles */
+#searchDropdown {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.search-result-item {
+    padding: 12px 16px;
+    cursor: pointer;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background-color 0.2s;
+}
+
+.search-result-item:hover {
+    background-color: #f8f9fa;
+}
+
+.search-result-item:last-child {
+    border-bottom: none;
+}
+
+.search-result-title {
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 4px;
+}
+
+.search-result-meta {
+    font-size: 0.85rem;
+    color: #6c757d;
+}
+
+.search-result-status {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-left: 8px;
+}
+
+.search-result-status.draft {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.search-result-status.published {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.search-result-status.scheduled {
+    background-color: #cce5ff;
+    color: #004085;
+}
+
+.search-no-results {
+    padding: 20px;
+    text-align: center;
+    color: #6c757d;
+}
 </style>
 
 <!-- JavaScript -->
@@ -1686,6 +1771,99 @@ function updateScheduledCountdowns() {
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Posts page loaded');
     
+    // Helper function to escape HTML
+    function escapeHtml(text) {
+        if (!text) return '';
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+    
+    // Define search functions first
+    window.searchPosts = function(query) {
+        console.log('Searching for:', query);
+        fetch(`/ghost/admin/ajax/search-posts.cfm?q=${encodeURIComponent(query)}&type=post`)
+            .then(response => {
+                console.log('Response status:', response.status);
+                return response.json();
+            })
+            .then(data => {
+                console.log('Search response:', data);
+                // Handle both uppercase and lowercase response keys
+                const success = data.success || data.SUCCESS;
+                const posts = data.posts || data.POSTS;
+                const message = data.message || data.MESSAGE;
+                
+                if (success && posts && posts.length > 0) {
+                    showSearchResults(posts);
+                } else if (success && (!posts || posts.length === 0)) {
+                    showNoResults();
+                } else {
+                    console.error('Search failed:', message);
+                    showNoResults();
+                }
+            })
+            .catch(error => {
+                console.error('Search error:', error);
+                hideSearchDropdown();
+            });
+    }
+    
+    // Show search results
+    window.showSearchResults = function(posts) {
+        const resultsContainer = document.getElementById('searchResults');
+        let html = '';
+        
+        console.log('Showing search results for', posts.length, 'posts');
+        
+        posts.forEach(post => {
+            // Handle both uppercase and lowercase keys
+            const title = post.title || post.TITLE;
+            const status = post.status || post.STATUS;
+            const author = post.author || post.AUTHOR;
+            const publishedAt = post.published_at || post.PUBLISHED_AT;
+            const createdAt = post.created_at || post.CREATED_AT;
+            const url = post.url || post.URL;
+            const id = post.id || post.ID;
+            
+            const statusClass = status ? status.toLowerCase() : 'draft';
+            const displayDate = (status === 'published' && publishedAt) ? publishedAt : createdAt;
+            
+            // Build URL if not provided
+            const postUrl = url || `/ghost/admin/post/edit/${id}`;
+            
+            html += `
+                <div class="search-result-item" onclick="window.location.href='${postUrl}'">
+                    <div class="search-result-title">
+                        ${escapeHtml(title || 'Untitled')}
+                        <span class="search-result-status ${statusClass}">${status || 'draft'}</span>
+                    </div>
+                    <div class="search-result-meta">
+                        ${escapeHtml(author || 'Unknown')} • ${displayDate || 'No date'}
+                    </div>
+                </div>
+            `;
+        });
+        
+        resultsContainer.innerHTML = html;
+        document.getElementById('searchDropdown').style.display = 'block';
+    }
+    
+    // Show no results message
+    window.showNoResults = function() {
+        const resultsContainer = document.getElementById('searchResults');
+        resultsContainer.innerHTML = '<div class="search-no-results">No posts found</div>';
+        document.getElementById('searchDropdown').style.display = 'block';
+    }
+    
+    // Hide search dropdown
+    window.hideSearchDropdown = function() {
+        const dropdown = document.getElementById('searchDropdown');
+        if (dropdown) {
+            dropdown.style.display = 'none';
+        }
+    }
+    
     // Update countdowns every minute for scheduled posts
     setInterval(function() {
         // Only refresh if we have scheduled posts visible
@@ -1716,12 +1894,74 @@ document.addEventListener('DOMContentLoaded', function() {
     // Search input with debounce
     let searchTimeout;
     const searchInput = document.getElementById('text-srh');
+    console.log('Search input element:', searchInput);
     if (searchInput) {
-        searchInput.addEventListener('input', function() {
-            clearTimeout(searchTimeout);
-            searchTimeout = setTimeout(applyFilters, 500);
+        console.log('Setting up search event listeners...');
+        console.log('Initial search value:', searchInput.value);
+        let searchDebounce = null;
+        
+        // Check if there's already a search value from URL
+        if (searchInput.value && searchInput.value.trim().length >= 2) {
+            console.log('Initial search value found, triggering search...');
+            searchPosts(searchInput.value.trim());
+        }
+        
+        // Handle search dropdown only - don't refresh the page
+        searchInput.addEventListener('input', function(e) {
+            console.log('Input event fired, value:', this.value);
+            
+            // Handle search dropdown
+            clearTimeout(searchDebounce);
+            const query = this.value.trim();
+            console.log('Query length:', query.length, 'Query:', query);
+            
+            if (query.length >= 2) {
+                console.log('Query is long enough, scheduling search...');
+                searchDebounce = setTimeout(() => {
+                    console.log('Calling searchPosts with:', query);
+                    searchPosts(query);
+                }, 300);
+            } else {
+                console.log('Query too short, hiding dropdown');
+                hideSearchDropdown();
+            }
+        });
+        
+        // Handle page filtering on Enter key or blur
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                clearTimeout(searchTimeout);
+                applyFilters();
+            }
+        });
+        
+        searchInput.addEventListener('blur', function(e) {
+            // Only apply filters if not clicking on a search result
+            setTimeout(() => {
+                if (!document.querySelector('.search-result-item:hover')) {
+                    clearTimeout(searchTimeout);
+                    searchTimeout = setTimeout(applyFilters, 500);
+                }
+            }, 200);
+        });
+        
+        // Hide dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.relative')) {
+                hideSearchDropdown();
+            }
+        });
+        
+        // Hide dropdown on escape key
+        searchInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                hideSearchDropdown();
+                this.blur();
+            }
         });
     }
+    
 
     // Select all functionality
     const selectAllCheckbox = document.getElementById('selectAll');

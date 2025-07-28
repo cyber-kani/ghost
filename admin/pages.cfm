@@ -1,4 +1,5 @@
 <cfset pageTitle = "Pages">
+<cfparam name="request.dsn" default="blog">
 <cfinclude template="includes/header.cfm">
 
 <!--- Include posts functions (no components needed) --->
@@ -90,17 +91,33 @@
         };
     }
     
-    // Get authors from database - simplified approach
+    // Get authors from database
     authors = [];
     if (!hasServiceError) {
         try {
-            // Get unique authors from posts table where type = 'page'
-            authorsQuery = queryExecute("SELECT DISTINCT created_by FROM posts WHERE created_by IS NOT NULL AND type = 'page'", {}, {datasource: "blog"});
+            // Get all active users who have created pages
+            authorsQuery = queryExecute("
+                SELECT DISTINCT u.id, u.name, u.email, u.profile_image
+                FROM users u
+                INNER JOIN posts p ON u.id = p.created_by
+                WHERE u.status = 'active' AND p.type = 'page'
+                ORDER BY u.name ASC
+            ", {}, {datasource: request.dsn});
+            
             for (row = 1; row <= authorsQuery.recordCount; row++) {
+                // Create avatar URL - use profile image if available, otherwise generate from name
+                avatarUrl = "";
+                if (len(authorsQuery.profile_image[row])) {
+                    avatarUrl = authorsQuery.profile_image[row];
+                } else {
+                    cleanName = replace(authorsQuery.name[row], " ", "+", "all");
+                    avatarUrl = "https://ui-avatars.com/api/?name=" & cleanName & "&background=5D87FF&color=fff";
+                }
+                
                 authorStruct = {
-                    id: authorsQuery.created_by[row],
-                    name: "Author " & authorsQuery.created_by[row],
-                    avatar: "https://ui-avatars.com/api/?name=Author+" & authorsQuery.created_by[row] & "&background=5D87FF&color=fff"
+                    id: authorsQuery.id[row],
+                    name: authorsQuery.name[row],
+                    avatar: avatarUrl
                 };
                 arrayAppend(authors, authorStruct);
             }
@@ -171,8 +188,13 @@
                         <form class="relative">
                             <input type="text" class="form-control search-chat py-2 ps-10" 
                                    id="text-srh" placeholder="Search Pages..." 
-                                   value="<cfoutput>#url.search#</cfoutput>">
+                                   value="<cfoutput>#url.search#</cfoutput>"
+                                   autocomplete="off">
                             <i class="ti ti-search absolute top-1.5 start-0 translate-middle-y text-lg text-dark dark:text-darklink ms-3"></i>
+                            <!-- Search Results Dropdown -->
+                            <div id="searchDropdown" class="absolute top-full left-0 right-0 bg-white border border-gray-200 rounded-lg shadow-lg mt-1 max-h-96 overflow-y-auto" style="display: none; z-index: 1000;">
+                                <div id="searchResults"></div>
+                            </div>
                         </form>
                         
                         <!-- Filter Dropdowns -->
@@ -462,6 +484,62 @@
         transform: rotate(360deg);
     }
 }
+
+/* Search Dropdown Styles */
+#searchDropdown {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.search-result-item {
+    padding: 12px 16px;
+    cursor: pointer;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background-color 0.2s;
+}
+
+.search-result-item:hover {
+    background-color: #f8f9fa;
+}
+
+.search-result-item:last-child {
+    border-bottom: none;
+}
+
+.search-result-title {
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 4px;
+}
+
+.search-result-meta {
+    font-size: 0.85rem;
+    color: #6c757d;
+}
+
+.search-result-status {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-left: 8px;
+}
+
+.search-result-status.draft {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.search-result-status.published {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.search-no-results {
+    padding: 20px;
+    text-align: center;
+    color: #6c757d;
+}
 </style>
 
 <!-- JavaScript -->
@@ -606,10 +684,93 @@ document.addEventListener('DOMContentLoaded', function() {
     let searchTimeout;
     const searchInput = document.getElementById('text-srh');
     if (searchInput) {
+        let searchDebounce = null;
+        
+        // Handle search for filtering existing pages
         searchInput.addEventListener('input', function() {
             clearTimeout(searchTimeout);
             searchTimeout = setTimeout(applyFilters, 500);
+            
+            // Handle search dropdown
+            clearTimeout(searchDebounce);
+            const query = this.value.trim();
+            
+            if (query.length >= 2) {
+                searchDebounce = setTimeout(() => searchPages(query), 300);
+            } else {
+                hideSearchDropdown();
+            }
         });
+        
+        // Hide dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.relative')) {
+                hideSearchDropdown();
+            }
+        });
+        
+        // Hide dropdown on escape key
+        searchInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                hideSearchDropdown();
+                this.blur();
+            }
+        });
+    }
+    
+    // Search pages function
+    function searchPages(query) {
+        fetch(`/ghost/admin/ajax/search-posts.cfm?q=${encodeURIComponent(query)}&type=page`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.success && data.posts.length > 0) {
+                    showSearchResults(data.posts);
+                } else {
+                    showNoResults();
+                }
+            })
+            .catch(error => {
+                console.error('Search error:', error);
+                hideSearchDropdown();
+            });
+    }
+    
+    // Show search results
+    function showSearchResults(pages) {
+        const resultsContainer = document.getElementById('searchResults');
+        let html = '';
+        
+        pages.forEach(page => {
+            const statusClass = page.status.toLowerCase();
+            const displayDate = page.status === 'published' && page.published_at ? page.published_at : page.created_at;
+            
+            html += `
+                <div class="search-result-item" onclick="window.location.href='${page.url}'">
+                    <div class="search-result-title">
+                        ${page.title}
+                        <span class="search-result-status ${statusClass}">${page.status}</span>
+                    </div>
+                    <div class="search-result-meta">
+                        ${page.author} • ${displayDate}
+                    </div>
+                </div>
+            `;
+        });
+        
+        resultsContainer.innerHTML = html;
+        document.getElementById('searchDropdown').style.display = 'block';
+    }
+    
+    // Show no results message
+    function showNoResults() {
+        const resultsContainer = document.getElementById('searchResults');
+        resultsContainer.innerHTML = '<div class="search-no-results">No pages found</div>';
+        document.getElementById('searchDropdown').style.display = 'block';
+    }
+    
+    // Hide search dropdown
+    function hideSearchDropdown() {
+        document.getElementById('searchDropdown').style.display = 'none';
     }
 
     // Select all functionality

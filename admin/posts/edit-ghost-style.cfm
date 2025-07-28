@@ -1,4 +1,4 @@
-<!--- Ghost-style Post Editor for CFGhost CMS --->
+<!--- Ghost-style Post Editor for CFGHOST CMS --->
 <!--- This implements the modern Ghost editor with card-based content blocks --->
 
 <cfparam name="url.id" default="">
@@ -92,11 +92,13 @@ if (len(postData.html)) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><cfoutput>#pageTitle# - CFGhost Admin</cfoutput></title>
+    <title><cfoutput>#pageTitle# - CFGHOST</cfoutput></title>
     
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/ghost/admin/assets/images/logos/favicon.ico">
-    <link rel="icon" type="image/svg+xml" href="/ghost/admin/assets/images/logos/favicon.svg">
+    <link rel="shortcut icon" href="/favicon.ico?v=ghost" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico?v=ghost" type="image/x-icon">
+    <link rel="icon" type="image/svg+xml" href="/ghost/favicon.svg?v=ghost">
+    <link rel="apple-touch-icon" href="/ghost/admin/assets/images/logos/favicon-ghost.png?v=ghost">
     
     <!-- Core CSS -->
     <link rel="stylesheet" href="/ghost/admin/assets/css/theme.css">
@@ -12183,14 +12185,125 @@ if (len(postData.html)) {
     // Preview post
     function previewPost() {
         // Save draft first
-        savePost('draft', true);
-        
-        // Show preview modal with options
-        showPreviewModal();
+        savePost('draft', true).then(() => {
+            // Show preview modal
+            showPreviewModal();
+        }).catch(error => {
+            console.error('Preview error:', error);
+            showMessage('Failed to save draft for preview: ' + error.message, 'error');
+        });
     }
     
-    // Show preview modal - Ghost style
+    // Show preview modal - Ghost style with iframe
     function showPreviewModal() {
+        const postId = '<cfoutput>#postData.id#</cfoutput>';
+        
+        if (!postId) {
+            showMessage('Post ID not found. Please save the post first.', 'error');
+            return;
+        }
+        
+        // Create modal backdrop
+        const backdrop = document.createElement('div');
+        backdrop.className = 'preview-modal-backdrop';
+        backdrop.style.cssText = `
+            position: fixed;
+            inset: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 9998;
+        `;
+        
+        // Create modal container
+        const modal = document.createElement('div');
+        modal.id = 'previewModal';
+        modal.className = 'ghost-preview-modal';
+        modal.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 9999;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        `;
+        
+        // Create iframe for preview modal with loading state
+        modal.innerHTML = `
+            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; z-index: 1;">
+                <div style="width: 40px; height: 40px; border: 3px solid #f3f3f3; border-top: 3px solid #14b8ff; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto;"></div>
+                <p style="margin-top: 10px; color: #666;">Loading preview...</p>
+            </div>
+            <iframe 
+                src="/ghost/admin/preview-modal.cfm?id=${postId}" 
+                style="width: 100%; height: 100%; border: none; display: block; flex: 1; opacity: 0; transition: opacity 0.3s ease;"
+                id="previewFrame"
+                onload="this.style.opacity = '1'; this.previousElementSibling.style.display = 'none';"
+                onerror="console.error('Failed to load preview'); showMessage('Failed to load preview', 'error'); closePreviewModal();"
+            ></iframe>
+        `;
+        
+        // Add spinner animation
+        if (!document.getElementById('previewSpinnerStyle')) {
+            const style = document.createElement('style');
+            style.id = 'previewSpinnerStyle';
+            style.innerHTML = `
+                @keyframes spin {
+                    0% { transform: rotate(0deg); }
+                    100% { transform: rotate(360deg); }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+        
+        // Add to body
+        document.body.appendChild(backdrop);
+        document.body.appendChild(modal);
+        
+        // Prevent body scroll while modal is open
+        document.body.style.overflow = 'hidden';
+        
+        // Listen for messages from iframe
+        window.addEventListener('message', handlePreviewMessage);
+    }
+    
+    // Handle messages from preview iframe
+    function handlePreviewMessage(event) {
+        if (event.data.action === 'closePreview') {
+            closePreviewModal();
+        } else if (event.data.action === 'openPublishModal') {
+            closePreviewModal();
+            // Show publish modal
+            document.getElementById('publishModal').style.display = 'block';
+        }
+    }
+    
+    // Close preview modal
+    function closePreviewModal() {
+        const modal = document.getElementById('previewModal');
+        const backdrop = document.querySelector('.preview-modal-backdrop');
+        
+        if (modal) {
+            modal.remove();
+        }
+        if (backdrop) {
+            backdrop.remove();
+        }
+        
+        // Restore body styles
+        document.body.style.overflow = '';
+        document.body.style.height = '';
+        document.body.style.position = '';
+        
+        window.removeEventListener('message', handlePreviewMessage);
+    }
+    
+    // Legacy preview modal code (kept for reference)
+    function showPreviewModalLegacy() {
         // Create full-screen preview modal like Ghost
         const modal = document.createElement('div');
         modal.id = 'previewModal';
@@ -12269,10 +12382,20 @@ if (len(postData.html)) {
                     left: 0;
                     right: 0;
                     bottom: 0;
+                    width: 100vw;
+                    height: 100vh;
                     background: #f5f5f5;
                     z-index: 9999;
                     display: flex;
                     flex-direction: column;
+                    overflow: hidden;
+                }
+                
+                .ghost-preview-modal iframe {
+                    width: 100% !important;
+                    height: 100% !important;
+                    border: none !important;
+                    flex: 1;
                 }
                 
                 .ghost-preview-header {
@@ -12397,7 +12520,8 @@ if (len(postData.html)) {
         updatePreview();
     }
     
-    // Update preview
+    // Legacy update preview function - replaced by iframe implementation
+    /*
     function updatePreview() {
         const memberStatus = document.getElementById('previewMemberStatus').value;
         const iframe = document.getElementById('previewFrame');
@@ -12417,8 +12541,10 @@ if (len(postData.html)) {
             };
         }, 100);
     }
+    */
     
-    // Change preview format
+    // Legacy preview functions - replaced by iframe implementation
+    /*
     function changePreviewFormat(format) {
         document.querySelectorAll('.ghost-preview-format .ghost-preview-btn').forEach(btn => {
             btn.classList.toggle('active', btn.dataset.format === format);
@@ -12429,7 +12555,6 @@ if (len(postData.html)) {
         }
     }
     
-    // Change preview device
     function changePreviewDevice(device) {
         document.querySelectorAll('.ghost-preview-device .ghost-preview-btn').forEach(btn => {
             btn.classList.toggle('active', btn.dataset.device === device);
@@ -12440,15 +12565,7 @@ if (len(postData.html)) {
         
         updatePreview();
     }
-    
-    // Close preview modal
-    function closePreviewModal() {
-        const modal = document.getElementById('previewModal');
-        if (modal) {
-            modal.remove();
-            document.body.style.overflow = '';
-        }
-    }
+    */
     
     // Delete post
     function confirmDeletePost() {

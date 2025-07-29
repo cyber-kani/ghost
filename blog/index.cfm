@@ -1,14 +1,8 @@
-<!--- Ghost Blog Index Page - Fixed Version --->
+<!--- Simple Blog Renderer without Complex Handlebars --->
 <cfparam name="request.dsn" default="blog">
 <cfparam name="url.page" default="1">
 
-<!--- Prevent any output before processing --->
-<cfsetting enablecfoutputonly="true">
-
-<!--- Include Handlebars functions --->
-<cfinclude template="/ghost/admin/includes/handlebars-functions.cfm">
-
-<!--- Get posts per page from theme config --->
+<!--- Get posts per page --->
 <cfset postsPerPage = 10>
 
 <!--- Calculate pagination --->
@@ -45,69 +39,6 @@
     LIMIT #postsPerPage# OFFSET #startRow - 1#
 </cfquery>
 
-<!--- Build posts array for template --->
-<cfset posts = []>
-<cfif qPosts.recordCount GT 0>
-<cfloop query="qPosts">
-    <!--- Get tags for this post --->
-    <cfquery name="qPostTags" datasource="#request.dsn#">
-        SELECT t.id, t.name, t.slug
-        FROM tags t
-        INNER JOIN posts_tags pt ON t.id = pt.tag_id
-        WHERE pt.post_id = <cfqueryparam value="#qPosts.id#" cfsqltype="cf_sql_varchar">
-        ORDER BY t.name
-    </cfquery>
-    
-    <cfset tags = []>
-    <cfloop query="qPostTags">
-        <cfset arrayAppend(tags, {
-            "name": qPostTags.name,
-            "slug": qPostTags.slug,
-            "url": "/blog/tag/" & qPostTags.slug & "/"
-        })>
-    </cfloop>
-    
-    <!--- Create excerpt from custom_excerpt or plaintext --->
-    <cfset excerpt = "">
-    <cfif len(trim(qPosts.custom_excerpt))>
-        <cfset excerpt = qPosts.custom_excerpt>
-    <cfelseif len(trim(qPosts.plaintext))>
-        <cfset excerpt = left(qPosts.plaintext, 200)>
-        <cfif len(qPosts.plaintext) GT 200>
-            <cfset excerpt = excerpt & "...">
-        </cfif>
-    </cfif>
-    
-    <cfset post = {
-        "id": qPosts.id,
-        "title": qPosts.title,
-        "url": "/blog/" & qPosts.slug & "/",
-        "excerpt": excerpt,
-        "feature_image": qPosts.feature_image,
-        "tags": tags,
-        "author": {
-            "name": qPosts.author_name,
-            "profile_image": qPosts.author_profile_image,
-            "url": "/blog/author/" & qPosts.author_id & "/"
-        },
-        "date": qPosts.published_at,
-        "post_class": ""
-    }>
-    
-    <cfset arrayAppend(posts, post)>
-</cfloop>
-</cfif>
-
-<!--- Build pagination object --->
-<cfset pagination = {
-    "page": url.page,
-    "pages": totalPages,
-    "total": totalPosts,
-    "limit": postsPerPage,
-    "prev": url.page GT 1 ? url.page - 1 : false,
-    "next": url.page LT totalPages ? url.page + 1 : false
-}>
-
 <!--- Get site settings --->
 <cfquery name="qSettings" datasource="#request.dsn#">
     SELECT `key`, value
@@ -120,58 +51,297 @@
     <cfset siteSettings[qSettings.key] = qSettings.value>
 </cfloop>
 
-<!--- Build template context --->
-<cfset context = {
-    "posts": posts,
-    "pagination": pagination,
-    "site": {
-        "title": structKeyExists(siteSettings, "site_title") ? siteSettings.site_title : "Ghost CFML",
-        "description": structKeyExists(siteSettings, "site_description") ? siteSettings.site_description : "A simple publishing platform",
-        "url": structKeyExists(siteSettings, "site_url") ? siteSettings.site_url : "http://localhost",
-        "icon": structKeyExists(siteSettings, "site_icon") ? siteSettings.site_icon : "/ghost/admin/assets/img/ghost-icon.png",
-        "locale": "en"
-    },
-    "theme": getActiveTheme(request.dsn),
-    "meta_title": structKeyExists(siteSettings, "site_title") ? siteSettings.site_title : "Ghost CFML",
-    "meta_description": structKeyExists(siteSettings, "site_description") ? siteSettings.site_description : "A simple publishing platform",
-    "canonical_url": (structKeyExists(siteSettings, "site_url") ? siteSettings.site_url : "http://localhost") & "/blog/",
-    "body_class": "home-template",
-    "navigation": []
-}>
+<cfset siteTitle = structKeyExists(siteSettings, "site_title") ? siteSettings.site_title : "Ghost CFML">
+<cfset siteDescription = structKeyExists(siteSettings, "site_description") ? siteSettings.site_description : "A simple publishing platform">
+<cfset siteUrl = structKeyExists(siteSettings, "site_url") ? siteSettings.site_url : "http://localhost">
 
-<!--- Render the theme template --->
-<cftry>
-    <cfset output = renderThemeTemplate("index.hbs", context, context.theme)>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><cfoutput>#siteTitle#</cfoutput></title>
+    <meta name="description" content="<cfoutput>#siteDescription#</cfoutput>" />
+    <link rel="canonical" href="<cfoutput>#siteUrl#/blog/</cfoutput>" />
     
-    <!--- Reset output and send the rendered content --->
-    <cfsetting enablecfoutputonly="false">
-    <cfcontent reset="true" type="text/html; charset=UTF-8">
-    <cfoutput>#trim(output)#</cfoutput>
-    <cfabort>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0 20px;
+            background: #f5f5f5;
+        }
+        header {
+            background: white;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            width: 100%;
+            margin-left: -20px;
+            margin-right: -20px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .header-left {
+            flex: 1;
+        }
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+        nav a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #0066cc;
+        }
+        main {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            min-height: 400px;
+            width: 100%;
+        }
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #666;
+            font-size: 0.9em;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+        .site-title {
+            color: #333;
+            text-decoration: none;
+        }
+        .site-description {
+            color: #666;
+            margin: 5px 0 0 0;
+            font-size: 1.1em;
+        }
+        .post-feed {
+            display: grid;
+            gap: 30px;
+        }
+        .post-card {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 30px;
+        }
+        .post-card:last-child {
+            border-bottom: none;
+        }
+        .post-card h2 {
+            margin: 0 0 10px 0;
+        }
+        .post-card h2 a {
+            color: #333;
+            text-decoration: none;
+        }
+        .post-card h2 a:hover {
+            color: #0066cc;
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+        .post-excerpt {
+            color: #555;
+            line-height: 1.6;
+        }
+        .post-tags {
+            margin-top: 15px;
+        }
+        .post-tag {
+            display: inline-block;
+            background: #f0f0f0;
+            color: #666;
+            padding: 5px 12px;
+            border-radius: 3px;
+            font-size: 0.85em;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+        .post-tag:hover {
+            background: #e0e0e0;
+        }
+        .pagination {
+            margin-top: 40px;
+            text-align: center;
+        }
+        .pagination a, .pagination span {
+            display: inline-block;
+            padding: 8px 16px;
+            margin: 0 5px;
+            background: #f0f0f0;
+            color: #333;
+            text-decoration: none;
+            border-radius: 3px;
+        }
+        .pagination a:hover {
+            background: #e0e0e0;
+        }
+        .pagination .current {
+            background: #333;
+            color: white;
+        }
+        .no-posts {
+            text-align: center;
+            color: #666;
+            padding: 60px 0;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+            .header-left {
+                margin-bottom: 20px;
+            }
+            main {
+                padding: 20px;
+            }
+            .post-tag {
+                margin-bottom: 5px;
+            }
+        }
+    </style>
     
-<cfcatch>
-    <cfsetting enablecfoutputonly="false">
-    <cfcontent reset="true" type="text/html; charset=UTF-8">
-    <cfoutput>
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <title>Blog Error</title>
-        <style>
-            body { font-family: Arial, sans-serif; padding: 20px; }
-            .error { background: ##fee; color: ##c00; padding: 20px; border-radius: 5px; }
-        </style>
-    </head>
-    <body>
-        <div class="error">
-            <h1>Blog Rendering Error</h1>
-            <p><strong>Error:</strong> #cfcatch.message#</p>
-            <p><strong>Detail:</strong> #cfcatch.detail#</p>
-            <p><strong>Type:</strong> #cfcatch.type#</p>
+    <!-- Ghost Head -->
+    <meta name="generator" content="Ghost CFML" />
+</head>
+<body class="home-template">
+    <header>
+        <div class="header-inner">
+            <div class="header-left">
+                <h1><a href="<cfoutput>#siteUrl#</cfoutput>" class="site-title"><cfoutput>#siteTitle#</cfoutput></a></h1>
+                <cfif len(siteDescription)>
+                    <p class="site-description"><cfoutput>#siteDescription#</cfoutput></p>
+                </cfif>
+            </div>
+            <nav>
+                <ul class="nav">
+                    <li class="nav-home"><a href="/ghost/blog/">Home</a></li>
+                    <li><a href="/ghost/admin/">Admin</a></li>
+                </ul>
+            </nav>
         </div>
-    </body>
-    </html>
-    </cfoutput>
-    <cfabort>
-</cfcatch>
-</cftry>
+    </header>
+    
+    <div class="content-wrapper">
+    <main>
+        <div class="post-feed">
+            <cfif qPosts.recordCount GT 0>
+                <cfoutput query="qPosts">
+                    <!--- Get tags for this post --->
+                    <cfquery name="qPostTags" datasource="#request.dsn#">
+                        SELECT t.id, t.name, t.slug
+                        FROM tags t
+                        INNER JOIN posts_tags pt ON t.id = pt.tag_id
+                        WHERE pt.post_id = <cfqueryparam value="#qPosts.id#" cfsqltype="cf_sql_varchar">
+                        ORDER BY t.name
+                    </cfquery>
+                    
+                    <!--- Create excerpt --->
+                    <cfset excerpt = "">
+                    <cfif len(trim(qPosts.custom_excerpt))>
+                        <cfset excerpt = qPosts.custom_excerpt>
+                    <cfelseif len(trim(qPosts.plaintext))>
+                        <cfset excerpt = left(qPosts.plaintext, 200)>
+                        <cfif len(qPosts.plaintext) GT 200>
+                            <cfset excerpt = excerpt & "...">
+                        </cfif>
+                    </cfif>
+                    
+                    <article class="post-card">
+                        <h2><a href="/ghost/blog/#qPosts.slug#/">#qPosts.title#</a></h2>
+                        <div class="post-meta">
+                            <cfif len(qPosts.author_name)>
+                                By #qPosts.author_name# &middot; 
+                            </cfif>
+                            #dateFormat(qPosts.published_at, "mmm dd, yyyy")#
+                        </div>
+                        <cfif len(excerpt)>
+                            <div class="post-excerpt">
+                                #excerpt#
+                            </div>
+                        </cfif>
+                        <cfif qPostTags.recordCount GT 0>
+                            <div class="post-tags">
+                                <cfloop query="qPostTags">
+                                    <a href="/ghost/blog/tag/#qPostTags.slug#/" class="post-tag">#qPostTags.name#</a>
+                                </cfloop>
+                            </div>
+                        </cfif>
+                    </article>
+                </cfoutput>
+            <cfelse>
+                <div class="no-posts">
+                    <h2>No posts found</h2>
+                    <p>There are no published posts to display.</p>
+                </div>
+            </cfif>
+        </div>
+        
+        <cfif totalPages GT 1>
+            <nav class="pagination">
+                <cfif url.page GT 1>
+                    <a href="?page=<cfoutput>#url.page - 1#</cfoutput>">Previous</a>
+                </cfif>
+                
+                <cfloop from="1" to="#totalPages#" index="i">
+                    <cfif i EQ url.page>
+                        <span class="current"><cfoutput>#i#</cfoutput></span>
+                    <cfelse>
+                        <a href="?page=<cfoutput>#i#</cfoutput>"><cfoutput>#i#</cfoutput></a>
+                    </cfif>
+                </cfloop>
+                
+                <cfif url.page LT totalPages>
+                    <a href="?page=<cfoutput>#url.page + 1#</cfoutput>">Next</a>
+                </cfif>
+            </nav>
+        </cfif>
+    </main>
+    </div>
+    
+    <footer>
+        &copy; <cfoutput>#year(now())#</cfoutput> <cfoutput>#siteTitle#</cfoutput> &middot; 
+        <a href="https://ghost.org" target="_blank" rel="noopener">Powered by Ghost</a>
+    </footer>
+    
+    <!-- Ghost Foot -->
+</body>
+</html>

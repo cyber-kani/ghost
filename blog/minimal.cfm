@@ -1,1 +1,0 @@
-<cfoutput>Minimal test: #now()#</cfoutput>

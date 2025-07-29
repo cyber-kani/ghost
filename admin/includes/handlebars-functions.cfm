@@ -4,20 +4,25 @@
 <cffunction name="processHandlebarsTemplate" access="public" returntype="string">
     <cfargument name="template" type="string" required="true">
     <cfargument name="context" type="struct" required="true">
+    <cfargument name="depth" type="numeric" required="false" default="0">
+    
+    <!--- Prevent infinite recursion --->
+    <cfif arguments.depth GT 10>
+        <cfreturn arguments.template>
+    </cfif>
     
     <cfset var output = arguments.template>
     
     <!--- Remove Handlebars comments {{!-- comment --}} --->
     <cfset output = reReplace(output, '\{\{!--[\s\S]*?--\}\}', '', 'all')>
     
-    <!--- Process {{!< layout}} extends --->
-    <cfset output = reReplace(output, '\{\{!<\s*([^}]+)\}\}', '', 'all')>
+    <!--- Don't process {{!< layout}} here - let renderThemeTemplate handle it --->
     
     <!--- Process {{#contentFor}} blocks first (collect content) --->
     <cfset output = processContentForBlocks(output, arguments.context)>
     
     <!--- Process {{> partial}} includes --->
-    <cfset output = processPartialIncludes(output, arguments.context)>
+    <cfset output = processPartialIncludes(output, arguments.context, arguments.depth)>
     
     <!--- Process {{#if}} blocks --->
     <cfset output = processIfBlocks(output, arguments.context)>
@@ -32,7 +37,12 @@
     <cfset output = processElseStatements(output, arguments.context)>
     
     <!--- Process {{#foreach}} blocks --->
-    <cfset output = processForeachBlocks(output, arguments.context)>
+    <cflog text="Before processForeachBlocks: '#left(output, 100)#'" file="ghost-debug">
+    <cfset output = processForeachBlocks(output, arguments.context, arguments.depth)>
+    <cflog text="After processForeachBlocks: '#left(output, 100)#'" file="ghost-debug">
+    
+    <!--- Process {{#match}} blocks --->
+    <cfset output = processMatchBlocks(output, arguments.context)>
     
     <!--- Process {{#get}} blocks (Ghost specific) --->
     <cfset output = processGetBlocks(output, arguments.context)>
@@ -46,7 +56,11 @@
     
     <!--- Process {{{body}}} (triple braces for unescaped content) --->
     <cfif structKeyExists(arguments.context, "body")>
+        <cflog text="Replacing {{{body}}} with: '#arguments.context.body#'" file="ghost-debug">
         <cfset output = replace(output, "{{{body}}}", arguments.context.body, "all")>
+    <cfelse>
+        <cflog text="No body content found in context" file="ghost-debug">
+        <cfset output = replace(output, "{{{body}}}", "", "all")>
     </cfif>
     
     <!--- Process {{asset}} helper --->
@@ -93,6 +107,22 @@
     <!--- Process @site variables --->
     <cfset output = processSiteVariables(output, arguments.context)>
     
+    <!--- Process @custom variables --->
+    <cfset output = processCustomVariables(output, arguments.context)>
+    
+    <!--- Debug: Final output check --->
+    <cfif len(trim(output)) LT 10>
+        <cflog text="WARNING: processHandlebarsTemplate returning short output: '#output#' from template: '#left(arguments.template, 100)#'" file="ghost-debug">
+        <cflog text="Full output: '#output#'" file="ghost-debug">
+    </cfif>
+    
+    <!--- Check for lone closing braces --->
+    <cfif trim(output) EQ "}">
+        <cflog text="ERROR: Output is just a closing brace! Original template was: '#arguments.template#'" file="ghost-debug">
+        <!--- Return empty string instead of just } --->
+        <cfreturn "">
+    </cfif>
+    
     <cfreturn output>
 </cffunction>
 
@@ -110,7 +140,12 @@
         
         <!--- Convert value to string for output --->
         <cfif isSimpleValue(value)>
-            <cfset output = replace(output, match, htmlEditFormat(value), "all")>
+            <!--- Don't escape HTML for certain variables that contain markup --->
+            <cfif varPath EQ "navigation" OR varPath EQ "ghost_head" OR varPath EQ "ghost_foot">
+                <cfset output = replace(output, match, value, "all")>
+            <cfelse>
+                <cfset output = replace(output, match, htmlEditFormat(value), "all")>
+            </cfif>
         <cfelseif isArray(value)>
             <cfset output = replace(output, match, arrayLen(value), "all")>
         <cfelse>
@@ -192,10 +227,16 @@
 <cffunction name="processForeachBlocks" access="private" returntype="string">
     <cfargument name="template" type="string" required="true">
     <cfargument name="context" type="struct" required="true">
+    <cfargument name="depth" type="numeric" required="false" default="0">
     
     <cfset var output = arguments.template>
     <cfset var pattern = '\{\{##foreach\s+([^}]+)\}\}([\s\S]*?)\{\{/foreach\}\}'>
     <cfset var matches = reMatchNoCase(pattern, output)>
+    
+    <cflog text="processForeachBlocks: Found #arrayLen(matches)# foreach blocks" file="ghost-debug">
+    <cfif arrayLen(matches) GT 0>
+        <cflog text="First match: #left(matches[1], 50)#..." file="ghost-debug">
+    </cfif>
     
     <cfloop array="#matches#" index="match">
         <cfset var arrayName = trim(reReplaceNoCase(match, '.*\{\{##foreach\s+([^\s}]+).*\}\}.*', '\1', 'one'))>
@@ -203,20 +244,25 @@
         
         <cfif structKeyExists(arguments.context, arrayName) AND isArray(arguments.context[arrayName])>
             <cfset var loopOutput = "">
-            <cfloop array="#arguments.context[arrayName]#" index="item">
-                <cfset var itemContent = content>
-                <!--- Replace item properties --->
-                <cfif isStruct(item)>
-                    <cfloop collection="#item#" item="key">
-                        <cfif isSimpleValue(item[key])>
-                            <cfset itemContent = replace(itemContent, "{{" & key & "}}", htmlEditFormat(item[key]), "all")>
-                        </cfif>
-                    </cfloop>
-                </cfif>
-                <cfset loopOutput &= itemContent>
-            </cfloop>
+            <cfif arrayLen(arguments.context[arrayName]) GT 0>
+                <cfloop array="#arguments.context[arrayName]#" index="item">
+                    <!--- Create a new context with the current item --->
+                    <cfset var itemContext = duplicate(arguments.context)>
+                    <cfif isStruct(item)>
+                        <!--- Add all item properties to the context --->
+                        <cfloop collection="#item#" item="key">
+                            <cfset itemContext[key] = item[key]>
+                        </cfloop>
+                    </cfif>
+                    <!--- Process the content with the item context --->
+                    <cfset var processedContent = processHandlebarsTemplate(content, itemContext, arguments.depth + 1)>
+                    <cfset loopOutput &= processedContent>
+                </cfloop>
+            </cfif>
             <cfset output = replace(output, match, loopOutput, "all")>
         <cfelse>
+            <!--- Log when array not found --->
+            <cflog text="Array '#arrayName#' not found in context for foreach" file="ghost-debug">
             <cfset output = replace(output, match, "", "all")>
         </cfif>
     </cfloop>
@@ -428,18 +474,41 @@
 <cffunction name="processPartialIncludes" access="private" returntype="string">
     <cfargument name="template" type="string" required="true">
     <cfargument name="context" type="struct" required="true">
+    <cfargument name="depth" type="numeric" required="false" default="0">
     
     <cfset var output = arguments.template>
-    <cfset var matches = reMatch('\{\{>\s*"?([^}"]+)"?\}\}', output)>
     
-    <cfloop array="#matches#" index="match">
-        <cfset var partialName = trim(reReplace(match, '\{\{>\s*"?([^}"]+)"?\}\}', '\1', 'all'))>
+    <!--- Handle partials with double quotes --->
+    <cfset var matchesDouble = reMatch('\{\{>\s*"([^"]+)"\}\}', output)>
+    <cfloop array="#matchesDouble#" index="match">
+        <cfset var partialName = trim(reReplace(match, '\{\{>\s*"([^"]+)"\}\}', '\1', 'all'))>
         <cfset var partialPath = expandPath(arguments.context.theme.path & "partials/" & partialName & ".hbs")>
         
         <cfif fileExists(partialPath)>
             <cffile action="read" file="#partialPath#" variable="partialContent">
             <!--- Process the partial with the current context --->
-            <cfset var processedPartial = processHandlebarsTemplate(partialContent, arguments.context)>
+            <cfset var processedPartial = processHandlebarsTemplate(partialContent, arguments.context, arguments.depth + 1)>
+            <cfset output = replace(output, match, processedPartial, "all")>
+        <cfelse>
+            <!--- Return empty string for icon partials if not found --->
+            <cfif findNoCase("icons/", partialName)>
+                <cfset output = replace(output, match, "", "all")>
+            <cfelse>
+                <cfset output = replace(output, match, "<!-- Partial not found: " & partialName & " -->", "all")>
+            </cfif>
+        </cfif>
+    </cfloop>
+    
+    <!--- Handle partials without quotes --->
+    <cfset var matchesNoQuotes = reMatch('\{\{>\s*([^}"]+)\}\}', output)>
+    <cfloop array="#matchesNoQuotes#" index="match">
+        <cfset var partialName = trim(reReplace(match, '\{\{>\s*([^}"]+)\}\}', '\1', 'all'))>
+        <cfset var partialPath = expandPath(arguments.context.theme.path & "partials/" & partialName & ".hbs")>
+        
+        <cfif fileExists(partialPath)>
+            <cffile action="read" file="#partialPath#" variable="partialContent">
+            <!--- Process the partial with the current context --->
+            <cfset var processedPartial = processHandlebarsTemplate(partialContent, arguments.context, arguments.depth + 1)>
             <cfset output = replace(output, match, processedPartial, "all")>
         <cfelse>
             <cfset output = replace(output, match, "<!-- Partial not found: " & partialName & " -->", "all")>
@@ -576,15 +645,32 @@
     
     <cfloop array="#matches#" index="match">
         <cfset var condition = reReplaceNoCase(match, '.*\{\{##unless\s+([^}]+)\}\}.*', '\1', 'one')>
-        <cfset var content = reReplaceNoCase(match, '\{\{##unless[^}]+\}\}([\s\S]*?)\{\{/unless\}\}', '\1', 'one')>
+        <cfset var fullContent = reReplaceNoCase(match, '\{\{##unless[^}]+\}\}([\s\S]*?)\{\{/unless\}\}', '\1', 'one')>
         <cfset var conditionValue = getValueFromPath(arguments.context, condition)>
         
-        <!--- Unless means show if condition is false/empty --->
-        <cfif NOT len(conditionValue) OR conditionValue EQ false>
-            <cfset output = replace(output, match, content, "all")>
+        <!--- Check if there's an {{else}} block --->
+        <cfset var elsePos = findNoCase("{{else}}", fullContent)>
+        <cfset var showContent = "">
+        
+        <cfif elsePos GT 0>
+            <!--- Has else block --->
+            <cfset var beforeElse = left(fullContent, elsePos - 1)>
+            <cfset var afterElse = mid(fullContent, elsePos + 9, len(fullContent))>
+            
+            <!--- Unless means show beforeElse if condition is false/empty --->
+            <cfif NOT isBoolean(conditionValue) AND NOT len(trim(toString(conditionValue))) OR (isBoolean(conditionValue) AND NOT conditionValue)>
+                <cfset showContent = beforeElse>
+            <cfelse>
+                <cfset showContent = afterElse>
+            </cfif>
         <cfelse>
-            <cfset output = replace(output, match, "", "all")>
+            <!--- No else block --->
+            <cfif NOT isBoolean(conditionValue) AND NOT len(trim(toString(conditionValue))) OR (isBoolean(conditionValue) AND NOT conditionValue)>
+                <cfset showContent = fullContent>
+            </cfif>
         </cfif>
+        
+        <cfset output = replace(output, match, showContent, "all")>
     </cfloop>
     
     <cfreturn output>
@@ -627,7 +713,10 @@
         <cfthrow message="Template not found: #arguments.templateName#">
     </cfif>
     
-    <cffile action="read" file="#templatePath#" variable="templateContent">
+    <cffile action="read" file="#templatePath#" variable="templateContent" charset="utf-8">
+    
+    <!--- Debug: Check template content --->
+    <cflog text="Read template #arguments.templateName#, length: #len(templateContent)#" file="ghost-debug">
     
     <!--- Process layout if specified --->
     <cfset var layoutMatch = reMatch('\{\{!<\s*([^}]+)\}\}', templateContent)>
@@ -638,19 +727,64 @@
         <cfif fileExists(layoutPath)>
             <cffile action="read" file="#layoutPath#" variable="layoutContent">
             
+            <!--- Remove the layout directive from inner template --->
+            <!--- Match the exact pattern including newlines --->
+            <cfset var innerTemplate = reReplace(templateContent, '^\{\{!<[^}]+\}\}\s*', '', 'one')>
+            
+            <!--- Trim any whitespace --->
+            <cfset innerTemplate = trim(innerTemplate)>
+            
+            <!--- Debug: Check if innerTemplate is just } --->
+            <cfif innerTemplate EQ "}">
+                <cflog text="ERROR: innerTemplate is just '}' after removing layout directive!" file="ghost-debug">
+                <cflog text="Original templateContent length: #len(templateContent)#" file="ghost-debug">
+                <cflog text="Layout directive pattern matched: #arrayLen(layoutMatch)#" file="ghost-debug">
+                <!--- Try a different approach --->
+                <cfset innerTemplate = "<p>Template error - please check theme files</p>">
+            </cfif>
+            
+            <!--- Debug: Log what we're about to process --->
+            <cflog text="About to process inner template length: #len(innerTemplate)#" file="ghost-debug">
+            <cflog text="Inner template starts with: '#left(innerTemplate, 50)#'" file="ghost-debug">
+            
             <!--- Process the inner template first --->
-            <cfset var innerContent = processHandlebarsTemplate(templateContent, arguments.context)>
+            <cfset var innerContent = processHandlebarsTemplate(innerTemplate, arguments.context, 0)>
+            
+            <!--- Debug: Log the result --->
+            <cflog text="Processed inner content length: #len(innerContent)#" file="ghost-debug">
+            <cfif len(innerContent) LT 50>
+                <cflog text="Short inner content: '#innerContent#'" file="ghost-debug">
+            </cfif>
+            
+            <!--- If inner content is empty or just whitespace, use a placeholder --->
+            <cfif len(trim(innerContent)) EQ 0>
+                <cflog text="Inner content is empty, using placeholder" file="ghost-debug">
+                <cfset innerContent = "<!-- Empty template -->">
+            <cfelseif trim(innerContent) EQ "}">
+                <cflog text="ERROR: Inner content is just '}', fixing..." file="ghost-debug">
+                <cflog text="Original inner template was: '#innerTemplate#'" file="ghost-debug">
+                <cfset innerContent = "<!-- Template processing error -->">
+            </cfif>
+            
+            <!--- Check for lone } character --->
+            <cfif trim(innerContent) EQ "}">
+                <cflog text="ERROR: Inner content is just '}', setting to empty" file="ghost-debug">
+                <cfset innerContent = "">
+            </cfif>
             
             <!--- Add the processed inner content to context for layout --->
             <cfset arguments.context.body = innerContent>
             
             <!--- Process the layout with the inner content --->
-            <cfreturn processHandlebarsTemplate(layoutContent, arguments.context)>
+            <cflog text="About to process layout with body content length: #len(arguments.context.body)#" file="ghost-debug">
+            <cfset var finalOutput = processHandlebarsTemplate(layoutContent, arguments.context, 0)>
+            <cflog text="Final output from layout: length=#len(finalOutput)#, starts with: #left(finalOutput, 50)#" file="ghost-debug">
+            <cfreturn finalOutput>
         </cfif>
     </cfif>
     
     <!--- No layout, just process the template --->
-    <cfreturn processHandlebarsTemplate(templateContent, arguments.context)>
+    <cfreturn processHandlebarsTemplate(templateContent, arguments.context, 0)>
 </cffunction>
 
 <!--- Get active theme configuration --->
@@ -704,4 +838,123 @@
     </cfif>
     
     <cfreturn themeConfig>
+</cffunction>
+
+<!--- Process {{#match}} blocks --->
+<cffunction name="processMatchBlocks" access="private" returntype="string">
+    <cfargument name="template" type="string" required="true">
+    <cfargument name="context" type="struct" required="true">
+    
+    <cfset var output = arguments.template>
+    
+    <!--- Handle {{#match var "=" "value"}} syntax --->
+    <cfset var pattern = '\{\{##match\s+([^\s]+)\s+"="\s+"([^"]+)"\}\}([\s\S]*?)\{\{/match\}\}'>
+    <cfset var matches = reMatchNoCase(pattern, output)>
+    
+    <cfloop array="#matches#" index="match">
+        <cfset var varPath = trim(reReplaceNoCase(match, '.*\{\{##match\s+([^\s]+)\s+"=".*', '\1', 'one'))>
+        <cfset var compareValue = reReplaceNoCase(match, '.*\{\{##match\s+[^\s]+\s+"="\s+"([^"]+)"\}\}.*', '\1', 'one')>
+        <cfset var content = reReplaceNoCase(match, '\{\{##match[^}]+\}\}([\s\S]*?)\{\{/match\}\}', '\1', 'one')>
+        
+        <cfset var varValue = getValueFromPath(arguments.context, varPath)>
+        
+        <!--- Check if values match --->
+        <cfif isSimpleValue(varValue) AND varValue EQ compareValue>
+            <cfset output = replace(output, match, content, "all")>
+        <cfelse>
+            <cfset output = replace(output, match, "", "all")>
+        </cfif>
+    </cfloop>
+    
+    <!--- Handle {{#match var "value"}} syntax (implicit equals) --->
+    <cfset pattern = '\{\{##match\s+([^\s]+)\s+"([^"]+)"\}\}([\s\S]*?)\{\{/match\}\}'>
+    <cfset matches = reMatchNoCase(pattern, output)>
+    
+    <cfloop array="#matches#" index="match">
+        <cfset var varPath = trim(reReplaceNoCase(match, '.*\{\{##match\s+([^\s]+)\s+"[^"]+"\}\}.*', '\1', 'one'))>
+        <cfset var compareValue = reReplaceNoCase(match, '.*\{\{##match\s+[^\s]+\s+"([^"]+)"\}\}.*', '\1', 'one')>
+        <cfset var content = reReplaceNoCase(match, '\{\{##match[^}]+\}\}([\s\S]*?)\{\{/match\}\}', '\1', 'one')>
+        
+        <cfset var varValue = getValueFromPath(arguments.context, varPath)>
+        
+        <!--- Check if values match --->
+        <cfif isSimpleValue(varValue) AND varValue EQ compareValue>
+            <cfset output = replace(output, match, content, "all")>
+        <cfelse>
+            <cfset output = replace(output, match, "", "all")>
+        </cfif>
+    </cfloop>
+    
+    <!--- Handle {{#match var "!=" "value"}} syntax --->
+    <cfset pattern = '\{\{##match\s+([^\s]+)\s+"!="\s+"([^"]+)"\}\}([\s\S]*?)\{\{/match\}\}'>
+    <cfset matches = reMatchNoCase(pattern, output)>
+    
+    <cfloop array="#matches#" index="match">
+        <cfset var varPath = trim(reReplaceNoCase(match, '.*\{\{##match\s+([^\s]+)\s+"!=".*', '\1', 'one'))>
+        <cfset var compareValue = reReplaceNoCase(match, '.*\{\{##match\s+[^\s]+\s+"!="\s+"([^"]+)"\}\}.*', '\1', 'one')>
+        <cfset var content = reReplaceNoCase(match, '\{\{##match[^}]+\}\}([\s\S]*?)\{\{/match\}\}', '\1', 'one')>
+        
+        <cfset var varValue = getValueFromPath(arguments.context, varPath)>
+        
+        <!--- Check if values don't match --->
+        <cfif isSimpleValue(varValue) AND varValue NEQ compareValue>
+            <cfset output = replace(output, match, content, "all")>
+        <cfelse>
+            <cfset output = replace(output, match, "", "all")>
+        </cfif>
+    </cfloop>
+    
+    <!--- Handle {{^match}} (negation) syntax --->
+    <cfset pattern = '\{\{\^match\s+([^\s]+)\s+"([^"]+)"\}\}([\s\S]*?)\{\{/match\}\}'>
+    <cfset matches = reMatchNoCase(pattern, output)>
+    
+    <cfloop array="#matches#" index="match">
+        <cfset var varPath = trim(reReplaceNoCase(match, '.*\{\{\^match\s+([^\s]+)\s+"[^"]+"\}\}.*', '\1', 'one'))>
+        <cfset var compareValue = reReplaceNoCase(match, '.*\{\{\^match\s+[^\s]+\s+"([^"]+)"\}\}.*', '\1', 'one')>
+        <cfset var content = reReplaceNoCase(match, '\{\{\^match[^}]+\}\}([\s\S]*?)\{\{/match\}\}', '\1', 'one')>
+        
+        <cfset var varValue = getValueFromPath(arguments.context, varPath)>
+        
+        <!--- Check if values DON'T match (negation) --->
+        <cfif NOT isSimpleValue(varValue) OR varValue NEQ compareValue>
+            <cfset output = replace(output, match, content, "all")>
+        <cfelse>
+            <cfset output = replace(output, match, "", "all")>
+        </cfif>
+    </cfloop>
+    
+    <cfreturn output>
+</cffunction>
+
+<!--- Process @custom variables --->
+<cffunction name="processCustomVariables" access="private" returntype="string">
+    <cfargument name="template" type="string" required="true">
+    <cfargument name="context" type="struct" required="true">
+    
+    <cfset var output = arguments.template>
+    
+    <!--- Create default custom settings if not exists --->
+    <cfif NOT structKeyExists(arguments.context, "custom")>
+        <cfset arguments.context.custom = {
+            "navigation_layout": "Stacked",
+            "header_style": "Center aligned",
+            "show_publication_cover": true,
+            "color_scheme": "Light"
+        }>
+    </cfif>
+    
+    <!--- Process @custom.variable patterns --->
+    <cfset var matches = reMatch('\{\{@custom\.([^}]+)\}\}', output)>
+    
+    <cfloop array="#matches#" index="match">
+        <cfset var varName = reReplace(match, '\{\{@custom\.([^}]+)\}\}', '\1', 'all')>
+        
+        <cfif structKeyExists(arguments.context.custom, varName)>
+            <cfset output = replace(output, match, arguments.context.custom[varName], "all")>
+        <cfelse>
+            <cfset output = replace(output, match, "", "all")>
+        </cfif>
+    </cfloop>
+    
+    <cfreturn output>
 </cffunction>

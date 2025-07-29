@@ -1,0 +1,69 @@
+{{!< default}}
+
+<style>
+    .post-header {
+        text-align: center;
+        margin-bottom: 40px;
+        padding-bottom: 30px;
+        border-bottom: 1px solid #e0e0e0;
+    }
+    .post-title {
+        font-size: 2.5em;
+        margin: 0 0 20px 0;
+        line-height: 1.2;
+    }
+    .post-meta {
+        color: #666;
+        font-size: 1em;
+    }
+    .post-content {
+        font-size: 1.1em;
+        line-height: 1.8;
+        color: #444;
+    }
+    .post-content h2 {
+        margin-top: 30px;
+        margin-bottom: 15px;
+    }
+    .post-content p {
+        margin-bottom: 20px;
+    }
+    .post-content img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 20px auto;
+    }
+    .post-footer {
+        margin-top: 50px;
+        padding-top: 30px;
+        border-top: 1px solid #e0e0e0;
+        text-align: center;
+    }
+    .back-link {
+        color: #0066cc;
+        text-decoration: none;
+    }
+    .back-link:hover {
+        text-decoration: underline;
+    }
+</style>
+
+{{#post}}
+    <article class="post">
+        <header class="post-header">
+            <h1 class="post-title">{{title}}</h1>
+            <div class="post-meta">
+                By {{author.name}} on {{date format="MMMM DD, YYYY"}}
+            </div>
+        </header>
+        
+        <div class="post-content">
+            {{content}}
+        </div>
+        
+        <footer class="post-footer">
+            <a href="/ghost/" class="back-link">← Back to all posts</a>
+        </footer>
+    </article>
+{{/post}}

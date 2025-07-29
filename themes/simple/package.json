@@ -1,0 +1,12 @@
+{
+    "name": "simple",
+    "description": "A simple Ghost theme for CFML",
+    "version": "1.0.0",
+    "engines": {
+        "ghost": ">=5.0.0"
+    },
+    "license": "MIT",
+    "config": {
+        "posts_per_page": 10
+    }
+}

@@ -1,0 +1,19 @@
+{{!< default}}
+
+<div class="post-feed">
+    <h2>Blog Posts</h2>
+    <p>Welcome to our blog! Here are the latest posts:</p>
+    
+    {{#foreach posts}}
+        <article class="post-card">
+            <h3><a href="{{url}}">{{title}}</a></h3>
+            {{#if excerpt}}
+                <p>{{excerpt}}</p>
+            {{/if}}
+        </article>
+    {{/foreach}}
+    
+    {{#if pagination.pages}}
+        {{pagination}}
+    {{/if}}
+</div>

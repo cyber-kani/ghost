@@ -7,162 +7,376 @@
     <cfswitch expression="#arguments.themeName#">
         <cfcase value="casper">
             <cfset styles = '
-                /* Casper Theme Styles */
-                :root {
-                    --ghost-accent-color: ##26a8ed;
-                    --color-primary-text: ##131313;
-                    --color-secondary-text: ##737373;
-                    --color-border: ##e5e5e5;
-                    --color-background: ##ffffff;
-                    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-                }
-                
+                /* Casper Theme Styles - Matching Ghost Demo */
                 body {
-                    font-family: var(--font-sans);
-                    background: var(--color-background);
-                    color: var(--color-primary-text);
+                    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+                    background: ##ffffff;
+                    color: ##15171a;
                 }
                 
+                /* Header - Centered and minimal */
                 header {
                     background: transparent;
-                    border-bottom: 1px solid var(--color-border);
+                    border-bottom: none;
                     box-shadow: none;
-                    padding: 40px 0;
+                    padding: 8vw 0 4vw;
+                    text-align: center;
+                    width: 100%;
+                    margin: 0;
+                }
+                
+                .header-inner {
+                    max-width: 720px;
+                    display: block;
+                    text-align: center;
+                }
+                
+                .header-left {
+                    text-align: center;
+                    margin-bottom: 3vw;
                 }
                 
                 .site-title {
-                    font-size: 3.2rem;
+                    font-size: 4.4rem;
                     font-weight: 700;
-                    letter-spacing: -0.02em;
-                    color: var(--color-primary-text);
+                    letter-spacing: -0.015em;
+                    color: ##15171a;
                 }
                 
                 .site-description {
-                    font-size: 1.6rem;
-                    font-weight: 400;
-                    color: var(--color-secondary-text);
-                    margin-top: 8px;
+                    font-size: 2.2rem;
+                    font-weight: 300;
+                    color: ##738a94;
+                    margin-top: 0.3em;
+                    line-height: 1.4;
+                }
+                
+                /* Navigation - Horizontal centered */
+                nav {
+                    text-align: center;
+                }
+                
+                nav ul {
+                    display: inline-flex;
+                    gap: 4vw;
                 }
                 
                 nav a {
-                    font-size: 1.4rem;
-                    color: var(--color-secondary-text);
-                    font-weight: 400;
+                    font-size: 1.7rem;
+                    color: ##738a94;
+                    font-weight: 500;
+                    text-transform: uppercase;
+                    letter-spacing: 0.2px;
                 }
                 
                 nav a:hover {
-                    color: var(--color-primary-text);
+                    color: ##15171a;
+                    opacity: 1;
                 }
                 
+                /* Main content area */
                 main {
                     background: transparent;
                     box-shadow: none;
                     padding: 0;
                     max-width: 1200px;
-                    margin: 60px auto;
+                    margin: 0 auto;
                 }
                 
+                /* Post feed - Simple list layout */
+                .post-feed {
+                    display: block !important;
+                    max-width: 720px;
+                    margin: 0 auto;
+                }
+                
+                /* Post cards - Minimal design */
                 .post-card {
-                    border-bottom: 1px solid var(--color-border);
-                    padding: 40px 0;
+                    display: block !important;
+                    border: none !important;
+                    border-radius: 0;
+                    background: transparent;
+                    box-shadow: none;
+                    padding: 0 0 6vw 0 !important;
+                    margin: 0 0 6vw 0;
+                    position: relative;
                 }
                 
+                .post-card::after {
+                    content: "";
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    height: 1px;
+                    background: ##e5eff5;
+                }
+                
+                .post-card:last-child::after {
+                    display: none;
+                }
+                
+                /* No feature images in list */
+                .post-card-image-link {
+                    display: none !important;
+                }
+                
+                .post-card-content {
+                    padding: 0 !important;
+                }
+                
+                /* Post titles */
                 .post-card h2 {
-                    font-size: 2.8rem;
+                    font-size: 3.6rem;
                     font-weight: 700;
-                    letter-spacing: -0.02em;
-                    margin-bottom: 16px;
+                    letter-spacing: -0.015em;
+                    margin: 0 0 0.5em 0;
+                    line-height: 1.15;
                 }
                 
                 .post-card h2 a {
-                    color: var(--color-primary-text);
+                    color: ##15171a;
+                    box-shadow: inset 0 -1px 0 transparent;
+                    transition: all 0.2s ease-in-out;
                 }
                 
                 .post-card h2 a:hover {
-                    color: var(--ghost-accent-color);
+                    box-shadow: inset 0 -1px 0 ##15171a;
+                    opacity: 1;
                 }
                 
+                /* Post meta */
                 .post-meta {
-                    font-size: 1.3rem;
-                    color: var(--color-secondary-text);
-                    margin-bottom: 12px;
+                    font-size: 1.5rem;
+                    color: ##738a94;
+                    margin-bottom: 1em;
+                    font-weight: 400;
                 }
                 
+                /* Post excerpt */
                 .post-excerpt {
-                    font-size: 1.6rem;
+                    font-size: 1.8rem;
                     line-height: 1.6;
-                    color: var(--color-secondary-text);
+                    color: ##3a4145;
+                    font-weight: 300;
+                    margin-bottom: 1em;
                 }
                 
-                .post-tag {
+                /* Hide tags in list view */
+                .post-tags {
+                    display: none;
+                }
+                
+                /* Footer */
+                footer {
+                    padding: 6vw 0;
+                    border-top: 1px solid ##e5eff5;
+                    margin-top: 6vw;
+                }
+                
+                /* Responsive */
+                @media (max-width: 768px) {
+                    .site-title {
+                        font-size: 3.2rem;
+                    }
+                    .site-description {
+                        font-size: 1.8rem;
+                    }
+                    .post-card h2 {
+                        font-size: 2.8rem;
+                    }
+                    nav ul {
+                        flex-direction: column;
+                        gap: 1em;
+                    }
+                }
+            '>
+        </cfcase>
+        
+        <cfcase value="casper-1">
+            <!--- Casper-1 theme - Same as updated Casper --->
+            <cfset styles = '
+                /* Casper-1 Theme Styles - Matching Ghost Demo */
+                body {
+                    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+                    background: ##ffffff;
+                    color: ##15171a;
+                }
+                
+                /* Header - Centered and minimal */
+                header {
                     background: transparent;
-                    border: 1px solid var(--color-border);
-                    color: var(--color-secondary-text);
-                    font-size: 1.3rem;
-                    padding: 4px 12px;
+                    border-bottom: none;
+                    box-shadow: none;
+                    padding: 8vw 0 4vw;
+                    text-align: center;
+                    width: 100%;
+                    margin: 0;
                 }
                 
-                .post-tag:hover {
-                    border-color: var(--ghost-accent-color);
-                    color: var(--ghost-accent-color);
+                .header-inner {
+                    max-width: 720px;
+                    display: block;
+                    text-align: center;
                 }
                 
-                /* Casper theme - vertical card layout */
+                .header-left {
+                    text-align: center;
+                    margin-bottom: 3vw;
+                }
+                
+                .site-title {
+                    font-size: 4.4rem;
+                    font-weight: 700;
+                    letter-spacing: -0.015em;
+                    color: ##15171a;
+                }
+                
+                .site-description {
+                    font-size: 2.2rem;
+                    font-weight: 300;
+                    color: ##738a94;
+                    margin-top: 0.3em;
+                    line-height: 1.4;
+                }
+                
+                /* Navigation - Horizontal centered */
+                nav {
+                    text-align: center;
+                }
+                
+                nav ul {
+                    display: inline-flex;
+                    gap: 4vw;
+                }
+                
+                nav a {
+                    font-size: 1.7rem;
+                    color: ##738a94;
+                    font-weight: 500;
+                    text-transform: uppercase;
+                    letter-spacing: 0.2px;
+                }
+                
+                nav a:hover {
+                    color: ##15171a;
+                    opacity: 1;
+                }
+                
+                /* Main content area */
+                main {
+                    background: transparent;
+                    box-shadow: none;
+                    padding: 0;
+                    max-width: 1200px;
+                    margin: 0 auto;
+                }
+                
+                /* Post feed - Simple list layout */
                 .post-feed {
-                    display: grid !important;
-                    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important;
-                    gap: 40px !important;
+                    display: block !important;
+                    max-width: 720px;
+                    margin: 0 auto;
                 }
+                
+                /* Post cards - Minimal design */
                 .post-card {
-                    display: flex !important;
-                    flex-direction: column !important;
+                    display: block !important;
                     border: none !important;
-                    border-radius: 12px;
-                    overflow: hidden;
-                    background: ##fff;
-                    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-                    transition: all 0.3s ease;
+                    border-radius: 0;
+                    background: transparent;
+                    box-shadow: none;
+                    padding: 0 0 6vw 0 !important;
+                    margin: 0 0 6vw 0;
+                    position: relative;
+                }
+                
+                .post-card::after {
+                    content: "";
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    height: 1px;
+                    background: ##e5eff5;
+                }
+                
+                .post-card:last-child::after {
+                    display: none;
+                }
+                
+                /* No feature images in list */
+                .post-card-image-link {
+                    display: none !important;
+                }
+                
+                .post-card-content {
                     padding: 0 !important;
                 }
-                .post-card:hover {
-                    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-                    transform: translateY(-4px);
-                }
-                .post-card-image-link {
-                    width: 100% !important;
-                    height: 200px !important;
-                    overflow: hidden;
-                    display: block !important;
-                    flex-shrink: 0;
-                }
-                .post-card-image {
-                    width: 100% !important;
-                    height: 100% !important;
-                    object-fit: cover !important;
-                    transition: opacity 0.3s ease;
-                }
-                .post-card:hover .post-card-image {
-                    opacity: 0.9;
-                }
-                .post-card-content {
-                    padding: 30px !important;
-                    flex: 1;
-                    display: flex;
-                    flex-direction: column;
-                }
+                
+                /* Post titles */
                 .post-card h2 {
-                    font-size: 2.2rem;
-                    margin-bottom: 12px;
+                    font-size: 3.6rem;
+                    font-weight: 700;
+                    letter-spacing: -0.015em;
+                    margin: 0 0 0.5em 0;
+                    line-height: 1.15;
                 }
+                
+                .post-card h2 a {
+                    color: ##15171a;
+                    box-shadow: inset 0 -1px 0 transparent;
+                    transition: all 0.2s ease-in-out;
+                }
+                
+                .post-card h2 a:hover {
+                    box-shadow: inset 0 -1px 0 ##15171a;
+                    opacity: 1;
+                }
+                
+                /* Post meta */
+                .post-meta {
+                    font-size: 1.5rem;
+                    color: ##738a94;
+                    margin-bottom: 1em;
+                    font-weight: 400;
+                }
+                
+                /* Post excerpt */
                 .post-excerpt {
-                    flex: 1;
+                    font-size: 1.8rem;
+                    line-height: 1.6;
+                    color: ##3a4145;
+                    font-weight: 300;
+                    margin-bottom: 1em;
                 }
+                
+                /* Hide tags in list view */
                 .post-tags {
-                    margin-top: 20px;
+                    display: none;
                 }
+                
+                /* Footer */
+                footer {
+                    padding: 6vw 0;
+                    border-top: 1px solid ##e5eff5;
+                    margin-top: 6vw;
+                }
+                
+                /* Responsive */
                 @media (max-width: 768px) {
-                    .post-feed {
-                        grid-template-columns: 1fr;
+                    .site-title {
+                        font-size: 3.2rem;
+                    }
+                    .site-description {
+                        font-size: 1.8rem;
+                    }
+                    .post-card h2 {
+                        font-size: 2.8rem;
+                    }
+                    nav ul {
+                        flex-direction: column;
+                        gap: 1em;
                     }
                 }
             '>

@@ -106,6 +106,64 @@
                     border-color: var(--ghost-accent-color);
                     color: var(--ghost-accent-color);
                 }
+                
+                /* Casper theme - vertical card layout */
+                .post-feed {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                    gap: 40px;
+                }
+                .post-card {
+                    display: flex;
+                    flex-direction: column;
+                    border: none;
+                    border-radius: 12px;
+                    overflow: hidden;
+                    background: ##fff;
+                    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+                    transition: all 0.3s ease;
+                    padding: 0;
+                }
+                .post-card:hover {
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                    transform: translateY(-4px);
+                }
+                .post-card-image-link {
+                    width: 100%;
+                    height: 200px;
+                    overflow: hidden;
+                    display: block;
+                }
+                .post-card-image {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    transition: opacity 0.3s ease;
+                }
+                .post-card:hover .post-card-image {
+                    opacity: 0.9;
+                }
+                .post-card-content {
+                    padding: 30px;
+                    flex: 1;
+                    display: flex;
+                    flex-direction: column;
+                }
+                .post-card h2 {
+                    font-size: 2.2rem;
+                    margin-bottom: 12px;
+                }
+                .post-excerpt {
+                    flex: 1;
+                }
+                .post-tags {
+                    margin-top: 20px;
+                }
+                @media (max-width: 768px) {
+                    .post-feed {
+                        grid-template-columns: 1fr;
+                    }
+                }
             '>
         </cfcase>
         
@@ -218,6 +276,18 @@
                 .post-tag:hover {
                     background: ##e54d2a;
                 }
+                
+                /* Liebling theme - no images in list, clean layout */
+                .post-card {
+                    display: block;
+                    padding: 40px 0;
+                }
+                .post-card-image-link {
+                    display: none;
+                }
+                .post-card-content {
+                    max-width: 720px;
+                }
             '>
         </cfcase>
         
@@ -328,6 +398,52 @@
                 .post-tag:hover {
                     background: ##e0e7ff;
                     border-color: ##a5b4fc;
+                }
+                
+                /* Solo theme - minimal with small thumbnails */
+                .post-feed {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0;
+                }
+                .post-card {
+                    display: flex;
+                    gap: 24px;
+                    align-items: center;
+                    padding: 32px 0;
+                }
+                .post-card-image-link {
+                    width: 120px;
+                    height: 80px;
+                    flex-shrink: 0;
+                    border-radius: 8px;
+                    overflow: hidden;
+                    border: 1px solid var(--color-border);
+                }
+                .post-card-content {
+                    flex: 1;
+                }
+                .post-card h2 {
+                    font-size: 1.5rem;
+                    margin-bottom: 8px;
+                }
+                .post-meta {
+                    font-size: 0.875rem;
+                    margin-bottom: 8px;
+                }
+                .post-excerpt {
+                    font-size: 1rem;
+                    margin-bottom: 12px;
+                }
+                @media (max-width: 640px) {
+                    .post-card {
+                        flex-direction: column;
+                        align-items: flex-start;
+                    }
+                    .post-card-image-link {
+                        width: 100%;
+                        height: 180px;
+                    }
                 }
             '>
         </cfcase>

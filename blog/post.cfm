@@ -161,6 +161,16 @@
             padding-bottom: 20px;
             border-bottom: 1px solid #eee;
         }
+        .post-feature-image {
+            margin: -40px -40px 40px -40px;
+            overflow: hidden;
+            border-radius: 8px 8px 0 0;
+        }
+        .post-feature-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
         .post-title {
             margin: 0 0 20px 0;
             font-size: 2.5em;
@@ -253,6 +263,9 @@
             .post-title {
                 font-size: 2em;
             }
+            .post-feature-image {
+                margin: -20px -20px 30px -20px;
+            }
         }
     </style>
     
@@ -291,6 +304,13 @@
                     </cfif>
                 </div>
             </header>
+            
+            <cfif len(trim(qPost.feature_image))>
+                <cfset featureImageUrl = replace(qPost.feature_image, "__GHOST_URL__", "/ghost", "all")>
+                <div class="post-feature-image">
+                    <img src="<cfoutput>#featureImageUrl#</cfoutput>" alt="<cfoutput>#qPost.title#</cfoutput>" loading="lazy">
+                </div>
+            </cfif>
             
             <div class="post-content">
                 <cfoutput>#postContent#</cfoutput>

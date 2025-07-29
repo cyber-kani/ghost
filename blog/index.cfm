@@ -163,6 +163,29 @@
         .post-card {
             border-bottom: 1px solid #eee;
             padding-bottom: 30px;
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+        .post-card-image-link {
+            flex-shrink: 0;
+            display: block;
+            overflow: hidden;
+            border-radius: 8px;
+            width: 300px;
+            height: 200px;
+        }
+        .post-card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .post-card-image:hover {
+            transform: scale(1.05);
+        }
+        .post-card-content {
+            flex: 1;
         }
         .post-card:last-child {
             border-bottom: none;
@@ -243,6 +266,14 @@
             .post-tag {
                 margin-bottom: 5px;
             }
+            .post-card {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .post-card-image-link {
+                width: 100%;
+                height: 200px;
+            }
         }
     </style>
     
@@ -293,8 +324,15 @@
                     </cfif>
                     
                     <article class="post-card">
-                        <h2><a href="/ghost/blog/#qPosts.slug#/">#qPosts.title#</a></h2>
-                        <div class="post-meta">
+                        <cfif len(trim(qPosts.feature_image))>
+                            <cfset imageUrl = replace(qPosts.feature_image, "__GHOST_URL__", "/ghost", "all")>
+                            <a href="/ghost/blog/#qPosts.slug#/" class="post-card-image-link">
+                                <img src="#imageUrl#" alt="#qPosts.title#" class="post-card-image" loading="lazy">
+                            </a>
+                        </cfif>
+                        <div class="post-card-content">
+                            <h2><a href="/ghost/blog/#qPosts.slug#/">#qPosts.title#</a></h2>
+                            <div class="post-meta">
                             <cfif len(qPosts.author_name)>
                                 By #qPosts.author_name# &middot; 
                             </cfif>
@@ -312,6 +350,7 @@
                                 </cfloop>
                             </div>
                         </cfif>
+                        </div>
                     </article>
                 </cfoutput>
             <cfelse>

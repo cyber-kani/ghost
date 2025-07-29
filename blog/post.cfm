@@ -72,7 +72,7 @@
     "post": {
         "id": qPost.id,
         "title": qPost.title,
-        "content": replaceGhostUrl(qPost.content),
+        "content": replaceGhostUrl(qPost.html),
         "excerpt": qPost.custom_excerpt,
         "feature_image": qPost.feature_image,
         "tags": tags,
@@ -95,7 +95,7 @@
     },
     "theme": getActiveTheme(request.dsn),
     "meta_title": qPost.title & " - " & (structKeyExists(siteSettings, "site_title") ? siteSettings.site_title : "Ghost CFML"),
-    "meta_description": len(qPost.custom_excerpt) ? qPost.custom_excerpt : left(reReplace(qPost.content, "<[^>]*>", "", "all"), 160),
+    "meta_description": len(qPost.custom_excerpt) ? qPost.custom_excerpt : left(reReplace(qPost.html, "<[^>]*>", "", "all"), 160),
     "canonical_url": (structKeyExists(siteSettings, "site_url") ? siteSettings.site_url : "http://localhost") & "/blog/" & qPost.slug & "/",
     "body_class": "post-template",
     "post_class": "post",

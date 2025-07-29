@@ -39,7 +39,7 @@
 <cfquery name="qSettings" datasource="#request.dsn#">
     SELECT `key`, value
     FROM settings
-    WHERE `key` IN ('site_title', 'site_description', 'site_url', 'site_icon')
+    WHERE `key` IN ('site_title', 'site_description', 'site_url', 'site_icon', 'active_theme')
 </cfquery>
 
 <cfset siteSettings = {}>
@@ -50,6 +50,11 @@
 <cfset siteTitle = structKeyExists(siteSettings, "site_title") ? siteSettings.site_title : "Ghost CFML">
 <cfset siteDescription = structKeyExists(siteSettings, "site_description") ? siteSettings.site_description : "A simple publishing platform">
 <cfset siteUrl = structKeyExists(siteSettings, "site_url") ? siteSettings.site_url : "http://localhost">
+<cfset activeTheme = structKeyExists(siteSettings, "active_theme") ? siteSettings.active_theme : "default">
+
+<!--- Include theme styles --->
+<cfinclude template="/ghost/admin/includes/theme-styles.cfm">
+<cfset themeStyles = getThemeStyles(activeTheme)>
 
 <!--- Process content to replace Ghost image URLs --->
 <cfset postContent = qPost.html>
@@ -69,6 +74,8 @@
         * {
             box-sizing: border-box;
         }
+        
+        <cfoutput>#themeStyles#</cfoutput>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;

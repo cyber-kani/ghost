@@ -194,68 +194,82 @@
         </cfcase>
         
         <cfcase value="casper-1">
-            <!--- Casper-1 theme - Same as updated Casper --->
+            <!--- Casper-1 theme - Modern Ghost Demo Style --->
             <cfset styles = '
-                /* Casper-1 Theme Styles - Matching Ghost Demo */
+                /* Casper-1 Theme - Modern Ghost Demo Style */
                 body {
-                    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+                    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
                     background: ##ffffff;
                     color: ##15171a;
+                    font-size: 16px;
+                    line-height: 1.6;
                 }
                 
-                /* Header - Centered and minimal */
+                /* Header - Horizontal navigation bar */
                 header {
-                    background: transparent;
-                    border-bottom: none;
+                    background: ##ffffff;
+                    border-bottom: 1px solid rgba(0,0,0,0.06);
                     box-shadow: none;
-                    padding: 8vw 0 4vw;
-                    text-align: center;
+                    padding: 0;
                     width: 100%;
                     margin: 0;
+                    position: sticky;
+                    top: 0;
+                    z-index: 900;
                 }
                 
                 .header-inner {
-                    max-width: 720px;
-                    display: block;
-                    text-align: center;
+                    max-width: 1200px;
+                    margin: 0 auto;
+                    padding: 0 32px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    height: 88px;
                 }
                 
                 .header-left {
-                    text-align: center;
-                    margin-bottom: 3vw;
+                    display: flex;
+                    align-items: center;
+                    gap: 40px;
+                    margin: 0;
                 }
                 
+                /* Logo/Site Title */
                 .site-title {
-                    font-size: 4.4rem;
-                    font-weight: 700;
-                    letter-spacing: -0.015em;
+                    font-size: 24px;
+                    font-weight: 800;
+                    letter-spacing: -0.5px;
                     color: ##15171a;
+                    margin: 0;
                 }
                 
                 .site-description {
-                    font-size: 2.2rem;
-                    font-weight: 300;
-                    color: ##738a94;
-                    margin-top: 0.3em;
-                    line-height: 1.4;
+                    display: none;
                 }
                 
-                /* Navigation - Horizontal centered */
+                /* Navigation */
                 nav {
-                    text-align: center;
+                    display: flex;
+                    align-items: center;
                 }
                 
                 nav ul {
-                    display: inline-flex;
-                    gap: 4vw;
+                    display: flex;
+                    gap: 32px;
+                    align-items: center;
+                    margin: 0;
+                    padding: 0;
                 }
                 
                 nav a {
-                    font-size: 1.7rem;
-                    color: ##738a94;
+                    font-size: 16px;
+                    color: ##15171a;
                     font-weight: 500;
-                    text-transform: uppercase;
-                    letter-spacing: 0.2px;
+                    text-transform: none;
+                    letter-spacing: normal;
+                    opacity: 0.8;
+                    transition: opacity 0.2s;
                 }
                 
                 nav a:hover {
@@ -267,116 +281,219 @@
                 main {
                     background: transparent;
                     box-shadow: none;
-                    padding: 0;
+                    padding: 40px 32px;
                     max-width: 1200px;
                     margin: 0 auto;
+                    min-height: auto;
                 }
                 
-                /* Post feed - Simple list layout */
+                /* Content wrapper */
+                .content-wrapper {
+                    max-width: none;
+                }
+                
+                /* Post feed - Grid layout */
                 .post-feed {
-                    display: block !important;
-                    max-width: 720px;
-                    margin: 0 auto;
+                    display: grid !important;
+                    grid-template-columns: 1fr;
+                    gap: 0;
+                    max-width: none;
+                    margin: 0;
                 }
                 
-                /* Post cards - Minimal design */
-                .post-card {
+                /* Featured post - first post */
+                .post-card:first-child {
+                    display: grid !important;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 64px;
+                    align-items: center;
+                    padding: 48px 0 !important;
+                    margin-bottom: 0;
+                    border-bottom: 1px solid rgba(0,0,0,0.06);
+                }
+                
+                .post-card:first-child .post-card-image-link {
                     display: block !important;
+                    width: 100% !important;
+                    height: 400px !important;
+                    border-radius: 12px;
+                    overflow: hidden;
+                    order: 2;
+                }
+                
+                .post-card:first-child .post-card-content {
+                    order: 1;
+                    padding: 0 !important;
+                }
+                
+                .post-card:first-child h2 {
+                    font-size: 44px !important;
+                    font-weight: 800;
+                    letter-spacing: -0.44px;
+                    line-height: 1.05;
+                    margin: 0 0 16px 0;
+                }
+                
+                .post-card:first-child .post-excerpt {
+                    font-size: 20px;
+                    line-height: 1.5;
+                    color: ##738a94;
+                    margin-bottom: 24px;
+                }
+                
+                /* Regular posts - smaller cards */
+                .post-card {
+                    display: grid !important;
+                    grid-template-columns: 240px 1fr;
+                    gap: 40px;
+                    align-items: center;
                     border: none !important;
-                    border-radius: 0;
                     background: transparent;
                     box-shadow: none;
-                    padding: 0 0 6vw 0 !important;
-                    margin: 0 0 6vw 0;
-                    position: relative;
+                    padding: 40px 0 !important;
+                    margin: 0;
+                    border-bottom: 1px solid rgba(0,0,0,0.06);
                 }
                 
-                .post-card::after {
-                    content: "";
-                    position: absolute;
-                    bottom: 0;
-                    left: 0;
-                    right: 0;
-                    height: 1px;
-                    background: ##e5eff5;
+                .post-card:last-child {
+                    border-bottom: none;
                 }
                 
-                .post-card:last-child::after {
-                    display: none;
-                }
-                
-                /* No feature images in list */
+                /* Regular post images */
                 .post-card-image-link {
-                    display: none !important;
+                    display: block !important;
+                    width: 240px !important;
+                    height: 160px !important;
+                    border-radius: 8px;
+                    overflow: hidden;
+                    flex-shrink: 0;
+                }
+                
+                .post-card-image {
+                    width: 100% !important;
+                    height: 100% !important;
+                    object-fit: cover !important;
+                    transition: transform 0.3s ease;
+                }
+                
+                .post-card:hover .post-card-image {
+                    transform: scale(1.05);
                 }
                 
                 .post-card-content {
                     padding: 0 !important;
+                    flex: 1;
                 }
                 
                 /* Post titles */
                 .post-card h2 {
-                    font-size: 3.6rem;
-                    font-weight: 700;
-                    letter-spacing: -0.015em;
-                    margin: 0 0 0.5em 0;
+                    font-size: 26px;
+                    font-weight: 800;
+                    letter-spacing: -0.3px;
+                    margin: 0 0 8px 0;
                     line-height: 1.15;
                 }
                 
                 .post-card h2 a {
                     color: ##15171a;
-                    box-shadow: inset 0 -1px 0 transparent;
-                    transition: all 0.2s ease-in-out;
+                    transition: opacity 0.2s;
                 }
                 
                 .post-card h2 a:hover {
-                    box-shadow: inset 0 -1px 0 ##15171a;
-                    opacity: 1;
+                    opacity: 0.8;
                 }
                 
                 /* Post meta */
                 .post-meta {
-                    font-size: 1.5rem;
+                    font-size: 14px;
                     color: ##738a94;
-                    margin-bottom: 1em;
+                    margin-bottom: 8px;
                     font-weight: 400;
                 }
                 
                 /* Post excerpt */
                 .post-excerpt {
-                    font-size: 1.8rem;
-                    line-height: 1.6;
-                    color: ##3a4145;
-                    font-weight: 300;
-                    margin-bottom: 1em;
+                    font-size: 16px;
+                    line-height: 1.5;
+                    color: ##738a94;
+                    margin: 0;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
                 }
                 
-                /* Hide tags in list view */
+                /* Show tags */
                 .post-tags {
-                    display: none;
+                    display: block;
+                    margin-top: 16px;
+                }
+                
+                .post-tag {
+                    font-size: 13px;
+                    background: rgba(0,0,0,0.05);
+                    color: ##15171a;
+                    padding: 4px 10px;
+                    border-radius: 4px;
+                    font-weight: 500;
+                    border: none;
+                    margin-right: 8px;
+                }
+                
+                .post-tag:hover {
+                    background: rgba(0,0,0,0.08);
                 }
                 
                 /* Footer */
                 footer {
-                    padding: 6vw 0;
-                    border-top: 1px solid ##e5eff5;
-                    margin-top: 6vw;
+                    padding: 48px 32px;
+                    border-top: 1px solid rgba(0,0,0,0.06);
+                    margin-top: 0;
+                    max-width: 1200px;
+                    margin: 0 auto;
                 }
                 
                 /* Responsive */
                 @media (max-width: 768px) {
-                    .site-title {
-                        font-size: 3.2rem;
+                    .header-inner {
+                        padding: 0 20px;
                     }
-                    .site-description {
-                        font-size: 1.8rem;
+                    
+                    main {
+                        padding: 20px;
                     }
-                    .post-card h2 {
-                        font-size: 2.8rem;
+                    
+                    .post-card:first-child {
+                        grid-template-columns: 1fr;
+                        gap: 24px;
                     }
+                    
+                    .post-card:first-child .post-card-image-link {
+                        order: 1;
+                        height: 240px !important;
+                    }
+                    
+                    .post-card:first-child .post-card-content {
+                        order: 2;
+                    }
+                    
+                    .post-card:first-child h2 {
+                        font-size: 32px !important;
+                    }
+                    
+                    .post-card {
+                        grid-template-columns: 1fr;
+                        gap: 16px;
+                        padding: 24px 0 !important;
+                    }
+                    
+                    .post-card-image-link {
+                        width: 100% !important;
+                        height: 200px !important;
+                    }
+                    
                     nav ul {
-                        flex-direction: column;
-                        gap: 1em;
+                        display: none;
                     }
                 }
             '>

@@ -12108,18 +12108,24 @@ if (len(postData.html)) {
                 }
                 
                 if (!isAutosave) {
+                    const postType = (postData.type || postData.TYPE || 'post').toLowerCase();
+                    const redirectUrl = postType === 'page' ? '/ghost/admin/pages' : '/ghost/admin/posts';
+                    
                     if (status === 'published') {
-                        showMessage('Post published successfully', 'success');
+                        const itemType = postType === 'page' ? 'Page' : 'Post';
+                        showMessage(`${itemType} published successfully`, 'success');
                         setTimeout(() => {
-                            window.location.href = '/ghost/admin/posts';
+                            window.location.href = redirectUrl;
                         }, 1000);
                     } else if (status === 'scheduled') {
-                        showMessage('Post scheduled successfully', 'success');
+                        const itemType = postType === 'page' ? 'Page' : 'Post';
+                        showMessage(`${itemType} scheduled successfully`, 'success');
                         setTimeout(() => {
-                            window.location.href = '/ghost/admin/posts';
+                            window.location.href = redirectUrl;
                         }, 1000);
                     } else {
-                        showMessage('Post saved', 'success');
+                        const itemType = postType === 'page' ? 'Page' : 'Post';
+                        showMessage(`${itemType} saved`, 'success');
                     }
                 }
                 
@@ -13107,9 +13113,13 @@ if (len(postData.html)) {
         .then(response => response.json())
         .then(data => {
             if (data.success || data.SUCCESS) {
-                showMessage('Post deleted', 'success');
+                const postType = (postData.type || postData.TYPE || 'post').toLowerCase();
+                const itemType = postType === 'page' ? 'Page' : 'Post';
+                const redirectUrl = postType === 'page' ? '/ghost/admin/pages' : '/ghost/admin/posts';
+                
+                showMessage(`${itemType} deleted`, 'success');
                 setTimeout(() => {
-                    window.location.href = '/ghost/admin/posts';
+                    window.location.href = redirectUrl;
                 }, 1000);
             } else {
                 showMessage(data.message || data.MESSAGE || 'Delete failed', 'error');

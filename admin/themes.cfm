@@ -6,7 +6,7 @@
 <cfset pageTitle = "Themes">
 
 <!--- Check if user is logged in --->
-<cfif NOT structKeyExists(session, "ISLOGGEDIN") OR NOT session.ISLOGGEDIN>
+<cfif NOT structKeyExists(session, "user") OR NOT structKeyExists(session.user, "id")>
     <cflocation url="/ghost/admin/login" addtoken="false">
 </cfif>
 

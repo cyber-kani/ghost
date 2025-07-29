@@ -346,6 +346,12 @@
                                         <!-- Right Side Items -->
                                         <div class="flex gap-2 items-center lg:ps-0 ps-5 justify-end">
                                             <div class="flex items-center">
+                                                <!-- View Site Link -->
+                                                <a href="/ghost/blog/" target="_blank" class="hidden lg:flex items-center gap-2 px-4 py-2 mr-3 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors">
+                                                    <iconify-icon icon="solar:eye-line-duotone" class="text-lg"></iconify-icon>
+                                                    <span>View site</span>
+                                                </a>
+                                                
                                                 <!-- Search Bar -->
                                                 <div class="relative hidden lg:block mr-3">
                                                     <input type="text" class="py-2 px-3 ps-10 block w-64 border border-gray-200 dark:border-gray-700 rounded-full text-sm focus:border-primary focus:ring-primary dark:bg-gray-800 dark:text-gray-400 bg-gray-50" placeholder="Search...">

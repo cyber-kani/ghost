@@ -54,7 +54,8 @@
 
 <!--- Set default path if empty --->
 <cfif len(trim(requestPath)) eq 0>
-    <cfset requestPath = "blog">  <!--- Changed from "admin" to "blog" --->
+    <!--- Redirect to /ghost/blog/ --->
+    <cflocation url="/ghost/blog/" addtoken="false">
 </cfif>
 
 <!--- Route Matching Logic --->
@@ -214,6 +215,11 @@
     <cfset templateFile = "blog/index.cfm">
     <cfset routeFound = true>
 
+<!--- New blog with theme support --->
+<cfelseif requestPath eq "blog-new">
+    <cfset templateFile = "blog/index-new.cfm">
+    <cfset routeFound = true>
+
 <!--- Blog pagination --->
 <cfelseif reFindNoCase("^blog/page/([0-9]+)$", requestPath)>
     <cfset pageNum = reReplaceNoCase(requestPath, "^blog/page/([0-9]+)$", "\1")>
@@ -239,7 +245,14 @@
 <cfelseif reFindNoCase("^blog/([a-zA-Z0-9-]+)$", requestPath)>
     <cfset postSlug = reReplaceNoCase(requestPath, "^blog/([a-zA-Z0-9-]+)$", "\1")>
     <cfset url.slug = postSlug>
-    <cfset templateFile = "blog/post.cfm">
+    <cfset templateFile = "blog/post-modern.cfm">
+    <cfset routeFound = true>
+
+<!--- Static pages (must be after blog routes) --->
+<cfelseif reFindNoCase("^([a-zA-Z0-9-]+)$", requestPath) AND requestPath NEQ "admin">
+    <cfset pageSlug = requestPath>
+    <cfset url.slug = pageSlug>
+    <cfset templateFile = "blog/page-modern.cfm">
     <cfset routeFound = true>
 
 <!--- Preview route --->
@@ -247,6 +260,31 @@
     <cfset postId = reReplaceNoCase(requestPath, "^preview/([a-zA-Z0-9-]+)$", "\1")>
     <cfset url.id = postId>
     <cfset templateFile = "admin/preview.cfm">
+    <cfset routeFound = true>
+
+<!--- Test theme route --->
+<cfelseif requestPath EQ "test-theme">
+    <cfset templateFile = "test-theme.cfm">
+    <cfset routeFound = true>
+
+<!--- Test simple route --->
+<cfelseif requestPath EQ "test-simple">
+    <cfset templateFile = "test-simple.cfm">
+    <cfset routeFound = true>
+
+<!--- Test datasource route --->
+<cfelseif requestPath EQ "test-datasource">
+    <cfset templateFile = "test-datasource.cfm">
+    <cfset routeFound = true>
+
+<!--- Test theme render route --->
+<cfelseif requestPath EQ "test-theme-render">
+    <cfset templateFile = "test-theme-render.cfm">
+    <cfset routeFound = true>
+
+<!--- Test blog theme route --->
+<cfelseif requestPath EQ "test-blog-theme">
+    <cfset templateFile = "test-blog-theme.cfm">
     <cfset routeFound = true>
 
 </cfif>

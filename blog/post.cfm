@@ -68,14 +68,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><cfoutput>#qPost.title# - #siteTitle#</cfoutput></title>
     <meta name="description" content="<cfoutput>#len(qPost.custom_excerpt) ? qPost.custom_excerpt : left(reReplace(qPost.html, "<[^>]*>", "", "all"), 160)#</cfoutput>" />
-    <link rel="canonical" href="<cfoutput>#siteUrl#/blog/#qPost.slug#/</cfoutput>" />
+    <link rel="canonical" href="<cfoutput>/ghost/blog/#qPost.slug#/</cfoutput>" />
+    
+    <!--- Load theme CSS --->  
+    <link rel="stylesheet" type="text/css" href="/ghost/themes/casper-1/assets/built/screen.css" />
     
     <style>
-        * {
-            box-sizing: border-box;
-        }
-        
-        <cfoutput>#themeStyles#</cfoutput>
+        /* Basic reset */
+        * { box-sizing: border-box; }
+        body { margin: 0; padding: 0; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
@@ -226,17 +227,22 @@
         }
         .post-tag {
             display: inline-block;
-            background: #f0f0f0;
-            color: #666;
-            padding: 6px 15px;
-            border-radius: 3px;
-            font-size: 0.9em;
+            background: #5A67D8;
+            color: white;
+            padding: 6px 18px;
+            border-radius: 9999px;
+            font-size: 0.85em;
+            font-weight: 500;
             text-decoration: none;
             margin-right: 10px;
             margin-bottom: 10px;
+            transition: all 0.2s ease;
         }
         .post-tag:hover {
-            background: #e0e0e0;
+            background: #5A67D8;
+            color: white;
+            opacity: 0.9;
+            transform: translateY(-1px);
         }
         .back-link {
             display: inline-block;
@@ -276,7 +282,7 @@
     <header>
         <div class="header-inner">
             <div class="header-left">
-                <h1><a href="<cfoutput>#siteUrl#</cfoutput>" class="site-title"><cfoutput>#siteTitle#</cfoutput></a></h1>
+                <h1><a href="/ghost/blog/" class="site-title"><cfoutput>#siteTitle#</cfoutput></a></h1>
                 <cfif len(siteDescription)>
                     <p class="site-description"><cfoutput>#siteDescription#</cfoutput></p>
                 </cfif>

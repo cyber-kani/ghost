@@ -15,17 +15,36 @@
     
     <!--- Update each setting --->
     <cfloop collection="#jsonData#" item="key">
-        <cfquery datasource="#request.dsn#">
-            INSERT INTO settings (`key`, value, type)
-            VALUES (
-                <cfqueryparam value="#key#" cfsqltype="cf_sql_varchar">,
-                <cfqueryparam value="#jsonData[key]#" cfsqltype="cf_sql_varchar">,
-                <cfqueryparam value="string" cfsqltype="cf_sql_varchar">
-            )
-            ON DUPLICATE KEY UPDATE
-                value = VALUES(value),
-                updated_at = CURRENT_TIMESTAMP
+        <!--- Check if setting exists --->
+        <cfquery name="qExisting" datasource="#request.dsn#">
+            SELECT id FROM settings 
+            WHERE `key` = <cfqueryparam value="#key#" cfsqltype="cf_sql_varchar">
         </cfquery>
+        
+        <cfif qExisting.recordCount GT 0>
+            <!--- Update existing setting --->
+            <cfquery datasource="#request.dsn#">
+                UPDATE settings
+                SET value = <cfqueryparam value="#jsonData[key]#" cfsqltype="cf_sql_longvarchar">,
+                    updated_at = CURRENT_TIMESTAMP
+                WHERE `key` = <cfqueryparam value="#key#" cfsqltype="cf_sql_varchar">
+            </cfquery>
+        <cfelse>
+            <!--- Insert new setting with shorter ID --->
+            <cfset settingId = left(replace(createUUID(), "-", "", "all"), 16)>
+            <cfquery datasource="#request.dsn#">
+                INSERT INTO settings (id, `key`, value, type, created_by, created_at, updated_at)
+                VALUES (
+                    <cfqueryparam value="#settingId#" cfsqltype="cf_sql_varchar">,
+                    <cfqueryparam value="#key#" cfsqltype="cf_sql_varchar">,
+                    <cfqueryparam value="#jsonData[key]#" cfsqltype="cf_sql_longvarchar">,
+                    <cfqueryparam value="string" cfsqltype="cf_sql_varchar">,
+                    <cfqueryparam value="#session.userid#" cfsqltype="cf_sql_varchar">,
+                    CURRENT_TIMESTAMP,
+                    CURRENT_TIMESTAMP
+                )
+            </cfquery>
+        </cfif>
     </cfloop>
     
     <!--- Return success response --->

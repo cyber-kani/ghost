@@ -5,7 +5,7 @@
 
 <cftry>
     <!--- Check if user is logged in --->
-    <cfif NOT structKeyExists(session, "ISLOGGEDIN") OR NOT session.ISLOGGEDIN>
+    <cfif NOT structKeyExists(session, "user") OR NOT structKeyExists(session.user, "id")>
         <cfthrow message="Unauthorized access">
     </cfif>
 
@@ -14,11 +14,11 @@
     <cfset jsonData = deserializeJSON(toString(requestData.content))>
     
     <!--- Validate input --->
-    <cfif NOT structKeyExists(jsonData, "themeName")>
+    <cfif NOT structKeyExists(jsonData, "theme") AND NOT structKeyExists(jsonData, "themeName")>
         <cfthrow message="Theme name is required">
     </cfif>
     
-    <cfset themeName = jsonData.themeName>
+    <cfset themeName = structKeyExists(jsonData, "theme") ? jsonData.theme : jsonData.themeName>
     
     <!--- Validate theme exists --->
     <cfset themePath = expandPath("/ghost/themes/#themeName#/")>

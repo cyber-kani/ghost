@@ -560,6 +560,60 @@ select.timezone-select {
                         </div>
                     </div>
 
+                    <!-- Advanced settings -->
+                    <div class="gh-expandable-block">
+                        <div class="gh-expandable-header" onclick="toggleExpandable(this.parentElement)">
+                            <div class="gh-expandable-title">
+                                <h4>Advanced settings</h4>
+                                <p class="gh-setting-desc">Configure advanced options</p>
+                            </div>
+                            <div class="gh-expandable-indicator">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M7 10l5 5 5-5z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="gh-expandable-content">
+                            <div class="gh-setting-content">
+                                <div class="form-group">
+                                    <label for="posts_per_page">Posts per page</label>
+                                    <input type="number" 
+                                           id="posts_per_page" 
+                                           name="posts_per_page" 
+                                           class="form-control" 
+                                           value="<cfoutput>#htmlEditFormat(settings.posts_per_page ?: '10')#</cfoutput>"
+                                           min="1"
+                                           max="50">
+                                    <small class="form-text">How many posts should be displayed on each page</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="google_analytics">Google Analytics</label>
+                                    <textarea id="google_analytics" 
+                                              name="google_analytics" 
+                                              class="form-control" 
+                                              rows="4"
+                                              placeholder="<!-- Global site tag (gtag.js) - Google Analytics -->"><cfoutput>#htmlEditFormat(settings.google_analytics ?: '')#</cfoutput></textarea>
+                                    <small class="form-text">Add your Google Analytics tracking code</small>
+                                </div>
+                                <div class="form-group">
+                                    <div class="toggle-group">
+                                        <label class="toggle-switch">
+                                            <input type="checkbox" 
+                                                   id="enable_comments" 
+                                                   name="enable_comments"
+                                                   <cfif settings.enable_comments EQ "true">checked</cfif>>
+                                            <span class="toggle-slider"></span>
+                                        </label>
+                                        <label for="enable_comments" class="toggle-label">
+                                            Enable comments
+                                        </label>
+                                    </div>
+                                    <small class="form-text">Allow visitors to comment on posts</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Make this site private -->
                     <div class="gh-expandable-block">
                         <div class="gh-expandable-header" onclick="toggleExpandable(this.parentElement)">
@@ -610,6 +664,83 @@ select.timezone-select {
 </main>
 
 <script>
+// Toast notification function
+function showMessage(message, type) {
+    // Create toast notification
+    const toast = document.createElement('div');
+    toast.className = 'bg-white rounded-lg shadow-lg p-4 max-w-sm transform transition-all duration-300 translate-x-full border';
+    
+    if (type === 'success') {
+        toast.className += ' border-green-200';
+        toast.innerHTML = `
+            <div class="flex items-center">
+                <div class="flex-shrink-0">
+                    <i class="ti ti-check-circle text-green-500 text-xl"></i>
+                </div>
+                <div class="ml-3">
+                    <p class="text-sm text-gray-700">${message}</p>
+                </div>
+                <button class="ml-auto flex-shrink-0" onclick="this.parentElement.parentElement.remove()">
+                    <i class="ti ti-x text-gray-400 hover:text-gray-600"></i>
+                </button>
+            </div>
+        `;
+    } else if (type === 'error') {
+        toast.className += ' border-red-200';
+        toast.innerHTML = `
+            <div class="flex items-center">
+                <div class="flex-shrink-0">
+                    <i class="ti ti-alert-circle text-red-500 text-xl"></i>
+                </div>
+                <div class="ml-3">
+                    <p class="text-sm text-gray-700">${message}</p>
+                </div>
+                <button class="ml-auto flex-shrink-0" onclick="this.parentElement.parentElement.remove()">
+                    <i class="ti ti-x text-gray-400 hover:text-gray-600"></i>
+                </button>
+            </div>
+        `;
+    } else {
+        toast.className += ' border-blue-200';
+        toast.innerHTML = `
+            <div class="flex items-center">
+                <div class="flex-shrink-0">
+                    <i class="ti ti-info-circle text-blue-500 text-xl"></i>
+                </div>
+                <div class="ml-3">
+                    <p class="text-sm text-gray-700">${message}</p>
+                </div>
+                <button class="ml-auto flex-shrink-0" onclick="this.parentElement.parentElement.remove()">
+                    <i class="ti ti-x text-gray-400 hover:text-gray-600"></i>
+                </button>
+            </div>
+        `;
+    }
+    
+    // Get or create toast container
+    let container = document.getElementById('toastContainer');
+    if (!container) {
+        container = document.createElement('div');
+        container.id = 'toastContainer';
+        container.style.cssText = 'position: fixed; bottom: 1rem; right: 1rem; z-index: 9999; display: flex; flex-direction: column-reverse; gap: 0.5rem;';
+        document.body.appendChild(container);
+    }
+    container.appendChild(toast);
+    
+    // Animate in
+    setTimeout(() => {
+        toast.classList.remove('translate-x-full');
+    }, 100);
+    
+    // Remove after 3 seconds
+    setTimeout(() => {
+        toast.classList.add('translate-x-full');
+        setTimeout(() => {
+            toast.remove();
+        }, 300);
+    }, 3000);
+}
+
 // Toggle expandable sections
 function toggleExpandable(element) {
     element.classList.toggle('expanded');
@@ -643,6 +774,9 @@ document.getElementById('saveSettings').addEventListener('click', function() {
         og_image: document.getElementById('og_image').value,
         facebook: document.getElementById('facebook').value,
         twitter: document.getElementById('twitter').value,
+        posts_per_page: document.getElementById('posts_per_page').value,
+        google_analytics: document.getElementById('google_analytics').value,
+        enable_comments: document.getElementById('enable_comments').checked ? 'true' : 'false',
         is_private: document.getElementById('is_private').checked ? 'true' : 'false',
         password: document.getElementById('password').value
     };

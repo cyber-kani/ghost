@@ -1,9 +1,6 @@
-<!--- Ghost Blog Single Post Page --->
+<!--- Simple Blog Post Renderer without Complex Handlebars --->
 <cfparam name="request.dsn" default="blog">
 <cfparam name="url.slug" default="">
-
-<!--- Include Handlebars functions --->
-<cfinclude template="/ghost/admin/includes/handlebars-functions.cfm">
 
 <!--- Get post by slug --->
 <cfquery name="qPost" datasource="#request.dsn#">
@@ -38,23 +35,6 @@
     ORDER BY t.name
 </cfquery>
 
-<cfset tags = []>
-<cfloop query="qPostTags">
-    <cfset arrayAppend(tags, {
-        "name": qPostTags.name,
-        "slug": qPostTags.slug,
-        "url": "/blog/tag/" & qPostTags.slug & "/"
-    })>
-</cfloop>
-
-<!--- Process content to replace Ghost image URLs --->
-<cffunction name="replaceGhostUrl" access="public" returntype="string">
-    <cfargument name="content" type="string" required="true">
-    <cfset var processedContent = arguments.content>
-    <cfset processedContent = replace(processedContent, "__GHOST_URL__", "/ghost", "all")>
-    <cfreturn processedContent>
-</cffunction>
-
 <!--- Get site settings --->
 <cfquery name="qSettings" datasource="#request.dsn#">
     SELECT `key`, value
@@ -67,47 +47,266 @@
     <cfset siteSettings[qSettings.key] = qSettings.value>
 </cfloop>
 
-<!--- Build template context --->
-<cfset context = {
-    "post": {
-        "id": qPost.id,
-        "title": qPost.title,
-        "content": replaceGhostUrl(qPost.html),
-        "excerpt": qPost.custom_excerpt,
-        "feature_image": qPost.feature_image,
-        "tags": tags,
-        "author": {
-            "id": qPost.author_id,
-            "name": qPost.author_name,
-            "profile_image": qPost.author_profile_image,
-            "bio": qPost.author_bio,
-            "url": "/blog/author/" & qPost.author_id & "/"
-        },
-        "date": qPost.published_at,
-        "url": "/blog/" & qPost.slug & "/"
-    },
-    "site": {
-        "title": structKeyExists(siteSettings, "site_title") ? siteSettings.site_title : "Ghost CFML",
-        "description": structKeyExists(siteSettings, "site_description") ? siteSettings.site_description : "A simple publishing platform",
-        "url": structKeyExists(siteSettings, "site_url") ? siteSettings.site_url : "http://localhost",
-        "icon": structKeyExists(siteSettings, "site_icon") ? siteSettings.site_icon : "/ghost/admin/assets/img/ghost-icon.png",
-        "locale": "en"
-    },
-    "theme": getActiveTheme(request.dsn),
-    "meta_title": qPost.title & " - " & (structKeyExists(siteSettings, "site_title") ? siteSettings.site_title : "Ghost CFML"),
-    "meta_description": len(qPost.custom_excerpt) ? qPost.custom_excerpt : left(reReplace(qPost.html, "<[^>]*>", "", "all"), 160),
-    "canonical_url": (structKeyExists(siteSettings, "site_url") ? siteSettings.site_url : "http://localhost") & "/blog/" & qPost.slug & "/",
-    "body_class": "post-template",
-    "post_class": "post",
-    "navigation": []
-}>
+<cfset siteTitle = structKeyExists(siteSettings, "site_title") ? siteSettings.site_title : "Ghost CFML">
+<cfset siteDescription = structKeyExists(siteSettings, "site_description") ? siteSettings.site_description : "A simple publishing platform">
+<cfset siteUrl = structKeyExists(siteSettings, "site_url") ? siteSettings.site_url : "http://localhost">
 
-<!--- Add current post data for Handlebars access --->
-<cfset structAppend(context, context.post)>
+<!--- Process content to replace Ghost image URLs --->
+<cfset postContent = qPost.html>
+<cfset postContent = replace(postContent, "__GHOST_URL__", "/ghost", "all")>
 
-<!--- Render the theme template --->
-<cfset output = renderThemeTemplate("post.hbs", context, context.theme)>
-
-<!--- Output the rendered template --->
-<cfcontent reset="true">
-<cfoutput>#output#</cfoutput>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><cfoutput>#qPost.title# - #siteTitle#</cfoutput></title>
+    <meta name="description" content="<cfoutput>#len(qPost.custom_excerpt) ? qPost.custom_excerpt : left(reReplace(qPost.html, "<[^>]*>", "", "all"), 160)#</cfoutput>" />
+    <link rel="canonical" href="<cfoutput>#siteUrl#/blog/#qPost.slug#/</cfoutput>" />
+    
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0 20px;
+            background: #f5f5f5;
+        }
+        header {
+            background: white;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            width: 100%;
+            margin-left: -20px;
+            margin-right: -20px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .header-left {
+            flex: 1;
+        }
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+        nav a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #0066cc;
+        }
+        main {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            min-height: 400px;
+            width: 100%;
+        }
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #666;
+            font-size: 0.9em;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+        .site-title {
+            color: #333;
+            text-decoration: none;
+        }
+        .site-description {
+            color: #666;
+            margin: 5px 0 0 0;
+            font-size: 1.1em;
+        }
+        .post-header {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        .post-title {
+            margin: 0 0 20px 0;
+            font-size: 2.5em;
+            line-height: 1.2;
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.95em;
+        }
+        .post-meta .author {
+            font-weight: 500;
+            color: #333;
+        }
+        .post-content {
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+        .post-content h1, .post-content h2, .post-content h3,
+        .post-content h4, .post-content h5, .post-content h6 {
+            margin: 30px 0 15px 0;
+        }
+        .post-content p {
+            margin: 0 0 20px 0;
+        }
+        .post-content img {
+            max-width: 100%;
+            height: auto;
+            margin: 20px 0;
+        }
+        .post-content blockquote {
+            border-left: 4px solid #ddd;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #666;
+            font-style: italic;
+        }
+        .post-content pre {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .post-content code {
+            background: #f5f5f5;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+        .post-tags {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        .post-tag {
+            display: inline-block;
+            background: #f0f0f0;
+            color: #666;
+            padding: 6px 15px;
+            border-radius: 3px;
+            font-size: 0.9em;
+            text-decoration: none;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        .post-tag:hover {
+            background: #e0e0e0;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 40px;
+            color: #0066cc;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+            .header-left {
+                margin-bottom: 20px;
+            }
+            main {
+                padding: 20px;
+            }
+            .post-title {
+                font-size: 2em;
+            }
+        }
+    </style>
+    
+    <!-- Ghost Head -->
+    <meta name="generator" content="Ghost CFML" />
+</head>
+<body class="post-template">
+    <header>
+        <div class="header-inner">
+            <div class="header-left">
+                <h1><a href="<cfoutput>#siteUrl#</cfoutput>" class="site-title"><cfoutput>#siteTitle#</cfoutput></a></h1>
+                <cfif len(siteDescription)>
+                    <p class="site-description"><cfoutput>#siteDescription#</cfoutput></p>
+                </cfif>
+            </div>
+            <nav>
+                <ul class="nav">
+                    <li class="nav-home"><a href="/ghost/blog/">Home</a></li>
+                    <li><a href="/ghost/admin/">Admin</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="content-wrapper">
+    <main>
+        <article class="post">
+            <header class="post-header">
+                <h1 class="post-title"><cfoutput>#qPost.title#</cfoutput></h1>
+                <div class="post-meta">
+                    <cfif len(qPost.author_name)>
+                        By <span class="author"><cfoutput>#qPost.author_name#</cfoutput></span>
+                    </cfif>
+                    <cfif NOT isNull(qPost.published_at)>
+                        on <cfoutput>#dateFormat(qPost.published_at, "mmmm d, yyyy")#</cfoutput>
+                    </cfif>
+                </div>
+            </header>
+            
+            <div class="post-content">
+                <cfoutput>#postContent#</cfoutput>
+            </div>
+            
+            <cfif qPostTags.recordCount GT 0>
+                <div class="post-tags">
+                    <cfloop query="qPostTags">
+                        <a href="/ghost/blog/tag/<cfoutput>#qPostTags.slug#</cfoutput>/" class="post-tag"><cfoutput>#qPostTags.name#</cfoutput></a>
+                    </cfloop>
+                </div>
+            </cfif>
+        </article>
+        
+        <a href="/ghost/blog/" class="back-link">&larr; Back to all posts</a>
+    </main>
+    </div>
+    
+    <footer>
+        &copy; <cfoutput>#year(now())#</cfoutput> <cfoutput>#siteTitle#</cfoutput> &middot; 
+        <a href="https://ghost.org" target="_blank" rel="noopener">Powered by Ghost</a>
+    </footer>
+    
+    <!-- Ghost Foot -->
+</body>
+</html>

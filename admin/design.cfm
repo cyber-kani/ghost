@@ -2,6 +2,9 @@
 <cfparam name="request.dsn" default="blog">
 <cfset pageTitle = "Design">
 
+<!--- Include site configuration --->
+<cfinclude template="/ghost/config/site.cfm">
+
 <!--- Check if user is logged in --->
 <cfif NOT structKeyExists(session, "ISLOGGEDIN") OR NOT session.ISLOGGEDIN>
     <cflocation url="/ghost/admin/login" addtoken="false">
@@ -652,9 +655,12 @@
                                     <div class="form-group">
                                         <div class="image-upload-wrapper">
                                             <cfif len(designSettings.icon ?: '')>
-                                                <div class="image-preview">
-                                                    <img src="<cfoutput>#htmlEditFormat(designSettings.icon)#</cfoutput>" alt="Icon">
-                                                </div>
+                                                <cfset iconUrl = replaceGhostUrl(designSettings.icon)>
+                                                <cfif imageFileExists(iconUrl)>
+                                                    <div class="image-preview">
+                                                        <img src="<cfoutput>#htmlEditFormat(iconUrl)#</cfoutput>" alt="Icon">
+                                                    </div>
+                                                </cfif>
                                             </cfif>
                                             <input type="url" 
                                                    id="icon" 
@@ -681,9 +687,12 @@
                                     <div class="form-group">
                                         <div class="image-upload-wrapper">
                                             <cfif len(designSettings.logo ?: '')>
-                                                <div class="image-preview">
-                                                    <img src="<cfoutput>#htmlEditFormat(designSettings.logo)#</cfoutput>" alt="Logo">
-                                                </div>
+                                                <cfset logoUrl = replaceGhostUrl(designSettings.logo)>
+                                                <cfif imageFileExists(logoUrl)>
+                                                    <div class="image-preview">
+                                                        <img src="<cfoutput>#htmlEditFormat(logoUrl)#</cfoutput>" alt="Logo">
+                                                    </div>
+                                                </cfif>
                                             </cfif>
                                             <input type="url" 
                                                    id="logo" 
@@ -709,9 +718,12 @@
                                     <div class="form-group">
                                         <div class="image-upload-wrapper">
                                             <cfif len(designSettings.cover_image ?: '')>
-                                                <div class="image-preview">
-                                                    <img src="<cfoutput>#htmlEditFormat(designSettings.cover_image)#</cfoutput>" alt="Cover">
-                                                </div>
+                                                <cfset coverUrl = replaceGhostUrl(designSettings.cover_image)>
+                                                <cfif imageFileExists(coverUrl)>
+                                                    <div class="image-preview">
+                                                        <img src="<cfoutput>#htmlEditFormat(coverUrl)#</cfoutput>" alt="Cover">
+                                                    </div>
+                                                </cfif>
                                             </cfif>
                                             <input type="url" 
                                                    id="cover_image" 
@@ -827,6 +839,83 @@
 </div>
 
 <script>
+// Toast notification function
+function showMessage(message, type) {
+    // Create toast notification
+    const toast = document.createElement('div');
+    toast.className = 'bg-white rounded-lg shadow-lg p-4 max-w-sm transform transition-all duration-300 translate-x-full border';
+    
+    if (type === 'success') {
+        toast.className += ' border-green-200';
+        toast.innerHTML = `
+            <div class="flex items-center">
+                <div class="flex-shrink-0">
+                    <i class="ti ti-check-circle text-green-500 text-xl"></i>
+                </div>
+                <div class="ml-3">
+                    <p class="text-sm text-gray-700">${message}</p>
+                </div>
+                <button class="ml-auto flex-shrink-0" onclick="this.parentElement.parentElement.remove()">
+                    <i class="ti ti-x text-gray-400 hover:text-gray-600"></i>
+                </button>
+            </div>
+        `;
+    } else if (type === 'error') {
+        toast.className += ' border-red-200';
+        toast.innerHTML = `
+            <div class="flex items-center">
+                <div class="flex-shrink-0">
+                    <i class="ti ti-alert-circle text-red-500 text-xl"></i>
+                </div>
+                <div class="ml-3">
+                    <p class="text-sm text-gray-700">${message}</p>
+                </div>
+                <button class="ml-auto flex-shrink-0" onclick="this.parentElement.parentElement.remove()">
+                    <i class="ti ti-x text-gray-400 hover:text-gray-600"></i>
+                </button>
+            </div>
+        `;
+    } else {
+        toast.className += ' border-blue-200';
+        toast.innerHTML = `
+            <div class="flex items-center">
+                <div class="flex-shrink-0">
+                    <i class="ti ti-info-circle text-blue-500 text-xl"></i>
+                </div>
+                <div class="ml-3">
+                    <p class="text-sm text-gray-700">${message}</p>
+                </div>
+                <button class="ml-auto flex-shrink-0" onclick="this.parentElement.parentElement.remove()">
+                    <i class="ti ti-x text-gray-400 hover:text-gray-600"></i>
+                </button>
+            </div>
+        `;
+    }
+    
+    // Get or create toast container
+    let container = document.getElementById('toastContainer');
+    if (!container) {
+        container = document.createElement('div');
+        container.id = 'toastContainer';
+        container.style.cssText = 'position: fixed; bottom: 1rem; right: 1rem; z-index: 9999; display: flex; flex-direction: column-reverse; gap: 0.5rem;';
+        document.body.appendChild(container);
+    }
+    container.appendChild(toast);
+    
+    // Animate in
+    setTimeout(() => {
+        toast.classList.remove('translate-x-full');
+    }, 100);
+    
+    // Remove after 3 seconds
+    setTimeout(() => {
+        toast.classList.add('translate-x-full');
+        setTimeout(() => {
+            toast.remove();
+        }, 300);
+    }, 3000);
+}
+
 // Tab switching
 document.querySelectorAll('.gh-tab').forEach(tab => {
     tab.addEventListener('click', function() {

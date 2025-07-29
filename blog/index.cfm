@@ -13,6 +13,7 @@
     SELECT COUNT(*) as total
     FROM posts
     WHERE status = <cfqueryparam value="published" cfsqltype="cf_sql_varchar">
+    AND type = <cfqueryparam value="post" cfsqltype="cf_sql_varchar">
 </cfquery>
 
 <cfset totalPosts = qPostCount.total>
@@ -35,6 +36,7 @@
     FROM posts p
     LEFT JOIN users u ON p.created_by = u.id
     WHERE p.status = <cfqueryparam value="published" cfsqltype="cf_sql_varchar">
+    AND p.type = <cfqueryparam value="post" cfsqltype="cf_sql_varchar">
     ORDER BY p.published_at DESC
     LIMIT #postsPerPage# OFFSET #startRow - 1#
 </cfquery>
@@ -75,7 +77,7 @@
             box-sizing: border-box;
         }
         
-        <cfoutput>#themeStyles#</cfoutput>
+        /* Default styles first */
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
@@ -275,6 +277,9 @@
                 height: 200px;
             }
         }
+        
+        /* Theme-specific styles override defaults */
+        <cfoutput>#themeStyles#</cfoutput>
     </style>
     
     <!-- Ghost Head -->

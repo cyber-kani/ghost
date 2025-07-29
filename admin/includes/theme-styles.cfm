@@ -109,42 +109,43 @@
                 
                 /* Casper theme - vertical card layout */
                 .post-feed {
-                    display: grid;
-                    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-                    gap: 40px;
+                    display: grid !important;
+                    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important;
+                    gap: 40px !important;
                 }
                 .post-card {
-                    display: flex;
-                    flex-direction: column;
-                    border: none;
+                    display: flex !important;
+                    flex-direction: column !important;
+                    border: none !important;
                     border-radius: 12px;
                     overflow: hidden;
                     background: ##fff;
                     box-shadow: 0 1px 4px rgba(0,0,0,0.1);
                     transition: all 0.3s ease;
-                    padding: 0;
+                    padding: 0 !important;
                 }
                 .post-card:hover {
                     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
                     transform: translateY(-4px);
                 }
                 .post-card-image-link {
-                    width: 100%;
-                    height: 200px;
+                    width: 100% !important;
+                    height: 200px !important;
                     overflow: hidden;
-                    display: block;
+                    display: block !important;
+                    flex-shrink: 0;
                 }
                 .post-card-image {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
+                    width: 100% !important;
+                    height: 100% !important;
+                    object-fit: cover !important;
                     transition: opacity 0.3s ease;
                 }
                 .post-card:hover .post-card-image {
                     opacity: 0.9;
                 }
                 .post-card-content {
-                    padding: 30px;
+                    padding: 30px !important;
                     flex: 1;
                     display: flex;
                     flex-direction: column;

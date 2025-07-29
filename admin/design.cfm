@@ -1,0 +1,1052 @@
+<!--- Ghost Design Settings Page --->
+<cfparam name="request.dsn" default="blog">
+<cfset pageTitle = "Design">
+
+<!--- Check if user is logged in --->
+<cfif NOT structKeyExists(session, "ISLOGGEDIN") OR NOT session.ISLOGGEDIN>
+    <cflocation url="/ghost/admin/login" addtoken="false">
+</cfif>
+
+<!--- Get active theme from settings --->
+<cfquery name="qActiveTheme" datasource="#request.dsn#">
+    SELECT value FROM settings 
+    WHERE `key` = <cfqueryparam value="active_theme" cfsqltype="cf_sql_varchar">
+</cfquery>
+
+<cfset activeTheme = qActiveTheme.recordCount ? qActiveTheme.value : "default">
+
+<!--- Get other design settings --->
+<cfquery name="qDesignSettings" datasource="#request.dsn#">
+    SELECT * FROM settings 
+    WHERE `key` IN ('accent_color', 'cover_image', 'logo', 'icon', 'navigation', 'secondary_navigation', 'codeinjection_head', 'codeinjection_foot')
+</cfquery>
+
+<!--- Convert to struct for easy access --->
+<cfset designSettings = {}>
+<cfloop query="qDesignSettings">
+    <cfset designSettings[qDesignSettings.key] = qDesignSettings.value>
+</cfloop>
+
+<!--- Get available themes --->
+<cfdirectory action="list" directory="#expandPath('/ghost/themes/')#" name="qThemes" type="dir">
+
+<!--- Include header --->
+<cfinclude template="includes/header.cfm">
+
+<style>
+/* Ghost-style design settings */
+.gh-main-section {
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.gh-main-section-block {
+    margin-bottom: 5vmin;
+}
+
+.gh-main-section-content {
+    margin-top: 1.6rem;
+}
+
+/* Tab navigation */
+.gh-tabs {
+    display: flex;
+    gap: 3.2rem;
+    margin-bottom: 3.2rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.gh-tab {
+    padding: 1.2rem 0;
+    border-bottom: 2px solid transparent;
+    color: #738a94;
+    font-size: 1.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.gh-tab:hover {
+    color: #15171a;
+}
+
+.gh-tab.active {
+    color: #15171a;
+    border-bottom-color: #15171a;
+}
+
+/* Tab content */
+.gh-tab-content {
+    display: none;
+}
+
+.gh-tab-content.active {
+    display: block;
+}
+
+/* Theme management styles */
+.gh-themes-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+    padding: 32px 0;
+}
+
+.gh-theme-card {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.gh-theme-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transform: translateY(-2px);
+}
+
+.gh-theme-card.active {
+    border-color: #30cf43;
+    box-shadow: 0 0 0 1px #30cf43;
+}
+
+.gh-theme-screenshot {
+    width: 100%;
+    height: 200px;
+    background: #f3f4f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9ca3af;
+    font-size: 48px;
+    position: relative;
+    overflow: hidden;
+}
+
+.gh-theme-screenshot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.gh-theme-content {
+    padding: 20px;
+}
+
+.gh-theme-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.gh-theme-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: #15171a;
+    margin: 0;
+}
+
+.gh-theme-version {
+    font-size: 12px;
+    color: #738a94;
+    background: #f3f4f6;
+    padding: 2px 8px;
+    border-radius: 3px;
+}
+
+.gh-theme-description {
+    font-size: 14px;
+    color: #626d79;
+    line-height: 1.5;
+    margin-bottom: 16px;
+}
+
+.gh-theme-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.gh-theme-button {
+    flex: 1;
+    padding: 8px 16px;
+    border: 1px solid #e5e7eb;
+    background: #fff;
+    color: #15171a;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+.gh-theme-button:hover {
+    background: #f3f4f6;
+}
+
+.gh-theme-button.primary {
+    background: #15171a;
+    color: #fff;
+    border-color: #15171a;
+}
+
+.gh-theme-button.primary:hover {
+    background: #394047;
+}
+
+.gh-theme-button.success {
+    background: #30cf43;
+    color: #fff;
+    border-color: #30cf43;
+}
+
+.gh-theme-active-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: #30cf43;
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* Theme upload */
+.gh-theme-upload {
+    background: #f8f9fa;
+    border: 2px dashed #e5e7eb;
+    border-radius: 8px;
+    padding: 48px 24px;
+    text-align: center;
+    margin-bottom: 32px;
+    transition: all 0.3s ease;
+}
+
+.gh-theme-upload.dragover {
+    border-color: #15171a;
+    background: #f3f4f6;
+}
+
+.gh-theme-upload-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 16px;
+    opacity: 0.5;
+}
+
+.gh-theme-upload-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #15171a;
+    margin-bottom: 8px;
+}
+
+.gh-theme-upload-description {
+    font-size: 14px;
+    color: #738a94;
+    margin-bottom: 24px;
+}
+
+.gh-upload-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: #15171a;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.gh-upload-button:hover {
+    background: #394047;
+}
+
+/* Settings sections */
+.gh-setting-group {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 3.2rem;
+    padding-bottom: 3.2rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.gh-setting-group:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.gh-setting-first {
+    flex: 0 0 30%;
+    margin-right: 5%;
+}
+
+.gh-setting-header h4 {
+    margin: 0 0 0.4rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.gh-setting-desc {
+    margin: 0;
+    color: #738a94;
+    font-size: 1.4rem;
+    line-height: 1.5;
+}
+
+.gh-setting-last {
+    flex: 1;
+}
+
+.gh-setting-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+}
+
+/* Form controls */
+.form-group label {
+    display: block;
+    margin-bottom: 0.6rem;
+    color: #15171a;
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: 0.02rem;
+}
+
+.form-group input[type="text"],
+.form-group input[type="url"],
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem 1.2rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 3px;
+    font-size: 1.4rem;
+    line-height: 1.5;
+    transition: border-color 0.15s linear;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="url"]:focus,
+.form-group textarea:focus {
+    outline: 0;
+    border-color: #15171a;
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+    font-family: monospace;
+}
+
+/* Color picker */
+.color-picker-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.color-picker-input {
+    width: 120px !important;
+}
+
+.color-preview {
+    width: 40px;
+    height: 40px;
+    border-radius: 3px;
+    border: 1px solid #e5e7eb;
+}
+
+/* Image upload */
+.image-upload-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.image-preview {
+    max-width: 300px;
+    max-height: 200px;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.image-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Navigation editor */
+.navigation-editor {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.navigation-item {
+    display: flex;
+    gap: 1.2rem;
+    align-items: center;
+    padding: 1.2rem;
+    background: #f9f9fa;
+    border: 1px solid #e5e7eb;
+    border-radius: 3px;
+}
+
+.navigation-item input {
+    flex: 1;
+}
+
+.navigation-item button {
+    padding: 0.6rem 1.2rem;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.navigation-item button:hover {
+    background: #f3f4f6;
+}
+
+.add-navigation-item {
+    padding: 0.8rem 1.6rem;
+    background: #15171a;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.add-navigation-item:hover {
+    background: #394047;
+}
+
+/* Save button */
+.settings-save-button {
+    position: fixed;
+    bottom: 3.2rem;
+    right: 3.2rem;
+    z-index: 1000;
+}
+
+.gh-btn-primary {
+    padding: 0.8rem 1.6rem;
+    background: #15171a;
+    color: #fff;
+    border: 1px solid #15171a;
+    border-radius: 3px;
+    font-size: 1.4rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.gh-btn-primary:hover {
+    background: #394047;
+    border-color: #394047;
+}
+
+.gh-btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+</style>
+
+<main class="main-content">
+    <div class="container-fluid">
+        <!-- Page Header -->
+        <div class="gh-canvas-header">
+            <div class="gh-canvas-header-content">
+                <h2 class="gh-canvas-title">Design</h2>
+                <section class="view-actions">
+                    <button class="gh-btn gh-btn-primary" id="saveSettings">
+                        Save
+                    </button>
+                </section>
+            </div>
+        </div>
+
+        <div class="gh-content">
+            <div class="gh-main-section">
+                <!-- Tab Navigation -->
+                <div class="gh-tabs">
+                    <div class="gh-tab active" data-tab="themes">Themes</div>
+                    <div class="gh-tab" data-tab="branding">Branding</div>
+                    <div class="gh-tab" data-tab="navigation">Navigation</div>
+                    <div class="gh-tab" data-tab="code-injection">Code injection</div>
+                </div>
+
+                <!-- Themes Tab -->
+                <div class="gh-tab-content active" id="themes-tab">
+                    <!-- Theme Upload Section -->
+                    <div class="gh-theme-upload" id="themeUploadZone">
+                        <svg class="gh-theme-upload-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                        </svg>
+                        <h3 class="gh-theme-upload-title">Upload a theme</h3>
+                        <p class="gh-theme-upload-description">
+                            Drag & drop a Ghost theme zip file or click to browse
+                        </p>
+                        <form id="themeUploadForm" action="/ghost/admin/ajax/upload-theme.cfm" method="post" enctype="multipart/form-data">
+                            <input type="file" name="themeFile" id="themeFile" accept=".zip" style="display: none;">
+                            <button type="button" class="gh-upload-button" onclick="document.getElementById('themeFile').click()">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="16" height="16">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                                </svg>
+                                Upload theme
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Installed Themes -->
+                    <h3 style="margin-bottom: 24px; font-size: 16px; font-weight: 600;">Installed themes</h3>
+                    
+                    <div class="gh-themes-container">
+                        <!--- Default Theme Card --->
+                        <div class="gh-theme-card<cfif activeTheme EQ 'default'> active</cfif>">
+                            <cfif activeTheme EQ 'default'>
+                                <div class="gh-theme-active-badge">Active</div>
+                            </cfif>
+                            <div class="gh-theme-screenshot">
+                                <i class="ti ti-brush"></i>
+                            </div>
+                            <div class="gh-theme-content">
+                                <div class="gh-theme-header">
+                                    <h4 class="gh-theme-name">Default</h4>
+                                    <span class="gh-theme-version">1.0.0</span>
+                                </div>
+                                <p class="gh-theme-description">
+                                    The default Ghost theme. Clean, minimal and responsive.
+                                </p>
+                                <div class="gh-theme-actions">
+                                    <cfif activeTheme NEQ 'default'>
+                                        <button type="button" class="gh-theme-button primary" onclick="activateTheme('default')">
+                                            Activate
+                                        </button>
+                                    <cfelse>
+                                        <button class="gh-theme-button success" disabled style="cursor: default;">
+                                            Active Theme
+                                        </button>
+                                    </cfif>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--- Loop through uploaded themes --->
+                        <cfoutput query="qThemes">
+                            <cfif name NEQ "." AND name NEQ ".." AND name NEQ "default">
+                                <!--- Try to read theme package.json --->
+                                <cfset themePath = expandPath('/ghost/themes/#name#/package.json')>
+                                <cfset themeInfo = {
+                                    name: name,
+                                    description: "Custom theme",
+                                    version: "1.0.0"
+                                }>
+                                
+                                <cfif fileExists(themePath)>
+                                    <cftry>
+                                        <cffile action="read" file="#themePath#" variable="themeJson">
+                                        <cfset themeData = deserializeJSON(themeJson)>
+                                        <cfif structKeyExists(themeData, "description")>
+                                            <cfset themeInfo.description = themeData.description>
+                                        </cfif>
+                                        <cfif structKeyExists(themeData, "version")>
+                                            <cfset themeInfo.version = themeData.version>
+                                        </cfif>
+                                        <cfcatch>
+                                            <!--- Use defaults if JSON parsing fails --->
+                                        </cfcatch>
+                                    </cftry>
+                                </cfif>
+
+                                <div class="gh-theme-card<cfif activeTheme EQ name> active</cfif>">
+                                    <cfif activeTheme EQ name>
+                                        <div class="gh-theme-active-badge">Active</div>
+                                    </cfif>
+                                    <div class="gh-theme-screenshot">
+                                        <cfset screenshotPath = "/ghost/themes/#name#/assets/screenshot.jpg">
+                                        <cfif fileExists(expandPath(screenshotPath))>
+                                            <img src="#screenshotPath#" alt="#themeInfo.name# screenshot">
+                                        <cfelse>
+                                            <i class="ti ti-brush"></i>
+                                        </cfif>
+                                    </div>
+                                    <div class="gh-theme-content">
+                                        <div class="gh-theme-header">
+                                            <h4 class="gh-theme-name">#themeInfo.name#</h4>
+                                            <span class="gh-theme-version">#themeInfo.version#</span>
+                                        </div>
+                                        <p class="gh-theme-description">
+                                            #themeInfo.description#
+                                        </p>
+                                        <div class="gh-theme-actions">
+                                            <cfif activeTheme NEQ name>
+                                                <button type="button" class="gh-theme-button primary" onclick="activateTheme('#name#')">
+                                                    Activate
+                                                </button>
+                                            <cfelse>
+                                                <button class="gh-theme-button success" disabled style="cursor: default;">
+                                                    Active Theme
+                                                </button>
+                                            </cfif>
+                                        </div>
+                                    </div>
+                                </div>
+                            </cfif>
+                        </cfoutput>
+                    </div>
+                </div>
+
+                <!-- Branding Tab -->
+                <div class="gh-tab-content" id="branding-tab">
+                    <div class="gh-main-section-block">
+                        <div class="gh-setting-group">
+                            <div class="gh-setting-first">
+                                <div class="gh-setting-header">
+                                    <h4>Accent color</h4>
+                                </div>
+                                <div class="gh-setting-desc">Primary color used in your theme</div>
+                            </div>
+                            <div class="gh-setting-last">
+                                <div class="gh-setting-content">
+                                    <div class="form-group">
+                                        <div class="color-picker-wrapper">
+                                            <input type="text" 
+                                                   id="accent_color" 
+                                                   name="accent_color" 
+                                                   class="form-control color-picker-input" 
+                                                   value="<cfoutput>#htmlEditFormat(designSettings.accent_color ?: '##15171A')#</cfoutput>"
+                                                   placeholder="#15171A">
+                                            <div class="color-preview" 
+                                                 id="color-preview" 
+                                                 style="background-color: <cfoutput>#htmlEditFormat(designSettings.accent_color ?: '##15171A')#</cfoutput>"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="gh-setting-group">
+                            <div class="gh-setting-first">
+                                <div class="gh-setting-header">
+                                    <h4>Publication icon</h4>
+                                </div>
+                                <div class="gh-setting-desc">A square, social icon used in the UI of your publication</div>
+                            </div>
+                            <div class="gh-setting-last">
+                                <div class="gh-setting-content">
+                                    <div class="form-group">
+                                        <div class="image-upload-wrapper">
+                                            <cfif len(designSettings.icon ?: '')>
+                                                <div class="image-preview">
+                                                    <img src="<cfoutput>#htmlEditFormat(designSettings.icon)#</cfoutput>" alt="Icon">
+                                                </div>
+                                            </cfif>
+                                            <input type="url" 
+                                                   id="icon" 
+                                                   name="icon" 
+                                                   class="form-control" 
+                                                   value="<cfoutput>#htmlEditFormat(designSettings.icon ?: '')#</cfoutput>"
+                                                   placeholder="https://example.com/icon.png">
+                                            <small class="form-text">60px minimum, 1:1 ratio, PNG format recommended</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="gh-setting-group">
+                            <div class="gh-setting-first">
+                                <div class="gh-setting-header">
+                                    <h4>Publication logo</h4>
+                                </div>
+                                <div class="gh-setting-desc">The primary logo for your brand</div>
+                            </div>
+                            <div class="gh-setting-last">
+                                <div class="gh-setting-content">
+                                    <div class="form-group">
+                                        <div class="image-upload-wrapper">
+                                            <cfif len(designSettings.logo ?: '')>
+                                                <div class="image-preview">
+                                                    <img src="<cfoutput>#htmlEditFormat(designSettings.logo)#</cfoutput>" alt="Logo">
+                                                </div>
+                                            </cfif>
+                                            <input type="url" 
+                                                   id="logo" 
+                                                   name="logo" 
+                                                   class="form-control" 
+                                                   value="<cfoutput>#htmlEditFormat(designSettings.logo ?: '')#</cfoutput>"
+                                                   placeholder="https://example.com/logo.png">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="gh-setting-group">
+                            <div class="gh-setting-first">
+                                <div class="gh-setting-header">
+                                    <h4>Publication cover</h4>
+                                </div>
+                                <div class="gh-setting-desc">An optional large background image for your site</div>
+                            </div>
+                            <div class="gh-setting-last">
+                                <div class="gh-setting-content">
+                                    <div class="form-group">
+                                        <div class="image-upload-wrapper">
+                                            <cfif len(designSettings.cover_image ?: '')>
+                                                <div class="image-preview">
+                                                    <img src="<cfoutput>#htmlEditFormat(designSettings.cover_image)#</cfoutput>" alt="Cover">
+                                                </div>
+                                            </cfif>
+                                            <input type="url" 
+                                                   id="cover_image" 
+                                                   name="cover_image" 
+                                                   class="form-control" 
+                                                   value="<cfoutput>#htmlEditFormat(designSettings.cover_image ?: '')#</cfoutput>"
+                                                   placeholder="https://example.com/cover.jpg">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Tab -->
+                <div class="gh-tab-content" id="navigation-tab">
+                    <div class="gh-main-section-block">
+                        <div class="gh-setting-group">
+                            <div class="gh-setting-first">
+                                <div class="gh-setting-header">
+                                    <h4>Primary navigation</h4>
+                                </div>
+                                <div class="gh-setting-desc">Links in the main navigation menu</div>
+                            </div>
+                            <div class="gh-setting-last">
+                                <div class="gh-setting-content">
+                                    <div class="navigation-editor" id="primary-navigation">
+                                        <!--- Navigation items will be loaded here --->
+                                    </div>
+                                    <button type="button" class="add-navigation-item" onclick="addNavigationItem('primary')">
+                                        Add navigation item
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="gh-setting-group">
+                            <div class="gh-setting-first">
+                                <div class="gh-setting-header">
+                                    <h4>Secondary navigation</h4>
+                                </div>
+                                <div class="gh-setting-desc">Links in the secondary navigation menu</div>
+                            </div>
+                            <div class="gh-setting-last">
+                                <div class="gh-setting-content">
+                                    <div class="navigation-editor" id="secondary-navigation">
+                                        <!--- Navigation items will be loaded here --->
+                                    </div>
+                                    <button type="button" class="add-navigation-item" onclick="addNavigationItem('secondary')">
+                                        Add navigation item
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Code Injection Tab -->
+                <div class="gh-tab-content" id="code-injection-tab">
+                    <div class="gh-main-section-block">
+                        <div class="gh-setting-group">
+                            <div class="gh-setting-first">
+                                <div class="gh-setting-header">
+                                    <h4>Site header</h4>
+                                </div>
+                                <div class="gh-setting-desc">Code here will be injected into the &lt;head&gt; tag on every page</div>
+                            </div>
+                            <div class="gh-setting-last">
+                                <div class="gh-setting-content">
+                                    <div class="form-group">
+                                        <textarea id="codeinjection_head" 
+                                                  name="codeinjection_head" 
+                                                  class="form-control" 
+                                                  rows="6"
+                                                  placeholder="<!-- Add custom styles, scripts, or meta tags here -->"><cfoutput>#htmlEditFormat(designSettings.codeinjection_head ?: '')#</cfoutput></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="gh-setting-group">
+                            <div class="gh-setting-first">
+                                <div class="gh-setting-header">
+                                    <h4>Site footer</h4>
+                                </div>
+                                <div class="gh-setting-desc">Code here will be injected before the closing &lt;/body&gt; tag on every page</div>
+                            </div>
+                            <div class="gh-setting-last">
+                                <div class="gh-setting-content">
+                                    <div class="form-group">
+                                        <textarea id="codeinjection_foot" 
+                                                  name="codeinjection_foot" 
+                                                  class="form-control" 
+                                                  rows="6"
+                                                  placeholder="<!-- Add tracking scripts or custom JavaScript here -->"><cfoutput>#htmlEditFormat(designSettings.codeinjection_foot ?: '')#</cfoutput></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Save button (fixed position) -->
+<div class="settings-save-button">
+    <button class="gh-btn gh-btn-primary" id="saveButton" style="display: none;">
+        Save
+    </button>
+</div>
+
+<script>
+// Tab switching
+document.querySelectorAll('.gh-tab').forEach(tab => {
+    tab.addEventListener('click', function() {
+        // Remove active class from all tabs
+        document.querySelectorAll('.gh-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.gh-tab-content').forEach(c => c.classList.remove('active'));
+        
+        // Add active class to clicked tab
+        this.classList.add('active');
+        const tabId = this.getAttribute('data-tab') + '-tab';
+        document.getElementById(tabId).classList.add('active');
+        
+        // Show save button for non-theme tabs
+        document.getElementById('saveButton').style.display = this.getAttribute('data-tab') !== 'themes' ? 'block' : 'none';
+    });
+});
+
+// Color picker preview
+document.getElementById('accent_color').addEventListener('input', function() {
+    document.getElementById('color-preview').style.backgroundColor = this.value;
+});
+
+// Navigation management
+let navigation = <cfoutput>#serializeJSON(deserializeJSON(designSettings.navigation ?: '[]'))#</cfoutput>;
+let secondaryNavigation = <cfoutput>#serializeJSON(deserializeJSON(designSettings.secondary_navigation ?: '[]'))#</cfoutput>;
+
+function renderNavigation(type) {
+    const container = document.getElementById(type + '-navigation');
+    const items = type === 'primary' ? navigation : secondaryNavigation;
+    
+    container.innerHTML = '';
+    items.forEach((item, index) => {
+        const div = document.createElement('div');
+        div.className = 'navigation-item';
+        div.innerHTML = `
+            <input type="text" value="${item.label}" placeholder="Label" onchange="updateNavigationItem('${type}', ${index}, 'label', this.value)">
+            <input type="text" value="${item.url}" placeholder="URL" onchange="updateNavigationItem('${type}', ${index}, 'url', this.value)">
+            <button type="button" onclick="removeNavigationItem('${type}', ${index})">Remove</button>
+        `;
+        container.appendChild(div);
+    });
+}
+
+function addNavigationItem(type) {
+    const items = type === 'primary' ? navigation : secondaryNavigation;
+    items.push({ label: '', url: '' });
+    renderNavigation(type);
+}
+
+function updateNavigationItem(type, index, field, value) {
+    const items = type === 'primary' ? navigation : secondaryNavigation;
+    items[index][field] = value;
+}
+
+function removeNavigationItem(type, index) {
+    const items = type === 'primary' ? navigation : secondaryNavigation;
+    items.splice(index, 1);
+    renderNavigation(type);
+}
+
+// Initial render
+renderNavigation('primary');
+renderNavigation('secondary');
+
+// Theme upload functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const uploadZone = document.getElementById('themeUploadZone');
+    const fileInput = document.getElementById('themeFile');
+    const uploadForm = document.getElementById('themeUploadForm');
+
+    // Drag and drop functionality
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+        uploadZone.addEventListener(eventName, preventDefaults, false);
+    });
+
+    function preventDefaults(e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+
+    ['dragenter', 'dragover'].forEach(eventName => {
+        uploadZone.addEventListener(eventName, () => {
+            uploadZone.classList.add('dragover');
+        }, false);
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+        uploadZone.addEventListener(eventName, () => {
+            uploadZone.classList.remove('dragover');
+        }, false);
+    });
+
+    uploadZone.addEventListener('drop', handleDrop, false);
+
+    function handleDrop(e) {
+        const dt = e.dataTransfer;
+        const files = dt.files;
+        
+        if (files.length > 0 && files[0].name.endsWith('.zip')) {
+            fileInput.files = files;
+            uploadTheme();
+        } else {
+            showMessage('Please upload a valid theme zip file', 'error');
+        }
+    }
+
+    // File input change
+    fileInput.addEventListener('change', function() {
+        if (this.files.length > 0) {
+            uploadTheme();
+        }
+    });
+
+    function uploadTheme() {
+        const formData = new FormData(uploadForm);
+        
+        // Show loading state
+        showMessage('Uploading theme...', 'info');
+        
+        fetch(uploadForm.action, {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                showMessage('Theme uploaded successfully!', 'success');
+                setTimeout(() => {
+                    location.reload();
+                }, 1500);
+            } else {
+                showMessage(data.message || 'Failed to upload theme', 'error');
+            }
+        })
+        .catch(error => {
+            showMessage('An error occurred while uploading the theme', 'error');
+            console.error('Upload error:', error);
+        });
+    }
+});
+
+// Theme activation
+function activateTheme(themeName) {
+    showMessage('Activating theme...', 'info');
+    
+    fetch('/ghost/admin/ajax/activate-theme.cfm', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            themeName: themeName
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            showMessage('Theme activated successfully!', 'success');
+            setTimeout(() => {
+                location.reload();
+            }, 1500);
+        } else {
+            showMessage(data.message || 'Failed to activate theme', 'error');
+        }
+    })
+    .catch(error => {
+        showMessage('An error occurred while activating the theme', 'error');
+        console.error('Activation error:', error);
+    });
+}
+
+// Save settings
+document.getElementById('saveButton').addEventListener('click', function() {
+    const button = this;
+    button.disabled = true;
+    button.textContent = 'Saving...';
+    
+    // Collect design settings
+    const settings = {
+        accent_color: document.getElementById('accent_color').value,
+        icon: document.getElementById('icon').value,
+        logo: document.getElementById('logo').value,
+        cover_image: document.getElementById('cover_image').value,
+        navigation: JSON.stringify(navigation),
+        secondary_navigation: JSON.stringify(secondaryNavigation),
+        codeinjection_head: document.getElementById('codeinjection_head').value,
+        codeinjection_foot: document.getElementById('codeinjection_foot').value
+    };
+    
+    // Save settings via AJAX
+    fetch('/ghost/admin/ajax/save-settings.cfm', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(settings)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            showMessage('Settings saved successfully', 'success');
+        } else {
+            showMessage(data.message || 'Failed to save settings', 'error');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        showMessage('An error occurred while saving settings', 'error');
+    })
+    .finally(() => {
+        button.disabled = false;
+        button.textContent = 'Save';
+    });
+});
+
+// Main save button click handler
+document.getElementById('saveSettings').addEventListener('click', function() {
+    // Trigger the save button in the current tab
+    document.getElementById('saveButton').click();
+});
+</script>
+
+<cfinclude template="includes/footer.cfm">

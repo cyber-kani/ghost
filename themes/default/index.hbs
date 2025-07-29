@@ -1,0 +1,51 @@
+{{!< default}}
+
+<div class="container">
+    <div class="post-feed">
+        {{#foreach posts}}
+            <article class="post-card {{post_class}}">
+                {{#if feature_image}}
+                    <a class="post-card-image-link" href="{{url}}">
+                        <img class="post-card-image" src="{{feature_image}}" alt="{{title}}">
+                    </a>
+                {{/if}}
+                
+                <div class="post-card-content">
+                    <a class="post-card-content-link" href="{{url}}">
+                        <header class="post-card-header">
+                            {{#if tags}}
+                                <div class="post-card-tags">
+                                    {{#foreach tags limit="1"}}
+                                        <span class="post-card-tag">{{name}}</span>
+                                    {{/foreach}}
+                                </div>
+                            {{/if}}
+                            <h2 class="post-card-title">{{title}}</h2>
+                        </header>
+                        
+                        {{#if excerpt}}
+                            <div class="post-card-excerpt">
+                                <p>{{excerpt}}</p>
+                            </div>
+                        {{/if}}
+                    </a>
+                    
+                    <footer class="post-card-meta">
+                        <div class="post-card-author">
+                            {{#if author.profile_image}}
+                                <img class="post-card-author-image" src="{{author.profile_image}}" alt="{{author.name}}">
+                            {{/if}}
+                            <span class="post-card-author-name">{{author.name}}</span>
+                        </div>
+                        <time class="post-card-date" datetime="{{date format="YYYY-MM-DD"}}">
+                            {{date format="DD MMM YYYY"}}
+                        </time>
+                    </footer>
+                </div>
+            </article>
+        {{/foreach}}
+    </div>
+
+    {{!-- Pagination --}}
+    {{pagination}}
+</div>

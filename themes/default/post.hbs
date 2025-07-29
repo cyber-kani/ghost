@@ -1,0 +1,93 @@
+{{!< default}}
+
+<article class="post-full {{post_class}}">
+    <header class="post-full-header">
+        <div class="container">
+            {{#if tags}}
+                <div class="post-full-tags">
+                    {{#foreach tags}}
+                        <a href="{{url}}" class="post-tag">{{name}}</a>
+                    {{/foreach}}
+                </div>
+            {{/if}}
+            
+            <h1 class="post-full-title">{{title}}</h1>
+            
+            {{#if excerpt}}
+                <p class="post-full-excerpt">{{excerpt}}</p>
+            {{/if}}
+            
+            <div class="post-full-meta">
+                <div class="post-full-meta-content">
+                    {{#if author.profile_image}}
+                        <img class="post-full-author-image" src="{{author.profile_image}}" alt="{{author.name}}">
+                    {{/if}}
+                    <div class="post-full-author-info">
+                        <span class="post-full-author-name">{{author.name}}</span>
+                        <time class="post-full-date" datetime="{{date format="YYYY-MM-DD"}}">
+                            {{date format="DD MMM YYYY"}}
+                        </time>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    {{#if feature_image}}
+        <figure class="post-full-image">
+            <img src="{{feature_image}}" alt="{{title}}">
+        </figure>
+    {{/if}}
+
+    <section class="post-full-content">
+        <div class="container">
+            <div class="gh-content gh-canvas">
+                {{content}}
+            </div>
+        </div>
+    </section>
+
+    <footer class="post-full-footer">
+        <div class="container">
+            {{!-- Author Bio --}}
+            {{#if author.bio}}
+                <section class="post-full-author">
+                    {{#if author.profile_image}}
+                        <img class="post-full-author-image" src="{{author.profile_image}}" alt="{{author.name}}">
+                    {{/if}}
+                    <div class="post-full-author-content">
+                        <h4 class="post-full-author-name">
+                            <a href="{{author.url}}">{{author.name}}</a>
+                        </h4>
+                        <p class="post-full-author-bio">{{author.bio}}</p>
+                    </div>
+                </section>
+            {{/if}}
+
+            {{!-- Related Posts --}}
+            {{#get "posts" filter="id:-{{id}}+tags:[{{tags}}]" limit="3" as |related|}}
+                {{#if related}}
+                    <section class="post-full-related">
+                        <h3 class="post-full-related-title">You might also like</h3>
+                        <div class="post-feed">
+                            {{#foreach related}}
+                                <article class="post-card {{post_class}}">
+                                    {{#if feature_image}}
+                                        <a class="post-card-image-link" href="{{url}}">
+                                            <img class="post-card-image" src="{{feature_image}}" alt="{{title}}">
+                                        </a>
+                                    {{/if}}
+                                    <div class="post-card-content">
+                                        <a class="post-card-content-link" href="{{url}}">
+                                            <h4 class="post-card-title">{{title}}</h4>
+                                        </a>
+                                    </div>
+                                </article>
+                            {{/foreach}}
+                        </div>
+                    </section>
+                {{/if}}
+            {{/get}}
+        </div>
+    </footer>
+</article>

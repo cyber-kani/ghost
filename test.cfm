@@ -1,0 +1,1 @@
+<cfcontent reset="true" type="text/html"><cfoutput>TEST PAGE WORKS - Time: #now()#</cfoutput><cfabort>

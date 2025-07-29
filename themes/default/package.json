@@ -1,0 +1,12 @@
+{
+    "name": "default",
+    "description": "The default Ghost theme. Clean, minimal and responsive.",
+    "version": "1.0.0",
+    "author": {
+        "name": "Ghost CFML",
+        "email": "hello@ghost-cfml.com"
+    },
+    "config": {
+        "posts_per_page": 10
+    }
+}

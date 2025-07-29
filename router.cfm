@@ -54,7 +54,7 @@
 
 <!--- Set default path if empty --->
 <cfif len(trim(requestPath)) eq 0>
-    <cfset requestPath = "admin">
+    <cfset requestPath = "blog">  <!--- Changed from "admin" to "blog" --->
 </cfif>
 
 <!--- Route Matching Logic --->
@@ -138,6 +138,10 @@
     <cfset templateFile = "admin/settings.cfm">
     <cfset routeFound = true>
 
+<cfelseif requestPath eq "admin/design">
+    <cfset templateFile = "admin/design.cfm">
+    <cfset routeFound = true>
+
 <cfelseif requestPath eq "admin/profile">
     <cfset templateFile = "admin/profile.cfm">
     <cfset routeFound = true>
@@ -206,7 +210,7 @@
     <cfset routeFound = true>
 
 <!--- Blog Routes --->
-<cfelseif requestPath eq "blog" or requestPath eq "blog/index">
+<cfelseif requestPath eq "" or requestPath eq "blog" or requestPath eq "blog/index">
     <cfset templateFile = "blog/index.cfm">
     <cfset routeFound = true>
 

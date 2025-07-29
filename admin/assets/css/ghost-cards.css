@@ -1,0 +1,148 @@
+/* Ghost Card Styles */
+/* These styles implement Ghost's exact CSS Grid system for image widths */
+
+/* Ghost CSS Grid System - from Ghost's actual theme implementation */
+.gh-canvas,
+.kg-width-full.kg-content-wide {
+    --content-width: 720px;
+    --container-width: 1200px;
+    --container-gap: clamp(24px, 1.7032rem + 1.9355vw, 48px);
+    --main: min(var(--content-width), 100% - var(--container-gap) * 2);
+    --wide: minmax(0, calc((var(--container-width) - var(--content-width)) / 2));
+    --full: minmax(var(--container-gap), 1fr);
+    
+    display: grid;
+    grid-template-columns: 
+        [full-start] var(--full) 
+        [wide-start] var(--wide) 
+        [main-start] var(--main) 
+        [main-end] var(--wide) 
+        [wide-end] var(--full) 
+        [full-end];
+}
+
+/* All content defaults to main column */
+.gh-canvas > * {
+    grid-column: main;
+}
+
+/* Wide width - spans the wide columns */
+.kg-content-wide > div,
+.kg-width-wide {
+    grid-column: wide;
+}
+
+/* Full width - spans the full columns */
+.kg-width-full {
+    grid-column: full;
+}
+
+/* Fallback styles for non-grid containers */
+.gh-content:not(.gh-canvas),
+.gh-article-content:not(.gh-canvas) {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Base card styles */
+.kg-card {
+    margin: 0 0 2em;
+}
+
+/* Image card styles */
+.kg-image-card {
+    margin: 0 0 2em;
+}
+
+.kg-image-card img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* Caption styling */
+.kg-image-card figcaption {
+    margin-top: 1em;
+    text-align: center;
+    font-size: 0.85em;
+    color: #666;
+    padding: 0 1em;
+}
+
+/* For non-grid containers, use different approach based on your understanding */
+.gh-content:not(.gh-canvas) .kg-image-card img,
+.gh-article-content:not(.gh-canvas) .kg-image-card img {
+    width: auto;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+/* Wide width for non-grid containers - image fills content width */
+.gh-content:not(.gh-canvas) .kg-image-card.kg-width-wide img,
+.gh-article-content:not(.gh-canvas) .kg-image-card.kg-width-wide img {
+    width: 100%;
+    max-width: none;
+}
+
+/* Full width for non-grid containers - image fills viewport */
+.gh-content:not(.gh-canvas) .kg-image-card.kg-width-full,
+.gh-article-content:not(.gh-canvas) .kg-image-card.kg-width-full {
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    width: 100vw;
+}
+
+.gh-content:not(.gh-canvas) .kg-image-card.kg-width-full img,
+.gh-article-content:not(.gh-canvas) .kg-image-card.kg-width-full img {
+    width: 100%;
+}
+
+/* Ensure body doesn't show horizontal scrollbar */
+body {
+    overflow-x: hidden;
+}
+
+/* Additional Ghost card types */
+.kg-bookmark-card,
+.kg-toggle-card,
+.kg-callout-card,
+.kg-product-card,
+.kg-audio-card,
+.kg-video-card,
+.kg-file-card,
+.kg-gallery-card,
+.kg-header-card {
+    margin: 0 0 2em 0;
+}
+
+/* Apply width rules to other card types when using grid */
+.gh-canvas .kg-card.kg-width-wide {
+    grid-column: wide;
+}
+
+.gh-canvas .kg-card.kg-width-full {
+    grid-column: full;
+}
+
+/* Bookmark card link styles */
+.kg-bookmark-card a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Button card centering */
+.kg-button-card {
+    margin: 0 0 2em 0;
+    text-align: center;
+}
+
+/* Divider styling */
+.kg-divider-card hr {
+    margin: 3em 0;
+    border: 0;
+    border-top: 1px solid #e5e5e5;
+}

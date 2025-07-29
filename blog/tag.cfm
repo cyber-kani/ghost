@@ -33,7 +33,7 @@
         <div class="error-container">
             <h1>404</h1>
             <p>The tag you're looking for doesn't exist.</p>
-            <a href="/ghost/blog/">← Back to blog</a>
+            <a href="/ghost/">← Back to blog</a>
         </div>
     </body>
     </html>
@@ -96,6 +96,7 @@
 <cfset siteLogo = structKeyExists(siteSettings, "logo") ? siteSettings.logo : "">
 <cfset siteIcon = structKeyExists(siteSettings, "icon") ? siteSettings.icon : "">
 <cfset accentColor = structKeyExists(siteSettings, "accent_color") ? siteSettings.accent_color : "##0066cc">
+<cfset colorScheme = structKeyExists(siteSettings, "color_scheme") ? siteSettings.color_scheme : "auto">
 <cfset codeInjectionHead = structKeyExists(siteSettings, "codeinjection_head") ? siteSettings.codeinjection_head : "">
 <cfset codeInjectionFoot = structKeyExists(siteSettings, "codeinjection_foot") ? siteSettings.codeinjection_foot : "">
 
@@ -112,14 +113,14 @@
     <!--- SEO Meta Tags --->
     <title><cfoutput>#qTag.name# - #siteTitle#</cfoutput></title>
     <meta name="description" content="<cfoutput>Posts tagged with #qTag.name# on #siteTitle#<cfif len(trim(qTag.description))> - #qTag.description#</cfif></cfoutput>">
-    <link rel="canonical" href="<cfoutput>/ghost/blog/tag/#qTag.slug#/<cfif url.page GT 1>?page=#url.page#</cfif></cfoutput>">
+    <link rel="canonical" href="<cfoutput>/ghost/tag/#qTag.slug#/<cfif url.page GT 1>?page=#url.page#</cfif></cfoutput>">
     
     <!--- Open Graph --->
     <meta property="og:site_name" content="<cfoutput>#siteTitle#</cfoutput>">
     <meta property="og:type" content="website">
     <meta property="og:title" content="<cfoutput>#qTag.name# - #siteTitle#</cfoutput>">
     <meta property="og:description" content="<cfoutput>Posts tagged with #qTag.name#<cfif len(trim(qTag.description))> - #qTag.description#</cfif></cfoutput>">
-    <meta property="og:url" content="<cfoutput>/ghost/blog/tag/#qTag.slug#/</cfoutput>">
+    <meta property="og:url" content="<cfoutput>/ghost/tag/#qTag.slug#/</cfoutput>">
     <cfif len(qTag.feature_image)>
         <meta property="og:image" content="<cfoutput>#qTag.feature_image#</cfoutput>">
     </cfif>
@@ -166,7 +167,8 @@
             --max-width-wide: 1200px;
         }
         
-        @media (prefers-color-scheme: dark) {
+        <cfif colorScheme EQ "dark">
+            /* Force dark mode */
             :root {
                 --text-primary: #f5f5f7;
                 --text-secondary: #a1a1a6;
@@ -177,7 +179,20 @@
                 --border-color: #38383d;
                 --border-light: #48484e;
             }
-        }
+        <cfelseif colorScheme EQ "auto">
+            @media (prefers-color-scheme: dark) {
+                :root {
+                    --text-primary: #f5f5f7;
+                    --text-secondary: #a1a1a6;
+                    --text-tertiary: #6e6e73;
+                    --bg-primary: #000000;
+                    --bg-secondary: #1d1d1f;
+                    --bg-tertiary: #2d2d30;
+                    --border-color: #38383d;
+                    --border-light: #48484e;
+                }
+            }
+        </cfif>
         
         * {
             box-sizing: border-box;
@@ -198,7 +213,6 @@
         
         /* Header */
         .site-header {
-            background-color: rgba(255, 255, 255, 0.72);
             backdrop-filter: saturate(180%) blur(20px);
             -webkit-backdrop-filter: saturate(180%) blur(20px);
             border-bottom: 1px solid var(--border-color);
@@ -207,11 +221,24 @@
             z-index: 1000;
         }
         
-        @media (prefers-color-scheme: dark) {
+        <cfif colorScheme EQ "light">
+            .site-header {
+                background-color: rgba(255, 255, 255, 0.72);
+            }
+        <cfelseif colorScheme EQ "dark">
             .site-header {
                 background-color: rgba(29, 29, 31, 0.72);
             }
-        }
+        <cfelse>
+            .site-header {
+                background-color: rgba(255, 255, 255, 0.72);
+            }
+            @media (prefers-color-scheme: dark) {
+                .site-header {
+                    background-color: rgba(29, 29, 31, 0.72);
+                }
+            }
+        </cfif>
         
         .header-inner {
             max-width: var(--max-width-wide);
@@ -227,11 +254,16 @@
             display: flex;
             align-items: center;
             gap: 0.75rem;
-            text-decoration: none;
+            text-decoration: none !important;
             color: var(--text-primary);
             font-size: 21px;
             font-weight: 600;
             letter-spacing: 0.011em;
+        }
+        
+        .site-logo:hover {
+            text-decoration: none !important;
+            opacity: 0.9;
         }
         
         .site-logo img {
@@ -299,11 +331,27 @@
             line-height: 1.0625;
             letter-spacing: -0.003em;
             margin: 0 0 16px;
+            position: relative;
+            display: inline-block;
             <cfif len(qTag.feature_image)>
             color: white;
             <cfelse>
             color: var(--text-primary);
             </cfif>
+        }
+        
+        .tag-title .underline-wrap {
+            position: relative;
+            display: inline;
+            background-image: linear-gradient(to right, var(--accent-color), var(--accent-color));
+            background-repeat: no-repeat;
+            background-position: 0 95%;
+            background-size: 0% 5px;
+            transition: background-size 1.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        .tag-title:hover .underline-wrap {
+            background-size: 100% 5px;
         }
         
         .tag-description {
@@ -410,6 +458,21 @@
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
+            position: relative;
+        }
+        
+        .post-card-title .underline-wrap {
+            position: relative;
+            display: inline;
+            background-image: linear-gradient(to right, var(--accent-color), var(--accent-color));
+            background-repeat: no-repeat;
+            background-position: 0 95%;
+            background-size: 0% 5px;
+            transition: background-size 1.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        .post-card:hover .underline-wrap {
+            background-size: 100% 5px;
         }
         
         .post-card-excerpt {
@@ -611,12 +674,11 @@
     <!--- Header --->
     <header class="site-header">
         <div class="header-inner">
-            <a href="/ghost/blog/" class="site-logo">
+            <a href="/ghost/" class="site-logo">
                 <cfif len(siteLogo)>
                     <img src="<cfoutput>#siteLogo#</cfoutput>" alt="<cfoutput>#siteTitle#</cfoutput>">
-                <cfelse>
-                    <cfoutput>#siteTitle#</cfoutput>
                 </cfif>
+                <span class="site-name"><cfoutput>#siteTitle#</cfoutput></span>
             </a>
             
             <nav class="site-nav">
@@ -638,7 +700,7 @@
     <!--- Tag Header --->
     <section class="tag-header">
         <div class="tag-accent"></div>
-        <h1 class="tag-title"><cfoutput>#qTag.name#</cfoutput></h1>
+        <h1 class="tag-title"><span class="underline-wrap"><cfoutput>#qTag.name#</cfoutput></span></h1>
         <cfif len(trim(qTag.description))>
             <p class="tag-description"><cfoutput>#qTag.description#</cfoutput></p>
         </cfif>
@@ -672,7 +734,9 @@
                     </cfif>
                     
                     <article class="post-card">
-                        <a href="/ghost/blog/#qPosts.slug#/" class="post-card-link">
+                        <cfset cleanSlug = replace(trim(qPosts.slug), "\", "", "all")>
+                        <cfset postUrl = "/ghost/" & cleanSlug & "/">
+                        <a href="#postUrl#" class="post-card-link">
                             <cfif len(trim(qPosts.feature_image))>
                                 <div class="post-card-image">
                                     <img src="#qPosts.feature_image#" 
@@ -682,7 +746,7 @@
                             </cfif>
                             
                             <div class="post-card-content">
-                                <h2 class="post-card-title">#qPosts.title#</h2>
+                                <h2 class="post-card-title"><span class="underline-wrap">#qPosts.title#</span></h2>
                                 
                                 <cfif len(excerpt)>
                                     <p class="post-card-excerpt">#excerpt#</p>
@@ -756,7 +820,7 @@
                 <div class="empty-state-icon">📝</div>
                 <h2 class="empty-state-title">No posts yet</h2>
                 <p class="empty-state-text">No posts have been published with this tag.</p>
-                <a href="/ghost/blog/" class="empty-state-link">
+                <a href="/ghost/" class="empty-state-link">
                     ← Back to all posts
                 </a>
             </div>

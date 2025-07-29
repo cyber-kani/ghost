@@ -44,7 +44,7 @@
         <div class="error-container">
             <h1>404</h1>
             <p>The post you're looking for doesn't exist.</p>
-            <a href="/ghost/blog/">← Back to blog</a>
+            <a href="/ghost/">← Back to blog</a>
         </div>
     </body>
     </html>
@@ -143,7 +143,7 @@
     "author": {
         "@type": "Person",
         "name": qPost.author_name,
-        "url": "/ghost/blog/author/" & qPost.author_id
+        "url": "/ghost/author/" & qPost.author_id
     },
     "publisher": {
         "@type": "Organization",
@@ -155,7 +155,7 @@
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": siteUrl & "/ghost/blog/" & qPost.slug & "/"
+        "@id": siteUrl & "/ghost/" & qPost.slug & "/"
     }
 }>
 
@@ -170,14 +170,14 @@
     <title><cfoutput>#qPost.title# - #siteTitle#</cfoutput></title>
     <meta name="description" content="<cfoutput>#htmlEditFormat(metaDescription)#</cfoutput>">
     <meta name="author" content="<cfoutput>#qPost.author_name#</cfoutput>">
-    <link rel="canonical" href="<cfoutput>/ghost/blog/#qPost.slug#/</cfoutput>">
+    <link rel="canonical" href="<cfoutput>/ghost/#qPost.slug#/</cfoutput>">
     
     <!--- Open Graph --->
     <meta property="og:site_name" content="<cfoutput>#siteTitle#</cfoutput>">
     <meta property="og:type" content="article">
     <meta property="og:title" content="<cfoutput>#qPost.title#</cfoutput>">
     <meta property="og:description" content="<cfoutput>#htmlEditFormat(metaDescription)#</cfoutput>">
-    <meta property="og:url" content="<cfoutput>/ghost/blog/#qPost.slug#/</cfoutput>">
+    <meta property="og:url" content="<cfoutput>/ghost/#qPost.slug#/</cfoutput>">
     <cfif len(qPost.feature_image)>
         <meta property="og:image" content="<cfoutput>#qPost.feature_image#</cfoutput>">
     </cfif>
@@ -261,7 +261,8 @@
             --max-width-wide: 1200px;
         }
         
-        @media (prefers-color-scheme: dark) {
+        <cfif colorScheme EQ "dark">
+            /* Force dark mode */
             :root {
                 --text-primary: #f5f5f7;
                 --text-secondary: #a1a1a6;
@@ -272,7 +273,20 @@
                 --border-color: #38383d;
                 --border-light: #48484e;
             }
-        }
+        <cfelseif colorScheme EQ "auto">
+            @media (prefers-color-scheme: dark) {
+                :root {
+                    --text-primary: #f5f5f7;
+                    --text-secondary: #a1a1a6;
+                    --text-tertiary: #6e6e73;
+                    --bg-primary: #000000;
+                    --bg-secondary: #1d1d1f;
+                    --bg-tertiary: #2d2d30;
+                    --border-color: #38383d;
+                    --border-light: #48484e;
+                }
+            }
+        </cfif>
         
         * {
             box-sizing: border-box;
@@ -366,11 +380,16 @@
             display: flex;
             align-items: center;
             gap: 0.75rem;
-            text-decoration: none;
+            text-decoration: none !important;
             color: var(--text-primary);
             font-size: 21px;
             font-weight: 600;
             letter-spacing: 0.011em;
+        }
+        
+        .site-logo:hover {
+            text-decoration: none !important;
+            opacity: 0.9;
         }
         
         .site-logo img {
@@ -476,6 +495,22 @@
             letter-spacing: -0.003em;
             margin: 0 0 16px;
             color: var(--text-primary);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .article-title .underline-wrap {
+            position: relative;
+            display: inline;
+            background-image: linear-gradient(to right, var(--accent-color), var(--accent-color));
+            background-repeat: no-repeat;
+            background-position: 0 95%;
+            background-size: 0% 5px;
+            transition: background-size 1.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        .article-title:hover .underline-wrap {
+            background-size: 100% 5px;
         }
         
         @media (max-width: 768px) {
@@ -507,13 +542,14 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            text-decoration: none;
+            text-decoration: none !important;
             color: inherit;
             transition: var(--transition);
         }
         
         .article-author:hover {
             color: var(--text-primary);
+            text-decoration: none !important;
         }
         
         .author-avatar {
@@ -921,6 +957,21 @@
             line-height: 1.2;
             margin: 0 0 12px;
             color: var(--text-primary);
+            position: relative;
+        }
+        
+        .related-post-title .underline-wrap {
+            position: relative;
+            display: inline;
+            background-image: linear-gradient(to right, var(--accent-color), var(--accent-color));
+            background-repeat: no-repeat;
+            background-position: 0 95%;
+            background-size: 0% 5px;
+            transition: background-size 1.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        .related-post:hover .underline-wrap {
+            background-size: 100% 5px;
         }
         
         .related-post-excerpt {
@@ -1061,12 +1112,11 @@
     <!--- Header --->
     <header class="site-header">
         <div class="header-inner">
-            <a href="/ghost/blog/" class="site-logo">
+            <a href="/ghost/" class="site-logo">
                 <cfif len(siteLogo)>
                     <img src="<cfoutput>#siteLogo#</cfoutput>" alt="<cfoutput>#siteTitle#</cfoutput>">
-                <cfelse>
-                    <cfoutput>#siteTitle#</cfoutput>
                 </cfif>
+                <span class="site-name"><cfoutput>#siteTitle#</cfoutput></span>
             </a>
             
             <nav class="site-nav">
@@ -1092,13 +1142,14 @@
                 <div class="article-meta-top">
                     <div class="article-tags">
                         <cfoutput query="qPostTags">
-                            <a href="/ghost/blog/tag/#qPostTags.slug#/" class="article-tag">#qPostTags.name#</a>
+                            <cfset cleanTagSlug = replace(trim(qPostTags.slug), "\", "", "all")>
+                            <a href="/ghost/tag/<cfoutput>#cleanTagSlug#</cfoutput>/" class="article-tag">#qPostTags.name#</a>
                         </cfoutput>
                     </div>
                 </div>
             </cfif>
             
-            <h1 class="article-title"><cfoutput>#qPost.title#</cfoutput></h1>
+            <h1 class="article-title"><span class="underline-wrap"><cfoutput>#qPost.title#</cfoutput></span></h1>
             
             <cfif len(trim(qPost.custom_excerpt))>
                 <p class="article-excerpt"><cfoutput>#qPost.custom_excerpt#</cfoutput></p>
@@ -1106,7 +1157,7 @@
             
             <div class="article-meta-bottom">
                 <cfif showAuthor EQ "true">
-                    <a href="/ghost/blog/author/<cfoutput>#qPost.author_id#</cfoutput>/" class="article-author">
+                    <a href="/ghost/author/<cfoutput>#qPost.author_id#</cfoutput>/" class="article-author">
                         <div class="author-avatar">
                             <cfif len(trim(qPost.author_profile_image))>
                                 <img src="<cfoutput>#qPost.author_profile_image#</cfoutput>" alt="<cfoutput>#qPost.author_name#</cfoutput>">
@@ -1143,7 +1194,7 @@
     <section class="share-section">
         <h2 class="share-title">Share this article</h2>
         <div class="share-buttons">
-            <a href="https://twitter.com/intent/tweet?text=<cfoutput>#urlEncodedFormat(qPost.title)#&url=#urlEncodedFormat(siteUrl & '/ghost/blog/' & qPost.slug & '/')#</cfoutput>" 
+            <a href="https://twitter.com/intent/tweet?text=<cfoutput>#urlEncodedFormat(qPost.title)#&url=#urlEncodedFormat(siteUrl & '/ghost/' & qPost.slug & '/')#</cfoutput>" 
                class="share-button" 
                target="_blank" 
                rel="noopener noreferrer">
@@ -1153,7 +1204,7 @@
                 <span>Twitter</span>
             </a>
             
-            <a href="https://www.facebook.com/sharer/sharer.php?u=<cfoutput>#urlEncodedFormat(siteUrl & '/ghost/blog/' & qPost.slug & '/')#</cfoutput>" 
+            <a href="https://www.facebook.com/sharer/sharer.php?u=<cfoutput>#urlEncodedFormat(siteUrl & '/ghost/' & qPost.slug & '/')#</cfoutput>" 
                class="share-button" 
                target="_blank" 
                rel="noopener noreferrer">
@@ -1163,7 +1214,7 @@
                 <span>Facebook</span>
             </a>
             
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url=<cfoutput>#urlEncodedFormat(siteUrl & '/ghost/blog/' & qPost.slug & '/')#</cfoutput>" 
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=<cfoutput>#urlEncodedFormat(siteUrl & '/ghost/' & qPost.slug & '/')#</cfoutput>" 
                class="share-button" 
                target="_blank" 
                rel="noopener noreferrer">
@@ -1277,7 +1328,8 @@
                             </cfif>
                         </cfif>
                         
-                        <a href="/ghost/blog/#qRelatedPosts.slug#/" class="related-post-card">
+                        <cfset cleanRelatedSlug = replace(trim(qRelatedPosts.slug), "\", "", "all")>
+                        <a href="/ghost/<cfoutput>#cleanRelatedSlug#</cfoutput>/" class="related-post-card">
                             <cfif len(trim(qRelatedPosts.feature_image))>
                                 <div class="related-post-image">
                                     <img src="#qRelatedPosts.feature_image#" 
@@ -1286,7 +1338,7 @@
                                 </div>
                             </cfif>
                             <div class="related-post-content">
-                                <h3 class="related-post-title">#qRelatedPosts.title#</h3>
+                                <h3 class="related-post-title"><span class="underline-wrap">#qRelatedPosts.title#</span></h3>
                                 <cfif len(relatedExcerpt)>
                                     <p class="related-post-excerpt">#relatedExcerpt#</p>
                                 </cfif>

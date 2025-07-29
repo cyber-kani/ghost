@@ -40,7 +40,7 @@
         <div class="error-container">
             <h1>404</h1>
             <p>The page you're looking for doesn't exist.</p>
-            <a href="/ghost/blog/">← Back to home</a>
+            <a href="/ghost/">← Back to home</a>
         </div>
     </body>
     </html>
@@ -62,6 +62,7 @@
 <cfset siteLogo = structKeyExists(siteSettings, "logo") ? siteSettings.logo : "">
 <cfset siteIcon = structKeyExists(siteSettings, "icon") ? siteSettings.icon : "">
 <cfset accentColor = structKeyExists(siteSettings, "accent_color") ? siteSettings.accent_color : "##0066cc">
+<cfset colorScheme = structKeyExists(siteSettings, "color_scheme") ? siteSettings.color_scheme : "auto">
 <cfset codeInjectionHead = structKeyExists(siteSettings, "codeinjection_head") ? siteSettings.codeinjection_head : "">
 <cfset codeInjectionFoot = structKeyExists(siteSettings, "codeinjection_foot") ? siteSettings.codeinjection_foot : "">
 <cfset siteUrl = structKeyExists(siteSettings, "site_url") ? siteSettings.site_url : "https://clitools.app">
@@ -97,7 +98,8 @@
     <!--- SEO Meta Tags --->
     <title><cfoutput>#qPage.title# - #siteTitle#</cfoutput></title>
     <meta name="description" content="<cfoutput>#htmlEditFormat(metaDescription)#</cfoutput>">
-    <link rel="canonical" href="<cfoutput>/ghost/#qPage.slug#/</cfoutput>">
+    <cfset cleanPageSlug = replace(trim(qPage.slug), "\", "", "all")>
+    <link rel="canonical" href="<cfoutput>/ghost/#cleanPageSlug#/</cfoutput>">
     
     <!--- Open Graph --->
     <meta property="og:site_name" content="<cfoutput>#siteTitle#</cfoutput>">
@@ -153,7 +155,8 @@
             --max-width-wide: 1200px;
         }
         
-        @media (prefers-color-scheme: dark) {
+        <cfif colorScheme EQ "dark">
+            /* Force dark mode */
             :root {
                 --text-primary: #f5f5f7;
                 --text-secondary: #a1a1a6;
@@ -164,7 +167,20 @@
                 --border-color: #38383d;
                 --border-light: #48484e;
             }
-        }
+        <cfelseif colorScheme EQ "auto">
+            @media (prefers-color-scheme: dark) {
+                :root {
+                    --text-primary: #f5f5f7;
+                    --text-secondary: #a1a1a6;
+                    --text-tertiary: #6e6e73;
+                    --bg-primary: #000000;
+                    --bg-secondary: #1d1d1f;
+                    --bg-tertiary: #2d2d30;
+                    --border-color: #38383d;
+                    --border-light: #48484e;
+                }
+            }
+        </cfif>
         
         * {
             box-sizing: border-box;
@@ -194,7 +210,6 @@
         
         /* Header */
         .site-header {
-            background-color: rgba(255, 255, 255, 0.72);
             backdrop-filter: saturate(180%) blur(20px);
             -webkit-backdrop-filter: saturate(180%) blur(20px);
             border-bottom: 1px solid var(--border-color);
@@ -204,11 +219,24 @@
             transition: var(--transition);
         }
         
-        @media (prefers-color-scheme: dark) {
+        <cfif colorScheme EQ "light">
+            .site-header {
+                background-color: rgba(255, 255, 255, 0.72);
+            }
+        <cfelseif colorScheme EQ "dark">
             .site-header {
                 background-color: rgba(29, 29, 31, 0.72);
             }
-        }
+        <cfelse>
+            .site-header {
+                background-color: rgba(255, 255, 255, 0.72);
+            }
+            @media (prefers-color-scheme: dark) {
+                .site-header {
+                    background-color: rgba(29, 29, 31, 0.72);
+                }
+            }
+        </cfif>
         
         .header-inner {
             max-width: var(--max-width-wide);
@@ -224,11 +252,16 @@
             display: flex;
             align-items: center;
             gap: 0.75rem;
-            text-decoration: none;
+            text-decoration: none !important;
             color: var(--text-primary);
             font-size: 21px;
             font-weight: 600;
             letter-spacing: 0.011em;
+        }
+        
+        .site-logo:hover {
+            text-decoration: none !important;
+            opacity: 0.9;
         }
         
         .site-logo img {
@@ -288,6 +321,22 @@
             letter-spacing: -0.003em;
             margin: 0 0 16px;
             color: var(--text-primary);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .page-title .underline-wrap {
+            position: relative;
+            display: inline;
+            background-image: linear-gradient(to right, var(--accent-color), var(--accent-color));
+            background-repeat: no-repeat;
+            background-position: 0 95%;
+            background-size: 0% 5px;
+            transition: background-size 1.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        .page-title:hover .underline-wrap {
+            background-size: 100% 5px;
         }
         
         @media (max-width: 768px) {
@@ -703,12 +752,11 @@
     <!--- Header --->
     <header class="site-header">
         <div class="header-inner">
-            <a href="/ghost/blog/" class="site-logo">
+            <a href="/ghost/" class="site-logo">
                 <cfif len(siteLogo)>
                     <img src="<cfoutput>#siteLogo#</cfoutput>" alt="<cfoutput>#siteTitle#</cfoutput>">
-                <cfelse>
-                    <cfoutput>#siteTitle#</cfoutput>
                 </cfif>
+                <span class="site-name"><cfoutput>#siteTitle#</cfoutput></span>
             </a>
             
             <nav class="site-nav">
@@ -731,7 +779,7 @@
     <div class="page-container">
         <!--- Page Header --->
         <header class="page-header fade-in-up">
-            <h1 class="page-title"><cfoutput>#qPage.title#</cfoutput></h1>
+            <h1 class="page-title"><span class="underline-wrap"><cfoutput>#qPage.title#</cfoutput></span></h1>
             <cfif len(trim(qPage.custom_excerpt))>
                 <p class="page-subtitle"><cfoutput>#qPage.custom_excerpt#</cfoutput></p>
             </cfif>

@@ -53,10 +53,7 @@
 </cfif>
 
 <!--- Set default path if empty --->
-<cfif len(trim(requestPath)) eq 0>
-    <!--- Redirect to /ghost/blog/ --->
-    <cflocation url="/ghost/blog/" addtoken="false">
-</cfif>
+<!--- No longer redirecting - will serve blog at root --->
 
 <!--- Route Matching Logic --->
 <cfset routeFound = false>
@@ -211,7 +208,10 @@
     <cfset routeFound = true>
 
 <!--- Blog Routes --->
-<cfelseif requestPath eq "" or requestPath eq "blog" or requestPath eq "blog/index">
+<cfelseif requestPath eq "blog" or requestPath eq "blog/index">
+    <!--- Redirect old blog URLs to root --->
+    <cflocation url="/ghost/" addtoken="false">
+<cfelseif requestPath eq "">
     <cfset templateFile = "blog/index.cfm">
     <cfset routeFound = true>
 
@@ -221,39 +221,65 @@
     <cfset routeFound = true>
 
 <!--- Blog pagination --->
-<cfelseif reFindNoCase("^blog/page/([0-9]+)$", requestPath)>
-    <cfset pageNum = reReplaceNoCase(requestPath, "^blog/page/([0-9]+)$", "\1")>
+<cfelseif reFindNoCase("^page/([0-9]+)$", requestPath)>
+    <cfset pageNum = reReplaceNoCase(requestPath, "^page/([0-9]+)$", "\1")>
     <cfset url.page = pageNum>
     <cfset templateFile = "blog/index.cfm">
     <cfset routeFound = true>
 
+<!--- Legacy blog pagination redirect --->
+<cfelseif reFindNoCase("^blog/page/([0-9]+)$", requestPath)>
+    <cfset pageNum = reReplaceNoCase(requestPath, "^blog/page/([0-9]+)$", "\1")>
+    <cflocation url="/ghost/page/#pageNum#" addtoken="false">
+
 <!--- Blog tag archive --->
-<cfelseif reFindNoCase("^blog/tag/([a-zA-Z0-9-]+)$", requestPath)>
-    <cfset tagSlug = reReplaceNoCase(requestPath, "^blog/tag/([a-zA-Z0-9-]+)$", "\1")>
+<cfelseif reFindNoCase("^tag/([a-zA-Z0-9-]+)$", requestPath)>
+    <cfset tagSlug = reReplaceNoCase(requestPath, "^tag/([a-zA-Z0-9-]+)$", "\1")>
     <cfset url.slug = tagSlug>
     <cfset templateFile = "blog/tag.cfm">
     <cfset routeFound = true>
 
+<!--- Legacy blog tag redirect --->
+<cfelseif reFindNoCase("^blog/tag/([a-zA-Z0-9-]+)$", requestPath)>
+    <cfset tagSlug = reReplaceNoCase(requestPath, "^blog/tag/([a-zA-Z0-9-]+)$", "\1")>
+    <cflocation url="/ghost/tag/#tagSlug#" addtoken="false">
+
 <!--- Blog author archive --->
-<cfelseif reFindNoCase("^blog/author/([a-zA-Z0-9-]+)$", requestPath)>
-    <cfset authorSlug = reReplaceNoCase(requestPath, "^blog/author/([a-zA-Z0-9-]+)$", "\1")>
+<cfelseif reFindNoCase("^author/([a-zA-Z0-9-]+)$", requestPath)>
+    <cfset authorSlug = reReplaceNoCase(requestPath, "^author/([a-zA-Z0-9-]+)$", "\1")>
     <cfset url.slug = authorSlug>
     <cfset templateFile = "blog/author.cfm">
     <cfset routeFound = true>
 
-<!--- Individual blog post --->
+<!--- Legacy blog author redirect --->
+<cfelseif reFindNoCase("^blog/author/([a-zA-Z0-9-]+)$", requestPath)>
+    <cfset authorSlug = reReplaceNoCase(requestPath, "^blog/author/([a-zA-Z0-9-]+)$", "\1")>
+    <cflocation url="/ghost/author/#authorSlug#" addtoken="false">
+
+<!--- Legacy blog post redirect --->
 <cfelseif reFindNoCase("^blog/([a-zA-Z0-9-]+)$", requestPath)>
     <cfset postSlug = reReplaceNoCase(requestPath, "^blog/([a-zA-Z0-9-]+)$", "\1")>
-    <cfset url.slug = postSlug>
-    <cfset templateFile = "blog/post-modern.cfm">
-    <cfset routeFound = true>
+    <cflocation url="/ghost/#postSlug#" addtoken="false">
 
-<!--- Static pages (must be after blog routes) --->
+<!--- Individual blog post or static page --->
 <cfelseif reFindNoCase("^([a-zA-Z0-9-]+)$", requestPath) AND requestPath NEQ "admin">
-    <cfset pageSlug = requestPath>
-    <cfset url.slug = pageSlug>
-    <cfset templateFile = "blog/page-modern.cfm">
-    <cfset routeFound = true>
+    <!--- First check if it's a post --->
+    <cfquery name="qCheckPost" datasource="#request.dsn#">
+        SELECT id, type FROM posts
+        WHERE slug = <cfqueryparam value="#requestPath#" cfsqltype="cf_sql_varchar">
+        AND status = 'published'
+        LIMIT 1
+    </cfquery>
+    
+    <cfif qCheckPost.recordCount>
+        <cfset url.slug = requestPath>
+        <cfif qCheckPost.type EQ "post">
+            <cfset templateFile = "blog/post-modern.cfm">
+        <cfelse>
+            <cfset templateFile = "blog/page-modern.cfm">
+        </cfif>
+        <cfset routeFound = true>
+    </cfif>
 
 <!--- Preview route --->
 <cfelseif reFindNoCase("^preview/([a-zA-Z0-9-]+)$", requestPath)>

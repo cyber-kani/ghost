@@ -23,7 +23,7 @@
     SELECT * FROM settings 
     WHERE `key` IN ('accent_color', 'cover_image', 'logo', 'icon', 'navigation', 'secondary_navigation', 'codeinjection_head', 'codeinjection_foot', 
                      'heading_font', 'body_font', 'color_scheme', 'logo_dark', 'show_author', 'standard_load_more', 'navigation_right',
-                     'show_authors_widget', 'tags_widget_slug', 'content_api_key', 'contact_form_endpoint', 'disqus_shortname',
+                     'show_authors_widget', 'show_tags_widget', 'tags_widget_slug', 'content_api_key', 'contact_form_endpoint', 'disqus_shortname',
                      'footer_copyright', 'homepage_title', 'special_section_tag')
 </cfquery>
 
@@ -1112,6 +1112,16 @@ details[open] .gh-expandable-header i {
                                 </div>
                                 <p class="gh-setting-desc" style="margin-left: 56px; margin-top: -8px; margin-bottom: 16px;">Display an authors widget in the sidebar</p>
                                 
+                                <div class="gh-toggle-group" style="margin-bottom: 16px;">
+                                    <label class="gh-toggle-switch">
+                                        <input type="checkbox" id="show_tags_widget" name="show_tags_widget"
+                                               <cfif (designSettings.show_tags_widget ?: 'false') EQ 'true'>checked</cfif>>
+                                        <span class="gh-toggle-slider"></span>
+                                    </label>
+                                    <label for="show_tags_widget" class="gh-toggle-label">Show tags widget</label>
+                                </div>
+                                <p class="gh-setting-desc" style="margin-left: 56px; margin-top: -8px; margin-bottom: 16px;">Display a tags widget in the sidebar</p>
+                                
                                 <div style="margin-bottom: 16px;">
                                     <label class="gh-setting-label" style="font-size: 13px; margin-bottom: 6px;">Tags widget URL slug</label>
                                     <input type="text" id="tags_widget_slug" name="tags_widget_slug" 
@@ -1708,6 +1718,7 @@ function saveSettings() {
         standard_load_more: document.getElementById('standard_load_more').checked ? 'true' : 'false',
         navigation_right: document.getElementById('navigation_right').checked ? 'true' : 'false',
         show_authors_widget: document.getElementById('show_authors_widget').checked ? 'true' : 'false',
+        show_tags_widget: document.getElementById('show_tags_widget').checked ? 'true' : 'false',
         tags_widget_slug: document.getElementById('tags_widget_slug').value,
         special_section_tag: document.getElementById('special_section_tag').value,
         footer_copyright: document.getElementById('footer_copyright').value,

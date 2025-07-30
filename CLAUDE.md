@@ -121,7 +121,9 @@ The Ghost CFML application follows these conventions:
 ```
 
 ### Database Configuration
+- **IMPORTANT**: The datasource is `blog` which points to the `ghost_prod` database
 - Datasource: `request.dsn` (default: "blog")
+- The settings table uses column `key` (not `key_name`)
 - Always use cfqueryparam for security
 - Use proper null handling with `null="#expression#"`
 

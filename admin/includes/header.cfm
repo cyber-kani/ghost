@@ -268,6 +268,13 @@
                                     </a>
                                 </li>
                                 
+                                <li class="sidebar-item">
+                                    <a class="sidebar-link <cfif pageTitle EQ 'Staff'>before:bg-lightprimary hover:text-primary active before:bg-lightprimary text-primary dark:text-primary<cfelse>before:bg-lightwarning hover:text-warning dark:hover:text-warning</cfif>" href="/ghost/admin/staff">
+                                        <iconify-icon icon="solar:user-id-line-duotone" class="text-xl p-2"></iconify-icon>
+                                        <span class="hide-menu flex-shrink-0">Staff</span>
+                                    </a>
+                                </li>
+                                
                                 <!---Settings---->
                                 <div class="caption">
                                     <i class="ti ti-dots nav-small-cap-icon text-lg hidden text-center leading-[16px]"></i>
@@ -275,7 +282,7 @@
                                 </div>
                                 
                                 <li class="sidebar-item">
-                                    <a class="sidebar-link <cfif pageTitle EQ 'Settings'>before:bg-lightprimary hover:text-primary active before:bg-lightprimary text-primary dark:text-primary<cfelse>before:bg-lightinfo hover:text-info dark:hover:text-info</cfif>" href="/ghost/admin/settings">
+                                    <a class="sidebar-link <cfif pageTitle EQ 'General Settings'>before:bg-lightprimary hover:text-primary active before:bg-lightprimary text-primary dark:text-primary<cfelse>before:bg-lightinfo hover:text-info dark:hover:text-info</cfif>" href="/ghost/admin/settings/general">
                                         <iconify-icon icon="solar:settings-line-duotone" class="text-xl p-2"></iconify-icon>
                                         <span class="hide-menu flex-shrink-0">General</span>
                                     </a>
@@ -285,6 +292,13 @@
                                     <a class="sidebar-link <cfif pageTitle EQ 'Design'>before:bg-lightprimary hover:text-primary active before:bg-lightprimary text-primary dark:text-primary<cfelse>before:bg-lightindigo hover:text-indigo dark:hover:text-indigo</cfif>" href="/ghost/admin/design">
                                         <iconify-icon icon="solar:palette-line-duotone" class="text-xl p-2"></iconify-icon>
                                         <span class="hide-menu flex-shrink-0">Design</span>
+                                    </a>
+                                </li>
+                                
+                                <li class="sidebar-item">
+                                    <a class="sidebar-link <cfif pageTitle EQ 'Themes' OR findNoCase('theme', pageTitle)>before:bg-lightprimary hover:text-primary active before:bg-lightprimary text-primary dark:text-primary<cfelse>before:bg-lightpurple hover:text-purple dark:hover:text-purple</cfif>" href="/ghost/admin/themes">
+                                        <iconify-icon icon="solar:layers-minimalistic-line-duotone" class="text-xl p-2"></iconify-icon>
+                                        <span class="hide-menu flex-shrink-0">Themes</span>
                                     </a>
                                 </li>
                             </ul>

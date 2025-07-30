@@ -1,0 +1,59 @@
+{
+    "name": "CloudCoder",
+    "version": "1.0.0",
+    "description": "Modern, minimalist theme inspired by CloudCoder.dev with Material Design 3 elements",
+    "author": "CloudCoder",
+    "options": {
+        "primaryColor": {
+            "type": "color",
+            "default": "#000000",
+            "label": "Primary Color"
+        },
+        "accentColor": {
+            "type": "color", 
+            "default": "#0066CC",
+            "label": "Accent Color"
+        },
+        "fontFamily": {
+            "type": "select",
+            "default": "inter",
+            "label": "Font Family",
+            "options": [
+                {"value": "inter", "label": "Inter"},
+                {"value": "system", "label": "System Font"},
+                {"value": "roboto", "label": "Roboto"},
+                {"value": "helvetica", "label": "Helvetica"}
+            ]
+        },
+        "layoutStyle": {
+            "type": "select",
+            "default": "cards",
+            "label": "Post Layout Style",
+            "options": [
+                {"value": "cards", "label": "Card Grid"},
+                {"value": "list", "label": "List View"},
+                {"value": "masonry", "label": "Masonry Grid"}
+            ]
+        },
+        "showAuthorInfo": {
+            "type": "boolean",
+            "default": false,
+            "label": "Show Author Information"
+        },
+        "showReadingTime": {
+            "type": "boolean",
+            "default": true,
+            "label": "Show Reading Time"
+        },
+        "darkMode": {
+            "type": "select",
+            "default": "auto",
+            "label": "Dark Mode",
+            "options": [
+                {"value": "light", "label": "Light Only"},
+                {"value": "dark", "label": "Dark Only"},
+                {"value": "auto", "label": "Auto (System)"}
+            ]
+        }
+    }
+}

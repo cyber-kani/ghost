@@ -24,7 +24,7 @@
     WHERE `key` IN ('accent_color', 'cover_image', 'logo', 'icon', 'navigation', 'secondary_navigation', 'codeinjection_head', 'codeinjection_foot', 
                      'heading_font', 'body_font', 'color_scheme', 'logo_dark', 'show_author', 'standard_load_more', 'navigation_right',
                      'show_authors_widget', 'show_tags_widget', 'tags_widget_slug', 'content_api_key', 'contact_form_endpoint', 'disqus_shortname',
-                     'footer_copyright', 'homepage_title', 'special_section_tag')
+                     'footer_copyright', 'homepage_title', 'special_section_tag', 'announcement_content', 'announcement_background', 'announcement_visibility')
 </cfquery>
 
 <!--- Convert to struct for easy access --->
@@ -820,6 +820,17 @@ details[open] .gh-expandable-header i {
         display: none;
     }
 }
+
+/* Theme Active Status */
+.theme-active-status {
+    color: #3b82f6;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 0 12px;
+    display: inline-flex;
+    align-items: center;
+    min-width: 70px;
+}
 </style>
 
 <main class="main-content">
@@ -839,6 +850,7 @@ details[open] .gh-expandable-header i {
                 <div class="gh-tabs-sticky">
                     <div class="gh-tabs">
                         <div class="gh-tab active" data-tab="brand">Brand</div>
+                        <div class="gh-tab" data-tab="site-design">Site Design</div>
                         <div class="gh-tab" data-tab="theme">Themes</div>
                     </div>
                 </div>
@@ -941,7 +953,76 @@ details[open] .gh-expandable-header i {
                                 </div>
                             </div>
                         </div>
+                    </div>
 
+                    <!-- Site Design Tab Content -->
+                    <div class="gh-tab-content" id="site-design-tab">
+                        <div class="gh-form-section">
+                            <h3 class="gh-form-section-title">Announcement Bar</h3>
+                            
+                            <div class="gh-setting-group">
+                                <label class="gh-setting-label">Announcement</label>
+                                <p class="gh-setting-desc">Highlight breaking news, offers or updates</p>
+                                <textarea id="announcement_content" 
+                                          name="announcement_content" 
+                                          class="gh-textarea" 
+                                          rows="3"
+                                          placeholder="Tell your audience something important"><cfoutput>#htmlEditFormat(designSettings.announcement_content ?: '')#</cfoutput></textarea>
+                            </div>
+                            
+                            <div class="gh-setting-group">
+                                <label class="gh-setting-label">Background color</label>
+                                <p class="gh-setting-desc">Background color of the announcement bar</p>
+                                <div style="display: flex; gap: 12px;">
+                                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                        <input type="radio" name="announcement_background" value="dark" 
+                                               <cfif (designSettings.announcement_background ?: 'dark') EQ 'dark'>checked</cfif>>
+                                        <span style="display: flex; align-items: center; gap: 6px;">
+                                            <span style="width: 20px; height: 20px; background: ##15171a; border-radius: 4px; border: 1px solid ##e5e7eb;"></span>
+                                            <span>Dark</span>
+                                        </span>
+                                    </label>
+                                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                        <input type="radio" name="announcement_background" value="light" 
+                                               <cfif (designSettings.announcement_background ?: '') EQ 'light'>checked</cfif>>
+                                        <span style="display: flex; align-items: center; gap: 6px;">
+                                            <span style="width: 20px; height: 20px; background: ##f0f0f0; border-radius: 4px; border: 1px solid ##e5e7eb;"></span>
+                                            <span>Light</span>
+                                        </span>
+                                    </label>
+                                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                        <input type="radio" name="announcement_background" value="accent" 
+                                               <cfif (designSettings.announcement_background ?: '') EQ 'accent'>checked</cfif>>
+                                        <span style="display: flex; align-items: center; gap: 6px;">
+                                            <span style="width: 20px; height: 20px; border-radius: 4px; border: 1px solid ##e5e7eb;" id="accentColorPreview"></span>
+                                            <span>Accent</span>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="gh-setting-group">
+                                <label class="gh-setting-label">Visibility</label>
+                                <p class="gh-setting-desc">Control who sees the announcement bar</p>
+                                <div style="display: flex; flex-direction: column; gap: 12px;">
+                                    <label style="display: flex; align-items: center; gap: 12px; cursor: pointer;">
+                                        <input type="checkbox" id="announcement_visibility_visitors" value="visitors"
+                                               <cfif arrayFind(deserializeJSON(designSettings.announcement_visibility ?: '["visitors"]'), 'visitors')>checked</cfif>>
+                                        <span>Public visitors</span>
+                                    </label>
+                                    <label style="display: flex; align-items: center; gap: 12px; cursor: pointer;">
+                                        <input type="checkbox" id="announcement_visibility_free_members" value="free_members"
+                                               <cfif arrayFind(deserializeJSON(designSettings.announcement_visibility ?: '[]'), 'free_members')>checked</cfif>>
+                                        <span>Free members</span>
+                                    </label>
+                                    <label style="display: flex; align-items: center; gap: 12px; cursor: pointer;">
+                                        <input type="checkbox" id="announcement_visibility_paid_members" value="paid_members"
+                                               <cfif arrayFind(deserializeJSON(designSettings.announcement_visibility ?: '[]'), 'paid_members')>checked</cfif>>
+                                        <span>Paid members</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
                         <div class="gh-form-section">
                             <h3 class="gh-form-section-title">Site Design</h3>
                             
@@ -950,59 +1031,113 @@ details[open] .gh-expandable-header i {
                                 <p class="gh-setting-desc">Customize the fonts used on your site</p>
                                 
                                 <div class="gh-typography-settings">
-                                    <div class="gh-typography-option-group">
-                                        <div class="gh-typography-option">
-                                            <input type="radio" id="font-sans" name="typography_preset" value="sans" 
-                                                   <cfif (designSettings.heading_font ?: 'sans-serif') EQ 'sans-serif' AND (designSettings.body_font ?: 'sans-serif') EQ 'sans-serif'>checked</cfif>>
-                                            <label for="font-sans" class="gh-typography-label">
-                                                <div class="gh-typography-preview">
-                                                    <span class="gh-typography-heading" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">Aa</span>
-                                                    <span class="gh-typography-body" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">Abc</span>
-                                                </div>
-                                                <div class="gh-typography-name">Modern sans-serif</div>
-                                            </label>
-                                        </div>
-                                        
-                                        <div class="gh-typography-option">
-                                            <input type="radio" id="font-serif" name="typography_preset" value="serif" 
-                                                   <cfif (designSettings.heading_font ?: '') EQ 'serif' AND (designSettings.body_font ?: '') EQ 'serif'>checked</cfif>>
-                                            <label for="font-serif" class="gh-typography-label">
-                                                <div class="gh-typography-preview">
-                                                    <span class="gh-typography-heading" style="font-family: Georgia, 'Times New Roman', serif;">Aa</span>
-                                                    <span class="gh-typography-body" style="font-family: Georgia, 'Times New Roman', serif;">Abc</span>
-                                                </div>
-                                                <div class="gh-typography-name">Elegant serif</div>
-                                            </label>
-                                        </div>
+                                    <div style="margin-bottom: 16px;">
+                                        <label class="gh-setting-label" style="font-size: 13px; margin-bottom: 6px;">Heading font</label>
+                                        <select id="main_heading_font" name="heading_font" class="gh-select font-preview-select">
+                                            <option value="inter" style="font-family: 'Inter', sans-serif;" <cfif (designSettings.heading_font ?: 'inter') EQ 'inter'>selected</cfif>>Inter</option>
+                                            <option value="roboto" style="font-family: 'Roboto', sans-serif;" <cfif (designSettings.heading_font ?: '') EQ 'roboto'>selected</cfif>>Roboto</option>
+                                            <option value="poppins" style="font-family: 'Poppins', sans-serif;" <cfif (designSettings.heading_font ?: '') EQ 'poppins'>selected</cfif>>Poppins</option>
+                                            <option value="playfair" style="font-family: 'Playfair Display', serif;" <cfif (designSettings.heading_font ?: '') EQ 'playfair'>selected</cfif>>Playfair Display</option>
+                                            <option value="merriweather" style="font-family: 'Merriweather', serif;" <cfif (designSettings.heading_font ?: '') EQ 'merriweather'>selected</cfif>>Merriweather</option>
+                                            <option value="montserrat" style="font-family: 'Montserrat', sans-serif;" <cfif (designSettings.heading_font ?: '') EQ 'montserrat'>selected</cfif>>Montserrat</option>
+                                            <option value="raleway" style="font-family: 'Raleway', sans-serif;" <cfif (designSettings.heading_font ?: '') EQ 'raleway'>selected</cfif>>Raleway</option>
+                                            <option value="lora" style="font-family: 'Lora', serif;" <cfif (designSettings.heading_font ?: '') EQ 'lora'>selected</cfif>>Lora</option>
+                                            <option value="bebas" style="font-family: 'Bebas Neue', cursive;" <cfif (designSettings.heading_font ?: '') EQ 'bebas'>selected</cfif>>Bebas Neue</option>
+                                            <option value="opensans" style="font-family: 'Open Sans', sans-serif;" <cfif (designSettings.heading_font ?: '') EQ 'opensans'>selected</cfif>>Open Sans</option>
+                                            <option value="crimson" style="font-family: 'Crimson Text', serif;" <cfif (designSettings.heading_font ?: '') EQ 'crimson'>selected</cfif>>Crimson Text</option>
+                                            <option value="bitter" style="font-family: 'Bitter', serif;" <cfif (designSettings.heading_font ?: '') EQ 'bitter'>selected</cfif>>Bitter</option>
+                                            <option value="libre" style="font-family: 'Libre Baskerville', serif;" <cfif (designSettings.heading_font ?: '') EQ 'libre'>selected</cfif>>Libre Baskerville</option>
+                                            <option value="oswald" style="font-family: 'Oswald', sans-serif;" <cfif (designSettings.heading_font ?: '') EQ 'oswald'>selected</cfif>>Oswald</option>
+                                            <option value="dm-serif" style="font-family: 'DM Serif Display', serif;" <cfif (designSettings.heading_font ?: '') EQ 'dm-serif'>selected</cfif>>DM Serif Display</option>
+                                            <option value="abril" style="font-family: 'Abril Fatface', cursive;" <cfif (designSettings.heading_font ?: '') EQ 'abril'>selected</cfif>>Abril Fatface</option>
+                                            <option value="georgia" style="font-family: Georgia, serif;" <cfif (designSettings.heading_font ?: '') EQ 'georgia'>selected</cfif>>Georgia</option>
+                                            <option value="helvetica" style="font-family: Helvetica, sans-serif;" <cfif (designSettings.heading_font ?: '') EQ 'helvetica'>selected</cfif>>Helvetica</option>
+                                        </select>
                                     </div>
                                     
-                                    <details class="gh-expandable-block">
-                                        <summary class="gh-expandable-header">
-                                            <span>Advanced options</span>
-                                            <i class="ti ti-chevron-right"></i>
-                                        </summary>
-                                        <div class="gh-expandable-content">
-                                            <div style="margin-bottom: 16px;">
-                                                <label class="gh-setting-label" style="font-size: 13px; margin-bottom: 6px;">Heading font</label>
-                                                <select id="heading_font" name="heading_font" class="gh-select">
-                                                    <option value="sans-serif" <cfif (designSettings.heading_font ?: 'sans-serif') EQ 'sans-serif'>selected</cfif>>Sans-serif</option>
-                                                    <option value="serif" <cfif (designSettings.heading_font ?: '') EQ 'serif'>selected</cfif>>Serif</option>
-                                                    <option value="slab" <cfif (designSettings.heading_font ?: '') EQ 'slab'>selected</cfif>>Slab</option>
-                                                </select>
-                                            </div>
-                                            
-                                            <div>
-                                                <label class="gh-setting-label" style="font-size: 13px; margin-bottom: 6px;">Body font</label>
-                                                <select id="body_font" name="body_font" class="gh-select">
-                                                    <option value="sans-serif" <cfif (designSettings.body_font ?: 'sans-serif') EQ 'sans-serif'>selected</cfif>>Sans-serif</option>
-                                                    <option value="serif" <cfif (designSettings.body_font ?: '') EQ 'serif'>selected</cfif>>Serif</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </details>
+                                    <div>
+                                        <label class="gh-setting-label" style="font-size: 13px; margin-bottom: 6px;">Body font</label>
+                                        <select id="main_body_font" name="body_font" class="gh-select font-preview-select">
+                                            <option value="inter" style="font-family: 'Inter', sans-serif;" <cfif (designSettings.body_font ?: 'inter') EQ 'inter'>selected</cfif>>Inter</option>
+                                            <option value="roboto" style="font-family: 'Roboto', sans-serif;" <cfif (designSettings.body_font ?: '') EQ 'roboto'>selected</cfif>>Roboto</option>
+                                            <option value="opensans" style="font-family: 'Open Sans', sans-serif;" <cfif (designSettings.body_font ?: '') EQ 'opensans'>selected</cfif>>Open Sans</option>
+                                            <option value="lato" style="font-family: 'Lato', sans-serif;" <cfif (designSettings.body_font ?: '') EQ 'lato'>selected</cfif>>Lato</option>
+                                            <option value="merriweather" style="font-family: 'Merriweather', serif;" <cfif (designSettings.body_font ?: '') EQ 'merriweather'>selected</cfif>>Merriweather</option>
+                                            <option value="georgia" style="font-family: Georgia, serif;" <cfif (designSettings.body_font ?: '') EQ 'georgia'>selected</cfif>>Georgia</option>
+                                            <option value="nunito" style="font-family: 'Nunito', sans-serif;" <cfif (designSettings.body_font ?: '') EQ 'nunito'>selected</cfif>>Nunito</option>
+                                            <option value="sourcesans" style="font-family: 'Source Sans Pro', sans-serif;" <cfif (designSettings.body_font ?: '') EQ 'sourcesans'>selected</cfif>>Source Sans Pro</option>
+                                            <option value="crimson" style="font-family: 'Crimson Text', serif;" <cfif (designSettings.body_font ?: '') EQ 'crimson'>selected</cfif>>Crimson Text</option>
+                                            <option value="libre" style="font-family: 'Libre Baskerville', serif;" <cfif (designSettings.body_font ?: '') EQ 'libre'>selected</cfif>>Libre Baskerville</option>
+                                            <option value="noto-serif" style="font-family: 'Noto Serif', serif;" <cfif (designSettings.body_font ?: '') EQ 'noto-serif'>selected</cfif>>Noto Serif</option>
+                                            <option value="pt-serif" style="font-family: 'PT Serif', serif;" <cfif (designSettings.body_font ?: '') EQ 'pt-serif'>selected</cfif>>PT Serif</option>
+                                            <option value="work-sans" style="font-family: 'Work Sans', sans-serif;" <cfif (designSettings.body_font ?: '') EQ 'work-sans'>selected</cfif>>Work Sans</option>
+                                            <option value="karla" style="font-family: 'Karla', sans-serif;" <cfif (designSettings.body_font ?: '') EQ 'karla'>selected</cfif>>Karla</option>
+                                            <option value="dm-sans" style="font-family: 'DM Sans', sans-serif;" <cfif (designSettings.body_font ?: '') EQ 'dm-sans'>selected</cfif>>DM Sans</option>
+                                            <option value="helvetica" style="font-family: Helvetica, sans-serif;" <cfif (designSettings.body_font ?: '') EQ 'helvetica'>selected</cfif>>Helvetica</option>
+                                            <option value="arial" style="font-family: Arial, sans-serif;" <cfif (designSettings.body_font ?: '') EQ 'arial'>selected</cfif>>Arial</option>
+                                        </select>
+                                    </div>
                                 </div>
+                                
+                                <details class="gh-expandable-block">
+                                    <summary class="gh-expandable-header">
+                                        <span>Advanced options</span>
+                                        <i class="ti ti-chevron-right"></i>
+                                    </summary>
+                                    <div class="gh-expandable-content">
+                                        <div style="margin-bottom: 16px;">
+                                            <label class="gh-setting-label" style="font-size: 13px; margin-bottom: 6px;">Base font size</label>
+                                            <select id="base_font_size" name="base_font_size" class="gh-select">
+                                                <option value="14px" <cfif (designSettings.base_font_size ?: '16px') EQ '14px'>selected</cfif>>Small (14px)</option>
+                                                <option value="16px" <cfif (designSettings.base_font_size ?: '16px') EQ '16px'>selected</cfif>>Medium (16px)</option>
+                                                <option value="18px" <cfif (designSettings.base_font_size ?: '16px') EQ '18px'>selected</cfif>>Large (18px)</option>
+                                                <option value="20px" <cfif (designSettings.base_font_size ?: '16px') EQ '20px'>selected</cfif>>Extra Large (20px)</option>
+                                            </select>
+                                        </div>
+                                        
+                                        <div style="margin-bottom: 16px;">
+                                            <label class="gh-setting-label" style="font-size: 13px; margin-bottom: 6px;">Heading size scale</label>
+                                            <select id="heading_scale" name="heading_scale" class="gh-select">
+                                                <option value="1.125" <cfif (designSettings.heading_scale ?: '1.25') EQ '1.125'>selected</cfif>>Small (1.125x)</option>
+                                                <option value="1.25" <cfif (designSettings.heading_scale ?: '1.25') EQ '1.25'>selected</cfif>>Medium (1.25x)</option>
+                                                <option value="1.333" <cfif (designSettings.heading_scale ?: '1.25') EQ '1.333'>selected</cfif>>Large (1.333x)</option>
+                                                <option value="1.5" <cfif (designSettings.heading_scale ?: '1.25') EQ '1.5'>selected</cfif>>Extra Large (1.5x)</option>
+                                            </select>
+                                        </div>
+                                        
+                                        <div style="margin-bottom: 16px;">
+                                            <label class="gh-setting-label" style="font-size: 13px; margin-bottom: 6px;">Body line height</label>
+                                            <select id="body_line_height" name="body_line_height" class="gh-select">
+                                                <option value="1.4" <cfif (designSettings.body_line_height ?: '1.6') EQ '1.4'>selected</cfif>>Compact (1.4)</option>
+                                                <option value="1.6" <cfif (designSettings.body_line_height ?: '1.6') EQ '1.6'>selected</cfif>>Normal (1.6)</option>
+                                                <option value="1.8" <cfif (designSettings.body_line_height ?: '1.6') EQ '1.8'>selected</cfif>>Relaxed (1.8)</option>
+                                                <option value="2.0" <cfif (designSettings.body_line_height ?: '1.6') EQ '2.0'>selected</cfif>>Loose (2.0)</option>
+                                            </select>
+                                        </div>
+                                        
+                                        <div style="margin-bottom: 16px;">
+                                            <label class="gh-setting-label" style="font-size: 13px; margin-bottom: 6px;">Letter spacing</label>
+                                            <select id="letter_spacing" name="letter_spacing" class="gh-select">
+                                                <option value="-0.02em" <cfif (designSettings.letter_spacing ?: 'normal') EQ '-0.02em'>selected</cfif>>Tight (-0.02em)</option>
+                                                <option value="normal" <cfif (designSettings.letter_spacing ?: 'normal') EQ 'normal'>selected</cfif>>Normal</option>
+                                                <option value="0.02em" <cfif (designSettings.letter_spacing ?: 'normal') EQ '0.02em'>selected</cfif>>Relaxed (0.02em)</option>
+                                                <option value="0.05em" <cfif (designSettings.letter_spacing ?: 'normal') EQ '0.05em'>selected</cfif>>Loose (0.05em)</option>
+                                            </select>
+                                        </div>
+                                        
+                                        <div>
+                                            <label class="gh-setting-label" style="font-size: 13px; margin-bottom: 6px;">Paragraph spacing</label>
+                                            <select id="paragraph_spacing" name="paragraph_spacing" class="gh-select">
+                                                <option value="1rem" <cfif (designSettings.paragraph_spacing ?: '1.5rem') EQ '1rem'>selected</cfif>>Compact (1rem)</option>
+                                                <option value="1.5rem" <cfif (designSettings.paragraph_spacing ?: '1.5rem') EQ '1.5rem'>selected</cfif>>Normal (1.5rem)</option>
+                                                <option value="2rem" <cfif (designSettings.paragraph_spacing ?: '1.5rem') EQ '2rem'>selected</cfif>>Relaxed (2rem)</option>
+                                                <option value="2.5rem" <cfif (designSettings.paragraph_spacing ?: '1.5rem') EQ '2.5rem'>selected</cfif>>Loose (2.5rem)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </details>
                             </div>
-
+                            
                             <div class="gh-setting-group">
                                 <label class="gh-setting-label">Site-wide</label>
                                 <p class="gh-setting-desc">Site-wide design settings</p>
@@ -1238,14 +1373,13 @@ details[open] .gh-expandable-header i {
                                     <div class="gh-theme-list-info">
                                         <div class="gh-theme-list-name">
                                             Default
-                                            <cfif activeTheme EQ 'default'>
-                                                <span class="active"> — Active</span>
-                                            </cfif>
                                         </div>
                                         <div class="gh-theme-list-version">1.0.0</div>
                                     </div>
                                     <div class="gh-theme-list-actions">
-                                        <cfif activeTheme NEQ 'default'>
+                                        <cfif activeTheme EQ 'default'>
+                                            <span class="theme-active-status">Active</span>
+                                        <cfelse>
                                             <button type="button" class="gh-btn-link" onclick="activateTheme('default')">
                                                 Activate
                                             </button>
@@ -1260,21 +1394,17 @@ details[open] .gh-expandable-header i {
                                             <div class="gh-theme-list-info">
                                                 <div class="gh-theme-list-name">
                                                     #name#
-                                                    <cfif activeTheme EQ name>
-                                                        <span class="active"> — Active</span>
-                                                    </cfif>
                                                 </div>
                                                 <div class="gh-theme-list-version">1.0.0</div>
                                             </div>
                                             <div class="gh-theme-list-actions">
-                                                <cfif activeTheme NEQ name>
+                                                <cfif activeTheme EQ name>
+                                                    <span class="theme-active-status">Active</span>
+                                                <cfelse>
                                                     <button type="button" class="gh-btn-link" onclick="activateTheme('#name#')">
                                                         Activate
                                                     </button>
                                                 </cfif>
-                                                <button type="button" class="gh-btn" onclick="if(confirm('Delete this theme?')) deleteTheme('#name#')">
-                                                    <i class="ti ti-trash"></i>
-                                                </button>
                                             </div>
                                         </div>
                                     </cfif>
@@ -1390,9 +1520,9 @@ document.querySelectorAll('.gh-tab').forEach(tab => {
         allTabs.forEach(t => t.classList.remove('active'));
         this.classList.add('active');
         
-        // Handle main tabs (brand/theme)
-        if (tabId === 'brand' || tabId === 'theme') {
-            document.querySelectorAll('#brand-tab, #theme-tab').forEach(content => {
+        // Handle main tabs (brand/site-design/theme)
+        if (tabId === 'brand' || tabId === 'site-design' || tabId === 'theme') {
+            document.querySelectorAll('#brand-tab, #site-design-tab, #theme-tab').forEach(content => {
                 content.classList.remove('active');
             });
             document.getElementById(tabId + '-tab').classList.add('active');
@@ -1409,21 +1539,51 @@ document.querySelectorAll('.gh-tab').forEach(tab => {
 });
 
 // Color picker synchronization
-document.getElementById('accent_color').addEventListener('input', function() {
-    document.getElementById('accent_color_text').value = this.value;
-    updatePreview();
-});
+const accentColorPicker = document.getElementById('accent_color');
+const accentColorText = document.getElementById('accent_color_text');
 
-document.getElementById('accent_color_text').addEventListener('input', function() {
-    document.getElementById('accent_color').value = this.value;
-    updatePreview();
-});
+if (accentColorPicker) {
+    accentColorPicker.addEventListener('input', function() {
+        if (accentColorText) {
+            accentColorText.value = this.value;
+        }
+        updateAccentColorPreview();
+        updatePreview();
+    });
+}
+
+if (accentColorText) {
+    accentColorText.addEventListener('input', function() {
+        if (accentColorPicker) {
+            accentColorPicker.value = this.value;
+        }
+        updateAccentColorPreview();
+        updatePreview();
+    });
+}
+
+// Update accent color preview
+function updateAccentColorPreview() {
+    const accentColorElement = document.getElementById('accent_color');
+    if (!accentColorElement) return;
+    
+    const accentColor = accentColorElement.value;
+    const preview = document.getElementById('accentColorPreview');
+    if (preview) {
+        preview.style.background = accentColor;
+    }
+}
+
+// Initialize accent color preview
+updateAccentColorPreview();
 
 // Update preview
 function updatePreview() {
     const iframe = document.getElementById('preview-iframe');
-    if (iframe && iframe.contentWindow) {
-        iframe.contentWindow.location.reload();
+    if (iframe) {
+        // Add timestamp to force refresh and bypass cache
+        const currentSrc = iframe.src.split('?')[0];
+        iframe.src = currentSrc + '?t=' + new Date().getTime();
     }
 }
 
@@ -1547,8 +1707,15 @@ function updateTypographyPreset() {
     }
 }
 
-document.getElementById('heading_font').addEventListener('change', updateTypographyPreset);
-document.getElementById('body_font').addEventListener('change', updateTypographyPreset);
+const headingFontSelect = document.getElementById('heading_font');
+const bodyFontSelect = document.getElementById('body_font');
+
+if (headingFontSelect) {
+    headingFontSelect.addEventListener('change', updateTypographyPreset);
+}
+if (bodyFontSelect) {
+    bodyFontSelect.addEventListener('change', updateTypographyPreset);
+}
 
 // Theme functions
 function activateTheme(themeName) {
@@ -1694,6 +1861,15 @@ function saveSettings() {
     button.disabled = true;
     buttonText.textContent = 'Saving...';
     
+    // Get announcement visibility
+    const visibilityCheckboxes = ['visitors', 'free_members', 'paid_members'];
+    const announcementVisibility = [];
+    visibilityCheckboxes.forEach(value => {
+        if (document.getElementById('announcement_visibility_' + value).checked) {
+            announcementVisibility.push(value);
+        }
+    });
+    
     const settings = {
         // Branding
         accent_color: document.getElementById('accent_color').value,
@@ -1701,6 +1877,11 @@ function saveSettings() {
         logo: document.getElementById('logo').value,
         cover_image: document.getElementById('cover_image').value,
         logo_dark: document.getElementById('logo_dark').value,
+        
+        // Announcement Bar
+        announcement_content: document.getElementById('announcement_content').value,
+        announcement_background: document.querySelector('input[name="announcement_background"]:checked')?.value || 'dark',
+        announcement_visibility: JSON.stringify(announcementVisibility),
         
         // Typography
         heading_font: document.getElementById('heading_font').value,
@@ -1753,6 +1934,84 @@ function saveSettings() {
         buttonText.textContent = 'Save';
     });
 }
+
+// Font preview functionality
+document.querySelectorAll('.font-preview-select').forEach(select => {
+    select.addEventListener('change', function() {
+        const selectedOption = this.options[this.selectedIndex];
+        const fontFamily = selectedOption.style.fontFamily;
+        const previewId = this.id === 'heading_font' ? 'heading-preview' : 'body-preview';
+        const preview = document.getElementById(previewId);
+        
+        if (preview && fontFamily) {
+            preview.style.fontFamily = fontFamily;
+        }
+        
+        // Load Google Font if needed
+        loadGoogleFont(this.value);
+    });
+});
+
+// Load Google Fonts dynamically
+function loadGoogleFont(fontValue) {
+    const googleFonts = {
+        'inter': 'Inter:wght@300;400;500;600;700;800',
+        'roboto': 'Roboto:wght@300;400;500;700;900',
+        'poppins': 'Poppins:wght@300;400;500;600;700;800',
+        'playfair': 'Playfair+Display:wght@400;700;900',
+        'merriweather': 'Merriweather:wght@300;400;700;900',
+        'montserrat': 'Montserrat:wght@300;400;500;600;700;800',
+        'raleway': 'Raleway:wght@300;400;500;600;700;800',
+        'lora': 'Lora:wght@400;500;600;700',
+        'bebas': 'Bebas+Neue',
+        'opensans': 'Open+Sans:wght@300;400;500;600;700;800',
+        'lato': 'Lato:wght@300;400;700;900',
+        'nunito': 'Nunito:wght@300;400;600;700;800',
+        'sourcesans': 'Source+Sans+Pro:wght@300;400;600;700;900',
+        'crimson': 'Crimson+Text:wght@400;600;700',
+        'bitter': 'Bitter:wght@300;400;500;600;700',
+        'libre': 'Libre+Baskerville:wght@400;700',
+        'oswald': 'Oswald:wght@300;400;500;600;700',
+        'dm-serif': 'DM+Serif+Display:wght@400',
+        'abril': 'Abril+Fatface:wght@400',
+        'noto-serif': 'Noto+Serif:wght@400;700',
+        'pt-serif': 'PT+Serif:wght@400;700',
+        'work-sans': 'Work+Sans:wght@300;400;500;600;700',
+        'karla': 'Karla:wght@300;400;500;600;700;800',
+        'dm-sans': 'DM+Sans:wght@400;500;700'
+    };
+    
+    if (googleFonts[fontValue]) {
+        const fontId = 'google-font-' + fontValue;
+        
+        // Check if font is already loaded
+        if (!document.getElementById(fontId)) {
+            const link = document.createElement('link');
+            link.id = fontId;
+            link.rel = 'stylesheet';
+            link.href = 'https://fonts.googleapis.com/css2?family=' + googleFonts[fontValue] + '&display=swap';
+            document.head.appendChild(link);
+        }
+    }
+}
+
+// Initialize font previews on page load
+document.addEventListener('DOMContentLoaded', function() {
+    // Set initial font families for preview text
+    document.querySelectorAll('.font-preview-select').forEach(select => {
+        const selectedOption = select.options[select.selectedIndex];
+        const fontFamily = selectedOption.style.fontFamily;
+        const previewId = select.id === 'heading_font' ? 'heading-preview' : 'body-preview';
+        const preview = document.getElementById(previewId);
+        
+        if (preview && fontFamily) {
+            preview.style.fontFamily = fontFamily;
+        }
+        
+        // Load Google Font for selected value
+        loadGoogleFont(select.value);
+    });
+});
 </script>
 
 <cfinclude template="includes/footer.cfm">

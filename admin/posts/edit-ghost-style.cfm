@@ -4984,15 +4984,58 @@ if (len(postData.html)) {
             
         }, 2000); // Increased timeout to ensure all initialization is complete including blur events
         
-        // Auto-generate slug from title
+        // Auto-generate slug from title based on post status
+        let slugGenerationTimer;
         document.getElementById('postTitle').addEventListener('input', function() {
-            if (!document.getElementById('postSlug').value) {
-                const slug = generateSlug(this.value);
-                isProgrammaticChange = true;
-                document.getElementById('postSlug').value = slug;
-                setTimeout(() => { isProgrammaticChange = false; }, 10);
+            const titleValue = this.value;
+            
+            console.log('Title input event:', titleValue);
+            
+            // Clear previous timer
+            if (slugGenerationTimer) {
+                clearTimeout(slugGenerationTimer);
             }
-            // Update search preview when title changes
+            
+            // Debounce slug generation
+            slugGenerationTimer = setTimeout(() => {
+                const currentSlug = document.getElementById('postSlug').value.trim();
+                const trimmedTitle = titleValue.trim();
+                
+                // For draft posts, always auto-generate slug from title (or if slug is empty)
+                // For published/scheduled posts, only if slug is manually cleared
+                const shouldAutoGenerateSlug = (originalStatus === 'draft' && trimmedTitle) || 
+                                              (!currentSlug && trimmedTitle && originalStatus !== 'published' && originalStatus !== 'scheduled');
+                
+                console.log('Slug generation check:', {
+                    title: trimmedTitle,
+                    currentSlug: currentSlug,
+                    originalStatus: originalStatus,
+                    shouldAutoGenerateSlug: shouldAutoGenerateSlug
+                });
+                
+                if (shouldAutoGenerateSlug) {
+                    const slug = generateSlug(trimmedTitle);
+                    isProgrammaticChange = true;
+                    document.getElementById('postSlug').value = slug;
+                    setTimeout(() => { isProgrammaticChange = false; }, 10);
+                    
+                    console.log('Set slug field to:', slug);
+                    
+                    // Delay auto-save to allow for more typing
+                    if (autosaveTimer) {
+                        clearTimeout(autosaveTimer);
+                    }
+                    autosaveTimer = setTimeout(() => {
+                        if (isDirty) {
+                            autosave();
+                        }
+                    }, 2000);
+                    
+                    markDirtySafe();
+                }
+            }, 300); // 300ms debounce
+            
+            // Update search preview when title changes (immediate)
             updateSearchPreview();
             updateTwitterPreview();
             updateFacebookPreview();
@@ -7966,9 +8009,30 @@ if (len(postData.html)) {
     
     // Generate slug from title
     function generateSlug(title) {
-        return title.toLowerCase()
-            .replace(/[^a-z0-9]+/g, '-')
-            .replace(/^-+|-+$/g, '');
+        console.log('generateSlug called with title:', title);
+        
+        if (!title || title.trim() === '') {
+            console.log('Empty title, returning default slug');
+            return 'untitled-' + Date.now().toString().slice(-6);
+        }
+        
+        let slug = title.toLowerCase()
+            .trim()
+            .replace(/[^a-z0-9\s-]/g, '') // Remove special characters except spaces and hyphens
+            .replace(/\s+/g, '-') // Replace spaces with hyphens
+            .replace(/-+/g, '-') // Replace multiple hyphens with single hyphen
+            .replace(/^-+|-+$/g, ''); // Remove leading/trailing hyphens
+        
+        console.log('Processed slug before length check:', slug);
+        
+        // Ensure minimum length
+        if (slug.length < 3) {
+            slug = slug + '-' + Date.now().toString().slice(-6);
+            console.log('Short slug, extended to:', slug);
+        }
+        
+        console.log('Final slug:', slug);
+        return slug;
     }
     
     
@@ -8714,6 +8778,24 @@ if (len(postData.html)) {
             }
         });
         
+        // Auto-save slug changes when manually edited
+        document.getElementById('postSlug').addEventListener('input', function() {
+            if (!isProgrammaticChange) {
+                markDirty();
+                // Auto-save slug changes with validation
+                if (autosaveTimer) {
+                    clearTimeout(autosaveTimer);
+                }
+                autosaveTimer = setTimeout(() => {
+                    // Validate slug before saving
+                    const slug = this.value.trim();
+                    if (slug.length >= 3) {
+                        autosave();
+                    }
+                }, 2000); // Increased delay
+            }
+        });
+        
         // Handle checkboxes
         const checkboxes = ['featuredPost', 'showTitleAndFeatureImage'];
         checkboxes.forEach(checkboxId => {
@@ -8743,6 +8825,23 @@ if (len(postData.html)) {
         updateSearchPreview();
         updateTwitterPreview();
         updateFacebookPreview();
+        
+        // Auto-generate slug on page load if needed
+        setTimeout(() => {
+            const titleField = document.getElementById('postTitle');
+            const slugField = document.getElementById('postSlug');
+            const titleValue = titleField ? titleField.value.trim() : '';
+            const slugValue = slugField ? slugField.value.trim() : '';
+            
+            if (titleValue && !slugValue && originalStatus === 'draft') {
+                console.log('Auto-generating slug on load for title:', titleValue);
+                const slug = generateSlug(titleValue);
+                isProgrammaticChange = true;
+                slugField.value = slug;
+                setTimeout(() => { isProgrammaticChange = false; }, 10);
+                markDirtySafe();
+            }
+        }, 500);
     });
     
     // Tag management
@@ -8945,6 +9044,12 @@ if (len(postData.html)) {
             const formData = new FormData();
             formData.append('file', file);
             formData.append('type', 'feature');
+            
+            // Add post title for SEO-friendly filename
+            const postTitle = document.getElementById('postTitle') ? document.getElementById('postTitle').value : '';
+            if (postTitle) {
+                formData.append('postTitle', postTitle);
+            }
             
             // Show loading
             showMessage('Uploading image...', 'info');
@@ -9760,6 +9865,12 @@ if (len(postData.html)) {
             const formData = new FormData();
             formData.append('file', file);
             formData.append('type', 'content');
+            
+            // Add post title for SEO-friendly filename
+            const postTitle = document.getElementById('postTitle') ? document.getElementById('postTitle').value : '';
+            if (postTitle) {
+                formData.append('postTitle', postTitle);
+            }
             
             fetch('/ghost/admin/ajax/upload-image.cfm', {
                 method: 'POST',
@@ -10583,6 +10694,12 @@ if (len(postData.html)) {
             const formData = new FormData();
             formData.append('file', file);
             formData.append('type', 'content');
+            
+            // Add post title for SEO-friendly filename
+            const postTitle = document.getElementById('postTitle') ? document.getElementById('postTitle').value : '';
+            if (postTitle) {
+                formData.append('postTitle', postTitle);
+            }
             
             // Show loading
             showMessage('Uploading image...', 'info');
@@ -12154,7 +12271,22 @@ if (len(postData.html)) {
             }
         })
         .catch(error => {
-            showMessage('Save failed: ' + error.message, 'error');
+            let errorMessage = 'Save failed: ' + error.message;
+            
+            // Handle specific error types
+            if (error.message.includes('URL already exists')) {
+                errorMessage = error.message;
+                // Focus on slug field to help user fix it
+                setTimeout(() => {
+                    const slugField = document.getElementById('postSlug');
+                    if (slugField) {
+                        slugField.focus();
+                        slugField.select();
+                    }
+                }, 100);
+            }
+            
+            showMessage(errorMessage, 'error');
             
             // Reject promise
             if (saveReject) {

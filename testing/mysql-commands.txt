@@ -1,0 +1,28 @@
+#!/bin/bash
+# MySQL commands to check databases and permissions
+
+# Connect to MySQL as root and check databases
+mysql -u root -p << EOF
+
+-- Show all databases
+SHOW DATABASES;
+
+-- Check if ghost_prod exists
+SELECT SCHEMA_NAME 
+FROM INFORMATION_SCHEMA.SCHEMATA 
+WHERE SCHEMA_NAME = 'ghost_prod';
+
+-- Check current grants for cfml user
+SHOW GRANTS FOR 'cfml'@'localhost';
+
+-- Check if cfml user exists
+SELECT User, Host FROM mysql.user WHERE User = 'cfml';
+
+-- Grant permissions to cfml user for ghost_prod (if it exists)
+-- GRANT ALL PRIVILEGES ON ghost_prod.* TO 'cfml'@'localhost';
+-- FLUSH PRIVILEGES;
+
+-- Show the grants again to confirm
+-- SHOW GRANTS FOR 'cfml'@'localhost';
+
+EOF

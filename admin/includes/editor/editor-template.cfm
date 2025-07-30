@@ -22,6 +22,8 @@
         <input type="hidden" id="formCodeinjectionFoot" name="codeinjection_foot">
         <input type="hidden" id="formCanonicalUrl" name="canonical_url">
         <input type="hidden" id="formShowTitleAndFeatureImage" name="show_title_and_feature_image">
+        <input type="hidden" id="formLexical" name="lexical">
+        <input type="hidden" id="formCommentId" name="comment_id">
         <input type="hidden" id="formOgTitle" name="og_title">
         <input type="hidden" id="formOgDescription" name="og_description">
         <input type="hidden" id="formOgImage" name="og_image">

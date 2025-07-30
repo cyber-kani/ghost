@@ -5,7 +5,7 @@
 
 <cftry>
     <!--- Check if user is logged in --->
-    <cfif NOT structKeyExists(session, "user") OR NOT structKeyExists(session.user, "id")>
+    <cfif NOT structKeyExists(session, "ISLOGGEDIN") OR NOT session.ISLOGGEDIN>
         <cfthrow message="Unauthorized access">
     </cfif>
 
@@ -27,7 +27,7 @@
     </cfif>
     
     <!--- Validate theme has required files --->
-    <cfset requiredFiles = ["package.json", "index.hbs", "post.hbs", "default.hbs"]>
+    <cfset requiredFiles = ["theme.json", "index.cfm"]>
     <cfloop array="#requiredFiles#" index="requiredFile">
         <cfif NOT fileExists("#themePath##requiredFile#")>
             <cfthrow message="Invalid theme: Missing #requiredFile#">

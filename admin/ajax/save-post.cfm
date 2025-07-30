@@ -48,6 +48,16 @@
     <cfset canonicalUrl = form.canonical_url ?: "">
     <cfset showTitleAndFeatureImage = form.show_title_and_feature_image ?: "1">
     
+    <!--- New Ghost fields --->
+    <cfset lexical = form.lexical ?: "">
+    <cfset commentId = form.comment_id ?: "">
+    
+    <!--- Debug: Log Ghost fields --->
+    <cflog file="ghost-save-post" text="Ghost fields - show_title_and_feature_image: #showTitleAndFeatureImage#, lexical length: #len(lexical)#, comment_id: #commentId#">
+    
+    <!--- Debug: Log all form fields received --->
+    <cflog file="ghost-save-post" text="All form fields: #structKeyList(form)#">
+    
     <!--- Social media fields --->
     <cfset ogTitle = form.og_title ?: "">
     <cfset ogDescription = form.og_description ?: "">
@@ -67,10 +77,25 @@
         <cfset title = "(Untitled)">
     </cfif>
     
-    <!--- Generate slug if empty --->
+    <!--- Generate slug if empty using improved algorithm --->
     <cfif not len(trim(slug))>
-        <cfset slug = lcase(reReplace(title, "[^a-zA-Z0-9]+", "-", "all"))>
-        <cfset slug = reReplace(slug, "^-+|-+$", "", "all")>
+        <cfif len(trim(title))>
+            <!--- Convert title to lowercase and replace non-alphanumeric with hyphens --->
+            <cfset slug = lcase(trim(title))>
+            <!--- Remove special characters except spaces and hyphens --->
+            <cfset slug = reReplace(slug, "[^a-z0-9\s-]", "", "all")>
+            <!--- Replace multiple spaces/hyphens with single hyphen --->
+            <cfset slug = reReplace(slug, "[\s-]+", "-", "all")>
+            <!--- Remove leading/trailing hyphens --->
+            <cfset slug = reReplace(slug, "^-+|-+$", "", "all")>
+            <!--- Ensure minimum length --->
+            <cfif len(slug) lt 3>
+                <cfset slug = slug & "-" & right(dateFormat(now(), "yyyymmdd") & timeFormat(now(), "HHmmss"), 6)>
+            </cfif>
+        <cfelse>
+            <!--- Fallback for empty title --->
+            <cfset slug = "untitled-" & right(dateFormat(now(), "yyyymmdd") & timeFormat(now(), "HHmmss"), 6)>
+        </cfif>
     </cfif>
     
     <!--- Parse tags and authors JSON --->
@@ -93,6 +118,7 @@
     
     <cfif checkPost.recordCount gt 0>
         <!--- Update existing post --->
+        <cflog file="ghost-save-post" text="UPDATING post #postId# - showTitle: #showTitleAndFeatureImage#, lexical exists: #len(lexical) GT 0#, commentId: #commentId#">
         <cfquery datasource="#request.dsn#">
             UPDATE posts SET
                 title = <cfqueryparam value="#title#" cfsqltype="cf_sql_varchar">,
@@ -108,7 +134,9 @@
                 codeinjection_head = <cfqueryparam value="#codeinjectionHead#" cfsqltype="cf_sql_longvarchar">,
                 codeinjection_foot = <cfqueryparam value="#codeinjectionFoot#" cfsqltype="cf_sql_longvarchar">,
                 canonical_url = <cfqueryparam value="#canonicalUrl#" cfsqltype="cf_sql_longvarchar">,
-                show_title_and_feature_image = <cfqueryparam value="#showTitleAndFeatureImage eq '1' ? 1 : 0#" cfsqltype="cf_sql_bit">,
+                show_title_and_feature_image = <cfqueryparam value="#showTitleAndFeatureImage#" cfsqltype="cf_sql_integer">,
+                lexical = <cfqueryparam value="#lexical#" cfsqltype="cf_sql_longvarchar" null="#NOT len(trim(lexical))#">,
+                comment_id = <cfqueryparam value="#commentId#" cfsqltype="cf_sql_varchar" null="#NOT len(trim(commentId))#">,
                 updated_at = <cfqueryparam value="#now()#" cfsqltype="cf_sql_timestamp">,
                 updated_by = <cfqueryparam value="#session.USERID#" cfsqltype="cf_sql_varchar">
                 <cfif len(publishedAt) and isDate(publishedAt)>
@@ -168,7 +196,7 @@
                 id, uuid, title, slug, html, plaintext, feature_image,
                 custom_excerpt, visibility,
                 featured, status, type, created_by, created_at, updated_at,
-                email_recipient_filter
+                email_recipient_filter, show_title_and_feature_image, lexical, comment_id
                 <cfif len(publishedAt) and isDate(publishedAt)>
                     , published_at
                 <cfelseif status eq "published">
@@ -190,7 +218,10 @@
                 <cfqueryparam value="#session.USERID#" cfsqltype="cf_sql_varchar">,
                 <cfqueryparam value="#now()#" cfsqltype="cf_sql_timestamp">,
                 <cfqueryparam value="#now()#" cfsqltype="cf_sql_timestamp">,
-                <cfqueryparam value="all" cfsqltype="cf_sql_varchar">
+                <cfqueryparam value="all" cfsqltype="cf_sql_varchar">,
+                <cfqueryparam value="#showTitleAndFeatureImage#" cfsqltype="cf_sql_integer">,
+                <cfqueryparam value="#lexical#" cfsqltype="cf_sql_longvarchar" null="#NOT len(trim(lexical))#">,
+                <cfqueryparam value="#commentId#" cfsqltype="cf_sql_varchar" null="#NOT len(trim(commentId))#">
                 <cfif len(publishedAt) and isDate(publishedAt)>
                     , <cfqueryparam value="#parseDateTime(publishedAt)#" cfsqltype="cf_sql_timestamp">
                 <cfelseif status eq "published">
@@ -275,7 +306,13 @@
     <cfset response.POSTID = postId> <!--- For JS compatibility --->
     
     <cfcatch>
-        <cfset response.message = "Error saving post: " & cfcatch.message>
+        <!--- Handle duplicate slug errors specifically --->
+        <cfif findNoCase("Duplicate entry", cfcatch.message) AND findNoCase("posts_slug_type_unique", cfcatch.message)>
+            <cfset response.message = "A post with this URL already exists. Please use a different title or manually edit the Post URL.">
+            <cfset response.error_type = "duplicate_slug">
+        <cfelse>
+            <cfset response.message = "Error saving post: " & cfcatch.message>
+        </cfif>
         <cflog file="ghost-save-post" text="Save post error: #cfcatch.message# - #cfcatch.detail# - SQL: #cfcatch.sql ?: 'No SQL'# - PostId: #postId# (Length: #len(postId)#)">
     </cfcatch>
 </cftry>

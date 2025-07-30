@@ -4226,6 +4226,12 @@
             formData.append('file', file);
             formData.append('type', 'feature');
             
+            // Add post title for SEO-friendly filename
+            const postTitle = document.getElementById('postTitle') ? document.getElementById('postTitle').value : '';
+            if (postTitle) {
+                formData.append('postTitle', postTitle);
+            }
+            
             // Show loading
             showMessage('Uploading image...', 'info');
             
@@ -5864,6 +5870,18 @@
             formData.append('file', file);
             formData.append('type', 'content');
             
+            // Add post title for SEO-friendly filename
+            const postTitle = document.getElementById('postTitle') ? document.getElementById('postTitle').value : '';
+            if (postTitle) {
+                formData.append('postTitle', postTitle);
+            }
+            
+            // Add alt text if available from the card
+            const card = window.editorData.cards.find(c => c.id === cardId);
+            if (card && card.data && card.data.alt) {
+                formData.append('altText', card.data.alt);
+            }
+            
             // Show loading
             showMessage('Uploading image...', 'info');
             
@@ -7307,6 +7325,10 @@
         setFormValue('formCodeinjectionFoot', document.getElementById('codeinjectionFoot')?.value || '');
         setFormValue('formCanonicalUrl', document.getElementById('canonicalUrl')?.value || '');
         setFormValue('formShowTitleAndFeatureImage', document.getElementById('showTitleAndFeatureImage')?.checked ? '1' : '0');
+        
+        // Add new Ghost fields
+        setFormValue('formLexical', ''); // TODO: Will be populated when Lexical editor is implemented
+        setFormValue('formCommentId', postData.comment_id || ''); // Preserve existing comment_id if any
         
         // Add social media fields
         setFormValue('formOgTitle', document.getElementById('facebookTitle')?.value || '');

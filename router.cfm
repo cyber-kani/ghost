@@ -55,6 +55,21 @@
 <!--- Set default path if empty --->
 <!--- No longer redirecting - will serve blog at root --->
 
+<!--- Get active theme early for use in all routes --->
+<cfset activeTheme = "">
+<cftry>
+    <cfquery name="qActiveTheme" datasource="#request.dsn#">
+        SELECT value FROM settings WHERE `key` = 'active_theme'
+    </cfquery>
+    <cfif qActiveTheme.recordCount GT 0>
+        <cfset activeTheme = qActiveTheme.value>
+    </cfif>
+    <cfcatch>
+        <!--- If database query fails, use empty theme --->
+        <cfset activeTheme = "">
+    </cfcatch>
+</cftry>
+
 <!--- Route Matching Logic --->
 <cfset routeFound = false>
 
@@ -132,12 +147,31 @@
     <cfset templateFile = "admin/members.cfm">
     <cfset routeFound = true>
 
-<cfelseif requestPath eq "admin/settings">
-    <cfset templateFile = "admin/settings.cfm">
+<cfelseif requestPath eq "admin/staff">
+    <cfset templateFile = "admin/staff.cfm">
+    <cfset routeFound = true>
+
+<!--- Staff edit with ID parameter - handles both /admin/staff/edit/ID and /admin/staff/edit/ID/ --->
+<cfelseif reFindNoCase("^admin/staff/edit/([a-zA-Z0-9-]+)/?$", requestPath)>
+    <cfset userId = reReplaceNoCase(requestPath, "^admin/staff/edit/([a-zA-Z0-9-]+)/?$", "\1")>
+    <cfset url.id = userId>
+    <cfset templateFile = "admin/staff/edit.cfm">
+    <cfset routeFound = true>
+
+<cfelseif requestPath eq "admin/settings" or requestPath eq "admin/settings/general">
+    <cfset templateFile = "admin/settings/general.cfm">
     <cfset routeFound = true>
 
 <cfelseif requestPath eq "admin/design">
     <cfset templateFile = "admin/design.cfm">
+    <cfset routeFound = true>
+
+<cfelseif requestPath eq "admin/themes">
+    <cfset templateFile = "admin/themes/index.cfm">
+    <cfset routeFound = true>
+
+<cfelseif reFindNoCase("^admin/themes/customize$", requestPath)>
+    <cfset templateFile = "admin/themes/customize.cfm">
     <cfset routeFound = true>
 
 <cfelseif requestPath eq "admin/profile">
@@ -160,8 +194,18 @@
     <cfset templateFile = "admin/preview-modal.cfm">
     <cfset routeFound = true>
 
-<!--- Settings with section parameter --->
-<cfelseif reFindNoCase("^admin/settings/([a-zA-Z0-9-]+)$", requestPath)>
+<!--- Security settings route --->
+<cfelseif requestPath eq "admin/settings/security">
+    <cfset templateFile = "admin/settings/security.cfm">
+    <cfset routeFound = true>
+
+<!--- Mail settings route --->
+<cfelseif requestPath eq "admin/settings/mail">
+    <cfset templateFile = "admin/settings/mail.cfm">
+    <cfset routeFound = true>
+
+<!--- Settings with section parameter (exclude 'general', 'security', and 'mail') --->
+<cfelseif reFindNoCase("^admin/settings/([a-zA-Z0-9-]+)$", requestPath) AND requestPath NEQ "admin/settings/general" AND requestPath NEQ "admin/settings/security" AND requestPath NEQ "admin/settings/mail">
     <cfset section = reReplaceNoCase(requestPath, "^admin/settings/([a-zA-Z0-9-]+)$", "\1")>
     <cfset url.section = section>
     <cfset templateFile = "admin/settings.cfm">
@@ -212,7 +256,11 @@
     <!--- Redirect old blog URLs to root --->
     <cflocation url="/ghost/" addtoken="false">
 <cfelseif requestPath eq "">
-    <cfset templateFile = "blog/index.cfm">
+    <cfif len(activeTheme) AND fileExists(expandPath("/ghost/themes/#activeTheme#/index.cfm"))>
+        <cfset templateFile = "themes/#activeTheme#/index.cfm">
+    <cfelse>
+        <cfset templateFile = "blog/index.cfm">
+    </cfif>
     <cfset routeFound = true>
 
 <!--- New blog with theme support --->
@@ -235,8 +283,12 @@
 <!--- Blog tag archive --->
 <cfelseif reFindNoCase("^tag/([a-zA-Z0-9-]+)$", requestPath)>
     <cfset tagSlug = reReplaceNoCase(requestPath, "^tag/([a-zA-Z0-9-]+)$", "\1")>
-    <cfset url.slug = tagSlug>
-    <cfset templateFile = "blog/tag.cfm">
+    <cfset url.slug = lcase(tagSlug)>
+    <cfif len(activeTheme) AND fileExists(expandPath("/ghost/themes/#activeTheme#/tag.cfm"))>
+        <cfset templateFile = "themes/#activeTheme#/tag.cfm">
+    <cfelse>
+        <cfset templateFile = "blog/tag.cfm">
+    </cfif>
     <cfset routeFound = true>
 
 <!--- Legacy blog tag redirect --->
@@ -266,17 +318,25 @@
     <!--- First check if it's a post --->
     <cfquery name="qCheckPost" datasource="#request.dsn#">
         SELECT id, type FROM posts
-        WHERE slug = <cfqueryparam value="#requestPath#" cfsqltype="cf_sql_varchar">
+        WHERE LOWER(slug) = <cfqueryparam value="#lcase(requestPath)#" cfsqltype="cf_sql_varchar">
         AND status = 'published'
         LIMIT 1
     </cfquery>
     
     <cfif qCheckPost.recordCount>
-        <cfset url.slug = requestPath>
+        <cfset url.slug = lcase(requestPath)>
         <cfif qCheckPost.type EQ "post">
-            <cfset templateFile = "blog/post-modern.cfm">
+            <cfif len(activeTheme) AND fileExists(expandPath("/ghost/themes/#activeTheme#/post.cfm"))>
+                <cfset templateFile = "themes/#activeTheme#/post.cfm">
+            <cfelse>
+                <cfset templateFile = "blog/post-modern.cfm">
+            </cfif>
         <cfelse>
-            <cfset templateFile = "blog/page-modern.cfm">
+            <cfif len(activeTheme) AND fileExists(expandPath("/ghost/themes/#activeTheme#/page.cfm"))>
+                <cfset templateFile = "themes/#activeTheme#/page.cfm">
+            <cfelse>
+                <cfset templateFile = "blog/page-modern.cfm">
+            </cfif>
         </cfif>
         <cfset routeFound = true>
     </cfif>
@@ -311,6 +371,12 @@
 <!--- Test blog theme route --->
 <cfelseif requestPath EQ "test-blog-theme">
     <cfset templateFile = "test-blog-theme.cfm">
+    <cfset routeFound = true>
+
+<!--- Testing folder routes --->
+<cfelseif reFindNoCase("^testing/([a-zA-Z0-9.-]+)$", requestPath)>
+    <cfset fileName = reReplaceNoCase(requestPath, "^testing/([a-zA-Z0-9.-]+)$", "\1")>
+    <cfset templateFile = "testing/" & fileName>
     <cfset routeFound = true>
 
 </cfif>

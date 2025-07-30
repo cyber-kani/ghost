@@ -50,7 +50,32 @@
 <cfset totalPosts = qPostCount.total>
 <cfset totalPages = ceiling(totalPosts / postsPerPage)>
 
-<!--- Get posts for current page --->
+<!--- Get featured posts (posts with featured = true) --->
+<cfquery name="qFeaturedPosts" datasource="#request.dsn#">
+    SELECT 
+        p.id,
+        p.title,
+        p.slug,
+        p.custom_excerpt,
+        p.plaintext,
+        p.feature_image,
+        p.published_at,
+        p.created_at,
+        p.created_by as author_id,
+        p.featured,
+        u.name as author_name,
+        u.profile_image as author_profile_image,
+        u.bio as author_bio
+    FROM posts p
+    LEFT JOIN users u ON p.created_by = u.id
+    WHERE p.status = <cfqueryparam value="published" cfsqltype="cf_sql_varchar">
+    AND p.type = <cfqueryparam value="post" cfsqltype="cf_sql_varchar">
+    AND p.featured = <cfqueryparam value="1" cfsqltype="cf_sql_integer">
+    ORDER BY p.published_at DESC
+    LIMIT 6
+</cfquery>
+
+<!--- Get posts for current page (excluding featured posts on page 1) --->
 <cfquery name="qPosts" datasource="#request.dsn#">
     SELECT 
         p.id,
@@ -69,6 +94,9 @@
     LEFT JOIN users u ON p.created_by = u.id
     WHERE p.status = <cfqueryparam value="published" cfsqltype="cf_sql_varchar">
     AND p.type = <cfqueryparam value="post" cfsqltype="cf_sql_varchar">
+    <cfif url.page EQ 1 AND qFeaturedPosts.recordCount GT 0>
+    AND p.featured != <cfqueryparam value="1" cfsqltype="cf_sql_integer">
+    </cfif>
     ORDER BY p.published_at DESC
     LIMIT #postsPerPage# OFFSET #startRow - 1#
 </cfquery>
@@ -301,33 +329,280 @@
         /* Hero Section */
         .hero-section {
             position: relative;
-            background-color: var(--bg-secondary);
-            padding: 4rem 1.5rem;
-            text-align: center;
             <cfif len(coverImage)>
-            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('<cfoutput>#coverImage#</cfoutput>');
+            background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url('<cfoutput>#coverImage#</cfoutput>');
             background-size: cover;
             background-position: center;
-            color: white;
+            <cfelse>
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+            </cfif>
+            padding: 120px 22px 80px;
+            overflow: hidden;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero-bg-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            <cfif len(coverImage)>
+            background: rgba(0, 0, 0, 0.2);
+            <cfelse>
+            opacity: 0.03;
+            background-image: 
+                radial-gradient(circle at 20% 80%, var(--accent-color) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, var(--accent-color) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, var(--accent-color) 0%, transparent 50%);
             </cfif>
         }
         
         .hero-content {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
         }
         
         .hero-title {
-            font-size: 3rem;
+            font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 800;
-            margin: 0 0 1rem;
-            line-height: 1.2;
+            margin: 0 0 1.5rem;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            <cfif len(coverImage)>
+            color: white;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            <cfelse>
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            </cfif>
         }
         
         .hero-description {
             font-size: 1.25rem;
+            margin: 0 0 2rem;
+            <cfif len(coverImage)>
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+            <cfelse>
+            color: var(--text-secondary);
+            </cfif>
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+        
+        .hero-meta {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.9375rem;
+            <cfif len(coverImage)>
+            color: rgba(255, 255, 255, 0.8);
+            <cfelse>
+            color: var(--text-secondary);
+            </cfif>
+        }
+        
+        .hero-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .hero-meta svg {
+            width: 16px;
+            height: 16px;
+            opacity: 0.8;
+        }
+        
+        /* Featured Posts Section */
+        .featured-section {
+            padding: 5rem 0;
+            background: var(--bg-primary);
+            position: relative;
+        }
+        
+        .featured-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .featured-header {
+            margin-bottom: 3rem;
+        }
+        
+        .featured-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .featured-title {
+            font-size: 2rem;
+            font-weight: 700;
             margin: 0;
+            color: var(--text-primary);
+        }
+        
+        /* Featured Grid - Full width 2 columns layout */
+        .featured-grid {
+            display: grid;
+            gap: 2.5rem;
+            grid-template-columns: 1fr;
+            grid-auto-rows: 1fr;
+        }
+        
+        @media (min-width: 768px) {
+            .featured-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* Featured Card - Premium design with uniform height */
+        .featured-card {
+            position: relative;
+            background: var(--bg-primary);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            min-height: 500px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--border-color);
+        }
+        
+        .featured-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.12);
+        }
+        
+        .featured-card-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-secondary);
+        }
+        
+        .featured-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        .featured-card:hover .featured-card-image img {
+            transform: scale(1.1);
+        }
+        
+        .featured-card-gradient {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, 
+                transparent 0%, 
+                transparent 40%, 
+                rgba(0, 0, 0, 0.8) 90%,
+                rgba(0, 0, 0, 0.9) 100%);
+            z-index: 1;
+        }
+        
+        .featured-card-content {
+            position: relative;
+            z-index: 2;
+            padding: 2.5rem;
+            margin-top: auto;
+            color: white;
+        }
+        
+        .featured-card-tag {
+            display: inline-block;
+            padding: 0.375rem 0.875rem;
+            background: var(--accent-color);
+            color: white;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .featured-card-title {
+            font-size: clamp(1.75rem, 2.5vw, 2.25rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin: 0 0 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .featured-card-excerpt {
+            font-size: 1rem;
+            line-height: 1.5;
             opacity: 0.9;
+            margin: 0 0 1.5rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .featured-card-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.875rem;
+            opacity: 0.8;
+        }
+        
+        .featured-author {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .featured-author-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        
+        .featured-author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         
         /* Main Content */
@@ -335,6 +610,29 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 4rem 1.5rem;
+        }
+        
+        .section-header {
+            margin-bottom: 3rem;
+        }
+        
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0;
+            color: var(--text-primary);
         }
         
         /* Posts Grid */
@@ -494,18 +792,27 @@
         .author-avatar {
             width: 32px;
             height: 32px;
+            min-width: 32px;
+            min-height: 32px;
+            max-width: 32px;
+            max-height: 32px;
             border-radius: 50%;
             background-color: var(--accent-color);
             flex-shrink: 0;
+            flex-grow: 0;
             overflow: hidden;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
             color: white;
             text-transform: uppercase;
             position: relative;
+            line-height: 1;
+            text-align: center;
+            padding: 0;
+            aspect-ratio: 1 / 1;
         }
         
         .author-avatar img {
@@ -1060,8 +1367,8 @@
                 padding: 1rem 1.5rem;
             }
             
-            .hero-inner {
-                padding: 4rem 1.5rem 3rem;
+            .hero-section {
+                padding: 48px 22px 32px;
             }
             
             .main-content {
@@ -1091,6 +1398,26 @@
         @media (prefers-reduced-motion: no-preference) {
             html {
                 scroll-behavior: smooth;
+            }
+            
+            /* Enhanced animations for featured cards */
+            .featured-card {
+                animation: fadeInUp 0.8s cubic-bezier(0.23, 1, 0.32, 1) both;
+            }
+            
+            .featured-card:nth-child(2) { animation-delay: 0.1s; }
+            .featured-card:nth-child(3) { animation-delay: 0.2s; }
+            .featured-card:nth-child(4) { animation-delay: 0.3s; }
+            
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
             }
         }
         
@@ -1222,6 +1549,9 @@
     </cfif>
 </head>
 <body>
+    <!--- Announcement Bar --->
+    <cfinclude template="/ghost/includes/announcement-bar.cfm">
+    
     <!--- Header --->
     <header class="site-header" role="banner">
         <div class="header-inner">
@@ -1301,34 +1631,122 @@
     <!--- Hero Section --->
     <cfif url.page EQ 1>
         <section class="hero-section">
-            <div class="hero-bg-animation"></div>
-            <div class="hero-inner">
-                <div class="hero-content">
-                    <h1 class="hero-title"><cfoutput>#siteTitle#</cfoutput></h1>
-                    <p class="hero-description"><cfoutput>#siteDescription#</cfoutput></p>
-                    <div class="hero-meta">
-                        <span>
-                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                                <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
-                            </svg>
-                            <cfoutput>#totalPosts# posts</cfoutput>
-                        </span>
-                        <cfquery name="qAuthors" datasource="#request.dsn#">
-                            SELECT COUNT(DISTINCT created_by) as author_count
-                            FROM posts
-                            WHERE status = 'published'
-                        </cfquery>
-                        <span>
-                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                                <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-                            </svg>
-                            <cfoutput>#qAuthors.author_count# authors</cfoutput>
-                        </span>
-                    </div>
+            <div class="hero-bg-pattern"></div>
+            <div class="hero-content">
+                <h1 class="hero-title"><cfoutput>#siteTitle#</cfoutput></h1>
+                <p class="hero-description"><cfoutput>#siteDescription#</cfoutput></p>
+                <div class="hero-meta">
+                    <span>
+                        <svg fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm0 1h12a1 1 0 0 1 1 1v11H1V2a1 1 0 0 1 1-1z"/>
+                            <path d="M2 5v1h12V5H2zm0 3v1h12V8H2zm0 3v1h7v-1H2z"/>
+                        </svg>
+                        <cfoutput>#totalPosts# posts</cfoutput>
+                    </span>
+                    <cfquery name="qAuthors" datasource="#request.dsn#">
+                        SELECT COUNT(DISTINCT created_by) as author_count
+                        FROM posts
+                        WHERE status = 'published'
+                    </cfquery>
+                    <span>
+                        <svg fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                        </svg>
+                        <cfoutput>#qAuthors.author_count# authors</cfoutput>
+                    </span>
                 </div>
             </div>
         </section>
+        
+        <!--- Featured Posts Section --->
+        <cfif qFeaturedPosts.recordCount GT 0>
+            <section class="featured-section">
+                <div class="featured-container">
+                    <div class="featured-header">
+                        <div class="featured-label">Featured</div>
+                        <h2 class="featured-title">Editor's Picks</h2>
+                    </div>
+                    
+                    <div class="featured-grid">
+                    <cfoutput query="qFeaturedPosts">
+                        <!--- Get primary tag for this post --->
+                        <cfquery name="qPrimaryTag" datasource="#request.dsn#">
+                            SELECT t.name, t.slug
+                            FROM tags t
+                            INNER JOIN posts_tags pt ON t.id = pt.tag_id
+                            WHERE pt.post_id = <cfqueryparam value="#qFeaturedPosts.id#" cfsqltype="cf_sql_varchar">
+                            AND t.visibility = <cfqueryparam value="public" cfsqltype="cf_sql_varchar">
+                            ORDER BY pt.sort_order ASC
+                            LIMIT 1
+                        </cfquery>
+                        
+                        <cfset cleanSlug = replace(trim(qFeaturedPosts.slug), "\", "", "all")>
+                        <cfset postUrl = "/ghost/" & cleanSlug & "/">
+                        
+                        <a href="#postUrl#" class="featured-card">
+                            <cfif len(trim(qFeaturedPosts.feature_image))>
+                                <div class="featured-card-image">
+                                    <img src="#qFeaturedPosts.feature_image#" 
+                                         alt="#htmlEditFormat(qFeaturedPosts.title)#" 
+                                         loading="lazy">
+                                </div>
+                            </cfif>
+                            
+                            <div class="featured-card-gradient"></div>
+                            
+                            <div class="featured-card-content">
+                                <cfif qPrimaryTag.recordCount GT 0>
+                                    <span class="featured-card-tag"><cfoutput>#qPrimaryTag.name#</cfoutput></span>
+                                <cfelse>
+                                    <!--- Get all tags if no primary tag --->
+                                    <cfquery name="qAllTags" datasource="#request.dsn#">
+                                        SELECT t.name
+                                        FROM tags t
+                                        INNER JOIN posts_tags pt ON t.id = pt.tag_id
+                                        WHERE pt.post_id = <cfqueryparam value="#qFeaturedPosts.id#" cfsqltype="cf_sql_varchar">
+                                        LIMIT 1
+                                    </cfquery>
+                                    <cfif qAllTags.recordCount GT 0>
+                                        <span class="featured-card-tag"><cfoutput>#qAllTags.name#</cfoutput></span>
+                                    </cfif>
+                                </cfif>
+                                
+                                <h3 class="featured-card-title">#qFeaturedPosts.title#</h3>
+                                
+                                <cfset excerpt = "">
+                                <cfif len(trim(qFeaturedPosts.custom_excerpt))>
+                                    <cfset excerpt = qFeaturedPosts.custom_excerpt>
+                                <cfelseif len(trim(qFeaturedPosts.plaintext))>
+                                    <cfset excerpt = left(qFeaturedPosts.plaintext, 120)>
+                                </cfif>
+                                <cfif len(excerpt)>
+                                    <p class="featured-card-excerpt">#excerpt#</p>
+                                </cfif>
+                                
+                                <div class="featured-card-meta">
+                                    <cfif showAuthor EQ "true">
+                                        <div class="featured-author">
+                                            <cfif len(trim(qFeaturedPosts.author_profile_image))>
+                                                <div class="featured-author-avatar">
+                                                    <img src="#qFeaturedPosts.author_profile_image#" 
+                                                         alt="#qFeaturedPosts.author_name#">
+                                                </div>
+                                            </cfif>
+                                            <span>#qFeaturedPosts.author_name#</span>
+                                        </div>
+                                    </cfif>
+                                    <span>•</span>
+                                    <time datetime="#dateFormat(qFeaturedPosts.published_at, 'yyyy-mm-dd')#">
+                                        #dateFormat(qFeaturedPosts.published_at, 'mmm d, yyyy')#
+                                    </time>
+                                </div>
+                            </div>
+                        </a>
+                    </cfoutput>
+                    </div>
+                </div>
+            </section>
+        </cfif>
     </cfif>
     
     <!--- Main Content --->
@@ -1340,7 +1758,16 @@
             </div>
         </cfif>
         
-        <h2 class="sr-only">Latest Posts</h2>
+        <cfif url.page EQ 1>
+            <div class="section-header">
+                <div class="section-label">Recent</div>
+                <h2 class="section-title">Latest Stories</h2>
+            </div>
+        <cfelse>
+            <div class="section-header">
+                <h2 class="section-title">Page <cfoutput>#url.page#</cfoutput></h2>
+            </div>
+        </cfif>
         
         <!--- Posts Grid --->
         <div class="posts-grid">

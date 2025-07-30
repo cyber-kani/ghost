@@ -209,15 +209,29 @@
             
         }, 2000); // Increased timeout to ensure all initialization is complete including blur events
         
-        // Auto-generate slug from title
+        // Auto-generate slug from title with debouncing
+        let slugGenerationTimeout;
         document.getElementById('postTitle').addEventListener('input', function() {
-            if (!document.getElementById('postSlug').value) {
-                const slug = generateSlug(this.value);
-                isProgrammaticChange = true;
-                document.getElementById('postSlug').value = slug;
-                setTimeout(() => { isProgrammaticChange = false; }, 10);
+            const titleValue = this.value;
+            
+            // Clear existing timeout
+            if (slugGenerationTimeout) {
+                clearTimeout(slugGenerationTimeout);
             }
-            // Update search preview when title changes
+            
+            // Debounce slug generation
+            slugGenerationTimeout = setTimeout(() => {
+                const slugField = document.getElementById('postSlug');
+                // Allow slug updates for drafts or if slug is empty
+                if (titleValue.trim() && (originalStatus !== 'published' || !slugField.value)) {
+                    const slug = generateSlug(titleValue);
+                    isProgrammaticChange = true;
+                    slugField.value = slug;
+                    setTimeout(() => { isProgrammaticChange = false; }, 10);
+                }
+            }, 500); // Wait 500ms after user stops typing
+            
+            // Update search preview when title changes (immediate)
             updateSearchPreview();
             updateTwitterPreview();
             updateFacebookPreview();
@@ -3191,9 +3205,22 @@
     
     // Generate slug from title
     function generateSlug(title) {
-        return title.toLowerCase()
-            .replace(/[^a-z0-9]+/g, '-')
+        if (!title || title.trim() === '') {
+            return 'untitled-' + Date.now().toString().slice(-6);
+        }
+        
+        let slug = title.toLowerCase()
+            .trim()
+            .replace(/[^a-z0-9\s-]/g, '')
+            .replace(/\s+/g, '-')
+            .replace(/-+/g, '-')
             .replace(/^-+|-+$/g, '');
+        
+        if (slug.length < 3) {
+            slug = slug + '-' + Date.now().toString().slice(-6);
+        }
+        
+        return slug;
     }
     
     
@@ -7331,7 +7358,7 @@
                     postId = postData.id;
                     // Update URL if this was a new post
                     if (window.location.pathname.includes('/new')) {
-                        window.history.replaceState({}, '', '/ghost/admin/post/edit/' + postId);
+                        window.history.replaceState({}, '', '/ghost/admin/posts/edit/' + postId);
                     }
                 }
                 
@@ -7842,7 +7869,9 @@
             }
         }
         
-        publishButton.textContent = buttonText;
+        if (publishButton) {
+            publishButton.textContent = buttonText;
+        }
     }
     
     

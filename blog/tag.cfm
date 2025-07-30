@@ -1,4 +1,4 @@
-<!--- Tag Archive Page with Modern Design --->\
+<cfsetting enablecfoutputonly="true"><!--- Tag Archive Page with Modern Design --->
 <cfparam name="request.dsn" default="blog">
 <cfparam name="url.slug" default="">
 <cfparam name="url.page" default="1">
@@ -14,18 +14,18 @@
 <cfif qTag.recordCount EQ 0>
     <cfheader statuscode="404" statustext="Not Found">
     <cfcontent reset="true">
-    <!DOCTYPE html>
+    <cfoutput><!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="utf-8">
         <title>404 - Tag not found</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
-            body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; background: #f5f5f7; }
+            body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; background: ##f5f5f7; }
             .error-container { text-align: center; }
-            h1 { font-size: 4rem; margin: 0; color: #1d1d1f; }
-            p { font-size: 1.25rem; color: #6e6e73; margin: 1rem 0 2rem; }
-            a { color: #0066cc; text-decoration: none; }
+            h1 { font-size: 4rem; margin: 0; color: ##1d1d1f; }
+            p { font-size: 1.25rem; color: ##6e6e73; margin: 1rem 0 2rem; }
+            a { color: ##0066cc; text-decoration: none; }
             a:hover { text-decoration: underline; }
         </style>
     </head>
@@ -37,6 +37,7 @@
         </div>
     </body>
     </html>
+    </cfoutput>
     <cfabort>
 </cfif>
 
@@ -99,11 +100,14 @@
 <cfset colorScheme = structKeyExists(siteSettings, "color_scheme") ? siteSettings.color_scheme : "auto">
 <cfset codeInjectionHead = structKeyExists(siteSettings, "codeinjection_head") ? siteSettings.codeinjection_head : "">
 <cfset codeInjectionFoot = structKeyExists(siteSettings, "codeinjection_foot") ? siteSettings.codeinjection_foot : "">
+<cfset navigationRight = structKeyExists(siteSettings, "navigation_right") ? siteSettings.navigation_right : "false">
+<cfset coverImage = structKeyExists(siteSettings, "cover_image") ? siteSettings.cover_image : "">
 
 <!--- Get navigation --->
 <cfset primaryNav = structKeyExists(siteSettings, "navigation") ? deserializeJSON(siteSettings.navigation) : []>
+<cfset secondaryNav = structKeyExists(siteSettings, "secondary_navigation") ? deserializeJSON(siteSettings.secondary_navigation) : []>
 
-<!DOCTYPE html>
+<cfoutput><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -148,14 +152,14 @@
     <style>
         :root {
             --accent-color: <cfoutput>#accentColor#</cfoutput>;
-            --text-primary: #1d1d1f;
-            --text-secondary: #6e6e73;
-            --text-tertiary: #86868b;
-            --bg-primary: #ffffff;
-            --bg-secondary: #f5f5f7;
-            --bg-tertiary: #fbfbfd;
-            --border-color: #d2d2d7;
-            --border-light: #e8e8ed;
+            --text-primary: ##1d1d1f;
+            --text-secondary: ##6e6e73;
+            --text-tertiary: ##86868b;
+            --bg-primary: ##ffffff;
+            --bg-secondary: ##f5f5f7;
+            --bg-tertiary: ##fbfbfd;
+            --border-color: ##d2d2d7;
+            --border-light: ##e8e8ed;
             --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
             --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
             --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
@@ -170,26 +174,26 @@
         <cfif colorScheme EQ "dark">
             /* Force dark mode */
             :root {
-                --text-primary: #f5f5f7;
-                --text-secondary: #a1a1a6;
-                --text-tertiary: #6e6e73;
-                --bg-primary: #000000;
-                --bg-secondary: #1d1d1f;
-                --bg-tertiary: #2d2d30;
-                --border-color: #38383d;
-                --border-light: #48484e;
+                --text-primary: ##f5f5f7;
+                --text-secondary: ##a1a1a6;
+                --text-tertiary: ##6e6e73;
+                --bg-primary: ##000000;
+                --bg-secondary: ##1d1d1f;
+                --bg-tertiary: ##2d2d30;
+                --border-color: ##38383d;
+                --border-light: ##48484e;
             }
         <cfelseif colorScheme EQ "auto">
             @media (prefers-color-scheme: dark) {
                 :root {
-                    --text-primary: #f5f5f7;
-                    --text-secondary: #a1a1a6;
-                    --text-tertiary: #6e6e73;
-                    --bg-primary: #000000;
-                    --bg-secondary: #1d1d1f;
-                    --bg-tertiary: #2d2d30;
-                    --border-color: #38383d;
-                    --border-light: #48484e;
+                    --text-primary: ##f5f5f7;
+                    --text-secondary: ##a1a1a6;
+                    --text-tertiary: ##6e6e73;
+                    --bg-primary: ##000000;
+                    --bg-secondary: ##1d1d1f;
+                    --bg-tertiary: ##2d2d30;
+                    --border-color: ##38383d;
+                    --border-light: ##48484e;
                 }
             }
         </cfif>
@@ -244,11 +248,22 @@
             max-width: var(--max-width-wide);
             margin: 0 auto;
             padding: 0 22px;
-            height: 52px;
+            height: 70px;
             display: flex;
+            <cfif navigationRight EQ "true">
             justify-content: space-between;
+            <cfelse>
+            gap: 2rem;
+            </cfif>
             align-items: center;
         }
+        
+        <cfif navigationRight NEQ "true">
+        .site-nav {
+            flex: 1;
+            justify-content: flex-start;
+        }
+        </cfif>
         
         .site-logo {
             display: flex;
@@ -302,14 +317,53 @@
         
         /* Tag Header */
         .tag-header {
-            padding: 80px 22px;
+            position: relative;
             text-align: center;
-            background-color: var(--bg-secondary);
-            <cfif len(qTag.feature_image)>
-            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('<cfoutput>#qTag.feature_image#</cfoutput>');
+            <cfif len(coverImage) OR len(trim(qTag.feature_image))>
+            background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url('<cfoutput><cfif len(coverImage)>#coverImage#<cfelseif len(trim(qTag.feature_image))>#qTag.feature_image#</cfif></cfoutput>');
             background-size: cover;
             background-position: center;
             color: white;
+            padding: 120px 22px 80px !important;
+            margin: 0;
+            max-width: none;
+            width: 100%;
+            <cfelse>
+            background-color: var(--bg-secondary);
+            padding: 80px 22px 48px;
+            max-width: var(--max-width-wide);
+            margin: 0 auto;
+            width: 100%;
+            </cfif>
+        }
+        
+        .tag-header-image {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+        }
+        
+        .tag-header-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .tag-header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6));
+        }
+        
+        .tag-header-content {
+            <cfif len(coverImage) OR len(trim(qTag.feature_image))>
+            position: relative;
+            z-index: 2;
+            <cfelse>
+            position: relative;
             </cfif>
         }
         
@@ -333,8 +387,9 @@
             margin: 0 0 16px;
             position: relative;
             display: inline-block;
-            <cfif len(qTag.feature_image)>
+            <cfif len(coverImage) OR len(trim(qTag.feature_image))>
             color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
             <cfelse>
             color: var(--text-primary);
             </cfif>
@@ -363,8 +418,9 @@
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
-            <cfif len(qTag.feature_image)>
+            <cfif len(coverImage) OR len(trim(qTag.feature_image))>
             color: rgba(255, 255, 255, 0.9);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
             <cfelse>
             color: var(--text-secondary);
             </cfif>
@@ -372,8 +428,9 @@
         
         .tag-meta {
             font-size: 17px;
-            <cfif len(qTag.feature_image)>
+            <cfif len(coverImage) OR len(trim(qTag.feature_image))>
             color: rgba(255, 255, 255, 0.8);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
             <cfelse>
             color: var(--text-secondary);
             </cfif>
@@ -504,17 +561,26 @@
         .author-avatar {
             width: 28px;
             height: 28px;
+            min-width: 28px;
+            min-height: 28px;
+            max-width: 28px;
+            max-height: 28px;
             border-radius: 50%;
             background-color: var(--accent-color);
             flex-shrink: 0;
+            flex-grow: 0;
             overflow: hidden;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 600;
             color: white;
             text-transform: uppercase;
+            line-height: 1;
+            text-align: center;
+            padding: 0;
+            aspect-ratio: 1 / 1;
         }
         
         .author-avatar img {
@@ -581,16 +647,217 @@
         /* Mobile Menu */
         .mobile-menu-toggle {
             display: none;
+            position: relative;
+            width: 44px;
+            height: 44px;
             background: none;
             border: none;
             cursor: pointer;
-            padding: 8px;
+            padding: 0;
+            color: var(--text-primary);
+            transition: var(--transition);
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        .mobile-menu-toggle:hover {
+            opacity: 0.7;
+        }
+        
+        .mobile-menu-toggle:focus {
+            outline: none;
+        }
+        
+        .mobile-menu-toggle:focus-visible {
+            outline: 2px solid var(--accent-color);
+            outline-offset: 2px;
+            border-radius: 8px;
+        }
+        
+        /* Animated Hamburger Icon */
+        .hamburger {
+            position: relative;
+            width: 24px;
+            height: 24px;
+            margin: auto;
+        }
+        
+        .hamburger span {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: currentColor;
+            border-radius: 2px;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
+        .hamburger span:nth-child(1) {
+            top: 6px;
+        }
+        
+        .hamburger span:nth-child(2) {
+            top: 11px;
+        }
+        
+        .hamburger span:nth-child(3) {
+            top: 16px;
+        }
+        
+        /* Hamburger Animation to X */
+        .mobile-menu-toggle.active .hamburger span:nth-child(1) {
+            transform: rotate(45deg);
+            top: 11px;
+        }
+        
+        .mobile-menu-toggle.active .hamburger span:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+        
+        .mobile-menu-toggle.active .hamburger span:nth-child(3) {
+            transform: rotate(-45deg);
+            top: 11px;
+        }
+        
+        /* Mobile Menu Overlay */
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            z-index: 998;
+            transition: opacity 0.3s ease;
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+        }
+        
+        .mobile-menu-overlay.active {
+            opacity: 1;
+        }
+        
+        /* Mobile Menu Container */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: min(85vw, 320px);
+            height: 100%;
+            background-color: var(--bg-primary);
+            z-index: 999;
+            transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            box-shadow: -4px 0 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .mobile-menu.active {
+            right: 0;
+        }
+        
+        /* Mobile Menu Header */
+        .mobile-menu-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 24px;
+            border-bottom: 1px solid var(--border-light);
+        }
+        
+        .mobile-menu-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.125rem;
+        }
+        
+        .mobile-menu-logo img {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+        }
+        
+        .mobile-menu-close {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-secondary);
+            transition: var(--transition);
+            border-radius: 8px;
+        }
+        
+        .mobile-menu-close:hover {
+            background-color: var(--bg-secondary);
             color: var(--text-primary);
         }
         
-        .mobile-menu-toggle svg {
-            width: 24px;
-            height: 24px;
+        /* Mobile Menu Navigation */
+        .mobile-menu-nav {
+            padding: 24px 0;
+        }
+        
+        .mobile-menu-nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .mobile-menu-nav li {
+            margin: 0;
+        }
+        
+        .mobile-menu-nav a {
+            display: block;
+            padding: 16px 24px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1.0625rem;
+            font-weight: 500;
+            transition: var(--transition);
+            border-left: 3px solid transparent;
+        }
+        
+        .mobile-menu-nav a:hover,
+        .mobile-menu-nav a.active {
+            background-color: var(--bg-secondary);
+            border-left-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+        
+        /* Mobile Menu Footer */
+        .mobile-menu-footer {
+            margin-top: auto;
+            padding: 24px;
+            border-top: 1px solid var(--border-light);
+        }
+        
+        .mobile-menu-secondary {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .secondary-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9375rem;
+            transition: var(--transition);
+        }
+        
+        .secondary-link:hover {
+            color: var(--accent-color);
         }
         
         /* Responsive */
@@ -604,7 +871,7 @@
             }
             
             .tag-header {
-                padding: 48px 22px;
+                padding: 48px 22px 32px;
             }
             
             .tag-title {
@@ -672,41 +939,99 @@
 </head>
 <body>
     <!--- Header --->
-    <header class="site-header">
+    <header class="site-header" role="banner">
         <div class="header-inner">
             <a href="/ghost/" class="site-logo">
                 <cfif len(siteLogo)>
-                    <img src="<cfoutput>#siteLogo#</cfoutput>" alt="<cfoutput>#siteTitle#</cfoutput>">
+                    <img src="<cfoutput>#siteLogo#</cfoutput>" alt="<cfoutput>#siteTitle#</cfoutput>" loading="lazy">
                 </cfif>
                 <span class="site-name"><cfoutput>#siteTitle#</cfoutput></span>
             </a>
             
-            <nav class="site-nav">
+            <nav class="site-nav" role="navigation">
                 <ul class="nav-menu">
                     <cfloop array="#primaryNav#" index="navItem">
                         <li><a href="<cfoutput>#navItem.url#</cfoutput>"><cfoutput>#navItem.label#</cfoutput></a></li>
                     </cfloop>
                 </ul>
                 
-                <button class="mobile-menu-toggle" aria-label="Menu">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
+                <button class="mobile-menu-toggle" aria-label="Menu" aria-expanded="false">
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
                 </button>
             </nav>
         </div>
     </header>
     
+    <!--- Mobile Menu Overlay --->
+    <div class="mobile-menu-overlay"></div>
+    
+    <!--- Mobile Menu --->
+    <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <a href="/ghost/" class="mobile-menu-logo">
+                <cfif len(siteLogo)>
+                    <img src="<cfoutput>#siteLogo#</cfoutput>" alt="<cfoutput>#siteTitle#</cfoutput>">
+                </cfif>
+                <span><cfoutput>#siteTitle#</cfoutput></span>
+            </a>
+            <button class="mobile-menu-close" aria-label="Close menu">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 6L6 18M6 6l12 12"/>
+                </svg>
+            </button>
+        </div>
+        
+        <nav class="mobile-menu-nav">
+            <ul>
+                <cfloop array="#primaryNav#" index="navItem">
+                    <li>
+                        <a href="<cfoutput>#navItem.url#</cfoutput>">
+                            <cfoutput>#navItem.label#</cfoutput>
+                        </a>
+                    </li>
+                </cfloop>
+            </ul>
+        </nav>
+        
+        <cfif arrayLen(secondaryNav) GT 0>
+            <div class="mobile-menu-footer">
+                <nav class="mobile-menu-secondary">
+                    <cfloop array="#secondaryNav#" index="navItem">
+                        <a href="<cfoutput>#navItem.url#</cfoutput>" class="secondary-link">
+                            <cfoutput>#navItem.label#</cfoutput>
+                        </a>
+                    </cfloop>
+                </nav>
+                
+                <div class="mobile-menu-social">
+                    <!--- Social icons can be added here based on settings --->
+                </div>
+            </div>
+        </cfif>
+    </div>
+    
     <!--- Tag Header --->
     <section class="tag-header">
-        <div class="tag-accent"></div>
-        <h1 class="tag-title"><span class="underline-wrap"><cfoutput>#qTag.name#</cfoutput></span></h1>
-        <cfif len(trim(qTag.description))>
-            <p class="tag-description"><cfoutput>#qTag.description#</cfoutput></p>
+        <cfif len(trim(qTag.feature_image))>
+            <div class="tag-header-image">
+                <img src="<cfoutput>#qTag.feature_image#</cfoutput>" alt="<cfoutput>#qTag.name#</cfoutput>" loading="lazy">
+                <div class="tag-header-overlay"></div>
+            </div>
         </cfif>
-        <p class="tag-meta">
-            <cfoutput>#totalPosts# post<cfif totalPosts NEQ 1>s</cfif></cfoutput>
-        </p>
+        <div class="tag-header-content">
+            <div class="tag-accent"></div>
+            <h1 class="tag-title"><span class="underline-wrap"><cfoutput>#qTag.name#</cfoutput></span></h1>
+            <cfif len(trim(qTag.description))>
+                <p class="tag-description"><cfoutput>#qTag.description#</cfoutput></p>
+            </cfif>
+            <p class="tag-meta">
+                <cfoutput>#totalPosts# post<cfif totalPosts NEQ 1>s</cfif></cfoutput>
+            </p>
+        </div>
     </section>
     
     <!--- Main Content --->
@@ -865,3 +1190,4 @@
     </script>
 </body>
 </html>
+</cfoutput>

@@ -13,59 +13,58 @@
 <cfinclude template="../includes/posts-functions.cfm">
 
 <!--- Initialize new post data --->
-<cfscript>
-// Create new post with Ghost-style ID (24 character hex string)
-postData = {
-    id: lcase(left(replace(createUUID(), "-", "", "all"), 24)),
-    title: "",
-    html: "",
-    plaintext: "",
-    feature_image: "",
-    featured: false,
-    status: "draft",
-    visibility: "public",
-    slug: "",
-    custom_excerpt: "",
-    meta_title: "",
-    meta_description: "",
-    canonical_url: "",
-    custom_template: "",
-    codeinjection_head: "",
-    codeinjection_foot: "",
-    show_title_and_feature_image: true,
-    og_title: "",
-    og_description: "",
-    og_image: "",
-    twitter_title: "",
-    twitter_description: "",
-    twitter_image: "",
-    type: url.type,
-    published_at: "",
-    created_at: now(),
-    updated_at: now(),
-    created_by: session.USERID ?: "1",
-    updated_by: session.USERID ?: "1",
-    tags: [],
-    authors: [{
-        id: session.USERID ?: "1",
-        name: session.USERNAME ?: "Admin User",
-        email: session.USEREMAIL ?: "admin@example.com",
-        avatar: "",
-        slug: ""
-    }]
-};
+<!--- Create new post with Ghost-style ID (24 character hex string) --->
+<cfset postData = {}>
+<cfset postData.id = lcase(left(replace(createUUID(), "-", "", "all"), 24))>
+<cfset postData.title = "">
+<cfset postData.html = "">
+<cfset postData.plaintext = "">
+<cfset postData.feature_image = "">
+<cfset postData.featured = false>
+<cfset postData.status = "draft">
+<cfset postData.visibility = "public">
+<cfset postData.slug = "">
+<cfset postData.custom_excerpt = "">
+<cfset postData.meta_title = "">
+<cfset postData.meta_description = "">
+<cfset postData.canonical_url = "">
+<cfset postData.custom_template = "">
+<cfset postData.codeinjection_head = "">
+<cfset postData.codeinjection_foot = "">
+<cfset postData.show_title_and_feature_image = true>
+<cfset postData.og_title = "">
+<cfset postData.og_description = "">
+<cfset postData.og_image = "">
+<cfset postData.twitter_title = "">
+<cfset postData.twitter_description = "">
+<cfset postData.twitter_image = "">
+<cfset postData.type = url.type>
+<cfset postData.published_at = "">
+<cfset postData.created_at = now()>
+<cfset postData.updated_at = now()>
+<cfset postData.created_by = structKeyExists(session, "USERID") ? session.USERID : "1">
+<cfset postData.updated_by = structKeyExists(session, "USERID") ? session.USERID : "1">
+<cfset postData.tags = []>
 
-// Set postId for consistency with edit page
-postId = postData.id;
+<!--- Set up authors array --->
+<cfset authorStruct = {}>
+<cfset authorStruct.id = structKeyExists(session, "USERID") ? session.USERID : "1">
+<cfset authorStruct.name = structKeyExists(session, "USERNAME") ? session.USERNAME : "Admin User">
+<cfset authorStruct.email = structKeyExists(session, "USEREMAIL") ? session.USEREMAIL : "admin@example.com">
+<cfset authorStruct.avatar = "">
+<cfset authorStruct.slug = "">
+<cfset postData.authors = [authorStruct]>
 
-// Get all tags for the tags selector
-tagsResult = getTags(1, 100);
-allTags = tagsResult.success ? tagsResult.data : [];
+<!--- Set postId for consistency with edit page --->
+<cfset postId = postData.id>
 
-// Empty values for new post
-firstParagraphText = "";
-errorMessage = "";
-</cfscript>
+<!--- Get all tags for the tags selector --->
+<cfset tagsResult = getTags(1, 100)>
+<cfset allTags = tagsResult.success ? tagsResult.data : []>
+
+<!--- Empty values for new post --->
+<cfset firstParagraphText = "">
+<cfset errorMessage = "">
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr" data-color-theme="Blue_Theme" class="light">

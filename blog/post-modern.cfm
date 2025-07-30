@@ -1,4 +1,4 @@
-<!--- Modern Post Template with Apple HIG Design --->\
+<cfsetting enablecfoutputonly="true"><!--- Modern Post Template with Apple HIG Design --->
 <cfparam name="request.dsn" default="blog">
 <cfparam name="url.slug" default="">
 
@@ -25,18 +25,18 @@
 <cfif qPost.recordCount EQ 0>
     <cfheader statuscode="404" statustext="Not Found">
     <cfcontent reset="true">
-    <!DOCTYPE html>
+    <cfoutput><!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="utf-8">
         <title>404 - Post not found</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
-            body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; background: #f5f5f7; }
+            body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; background: ##f5f5f7; }
             .error-container { text-align: center; }
-            h1 { font-size: 4rem; margin: 0; color: #1d1d1f; }
-            p { font-size: 1.25rem; color: #6e6e73; margin: 1rem 0 2rem; }
-            a { color: #0066cc; text-decoration: none; }
+            h1 { font-size: 4rem; margin: 0; color: ##1d1d1f; }
+            p { font-size: 1.25rem; color: ##6e6e73; margin: 1rem 0 2rem; }
+            a { color: ##0066cc; text-decoration: none; }
             a:hover { text-decoration: underline; }
         </style>
     </head>
@@ -48,6 +48,7 @@
         </div>
     </body>
     </html>
+    </cfoutput>
     <cfabort>
 </cfif>
 
@@ -104,9 +105,11 @@
 <cfset codeInjectionHead = structKeyExists(siteSettings, "codeinjection_head") ? siteSettings.codeinjection_head : "">
 <cfset codeInjectionFoot = structKeyExists(siteSettings, "codeinjection_foot") ? siteSettings.codeinjection_foot : "">
 <cfset siteUrl = structKeyExists(siteSettings, "site_url") ? siteSettings.site_url : "https://clitools.app">
+<cfset navigationRight = structKeyExists(siteSettings, "navigation_right") ? siteSettings.navigation_right : "false">
 
 <!--- Get navigation --->
 <cfset primaryNav = structKeyExists(siteSettings, "navigation") ? deserializeJSON(siteSettings.navigation) : []>
+<cfset secondaryNav = structKeyExists(siteSettings, "secondary_navigation") ? deserializeJSON(siteSettings.secondary_navigation) : []>
 
 <!--- Process content --->
 <cfset postContent = qPost.html>
@@ -159,7 +162,7 @@
     }
 }>
 
-<!DOCTYPE html>
+<cfoutput><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -237,14 +240,14 @@
         
         :root {
             --accent-color: <cfoutput>#accentColor#</cfoutput>;
-            --text-primary: #1d1d1f;
-            --text-secondary: #6e6e73;
-            --text-tertiary: #86868b;
-            --bg-primary: #ffffff;
-            --bg-secondary: #f5f5f7;
-            --bg-tertiary: #fbfbfd;
-            --border-color: #d2d2d7;
-            --border-light: #e8e8ed;
+            --text-primary: ##1d1d1f;
+            --text-secondary: ##6e6e73;
+            --text-tertiary: ##86868b;
+            --bg-primary: ##ffffff;
+            --bg-secondary: ##f5f5f7;
+            --bg-tertiary: ##fbfbfd;
+            --border-color: ##d2d2d7;
+            --border-light: ##e8e8ed;
             --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
             --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
             --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
@@ -264,26 +267,26 @@
         <cfif colorScheme EQ "dark">
             /* Force dark mode */
             :root {
-                --text-primary: #f5f5f7;
-                --text-secondary: #a1a1a6;
-                --text-tertiary: #6e6e73;
-                --bg-primary: #000000;
-                --bg-secondary: #1d1d1f;
-                --bg-tertiary: #2d2d30;
-                --border-color: #38383d;
-                --border-light: #48484e;
+                --text-primary: ##f5f5f7;
+                --text-secondary: ##a1a1a6;
+                --text-tertiary: ##6e6e73;
+                --bg-primary: ##000000;
+                --bg-secondary: ##1d1d1f;
+                --bg-tertiary: ##2d2d30;
+                --border-color: ##38383d;
+                --border-light: ##48484e;
             }
         <cfelseif colorScheme EQ "auto">
             @media (prefers-color-scheme: dark) {
                 :root {
-                    --text-primary: #f5f5f7;
-                    --text-secondary: #a1a1a6;
-                    --text-tertiary: #6e6e73;
-                    --bg-primary: #000000;
-                    --bg-secondary: #1d1d1f;
-                    --bg-tertiary: #2d2d30;
-                    --border-color: #38383d;
-                    --border-light: #48484e;
+                    --text-primary: ##f5f5f7;
+                    --text-secondary: ##a1a1a6;
+                    --text-tertiary: ##6e6e73;
+                    --bg-primary: ##000000;
+                    --bg-secondary: ##1d1d1f;
+                    --bg-tertiary: ##2d2d30;
+                    --border-color: ##38383d;
+                    --border-light: ##48484e;
                 }
             }
         </cfif>
@@ -370,11 +373,22 @@
             max-width: var(--max-width-wide);
             margin: 0 auto;
             padding: 0 22px;
-            height: 52px;
+            height: 70px;
             display: flex;
+            <cfif navigationRight EQ "true">
             justify-content: space-between;
+            <cfelse>
+            gap: 2rem;
+            </cfif>
             align-items: center;
         }
+        
+        <cfif navigationRight NEQ "true">
+        .site-nav {
+            flex: 1;
+            justify-content: flex-start;
+        }
+        </cfif>
         
         .site-logo {
             display: flex;
@@ -555,15 +569,26 @@
         .author-avatar {
             width: 48px;
             height: 48px;
+            min-width: 48px;
+            min-height: 48px;
+            max-width: 48px;
+            max-height: 48px;
             border-radius: 50%;
             overflow: hidden;
             background-color: var(--accent-color);
-            display: flex;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 600;
             color: white;
+            line-height: 1;
+            text-align: center;
+            text-transform: uppercase;
+            padding: 0;
+            flex-shrink: 0;
+            flex-grow: 0;
+            aspect-ratio: 1 / 1;
         }
         
         .author-avatar img {
@@ -1010,16 +1035,217 @@
         /* Mobile Menu */
         .mobile-menu-toggle {
             display: none;
+            position: relative;
+            width: 44px;
+            height: 44px;
             background: none;
             border: none;
             cursor: pointer;
-            padding: 8px;
+            padding: 0;
+            color: var(--text-primary);
+            transition: var(--transition);
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        .mobile-menu-toggle:hover {
+            opacity: 0.7;
+        }
+        
+        .mobile-menu-toggle:focus {
+            outline: none;
+        }
+        
+        .mobile-menu-toggle:focus-visible {
+            outline: 2px solid var(--accent-color);
+            outline-offset: 2px;
+            border-radius: 8px;
+        }
+        
+        /* Animated Hamburger Icon */
+        .hamburger {
+            position: relative;
+            width: 24px;
+            height: 24px;
+            margin: auto;
+        }
+        
+        .hamburger span {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: currentColor;
+            border-radius: 2px;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
+        .hamburger span:nth-child(1) {
+            top: 6px;
+        }
+        
+        .hamburger span:nth-child(2) {
+            top: 11px;
+        }
+        
+        .hamburger span:nth-child(3) {
+            top: 16px;
+        }
+        
+        /* Hamburger Animation to X */
+        .mobile-menu-toggle.active .hamburger span:nth-child(1) {
+            transform: rotate(45deg);
+            top: 11px;
+        }
+        
+        .mobile-menu-toggle.active .hamburger span:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+        
+        .mobile-menu-toggle.active .hamburger span:nth-child(3) {
+            transform: rotate(-45deg);
+            top: 11px;
+        }
+        
+        /* Mobile Menu Overlay */
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            z-index: 998;
+            transition: opacity 0.3s ease;
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+        }
+        
+        .mobile-menu-overlay.active {
+            opacity: 1;
+        }
+        
+        /* Mobile Menu Container */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: min(85vw, 320px);
+            height: 100%;
+            background-color: var(--bg-primary);
+            z-index: 999;
+            transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            box-shadow: -4px 0 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .mobile-menu.active {
+            right: 0;
+        }
+        
+        /* Mobile Menu Header */
+        .mobile-menu-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 24px;
+            border-bottom: 1px solid var(--border-light);
+        }
+        
+        .mobile-menu-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.125rem;
+        }
+        
+        .mobile-menu-logo img {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+        }
+        
+        .mobile-menu-close {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-secondary);
+            transition: var(--transition);
+            border-radius: 8px;
+        }
+        
+        .mobile-menu-close:hover {
+            background-color: var(--bg-secondary);
             color: var(--text-primary);
         }
         
-        .mobile-menu-toggle svg {
-            width: 24px;
-            height: 24px;
+        /* Mobile Menu Navigation */
+        .mobile-menu-nav {
+            padding: 24px 0;
+        }
+        
+        .mobile-menu-nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .mobile-menu-nav li {
+            margin: 0;
+        }
+        
+        .mobile-menu-nav a {
+            display: block;
+            padding: 16px 24px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1.0625rem;
+            font-weight: 500;
+            transition: var(--transition);
+            border-left: 3px solid transparent;
+        }
+        
+        .mobile-menu-nav a:hover,
+        .mobile-menu-nav a.active {
+            background-color: var(--bg-secondary);
+            border-left-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+        
+        /* Mobile Menu Footer */
+        .mobile-menu-footer {
+            margin-top: auto;
+            padding: 24px;
+            border-top: 1px solid var(--border-light);
+        }
+        
+        .mobile-menu-secondary {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .secondary-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9375rem;
+            transition: var(--transition);
+        }
+        
+        .secondary-link:hover {
+            color: var(--accent-color);
         }
         
         /* Responsive */
@@ -1104,36 +1330,89 @@
     </cfif>
 </head>
 <body>
+    <!--- Announcement Bar --->
+    <cfinclude template="/ghost/includes/announcement-bar.cfm">
+    
     <!--- Reading Progress Bar --->
     <div class="reading-progress">
         <div class="reading-progress-bar" id="readingProgress"></div>
     </div>
     
     <!--- Header --->
-    <header class="site-header">
+    <header class="site-header" role="banner">
         <div class="header-inner">
             <a href="/ghost/" class="site-logo">
                 <cfif len(siteLogo)>
-                    <img src="<cfoutput>#siteLogo#</cfoutput>" alt="<cfoutput>#siteTitle#</cfoutput>">
+                    <img src="<cfoutput>#siteLogo#</cfoutput>" alt="<cfoutput>#siteTitle#</cfoutput>" loading="lazy">
                 </cfif>
                 <span class="site-name"><cfoutput>#siteTitle#</cfoutput></span>
             </a>
             
-            <nav class="site-nav">
+            <nav class="site-nav" role="navigation">
                 <ul class="nav-menu">
                     <cfloop array="#primaryNav#" index="navItem">
                         <li><a href="<cfoutput>#navItem.url#</cfoutput>"><cfoutput>#navItem.label#</cfoutput></a></li>
                     </cfloop>
                 </ul>
                 
-                <button class="mobile-menu-toggle" aria-label="Menu">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
+                <button class="mobile-menu-toggle" aria-label="Menu" aria-expanded="false">
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
                 </button>
             </nav>
         </div>
     </header>
+    
+    <!--- Mobile Menu Overlay --->
+    <div class="mobile-menu-overlay"></div>
+    
+    <!--- Mobile Menu --->
+    <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <a href="/ghost/" class="mobile-menu-logo">
+                <cfif len(siteLogo)>
+                    <img src="<cfoutput>#siteLogo#</cfoutput>" alt="<cfoutput>#siteTitle#</cfoutput>">
+                </cfif>
+                <span><cfoutput>#siteTitle#</cfoutput></span>
+            </a>
+            <button class="mobile-menu-close" aria-label="Close menu">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 6L6 18M6 6l12 12"/>
+                </svg>
+            </button>
+        </div>
+        
+        <nav class="mobile-menu-nav">
+            <ul>
+                <cfloop array="#primaryNav#" index="navItem">
+                    <li>
+                        <a href="<cfoutput>#navItem.url#</cfoutput>">
+                            <cfoutput>#navItem.label#</cfoutput>
+                        </a>
+                    </li>
+                </cfloop>
+            </ul>
+        </nav>
+        
+        <cfif arrayLen(secondaryNav) GT 0>
+            <div class="mobile-menu-footer">
+                <nav class="mobile-menu-secondary">
+                    <cfloop array="#secondaryNav#" index="navItem">
+                        <a href="<cfoutput>#navItem.url#</cfoutput>" class="secondary-link">
+                            <cfoutput>#navItem.label#</cfoutput>
+                        </a>
+                    </cfloop>
+                </nav>
+                
+                <div class="mobile-menu-social">
+                    <!--- Social icons can be added here based on settings --->
+                </div>
+            </div>
+        </cfif>
+    </div>
     
     <!--- Article Header --->
     <article class="fade-in-up">
@@ -1480,3 +1759,4 @@
     </script>
 </body>
 </html>
+</cfoutput>
